@@ -1,0 +1,15 @@
+#+Title: "Sobre este curso"
+#+STARTUP: showall expand
+#+options: toc:nil
+
+#+begin_src yaml :exports results :results value html
+---
+layout: default
+title: Sobre el curso
+weight: 10
+---
+#+end_src
+#+results:
+
+* Prof. Luis G. Moyano
+* Objetivos

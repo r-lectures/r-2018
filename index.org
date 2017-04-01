@@ -1,0 +1,18 @@
+#+title: Programación y análisis de datos en R con aplicaciones científicas - 2017
+#+STARTUP: showall expand
+#+options: toc:nil
+
+#+begin_src yaml :exports results :results value html
+---
+layout: default
+title: 
+weight: 1
+---
+#+end_src
+#+results:
+
+This is a course on R by flatly
+
+- this is some list of some sort
+- what to put here
+- dunno

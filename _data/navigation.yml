@@ -1,0 +1,16 @@
+- title: "Home"
+  url: "/"
+
+- title: "Posts"
+  url: "/_posts/"
+
+- title: "Clasis"
+  url: "/classes/"
+
+- title: "Mis recursos"
+  url: "/resources/"
+
+- title: "Sobre"
+  url: "/about/"
+
+  
