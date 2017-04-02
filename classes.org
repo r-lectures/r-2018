@@ -12,13 +12,13 @@
 #+results:
 
 * Clase 1
-This is class 1
+This is an intro class
 ** Presentations
-*** who am i
-*** who are they
+- who am i
+- who are they
 ** Course mechanics
 *** lecture time
-- schedule
+- SCHEDULE
   - 09AM 1h consulting
   - 10AM 1h practice
   - 11AM 1h theory

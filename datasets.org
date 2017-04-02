@@ -12,22 +12,22 @@
 #+results:
 
 * Datasets
-*** [[http://www.rug.nl/ggdc/productivity/pwt/][Penn World Table]] 
-- data from the Penn World Tables 9.0. 
-- PWT version 9.0 is a database with information on relative levels of income, output, input and
-  productivity, covering 182 countries between 1950 and 2014
-- Install package called "pwt9".
-*** [[https://www.kaggle.com/benhamner/2016-us-election][Kaggle - 2016 US Election]]
-*** [[https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data][Kaggle Climate Change: Earth Surface Temperature Data]]
-*** [[http://berkeleyearth.org/data/][Berkeley Earth]]
-*** [[https://snap.stanford.edu/data/][Stanford Large Network Dataset Collection]]
-*** [[https://www.kaggle.com/cdc/mortality][Death in the United States]]
-*** [[https://catalog.data.gov/dataset][Data Gov -  191,705 datasets]]
-**** [[https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9][U.S. Chronic Disease Indicators (CDI)]]
-*** [[https://www.kaggle.com/c/shelter-animal-outcomes][Shelter Animal Outcomes]]
-*** [[https://www.kaggle.com/c/facebook-v-predicting-check-ins][Facebook V: Predicting Check Ins]]
-*** [[http://www.gutenberg.org/][Free ebooks by Project Gutenberg]]
-*** [[http://www.pro-football-reference.com/][Football Stats and History]]
-*** [[http://www.basketball-reference.com/][Basketball Stats and History]]
-*** [[http://www.baseball-reference.com/][Baseball Stats and History]]
-*** [[http://archive.ics.uci.edu/ml/datasets/Bag+of+Words][Bag of Words Data Set]]
+- [[http://www.rug.nl/ggdc/productivity/pwt/][Penn World Table]] 
+  - data from the Penn World Tables 9.0. 
+  - PWT version 9.0 is a database with information on relative levels of income, output, input and
+    productivity, covering 182 countries between 1950 and 2014
+  - Install package called "pwt9".
+- [[https://www.kaggle.com/benhamner/2016-us-election][Kaggle - 2016 US Election]]
+- [[https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data][Kaggle Climate Change: Earth Surface Temperature Data]]
+- [[http://berkeleyearth.org/data/][Berkeley Earth]]
+- [[https://snap.stanford.edu/data/][Stanford Large Network Dataset Collection]]
+- [[https://www.kaggle.com/cdc/mortality][Death in the United States]]
+- [[https://catalog.data.gov/dataset][Data Gov -  191,705 datasets]]
+  - [[https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9][U.S. Chronic Disease Indicators (CDI)]]
+- [[https://www.kaggle.com/c/shelter-animal-outcomes][Shelter Animal Outcomes]]
+- [[https://www.kaggle.com/c/facebook-v-predicting-check-ins][Facebook V: Predicting Check Ins]]
+- [[http://www.gutenberg.org/][Free ebooks by Project Gutenberg]]
+- [[http://www.pro-football-reference.com/][Football Stats and History]]
+- [[http://www.basketball-reference.com/][Basketball Stats and History]]
+- [[http://www.baseball-reference.com/][Baseball Stats and History]]
+- [[http://archive.ics.uci.edu/ml/datasets/Bag+of+Words][Bag of Words Data Set]]

@@ -7,16 +7,13 @@
 
 # Clase 1
 
-This is class 1
+This is an intro class
 
 
 ## Presentations
 
-
-### who am i
-
-
-### who are they
+-   who am i
+-   who are they
 
 
 ## Course mechanics
