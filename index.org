@@ -11,8 +11,13 @@ weight: 1
 #+end_src
 #+results:
 
-This is a course on R by flatly
-
-- this is some list of some sort
-- what to put here
-- dunno
+* Programación y análisis de datos en R con aplicaciones científicas
+** Carrera/s:
+- PGU en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química
+- Licenciatura en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química
+** Objetivos
+- Dominar los conceptos básicos del lenguaje de programación R.
+- Desarrollar e implementar programas y scripts en el lenguaje R con foco en el análisis de datos empíricos.
+- Comprender las ventajas y desventajas del lenguaje R y como se complementa con otros lenguajes de programación y técnicas de análisis de datos.
+- Conocer las fuentes de información necesarias para acceder de manera independiente al conocimiento requerido para resolver problemas científicos específicos.
+- Implementar los conocimientos de programación conseguidos para desarrollar modelos científicos para resolver problemas simples en diferentes áreas del conocimiento.
