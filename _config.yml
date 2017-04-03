@@ -15,3 +15,5 @@ show_drafts: FALSE
 plugins_dir: _plugins
 paginate: 3
 exclude: ["gulp", '*.org', 'reveal*']
+
+theme: jekyll-theme-minimal
