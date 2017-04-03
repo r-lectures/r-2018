@@ -1,8 +1,7 @@
 ---
-layout: default
+layout: page
 title: Posts
 weight: 6
-
 ---
 
 <ul>
