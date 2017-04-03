@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Title</title>
+<meta name="author" content="(John Stevenson)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Title">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Title</h1><h2 class="author">John Stevenson</h2><p class="date">Created: 2017-04-03 Mon 15:04</p>
+</section>
+
+<section>
+<section id="slide-org487a9bf" data-background="./images/leiningen-slide-background.png" data-background-transition="slide">
+<h2 id="org487a9bf">Slide with background image</h2>
+<p>
+<a href="http://www.google.co.uk">hyperlink-text</a>
+</p>
+
+<ul class="fragment roll-in">
+<li>bulletpoint</li>
+<li>dont go crazy</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd2c5111">
+<h3 id="orgd2c5111">Sub-slide - srolls vertically from slide above</h3>
+<p>
+Some source code using hightlits.js 
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-clojure">(def clojure-devs "love brackets")
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga5190f3">
+<h2 id="orga5190f3">Slide with code</h2>
+<div class="org-src-container">
+
+<pre  class="src src-R">cherries <span style="color: #bbdaff;">&lt;-</span> sum(windows == <span style="color: #99ffff;">"C"</span>)
+diamonds <span style="color: #bbdaff;">&lt;-</span> sum(windows == <span style="color: #99ffff;">"DD"</span>)
+c(0, 2, 5)[cherries + 1] *
+  c(1, 2, 4)[diamonds + 1]
+
+payoffs <span style="color: #bbdaff;">&lt;-</span> c(<span style="color: #99ffff;">"DD"</span> = 800, <span style="color: #99ffff;">"7"</span> = 80, <span style="color: #99ffff;">"BBB"</span> = 40, <span style="color: #99ffff;">"BB"</span> = 25, <span style="color: #99ffff;">"B"</span> = 10, <span style="color: #99ffff;">"C"</span> = 10, <span style="color: #99ffff;">"0"</span> = 0)
+same <span style="color: #bbdaff;">&lt;-</span> length(unique(windows)) == 1
+allbars <span style="color: #bbdaff;">&lt;-</span> all(windows <span style="color: #bbdaff;">%in%</span> c(<span style="color: #99ffff;">"B"</span>, <span style="color: #99ffff;">"BB"</span>, <span style="color: #99ffff;">"BBB"</span>))
+<span style="color: #d1f1a9;">if</span> (same) {
+    prize <span style="color: #bbdaff;">&lt;-</span> payoffs[windows[1]]
+} <span style="color: #d1f1a9;">else</span> <span style="color: #d1f1a9;">if</span> (allbars) {
+    prize <span style="color: #bbdaff;">&lt;-</span> 5
+} <span style="color: #d1f1a9;">else</span> {
+    cherries <span style="color: #bbdaff;">&lt;-</span> sum(windows == <span style="color: #99ffff;">"C"</span>)
+    diamonds <span style="color: #bbdaff;">&lt;-</span> sum(windows == <span style="color: #99ffff;">"DD"</span>)
+    prize <span style="color: #bbdaff;">&lt;-</span> c(0, 2, 5)[cherries + 1] * c(1, 2, 4)[diamonds + 1]
+}
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9e81183" data-background="#770000" data-background-transition="slide">
+<h2 id="org9e81183">Slide with Colour - overriding the theme</h2>
+<p>
+I love red.
+</p>
+
+<p class="fragment hightlight-red">
+Hightliht text as a fragment of the slide 
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org230f584">
+<h3 id="org230f584">Fragments in Reveal.js</h3>
+<p>
+Press the "Down" key on the page or the down arrow to trigger fragments
+</p>
+
+<ul class="fragment highlight-blue">
+<li>Create</li>
+<li>Fragment</li>
+<li>At Ease</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9e31c66">
+<h3 id="org9e31c66">Fragment captions</h3>
+<div class="org-src-container">
+<label class="org-src-name">The Org text source.</label>
+<pre  class="src src-org"><span style="color: #7285b7; font-style: italic;">#+ATTR_REVEAL: :frag</span>
+   * Create
+   * Fragment
+   * At Ease
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org97c8281" data-state="alert">
+<h3 id="org97c8281">Reveal.js Can Alert</h3>
+<p>
+Change slide style to wake up the sleepy audience.
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: false,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
