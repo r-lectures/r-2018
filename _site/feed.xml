@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Programación en R 2017</title>
-    <description>Programación en R con aplicaciones científicas
+    <title>Programación en R - 2017</title>
+    <description>Programación y análisis de datos en R con aplicaciones científicas
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 03 Apr 2017 10:05:08 -0300</pubDate>
-    <lastBuildDate>Mon, 03 Apr 2017 10:05:08 -0300</lastBuildDate>
+    <link>http://localhost:4000https://github.com/fiesysico/R-2017/</link>
+    <atom:link href="http://localhost:4000https://github.com/fiesysico/R-2017/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 03 Apr 2017 10:18:20 -0300</pubDate>
+    <lastBuildDate>Mon, 03 Apr 2017 10:18:20 -0300</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -19,8 +19,8 @@
 
 </description>
         <pubDate>Sun, 30 Aug 2015 16:15:48 -0300</pubDate>
-        <link>http://localhost:4000/haskell/2015/08/30/hello-world-in-haskell.html</link>
-        <guid isPermaLink="true">http://localhost:4000/haskell/2015/08/30/hello-world-in-haskell.html</guid>
+        <link>http://localhost:4000https://github.com/fiesysico/R-2017/haskell/2015/08/30/hello-world-in-haskell.html</link>
+        <guid isPermaLink="true">http://localhost:4000https://github.com/fiesysico/R-2017/haskell/2015/08/30/hello-world-in-haskell.html</guid>
         
         
         <category>haskell</category>
@@ -45,8 +45,8 @@
 
 </description>
         <pubDate>Sat, 29 Aug 2015 16:15:48 -0300</pubDate>
-        <link>http://localhost:4000/jekyll/update/2015/08/29/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2015/08/29/welcome-to-jekyll.html</guid>
+        <link>http://localhost:4000https://github.com/fiesysico/R-2017/jekyll/update/2015/08/29/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000https://github.com/fiesysico/R-2017/jekyll/update/2015/08/29/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
@@ -60,8 +60,8 @@
         <description>&lt;p&gt;dummy post 2&lt;/p&gt;
 </description>
         <pubDate>Wed, 07 Jan 2015 16:15:48 -0300</pubDate>
-        <link>http://localhost:4000/jekyll/update/2015/01/07/dummy-post-2.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2015/01/07/dummy-post-2.html</guid>
+        <link>http://localhost:4000https://github.com/fiesysico/R-2017/jekyll/update/2015/01/07/dummy-post-2.html</link>
+        <guid isPermaLink="true">http://localhost:4000https://github.com/fiesysico/R-2017/jekyll/update/2015/01/07/dummy-post-2.html</guid>
         
         
         <category>jekyll</category>
@@ -75,8 +75,8 @@
         <description>&lt;p&gt;dummy post 1&lt;/p&gt;
 </description>
         <pubDate>Tue, 06 Jan 2015 16:15:48 -0300</pubDate>
-        <link>http://localhost:4000/jekyll/update/2015/01/06/dummy-post-1.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2015/01/06/dummy-post-1.html</guid>
+        <link>http://localhost:4000https://github.com/fiesysico/R-2017/jekyll/update/2015/01/06/dummy-post-1.html</link>
+        <guid isPermaLink="true">http://localhost:4000https://github.com/fiesysico/R-2017/jekyll/update/2015/01/06/dummy-post-1.html</guid>
         
         
         <category>jekyll</category>
