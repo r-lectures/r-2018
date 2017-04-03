@@ -11,7 +11,7 @@ github_username:  lgmoyano
 # Build settings
 markdown: kramdown
 show_drafts: FALSE
-baseurl: https://github.com/fiesysico/R-2017
+# baseurl: https://github.com/fiesysico/R-2017
 plugins_dir: _plugins
 paginate: 3
 exclude: ["gulp", '*.org']

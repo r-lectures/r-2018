@@ -1,6 +1,6 @@
 ---
 layout: default
-title:
+title: Principal
 weight: 1
 ---
 
@@ -9,6 +9,4 @@ This is a course on R by flatly
 -   this is some list of some sort
 -   what to put here
 -   dunno
-
-Amo muito a Trigueira!!! <3
 
