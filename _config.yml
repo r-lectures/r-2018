@@ -14,6 +14,6 @@ markdown: kramdown
 show_drafts: FALSE
 plugins_dir: _plugins
 paginate: 3
-exclude: ["gulp", '*.org', 'reveal*']
+exclude: ["gulp", '*.org', 'feed*']
 
 theme: jekyll-theme-minimal
