@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>"Org mode con Org-reveal y Jekyll"</title>
+<meta name="author" content="(moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">"Org mode con Org-reveal y Jekyll"</h1><h2 class="author">moyano</h2><p class="date">Created: 2017-04-06 Thu 12:31</p>
+</section>
+
+<section>
+<section id="slide-org9653a3a">
+<h2 id="org9653a3a"><span class="section-number-2">1</span> Cómo funciona:</h2>
+<ol>
+<li>Ox-reveal exporter generates html</li>
+<li>needs reveal<sub>root</sub> "../reveal.js" when file in _posts/</li>
+<li>Generates html in _posts/ only</li>
+<li>No yaml processing (which things can i pass from org's #+ type of options?)</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-org9084d04">
+<h2 id="org9084d04"><span class="section-number-2">2</span> Y además</h2>
+<p>
+some text here and there
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-R"><span style="color: #7aa6da;">require</span>(dplyr)
+df <span style="color: #7aa6da;">%&gt;%</span> select(V1)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgee269a8">
+<h2 id="orgee269a8"><span class="section-number-2">3</span> Segundo de todo</h2>
+<p>
+Slide 2
+</p>
+
+<ol>
+<li>listas,</li>
+<li>y listas,</li>
+<li>y más listas</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<script src="../reveal.js/lib/js/head.min.js"></script>
+<script src="../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: false,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

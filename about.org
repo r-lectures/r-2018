@@ -12,4 +12,5 @@ weight: 10
 #+results:
 
 * Prof. Luis G. Moyano
+[[./2015-01-06-dummy-post-2.html][test ox-reveal generated slides]]
 * Objetivos

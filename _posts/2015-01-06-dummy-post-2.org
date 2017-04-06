@@ -1,0 +1,46 @@
+#+Title: "Org mode con Org-reveal y Jekyll"
+#+STARTUP: showall expand
+#+OPTIONS: toc:nil
+#+OPTIONS: reveal_width:1200
+#+OPTIONS: reveal_height:800
+#+OPTIONS: reveal_center:nil 
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t 
+
+#+REVEAL_ROOT: ../reveal.js
+#+REVEAL_HLEVEL: 2
+
+
+# #+begin_src yaml :exports results :results value html
+# ---
+# layout: slide
+# title:  "Programación en R"
+# transition: convex
+# theme: moon
+# ---
+# #+end_src
+# #+results:
+
+* Cómo funciona:
+
+1. Ox-reveal exporter generates html
+2. needs reveal_root "../reveal.js" when file in _posts/
+3. Generates html in _posts/ only
+4. No yaml processing (which things can i pass from org's #+ type of options?)
+5. no weird looking liquid/html snippets between slides
+
+* Y además
+some text here and there
+
+#+BEGIN_SRC R
+require(dplyr)
+df %>% select(V1)
+#+END_SRC
+
+* Segundo de todo 
+
+Slide 2
+
+1. listas,
+2. y listas,
+3. y más listas
+
