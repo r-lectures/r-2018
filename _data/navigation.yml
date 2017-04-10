@@ -1,16 +1,16 @@
 - title: "Home"
-  url: "/"
+  url: "/_posts"
 
-- title: "Posts"
-  url: "/_posts/"
+- title: "Material"
+  url: "/lessons/"
 
-- title: "Clasis"
-  url: "/classes/"
-
-- title: "Mis recursos"
+- title: "Biblio"
   url: "/resources/"
 
-- title: "Sobre"
+- title: "Data"
+  url: "/datasets/"
+
+- title: "Sobre este curso"
   url: "/about/"
 
   

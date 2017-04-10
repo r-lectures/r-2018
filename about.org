@@ -1,4 +1,4 @@
-#+Title: "Sobre este curso"
+#+Title: "Sobre el curso"
 #+STARTUP: showall expand
 #+options: toc:nil
 
@@ -11,6 +11,62 @@ weight: 10
 #+end_src
 #+results:
 
-* Prof. Luis G. Moyano
-[[./2015-01-06-dummy-post-2.html][test ox-reveal generated slides]]
-* Objetivos
+*                            
+** Programación y análisis de datos en R con aplicaciones científicas - 2017
+*** Carrera/s:
+- PGU en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química
+- Licenciatura en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química
+*** Objetivos
+1) Dominar los conceptos básicos del lenguaje de programación R.
+2) Desarrollar e implementar programas y scripts en el lenguaje R con foco en el análisis de datos empíricos.
+3) Comprender las ventajas y desventajas del lenguaje R y como se complementa con otros lenguajes de programación y técnicas de análisis de datos.
+4) Conocer las fuentes de información necesarias para acceder de manera independiente al conocimiento requerido para resolver problemas científicos específicos.
+5) Implementar los conocimientos de programación conseguidos para desarrollar modelos científicos para resolver problemas simples en diferentes áreas del conocimiento.
+*** [[/Programa%20-%20Programacio%CC%81n%20y%20Ana%CC%81lisis%20de%20Datos%20en%20R%20con%20Aplicaciones%20Cienti%CC%81ficas.pdf][Programa 2017]] 
+*** Descripción
+En este curso...
+
+*** Course mechanics
+**** lecture time
+- schedule
+  - 09AM 1h consulting
+  - 10AM 1h practice
+  - 11AM 1h theory
+- should I prepare slides?
+  - yes, I should prepare slides
+  - slides accesible from Slack
+- in-class mini exercises
+  - 3-4 per class?
+**** exercises
+- off-class problem guides
+- guides given on WED due TUE 
+- based on reproducible research, guides should be self-contained
+  - report in txt/md/tex + pdf format
+    - [[http://r4ds.had.co.nz/r-markdown-workflow.html][30 R Markdown workflow]]
+    - [[http://rmarkdown.rstudio.com/lesson-1.html][markdown rstudio Lesson 1]]
+    - [[http://rmarkdown.rstudio.com/authoring_basics.html][markdown authoring basics]]
+    - [[https://youtu.be/hAyze9cEdZA][video markdown]]
+  - working .R code also turned in
+**** mid-term exam
+- only one mid-term exam
+- will have every information at disposal, as in regular research
+- part 1. answer some theoretical questions? For instance, 10-20 multiple choice
+- part 2. solve a fairly complex problem
+- each problem should have zero/half/full points The point is to demonstrate proficiency, allowing
+  for some mistakes. Shouldn't pass if every answer is half-cooked!
+- sould have an associated recovery exam
+**** final project & presentation
+- project chosen in accord with me, possibly aligned with own work
+- 10-15 page report with working code
+- RUBRIC
+  - use of tools learned
+  - presentation
+  - legibility
+**** schedule/calendar
+- when will the exam be?
+- when final projects are due? posters?
+**** organization and computational infrastructure
+- console R + text editor
+- or RStudio
+- Slack
+- Github: to put my code/data 

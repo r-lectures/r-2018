@@ -5,10 +5,36 @@ weight: 10
 ---
 
 
-# Prof. Luis G. Moyano
-
-[test ox-reveal generated slides](./2015-01-06-dummy-post-2.html)
+# 
 
 
-# Objetivos
+### Programación y análisis de datos en R con aplicaciones científicas - 2017
+
+1.  Carrera/s:
+
+    -   PGU en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química
+    -   Licenciatura en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química
+
+2.  Objetivos
+
+    1.  Dominar los conceptos básicos del lenguaje de programación R.
+    2.  Desarrollar e implementar programas y scripts en el lenguaje R con foco en el análisis de datos empíricos.
+    3.  Comprender las ventajas y desventajas del lenguaje R y como se complementa con otros lenguajes de programación y técnicas de análisis de datos.
+    4.  Conocer las fuentes de información necesarias para acceder de manera independiente al conocimiento requerido para resolver problemas científicos específicos.
+    5.  Implementar los conocimientos de programación conseguidos para desarrollar modelos científicos para resolver problemas simples en diferentes áreas del conocimiento.
+
+
+### Programa
+
+1.  Prof. Luis G. Moyano
+
+    1.  Prof. Adjunto FCEN
+    
+    2.  Inv. Adjunto CONICET
+    
+    3.  Me encuentran principalmente a la mañana, al final del edifico, última oficina por la escalera norte.
+    
+    4.  lgmoyano@gmail.com
+    
+    5.  @luisgmoyano
 

@@ -10,7 +10,7 @@
 #+REVEAL_MAX_SCALE: 2.5
 #+OPTIONS: reveal_center:nil 
 #+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t 
-# #+REVEAL_ROOT: file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1
+#+REVEAL_ROOT: file:///Users/moyano/Documents/Sandbox/reveal.js-3.4.1
 #+REVEAL_HLEVEL: 2
 #+REVEAL_TRANS: linear
 # #+REVEAL_THEME: jr0cket
