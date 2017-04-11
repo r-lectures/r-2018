@@ -1,6 +1,6 @@
 Programación y análisis de datos en R con aplicaciones científicas 
 
-Luis G. Moyano
+Luis G. Moyano 
 
 -   Prof. Adjunto FCEN
 -   Inv. Adjunto CONICET
