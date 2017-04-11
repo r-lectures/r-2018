@@ -13,6 +13,6 @@ github_username:  lgmoyano
 markdown: kramdown
 show_drafts: FALSE
 plugins_dir: _plugins
-exclude: ["gulp", '*.org', 'feed*']
+exclude: ["gulp", '*.org', '*feed*', 'Gemfile*']
 
 theme: jekyll-theme-minimal
