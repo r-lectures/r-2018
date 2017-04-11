@@ -2,4 +2,7 @@
 js
 *~
 feed.xml
-_site/
+/.DS_Store
+/.Rhistory
+/.projectile
+_site/feed.xml
