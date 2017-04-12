@@ -15,4 +15,4 @@ show_drafts: FALSE
 plugins_dir: _plugins
 exclude: ["gulp", '*.org', '*feed*', 'Gemfile*']
 
-theme: jekyll-theme-minimal
+# theme: jekyll-theme-minimal

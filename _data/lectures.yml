@@ -1,0 +1,8 @@
+lecture_title: Lectures
+lectures:
+  
+- title: "Intro"
+  url: "01-lecture.html"
+
+- title: "Clase 2"
+  url: "02-lecture.html"
