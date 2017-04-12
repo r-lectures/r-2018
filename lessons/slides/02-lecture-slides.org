@@ -16,24 +16,13 @@
 # (setq org-reveal-title-slide 'auto)
 # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
 
-#+TITLE: ORG Using Types Effectively
+#+TITLE: Using Types Effectively
 #+AUTHOR: Ben Deane
 #+EMAIL: bdeane@blizzard.com
 #+DATE: September 19th, 2016
 
-#+begin_src yaml :exports results :results value html
----
-layout: defult
-title:  "YAML using types effectively"
-output: revealjs::revealjs_presentation
-transition: convex
-theme: moon
----
-#+end_src
-#+results:
-
-* Using Types Effectively
-* What does that mean?
+** Using Types Effectively
+** What does that mean?
 #+REVEAL_HTML: <br/>
 The recent evolution of C++ is (from one point of view) largely about
 *strengthening* and *expanding* the *capabilities for dealing with types*.
@@ -56,7 +45,6 @@ them and mould them to our purposes is an important part of C++.
 Types are the currency of metaprogramming, but also important for safety in
 "regular" programming; hence we see things like the GSL's ~owner<>~ and ~not_null<>~.
 #+END_NOTES
-
 
 ** FP isn't (only) about
 #+REVEAL_HTML: <br/>
@@ -96,7 +84,7 @@ Many functional languages have well-developed, expressive type systems.
 C++ is moving in that direction.
 #+END_NOTES
 
-** Why does C++ have a type system?                                :noexport:
+** Why does C++ have a type system?                               :noexport:
 #+REVEAL_HTML: <br/>
 #+ATTR_REVEAL: :frag (appear appear appear appear) :frag_idx (1 2 3 4)
  - to help programmers?
@@ -115,7 +103,7 @@ Is it so the compiler can complain about signed/unsigned comparisons?
 What use is a type system? This is the question this talk will help to answer.
 #+END_NOTES
 
-** Why does C have a type system?                                  :noexport:
+** Why does C have a type system?                                 :noexport:
 #+REVEAL_HTML: <br/><div align="left">
 "The machines on which we first used BCPL and then B were word-addressed, and
 these languages' single data type, the 'cell,' comfortably equated with the

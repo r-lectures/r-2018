@@ -1,16 +1,9 @@
----
-layout: default
-title:  "YAML using types effectively"
-#output: revealjs::revealjs_presentation
-transition: convex
-theme: moon
----
 
 
-# First slide - Using Types Effectively?
+# Using Types Effectively?
 
 
-# What does that mean?
+## What does that mean?
 
 The recent evolution of C++ is (from one point of view) largely about
 **strengthening** and **expanding** the **capabilities for dealing with types**.

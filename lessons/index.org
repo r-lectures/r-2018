@@ -1,11 +1,11 @@
-#+title: Classes
+#+title: Lectures - index
 #+STARTUP: showall expand
 #+options: toc:nil
 
 #+begin_src yaml :exports results :results value html
 ---
  layout: default
- title: Clases
+ title: Clases - index
  weight: 3
 ---
 #+end_src
@@ -19,6 +19,13 @@
     <li>
       <a href="{{ lecitem.url | prepend:site.baseurl }}">{{ lecitem.title }}</a>
     </li>
+        {% if lecitem.subitems[0] %}
+        <ul>
+          {% for subitem in lecitem.subitems %}
+              <li><a href="{{ subitem.url | prepend:site.baseurl }}">{{ subitem.title }}</a></li>
+          {% endfor %}
+        </ul>
+     {% endif %}
   {% endfor %}
 </ul>
 #+END_EXPORT

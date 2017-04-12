@@ -11,6 +11,13 @@
     <li>
       <a href="{{ lecitem.url | prepend:site.baseurl }}">{{ lecitem.title }}</a>
     </li>
+        {% if lecitem.subitems[0] %}
+        <ul>
+          {% for subitem in lecitem.subitems %}
+              <li><a href="{{ subitem.url | prepend:site.baseurl }}">{{ subitem.title }}</a></li>
+          {% endfor %}
+        </ul>
+     {% endif %}
   {% endfor %}
 </ul>
 

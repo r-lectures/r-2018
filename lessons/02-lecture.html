@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>ORG Using Types Effectively</title>
+<meta name="author" content="(Ben Deane)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
+
+<link rel="stylesheet" href="./presentation.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">ORG Using Types Effectively</h1><h2 class="author">Ben Deane</h2><h2 class="email"><a href="mailto:bdeane@blizzard.com">bdeane@blizzard.com</a></h2><h2 class="date">September 19th, 2016</h2>
+</section>
+---
+layout: slides
+title:  "YAML using types effectively"
+output: revealjs::revealjs_presentation
+transition: convex
+theme: moon
+---
+
+<section>
+<section id="slide-org5c41c1a">
+<h2 id="org5c41c1a">Using Types Effectively</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgbd3e27a">
+<h2 id="orgbd3e27a">What does that mean?</h2>
+<br/>
+<p>
+The recent evolution of C++ is (from one point of view) largely about
+<b>strengthening</b> and <b>expanding</b> the <b>capabilities for dealing with types</b>.
+</p>
+
+<ul>
+<li class="fragment appear">expansion of <code>type_traits</code></li>
+<li class="fragment appear"><code>decltype</code> to utter types</li>
+<li class="fragment appear"><code>auto</code> to preserve types, prevent conversions, infer return types</li>
+<li class="fragment appear"><code>nullptr</code> to prevent <code>int</code> / pointer confusion</li>
+<li class="fragment appear">scoped <code>enum</code></li>
+<li class="fragment appear">GSL: <code>owner&lt;T&gt;</code>, <code>not_null&lt;T&gt;</code></li>
+<li class="fragment appear">Concepts TS</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Some of the features added to modern C++ to deal with types.
+</p>
+
+<p>
+Obviously someone thinks that types are important. And the ability to wrangle
+them and mould them to our purposes is an important part of C++.
+</p>
+
+<p>
+Types are the currency of metaprogramming, but also important for safety in
+"regular" programming; hence we see things like the GSL's <code>owner&lt;&gt;</code> and <code>not_null&lt;&gt;</code>.
+</p>
+
+</aside>
+
+
+</section>
+<section id="slide-orgfe28fef">
+<h3 id="orgfe28fef">FP isn't (only) about</h3>
+<br/>
+<ul>
+<li class="fragment appear">first class functions</li>
+<li class="fragment appear">higher order functions</li>
+<li class="fragment appear">lexical scoping, closures</li>
+<li class="fragment appear">pattern matching</li>
+<li class="fragment appear">value semantics</li>
+<li class="fragment appear">immutability</li>
+<li class="fragment appear">concurrency through immutability</li>
+<li class="fragment appear">laziness</li>
+<li class="fragment appear">garbage collection</li>
+<li class="fragment appear">boxed data types / "inefficient" runtime models</li>
+<li class="fragment appear">the M-word</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Functional languages can teach us a thing or two about types. (After all, they
+seem to be teaching us everything else.)
+</p>
+
+<p>
+Here are some things you may think of when functional programming is mentioned&#x2026;
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgc810aee">
+<h3 id="orgc810aee">FP is (also, importantly) about</h3>
+<br/>
+<ul>
+<li class="fragment appear">using types effectively and expressively</li>
+<li class="fragment appear">making illegal states unrepresentable</li>
+<li class="fragment appear">making illegal behaviour result in a type error</li>
+<li class="fragment appear">using total functions for easier to use, harder to misuse interfaces</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+These aspects of functional programming are often overlooked.
+</p>
+
+<p>
+Many functional languages have well-developed, expressive type systems.
+</p>
+
+<p>
+C++ is moving in that direction.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org495f41f">
+<h3 id="org495f41f">What is a type?</h3>
+<br/>
+<ul>
+<li class="fragment appear">A way for the compiler to know what opcodes to output (dmr's motivation)?</li>
+<li class="fragment appear">The way data is stored (representational)?</li>
+<li class="fragment appear">Characterised by what operations are possible (behavioural)?</li>
+<li class="fragment appear">Determines the values that can be assigned?</li>
+<li class="fragment appear">Determines the meaning of the data?</li>
+
+</ul>
+
+</section>
+<section id="slide-org88d60a8">
+<h3 id="org88d60a8">What is a type?</h3>
+
+<div class="figure">
+<p><img src="./int_bool_1.png" alt="int_bool_1.png" />
+</p>
+</div>
+
+<p>
+"Only Lua would have '<code>1 == true</code>' evaluate to <code>false</code>. #wantmydayback"
+</p>
+
+<div class="fragment appear">
+
+<div class="figure">
+<p><img src="./int_bool_2.png" alt="int_bool_2.png" />
+</p>
+</div>
+
+<p>
+"But, how can <code>1</code> be equal to <code>true</code>? <code>1</code> is an integer, and <code>true</code> is a boolean. Lua
+seems to be correct here. It's your view of the world that has been warped."
+</p>
+
+<p>
+(Smiley faces make criticism OK!)
+</p>
+</div>
+
+</section>
+<section id="slide-org6159370">
+<h3 id="org6159370">What is a type?</h3>
+<br/>
+<ul>
+<li class="fragment appear">The set of values that can inhabit an expression
+<ul>
+<li>may be finite or "infinite"</li>
+<li>characterized by cardinality</li>
+
+</ul></li>
+<li class="fragment appear">Expressions have types
+<ul>
+<li>A program has a type</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org5978882">
+<h3 id="org5978882">Let's play a game</h3>
+<p class="fragment appear">
+To help us get thinking about types.
+</p>
+
+<p class="fragment appear">
+I'll tell you a type.
+</p>
+
+<p class="fragment appear">
+You tell me how many values it has.
+</p>
+
+<p class="fragment appear">
+There are no tricks: if it seems obvious, it is!
+</p>
+
+</section>
+<section id="slide-org1f08ac1">
+<h3 id="org1f08ac1">Level 1</h3>
+<br/>
+<p>
+Types as sets of values
+</p>
+
+</section>
+<section id="slide-org93656c4">
+<h3 id="org93656c4">Level 1</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #5BA0EB;">bool</span>;
+</pre>
+</div>
+
+<p class="fragment appear">
+2 (<code>true</code> and <code>false</code>)
+</p>
+
+</section>
+<section id="slide-org3384bd0">
+<h3 id="org3384bd0">Level 1</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #5BA0EB;">char</span>;
+</pre>
+</div>
+
+<p class="fragment appear">
+256
+</p>
+
+</section>
+<section id="slide-org4b82a43">
+<h3 id="org4b82a43">Level 1</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #5BA0EB;">void</span>;
+</pre>
+</div>
+
+<p class="fragment appear">
+0
+</p>
+
+<div class="org-src-container">
+
+<pre  class="fragment appear"><span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Foo</span> { <span style="color: #AF81F4;">Foo</span>() = <span style="color: #8AC6F2;">delete</span>; };
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="fragment appear"><span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Bar</span> { <span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt; <span style="color: #AF81F4;">Bar</span>(); };
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+cf BASIC's function vs procedure
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org74d05bd">
+<h3 id="org74d05bd">Level 1</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Foo</span> {};
+</pre>
+</div>
+
+<p class="fragment appear">
+1
+</p>
+
+</section>
+<section id="slide-org0246222">
+<h3 id="org0246222">Level 1</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">enum</span> <span style="color: #5BA0EB;">FireSwampDangers</span> : int8_t {
+  <span style="color: #8AC6F2;">FLAME_SPURTS</span>,
+  <span style="color: #8AC6F2;">LIGHTNING_SAND</span>,
+  <span style="color: #8AC6F2;">ROUSES</span>
+};
+</pre>
+</div>
+
+<p class="fragment appear">
+3
+</p>
+
+<aside class="notes">
+<p>
+It is possible to put something into FireSwampDangers that fits
+representationally (eg. the value 4). But that would be meaningless: there would
+be no connection between the value represented and its interpretation. Because
+there is no interpretation: cf. an unconstructed object.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org1a156f3">
+<h3 id="org1a156f3">Level 1</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Foo</span> {
+  <span style="color: #5BA0EB;">T</span> <span style="color: #8AC6F2;">m_t</span>;
+};
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>Foo</code> has as many values as <code>T</code>
+</p>
+
+</section>
+<section id="slide-org9c626c3">
+<h3 id="org9c626c3">End of Level 1</h3>
+<p>
+Algebraically, a type is the number of values that inhabit it.
+</p>
+
+<p>
+These types are equivalent:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #5BA0EB;">bool</span>;
+
+<span style="color: #8AC6F2;">enum</span> <span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">InatorButtons</span> {
+  <span style="color: #8AC6F2;">ON_OFF</span>,
+  <span style="color: #8AC6F2;">SELF_DESTRUCT</span>
+};
+</pre>
+</div>
+
+<p class="fragment appear">
+Let's move on to level 2.
+</p>
+
+</section>
+<section id="slide-org97a2d10">
+<h3 id="org97a2d10">Level 2</h3>
+<br/>
+<p>
+Aggregating Types
+</p>
+
+</section>
+<section id="slide-org5e97f5e">
+<h3 id="org5e97f5e">Level 2</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">pair</span>&lt;<span style="color: #5BA0EB;">char</span>, <span style="color: #5BA0EB;">bool</span>&gt;;
+</pre>
+</div>
+
+<p class="fragment appear">
+256 * 2 = 512
+</p>
+
+</section>
+<section id="slide-orge93db78">
+<h3 id="orge93db78">Level 2</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Foo</span> {
+  <span style="color: #5BA0EB;">char</span> <span style="color: #8AC6F2;">a</span>;
+  <span style="color: #5BA0EB;">bool</span> <span style="color: #8AC6F2;">b</span>;
+};
+</pre>
+</div>
+
+<p class="fragment appear">
+256 * 2 = 512
+</p>
+
+</section>
+<section id="slide-org4f93e85">
+<h3 id="org4f93e85">Level 2</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">tuple</span>&lt;<span style="color: #5BA0EB;">bool</span>, <span style="color: #5BA0EB;">bool</span>, <span style="color: #5BA0EB;">bool</span>&gt;;
+</pre>
+</div>
+
+<p class="fragment appear">
+2 * 2 * 2 = 8
+</p>
+
+</section>
+<section id="slide-orgcf4d8ed">
+<h3 id="orgcf4d8ed">Level 2</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>, <span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">U</span>&gt;
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Foo</span> {
+  <span style="color: #5BA0EB;">T</span> <span style="color: #8AC6F2;">m_t</span>;
+  <span style="color: #5BA0EB;">U</span> <span style="color: #8AC6F2;">m_u</span>;
+};
+</pre>
+</div>
+
+<p class="fragment appear">
+(# of values in <code>T</code>) * (# of values in <code>U</code>)
+</p>
+
+</section>
+<section id="slide-orgec398f1">
+<h3 id="orgec398f1">End of Level 2</h3>
+<p>
+When two types are "concatenated" into one compound type, we <span class="underline">multiply</span> the # of
+inhabitants of the components.
+</p>
+
+<p>
+This kind of compounding gives us a <span class="underline">product type</span>.
+</p>
+
+<p class="fragment appear">
+On to Level 3.
+</p>
+
+</section>
+<section id="slide-orgd4ce41c">
+<h3 id="orgd4ce41c">Level 3</h3>
+<br/>
+<p>
+Alternating Types
+</p>
+
+</section>
+<section id="slide-orgad2cc5e">
+<h3 id="orgad2cc5e">Level 3</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">optional</span>&lt;<span style="color: #5BA0EB;">char</span>&gt;;
+</pre>
+</div>
+
+<p class="fragment appear">
+256 + 1 = 257
+</p>
+
+</section>
+<section id="slide-org72a2646">
+<h3 id="org72a2646">Level 3</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">variant</span>&lt;<span style="color: #5BA0EB;">char</span>, <span style="color: #5BA0EB;">bool</span>&gt;;
+</pre>
+</div>
+
+<p class="fragment appear">
+256 + 2 = 258
+</p>
+
+</section>
+<section id="slide-orgebb3722">
+<h3 id="orgebb3722">Level 3</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>, <span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">U</span>&gt;
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Foo</span> {
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">variant</span>&lt;<span style="color: #5BA0EB;">T</span>, <span style="color: #5BA0EB;">U</span>&gt;;
+}
+</pre>
+</div>
+
+<p class="fragment appear">
+(# of values in <code>T</code>) + (# of values in <code>U</code>)
+</p>
+
+</section>
+<section id="slide-orgbf50c42">
+<h3 id="orgbf50c42">End of Level 3</h3>
+<p>
+When two types are "alternated" into one compound type, we <span class="underline">add</span> the # of
+inhabitants of the components.
+</p>
+
+<p>
+This kind of compounding gives us a <span class="underline">sum type</span>.
+</p>
+
+</section>
+<section id="slide-orgdeb8d39">
+<h3 id="orgdeb8d39">Level 4</h3>
+<br/>
+<p>
+Function Types
+</p>
+
+</section>
+<section id="slide-orgf508b01">
+<h3 id="orgf508b01">Level 4</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-c++"><span style="color: #5BA0EB;">bool</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">bool</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+4
+</p>
+
+</section>
+<section id="slide-orgf1f83e6">
+<h3 id="orgf1f83e6">Level 4</h3>
+<p>
+Four possible values
+ <object type="image/svg+xml" data="./function_bool.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+
+</section>
+<section id="slide-orgf240253">
+<h3 id="orgf240253">Level 4</h3>
+<div class="org-src-container">
+
+<pre  class="src src-c++"><span style="color: #5BA0EB;">bool</span> <span style="color: #AF81F4;">f1</span>(<span style="color: #5BA0EB;">bool</span> <span style="color: #8AC6F2;">b</span>) { <span style="color: #8AC6F2;">return</span> b; }
+<span style="color: #5BA0EB;">bool</span> <span style="color: #AF81F4;">f2</span>(<span style="color: #5BA0EB;">bool</span>) { <span style="color: #8AC6F2;">return</span> <span style="color: #FFC287;">true</span>; }
+<span style="color: #5BA0EB;">bool</span> <span style="color: #AF81F4;">f3</span>(<span style="color: #5BA0EB;">bool</span>) { <span style="color: #8AC6F2;">return</span> <span style="color: #FFC287;">false</span>; }
+<span style="color: #5BA0EB;">bool</span> <span style="color: #AF81F4;">f4</span>(<span style="color: #5BA0EB;">bool</span> <span style="color: #8AC6F2;">b</span>) { <span style="color: #8AC6F2;">return</span> <span style="color: #C62626;">!</span>b; }
+</pre>
+</div>
+
+</section>
+<section id="slide-orgb2cd312">
+<h3 id="orgb2cd312">Level 4</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-c++"><span style="color: #5BA0EB;">char</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">bool</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+256 * 256 = 65,536
+</p>
+
+</section>
+<section id="slide-orgac772d7">
+<h3 id="orgac772d7">Level 4</h3>
+<p>
+How many values (for <code>f</code>)?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-c++"><span style="color: #8AC6F2;">enum</span> <span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">Foo</span>
+{
+  <span style="color: #8AC6F2;">BAR</span>,
+  <span style="color: #8AC6F2;">BAZ</span>,
+  <span style="color: #8AC6F2;">QUUX</span>
+};
+<span style="color: #5BA0EB;">char</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">Foo</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+256 * 256 * 256 = 16,777,216
+</p>
+
+</section>
+<section id="slide-orgdaacde6">
+<h3 id="orgdaacde6">Level 4</h3>
+<p>
+The number of values of a function is the number of different ways we can draw
+arrows between the inputs and the outputs.
+ <object type="image/svg+xml" data="./function.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+
+</section>
+<section id="slide-org8c6d012">
+<h3 id="org8c6d012">Level 4</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-c++"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">T</span>, <span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">U</span>&gt;
+<span style="color: #5BA0EB;">U</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">T</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+\(|U|^{|T|}\)
+</p>
+
+</section>
+<section id="slide-orgf753f3d">
+<h3 id="orgf753f3d">End of Level 4</h3>
+<p>
+When we have a <span class="underline">function</span> from \(A\) to \(B\), we raise the # of inhabitants of
+\(B\) to the power of the # of inhabitants of \(A\).
+</p>
+
+</section>
+<section id="slide-orgc230d8b">
+<h3 id="orgc230d8b">End of Level 4 (corollary)</h3>
+<p>
+Hence a curried function is equivalent to its uncurried alternative.
+</p>
+
+
+<p>
+\[\begin{align*}
+F_{uncurried}::(A,B) \rightarrow C & \Leftrightarrow C^{A*B} \\
+& = C^{B*A} \\
+& = (C^B)^A \\
+& \Leftrightarrow (B \rightarrow C)^A \\
+& \Leftrightarrow F_{curried}::A \rightarrow (B \rightarrow C)
+\end{align*}\]
+</p>
+
+</section>
+<section id="slide-orgb147168">
+<h3 id="orgb147168">Victory!</h3>
+<br/><br/><div id="achv"><div class="achievement-banner"><div class="achievement-icon"><span class="icon"><span class="icon-trophy">&#127942;</span></span></div><div class="achievement-text"><p class="achievement-notification">ACHIEVEMENT UNLOCKED</p><p class="achievement-name">Algebraic Datatypes 101</p></div></div></div>
+
+</section>
+<section id="slide-org7c58d2c">
+<h3 id="org7c58d2c">Equivalences</h3>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Foo</span> {
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">variant</span>&lt;<span style="color: #5BA0EB;">T</span>, <span style="color: #5BA0EB;">T</span>&gt; <span style="color: #8AC6F2;">m_v</span>;
+};
+
+<span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Bar</span> {
+  <span style="color: #5BA0EB;">T</span> <span style="color: #8AC6F2;">m_t</span>;
+  <span style="color: #5BA0EB;">bool</span> <span style="color: #8AC6F2;">m_b</span>;
+};
+</pre>
+</div>
+
+<p>
+We have a choice over how to represent values. <code>std::variant</code> will quickly
+become a very important tool for proper expression of states.
+</p>
+
+<p>
+This is one reason why <code>std::variant</code>'s "never-empty" guarantee is important.
+</p>
+
+<aside class="notes">
+<p>
+T + T = 2T.
+</p>
+
+<p>
+But note that in <code>Bar</code>, we need to manually keep the two variables "in sync".
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgf2c7952">
+<h3 id="orgf2c7952">Algebraic Datatypes</h3>
+<p>
+This is what it means to have an algebra of datatypes.
+</p>
+
+<ul>
+<li class="fragment appear">the ability to reason about equality of types</li>
+<li class="fragment appear">to find equivalent formulations
+<ul>
+<li>more natural</li>
+<li>more easily understood</li>
+<li>more efficient</li>
+
+</ul></li>
+<li class="fragment appear">to identify mismatches between state spaces and the types used to implement
+them</li>
+<li class="fragment appear">to eliminate illegal states by making them inexpressible</li>
+
+</ul>
+
+</section>
+<section id="slide-org1eb6588">
+<h3 id="org1eb6588">Making Illegal States Unrepresentable</h3>
+<p>
+<code>std::variant</code> is a game changer because it allows us to (more) properly express
+types, so that (more) illegal states are unrepresentable.
+</p>
+
+
+<div class="figure">
+<p><img src="./variant-tweet.png" alt="variant-tweet.png" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+C++'s type system is still not perfect by a long shot. But <code>std::variant</code> is an
+amazing upgrade.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org0819530">
+<h3 id="org0819530">Making Illegal States Unrepresentable</h3>
+<p>
+Let's look at some possible alternative data formulations, using sum types
+(<code>variant</code>, <code>optional</code>) as well as product types (structs).
+</p>
+
+</section>
+<section id="slide-orgaf63cb6">
+<h3 id="orgaf63cb6">Example: Connection State</h3>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">enum</span> <span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">ConnectionState</span> {
+  <span style="color: #8AC6F2;">DISCONNECTED</span>,
+  <span style="color: #8AC6F2;">CONNECTING</span>,
+  <span style="color: #8AC6F2;">CONNECTED</span>,
+  <span style="color: #8AC6F2;">CONNECTION_INTERRUPTED</span>
+};
+
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Connection</span> {
+  <span style="color: #5BA0EB;">ConnectionState</span> <span style="color: #8AC6F2;">m_connectionState</span>;
+
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span> <span style="color: #8AC6F2;">m_serverAddress</span>;
+  <span style="color: #5BA0EB;">ConnectionId</span> <span style="color: #8AC6F2;">m_id</span>;
+  <span style="color: #FFC287;">std</span>::<span style="color: #FFC287;">chrono</span>::<span style="color: #FFC287;">system_clock</span>::<span style="color: #5BA0EB;">time_point</span> <span style="color: #8AC6F2;">m_connectedTime</span>;
+  <span style="color: #FFC287;">std</span>::<span style="color: #FFC287;">chrono</span>::<span style="color: #5BA0EB;">milliseconds</span> <span style="color: #8AC6F2;">m_lastPingTime</span>;
+  <span style="color: #5BA0EB;">Timer</span> <span style="color: #8AC6F2;">m_reconnectTimer</span>;
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+A very simple example of what a connection class might look like today.
+</p>
+
+<p>
+Functions interacting with this class would typically use a switch statement
+over the <code>ConnectionState</code>.
+</p>
+
+<p>
+There are hidden invariants here that aren't enforced by the Connection type.
+</p>
+
+<p>
+Some of the fields are dependent on the connection state (reconnect time, last
+ping time). So it seems that some of these fields need sentinel values (eg
+invalid connection id).
+</p>
+
+<p>
+Worse, there is temptation to reuse fields for multiple states. Connected
+timestamp is perhaps likely to get reused to mean the instant of connection and
+the instant of disconnection.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgd18058a">
+<h3 id="orgd18058a">Example: Connection State</h3>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Connection</span> {
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span> <span style="color: #8AC6F2;">m_serverAddress</span>;
+
+  <span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Disconnected</span> {};
+  <span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Connecting</span> {};
+  <span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Connected</span> {
+    <span style="color: #5BA0EB;">ConnectionId</span> <span style="color: #8AC6F2;">m_id</span>;
+    <span style="color: #FFC287;">std</span>::<span style="color: #FFC287;">chrono</span>::<span style="color: #FFC287;">system_clock</span>::<span style="color: #5BA0EB;">time_point</span> <span style="color: #8AC6F2;">m_connectedTime</span>;
+    <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">optional</span>&lt;<span style="color: #FFC287;">std</span>::<span style="color: #FFC287;">chrono</span>::milliseconds&gt; <span style="color: #8AC6F2;">m_lastPingTime</span>;
+  };
+  <span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">ConnectionInterrupted</span> {
+    <span style="color: #FFC287;">std</span>::<span style="color: #FFC287;">chrono</span>::<span style="color: #FFC287;">system_clock</span>::<span style="color: #5BA0EB;">time_point</span> <span style="color: #8AC6F2;">m_disconnectedTime</span>;
+    <span style="color: #5BA0EB;">Timer</span> <span style="color: #8AC6F2;">m_reconnectTimer</span>;
+  };
+
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">variant</span>&lt;<span style="color: #5BA0EB;">Disconnected</span>,
+               <span style="color: #5BA0EB;">Connecting</span>,
+               <span style="color: #5BA0EB;">Connected</span>,
+               <span style="color: #5BA0EB;">ConnectionInterrupted</span>&gt; <span style="color: #8AC6F2;">m_connection</span>;
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+With types structured correctly, it's not possible to express illegal states.
+</p>
+
+<p>
+e.g. Ping time does not exist if we're not connected.
+</p>
+
+<p>
+(There are still things that are common to all states, e.g. perhaps this class
+represents connection to a specific server.)
+</p>
+
+<p>
+A switch statement could still exist, switching on the <code>variant</code>'s <code>index()</code>, or
+a visitor-based approach could be used.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgb72db40">
+<h3 id="orgb72db40">Example: Nullable field</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">Friend</span> {
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span> <span style="color: #8AC6F2;">m_alias</span>;
+  <span style="color: #5BA0EB;">bool</span> <span style="color: #8AC6F2;">m_aliasPopulated</span>;
+  ...
+};
+</pre>
+</div>
+<p>
+These two fields need to be kept in sync everywhere.
+</p>
+
+<aside class="notes">
+<p>
+Here, a field is populated from a remote source and happens lazily and/or
+asynchronously. It is possible that the field never gets populated.
+</p>
+
+<p>
+All the code that deals with this field has to ensure that both variables are
+kept up to date in sync with each other.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org831c9b9">
+<h3 id="org831c9b9">Example: Nullable field</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">Friend</span> {
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">optional</span>&lt;<span style="color: #FFC287;">std</span>::string&gt; <span style="color: #8AC6F2;">m_alias</span>;
+  ...
+};
+</pre>
+</div>
+<p>
+<code>std::optional</code> provides a sentinel value that is outside the type.
+</p>
+
+<aside class="notes">
+<p>
+<code>std::optional</code> captures the true state space of the variable. It is not
+possible for two fields to get out of step now.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgf43ea8a">
+<h3 id="orgf43ea8a">Example: Monster AI</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">enum</span> <span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">AggroState</span> {
+  <span style="color: #8AC6F2;">IDLE</span>,
+  <span style="color: #8AC6F2;">CHASING</span>,
+  <span style="color: #8AC6F2;">FIGHTING</span>
+};
+
+<span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">MonsterAI</span> {
+  <span style="color: #5BA0EB;">AggroState</span> <span style="color: #8AC6F2;">m_aggroState</span>;
+
+  <span style="color: #5BA0EB;">float</span> <span style="color: #8AC6F2;">m_aggroRadius</span>;
+  <span style="color: #5BA0EB;">PlayerId</span> <span style="color: #8AC6F2;">m_target</span>;
+  <span style="color: #5BA0EB;">Timer</span> <span style="color: #8AC6F2;">m_chaseTimer</span>;
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Once again, presumably PlayerId has some invalid sentinel value.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orga654ef7">
+<h3 id="orga654ef7">Example: Monster AI</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">MonsterAI</span> {
+  <span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Idle</span> {
+    <span style="color: #5BA0EB;">float</span> <span style="color: #8AC6F2;">m_aggroRadius</span>;
+  };
+  <span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Chasing</span> {
+    <span style="color: #5BA0EB;">PlayerId</span> <span style="color: #8AC6F2;">m_target</span>;
+    <span style="color: #5BA0EB;">Timer</span> <span style="color: #8AC6F2;">m_chaseTimer</span>;
+  };
+  <span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Fighting</span> {
+    <span style="color: #5BA0EB;">PlayerId</span> <span style="color: #8AC6F2;">m_target</span>;
+  };
+
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">variant</span>&lt;<span style="color: #5BA0EB;">Idle</span>, <span style="color: #5BA0EB;">Chasing</span>, <span style="color: #5BA0EB;">Fighting</span>&gt; <span style="color: #8AC6F2;">m_aggroState</span>;
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Now the variables are properly placed into the states that use them.
+</p>
+
+<p>
+Chasing and Fighting states could inherit from an Aggroed state that holds a target.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org911e58b">
+<h3 id="org911e58b">Example: Design Patterns</h3>
+<p>
+The addition of sum types to C++ offers an alternative formulation for some
+design patterns.
+</p>
+
+<p>
+State machines and expressions are naturally modelled with sum types.
+</p>
+
+<aside class="notes">
+<p>
+Traditional runtime polymorphism approach can lead to bloated base class issue.
+</p>
+
+<p>
+Type erasure is another way to go.
+</p>
+
+<p>
+Sum types + visitor/pattern matching is a third possibility, particularly
+natural for things like ASTs.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org0ff4001">
+<h3 id="org0ff4001">Example: Design Patterns</h3>
+<ul>
+<li>Command</li>
+<li>Composite</li>
+<li>State</li>
+<li>Interpreter</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Command uses a flat, wide class hierarchy to encapsulate requests in objects.
+</p>
+
+<p>
+Composite: model part-whole hierarchies with uniform interface.
+</p>
+
+<p>
+State is obvious: simply replace the contained polymorphic object with a
+variant.
+</p>
+
+<p>
+Sum types are especially good for representing expressions (think JSON).
+</p>
+
+<p>
+Interpreter tackles the expression problem: easy to add new classes (use
+OO/interfaces) or new operations (use sum types/visitors)?
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org3851139">
+<h3 id="org3851139">Designing with Types</h3>
+<br/>
+<p>
+<code>std::variant</code> and <code>std::optional</code> are valuable tools that allow us to model the
+state of our business logic more accurately.
+</p>
+
+<p>
+When you match the types to the domain accurately, certain categories of tests
+just disappear.
+</p>
+
+<aside class="notes">
+<p>
+You don't have to test the edge cases where the representation can fall outside
+your reality - because that can't happen.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org720c659">
+<h3 id="org720c659">Designing with Types</h3>
+<br/>
+<p>
+Fitting types to their function more accurately makes code easier to understand
+and removes pitfalls.
+</p>
+
+<p>
+The bigger the codebase and the more vital the functionality, the more value
+there is in correct representation with types.
+</p>
+
+<aside class="notes">
+<p>
+When illegal states are unrepresentable, you don't have to worry about other
+programmers misunderstanding the code, or misusing data. In a sense, they
+<i>cannot</i> write something that is wrong.
+</p>
+
+<p>
+And when I say "other programmers" of course I mean myself in 3 months&#x2026;
+</p>
+
+<p>
+Questionably reusing fields, bending semantics, etc. These are bad practices.
+But they happen when we're chasing a deadline.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgb50d24d">
+<h3 id="orgb50d24d">Using Types to Constrain Behaviour</h3>
+<br/>
+<p>
+We've seen how an expressive type system (with product and sum types) allows us
+to model state more accurately.
+</p>
+
+<p>
+"Phantom types" is one technique that helps us to model the <i>behaviour</i> of our
+business logic in the type system. Illegal behaviour becomes a type error.
+</p>
+
+</section>
+<section id="slide-org701003b">
+<h3 id="org701003b">Phantom Types: Before</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span> <span style="color: #AF81F4;">GetFormData</span>();
+
+<span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span> <span style="color: #AF81F4;">SanitizeFormData</span>(<span style="color: #8AC6F2;">const</span> <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span>&amp;);
+
+<span style="color: #5BA0EB;">void</span> <span style="color: #AF81F4;">ExecuteQuery</span>(<span style="color: #8AC6F2;">const</span> <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span>&amp;);
+</pre>
+</div>
+<p>
+An injection bug waiting to happen.
+</p>
+
+<aside class="notes">
+<p>
+Let's hope we don't meet little Bobby Tables, and that everywhere we execute a
+query we remembered to sanitize the data provided by the user.
+</p>
+
+<p>
+The type system is not helping us here. How can we use types to make sure that
+we stay safe?
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org8d6e8d7">
+<h3 id="org8d6e8d7">Phantom Types: The setup</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">FormData</span> {
+  <span style="color: #8AC6F2;">explicit</span> <span style="color: #AF81F4;">FormData</span>(<span style="color: #8AC6F2;">const</span> <span style="color: #5BA0EB;">string</span>&amp; <span style="color: #8AC6F2;">input</span>) : m_input(input) {}
+  <span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">string</span> <span style="color: #8AC6F2;">m_input</span>;
+};
+
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">sanitized</span> {};
+<span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">unsanitized</span> {};
+</pre>
+</div>
+<p>
+<code>T</code> is the "Phantom Type" here.
+</p>
+
+<aside class="notes">
+<p>
+Note that the template argument is unused. It exists <span class="underline">only</span> for compile time
+type checking. There is no runtime overhead.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgb51ee6d">
+<h3 id="orgb51ee6d">Phantom Types: After</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #5BA0EB;">FormData</span>&lt;unsanitized&gt; <span style="color: #AF81F4;">GetFormData</span>();
+
+<span style="color: #FFC287;">std</span>::<span style="color: #5BA0EB;">optional</span>&lt;<span style="color: #5BA0EB;">FormData</span>&lt;sanitized&gt;&gt;
+<span style="color: #AF81F4;">SanitizeFormData</span>(<span style="color: #8AC6F2;">const</span> <span style="color: #5BA0EB;">FormData</span>&lt;unsanitized&gt;&amp;);
+
+<span style="color: #5BA0EB;">void</span> <span style="color: #AF81F4;">ExecuteQuery</span>(<span style="color: #8AC6F2;">const</span> <span style="color: #5BA0EB;">FormData</span>&lt;sanitized&gt;&amp;);
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+User input is born unsanitized.
+</p>
+
+<p>
+It is impossible for us to execute unsanitized input. The compiler simply won't
+compile it.
+</p>
+
+<p>
+We've used types to help enforce the business logic.
+</p>
+
+<p>
+This is something similar to a strong typedef, or what enum class effectively
+does for integral types. This technique can also be used e.g. in a units
+library.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org7d4a990">
+<h3 id="org7d4a990">Total Functions</h3>
+<br/>
+<p>
+A <i>total function</i> is a function that is defined for all inputs in its domain.
+</p>
+
+<p class="fragment appear">
+<code>template &lt;typename T&gt;
+const T&amp; min(const T&amp; a, const T&amp; b);</code>
+</p>
+
+<p class="fragment appear">
+<code>float sqrt(float f);</code>
+</p>
+
+<aside class="notes">
+<p>
+We are straying into the realm of Concepts here.
+</p>
+
+<p>
+I'm not saying that total is the same thing as "no preconditions". The type must
+satisfy the requirements on it. But you can see that with functions like <code>sqrt</code>
+there is a clear mismatch between the type of the function and the actual type
+of its domain.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org09aef81">
+<h3 id="org09aef81">Let's play another game</h3>
+<p class="fragment appear">
+To help us see how total functions with the right types can result in
+unsurprising code.
+</p>
+
+<p class="fragment appear">
+I'll give you a function signature with no names attached.
+</p>
+
+<p class="fragment appear">
+You tell me what it's called&#x2026; (and you'll even know how to implement it).
+</p>
+
+<p class="fragment appear">
+The only rule&#x2026; it must be a <i>total</i> function.
+</p>
+
+<aside class="notes">
+<p>
+Assume regular types. Assume that the function is doing something "interesting"
+rather than "boring" when you have a choice. (ie. that it uses its argument).
+But you needn't assume anything else.
+</p>
+
+<p>
+And there are always ways to make things unexpected in C++. But assume nothing
+surprising here.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgf3c578e">
+<h3 id="orgf3c578e">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #5BA0EB;">T</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">T</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>identity</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="fragment appear"><span style="color: #5BA0EB;">int</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">int</span>);
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Note the odd situation here: we know more about <code>f(T)</code> than we do about
+<code>f(int)</code>.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org15804cf">
+<h3 id="org15804cf">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>, <span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">U</span>&gt;
+<span style="color: #5BA0EB;">T</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">pair</span>&lt;<span style="color: #5BA0EB;">T</span>, <span style="color: #5BA0EB;">U</span>&gt;);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>first</code>
+</p>
+
+</section>
+<section id="slide-org8e1eca9">
+<h3 id="org8e1eca9">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #5BA0EB;">T</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">bool</span>, <span style="color: #5BA0EB;">T</span>, <span style="color: #5BA0EB;">T</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>select</code>
+</p>
+
+</section>
+<section id="slide-org7876afe">
+<h3 id="org7876afe">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>, <span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">U</span>&gt;
+<span style="color: #5BA0EB;">U</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">function</span>&lt;<span style="color: #AF81F4;">U</span>(<span style="color: #5BA0EB;">T</span>)&gt;, <span style="color: #5BA0EB;">T</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>apply</code> or <code>call</code>
+</p>
+
+</section>
+<section id="slide-org8547fee">
+<h3 id="org8547fee">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt; <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt;);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>reverse</code>, <code>shuffle</code>, &#x2026;
+</p>
+
+<aside class="notes">
+<p>
+For simplicity, I haven't written this signature in terms of iterators, but it
+would be just the same.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org2e5bdbb">
+<h3 id="org2e5bdbb">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #5BA0EB;">T</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt;);
+</pre>
+</div>
+
+<p class="fragment appear">
+Not possible! It's a partial function - the <code>vector</code> might be empty.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="fragment appear">T&amp; <span style="color: #FFC287;">vector</span>&lt;T&gt;::front();
+</pre>
+</div>
+
+</section>
+<section id="slide-orgc3d90d6">
+<h3 id="orgc3d90d6">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #5BA0EB;">optional</span>&lt;<span style="color: #5BA0EB;">T</span>&gt; <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt;);
+</pre>
+</div>
+
+</section>
+<section id="slide-org67152e1">
+<h3 id="org67152e1">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>, <span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">U</span>&gt;
+<span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">U</span>&gt; <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">function</span>&lt;<span style="color: #AF81F4;">U</span>(<span style="color: #5BA0EB;">T</span>)&gt;, <span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt;);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>transform</code>
+</p>
+
+</section>
+<section id="slide-org88dfe73">
+<h3 id="org88dfe73">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt; <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">function</span>&lt;<span style="color: #5BA0EB;">bool</span>(<span style="color: #5BA0EB;">T</span>)&gt;, <span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt;);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>remove_if</code>, <code>partition</code>, &#x2026;
+</p>
+
+</section>
+<section id="slide-orgcc9a8ec">
+<h3 id="orgcc9a8ec">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #5BA0EB;">T</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">optional</span>&lt;<span style="color: #5BA0EB;">T</span>&gt;);
+</pre>
+</div>
+
+<p class="fragment appear">
+Not possible!
+</p>
+
+</section>
+<section id="slide-org3c515c8">
+<h3 id="org3c515c8">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">K</span>, <span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">V</span>&gt;
+<span style="color: #5BA0EB;">V</span> <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">map</span>&lt;<span style="color: #5BA0EB;">K</span>, <span style="color: #5BA0EB;">V</span>&gt;, <span style="color: #5BA0EB;">K</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+Not possible! (The key might not be in the <code>map</code>.)
+</p>
+
+<div class="org-src-container">
+
+<pre  class="fragment appear">V&amp; <span style="color: #FFC287;">map</span>&lt;K, V&gt;::<span style="color: #8AC6F2;">operator</span>[](<span style="color: #8AC6F2;">const</span> <span style="color: #5BA0EB;">K</span>&amp;);
+</pre>
+</div>
+
+</section>
+<section id="slide-org331d76d">
+<h3 id="org331d76d">Name That Function</h3>
+<br/>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">K</span>, <span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">V</span>&gt;
+<span style="color: #5BA0EB;">optional</span>&lt;<span style="color: #5BA0EB;">V</span>&gt; <span style="color: #AF81F4;">f</span>(<span style="color: #5BA0EB;">map</span>&lt;<span style="color: #5BA0EB;">K</span>, <span style="color: #5BA0EB;">V</span>&gt;, <span style="color: #5BA0EB;">K</span>);
+</pre>
+</div>
+
+<p class="fragment appear">
+<code>lookup</code>
+</p>
+
+</section>
+<section id="slide-org0612135">
+<h3 id="org0612135">What Just Happened?</h3>
+<p>
+I gave you <i>almost nothing</i>.
+</p>
+
+<p>
+No variable names. No function names. No type names.
+</p>
+
+<p>
+Just bare type signatures.
+</p>
+
+<p class="fragment appear">
+You were able to tell me exactly what the functions should be called, and likely
+knew instantly how to implement them.
+</p>
+
+<p class="fragment appear">
+You will note that partial functions gave us some issues&#x2026;
+</p>
+
+<aside class="notes">
+<p>
+Naming is one of the hardest problems in Comp Sci. Getting the types right is
+much easier. And if your types model the logic properly, perhaps you have
+"self-documenting code"?
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org037a054">
+<h3 id="org037a054">Well-typed Functions</h3>
+<br/>
+<p>
+Writing <i>total functions</i> with well-typed signatures can tell us a lot about
+functionality.
+</p>
+
+<p>
+Using types appropriately makes interfaces unsurprising, safer to use and harder
+to misuse.
+</p>
+
+<p>
+Total functions make more test categories vanish.
+</p>
+
+</section>
+<section id="slide-orgd7f8b62">
+<h3 id="orgd7f8b62">About Testing&#x2026;</h3>
+<p>
+In a previous talk, I talked about unit testing and in particular property-based testing.
+</p>
+
+<p class="fragment appear">
+Effectively using types can reduce test code.
+</p>
+
+<p class="fragment appear">
+Property-based tests say "for all values, this property is true".
+</p>
+
+<p class="fragment appear">
+That is exactly what types <i>are</i>: universal quantifications about what can be
+done with data.
+</p>
+
+<p class="fragment appear">
+Types scale better than tests. Instead of TDD, maybe try TDD!
+</p>
+
+<aside class="notes">
+<p>
+C++'s type system isn't yet powerful enough to be able to say goodbye to tests,
+but it is powerful enough that used effectively, we can reduce some of the
+drudgery of writing tests.
+</p>
+
+<p>
+Any time you're thinking something is true for all values, that's what a type
+can do.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org4aa4bba">
+<h3 id="org4aa4bba">Further Down the Rabbit Hole</h3>
+<br/>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Algebraic_data_type">http://en.wikipedia.org/wiki/Algebraic_data_type</a></li>
+<li><a href="http://chris-taylor.github.io/blog/2013/02/10/the-algebra-of-algebraic-data-types/">http://chris-taylor.github.io/blog/2013/02/10/the-algebra-of-algebraic-data-types/</a></li>
+<li><a href="https://vimeo.com/14313378">https://vimeo.com/14313378</a> (Effective ML: Making Illegal States Unrepresentable)</li>
+<li><a href="http://www.infoq.com/presentations/Types-Tests">http://www.infoq.com/presentations/Types-Tests</a> (Types vs Tests: Strange Loop 2012)</li>
+
+</ul>
+
+</section>
+<section id="slide-orga1b33b2">
+<h3 id="orga1b33b2">Thanks For Listening</h3>
+<br/>
+<p>
+"On the whole, I'm inclined to say that when in doubt, make a new type."
+</p>
+<div align="right">
+<p>
+&#x2013; Martin Fowler, <a href="http://martinfowler.com/ieeeSoftware/whenType.pdf"><i>When to Make a Type</i></a>
+</p>
+</div><br/>
+<p>
+"Don't set a flag; set the data."
+</p>
+<div align="right">
+<p>
+&#x2013; Leo Brodie, <i><a href="http://thinking-forth.sourceforge.net/">Thinking Forth</a></i>
+</p>
+</div>
+
+</section>
+<section id="slide-org07e4179">
+<h3 id="org07e4179">Goals for Well-typed Code</h3>
+<ul>
+<li>Make illegal states unrepresentable</li>
+<li>Use <code>std::variant</code> and <code>std::optional</code> for formulations that
+<ul>
+<li>are more natural</li>
+<li>fit the business logic state better</li>
+
+</ul></li>
+<li>Use phantom types for safety
+<ul>
+<li>Make illegal behaviour a compile error</li>
+
+</ul></li>
+<li>Write total functions
+<ul>
+<li>Unsurprising behaviour</li>
+<li>Easy to use, hard to misuse</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orga0a1494">
+<h3 id="orga0a1494">Epilogue</h3>
+<p>
+A taste of algebra with datatypes
+</p>
+
+</section>
+<section id="slide-orgc9b71a8">
+<h3 id="orgc9b71a8">A Taste of Algebra with Datatypes</h3>
+<p>
+How many values?
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
+<span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">vector</span>&lt;<span style="color: #5BA0EB;">T</span>&gt;;
+</pre>
+</div>
+
+<p class="fragment appear">
+We can define a <code>vector&lt;T&gt;</code> recursively:
+</p>
+
+<p class="fragment appear">
+\({v(t)} = {1 + t v(t)}\)
+</p>
+
+<p class="fragment appear">
+(empty vector or (+) head element and (*) tail vector)
+</p>
+
+</section>
+<section id="slide-orgfc13b86">
+<h3 id="orgfc13b86">A Taste of Algebra with Datatypes</h3>
+<p>
+And rearrange&#x2026;
+</p>
+
+<p class="fragment appear">
+What does that mean? Subtracting and dividing types?
+</p>
+
+</section>
+<section id="slide-org2918ec3">
+<h3 id="org2918ec3">A Taste of Algebra with Datatypes</h3>
+<p>
+When we don't know how to interpret something mathematical?
+</p>
+
+<p class="fragment appear">Let's <a href="http://www.wolframalpha.com/input/?i=1/(1-t)" data-preview-link>ask Wolfram Alpha</a>.</p>
+
+</section>
+<section id="slide-org9872c28">
+<h3 id="org9872c28">A Taste of Algebra with Datatypes</h3>
+<p>
+Series expansion at \({t = 0}\):
+</p>
+
+<p>
+\({1 + t + t^2 + t^3 + t^4 +{ }...}\)
+</p>
+
+<p class="fragment appear">
+A <code>vector&lt;T&gt;</code> can have:
+</p>
+<ul>
+<li class="fragment appear">0 elements (\({1}\))</li>
+<li class="fragment appear">or (+) 1 element (\({t}\))</li>
+<li class="fragment appear">or (+) 2 elements (\({t^2}\))</li>
+<li class="fragment appear">etc.</li>
+
+</ul>
+
+</section>
+<section id="slide-orgb11ca6f">
+<h3 id="orgb11ca6f">Goals for Well-typed Code</h3>
+<ul>
+<li>Make illegal states unrepresentable</li>
+<li>Use <code>std::variant</code> and <code>std::optional</code> for formulations that
+<ul>
+<li>are more natural</li>
+<li>fit the business logic state better</li>
+
+</ul></li>
+<li>Use phantom types for safety
+<ul>
+<li>Make illegal behaviour a compile error</li>
+
+</ul></li>
+<li>Write total functions
+<ul>
+<li>Unsurprising behaviour</li>
+<li>Easy to use, hard to misuse</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: false,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c/t',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 900,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
