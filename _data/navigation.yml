@@ -1,14 +1,14 @@
 - title: "Info"
-  url: "/posts/"
+  url: "/posts.html"
 
 - title: "Clases"
   url: "/lessons/"
 
 - title: "Biblio"
-  url: "/resources/"
+  url: "/resources.html"
 
 - title: "Data"
-  url: "/datasets/"
+  url: "/datasets.html"
 
 - title: "Sobre la materia"
-  url: "/about/"
+  url: "/about.html"
