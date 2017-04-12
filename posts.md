@@ -8,6 +8,7 @@ weight: 6
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url | prepend:site.baseurl }}">{{ post.title }}</a>
+	  {{ post.title | inspect }}
     </li>
   {% endfor %}
 </ul>
