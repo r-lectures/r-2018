@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>YAML using types effectively</title>
+    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/lessons/02-lecture.html">
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+</head>
+
+
+    <body>
+
+        <header id="header" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/posts/" >Info</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/lessons/" >Clases</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/resources/" >Biblio</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/datasets/" >Data</a></li>
+	  
+	  
+	  
+	  
+	  
+	  
+
+	      <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-lecture.html">Clase 1 - Intro</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/02-lecture.html">YAML using types effectively</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/slides/2017-04-05-simple.html">using types effectively</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/">Index</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/">Clases</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/resources.html">Biblio</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/posts.html">Posts</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/datasets.html">Datos</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/about.html">Sobre el curso</a></li> -->
+              <!--  -->
+              <!--  -->
+        </ul>
+	<ul class="nav navbar-nav navbar-right">
+	  
+	  
+	  <li><a href="http://localhost:4000/about/" >Sobre la materia</a></li>
+	</ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div>
+</header>
+
+<style>
+  .bottom-three {
+     margin-bottom: 2cm;
+  }
+</style>
+
+
+<p class="bottom-three">
+</p>
+<!-- <div class="site-banner"> -->
+<!--     <img src="/images/banner.jpg"></img> -->
+<!-- </div> -->
+
+
+
+        <div class="site-content container">
+            <div class="col-md-9">
+                <h1 id="first-slide---using-types-effectively">First slide - Using Types Effectively?</h1>
+
+<h1 id="what-does-that-mean">What does that mean?</h1>
+
+<p>The recent evolution of C++ is (from one point of view) largely about
+<strong>strengthening</strong> and <strong>expanding</strong> the <strong>capabilities for dealing with types</strong>.</p>
+
+<ul>
+  <li>expansion of <code class="highlighter-rouge">type_traits</code></li>
+  <li><code class="highlighter-rouge">decltype</code> to utter types</li>
+  <li><code class="highlighter-rouge">auto</code> to preserve types, prevent conversions, infer return types</li>
+  <li><code class="highlighter-rouge">nullptr</code> to prevent <code class="highlighter-rouge">int</code> / pointer confusion</li>
+  <li>scoped <code class="highlighter-rouge">enum</code></li>
+  <li>GSL: <code class="highlighter-rouge">owner&lt;T&gt;</code>, <code class="highlighter-rouge">not_null&lt;T&gt;</code></li>
+  <li>Concepts TS</li>
+</ul>
+
+<div class="NOTES">
+Some of the features added to modern C++ to deal with types.
+
+Obviously someone thinks that types are important. And the ability to wrangle
+them and mould them to our purposes is an important part of C++.
+
+Types are the currency of metaprogramming, but also important for safety in
+"regular" programming; hence we see things like the GSL's `owner&lt;&gt;` and `not_null&lt;&gt;`.
+
+</div>
+
+<h2 id="fp-isnt-only-about">FP isn’t (only) about</h2>
+
+<ul>
+  <li>first class functions</li>
+  <li>higher order functions</li>
+  <li>lexical scoping, closures</li>
+  <li>pattern matching</li>
+  <li>value semantics</li>
+  <li>immutability</li>
+  <li>concurrency through immutability</li>
+  <li>laziness</li>
+  <li>garbage collection</li>
+  <li>boxed data types / “inefficient” runtime models</li>
+  <li>the M-word</li>
+</ul>
+
+<div class="NOTES">
+Functional languages can teach us a thing or two about types. (After all, they
+seem to be teaching us everything else.)
+
+Here are some things you may think of when functional programming is mentioned&#x2026;
+
+</div>
+
+<h2 id="fp-is-also-importantly-about">FP is (also, importantly) about</h2>
+
+<ul>
+  <li>using types effectively and expressively</li>
+  <li>making illegal states unrepresentable</li>
+  <li>making illegal behaviour result in a type error</li>
+  <li>using total functions for easier to use, harder to misuse interfaces</li>
+</ul>
+
+<div class="NOTES">
+These aspects of functional programming are often overlooked.
+
+Many functional languages have well-developed, expressive type systems.
+
+C++ is moving in that direction.
+
+</div>
+
+<h2 id="what-is-a-type">What is a type?</h2>
+
+<ul>
+  <li>A way for the compiler to know what opcodes to output (dmr’s motivation)?</li>
+  <li>The way data is stored (representational)?</li>
+  <li>Characterised by what operations are possible (behavioural)?</li>
+  <li>Determines the values that can be assigned?</li>
+  <li>Determines the meaning of the data?</li>
+</ul>
+
+<h2 id="what-is-a-type-1">What is a type?</h2>
+
+<p><img src="./int_bool_1.png" alt="img" /></p>
+
+<p>“Only Lua would have ‘<code class="highlighter-rouge">1 == true</code>’ evaluate to <code class="highlighter-rouge">false</code>. #wantmydayback”</p>
+
+<p><img src="./int_bool_2.png" alt="img" /></p>
+
+<p>“But, how can <code class="highlighter-rouge">1</code> be equal to <code class="highlighter-rouge">true</code>? <code class="highlighter-rouge">1</code> is an integer, and <code class="highlighter-rouge">true</code> is a boolean. Lua
+seems to be correct here. It’s your view of the world that has been warped.”</p>
+
+<p>(Smiley faces make criticism OK!)</p>
+
+<h2 id="what-is-a-type-2">What is a type?</h2>
+
+<ul>
+  <li>The set of values that can inhabit an expression
+    <ul>
+      <li>may be finite or “infinite”</li>
+      <li>characterized by cardinality</li>
+    </ul>
+  </li>
+  <li>Expressions have types
+    <ul>
+      <li>A program has a type</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="lets-play-a-game">Let’s play a game</h2>
+
+<p>To help us get thinking about types.</p>
+
+<p>I’ll tell you a type.</p>
+
+<p>You tell me how many values it has.</p>
+
+<p>There are no tricks: if it seems obvious, it is!</p>
+
+<h2 id="level-1">Level 1</h2>
+
+<p>Types as sets of values</p>
+
+<h2 id="level-1-1">Level 1</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bool;
+</code></pre>
+</div>
+
+<p>2 (<code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">false</code>)</p>
+
+<h2 id="level-1-2">Level 1</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>char;
+</code></pre>
+</div>
+
+<p>256</p>
+
+<h2 id="level-1-3">Level 1</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void;
+</code></pre>
+</div>
+
+<p>0</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>struct Foo { Foo() = delete; };
+
+struct Bar { template &lt;typename T&gt; Bar(); };
+</code></pre>
+</div>
+
+<div class="NOTES">
+cf BASIC's function vs procedure
+
+</div>
+
+<h2 id="level-1-4">Level 1</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>struct Foo {};
+</code></pre>
+</div>
+
+<p>1</p>
+
+<h2 id="level-1-5">Level 1</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>enum FireSwampDangers : int8_t {
+  FLAME_SPURTS,
+  LIGHTNING_SAND,
+  ROUSES
+};
+</code></pre>
+</div>
+
+<p>3</p>
+
+<div class="NOTES">
+It is possible to put something into FireSwampDangers that fits
+representationally (eg. the value 4). But that would be meaningless: there would
+be no connection between the value represented and its interpretation. Because
+there is no interpretation: cf. an unconstructed object.
+
+</div>
+
+<h2 id="level-1-6">Level 1</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+struct Foo {
+  T m_t;
+};
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">Foo</code> has as many values as <code class="highlighter-rouge">T</code></p>
+
+<h2 id="end-of-level-1">End of Level 1</h2>
+
+<p>Algebraically, a type is the number of values that inhabit it.</p>
+
+<p>These types are equivalent:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bool;
+
+enum class InatorButtons {
+  ON_OFF,
+  SELF_DESTRUCT
+};
+</code></pre>
+</div>
+
+<p>Let’s move on to level 2.</p>
+
+<h2 id="level-2">Level 2</h2>
+
+<p>Aggregating Types</p>
+
+<h2 id="level-2-1">Level 2</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>std::pair&lt;char, bool&gt;;
+</code></pre>
+</div>
+
+<p>256 * 2 = 512</p>
+
+<h2 id="level-2-2">Level 2</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>struct Foo {
+  char a;
+  bool b;
+};
+</code></pre>
+</div>
+
+<p>256 * 2 = 512</p>
+
+<h2 id="level-2-3">Level 2</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>std::tuple&lt;bool, bool, bool&gt;;
+</code></pre>
+</div>
+
+<p>2 * 2 * 2 = 8</p>
+
+<h2 id="level-2-4">Level 2</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
+struct Foo {
+  T m_t;
+  U m_u;
+};
+</code></pre>
+</div>
+
+<p>(# of values in <code class="highlighter-rouge">T</code>) * (# of values in <code class="highlighter-rouge">U</code>)</p>
+
+<h2 id="end-of-level-2">End of Level 2</h2>
+
+<p>When two types are “concatenated” into one compound type, we <span class="underline">multiply</span> the # of
+inhabitants of the components.</p>
+
+<p>This kind of compounding gives us a <span class="underline">product type</span>.</p>
+
+<p>On to Level 3.</p>
+
+<h2 id="level-3">Level 3</h2>
+
+<p>Alternating Types</p>
+
+<h2 id="level-3-1">Level 3</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>std::optional&lt;char&gt;;
+</code></pre>
+</div>
+
+<p>256 + 1 = 257</p>
+
+<h2 id="level-3-2">Level 3</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>std::variant&lt;char, bool&gt;;
+</code></pre>
+</div>
+
+<p>256 + 2 = 258</p>
+
+<h2 id="level-3-3">Level 3</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
+struct Foo {
+  std::variant&lt;T, U&gt;;
+}
+</code></pre>
+</div>
+
+<p>(# of values in <code class="highlighter-rouge">T</code>) + (# of values in <code class="highlighter-rouge">U</code>)</p>
+
+<h2 id="end-of-level-3">End of Level 3</h2>
+
+<p>When two types are “alternated” into one compound type, we <span class="underline">add</span> the # of
+inhabitants of the components.</p>
+
+<p>This kind of compounding gives us a <span class="underline">sum type</span>.</p>
+
+<h2 id="level-4">Level 4</h2>
+
+<p>Function Types</p>
+
+<h2 id="level-4-1">Level 4</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bool f(bool);
+</code></pre>
+</div>
+
+<p>4</p>
+
+<h2 id="level-4-2">Level 4</h2>
+
+<p>Four possible values
+ <img src="./function_bool.svg" alt="img" /></p>
+
+<h2 id="level-4-3">Level 4</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bool f1(bool b) { return b; }
+bool f2(bool) { return true; }
+bool f3(bool) { return false; }
+bool f4(bool b) { return !b; }
+</code></pre>
+</div>
+
+<h2 id="level-4-4">Level 4</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>char f(bool);
+</code></pre>
+</div>
+
+<p>256 * 256 = 65,536</p>
+
+<h2 id="level-4-5">Level 4</h2>
+
+<p>How many values (for <code class="highlighter-rouge">f</code>)?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>enum class Foo
+{
+  BAR,
+  BAZ,
+  QUUX
+};
+char f(Foo);
+</code></pre>
+</div>
+
+<p>256 * 256 * 256 = 16,777,216</p>
+
+<h2 id="level-4-6">Level 4</h2>
+
+<p>The number of values of a function is the number of different ways we can draw
+arrows between the inputs and the outputs.
+ <img src="./function.svg" alt="img" /></p>
+
+<h2 id="level-4-7">Level 4</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;class T, class U&gt;
+U f(T);
+</code></pre>
+</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>(</td>
+      <td>U</td>
+      <td>^{</td>
+      <td>T</td>
+      <td>})</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="end-of-level-4">End of Level 4</h2>
+
+<p>When we have a <span class="underline">function</span> from (A) to (B), we raise the # of inhabitants of
+(B) to the power of the # of inhabitants of (A).</p>
+
+<h2 id="end-of-level-4-corollary">End of Level 4 (corollary)</h2>
+
+<p>Hence a curried function is equivalent to its uncurried alternative.</p>
+
+<p>[\begin{align<em>}
+F_{uncurried}::(A,B) \rightarrow C &amp; \Leftrightarrow C^{A</em>B} <br />
+&amp; = C^{B<em>A} <br />
+&amp; = (C^B)^A <br />
+&amp; \Leftrightarrow (B \rightarrow C)^A <br />
+&amp; \Leftrightarrow F_{curried}::A \rightarrow (B \rightarrow C)
+\end{align</em>}]</p>
+
+<h2 id="victory">Victory!</h2>
+
+<h2 id="equivalences">Equivalences</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+struct Foo {
+  std::variant&lt;T, T&gt; m_v;
+};
+
+template &lt;typename T&gt;
+struct Bar {
+  T m_t;
+  bool m_b;
+};
+</code></pre>
+</div>
+
+<p>We have a choice over how to represent values. <code class="highlighter-rouge">std::variant</code> will quickly
+become a very important tool for proper expression of states.</p>
+
+<p>This is one reason why <code class="highlighter-rouge">std::variant</code>’s “never-empty” guarantee is important.</p>
+
+<div class="NOTES">
+T + T = 2T.
+
+But note that in `Bar`, we need to manually keep the two variables "in sync".
+
+</div>
+
+<h2 id="algebraic-datatypes">Algebraic Datatypes</h2>
+
+<p>This is what it means to have an algebra of datatypes.</p>
+
+<ul>
+  <li>the ability to reason about equality of types</li>
+  <li>to find equivalent formulations
+    <ul>
+      <li>more natural</li>
+      <li>more easily understood</li>
+      <li>more efficient</li>
+    </ul>
+  </li>
+  <li>to identify mismatches between state spaces and the types used to implement
+them</li>
+  <li>to eliminate illegal states by making them inexpressible</li>
+</ul>
+
+<h2 id="making-illegal-states-unrepresentable">Making Illegal States Unrepresentable</h2>
+
+<p><code class="highlighter-rouge">std::variant</code> is a game changer because it allows us to (more) properly express
+types, so that (more) illegal states are unrepresentable.</p>
+
+<p><img src="./variant-tweet.png" alt="img" /></p>
+
+<div class="NOTES">
+C++'s type system is still not perfect by a long shot. But `std::variant` is an
+amazing upgrade.
+
+</div>
+
+<h2 id="making-illegal-states-unrepresentable-1">Making Illegal States Unrepresentable</h2>
+
+<p>Let’s look at some possible alternative data formulations, using sum types
+(<code class="highlighter-rouge">variant</code>, <code class="highlighter-rouge">optional</code>) as well as product types (structs).</p>
+
+<h2 id="example-connection-state">Example: Connection State</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>enum class ConnectionState {
+  DISCONNECTED,
+  CONNECTING,
+  CONNECTED,
+  CONNECTION_INTERRUPTED
+};
+
+struct Connection {
+  ConnectionState m_connectionState;
+
+  std::string m_serverAddress;
+  ConnectionId m_id;
+  std::chrono::system_clock::time_point m_connectedTime;
+  std::chrono::milliseconds m_lastPingTime;
+  Timer m_reconnectTimer;
+};
+</code></pre>
+</div>
+
+<div class="NOTES">
+A very simple example of what a connection class might look like today.
+
+Functions interacting with this class would typically use a switch statement
+over the `ConnectionState`.
+
+There are hidden invariants here that aren't enforced by the Connection type.
+
+Some of the fields are dependent on the connection state (reconnect time, last
+ping time). So it seems that some of these fields need sentinel values (eg
+invalid connection id).
+
+Worse, there is temptation to reuse fields for multiple states. Connected
+timestamp is perhaps likely to get reused to mean the instant of connection and
+the instant of disconnection.
+
+</div>
+
+<h2 id="example-connection-state-1">Example: Connection State</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>struct Connection {
+  std::string m_serverAddress;
+
+  struct Disconnected {};
+  struct Connecting {};
+  struct Connected {
+    ConnectionId m_id;
+    std::chrono::system_clock::time_point m_connectedTime;
+    std::optional&lt;std::chrono::milliseconds&gt; m_lastPingTime;
+  };
+  struct ConnectionInterrupted {
+    std::chrono::system_clock::time_point m_disconnectedTime;
+    Timer m_reconnectTimer;
+  };
+
+  std::variant&lt;Disconnected,
+	       Connecting,
+	       Connected,
+	       ConnectionInterrupted&gt; m_connection;
+};
+</code></pre>
+</div>
+
+<div class="NOTES">
+With types structured correctly, it's not possible to express illegal states.
+
+e.g. Ping time does not exist if we're not connected.
+
+(There are still things that are common to all states, e.g. perhaps this class
+represents connection to a specific server.)
+
+A switch statement could still exist, switching on the `variant`'s `index()`, or
+a visitor-based approach could be used.
+
+</div>
+
+<h2 id="example-nullable-field">Example: Nullable field</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class Friend {
+  std::string m_alias;
+  bool m_aliasPopulated;
+  ...
+};
+</code></pre>
+</div>
+
+<p>These two fields need to be kept in sync everywhere.</p>
+
+<div class="NOTES">
+Here, a field is populated from a remote source and happens lazily and/or
+asynchronously. It is possible that the field never gets populated.
+
+All the code that deals with this field has to ensure that both variables are
+kept up to date in sync with each other.
+
+</div>
+
+<h2 id="example-nullable-field-1">Example: Nullable field</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class Friend {
+  std::optional&lt;std::string&gt; m_alias;
+  ...
+};
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">std::optional</code> provides a sentinel value that is outside the type.</p>
+
+<div class="NOTES">
+`std::optional` captures the true state space of the variable. It is not
+possible for two fields to get out of step now.
+
+</div>
+
+<h2 id="example-monster-ai">Example: Monster AI</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>enum class AggroState {
+  IDLE,
+  CHASING,
+  FIGHTING
+};
+
+class MonsterAI {
+  AggroState m_aggroState;
+
+  float m_aggroRadius;
+  PlayerId m_target;
+  Timer m_chaseTimer;
+};
+</code></pre>
+</div>
+
+<div class="NOTES">
+Once again, presumably PlayerId has some invalid sentinel value.
+
+</div>
+
+<h2 id="example-monster-ai-1">Example: Monster AI</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class MonsterAI {
+  struct Idle {
+    float m_aggroRadius;
+  };
+  struct Chasing {
+    PlayerId m_target;
+    Timer m_chaseTimer;
+  };
+  struct Fighting {
+    PlayerId m_target;
+  };
+
+  std::variant&lt;Idle, Chasing, Fighting&gt; m_aggroState;
+};
+</code></pre>
+</div>
+
+<div class="NOTES">
+Now the variables are properly placed into the states that use them.
+
+Chasing and Fighting states could inherit from an Aggroed state that holds a target.
+
+</div>
+
+<h2 id="example-design-patterns">Example: Design Patterns</h2>
+
+<p>The addition of sum types to C++ offers an alternative formulation for some
+design patterns.</p>
+
+<p>State machines and expressions are naturally modelled with sum types.</p>
+
+<div class="NOTES">
+Traditional runtime polymorphism approach can lead to bloated base class issue.
+
+Type erasure is another way to go.
+
+Sum types + visitor/pattern matching is a third possibility, particularly
+natural for things like ASTs.
+
+</div>
+
+<h2 id="example-design-patterns-1">Example: Design Patterns</h2>
+
+<ul>
+  <li>Command</li>
+  <li>Composite</li>
+  <li>State</li>
+  <li>Interpreter</li>
+</ul>
+
+<div class="NOTES">
+Command uses a flat, wide class hierarchy to encapsulate requests in objects.
+
+Composite: model part-whole hierarchies with uniform interface.
+
+State is obvious: simply replace the contained polymorphic object with a
+variant.
+
+Sum types are especially good for representing expressions (think JSON).
+
+Interpreter tackles the expression problem: easy to add new classes (use
+OO/interfaces) or new operations (use sum types/visitors)?
+
+</div>
+
+<h2 id="designing-with-types">Designing with Types</h2>
+
+<p><code class="highlighter-rouge">std::variant</code> and <code class="highlighter-rouge">std::optional</code> are valuable tools that allow us to model the
+state of our business logic more accurately.</p>
+
+<p>When you match the types to the domain accurately, certain categories of tests
+just disappear.</p>
+
+<div class="NOTES">
+You don't have to test the edge cases where the representation can fall outside
+your reality - because that can't happen.
+
+</div>
+
+<h2 id="designing-with-types-1">Designing with Types</h2>
+
+<p>Fitting types to their function more accurately makes code easier to understand
+and removes pitfalls.</p>
+
+<p>The bigger the codebase and the more vital the functionality, the more value
+there is in correct representation with types.</p>
+
+<div class="NOTES">
+When illegal states are unrepresentable, you don't have to worry about other
+programmers misunderstanding the code, or misusing data. In a sense, they
+*cannot* write something that is wrong.
+
+And when I say "other programmers" of course I mean myself in 3 months&#x2026;
+
+Questionably reusing fields, bending semantics, etc. These are bad practices.
+But they happen when we're chasing a deadline.
+
+</div>
+
+<h2 id="using-types-to-constrain-behaviour">Using Types to Constrain Behaviour</h2>
+
+<p>We’ve seen how an expressive type system (with product and sum types) allows us
+to model state more accurately.</p>
+
+<p>“Phantom types” is one technique that helps us to model the <em>behaviour</em> of our
+business logic in the type system. Illegal behaviour becomes a type error.</p>
+
+<h2 id="phantom-types-before">Phantom Types: Before</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>std::string GetFormData();
+
+std::string SanitizeFormData(const std::string&amp;);
+
+void ExecuteQuery(const std::string&amp;);
+</code></pre>
+</div>
+
+<p>An injection bug waiting to happen.</p>
+
+<div class="NOTES">
+Let's hope we don't meet little Bobby Tables, and that everywhere we execute a
+query we remembered to sanitize the data provided by the user.
+
+The type system is not helping us here. How can we use types to make sure that
+we stay safe?
+
+</div>
+
+<h2 id="phantom-types-the-setup">Phantom Types: The setup</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+struct FormData {
+  explicit FormData(const string&amp; input) : m_input(input) {}
+  std::string m_input;
+};
+
+struct sanitized {};
+struct unsanitized {};
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">T</code> is the “Phantom Type” here.</p>
+
+<div class="NOTES">
+Note that the template argument is unused. It exists <span class="underline">only</span> for compile time
+type checking. There is no runtime overhead.
+
+</div>
+
+<h2 id="phantom-types-after">Phantom Types: After</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FormData&lt;unsanitized&gt; GetFormData();
+
+std::optional&lt;FormData&lt;sanitized&gt;&gt;
+SanitizeFormData(const FormData&lt;unsanitized&gt;&amp;);
+
+void ExecuteQuery(const FormData&lt;sanitized&gt;&amp;);
+</code></pre>
+</div>
+
+<div class="NOTES">
+User input is born unsanitized.
+
+It is impossible for us to execute unsanitized input. The compiler simply won't
+compile it.
+
+We've used types to help enforce the business logic.
+
+This is something similar to a strong typedef, or what enum class effectively
+does for integral types. This technique can also be used e.g. in a units
+library.
+
+</div>
+
+<h2 id="total-functions">Total Functions</h2>
+
+<p>A <em>total function</em> is a function that is defined for all inputs in its domain.</p>
+
+<p><code class="highlighter-rouge">template &lt;typename T&gt;
+const T&amp; min(const T&amp; a, const T&amp; b);</code></p>
+
+<p><code class="highlighter-rouge">float sqrt(float f);</code></p>
+
+<div class="NOTES">
+We are straying into the realm of Concepts here.
+
+I'm not saying that total is the same thing as "no preconditions". The type must
+satisfy the requirements on it. But you can see that with functions like `sqrt`
+there is a clear mismatch between the type of the function and the actual type
+of its domain.
+
+</div>
+
+<h2 id="lets-play-another-game">Let’s play another game</h2>
+
+<p>To help us see how total functions with the right types can result in
+unsurprising code.</p>
+
+<p>I’ll give you a function signature with no names attached.</p>
+
+<p>You tell me what it’s called… (and you’ll even know how to implement it).</p>
+
+<p>The only rule… it must be a <em>total</em> function.</p>
+
+<div class="NOTES">
+Assume regular types. Assume that the function is doing something "interesting"
+rather than "boring" when you have a choice. (ie. that it uses its argument).
+But you needn't assume anything else.
+
+And there are always ways to make things unexpected in C++. But assume nothing
+surprising here.
+
+</div>
+
+<h2 id="name-that-function">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+T f(T);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">identity</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>int f(int);
+</code></pre>
+</div>
+
+<div class="NOTES">
+Note the odd situation here: we know more about `f(T)` than we do about
+`f(int)`.
+
+</div>
+
+<h2 id="name-that-function-1">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
+T f(pair&lt;T, U&gt;);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">first</code></p>
+
+<h2 id="name-that-function-2">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+T f(bool, T, T);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">select</code></p>
+
+<h2 id="name-that-function-3">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
+U f(function&lt;U(T)&gt;, T);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">apply</code> or <code class="highlighter-rouge">call</code></p>
+
+<h2 id="name-that-function-4">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+vector&lt;T&gt; f(vector&lt;T&gt;);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">reverse</code>, <code class="highlighter-rouge">shuffle</code>, …</p>
+
+<div class="NOTES">
+For simplicity, I haven't written this signature in terms of iterators, but it
+would be just the same.
+
+</div>
+
+<h2 id="name-that-function-5">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+T f(vector&lt;T&gt;);
+</code></pre>
+</div>
+
+<p>Not possible! It’s a partial function - the <code class="highlighter-rouge">vector</code> might be empty.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>T&amp; vector&lt;T&gt;::front();
+</code></pre>
+</div>
+
+<h2 id="name-that-function-6">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+optional&lt;T&gt; f(vector&lt;T&gt;);
+</code></pre>
+</div>
+
+<h2 id="name-that-function-7">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
+vector&lt;U&gt; f(function&lt;U(T)&gt;, vector&lt;T&gt;);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">transform</code></p>
+
+<h2 id="name-that-function-8">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+vector&lt;T&gt; f(function&lt;bool(T)&gt;, vector&lt;T&gt;);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">remove_if</code>, <code class="highlighter-rouge">partition</code>, …</p>
+
+<h2 id="name-that-function-9">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+T f(optional&lt;T&gt;);
+</code></pre>
+</div>
+
+<p>Not possible!</p>
+
+<h2 id="name-that-function-10">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename K, typename V&gt;
+V f(map&lt;K, V&gt;, K);
+</code></pre>
+</div>
+
+<p>Not possible! (The key might not be in the <code class="highlighter-rouge">map</code>.)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>V&amp; map&lt;K, V&gt;::operator[](const K&amp;);
+</code></pre>
+</div>
+
+<h2 id="name-that-function-11">Name That Function</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename K, typename V&gt;
+optional&lt;V&gt; f(map&lt;K, V&gt;, K);
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">lookup</code></p>
+
+<h2 id="what-just-happened">What Just Happened?</h2>
+
+<p>I gave you <em>almost nothing</em>.</p>
+
+<p>No variable names. No function names. No type names.</p>
+
+<p>Just bare type signatures.</p>
+
+<p>You were able to tell me exactly what the functions should be called, and likely
+knew instantly how to implement them.</p>
+
+<p>You will note that partial functions gave us some issues…</p>
+
+<div class="NOTES">
+Naming is one of the hardest problems in Comp Sci. Getting the types right is
+much easier. And if your types model the logic properly, perhaps you have
+"self-documenting code"?
+
+</div>
+
+<h2 id="well-typed-functions">Well-typed Functions</h2>
+
+<p>Writing <em>total functions</em> with well-typed signatures can tell us a lot about
+functionality.</p>
+
+<p>Using types appropriately makes interfaces unsurprising, safer to use and harder
+to misuse.</p>
+
+<p>Total functions make more test categories vanish.</p>
+
+<h2 id="about-testing">About Testing…</h2>
+
+<p>In a previous talk, I talked about unit testing and in particular property-based testing.</p>
+
+<p>Effectively using types can reduce test code.</p>
+
+<p>Property-based tests say “for all values, this property is true”.</p>
+
+<p>That is exactly what types <em>are</em>: universal quantifications about what can be
+done with data.</p>
+
+<p>Types scale better than tests. Instead of TDD, maybe try TDD!</p>
+
+<div class="NOTES">
+C++'s type system isn't yet powerful enough to be able to say goodbye to tests,
+but it is powerful enough that used effectively, we can reduce some of the
+drudgery of writing tests.
+
+Any time you're thinking something is true for all values, that's what a type
+can do.
+
+</div>
+
+<h2 id="further-down-the-rabbit-hole">Further Down the Rabbit Hole</h2>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Algebraic_data_type">http://en.wikipedia.org/wiki/Algebraic_data_type</a></li>
+  <li><a href="http://chris-taylor.github.io/blog/2013/02/10/the-algebra-of-algebraic-data-types/">http://chris-taylor.github.io/blog/2013/02/10/the-algebra-of-algebraic-data-types/</a></li>
+  <li><a href="https://vimeo.com/14313378">https://vimeo.com/14313378</a> (Effective ML: Making Illegal States Unrepresentable)</li>
+  <li><a href="http://www.infoq.com/presentations/Types-Tests">http://www.infoq.com/presentations/Types-Tests</a> (Types vs Tests: Strange Loop 2012)</li>
+</ul>
+
+<h2 id="thanks-for-listening">Thanks For Listening</h2>
+
+<p>“On the whole, I’m inclined to say that when in doubt, make a new type.”</p>
+
+<p>– Martin Fowler, <a href="http://martinfowler.com/ieeeSoftware/whenType.pdf"><em>When to Make a Type</em></a></p>
+
+<p>“Don’t set a flag; set the data.”</p>
+
+<p>– Leo Brodie, <em><a href="http://thinking-forth.sourceforge.net/">Thinking Forth</a></em></p>
+
+<h2 id="goals-for-well-typed-code">Goals for Well-typed Code</h2>
+
+<ul>
+  <li>Make illegal states unrepresentable</li>
+  <li>Use <code class="highlighter-rouge">std::variant</code> and <code class="highlighter-rouge">std::optional</code> for formulations that
+    <ul>
+      <li>are more natural</li>
+      <li>fit the business logic state better</li>
+    </ul>
+  </li>
+  <li>Use phantom types for safety
+    <ul>
+      <li>Make illegal behaviour a compile error</li>
+    </ul>
+  </li>
+  <li>Write total functions
+    <ul>
+      <li>Unsurprising behaviour</li>
+      <li>Easy to use, hard to misuse</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="epilogue">Epilogue</h2>
+
+<p>A taste of algebra with datatypes</p>
+
+<h2 id="a-taste-of-algebra-with-datatypes">A Taste of Algebra with Datatypes</h2>
+
+<p>How many values?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
+class vector&lt;T&gt;;
+</code></pre>
+</div>
+
+<p>We can define a <code class="highlighter-rouge">vector&lt;T&gt;</code> recursively:</p>
+
+<p>({v(t)} = {1 + t v(t)})</p>
+
+<p>(empty vector or (+) head element and (*) tail vector)</p>
+
+<h2 id="a-taste-of-algebra-with-datatypes-1">A Taste of Algebra with Datatypes</h2>
+
+<p>And rearrange…</p>
+
+<p>What does that mean? Subtracting and dividing types?</p>
+
+<h2 id="a-taste-of-algebra-with-datatypes-2">A Taste of Algebra with Datatypes</h2>
+
+<p>When we don’t know how to interpret something mathematical?</p>
+
+<h2 id="a-taste-of-algebra-with-datatypes-3">A Taste of Algebra with Datatypes</h2>
+
+<p>Series expansion at ({t = 0}):</p>
+
+<p>({1 + t + t^2 + t^3 + t^4 +{ }…})</p>
+
+<p>A <code class="highlighter-rouge">vector&lt;T&gt;</code> can have:</p>
+
+<ul>
+  <li>0 elements (({1}))</li>
+  <li>or (+) 1 element (({t}))</li>
+  <li>or (+) 2 elements (({t^2}))</li>
+  <li>etc.</li>
+</ul>
+
+<h2 id="goals-for-well-typed-code-1">Goals for Well-typed Code</h2>
+
+<ul>
+  <li>Make illegal states unrepresentable</li>
+  <li>Use <code class="highlighter-rouge">std::variant</code> and <code class="highlighter-rouge">std::optional</code> for formulations that
+    <ul>
+      <li>are more natural</li>
+      <li>fit the business logic state better</li>
+    </ul>
+  </li>
+  <li>Use phantom types for safety
+    <ul>
+      <li>Make illegal behaviour a compile error</li>
+    </ul>
+  </li>
+  <li>Write total functions
+    <ul>
+      <li>Unsurprising behaviour</li>
+      <li>Easy to use, hard to misuse</li>
+    </ul>
+  </li>
+</ul>
+
+
+            </div>
+            <div id="site-side-bar" class="col-md-3">
+                <div id="navigation">
+    <!-- <div class="panel panel-default"> -->
+    <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
+    <!--     <div class="panel-body"> -->
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://github.com/lgmoyano"> -->
+    <!--                     <span class="icon  icon--github"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">lgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://twitter.com/@luisgmoyano"> -->
+    <!--                     <span class="icon  icon--twitter"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809 -->
+    <!--                             c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">@luisgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="panel panel-default"> -->
+    <!--     <div class="panel-heading">Archivo</div> -->
+    <!--     <div class="panel-body"> -->
+    <!--          -->
+
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Apr 2017 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">using types effectively</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">Simple</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Aug 2015 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/haskell/2015/08/30/hello-world-in-haskell.html">hello world in haskell</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/08/29/welcome-to-jekyll.html">Welcome to Jekyll!</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+</div>
+
+
+            </div>
+        </div>
+
+        <!-- <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="position:absolute;RIGHT:10px; TOP:550px; border-width:0" src="by-nc.png" height="20" width="95"/></a></p> -->
+
+
+    </body>
+
+</html>
