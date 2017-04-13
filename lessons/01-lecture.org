@@ -1,6 +1,7 @@
 #+TITLE: Clase 1 - Intro
 #+STARTUP: showall expand
 #+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
 
 #+begin_src yaml :exports results :results value html 
 --- 
@@ -9,5 +10,19 @@ title: Clase 1 - Intro
 --- 
 #+end_src 
 #+results:
-* Clase 1
-** 
+
+* Slide 1
+- this is 
+- some 
+- list of 
+- sorts
+* Slide 2
+#+BEGIN_NOTES
+=These= are some /_formatted_/ notes that I'm ~taking~
+#+END_NOTES
+* And an effort to show code
+#+BEGIN_SRC R
+require(ggplot2)
+df <- as.data.frame(x)
+#+END_SRC
+

@@ -9,7 +9,6 @@
 #+REVEAL_TRANS: none
 #+REVEAL_THEME: solarized
 #+REVEAL_HLEVEL: 1
-#+REVEAL_EXTRA_CSS: ./presentation.css
 #+REVEAL_ROOT: ../../reveal.js/
 
 # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
@@ -32,6 +31,7 @@ theme: moon
 #+results:
 
 * Using Types Effectively
+
 * What does that mean?
 #+REVEAL_HTML: <br/>
 The recent evolution of C++ is (from one point of view) largely about

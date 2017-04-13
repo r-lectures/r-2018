@@ -6,10 +6,10 @@ lectures:
 
   subitems:
   - title: "Asset"
-    url: ../assets/math.html
+    url: slides/01-lecture-slides.html
 
 - title: "Clase 2"
-  url: "02-lecture.html"
+  url: 02-lecture.html
 
   subitems:
     - title: "Slides clase 2"
