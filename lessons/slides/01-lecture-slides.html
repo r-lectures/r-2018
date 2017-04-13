@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Clase 1 - Intro</title>
+<meta name="author" content="(moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Clase 1 - Intro</h1><h2 class="author">moyano</h2><p class="date">Created: 2017-04-13 Thu 14:38</p>
+</section>
+
+
+<section>
+<section id="slide-org13dd423">
+<h2 id="org13dd423"><span class="section-number-2">1</span> Slide 1</h2>
+<ul>
+<li>this is</li>
+<li>some</li>
+<li>list of</li>
+<li>sorts</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orge7a85b2">
+<h2 id="orge7a85b2"><span class="section-number-2">2</span> Slide 2</h2>
+<aside class="notes">
+<p>
+<code>These</code> are some <i><span class="underline">formatted</span></i> notes that I'm <code>taking</code>
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgaa2649c">
+<h2 id="orgaa2649c"><span class="section-number-2">3</span> And an effort to show code</h2>
+<div class="org-src-container">
+
+<pre  class="src src-R"><span style="color: #FFC287;">require</span>(ggplot2)
+df <span style="color: #FFC287;">&lt;-</span> as.data.frame(x)
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

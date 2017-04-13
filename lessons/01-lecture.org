@@ -1,6 +1,7 @@
 #+TITLE: Clase 1 - Intro
 #+STARTUP: showall expand
 #+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
 
 #+begin_src yaml :exports results :results value html 
 --- 
@@ -9,6 +10,7 @@ title: Clase 1 - Intro
 --- 
 #+end_src 
 #+results:
+
 * Slide 1
 - this is 
 - some 
