@@ -1,7 +1,6 @@
 ---
-layout: defult
+layout: default
 title:  "YAML using types effectively"
-output: revealjs::revealjs_presentation
 transition: convex
 theme: moon
 ---
