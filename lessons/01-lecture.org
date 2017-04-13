@@ -3,7 +3,7 @@
 #+options: toc:nil
 #+REVEAL_ROOT: ../../reveal.js/
 
-#+begin_src yaml :exports results :results value html 
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
 --- 
 layout: default 
 title: Clase 1 - Intro 
