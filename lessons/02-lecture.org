@@ -6,8 +6,8 @@
 #+REVEAL_MARGIN: 0.1
 #+REVEAL_MIN_SCALE: 0.5
 #+REVEAL_MAX_SCALE: 2.5
-#+REVEAL_TRANS: none
-#+REVEAL_THEME: solarized
+#+REVEAL_TRANS: convex
+#+REVEAL_THEME: moon
 #+REVEAL_HLEVEL: 1
 #+REVEAL_ROOT: ../../reveal.js/
 
@@ -20,12 +20,10 @@
 #+EMAIL: bdeane@blizzard.com
 #+DATE: September 19th, 2016
 
-#+begin_src yaml :exports results :results value html
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
 ---
 layout: default
 title:  "YAML using types effectively"
-transition: convex
-theme: moon
 ---
 #+end_src
 #+results:

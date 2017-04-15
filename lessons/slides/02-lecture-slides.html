@@ -1,46 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>ORG Using Types Effectively</title>
-<meta name="author" content="(Ben Deane)"/>
-<style type="text/css">
-.underline { text-decoration: underline; }
-</style>
-<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
-
-<link rel="stylesheet" href="../../reveal.js/css/theme/solarized.css" id="theme"/>
-
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../../reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</head>
-<body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide"><h1 class="title">ORG Using Types Effectively</h1><h2 class="author">Ben Deane</h2><h2 class="email"><a href="mailto:bdeane@blizzard.com">bdeane@blizzard.com</a></h2><h2 class="date">September 19th, 2016</h2>
-</section>
-
-
 
 <section>
-<section id="slide-orge572447">
-<h2 id="orge572447">Using Types Effectively</h2>
+<section id="slide-org74c6311">
+<h2 id="org74c6311">Using Types Effectively</h2>
+
 
 </section>
 </section>
 <section>
-<section id="slide-org28cb685">
-<h2 id="org28cb685">What does that mean?</h2>
+
+<section id="slide-orge686cd2">
+<h2 id="orge686cd2">What does that mean?</h2>
+
 <br/>
 <p>
 The recent evolution of C++ is (from one point of view) largely about
@@ -77,8 +47,10 @@ Types are the currency of metaprogramming, but also important for safety in
 
 
 </section>
-<section id="slide-org6d0378d">
-<h3 id="org6d0378d">FP isn't (only) about</h3>
+
+<section id="slide-org6bddc27">
+<h3 id="org6bddc27">FP isn't (only) about</h3>
+
 <br/>
 <ul>
 <li class="fragment appear">first class functions</li>
@@ -108,8 +80,10 @@ Here are some things you may think of when functional programming is mentioned&#
 </aside>
 
 </section>
-<section id="slide-org6904f93">
-<h3 id="org6904f93">FP is (also, importantly) about</h3>
+
+<section id="slide-org59dd971">
+<h3 id="org59dd971">FP is (also, importantly) about</h3>
+
 <br/>
 <ul>
 <li class="fragment appear">using types effectively and expressively</li>
@@ -135,8 +109,10 @@ C++ is moving in that direction.
 </aside>
 
 </section>
-<section id="slide-orgc6df305">
-<h3 id="orgc6df305">What is a type?</h3>
+
+<section id="slide-org05b7e81">
+<h3 id="org05b7e81">What is a type?</h3>
+
 <br/>
 <ul>
 <li class="fragment appear">A way for the compiler to know what opcodes to output (dmr's motivation)?</li>
@@ -148,8 +124,10 @@ C++ is moving in that direction.
 </ul>
 
 </section>
-<section id="slide-org0687b30">
-<h3 id="org0687b30">What is a type?</h3>
+
+<section id="slide-org0f1b8be">
+<h3 id="org0f1b8be">What is a type?</h3>
+
 
 <div class="figure">
 <p><img src="./int_bool_1.png" alt="int_bool_1.png" />
@@ -178,8 +156,10 @@ seems to be correct here. It's your view of the world that has been warped."
 </div>
 
 </section>
-<section id="slide-org17b2737">
-<h3 id="org17b2737">What is a type?</h3>
+
+<section id="slide-org96091b5">
+<h3 id="org96091b5">What is a type?</h3>
+
 <br/>
 <ul>
 <li class="fragment appear">The set of values that can inhabit an expression
@@ -197,8 +177,10 @@ seems to be correct here. It's your view of the world that has been warped."
 </ul>
 
 </section>
-<section id="slide-orgee0b6d5">
-<h3 id="orgee0b6d5">Let's play a game</h3>
+
+<section id="slide-org045cd0f">
+<h3 id="org045cd0f">Let's play a game</h3>
+
 <p class="fragment appear">
 To help us get thinking about types.
 </p>
@@ -216,16 +198,20 @@ There are no tricks: if it seems obvious, it is!
 </p>
 
 </section>
-<section id="slide-orgf8cb658">
-<h3 id="orgf8cb658">Level 1</h3>
+
+<section id="slide-org78e65cc">
+<h3 id="org78e65cc">Level 1</h3>
+
 <br/>
 <p>
 Types as sets of values
 </p>
 
 </section>
-<section id="slide-org0ea0713">
-<h3 id="org0ea0713">Level 1</h3>
+
+<section id="slide-org9d2bb0c">
+<h3 id="org9d2bb0c">Level 1</h3>
+
 <p>
 How many values?
 </p>
@@ -240,8 +226,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org51f062d">
-<h3 id="org51f062d">Level 1</h3>
+
+<section id="slide-orged6a17a">
+<h3 id="orged6a17a">Level 1</h3>
+
 <p>
 How many values?
 </p>
@@ -256,8 +244,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org649dcdd">
-<h3 id="org649dcdd">Level 1</h3>
+
+<section id="slide-org7854bed">
+<h3 id="org7854bed">Level 1</h3>
+
 <p>
 How many values?
 </p>
@@ -291,8 +281,10 @@ cf BASIC's function vs procedure
 </aside>
 
 </section>
-<section id="slide-orgf9343c2">
-<h3 id="orgf9343c2">Level 1</h3>
+
+<section id="slide-org2a8ba8f">
+<h3 id="org2a8ba8f">Level 1</h3>
+
 <p>
 How many values?
 </p>
@@ -307,8 +299,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org868e6f4">
-<h3 id="org868e6f4">Level 1</h3>
+
+<section id="slide-org31e5dfe">
+<h3 id="org31e5dfe">Level 1</h3>
+
 <p>
 How many values?
 </p>
@@ -337,8 +331,10 @@ there is no interpretation: cf. an unconstructed object.
 </aside>
 
 </section>
-<section id="slide-org5b56aba">
-<h3 id="org5b56aba">Level 1</h3>
+
+<section id="slide-org94a1b89">
+<h3 id="org94a1b89">Level 1</h3>
+
 <p>
 How many values?
 </p>
@@ -356,8 +352,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-orgd219a2e">
-<h3 id="orgd219a2e">End of Level 1</h3>
+
+<section id="slide-orgbfcfc83">
+<h3 id="orgbfcfc83">End of Level 1</h3>
+
 <p>
 Algebraically, a type is the number of values that inhabit it.
 </p>
@@ -381,16 +379,20 @@ Let's move on to level 2.
 </p>
 
 </section>
-<section id="slide-org1712aa0">
-<h3 id="org1712aa0">Level 2</h3>
+
+<section id="slide-org8953dd8">
+<h3 id="org8953dd8">Level 2</h3>
+
 <br/>
 <p>
 Aggregating Types
 </p>
 
 </section>
-<section id="slide-org497f22c">
-<h3 id="org497f22c">Level 2</h3>
+
+<section id="slide-org87b62b2">
+<h3 id="org87b62b2">Level 2</h3>
+
 <p>
 How many values?
 </p>
@@ -405,8 +407,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-orgac00f90">
-<h3 id="orgac00f90">Level 2</h3>
+
+<section id="slide-orgcd869b7">
+<h3 id="orgcd869b7">Level 2</h3>
+
 <p>
 How many values?
 </p>
@@ -424,8 +428,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-orgaed916d">
-<h3 id="orgaed916d">Level 2</h3>
+
+<section id="slide-org8a57c9a">
+<h3 id="org8a57c9a">Level 2</h3>
+
 <p>
 How many values?
 </p>
@@ -440,8 +446,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org57e2ef8">
-<h3 id="org57e2ef8">Level 2</h3>
+
+<section id="slide-orgd9f6231">
+<h3 id="orgd9f6231">Level 2</h3>
+
 <p>
 How many values?
 </p>
@@ -460,8 +468,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-orga17c048">
-<h3 id="orga17c048">End of Level 2</h3>
+
+<section id="slide-org02d76dd">
+<h3 id="org02d76dd">End of Level 2</h3>
+
 <p>
 When two types are "concatenated" into one compound type, we <span class="underline">multiply</span> the # of
 inhabitants of the components.
@@ -476,16 +486,20 @@ On to Level 3.
 </p>
 
 </section>
-<section id="slide-org7968386">
-<h3 id="org7968386">Level 3</h3>
+
+<section id="slide-org8ad7360">
+<h3 id="org8ad7360">Level 3</h3>
+
 <br/>
 <p>
 Alternating Types
 </p>
 
 </section>
-<section id="slide-orgd2f5eb4">
-<h3 id="orgd2f5eb4">Level 3</h3>
+
+<section id="slide-org69f8393">
+<h3 id="org69f8393">Level 3</h3>
+
 <p>
 How many values?
 </p>
@@ -500,8 +514,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org902e489">
-<h3 id="org902e489">Level 3</h3>
+
+<section id="slide-orga413f77">
+<h3 id="orga413f77">Level 3</h3>
+
 <p>
 How many values?
 </p>
@@ -516,8 +532,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org4daba02">
-<h3 id="org4daba02">Level 3</h3>
+
+<section id="slide-org819ed23">
+<h3 id="org819ed23">Level 3</h3>
+
 <p>
 How many values?
 </p>
@@ -535,8 +553,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-orgacbd3f5">
-<h3 id="orgacbd3f5">End of Level 3</h3>
+
+<section id="slide-org9bbb499">
+<h3 id="org9bbb499">End of Level 3</h3>
+
 <p>
 When two types are "alternated" into one compound type, we <span class="underline">add</span> the # of
 inhabitants of the components.
@@ -547,16 +567,20 @@ This kind of compounding gives us a <span class="underline">sum type</span>.
 </p>
 
 </section>
-<section id="slide-org529a3e8">
-<h3 id="org529a3e8">Level 4</h3>
+
+<section id="slide-org7b554e1">
+<h3 id="org7b554e1">Level 4</h3>
+
 <br/>
 <p>
 Function Types
 </p>
 
 </section>
-<section id="slide-orgd1ada20">
-<h3 id="orgd1ada20">Level 4</h3>
+
+<section id="slide-org14316ca">
+<h3 id="org14316ca">Level 4</h3>
+
 <p>
 How many values?
 </p>
@@ -571,8 +595,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org463f5f7">
-<h3 id="org463f5f7">Level 4</h3>
+
+<section id="slide-org6fa31fa">
+<h3 id="org6fa31fa">Level 4</h3>
+
 <p>
 Four possible values
  <object type="image/svg+xml" data="./function_bool.svg" class="org-svg">
@@ -580,8 +606,10 @@ Sorry, your browser does not support SVG.</object>
 </p>
 
 </section>
-<section id="slide-org9e8dd18">
-<h3 id="org9e8dd18">Level 4</h3>
+
+<section id="slide-org92f4c82">
+<h3 id="org92f4c82">Level 4</h3>
+
 <div class="org-src-container">
 
 <pre  class="src src-c++"><span style="color: #5BA0EB;">bool</span> <span style="color: #AF81F4;">f1</span>(<span style="color: #5BA0EB;">bool</span> <span style="color: #8AC6F2;">b</span>) { <span style="color: #8AC6F2;">return</span> b; }
@@ -592,8 +620,10 @@ Sorry, your browser does not support SVG.</object>
 </div>
 
 </section>
-<section id="slide-org35272b4">
-<h3 id="org35272b4">Level 4</h3>
+
+<section id="slide-orgfc5b821">
+<h3 id="orgfc5b821">Level 4</h3>
+
 <p>
 How many values?
 </p>
@@ -608,8 +638,10 @@ How many values?
 </p>
 
 </section>
-<section id="slide-orgc9eec33">
-<h3 id="orgc9eec33">Level 4</h3>
+
+<section id="slide-org7730b9b">
+<h3 id="org7730b9b">Level 4</h3>
+
 <p>
 How many values (for <code>f</code>)?
 </p>
@@ -630,8 +662,10 @@ How many values (for <code>f</code>)?
 </p>
 
 </section>
-<section id="slide-org58ad5fc">
-<h3 id="org58ad5fc">Level 4</h3>
+
+<section id="slide-orgeb8cf75">
+<h3 id="orgeb8cf75">Level 4</h3>
+
 <p>
 The number of values of a function is the number of different ways we can draw
 arrows between the inputs and the outputs.
@@ -640,8 +674,10 @@ Sorry, your browser does not support SVG.</object>
 </p>
 
 </section>
-<section id="slide-org9e344f1">
-<h3 id="org9e344f1">Level 4</h3>
+
+<section id="slide-orgef0bcb4">
+<h3 id="orgef0bcb4">Level 4</h3>
+
 <p>
 How many values?
 </p>
@@ -657,16 +693,20 @@ How many values?
 </p>
 
 </section>
-<section id="slide-org31246fc">
-<h3 id="org31246fc">End of Level 4</h3>
+
+<section id="slide-org8ef0f37">
+<h3 id="org8ef0f37">End of Level 4</h3>
+
 <p>
 When we have a <span class="underline">function</span> from \(A\) to \(B\), we raise the # of inhabitants of
 \(B\) to the power of the # of inhabitants of \(A\).
 </p>
 
 </section>
-<section id="slide-org1e9652e">
-<h3 id="org1e9652e">End of Level 4 (corollary)</h3>
+
+<section id="slide-org9003392">
+<h3 id="org9003392">End of Level 4 (corollary)</h3>
+
 <p>
 Hence a curried function is equivalent to its uncurried alternative.
 </p>
@@ -683,13 +723,15 @@ F_{uncurried}::(A,B) \rightarrow C & \Leftrightarrow C^{A*B} \\
 </p>
 
 </section>
-<section id="slide-org26e519a">
-<h3 id="org26e519a">Victory!</h3>
+
+<section id="slide-orgc6cc79e">
+<h3 id="orgc6cc79e">Victory!</h3>
 <br/><br/><div id="achv"><div class="achievement-banner"><div class="achievement-icon"><span class="icon"><span class="icon-trophy">&#127942;</span></span></div><div class="achievement-text"><p class="achievement-notification">ACHIEVEMENT UNLOCKED</p><p class="achievement-name">Algebraic Datatypes 101</p></div></div></div>
 
 </section>
-<section id="slide-org7dd1cb8">
-<h3 id="org7dd1cb8">Equivalences</h3>
+<section id="slide-org9b3ef83">
+<h3 id="org9b3ef83">Equivalences</h3>
+
 <div class="org-src-container">
 
 <pre  class="src src-cpp"><span style="color: #8AC6F2;">template</span> &lt;<span style="color: #8AC6F2;">typename</span> <span style="color: #5BA0EB;">T</span>&gt;
@@ -726,8 +768,10 @@ But note that in <code>Bar</code>, we need to manually keep the two variables "i
 </aside>
 
 </section>
-<section id="slide-org009947a">
-<h3 id="org009947a">Algebraic Datatypes</h3>
+
+<section id="slide-orga6bb17c">
+<h3 id="orga6bb17c">Algebraic Datatypes</h3>
+
 <p>
 This is what it means to have an algebra of datatypes.
 </p>
@@ -748,8 +792,10 @@ them</li>
 </ul>
 
 </section>
-<section id="slide-org5964656">
-<h3 id="org5964656">Making Illegal States Unrepresentable</h3>
+
+<section id="slide-org9cb53fc">
+<h3 id="org9cb53fc">Making Illegal States Unrepresentable</h3>
+
 <p>
 <code>std::variant</code> is a game changer because it allows us to (more) properly express
 types, so that (more) illegal states are unrepresentable.
@@ -770,16 +816,20 @@ amazing upgrade.
 </aside>
 
 </section>
-<section id="slide-org0e920fd">
-<h3 id="org0e920fd">Making Illegal States Unrepresentable</h3>
+
+<section id="slide-org64a8d58">
+<h3 id="org64a8d58">Making Illegal States Unrepresentable</h3>
+
 <p>
 Let's look at some possible alternative data formulations, using sum types
 (<code>variant</code>, <code>optional</code>) as well as product types (structs).
 </p>
 
 </section>
-<section id="slide-org10a1461">
-<h3 id="org10a1461">Example: Connection State</h3>
+
+<section id="slide-orgd7d4009">
+<h3 id="orgd7d4009">Example: Connection State</h3>
+
 <div class="org-src-container">
 
 <pre  class="src src-cpp"><span style="color: #8AC6F2;">enum</span> <span style="color: #8AC6F2;">class</span> <span style="color: #5BA0EB;">ConnectionState</span> {
@@ -830,8 +880,10 @@ the instant of disconnection.
 </aside>
 
 </section>
-<section id="slide-orgf99fca4">
-<h3 id="orgf99fca4">Example: Connection State</h3>
+
+<section id="slide-org83cfcc0">
+<h3 id="org83cfcc0">Example: Connection State</h3>
+
 <div class="org-src-container">
 
 <pre  class="src src-cpp"><span style="color: #8AC6F2;">struct</span> <span style="color: #5BA0EB;">Connection</span> {
@@ -879,8 +931,10 @@ a visitor-based approach could be used.
 </aside>
 
 </section>
-<section id="slide-org3f259cf">
-<h3 id="org3f259cf">Example: Nullable field</h3>
+
+<section id="slide-org23db937">
+<h3 id="org23db937">Example: Nullable field</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -909,8 +963,10 @@ kept up to date in sync with each other.
 </aside>
 
 </section>
-<section id="slide-orge8a9f9a">
-<h3 id="orge8a9f9a">Example: Nullable field</h3>
+
+<section id="slide-orge73ac14">
+<h3 id="orge73ac14">Example: Nullable field</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -933,8 +989,10 @@ possible for two fields to get out of step now.
 </aside>
 
 </section>
-<section id="slide-org5afc964">
-<h3 id="org5afc964">Example: Monster AI</h3>
+
+<section id="slide-org22f761f">
+<h3 id="org22f761f">Example: Monster AI</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -962,8 +1020,10 @@ Once again, presumably PlayerId has some invalid sentinel value.
 </aside>
 
 </section>
-<section id="slide-org692bd3f">
-<h3 id="org692bd3f">Example: Monster AI</h3>
+
+<section id="slide-org787dd92">
+<h3 id="org787dd92">Example: Monster AI</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -996,8 +1056,10 @@ Chasing and Fighting states could inherit from an Aggroed state that holds a tar
 </aside>
 
 </section>
-<section id="slide-org1d9d87e">
-<h3 id="org1d9d87e">Example: Design Patterns</h3>
+
+<section id="slide-org263b342">
+<h3 id="org263b342">Example: Design Patterns</h3>
+
 <p>
 The addition of sum types to C++ offers an alternative formulation for some
 design patterns.
@@ -1024,8 +1086,10 @@ natural for things like ASTs.
 </aside>
 
 </section>
-<section id="slide-org586369f">
-<h3 id="org586369f">Example: Design Patterns</h3>
+
+<section id="slide-org41f4f91">
+<h3 id="org41f4f91">Example: Design Patterns</h3>
+
 <ul>
 <li>Command</li>
 <li>Composite</li>
@@ -1060,8 +1124,10 @@ OO/interfaces) or new operations (use sum types/visitors)?
 </aside>
 
 </section>
-<section id="slide-org6d082d3">
-<h3 id="org6d082d3">Designing with Types</h3>
+
+<section id="slide-org84b81e3">
+<h3 id="org84b81e3">Designing with Types</h3>
+
 <br/>
 <p>
 <code>std::variant</code> and <code>std::optional</code> are valuable tools that allow us to model the
@@ -1082,8 +1148,10 @@ your reality - because that can't happen.
 </aside>
 
 </section>
-<section id="slide-org3b03a6b">
-<h3 id="org3b03a6b">Designing with Types</h3>
+
+<section id="slide-orgc4b15b6">
+<h3 id="orgc4b15b6">Designing with Types</h3>
+
 <br/>
 <p>
 Fitting types to their function more accurately makes code easier to understand
@@ -1114,8 +1182,10 @@ But they happen when we're chasing a deadline.
 </aside>
 
 </section>
-<section id="slide-org1b557d4">
-<h3 id="org1b557d4">Using Types to Constrain Behaviour</h3>
+
+<section id="slide-org48ac993">
+<h3 id="org48ac993">Using Types to Constrain Behaviour</h3>
+
 <br/>
 <p>
 We've seen how an expressive type system (with product and sum types) allows us
@@ -1128,8 +1198,10 @@ business logic in the type system. Illegal behaviour becomes a type error.
 </p>
 
 </section>
-<section id="slide-org89545fc">
-<h3 id="org89545fc">Phantom Types: Before</h3>
+
+<section id="slide-org76471e0">
+<h3 id="org76471e0">Phantom Types: Before</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1158,8 +1230,10 @@ we stay safe?
 </aside>
 
 </section>
-<section id="slide-orgf57feec">
-<h3 id="orgf57feec">Phantom Types: The setup</h3>
+
+<section id="slide-orgf8c7112">
+<h3 id="orgf8c7112">Phantom Types: The setup</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1186,8 +1260,10 @@ type checking. There is no runtime overhead.
 </aside>
 
 </section>
-<section id="slide-orgc5c6b6c">
-<h3 id="orgc5c6b6c">Phantom Types: After</h3>
+
+<section id="slide-org8e91321">
+<h3 id="org8e91321">Phantom Types: After</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1223,8 +1299,10 @@ library.
 </aside>
 
 </section>
-<section id="slide-orgc3adb0b">
-<h3 id="orgc3adb0b">Total Functions</h3>
+
+<section id="slide-org4ef3209">
+<h3 id="org4ef3209">Total Functions</h3>
+
 <br/>
 <p>
 A <i>total function</i> is a function that is defined for all inputs in its domain.
@@ -1254,8 +1332,10 @@ of its domain.
 </aside>
 
 </section>
-<section id="slide-orgff0fbb7">
-<h3 id="orgff0fbb7">Let's play another game</h3>
+
+<section id="slide-org1ee69c0">
+<h3 id="org1ee69c0">Let's play another game</h3>
+
 <p class="fragment appear">
 To help us see how total functions with the right types can result in
 unsurprising code.
@@ -1288,8 +1368,10 @@ surprising here.
 </aside>
 
 </section>
-<section id="slide-org0ec9d51">
-<h3 id="org0ec9d51">Name That Function</h3>
+
+<section id="slide-orgf892571">
+<h3 id="orgf892571">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1317,8 +1399,10 @@ Note the odd situation here: we know more about <code>f(T)</code> than we do abo
 </aside>
 
 </section>
-<section id="slide-orgbf41866">
-<h3 id="orgbf41866">Name That Function</h3>
+
+<section id="slide-org62fa4c5">
+<h3 id="org62fa4c5">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1332,8 +1416,10 @@ Note the odd situation here: we know more about <code>f(T)</code> than we do abo
 </p>
 
 </section>
-<section id="slide-orgb0ee6e2">
-<h3 id="orgb0ee6e2">Name That Function</h3>
+
+<section id="slide-orge7b8e36">
+<h3 id="orge7b8e36">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1347,8 +1433,10 @@ Note the odd situation here: we know more about <code>f(T)</code> than we do abo
 </p>
 
 </section>
-<section id="slide-orgafaa19e">
-<h3 id="orgafaa19e">Name That Function</h3>
+
+<section id="slide-orgadde883">
+<h3 id="orgadde883">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1362,8 +1450,10 @@ Note the odd situation here: we know more about <code>f(T)</code> than we do abo
 </p>
 
 </section>
-<section id="slide-org3175ae6">
-<h3 id="org3175ae6">Name That Function</h3>
+
+<section id="slide-org1922c0c">
+<h3 id="org1922c0c">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1385,8 +1475,10 @@ would be just the same.
 </aside>
 
 </section>
-<section id="slide-org051f01f">
-<h3 id="org051f01f">Name That Function</h3>
+
+<section id="slide-orgd477158">
+<h3 id="orgd477158">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1406,8 +1498,10 @@ Not possible! It's a partial function - the <code>vector</code> might be empty.
 </div>
 
 </section>
-<section id="slide-org7f5599e">
-<h3 id="org7f5599e">Name That Function</h3>
+
+<section id="slide-org8b496cc">
+<h3 id="org8b496cc">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1417,8 +1511,10 @@ Not possible! It's a partial function - the <code>vector</code> might be empty.
 </div>
 
 </section>
-<section id="slide-org9e67ade">
-<h3 id="org9e67ade">Name That Function</h3>
+
+<section id="slide-orgfe02246">
+<h3 id="orgfe02246">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1432,8 +1528,10 @@ Not possible! It's a partial function - the <code>vector</code> might be empty.
 </p>
 
 </section>
-<section id="slide-orge41fedc">
-<h3 id="orge41fedc">Name That Function</h3>
+
+<section id="slide-org495d481">
+<h3 id="org495d481">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1447,8 +1545,10 @@ Not possible! It's a partial function - the <code>vector</code> might be empty.
 </p>
 
 </section>
-<section id="slide-orge69da19">
-<h3 id="orge69da19">Name That Function</h3>
+
+<section id="slide-org0e3c699">
+<h3 id="org0e3c699">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1462,8 +1562,10 @@ Not possible!
 </p>
 
 </section>
-<section id="slide-orgae80c1e">
-<h3 id="orgae80c1e">Name That Function</h3>
+
+<section id="slide-org61f9e1a">
+<h3 id="org61f9e1a">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1483,8 +1585,10 @@ Not possible! (The key might not be in the <code>map</code>.)
 </div>
 
 </section>
-<section id="slide-orgbc62f75">
-<h3 id="orgbc62f75">Name That Function</h3>
+
+<section id="slide-orgf700263">
+<h3 id="orgf700263">Name That Function</h3>
+
 <br/>
 <div class="org-src-container">
 
@@ -1498,8 +1602,10 @@ Not possible! (The key might not be in the <code>map</code>.)
 </p>
 
 </section>
-<section id="slide-orgdcad10b">
-<h3 id="orgdcad10b">What Just Happened?</h3>
+
+<section id="slide-orgf82d9a3">
+<h3 id="orgf82d9a3">What Just Happened?</h3>
+
 <p>
 I gave you <i>almost nothing</i>.
 </p>
@@ -1531,8 +1637,10 @@ much easier. And if your types model the logic properly, perhaps you have
 </aside>
 
 </section>
-<section id="slide-org054e511">
-<h3 id="org054e511">Well-typed Functions</h3>
+
+<section id="slide-orgdcfafbd">
+<h3 id="orgdcfafbd">Well-typed Functions</h3>
+
 <br/>
 <p>
 Writing <i>total functions</i> with well-typed signatures can tell us a lot about
@@ -1549,8 +1657,10 @@ Total functions make more test categories vanish.
 </p>
 
 </section>
-<section id="slide-org3969652">
-<h3 id="org3969652">About Testing&#x2026;</h3>
+
+<section id="slide-org689e57b">
+<h3 id="org689e57b">About Testing&#x2026;</h3>
+
 <p>
 In a previous talk, I talked about unit testing and in particular property-based testing.
 </p>
@@ -1587,8 +1697,10 @@ can do.
 </aside>
 
 </section>
-<section id="slide-orgf9eab94">
-<h3 id="orgf9eab94">Further Down the Rabbit Hole</h3>
+
+<section id="slide-org3251d66">
+<h3 id="org3251d66">Further Down the Rabbit Hole</h3>
+
 <br/>
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Algebraic_data_type">http://en.wikipedia.org/wiki/Algebraic_data_type</a></li>
@@ -1599,8 +1711,10 @@ can do.
 </ul>
 
 </section>
-<section id="slide-orgc8ce94f">
-<h3 id="orgc8ce94f">Thanks For Listening</h3>
+
+<section id="slide-orgdd5d4fc">
+<h3 id="orgdd5d4fc">Thanks For Listening</h3>
+
 <br/>
 <p>
 "On the whole, I'm inclined to say that when in doubt, make a new type."
@@ -1620,8 +1734,10 @@ can do.
 </div>
 
 </section>
-<section id="slide-org202fc26">
-<h3 id="org202fc26">Goals for Well-typed Code</h3>
+
+<section id="slide-org3db4ca0">
+<h3 id="org3db4ca0">Goals for Well-typed Code</h3>
+
 <ul>
 <li>Make illegal states unrepresentable</li>
 <li>Use <code>std::variant</code> and <code>std::optional</code> for formulations that
@@ -1645,15 +1761,19 @@ can do.
 </ul>
 
 </section>
-<section id="slide-org1912357">
-<h3 id="org1912357">Epilogue</h3>
+
+<section id="slide-orgba1d05b">
+<h3 id="orgba1d05b">Epilogue</h3>
+
 <p>
 A taste of algebra with datatypes
 </p>
 
 </section>
-<section id="slide-orgc5eede2">
-<h3 id="orgc5eede2">A Taste of Algebra with Datatypes</h3>
+
+<section id="slide-orgb5dca54">
+<h3 id="orgb5dca54">A Taste of Algebra with Datatypes</h3>
+
 <p>
 How many values?
 </p>
@@ -1677,8 +1797,10 @@ We can define a <code>vector&lt;T&gt;</code> recursively:
 </p>
 
 </section>
-<section id="slide-orgc048219">
-<h3 id="orgc048219">A Taste of Algebra with Datatypes</h3>
+
+<section id="slide-org667681e">
+<h3 id="org667681e">A Taste of Algebra with Datatypes</h3>
+
 <p>
 And rearrange&#x2026;
 </p>
@@ -1688,8 +1810,10 @@ What does that mean? Subtracting and dividing types?
 </p>
 
 </section>
-<section id="slide-org3416354">
-<h3 id="org3416354">A Taste of Algebra with Datatypes</h3>
+
+<section id="slide-orgae33df7">
+<h3 id="orgae33df7">A Taste of Algebra with Datatypes</h3>
+
 <p>
 When we don't know how to interpret something mathematical?
 </p>
@@ -1697,8 +1821,10 @@ When we don't know how to interpret something mathematical?
 <p class="fragment appear">Let's <a href="http://www.wolframalpha.com/input/?i=1/(1-t)" data-preview-link>ask Wolfram Alpha</a>.</p>
 
 </section>
-<section id="slide-org8d5322d">
-<h3 id="org8d5322d">A Taste of Algebra with Datatypes</h3>
+
+<section id="slide-org84d36fb">
+<h3 id="org84d36fb">A Taste of Algebra with Datatypes</h3>
+
 <p>
 Series expansion at \({t = 0}\):
 </p>
@@ -1719,8 +1845,10 @@ A <code>vector&lt;T&gt;</code> can have:
 </ul>
 
 </section>
-<section id="slide-org1de75bd">
-<h3 id="org1de75bd">Goals for Well-typed Code</h3>
+
+<section id="slide-org779c799">
+<h3 id="org779c799">Goals for Well-typed Code</h3>
+
 <ul>
 <li>Make illegal states unrepresentable</li>
 <li>Use <code>std::variant</code> and <code>std::optional</code> for formulations that
@@ -1769,7 +1897,7 @@ minScale: 0.50,
 maxScale: 2.50,
 
 theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+transition: Reveal.getQueryHash().transition || 'convex', // default/cube/page/concave/zoom/linear/fade/none
 transitionSpeed: 'default',
 multiplex: {
     secret: '', // null if client

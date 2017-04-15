@@ -1,19 +1,28 @@
 ---
  layout: default
  title: Biblio
- weight: 5
+ weight: 8
 ---
 
 
-# Bibliografía
+## Bibliografía
 
 -   [Advanced R](http://adv-r.had.co.nz/)
 -   [R Markdown from RStudio](http://rmarkdown.rstudio.com/lesson-1.html)
 -   [R for Data Science](http://r4ds.had.co.nz/index.html)
 -   [The Hitchhiker's Guide to the Hadleyverse](http://adolfoalvarez.cl/the-hitchhikers-guide-to-the-hadleyverse/)
--   [Hadley's Stats 405 course](http://stat405.had.co.nz/) - [local Stat 405](file:///Users/moyano/Projects/REF%20-%20LEARNING/LEARNING%20I%20-%20RESOURCES%20-%20BOOKS%20AND%20PAPERS%20/LEARN-R/**%20Hadleyverse%20material/stat%20405%20-%20course/) (more material online)
--   [Machine Learning in R - Alexandros Karatzoglou](file:///Users/moyano/Projects/REF%20-%20LEARNING/LEARNING%20I%20-%20RESOURCES%20-%20BOOKS%20AND%20PAPERS%20/LEARN-R/Machine%20Learning%20in%20R%20-%20Alexandros%20Karatzoglou.pdf)
--   [**\*** Recommended Books in R **\***](file:///Users/moyano/Projects/REF%20-%20LEARNING/LEARNING%20I%20-%20RESOURCES%20-%20BOOKS%20AND%20PAPERS%20/LEARN-R/R%20Books/)
--   [Data Science Course with videos from University of Washington](file:///Users/moyano/Projects/REF%20-%20LEARNING/LEARNING%20I%20-%20RESOURCES%20-%20BOOKS%20AND%20PAPERS/LEARN-CS%20&%20DATA%20SCIENCE/Data%20Science%20Course%20with%20videos%20from%20University%20of%20Washington)
--   [John Hopkings video lectures - Computing for Data Analysis](file:///Users/moyano/Projects/REF%20-%20LEARNING/LEARNING%20I%20-%20RESOURCES%20-%20BOOKS%20AND%20PAPERS%20/LEARN-R/John%20Hopkings%20video%20lectures%20-%20Computing%20for%20Data%20Analysis/)
+-   [The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/) (libro)
+-   Hands-On Programming with R (libro)
+-   R in Action (libro)
+-   The Art of R Programming (libro)
+-   R graphics cookbook (libro)
+-   Practical Data Science with R (libro)
+
+
+### Guias de estilo y buenas prácticas
+
+-   [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml)
+-   [Best Practices for Writing R](https://swcarpentry.github.io/r-novice-inflammation/06-best-practices-R/)
+-   [R style guide](http://stat405.had.co.nz/r-style.html)
+-   [Good Practices in R Programming](https://www.google.com.ar/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiLlqyBtKXTAhVKkpAKHUUJC_gQFggiMAA&url=https%253A%252F%252Fstat.ethz.ch%252FTeaching%252Fmaechler%252FR%252FuseR_2014%252FMaechler-2014-pr.pdf&usg=AFQjCNFHw5c2_iUWOkPiQV6wFqLGi7vdKw&sig2=K2BnXLKpXG0lCSQt1HrS3Q)
 

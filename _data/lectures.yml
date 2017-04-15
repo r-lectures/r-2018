@@ -1,14 +1,14 @@
 lecture_title: Clases
 lectures:
   
-- title: "Intro"
+- title: "Clase 1 - Intro"
   url: "01-lecture.html"
 
   subitems:
-  - title: "Asset"
+  - title: "Slides clase 1"
     url: slides/01-lecture-slides.html
 
-- title: "Clase 2"
+- title: "Clase 2 - Workflows y scripting"
   url: 02-lecture.html
 
   subitems:

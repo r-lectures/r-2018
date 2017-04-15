@@ -1,8 +1,8 @@
 ---
 layout: default
 title:  "YAML using types effectively"
-transition: convex
-theme: moon
+transition: slide
+theme: dark
 ---
 
 
