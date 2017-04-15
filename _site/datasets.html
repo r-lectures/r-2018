@@ -36,12 +36,6 @@
 	  
 	  
 	  
-	  <li><a href="http://localhost:4000/posts.html" >Info</a></li>
-	  
-	  
-	  
-	  
-	  
 	  <li><a href="http://localhost:4000/lessons/" >Clases</a></li>
 	  
 	  
@@ -77,21 +71,17 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/lessons/slides/2017-04-05-simple.html">using types effectively</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
               <!-- <li><a href="/">index</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/lessons/slides/2017-04-05-simple.html">using types effectively</a></li> -->
-              <!--  -->
-              <!--  -->
-              <!--  -->
               <!-- <li><a href="/lessons/">Clases</a></li> -->
-              <!--  -->
-              <!--  -->
-              <!--  -->
-              <!-- <li><a href="/resources.html">Biblio</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -100,6 +90,10 @@
               <!--  -->
               <!--  -->
               <!-- <li><a href="/datasets.html">Datos</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/resources.html">Biblio</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -134,35 +128,66 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="datasets">Datasets</h1>
+                <h2 id="datasets">Datasets</h2>
+
+<p>Se irán agregando items, sugerencias bienvenidas.</p>
 
 <ul>
-  <li><a href="http://www.rug.nl/ggdc/productivity/pwt/">Penn World Table</a>
+  <li>R built-in datasets - <a href="http://stackoverflow.com/questions/33797666/how-to-get-a-list-of-built-in-data-sets-in-r">credit: answer from Jaap in stackoverflow</a>
+    <ol>
+      <li>Using data() will give you a list of the datasets of all loaded packages (and not only the ones
+from the datasets package); the datasets are order by package</li>
+      <li>Using data(package = .packages(all.available = TRUE)) will give you a list of all datasets in
+the available packages on your computer (i.e. also the not-loaded ones)</li>
+      <li>
+        <p>Using data(package = “packagename”) will give you the datasets of that specific package, so
+data(package = “plyr”) will give the datasets in the plyr package
+Example:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code># Built-in datasets
+data()
+data(ToothGrowth)
+?ToothGrowth
+ToothGrowth
+summary(ToothGrowth)
+plot(ToothGrowth)
+</code></pre>
+        </div>
+      </li>
+    </ol>
+  </li>
+  <li><a href="https://mran.microsoft.com/packages/">Explore Packages Currently on CRAN (search for “dataset”)</a></li>
+  <li><a href="http://ckan.ciudaddemendoza.gov.ar/">open data mendoza</a></li>
+  <li><a href="https://data.buenosaires.gob.ar/">buenos aires data</a> - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.</li>
+  <li><a href="https://data.gov.uk">data.gov.uk - opening up government</a></li>
+  <li><a href="http://www.curitiba.pr.gov.br/dadosabertos/consulta/">Dados Abertos Curitiba</a></li>
+  <li><a href="http://berkeleyearth.org/data/">Berkeley Earth</a></li>
+  <li><a href="http://linkedscience.org/data/linked-brazilian-amazon-rainforest/">Linked Brazilian Amazon Rainforest</a></li>
+  <li><a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">Kaggle Climate Change: Earth Surface Temperature Data</a></li>
+  <li><a href="https://aws.amazon.com/datasets/">AWS Public Datasets</a></li>
+  <li><a href="https://snap.stanford.edu/data/">Stanford Large Network Dataset Collection</a></li>
+  <li><a href="http://www.rug.nl/ggdc/productivity/pwt/">Penn World Table</a> - University of Groningen
     <ul>
       <li>data from the Penn World Tables 9.0.</li>
       <li>PWT version 9.0 is a database with information on relative levels of income, output, input and
 productivity, covering 182 countries between 1950 and 2014</li>
-      <li>Install package called “pwt9”.</li>
+      <li>Install R package called “pwt9”</li>
     </ul>
   </li>
   <li><a href="https://www.kaggle.com/benhamner/2016-us-election">Kaggle - 2016 US Election</a></li>
-  <li><a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">Kaggle Climate Change: Earth Surface Temperature Data</a></li>
-  <li><a href="http://berkeleyearth.org/data/">Berkeley Earth</a></li>
-  <li><a href="https://snap.stanford.edu/data/">Stanford Large Network Dataset Collection</a></li>
   <li><a href="https://www.kaggle.com/cdc/mortality">Death in the United States</a></li>
   <li><a href="https://catalog.data.gov/dataset">Data Gov -  191,705 datasets</a>
     <ul>
       <li><a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9">U.S. Chronic Disease Indicators (CDI)</a></li>
     </ul>
   </li>
-  <li><a href="https://www.kaggle.com/c/shelter-animal-outcomes">Shelter Animal Outcomes</a></li>
-  <li><a href="https://www.kaggle.com/c/facebook-v-predicting-check-ins">Facebook V: Predicting Check Ins</a></li>
+  <li><a href="https://www.kaggle.com/c/shelter-animal-outcomes/data">Shelter Animal Outcomes</a></li>
+  <li><a href="https://www.kaggle.com/c/facebook-v-predicting-check-ins/data">Facebook V: Predicting Check Ins</a></li>
   <li><a href="http://www.gutenberg.org/">Free ebooks by Project Gutenberg</a></li>
   <li><a href="http://www.pro-football-reference.com/">Football Stats and History</a></li>
   <li><a href="http://www.basketball-reference.com/">Basketball Stats and History</a></li>
   <li><a href="http://www.baseball-reference.com/">Baseball Stats and History</a></li>
   <li><a href="http://archive.ics.uci.edu/ml/datasets/Bag+of+Words">Bag of Words Data Set</a></li>
-  <li>Más en breve</li>
 </ul>
 
 

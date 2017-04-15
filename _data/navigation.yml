@@ -1,5 +1,5 @@
-- title: "Info"
-  url: "/posts.html"
+# - title: "Info"
+#   url: "/posts.html"
 
 - title: "Clases"
   url: "/lessons/"

@@ -11,24 +11,49 @@
 #+end_src
 #+results:
 
-* Datasets
-- [[http://www.rug.nl/ggdc/productivity/pwt/][Penn World Table]] 
+* Datasets 
+Se irán agregando items, sugerencias bienvenidas.
+- R built-in datasets - [[http://stackoverflow.com/questions/33797666/how-to-get-a-list-of-built-in-data-sets-in-r][credit: answer from Jaap in stackoverflow]]
+  1) Using data() will give you a list of the datasets of all loaded packages (and not only the ones
+     from the datasets package); the datasets are order by package
+  2) Using data(package = .packages(all.available = TRUE)) will give you a list of all datasets in
+     the available packages on your computer (i.e. also the not-loaded ones)
+  3) Using data(package = "packagename") will give you the datasets of that specific package, so
+     data(package = "plyr") will give the datasets in the plyr package
+     Example: 
+     #+BEGIN_SRC R 
+       # Built-in datasets
+       data()
+       data(ToothGrowth)
+       ?ToothGrowth
+       ToothGrowth
+       summary(ToothGrowth)
+       plot(ToothGrowth)
+     #+END_SRC
+- [[https://mran.microsoft.com/packages/][Explore Packages Currently on CRAN (search for "dataset")]]
+- [[http://ckan.ciudaddemendoza.gov.ar/][open data mendoza]]
+- [[https://data.buenosaires.gob.ar/][buenos aires data]] - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.
+- [[https://data.gov.uk][data.gov.uk - opening up government]]
+- [[http://www.curitiba.pr.gov.br/dadosabertos/consulta/][Dados Abertos Curitiba]]
+- [[http://berkeleyearth.org/data/][Berkeley Earth]]
+- [[http://linkedscience.org/data/linked-brazilian-amazon-rainforest/][Linked Brazilian Amazon Rainforest]]
+- [[https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data][Kaggle Climate Change: Earth Surface Temperature Data]]
+- [[https://aws.amazon.com/datasets/][AWS Public Datasets]]
+- [[https://snap.stanford.edu/data/][Stanford Large Network Dataset Collection]]
+- [[http://www.rug.nl/ggdc/productivity/pwt/][Penn World Table]] - University of Groningen
   - data from the Penn World Tables 9.0. 
   - PWT version 9.0 is a database with information on relative levels of income, output, input and
     productivity, covering 182 countries between 1950 and 2014
-  - Install package called "pwt9".
+  - Install R package called "pwt9"
 - [[https://www.kaggle.com/benhamner/2016-us-election][Kaggle - 2016 US Election]]
-- [[https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data][Kaggle Climate Change: Earth Surface Temperature Data]]
-- [[http://berkeleyearth.org/data/][Berkeley Earth]]
-- [[https://snap.stanford.edu/data/][Stanford Large Network Dataset Collection]]
 - [[https://www.kaggle.com/cdc/mortality][Death in the United States]]
 - [[https://catalog.data.gov/dataset][Data Gov -  191,705 datasets]]
   - [[https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9][U.S. Chronic Disease Indicators (CDI)]]
-- [[https://www.kaggle.com/c/shelter-animal-outcomes][Shelter Animal Outcomes]]
-- [[https://www.kaggle.com/c/facebook-v-predicting-check-ins][Facebook V: Predicting Check Ins]]
+- [[https://www.kaggle.com/c/shelter-animal-outcomes/data][Shelter Animal Outcomes]]
+- [[https://www.kaggle.com/c/facebook-v-predicting-check-ins/data][Facebook V: Predicting Check Ins]]
 - [[http://www.gutenberg.org/][Free ebooks by Project Gutenberg]]
 - [[http://www.pro-football-reference.com/][Football Stats and History]]
 - [[http://www.basketball-reference.com/][Basketball Stats and History]]
 - [[http://www.baseball-reference.com/][Baseball Stats and History]]
 - [[http://archive.ics.uci.edu/ml/datasets/Bag+of+Words][Bag of Words Data Set]]
-- Más en breve
+
