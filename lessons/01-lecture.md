@@ -17,7 +17,11 @@ title: Clase 1 - Intro
 <div class="NOTES">
 `These` are some *<span class="underline">formatted</span>* notes that I'm `taking`
 
+Amo muito a triga e a Clara
+
 </div>
+
+Amo muito 
 
 
 # And an effort to show code

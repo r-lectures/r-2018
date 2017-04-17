@@ -31,8 +31,8 @@ flexible lenguaje de programación.
 
 ** Herramientas
 - [[https://www.rstudio.com/][RStudio]] - para trabajar con R
-  - Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) + el editor de texto
-    que quieran (por ejemplo, [[https://www.gnu.org/software/emacs/][emacs]], o si no hay otra, [[http://www.vim.org/][vim]] ;)
+  - Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
+    que quieran (por ejemplo, [[https://www.gnu.org/software/emacs/][emacs]] o, si no hay otra, [[http://www.vim.org/][vim]] ;)
 - [[https://slack.com/][Slack]] - para mantenernos en contacto entre todos
 - [[https://github.com/][Github]] - para compartir código
 

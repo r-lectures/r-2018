@@ -1,7 +1,7 @@
-
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-
 
     <title>
       
@@ -83,8 +83,6 @@ Types are the currency of metaprogramming, but also important for safety in
 
 <h2 id="fp-isnt-only-about">FP isn’t (only) about</h2>
 
-
-
 <ul>
   <li>first class functions</li>
   <li>higher order functions</li>
@@ -107,9 +105,7 @@ Here are some things you may think of when functional programming is mentioned&#
 
 </div>
 
-
 <h2 id="fp-is-also-importantly-about">FP is (also, importantly) about</h2>
-
 
 <ul>
   <li>using types effectively and expressively</li>
@@ -129,8 +125,6 @@ C++ is moving in that direction.
 
 <h2 id="what-is-a-type">What is a type?</h2>
 
-
-
 <ul>
   <li>A way for the compiler to know what opcodes to output (dmr’s motivation)?</li>
   <li>The way data is stored (representational)?</li>
@@ -139,9 +133,7 @@ C++ is moving in that direction.
   <li>Determines the meaning of the data?</li>
 </ul>
 
-
 <h2 id="what-is-a-type-1">What is a type?</h2>
-
 
 <p><img src="./int_bool_1.png" alt="img" /></p>
 
@@ -155,8 +147,6 @@ seems to be correct here. It’s your view of the world that has been warped.”
 <p>(Smiley faces make criticism OK!)</p>
 
 <h2 id="what-is-a-type-2">What is a type?</h2>
-
-
 
 <ul>
   <li>The set of values that can inhabit an expression
@@ -178,9 +168,7 @@ seems to be correct here. It’s your view of the world that has been warped.”
 
 <p>I’ll tell you a type.</p>
 
-
 <p>You tell me how many values it has.</p>
-
 
 <p>There are no tricks: if it seems obvious, it is!</p>
 
@@ -188,11 +176,9 @@ seems to be correct here. It’s your view of the world that has been warped.”
 
 <p>Types as sets of values</p>
 
-
 <h2 id="level-1-1">Level 1</h2>
 
 <p>How many values?</p>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>bool;
 </code></pre>
@@ -200,9 +186,7 @@ seems to be correct here. It’s your view of the world that has been warped.”
 
 <p>2 (<code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">false</code>)</p>
 
-
 <h2 id="level-1-2">Level 1</h2>
-
 
 <p>How many values?</p>
 
@@ -214,9 +198,7 @@ seems to be correct here. It’s your view of the world that has been warped.”
 
 <h2 id="level-1-3">Level 1</h2>
 
-
 <p>How many values?</p>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>void;
 </code></pre>
@@ -243,7 +225,6 @@ cf BASIC's function vs procedure
 </code></pre>
 </div>
 
-
 <p>1</p>
 
 <h2 id="level-1-5">Level 1</h2>
@@ -254,7 +235,6 @@ cf BASIC's function vs procedure
   FLAME_SPURTS,
   LIGHTNING_SAND,
   ROUSES
-
 };
 </code></pre>
 </div>
@@ -271,9 +251,7 @@ there is no interpretation: cf. an unconstructed object.
 
 <h2 id="level-1-6">Level 1</h2>
 
-
 <p>How many values?</p>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 struct Foo {
@@ -286,9 +264,7 @@ struct Foo {
 
 <h2 id="end-of-level-1">End of Level 1</h2>
 
-
 <p>Algebraically, a type is the number of values that inhabit it.</p>
-
 
 <p>These types are equivalent:</p>
 
@@ -298,7 +274,6 @@ enum class InatorButtons {
   ON_OFF,
   SELF_DESTRUCT
 };
-
 </code></pre>
 </div>
 
@@ -325,7 +300,6 @@ enum class InatorButtons {
 <div class="highlighter-rouge"><pre class="highlight"><code>struct Foo {
   char a;
   bool b;
-
 };
 </code></pre>
 </div>
@@ -334,9 +308,7 @@ enum class InatorButtons {
 
 <h2 id="level-2-3">Level 2</h2>
 
-
 <p>How many values?</p>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>std::tuple&lt;bool, bool, bool&gt;;
 </code></pre>
@@ -344,9 +316,7 @@ enum class InatorButtons {
 
 <p>2 * 2 * 2 = 8</p>
 
-
 <h2 id="level-2-4">Level 2</h2>
-
 
 <p>How many values?</p>
 
@@ -355,7 +325,6 @@ struct Foo {
   T m_t;
   U m_u;
 };
-
 </code></pre>
 </div>
 
@@ -457,7 +426,6 @@ bool f4(bool b) { return !b; }
 <p>How many values (for <code class="highlighter-rouge">f</code>)?</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>enum class Foo
-
 {
   BAR,
   BAZ,
@@ -470,7 +438,6 @@ char f(Foo);
 <p>256 * 256 * 256 = 16,777,216</p>
 
 <h2 id="level-4-6">Level 4</h2>
-
 
 <p>The number of values of a function is the number of different ways we can draw
 arrows between the inputs and the outputs.
@@ -521,7 +488,6 @@ F_{uncurried}::(A,B) \rightarrow C &amp; \Leftrightarrow C^{A</em>B} <br />
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 struct Foo {
   std::variant&lt;T, T&gt; m_v;
-
 };
 
 template &lt;typename T&gt;
@@ -544,9 +510,7 @@ But note that in `Bar`, we need to manually keep the two variables "in sync".
 
 </div>
 
-
 <h2 id="algebraic-datatypes">Algebraic Datatypes</h2>
-
 
 <p>This is what it means to have an algebra of datatypes.</p>
 
@@ -564,9 +528,7 @@ them</li>
   <li>to eliminate illegal states by making them inexpressible</li>
 </ul>
 
-
 <h2 id="making-illegal-states-unrepresentable">Making Illegal States Unrepresentable</h2>
-
 
 <p><code class="highlighter-rouge">std::variant</code> is a game changer because it allows us to (more) properly express
 types, so that (more) illegal states are unrepresentable.</p>
@@ -576,7 +538,6 @@ types, so that (more) illegal states are unrepresentable.</p>
 <div class="NOTES">
 C++'s type system is still not perfect by a long shot. But `std::variant` is an
 amazing upgrade.
-
 
 </div>
 
@@ -592,7 +553,6 @@ amazing upgrade.
   CONNECTING,
   CONNECTED,
   CONNECTION_INTERRUPTED
-
 };
 
 struct Connection {
@@ -625,9 +585,7 @@ the instant of disconnection.
 
 </div>
 
-
 <h2 id="example-connection-state-1">Example: Connection State</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>struct Connection {
   std::string m_serverAddress;
@@ -665,9 +623,7 @@ a visitor-based approach could be used.
 
 </div>
 
-
 <h2 id="example-nullable-field">Example: Nullable field</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>class Friend {
   std::string m_alias;
@@ -688,9 +644,7 @@ kept up to date in sync with each other.
 
 </div>
 
-
 <h2 id="example-nullable-field-1">Example: Nullable field</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>class Friend {
   std::optional&lt;std::string&gt; m_alias;
@@ -707,9 +661,7 @@ possible for two fields to get out of step now.
 
 </div>
 
-
 <h2 id="example-monster-ai">Example: Monster AI</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>enum class AggroState {
   IDLE,
@@ -732,9 +684,7 @@ Once again, presumably PlayerId has some invalid sentinel value.
 
 </div>
 
-
 <h2 id="example-monster-ai-1">Example: Monster AI</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>class MonsterAI {
   struct Idle {
@@ -762,10 +712,8 @@ Chasing and Fighting states could inherit from an Aggroed state that holds a tar
 
 <h2 id="example-design-patterns">Example: Design Patterns</h2>
 
-
 <p>The addition of sum types to C++ offers an alternative formulation for some
 design patterns.</p>
-
 
 <p>State machines and expressions are naturally modelled with sum types.</p>
 
@@ -779,9 +727,7 @@ natural for things like ASTs.
 
 </div>
 
-
 <h2 id="example-design-patterns-1">Example: Design Patterns</h2>
-
 
 <ul>
   <li>Command</li>
@@ -802,7 +748,6 @@ Sum types are especially good for representing expressions (think JSON).
 
 Interpreter tackles the expression problem: easy to add new classes (use
 OO/interfaces) or new operations (use sum types/visitors)?
-
 
 </div>
 
@@ -829,7 +774,6 @@ and removes pitfalls.</p>
 there is in correct representation with types.</p>
 
 <div class="NOTES">
-
 When illegal states are unrepresentable, you don't have to worry about other
 programmers misunderstanding the code, or misusing data. In a sense, they
 *cannot* write something that is wrong.
@@ -843,17 +787,13 @@ But they happen when we're chasing a deadline.
 
 <h2 id="using-types-to-constrain-behaviour">Using Types to Constrain Behaviour</h2>
 
-
 <p>We’ve seen how an expressive type system (with product and sum types) allows us
 to model state more accurately.</p>
-
 
 <p>“Phantom types” is one technique that helps us to model the <em>behaviour</em> of our
 business logic in the type system. Illegal behaviour becomes a type error.</p>
 
-
 <h2 id="phantom-types-before">Phantom Types: Before</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>std::string GetFormData();
 
@@ -874,9 +814,7 @@ we stay safe?
 
 </div>
 
-
 <h2 id="phantom-types-the-setup">Phantom Types: The setup</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 struct FormData {
@@ -897,9 +835,7 @@ type checking. There is no runtime overhead.
 
 </div>
 
-
 <h2 id="phantom-types-after">Phantom Types: After</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>FormData&lt;unsanitized&gt; GetFormData();
 
@@ -926,9 +862,7 @@ library.
 
 <h2 id="total-functions">Total Functions</h2>
 
-
 <p>A <em>total function</em> is a function that is defined for all inputs in its domain.</p>
-
 
 <p><code class="highlighter-rouge">template &lt;typename T&gt;
 const T&amp; min(const T&amp; a, const T&amp; b);</code></p>
@@ -947,10 +881,8 @@ of its domain.
 
 <h2 id="lets-play-another-game">Let’s play another game</h2>
 
-
 <p>To help us see how total functions with the right types can result in
 unsurprising code.</p>
-
 
 <p>I’ll give you a function signature with no names attached.</p>
 
@@ -968,9 +900,7 @@ surprising here.
 
 </div>
 
-
 <h2 id="name-that-function">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 T f(T);
@@ -989,9 +919,7 @@ Note the odd situation here: we know more about `f(T)` than we do about
 
 </div>
 
-
 <h2 id="name-that-function-1">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
 T f(pair&lt;T, U&gt;);
@@ -1000,9 +928,7 @@ T f(pair&lt;T, U&gt;);
 
 <p><code class="highlighter-rouge">first</code></p>
 
-
 <h2 id="name-that-function-2">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 T f(bool, T, T);
@@ -1011,9 +937,7 @@ T f(bool, T, T);
 
 <p><code class="highlighter-rouge">select</code></p>
 
-
 <h2 id="name-that-function-3">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
 U f(function&lt;U(T)&gt;, T);
@@ -1022,9 +946,7 @@ U f(function&lt;U(T)&gt;, T);
 
 <p><code class="highlighter-rouge">apply</code> or <code class="highlighter-rouge">call</code></p>
 
-
 <h2 id="name-that-function-4">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 vector&lt;T&gt; f(vector&lt;T&gt;);
@@ -1039,9 +961,7 @@ would be just the same.
 
 </div>
 
-
 <h2 id="name-that-function-5">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 T f(vector&lt;T&gt;);
@@ -1054,18 +974,14 @@ T f(vector&lt;T&gt;);
 </code></pre>
 </div>
 
-
 <h2 id="name-that-function-6">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 optional&lt;T&gt; f(vector&lt;T&gt;);
 </code></pre>
 </div>
 
-
 <h2 id="name-that-function-7">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
 vector&lt;U&gt; f(function&lt;U(T)&gt;, vector&lt;T&gt;);
@@ -1074,9 +990,7 @@ vector&lt;U&gt; f(function&lt;U(T)&gt;, vector&lt;T&gt;);
 
 <p><code class="highlighter-rouge">transform</code></p>
 
-
 <h2 id="name-that-function-8">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 vector&lt;T&gt; f(function&lt;bool(T)&gt;, vector&lt;T&gt;);
@@ -1085,9 +999,7 @@ vector&lt;T&gt; f(function&lt;bool(T)&gt;, vector&lt;T&gt;);
 
 <p><code class="highlighter-rouge">remove_if</code>, <code class="highlighter-rouge">partition</code>, …</p>
 
-
 <h2 id="name-that-function-9">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
 T f(optional&lt;T&gt;);
@@ -1096,9 +1008,7 @@ T f(optional&lt;T&gt;);
 
 <p>Not possible!</p>
 
-
 <h2 id="name-that-function-10">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename K, typename V&gt;
 V f(map&lt;K, V&gt;, K);
@@ -1111,9 +1021,7 @@ V f(map&lt;K, V&gt;, K);
 </code></pre>
 </div>
 
-
 <h2 id="name-that-function-11">Name That Function</h2>
-
 
 <div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename K, typename V&gt;
 optional&lt;V&gt; f(map&lt;K, V&gt;, K);
@@ -1122,9 +1030,7 @@ optional&lt;V&gt; f(map&lt;K, V&gt;, K);
 
 <p><code class="highlighter-rouge">lookup</code></p>
 
-
 <h2 id="what-just-happened">What Just Happened?</h2>
-
 
 <p>I gave you <em>almost nothing</em>.</p>
 
@@ -1141,7 +1047,6 @@ knew instantly how to implement them.</p>
 Naming is one of the hardest problems in Comp Sci. Getting the types right is
 much easier. And if your types model the logic properly, perhaps you have
 "self-documenting code"?
-
 
 </div>
 
@@ -1169,7 +1074,6 @@ done with data.</p>
 <p>Types scale better than tests. Instead of TDD, maybe try TDD!</p>
 
 <div class="NOTES">
-
 C++'s type system isn't yet powerful enough to be able to say goodbye to tests,
 but it is powerful enough that used effectively, we can reduce some of the
 drudgery of writing tests.
@@ -1179,9 +1083,7 @@ can do.
 
 </div>
 
-
 <h2 id="further-down-the-rabbit-hole">Further Down the Rabbit Hole</h2>
-
 
 <ul>
   <li><a href="http://en.wikipedia.org/wiki/Algebraic_data_type">http://en.wikipedia.org/wiki/Algebraic_data_type</a></li>
@@ -1190,9 +1092,7 @@ can do.
   <li><a href="http://www.infoq.com/presentations/Types-Tests">http://www.infoq.com/presentations/Types-Tests</a> (Types vs Tests: Strange Loop 2012)</li>
 </ul>
 
-
 <h2 id="thanks-for-listening">Thanks For Listening</h2>
-
 
 <p>“On the whole, I’m inclined to say that when in doubt, make a new type.”</p>
 
@@ -1202,9 +1102,7 @@ can do.
 
 <p>– Leo Brodie, <em><a href="http://thinking-forth.sourceforge.net/">Thinking Forth</a></em></p>
 
-
 <h2 id="goals-for-well-typed-code">Goals for Well-typed Code</h2>
-
 
 <ul>
   <li>Make illegal states unrepresentable</li>
@@ -1227,9 +1125,7 @@ can do.
   </li>
 </ul>
 
-
 <h2 id="epilogue">Epilogue</h2>
-
 
 <p>A taste of algebra with datatypes</p>
 

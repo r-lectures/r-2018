@@ -19,7 +19,11 @@ title: Clase 1 - Intro
 * Slide 2
 #+BEGIN_NOTES
 =These= are some /_formatted_/ notes that I'm ~taking~
+
+Amo muito a triga e a Clara
 #+END_NOTES
+
+Amo muito 
 * And an effort to show code
 #+BEGIN_SRC R
 require(ggplot2)
