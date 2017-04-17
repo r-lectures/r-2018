@@ -1,4 +1,4 @@
-#+TITLE: Clase 1 - Intro
+#+TITLE: Clase 1 - Intro [2017-04-18 Tue]
 #+STARTUP: showall expand
 #+options: toc:nil
 #+REVEAL_ROOT: ../../reveal.js/
@@ -11,22 +11,85 @@ title: Clase 1 - Intro
 #+end_src 
 #+results:
 
-* Slide 1
-- this is 
-- some 
-- list of 
-- sorts
-* Slide 2
-#+BEGIN_NOTES
-=These= are some /_formatted_/ notes that I'm ~taking~
+* Presentations
+*** who am i
+*** who are you
+* Course mechanics
+*** lecture time
+- schedule
+  - 09AM 1h consulting
+  - 10AM 1h practice
+  - 11AM 1h theory
+- should I prepare slides?
+  - yes, I should prepare slides
+  - slides accesible from Slack
+- in-class mini exercises
+  - 3-4 per class?
+*** exercises
+- off-class problem guides
+- guides given on WED due TUE 
+- based on reproducible research, guides should be self-contained
+  - report in txt/md/tex + pdf format
+    - [[http://r4ds.had.co.nz/r-markdown-workflow.html][30 R Markdown workflow]]
+    - [[http://rmarkdown.rstudio.com/lesson-1.html][markdown rstudio Lesson 1]]
+    - [[http://rmarkdown.rstudio.com/authoring_basics.html][markdown authoring basics]]
+    - [[https://youtu.be/hAyze9cEdZA][video markdown]]
+  - working .R code also turned in
+*** mid-term exam
+- only one mid-term exam
+- will have every information at disposal, as in regular research
+- part 1. answer some theoretical questions? For instance, 10-20 multiple choice
+- part 2. solve a fairly complex problem
+- each problem should have zero/half/full points The point is to demonstrate proficiency, allowing
+  for some mistakes. Shouldn't pass if every answer is half-cooked!
+- sould have an associated recovery exam
+*** final project & presentation
+- project chosen in accord with me, possibly aligned with own work
+- 10-15 page report with working code
+- RUBRIC
+  - use of tools learned
+  - presentation
+  - legibility
+*** schedule/calendar
+- when will the exam be?
+- when final projects are due? posters?
+*** organization and computational infrastructure
+- console R + text editor
+- or RStudio
+- Slack
+- Github: to put my code/data 
+* Introducción y fundamentos
+- what's R
+- R history - 2'
+- what we'll learn in the course
+  - horizontal to all carreers
+- what we willl not learn in the course
+  - programming logic
+  - algorithms in depth
+*** El rol de R en la programación y el análisis de datos
+- FRUSTRATION is natural when you start programming in R, because it is such a stickler for
+  punctuation, and even one character out of place will cause it to complain. But while you should
+  expect to be a little frustrated, take comfort in that it’s both typical and temporary: it happens
+  to everyone, and the only way to get over it is to keep trying.
+- hands-on activities is for people to rapidly fail in an environment where they can quickly get
+  help
+- Ventajas y limitaciones
+* Intro R en terminal
+* Intro Rstudio
+* Introducción al paquete ggplot2
+- plot()
+- qplot()
+*** [[http://hadley.nz/][Hadley Wickham]]
+- hadleyverse
+- tidyverse
+  - http://tidyverse.org/
+  - http://style.tidyverse.org/
+  - https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/
+- grammar
+  - verbs: arrival linguist first dialog among protagonists scene: "the cornerstone of civilization
+    isn’t language, it’s science"
+*** Gramática de visualización
+- https://www.ggplot2-exts.org/
 
-Amo muito a triga e a Clara
-#+END_NOTES
 
-Amo muito 
-* And an effort to show code
-#+BEGIN_SRC R
-require(ggplot2)
-df <- as.data.frame(x)
-#+END_SRC
 
