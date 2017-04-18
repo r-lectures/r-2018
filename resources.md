@@ -5,7 +5,7 @@
 ---
 
 
-## Bibliografía
+# Bibliografía
 
 -   [Advanced R](http://adv-r.had.co.nz/)
 -   [R Markdown from RStudio](http://rmarkdown.rstudio.com/lesson-1.html)
@@ -19,8 +19,9 @@
 -   Practical Data Science with R (libro)
 
 
-### Guias de estilo y buenas prácticas
+## Guias de estilo y buenas prácticas
 
+-   [The tidyverse style guide](http://style.tidyverse.org/)
 -   [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml)
 -   [Best Practices for Writing R](https://swcarpentry.github.io/r-novice-inflammation/06-best-practices-R/)
 -   [R style guide](http://stat405.had.co.nz/r-style.html)
