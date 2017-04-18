@@ -212,7 +212,7 @@ r-2017.github.io
 
 - Ayuda: ~?~ y ~??~
 - Carga de paquetes: ~library(GenomicRanges)~
-- Instalación de paquetes: ~install.packages(GenomicRanges)~
+- Instalación de paquetes: ~install.packages("GenomicRanges")~
 - Exploración y carga de datos: ~data(CO2)~
 - qué objetos tenemos? ~ls()~
 - cargar código local: ~source("./my_code.R")~
