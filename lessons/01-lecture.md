@@ -20,7 +20,7 @@ r-2017.github.io
 
 # Qué es R?
 
-<img style="position:absolute; TOP:-150px; LEFT:-100px; WIDTH:200px; HEIGHT:200px; border:0" src="./figs/r_logo.png">
+<img style="position:absolute; TOP:0px; LEFT:300px; WIDTH:150px; HEIGHT:150px; border:0" src="./figs/r_logo.png">
 
 -   Software estadístico para GNU
 -   Manipulación de datos, cálculo y gráficos
