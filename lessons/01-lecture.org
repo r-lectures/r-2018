@@ -1,7 +1,33 @@
-#+TITLE: Clase 1 - Intro
+#+TITLE: R 2017
+#+DATE: 18/04/2017
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+#+OPTIONS: author:nil date:t email:nil
 #+STARTUP: showall expand
 #+options: toc:nil
 #+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h2>%d</h2>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_THEME: beige
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
+# #+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+
 
 #+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
 --- 
@@ -11,18 +37,262 @@ title: Clase 1 - Intro
 #+end_src 
 #+results:
 
-* Slide 1
-- this is 
-- some 
-- list of 
-- sorts
-* Slide 2
-#+BEGIN_NOTES
-=These= are some /_formatted_/ notes that I'm ~taking~
-#+END_NOTES
-* And an effort to show code
-#+BEGIN_SRC R
-require(ggplot2)
-df <- as.data.frame(x)
-#+END_SRC
+# #+begin_html
+# <img src="right-fail.png">
+# #+end_html
 
+# #+ATTR_REVEAL: :frag roll-in
+
+# Clase [2017-04-18 Tue]
+* Presentaciones
+Profe Luis G. Moyano
+
+lgmoyano@gmail.com
+
+@luisgmoyano
+
+* 
+
+r-2017.github.io
+
+* Qué es R?
+  #+BEGIN_EXPORT html
+  <img style="position:absolute; TOP:-150px; LEFT:-100px; WIDTH:200px; HEIGHT:200px; border:0" src="./figs/r_logo.png">
+  #+END_EXPORT
+
+  # - R history - 2'
+ - Software estadístico para GNU 
+ - Manipulación de datos, cálculo y gráficos
+ - Implementación de S
+ - Abierto, extensible y colaborativo 
+
+** Qué vamos a aprender en esta materia
+- R cómo herramienta científica
+- Foco en *datos*
+- Horizontal para todas las carreras
+- Autonomía
+** Qué no vamos a aprender en esta materia
+- No vamos a hacer énfasis en la lógica de programación
+- No vamos a ver algoritmos en profundidad
+- No vamos a cubrir R en su totalidad
+** R en la programación y el análisis de datos
+- Adoptado ampliamente en estadística, biología y ciencias de la computación
+- R vs. Python y otros
+- /Scripting/ vs. /Interactive/
+  - Workflow científico
+** Ventajas de R
+- Exploración
+  #+BEGIN_NOTES
+  - Liviano
+  - Interpretado, no compilado 
+  #+END_NOTES
+- Flexibilidad
+  #+BEGIN_NOTES
+  - R puede ser interactivo o puede ser secuencial (via scripts)
+  #+END_NOTES
+- Comunidad
+  #+BEGIN_NOTES
+  - paquetes!
+  #+END_NOTES
+** Desventajas de R
+- Memoria
+  #+BEGIN_NOTES
+  R carga todo en RAM (pero hay trucos)
+  #+END_NOTES
+- Velocidad (pero están [[http://www.rcpp.org/][Rcpp]] y [[http://www.rfortran.org/][Rfortran]])
+- Nivel de adopción heterogéneo
+  #+BEGIN_NOTES
+  No todas las áreas científicas tiene el mismo nivel de adopción y por lo tanto hay muchas cosas ya
+  disponibles para ciertas áreas y menos para otras. Esto está cambiando a pasos agigantados,
+  mientras R se bate a duelo con Python.
+  #+END_NOTES
+** Prepárense para frustrarse
+  #+BEGIN_EXPORT html
+  <img style="position:absolute; TOP:250px; LEFT:600px; WIDTH:360px; HEIGHT:300px; border:0" src="./figs/frustration.png">
+  #+END_EXPORT
+
+- R es idiosincrático
+- Frustrarse es típico y _temporal_
+- Persisitencia!
+# #+BEGIN_NOTES
+# - is natural when you start programming in R, because it is such a stickler for punctuation, and
+#   even one character out of place will cause it to complain. But while you should expect to be a
+#   little frustrated, take comfort in that it’s both typical and temporary: it happens to everyone,
+#   and the only way to get over it is to keep trying.
+# - hands-on activities is for people to rapidly fail in an environment where they can quickly get
+#   help
+# #+END_NOTES
+* Organización de la materia
+*** Horarios
+- martes y miércoles de 9 a 12
+- ~ 1 hora de teoría
+- resto de practica/consulta
+- presentaciones alrededor de "paquetes"
+
+# - schedule
+#   - 09AM 1h consulting
+#   - 10AM 1h practice
+#   - 11AM 1h theory
+# - should I prepare slides?
+#   - yes, I should prepare slides
+#   - slides accesible from Slack
+# - in-class mini exercises
+#   - 3-4 per class?
+*** Guías de ejercicios
+- Parte principal del curso
+- Aproximadamente uno por semana
+- Haremos hincapié en desarrollar "reproducible research"
+  - informe + código + datos
+    # - [[http://r4ds.had.co.nz/r-markdown-workflow.html][30 R Markdown workflow]]
+    # - [[http://rmarkdown.rstudio.com/lesson-1.html][markdown rstudio Lesson 1]]
+    # - [[http://rmarkdown.rstudio.com/authoring_basics.html][markdown authoring basics]]
+    # - [[https://youtu.be/hAyze9cEdZA][video markdown]]
+*** Parciales
+- Dos parciales, en la 4ta y 8va semana aprox.
+- Tendrán toda la información disponible durante el parcial
+- Estarán fuertemente basados en las guías prácticas
+*** Proyecto final
+- Informe escrito y presentación oral
+- Cada uno buscará tema y datos propios, acordando conmigo
+# - RUBRIC
+#   - use of tools learned
+#   - presentation
+#   - legibility
+*** Calendario
+- Parcial 1, aprox. 10 de Mayo
+- Clase invitada de Diego Bustos, bioinformático, 6 o 7 de Junio
+- Parcial 2, aprox. 13 de Junio
+- Presentación proyecto final, 20 y 21 de Junio
+*** Herramientas
+- Github
+  #+BEGIN_NOTES
+  Vamos a usar Github para intercambiar código
+  #+END_NOTES
+- Slack
+  #+BEGIN_NOTES
+  Vamos a usar Slack para intercambiar información
+  #+END_NOTES
+- R en una terminal
+  #+BEGIN_NOTES
+  Más cualquier editor de texto, o sea, Emacs
+  #+END_NOTES
+- R con RStudio
+* R en el terminal
+- Abran un terminal
+- Pongan "R"
+- Voilá
+
+#+BEGIN_EXPORT html
+<img src="./figs/rterminal.png">
+#+END_EXPORT
+
+* R con Rstudio
+- Abran RStudio
+- Voilá
+
+#+BEGIN_EXPORT html
+<img src="./figs/rstudio.png">
+#+END_EXPORT
+
+* Ayuda
+#+ATTR_REVEAL: :frag roll-in
+1. R
+   #+BEGIN_SRC R 
+   > ?plot <- ayuda de la función *plot*
+   > ??plot <- "apropos"
+   #+END_SRC
+2. Vignettes
+3. Google - StackOverflow - R-bloogers
+4. Slack
+   #+BEGIN_NOTES
+   Pregunten por Slack a sus compañeros, usen los canales con criterio, usen y abusen de los /threads/
+   #+END_NOTES
+5. Luis (último recurso! ;)
+* Comandos básicos I
+
+- Ayuda: ~?~ y ~??~
+- Carga de paquetes: ~library(GenomicRanges)~
+- Instalación de paquetes: ~install.packages(GenomicRanges)~
+- Exploración y carga de datos: ~data(CO2)~
+- qué objetos tenemos? ~ls()~
+- cargar código local: ~source("./my_code.R")~
+* Comandos básicos II
+
+- imprimir algunas líneas: ~head(mpg)~
+- estructura de un objeto: ~str(mpg)~
+- resumen de un objeto: ~summary(mpg)~
+- hacer una figura: ~plot(displ, hwy)~
+
+* [[http://tidyverse.org/][The tidyverse]] (aka [[https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/][Hadleyverse]])
+/An ecosystem of packages designed with common APIs and a shared philosophy./
+- Desarrollado por [[http://hadley.nz/][Hadley Wickham]] 
+  #+BEGIN_NOTES
+  Hadley Wickham es un computer scientist neozelandés, y en los últimos años, se ha convertido en
+  una máquina de crear paquetes de R. Trabaja para Rstudio.
+  #+END_NOTES
+- Principales paquetes: [[http://dplyr.tidyverse.org/][dplyr]] y [[http://ggplot2.tidyverse.org/][ggplot2]]
+- Orden y centralización a través de paquetes coherentes entre sí
+- La gramática como orden conceptual: verbos y sustantivos
+  #+BEGIN_NOTES
+  "The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016)
+  - Papel de los verbos y de los sustantivos
+  #+END_NOTES 
+* Visualización
+*** Package /base/ : función ~plot()~
+#+BEGIN_SRC R 
+
+# Define the cars vector with 5 values
+cars <- c(1, 3, 6, 4, 9)
+
+# Graph the cars vector with all defaults
+plot(cars)
+
+# Graph cars using blue points overlayed by a line 
+plot(cars, type="o", col="blue")
+
+# Create a title with a red, bold/italic font
+title(main="Autos", col.main="red", font.main=4)
+#+END_SRC
+*** Package /base/ : función ~plot()~
+#+BEGIN_SRC R 
+# Get a random log-normal distribution
+r <- rlnorm(1000)
+
+# Get the distribution without plotting it using tighter breaks
+h <- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
+
+# Plot the distribution using log scale on both axes, and use
+# blue points
+plot(h$counts, log="xy", pch=20, col="blue",
+	main="Log-normal distribution",
+	xlab="Value", ylab="Frequency")
+#+END_SRC
+*** package /ggplot2/ : función ~qplot()~ 
+- similar a plot()
+- para hacer figuras básicas
+#+BEGIN_SRC R 
+qplot(displ, hwy, data = mpg)
+
+qplot(displ, hwy, colour = class, data = mpg)
+#+END_SRC
+*** COMMENT package /ggplot2/: función ~ggplot2()~
+- /grammar of graphics/
+- se trata de construir capas de código, cada una agregando un concepto a la figura final
+#+BEGIN_SRC R 
+
+#+END_SRC
+** COMMENT glosario de ggplot2
+- data: el /dataframe/ que contiene los datos a graficar
+- geoms: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.
+- aesthetics: describe las características visuales que representan los datos 
+  - por ejemplo, posición, tamaño, color, forma, etc
+- escalas: para cada /aesthetic/, describe como se mapea la característica visual a valores
+ - por ejemplo, escala logaritmica, escala de color, de tamaño, de forma, etc.
+- stats: describe transformaciones estadísticas que típicamente resumen los datos, como puede ser
+  una regresión
+** Práctica
+1. Elegir un conjunto de datos /built-in/ con datos continuos y categóricos
+2. Explorar sus principales características (media, máxmimo, mínimo, etc)
+3. Graficar las relaciones más importantes
+4. Encontrar la manera de hacer /scatterplots/ e histogramas
+5. Agregar información (título, ejes, descripción de los datos) 

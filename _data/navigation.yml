@@ -1,8 +1,8 @@
 # - title: "Info"
 #   url: "/posts.html"
 
-- title: "Clases"
-  url: "/lessons/"
+# - title: "Clases"
+#   url: "/lessons/"
 
 - title: "Biblio"
   url: "/resources.html"
