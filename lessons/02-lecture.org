@@ -130,7 +130,7 @@ plot(h$counts, log="xy", pch=20, col="blue",
 - para gráficas más elaboradas vamos a usar ggplot2()
 
 #+BEGIN_SRC R 
-## scaterplot de displ vs. hwy del data.frame mpg
+## scatterplot de displ vs. hwy del data.frame mpg
 qplot(displ, hwy, data = mpg)
 
 ## idem pero usando una escala de colores para "class"
