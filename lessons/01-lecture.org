@@ -78,6 +78,10 @@ r-2017.github.io
 ** R en la programación y el análisis de datos
 - Adoptado ampliamente en estadística, biología y ciencias de la computación
 - R vs. Python y otros
+  #+BEGIN_NOTES
+  Existen infinitas discusiones sobre que lenguaje es mejor que el otro. Ver esta respuesta bastante
+  razonable en [[https://www.quora.com/Which-is-better-for-data-analysis-R-or-Python][Quora sobre R vs. Python]].
+  #+END_NOTES
 - /Scripting/ vs. /Interactive/
   - Workflow científico
 ** Ventajas de R
@@ -234,8 +238,10 @@ r-2017.github.io
 - Orden y centralización a través de paquetes coherentes entre sí
 - La gramática como orden conceptual: verbos y sustantivos
   #+BEGIN_NOTES
-  "The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016)
-  - Papel de los verbos y de los sustantivos
+  "The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016) Uno de los
+   objetivos de los paquetes desarrollados por Wickam et al. es que sean consistentes entre sí. Una
+   de los caminos que han utilizado es asociar lo más consistentemnte posible verbos para funciones
+   (filter, sort, arrange, etc.) y sustantivos para datos o variables (por ejemplo flights).
   #+END_NOTES 
 * Visualización
 *** Package /base/ : función ~plot()~
@@ -275,21 +281,6 @@ qplot(displ, hwy, data = mpg)
 
 qplot(displ, hwy, colour = class, data = mpg)
 #+END_SRC
-*** COMMENT package /ggplot2/: función ~ggplot2()~
-- /grammar of graphics/
-- se trata de construir capas de código, cada una agregando un concepto a la figura final
-#+BEGIN_SRC R 
-
-#+END_SRC
-** COMMENT glosario de ggplot2
-- data: el /dataframe/ que contiene los datos a graficar
-- geoms: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.
-- aesthetics: describe las características visuales que representan los datos 
-  - por ejemplo, posición, tamaño, color, forma, etc
-- escalas: para cada /aesthetic/, describe como se mapea la característica visual a valores
- - por ejemplo, escala logaritmica, escala de color, de tamaño, de forma, etc.
-- stats: describe transformaciones estadísticas que típicamente resumen los datos, como puede ser
-  una regresión
 ** Práctica
 1. Elegir un conjunto de datos /built-in/ con datos continuos y categóricos
 2. Explorar sus principales características (media, máxmimo, mínimo, etc)
