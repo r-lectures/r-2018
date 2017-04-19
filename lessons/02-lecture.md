@@ -26,6 +26,12 @@ title: Clase 2
 
 ## github
 
+-   repositório de código
+-   sistema de versiones 
+    -   "fotos" de nuestro código en distintos tiempos
+    -   versiones distintas pueden convivir en paralelo
+-   muy fácil de compartir
+
 
 # Repaso de la clase pasada
 
@@ -130,6 +136,8 @@ title: Clase 2
 
 Cuidado! `ggplot2` trabaja <span class="underline">solo</span> con `data.frames`, al igual que el resto del tidyverse (dplyr, tidyr, etc.)
 
+Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)
+
 
 ## Y qué vendría siendo un data.frame?
 
@@ -155,16 +163,18 @@ Cuidado! `ggplot2` trabaja <span class="underline">solo</span> con `data.frames`
     str(economics)
     ggplot(economics, aes(x = pce)) + geom_histogram()
     ggplot(economics, aes(x = date, y = unemploy)) + geom_line()
-    ggplot(economics, aes(x = date, y = unemploy, colour = )) + geom_line()
+    ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # colour, size, shape, etc.
 
 
-## Scales
+## *Facets* y *scales*
 
+-   *Facets* se usan para dividir la figura en varias, filtrando con alguna variable categórica
+-   *scales* permiten modificar el tipo de ejes de la figura
 
-## Stats
-
-
-## Facetting
+    ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) + 
+    geom_line() + 
+    facet_wrap(~ state) + 
+    scale_x_log10()
 
 
 ## Glosario `ggplot2`
@@ -177,5 +187,13 @@ Cuidado! `ggplot2` trabaja <span class="underline">solo</span> con `data.frames`
 -   **`stats`**: describe transformaciones estadísticas que resumen los datos, e.g. una regresión
 
 
-# Prácticas
+# Práctica
+
+-   Seleccionen de `data()` un data.frame con alguna variable categórica
+-   Qué pasa si hacen solo `ggplot(mi_data)`?
+-   Qué pasa si intentan mapear color, tamaño o forma a una variable continua?
+-   Para que sirve `jitter`? Para que sirve `stroke`?
+-   Podemos usar formas condicionales (>, <, etc) en aes()?
+-   Cómo difieren `facet_grid` y `facet_wrap`?
+-   Usar `box-plot` y `geom_smooth()`. Cuándo conviene usarlas?
 

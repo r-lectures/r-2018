@@ -1,127 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>R 2017</title>
-<meta name="author" content="(Luis G. Moyano)"/>
-<style type="text/css">
-.underline { text-decoration: underline; }
-</style>
-<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+<html>
 
-<link rel="stylesheet" href="../../reveal.js/css/theme/simple.css" id="theme"/>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../../reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-<meta name="description" content="Programación en R 2017">
+    <title>Clase 2</title>
+    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/lessons/02-lecture.html">
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
-<body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>19/04/2017</h3>
-</section>
-<section>
-<section id="slide-orge708262">
-<h2 id="orge708262">r-2017.slack.com/</h2>
-<img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png">
-</section>
-<section id="slide-orga4585f1">
-<h3 id="orga4585f1">Slack</h3>
-<ul>
-<li>canales (<i>channels</i>) (#general, #random, creen los que hagan falta)</li>
-<li>hilos (<i>threads</i>), en los casos en que quieran comentar sin entorpecer la discusión principal</li>
-<li>mensajes directos - son privados</li>
-<li>se puede compartir archivos y código (usar el signo "+" abajo a la izq.)</li>
 
+
+    <body>
+
+        <header id="header" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/lessons/" >Clases</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/resources.html" >Biblio</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/datasets.html" >Data</a></li>
+	  
+	  
+	  
+	  
+	  
+	  
+
+	      <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-lecture.html">Clase 1 - Intro</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/slides/02-lecture-slides.html">YAML using types effectively</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/02-lecture.html">Clase 2</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/slides/2017-04-05-simple.html">using types effectively</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/">Clases</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/posts.html">Posts</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/datasets.html">Datos</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/resources.html">Biblio</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/about.html">Sobre el curso</a></li> -->
+              <!--  -->
+              <!--  -->
+        </ul>
+	<ul class="nav navbar-nav navbar-right">
+	  
+	  
+	  <li><a href="http://localhost:4000/about.html" >Sobre la materia</a></li>
+	</ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div>
+</header>
+
+<style>
+  .bottom-three {
+     margin-bottom: 2cm;
+  }
+</style>
+
+
+<p class="bottom-three">
+</p>
+<!-- <div class="site-banner"> -->
+<!--     <img src="/images/banner.jpg"></img> -->
+<!-- </div> -->
+
+
+
+        <div class="site-content container">
+            <div class="col-md-9">
+                <h1 id="r-2017slackcom">r-2017.slack.com/</h1>
+
+<p><img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png" /></p>
+
+<h2 id="slack">Slack</h2>
+
+<ul>
+  <li>canales (<em>channels</em>) (#general, #random, creen los que hagan falta)</li>
+  <li>hilos (<em>threads</em>), en los casos en que quieran comentar sin entorpecer la discusión principal</li>
+  <li>mensajes directos - son privados</li>
+  <li>
+    <p>se puede compartir archivos y código (usar el signo “+” abajo a la izq.)</p>
+  </li>
+  <li>=&gt; pregúntenle a slackbot: how do I use Slack?</li>
 </ul>
-<ul>
-<li>=&gt; pregúntenle a slackbot: how do I use Slack?</li>
 
+<h1 id="githubcomr-2017">github.com/r-2017/</h1>
+
+<p><img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png" /></p>
+
+<h2 id="github">github</h2>
+
+<ul>
+  <li>repositório de código</li>
+  <li>sistema de versiones
+    <ul>
+      <li>“fotos” de nuestro código en distintos tiempos</li>
+      <li>versiones distintas pueden convivir en paralelo</li>
+    </ul>
+  </li>
+  <li>muy fácil de compartir</li>
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-org8c3e098">
-<h2 id="org8c3e098">github.com/r-2017/</h2>
-<img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png">
-</section>
-<section id="slide-org1ef5916">
-<h3 id="org1ef5916">github</h3>
+
+<h1 id="repaso-de-la-clase-pasada">Repaso de la clase pasada</h1>
+
+<h2 id="conceptos-principales">Conceptos principales</h2>
+
 <ul>
-<li>repositório de código</li>
-<li>sistema de versiones 
-<ul>
-<li>"fotos" de nuestro código en distintos tiempos</li>
-<li>versiones distintas pueden convivir en paralelo</li>
+  <li>
+    <p><strong>Paquetes</strong> contienen <strong>funciones</strong></p>
 
-</ul></li>
-<li>muy fácil de compartir</li>
+    <p>library(ggplot2) # cargo el paquete ggplot2 en mi sesión
+install.packages(“ggplot2”) # instalo el paquete de internet si no lo tengo</p>
+  </li>
+  <li>
+    <p><strong>Funciones</strong> actuan sobre <strong>datos y variables</strong></p>
 
-</ul>
-</section>
-</section>
-<section>
-<section id="slide-org8372629">
-<h2 id="org8372629">Repaso de la clase pasada</h2>
-<div class="outline-text-2" id="text-org8372629">
-</div></section>
-<section id="slide-org7e4345f">
-<h3 id="org7e4345f">Conceptos principales</h3>
-<ul>
-<li><b>Paquetes</b> contienen <b>funciones</b></li>
-
-</ul>
-<div class="org-src-container">
-
-<pre><code class="R" >library(ggplot2) # cargo el paquete ggplot2 en mi sesión
-install.packages("ggplot2") # instalo el paquete de internet si no lo tengo
-</code></pre>
-</div>
-<ul>
-<li><b>Funciones</b> actuan sobre <b>datos y variables</b></li>
-
-</ul>
-<div class="org-src-container">
-
-<pre><code class="R" >str(mis_datos) # str() me dice la estructura de mis_datos
+    <p>str(mis_datos) # str() me dice la estructura de mis_datos
 summary(mis_datos) # summary() me los resume
 head(mis_datos) # head() me muestra algunas primeras líneas
-plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica
-</code></pre>
-</div>
-</section>
-<section id="slide-org6eaa88c">
-<h3 id="org6eaa88c">Hicieron la práctica??</h3>
+plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica</p>
+  </li>
+</ul>
+
+<h2 id="hicieron-la-práctica">Hicieron la práctica??</h2>
+
 <ol>
-<li>Elegir un conjunto de datos <i>built-in</i> con datos continuos y categóricos</li>
-<li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
-<li>Graficar las relaciones más importantes</li>
-<li>Encontrar la manera de hacer <i>scatterplots</i> e histogramas</li>
-
+  <li>Elegir un conjunto de datos <em>built-in</em> con datos continuos y categóricos</li>
+  <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
+  <li>Graficar las relaciones más importantes</li>
+  <li>
+    <p>Encontrar la manera de hacer <em>scatterplots</em> e histogramas</p>
+  </li>
+  <li>Agregar información (título, ejes, descripción de los datos)</li>
 </ol>
-<ol>
-<li>Agregar información (título, ejes, descripción de los datos)</li>
 
-</ol>
-</section>
-<section id="slide-org9fe53ac">
-<h3 id="org9fe53ac">Visualización</h3>
-<p>
-<code>base::plot()</code>
-</p>
-<div class="org-src-container">
+<h2 id="visualización">Visualización</h2>
 
-<pre><code class="R" ># Define the cars vector with 5 values
-cars <- c(1, 3, 6, 4, 9)
+<p><code class="highlighter-rouge">base::plot()</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Define the cars vector with 5 values
+cars &lt;- c(1, 3, 6, 4, 9)
 
 # Graph the cars vector with all defaults
 plot(cars)
@@ -133,19 +211,16 @@ plot(cars, type="o", col="blue")
 title(main="Autos", col.main="red", font.main=4)
 </code></pre>
 </div>
-</section>
-<section id="slide-org51afdc3">
-<h3 id="org51afdc3">Visualización</h3>
-<p>
-<code>base::plot()</code>
-</p>
-<div class="org-src-container">
 
-<pre><code class="R" ># Get a random log-normal distribution (=> ?rlnorm)
-r <- rlnorm(1000)
+<h2 id="visualización-1">Visualización</h2>
 
-# Get the distribution without plotting it using tighter breaks => ?seq ?hist
-h <- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
+<p><code class="highlighter-rouge">base::plot()</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Get a random log-normal distribution (=&gt; ?rlnorm)
+r &lt;- rlnorm(1000)
+
+# Get the distribution without plotting it using tighter breaks =&gt; ?seq ?hist
+h &lt;- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
 
 # Plot the distribution using log scale on both axes, and use
 # blue points
@@ -154,202 +229,229 @@ plot(h$counts, log="xy", pch=20, col="blue",
 	xlab="Value", ylab="Frequency")
 </code></pre>
 </div>
-</section>
-<section id="slide-org7de3c34">
-<h3 id="org7de3c34">Visualización</h3>
-<p>
-<code>ggplot2::qplot()</code> 
-</p>
-<ul>
-<li>similar a plot()</li>
-<li>para hacer figuras básicas está ok</li>
-<li>para gráficas más elaboradas vamos a usar ggplot2()</li>
 
+<h2 id="visualización-2">Visualización</h2>
+
+<p><code class="highlighter-rouge">ggplot2::qplot()</code></p>
+
+<ul>
+  <li>similar a plot()</li>
+  <li>para hacer figuras básicas está ok</li>
+  <li>
+    <p>para gráficas más elaboradas vamos a usar ggplot2()</p>
+
+    <h2 id="scaterplot-de-displ-vs-hwy-del-dataframe-mpg">scaterplot de displ vs. hwy del data.frame mpg</h2>
+    <p>qplot(displ, hwy, data = mpg)</p>
+
+    <h2 id="idem-pero-usando-una-escala-de-colores-para-class">idem pero usando una escala de colores para “class”</h2>
+    <p>qplot(displ, hwy, colour = class, data = mpg)</p>
+  </li>
 </ul>
 
-<div class="org-src-container">
+<h1 id="ggplot2"><code class="highlighter-rouge">ggplot2</code></h1>
 
-<pre><code class="R" >## scaterplot de displ vs. hwy del data.frame mpg
-qplot(displ, hwy, data = mpg)
+<p>##</p>
 
-## idem pero usando una escala de colores para "class"
-qplot(displ, hwy, colour = class, data = mpg)
-</code></pre>
-</div>
-</section>
-</section>
-<section>
-<section id="slide-org7600f83">
-<h2 id="org7600f83"><code>ggplot2</code></h2>
-<div class="outline-text-2" id="text-org7600f83">
-</div></section>
-<section id="slide-orgc936e4c">
-<h3 id="orgc936e4c"></h3>
-<p>
-<code>ggplot2</code>
-</p>
+<p><code class="highlighter-rouge">ggplot2</code></p>
+
 <ul>
-<li><p>
-<i>grammar of graphics</i> <a href="http://vita.had.co.nz/papers/layered-grammar.pdf">(Wilkinson, 2005)</a>
-</p>
-<ul>
-<li>se trata de construir capas de código, cada una agregando un concepto a la figura final</li>
-<li>cada capa controla un aspecto independiente de la figura</li>
-<li>la figura <i>es</i> el código (se puede guardar, extender, reproducir, etc.)</li>
+  <li>
+    <p><em>grammar of graphics</em> <a href="http://vita.had.co.nz/papers/layered-grammar.pdf">(Wilkinson, 2005)</a></p>
 
-</ul>
-<div class="org-src-container">
+    <ul>
+      <li>se trata de construir capas de código, cada una agregando un concepto a la figura final</li>
+      <li>cada capa controla un aspecto independiente de la figura</li>
+      <li>
+        <p>la figura <em>es</em> el código (se puede guardar, extender, reproducir, etc.)</p>
 
-<pre><code class="R" >p <- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
-p <- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
-p <- p + geom_point() # le agrego como quiero que represente ese mapeo
-p                     # imprimo la figura
-</code></pre>
-</div></li>
-
+        <p>p &lt;- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
+p &lt;- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
+p &lt;- p + geom_point() # le agrego como quiero que represente ese mapeo
+p                     # imprimo la figura</p>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-</section>
-<section id="slide-org927005d">
-<h3 id="org927005d">En general:</h3>
-<div class="org-src-container">
+<h2 id="en-general">En general:</h2>
 
-<pre><code class="R" >ggplot(data = {DATA}) + 
+<div class="highlighter-rouge"><pre class="highlight"><code>ggplot(data = {DATA}) + 
       {GEOM_FUNCTION}(mapping = aes( {MAPPINGS} ))
 </code></pre>
 </div>
 
-<p>
-Cuidado! <code>ggplot2</code> trabaja <span class="underline">solo</span> con <code>data.frames</code>, al igual que el resto del tidyverse (dplyr, tidyr, etc.)
-</p>
+<p>Cuidado! <code class="highlighter-rouge">ggplot2</code> trabaja <span class="underline">solo</span> con <code class="highlighter-rouge">data.frames</code>, al igual que el resto del tidyverse (dplyr, tidyr, etc.)</p>
 
-<p>
-Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)
-</p>
-</section>
-<section id="slide-org0bcf74e">
-<h3 id="org0bcf74e">Y qué vendría siendo un data.frame?</h3>
+<p>Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)</p>
+
+<h2 id="y-qué-vendría-siendo-un-dataframe">Y qué vendría siendo un data.frame?</h2>
+
 <ul>
-<li>un data.frame es el objeto más común para analizar datos en R</li>
-<li><p>
-es una lista de vectores de igual dimensión
-</p>
-<div class="org-src-container">
+  <li>un data.frame es el objeto más común para analizar datos en R</li>
+  <li>
+    <p>es una lista de vectores de igual dimensión</p>
 
-<pre><code class="R" >df <- data.frame() # creo un data.frame llamado df
+    <div class="highlighter-rouge"><pre class="highlight"><code>df &lt;- data.frame() # creo un data.frame llamado df
 is.data.frame(df)  # es un data.frame?
 [1] TRUE
 is.list(df)        # es una lista?
 [1] TRUE
 </code></pre>
-</div></li>
-<li>tiene entonces propiedades de matrices y de listas</li>
-<li>busquen un data.frame con data() y prueben las funciones <code>length()</code> y <code>nrow()</code></li>
-
+    </div>
+  </li>
+  <li>tiene entonces propiedades de matrices y de listas</li>
+  <li>busquen un data.frame con data() y prueben las funciones <code class="highlighter-rouge">length()</code> y <code class="highlighter-rouge">nrow()</code></li>
 </ul>
-</section>
-<section id="slide-org2ce4065">
-<h3 id="org2ce4065">Aesthetics y Geoms</h3>
+
+<h2 id="aesthetics-y-geoms">Aesthetics y Geoms</h2>
+
 <ul>
-<li>aesthetics, aes(), controla mapeos entre variables y elementos visuales</li>
-<li>ejempo: variable A &lt;-&gt; coordenada x, o variable C &lt;-&gt; forma del punto</li>
+  <li>aesthetics, aes(), controla mapeos entre variables y elementos visuales</li>
+  <li>
+    <p>ejempo: variable A &lt;-&gt; coordenada x, o variable C &lt;-&gt; forma del punto</p>
 
-</ul>
-<div class="org-src-container">
-
-<pre><code class="R" >data(economics)
+    <p>data(economics)
 ?economics
 str(economics)
 ggplot(economics, aes(x = pce)) + geom_histogram()
 ggplot(economics, aes(x = date, y = unemploy)) + geom_line()
-ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # colour, size, shape, etc.
-</code></pre>
-</div>
-
-</section>
-<section id="slide-orgfd5ae36">
-<h3 id="orgfd5ae36"><i>Facets</i> y <i>scales</i></h3>
-<ul>
-<li><i>Facets</i> se usan para dividir la figura en varias, filtrando con alguna variable categórica</li>
-<li><i>scales</i> permiten modificar el tipo de ejes de la figura</li>
-
+ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # colour, size, shape, etc.</p>
+  </li>
 </ul>
 
-<div class="org-src-container">
+<h2 id="facets-y-scales"><em>Facets</em> y <em>scales</em></h2>
 
-<pre><code class="R" >ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) + 
+<ul>
+  <li><em>Facets</em> se usan para dividir la figura en varias, filtrando con alguna variable categórica</li>
+  <li>
+    <p><em>scales</em> permiten modificar el tipo de ejes de la figura</p>
+
+    <p>ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) + 
 geom_line() + 
 facet_wrap(~ state) + 
-scale_x_log10()
-</code></pre>
-</div>
+scale_x_log10()</p>
+  </li>
+</ul>
 
-</section>
-<section id="slide-orgc8b82a1">
-<h3 id="orgc8b82a1">Glosario <code>ggplot2</code></h3>
+<h2 id="glosario-ggplot2">Glosario <code class="highlighter-rouge">ggplot2</code></h2>
+
 <ul>
-<li><b><code>data</code></b>: el <i>dataframe</i> que contiene los datos a graficar</li>
-<li><b><code>geoms</code></b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
-<li><b><code>aesthetics</code></b>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc</li>
-<li><b><code>scale</code></b>: para cada <i>aesthetic</i>, describe como se mapea la característica visual a valores
+  <li><strong><code class="highlighter-rouge">data</code></strong>: el <em>dataframe</em> que contiene los datos a graficar</li>
+  <li><strong><code class="highlighter-rouge">geoms</code></strong>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
+  <li><strong><code class="highlighter-rouge">aesthetics</code></strong>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc</li>
+  <li><strong><code class="highlighter-rouge">scale</code></strong>: para cada <em>aesthetic</em>, describe como se mapea la característica visual a valores
 por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</li>
-<li><b><code>stats</code></b>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión</li>
-
+  <li><strong><code class="highlighter-rouge">stats</code></strong>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión</li>
 </ul>
 
-</section>
-</section>
-<section>
-<section id="slide-org8bb8810">
-<h2 id="org8bb8810">Práctica</h2>
+<h1 id="práctica">Práctica</h1>
+
 <ul>
-<li>Seleccionen de <code>data()</code> un data.frame con alguna variable categórica</li>
-<li>Qué pasa si hacen solo <code>ggplot(mi_data)</code>?</li>
-<li>Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
-<li>Para que sirve <code>jitter</code>? Para que sirve <code>stroke</code>?</li>
-<li>Podemos usar formas condicionales (&gt;, &lt;, etc) en aes()?</li>
-<li>Cómo difieren <code>facet_grid</code> y <code>facet_wrap</code>?</li>
-<li>Usar <code>box-plot</code> y <code>geom_smooth()</code>. Cuándo conviene usarlas?</li>
-
+  <li>Seleccionen de <code class="highlighter-rouge">data()</code> un data.frame con alguna variable categórica</li>
+  <li>Qué pasa si hacen solo <code class="highlighter-rouge">ggplot(mi_data)</code>?</li>
+  <li>Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
+  <li>Para que sirve <code class="highlighter-rouge">jitter</code>? Para que sirve <code class="highlighter-rouge">stroke</code>?</li>
+  <li>Podemos usar formas condicionales (&gt;, &lt;, etc) en aes()?</li>
+  <li>Cómo difieren <code class="highlighter-rouge">facet_grid</code> y <code class="highlighter-rouge">facet_wrap</code>?</li>
+  <li>Usar <code class="highlighter-rouge">box-plot</code> y <code class="highlighter-rouge">geom_smooth()</code>. Cuándo conviene usarlas?</li>
 </ul>
-</section>
-</section>
+
+
+            </div>
+            <div id="site-side-bar" class="col-md-3">
+                <div id="navigation">
+    <!-- <div class="panel panel-default"> -->
+    <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
+    <!--     <div class="panel-body"> -->
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://github.com/lgmoyano"> -->
+    <!--                     <span class="icon  icon--github"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">lgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://twitter.com/@luisgmoyano"> -->
+    <!--                     <span class="icon  icon--twitter"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809 -->
+    <!--                             c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">@luisgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="panel panel-default"> -->
+    <!--     <div class="panel-heading">Archivo</div> -->
+    <!--     <div class="panel-body"> -->
+    <!--          -->
+
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Apr 2017 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">using types effectively</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">Simple</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Aug 2015 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/haskell/2015/08/30/hello-world-in-haskell.html">hello world in haskell</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/08/29/welcome-to-jekyll.html">Welcome to Jekyll!</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
 </div>
-</div>
-<p> @luisgmoyano </p>
-<script src="../../reveal.js/lib/js/head.min.js"></script>
-<script src="../../reveal.js/js/reveal.js"></script>
 
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
 
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 'c',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-margin: 0.10,
-minScale: 0.50,
-maxScale: 2.50,
+            </div>
+        </div>
 
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+        <!-- <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="position:absolute;RIGHT:10px; TOP:550px; border-width:0" src="by-nc.png" height="20" width="95"/></a></p> -->
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
-});
-</script>
-</body>
+
+    </body>
+
 </html>
