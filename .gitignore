@@ -6,3 +6,6 @@ feed.xml
 /.projectile
 *.old
 /*.md_
+/lessons/.Rhistory
+/lessons/slides/.DS_Store
+/.RData
