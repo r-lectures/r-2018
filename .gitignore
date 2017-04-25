@@ -9,3 +9,4 @@ feed.xml
 /lessons/.Rhistory
 /lessons/slides/.DS_Store
 /.RData
+*/.DS_Store

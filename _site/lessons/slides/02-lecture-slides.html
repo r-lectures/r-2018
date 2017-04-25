@@ -1,1228 +1,355 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
+<head>
+<meta charset="utf-8"/>
+<title>R 2017</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
 
-    <title>
-      
-        YAML using types effectively | Programación en R - 2017
-      
-    </title>
+<link rel="stylesheet" href="../../reveal.js/css/theme/simple.css" id="theme"/>
 
-    <meta name="author" content="" />
-
-    <!-- Description -->
-    
-      <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
-">
-    
-
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
-    <link rel="stylesheet" href="/reveal.js/css/reveal.css"/>
-
-    
-      <link rel="stylesheet" href="/reveal.js/css/theme/moon.css" id="theme"/>
-    
-
-    <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="/reveal.js/lib/css/zenburn.css"/>
-
-    <!-- Printing and PDF exports -->
-    <!-- <script> -->
-    <!--   var link = document.createElement( 'link' ); -->
-    <!--   link.rel = 'stylesheet'; -->
-    <!--   link.type = 'text/css'; -->
-    <!--   link.href = window.location.search.match( /print-pdf/gi ) ? '/reveal.js/css/print/pdf.css' : '/reveal.js/css/print/paper.css'; -->
-    <!--   document.getElementsByTagName( 'head' )[0].appendChild( link ); -->
-    <!-- </script> -->
-
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <link rel="canonical" href="http://localhost:4000/lessons/slides/02-lecture-slides.html">
-
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="reveal">
-      <div class="slides">
-	<h1 id="using-types-effectively">Using Types Effectively</h1>
-
-<h1 id="what-does-that-mean">What does that mean?</h1>
-
-<p>The recent evolution of C++ is (from one point of view) largely about
-<strong>strengthening</strong> and <strong>expanding</strong> the <strong>capabilities for dealing with types</strong>.</p>
-
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2017</h1><h3>19/04/2017</h3>
+</section>
+<section>
+<section id="slide-orgf24df23">
+<h2 id="orgf24df23">r-2017.slack.com/</h2>
+<img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png">
+</section>
+<section id="slide-orgadccd54">
+<h3 id="orgadccd54">Slack</h3>
 <ul>
-  <li>expansion of <code class="highlighter-rouge">type_traits</code></li>
-  <li><code class="highlighter-rouge">decltype</code> to utter types</li>
-  <li><code class="highlighter-rouge">auto</code> to preserve types, prevent conversions, infer return types</li>
-  <li><code class="highlighter-rouge">nullptr</code> to prevent <code class="highlighter-rouge">int</code> / pointer confusion</li>
-  <li>scoped <code class="highlighter-rouge">enum</code></li>
-  <li>GSL: <code class="highlighter-rouge">owner&lt;T&gt;</code>, <code class="highlighter-rouge">not_null&lt;T&gt;</code></li>
-  <li>Concepts TS</li>
+<li>canales (<i>channels</i>) (#general, #random, creen los que hagan falta)</li>
+<li>hilos (<i>threads</i>), en los casos en que quieran comentar sin entorpecer la discusión principal</li>
+<li>mensajes directos - son privados</li>
+<li>se puede compartir archivos y código (usar el signo "+" abajo a la izq.)</li>
+
+</ul>
+<ul>
+<li>=&gt; pregúntenle a slackbot: how do I use Slack?</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org4190859">
+<h2 id="org4190859">github.com/r-2017/</h2>
+<img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png">
+</section>
+<section id="slide-org37a107f">
+<h3 id="org37a107f">github</h3>
+<ul>
+<li>repositório de código</li>
+<li>sistema de versiones 
+<ul>
+<li>"fotos" de nuestro código en distintos tiempos</li>
+<li>versiones distintas pueden convivir en paralelo</li>
+
+</ul></li>
+<li>muy fácil de compartir</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org802528c">
+<h2 id="org802528c">Repaso de la clase pasada</h2>
+<div class="outline-text-2" id="text-org802528c">
+</div></section>
+<section id="slide-org510d916">
+<h3 id="org510d916">Conceptos principales</h3>
+<ul>
+<li><b>Paquetes</b> contienen <b>funciones</b></li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="R" >library(ggplot2) # cargo el paquete ggplot2 en mi sesión
+install.packages("ggplot2") # instalo el paquete de internet si no lo tengo
+</code></pre>
+</div>
+<ul>
+<li><b>Funciones</b> actuan sobre <b>datos y variables</b></li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="R" >str(mis_datos) # str() me dice la estructura de mis_datos
+summary(mis_datos) # summary() me los resume
+head(mis_datos) # head() me muestra algunas primeras líneas
+plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica
+</code></pre>
+</div>
+</section>
+<section id="slide-orgd0b05dc">
+<h3 id="orgd0b05dc">Hicieron la práctica??</h3>
+<ol>
+<li>Elegir un conjunto de datos <i>built-in</i> con datos continuos y categóricos</li>
+<li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
+<li>Graficar las relaciones más importantes</li>
+<li>Encontrar la manera de hacer <i>scatterplots</i> e histogramas</li>
+
+</ol>
+<ol>
+<li>Agregar información (título, ejes, descripción de los datos)</li>
+
+</ol>
+</section>
+<section id="slide-org8419518">
+<h3 id="org8419518">Visualización</h3>
+<p>
+<code>base::plot()</code>
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" ># Define the cars vector with 5 values
+cars <- c(1, 3, 6, 4, 9)
+
+# Graph the cars vector with all defaults
+plot(cars)
+
+# Graph cars using blue points overlayed by a line 
+plot(cars, type="o", col="blue")
+
+# Create a title with a red, bold/italic font
+title(main="Autos", col.main="red", font.main=4)
+</code></pre>
+</div>
+</section>
+<section id="slide-orgbb93f92">
+<h3 id="orgbb93f92">Visualización</h3>
+<p>
+<code>base::plot()</code>
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" ># Get a random log-normal distribution (=> ?rlnorm)
+r <- rlnorm(1000)
+
+# Get the distribution without plotting it using tighter breaks => ?seq ?hist
+h <- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
+
+# Plot the distribution using log scale on both axes, and use
+# blue points
+plot(h$counts, log="xy", pch=20, col="blue",
+	main="Log-normal distribution",
+	xlab="Value", ylab="Frequency")
+</code></pre>
+</div>
+</section>
+<section id="slide-org74bc0f3">
+<h3 id="org74bc0f3">Visualización</h3>
+<p>
+<code>ggplot2::qplot()</code> 
+</p>
+<ul>
+<li>similar a plot()</li>
+<li>para hacer figuras básicas está ok</li>
+<li>para gráficas más elaboradas vamos a usar ggplot2()</li>
+
 </ul>
 
-<div class="NOTES">
-Some of the features added to modern C++ to deal with types.
+<div class="org-src-container">
 
-Obviously someone thinks that types are important. And the ability to wrangle
-them and mould them to our purposes is an important part of C++.
+<pre><code class="R" >## scatterplot de displ vs. hwy del data.frame mpg
+qplot(displ, hwy, data = mpg)
 
-Types are the currency of metaprogramming, but also important for safety in
-"regular" programming; hence we see things like the GSL's `owner&lt;&gt;` and `not_null&lt;&gt;`.
-
+## idem pero usando una escala de colores para "class"
+qplot(displ, hwy, colour = class, data = mpg)
+</code></pre>
 </div>
-
-<h2 id="fp-isnt-only-about">FP isn’t (only) about</h2>
-
+</section>
+</section>
+<section>
+<section id="slide-org0af02bb">
+<h2 id="org0af02bb"><code>ggplot2</code></h2>
+<div class="outline-text-2" id="text-org0af02bb">
+</div></section>
+<section id="slide-org48c628d">
+<h3 id="org48c628d"></h3>
+<p>
+<code>ggplot2</code>
+</p>
 <ul>
-  <li>first class functions</li>
-  <li>higher order functions</li>
-  <li>lexical scoping, closures</li>
-  <li>pattern matching</li>
-  <li>value semantics</li>
-  <li>immutability</li>
-  <li>concurrency through immutability</li>
-  <li>laziness</li>
-  <li>garbage collection</li>
-  <li>boxed data types / “inefficient” runtime models</li>
-  <li>the M-word</li>
+<li><p>
+<i>grammar of graphics</i> <a href="http://vita.had.co.nz/papers/layered-grammar.pdf">(Wilkinson, 2005)</a>
+</p>
+<ul>
+<li>se trata de construir capas de código, cada una agregando un concepto a la figura final</li>
+<li>cada capa controla un aspecto independiente de la figura</li>
+<li>la figura <i>es</i> el código (se puede guardar, extender, reproducir, etc.)</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="R" >p <- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
+p <- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
+p <- p + geom_point() # le agrego como quiero que represente ese mapeo
+p                     # imprimo la figura
+</code></pre>
+</div></li>
+
 </ul>
 
-<div class="NOTES">
-Functional languages can teach us a thing or two about types. (After all, they
-seem to be teaching us everything else.)
+</section>
+<section id="slide-org94d2871">
+<h3 id="org94d2871">En general:</h3>
+<div class="org-src-container">
 
-Here are some things you may think of when functional programming is mentioned&#x2026;
-
+<pre><code class="R" >ggplot(data = {DATA}) + 
+      {GEOM_FUNCTION}(mapping = aes( {MAPPINGS} ))
+</code></pre>
 </div>
 
-<h2 id="fp-is-also-importantly-about">FP is (also, importantly) about</h2>
+<p>
+Cuidado! <code>ggplot2</code> trabaja <span class="underline">solo</span> con <code>data.frames</code>, al igual que el resto del tidyverse (dplyr, tidyr, etc.)
+</p>
 
+<p>
+Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)
+</p>
+</section>
+<section id="slide-orgb40c10d">
+<h3 id="orgb40c10d">Y qué vendría siendo un data.frame?</h3>
 <ul>
-  <li>using types effectively and expressively</li>
-  <li>making illegal states unrepresentable</li>
-  <li>making illegal behaviour result in a type error</li>
-  <li>using total functions for easier to use, harder to misuse interfaces</li>
+<li>un data.frame es el objeto más común para analizar datos en R</li>
+<li><p>
+es una lista de vectores de igual dimensión
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >df <- data.frame() # creo un data.frame llamado df
+is.data.frame(df)  # es un data.frame?
+[1] TRUE
+is.list(df)        # es una lista?
+[1] TRUE
+</code></pre>
+</div></li>
+<li>tiene entonces propiedades de matrices y de listas</li>
+<li>busquen un data.frame con data() y prueben las funciones <code>length()</code> y <code>nrow()</code></li>
+
+</ul>
+</section>
+<section id="slide-orgc5c80b4">
+<h3 id="orgc5c80b4">Aesthetics y Geoms</h3>
+<ul>
+<li>aesthetics, aes(), controla mapeos entre variables y elementos visuales</li>
+<li>ejempo: variable A &lt;-&gt; coordenada x, o variable C &lt;-&gt; forma del punto</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="R" >data(economics)
+?economics
+str(economics)
+ggplot(economics, aes(x = pce)) + geom_histogram()
+ggplot(economics, aes(x = date, y = unemploy)) + geom_line()
+ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # colour, size, shape, etc.
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org7532f42">
+<h3 id="org7532f42"><i>Facets</i> y <i>scales</i></h3>
+<ul>
+<li><i>Facets</i> se usan para dividir la figura en varias, filtrando con alguna variable categórica</li>
+<li><i>scales</i> permiten modificar el tipo de ejes de la figura</li>
+
 </ul>
 
-<div class="NOTES">
-These aspects of functional programming are often overlooked.
+<div class="org-src-container">
 
-Many functional languages have well-developed, expressive type systems.
-
-C++ is moving in that direction.
-
+<pre><code class="R" >ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) + 
+geom_line() + 
+facet_wrap(~ state) + 
+scale_x_log10()
+</code></pre>
 </div>
 
-<h2 id="what-is-a-type">What is a type?</h2>
-
+</section>
+<section id="slide-orgafbc172">
+<h3 id="orgafbc172">Glosario <code>ggplot2</code></h3>
 <ul>
-  <li>A way for the compiler to know what opcodes to output (dmr’s motivation)?</li>
-  <li>The way data is stored (representational)?</li>
-  <li>Characterised by what operations are possible (behavioural)?</li>
-  <li>Determines the values that can be assigned?</li>
-  <li>Determines the meaning of the data?</li>
+<li><b><code>data</code></b>: el <i>dataframe</i> que contiene los datos a graficar</li>
+<li><b><code>geoms</code></b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
+<li><b><code>aesthetics</code></b>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc</li>
+<li><b><code>scale</code></b>: para cada <i>aesthetic</i>, describe como se mapea la característica visual a valores
+por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</li>
+<li><b><code>stats</code></b>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión</li>
+
 </ul>
 
-<h2 id="what-is-a-type-1">What is a type?</h2>
-
-<p><img src="./int_bool_1.png" alt="img" /></p>
-
-<p>“Only Lua would have ‘<code class="highlighter-rouge">1 == true</code>’ evaluate to <code class="highlighter-rouge">false</code>. #wantmydayback”</p>
-
-<p><img src="./int_bool_2.png" alt="img" /></p>
-
-<p>“But, how can <code class="highlighter-rouge">1</code> be equal to <code class="highlighter-rouge">true</code>? <code class="highlighter-rouge">1</code> is an integer, and <code class="highlighter-rouge">true</code> is a boolean. Lua
-seems to be correct here. It’s your view of the world that has been warped.”</p>
-
-<p>(Smiley faces make criticism OK!)</p>
-
-<h2 id="what-is-a-type-2">What is a type?</h2>
-
+</section>
+</section>
+<section>
+<section id="slide-orge1bb023">
+<h2 id="orge1bb023">Práctica</h2>
 <ul>
-  <li>The set of values that can inhabit an expression
-    <ul>
-      <li>may be finite or “infinite”</li>
-      <li>characterized by cardinality</li>
-    </ul>
-  </li>
-  <li>Expressions have types
-    <ul>
-      <li>A program has a type</li>
-    </ul>
-  </li>
+<li>Seleccionen de <code>data()</code> un data.frame con alguna variable categórica</li>
+<li>Qué pasa si hacen solo <code>ggplot(mi_data)</code>?</li>
+<li>Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
+<li>Para que sirve <code>jitter</code>? Para que sirve <code>stroke</code>?</li>
+<li>Podemos usar formas condicionales (&gt;, &lt;, etc) en aes()?</li>
+<li>Cómo difieren <code>facet_grid</code> y <code>facet_wrap</code>?</li>
+<li>Usar <code>box-plot</code> y <code>geom_smooth()</code>. Cuándo conviene usarlas?</li>
+
 </ul>
-
-<h2 id="lets-play-a-game">Let’s play a game</h2>
-
-<p>To help us get thinking about types.</p>
-
-<p>I’ll tell you a type.</p>
-
-<p>You tell me how many values it has.</p>
-
-<p>There are no tricks: if it seems obvious, it is!</p>
-
-<h2 id="level-1">Level 1</h2>
-
-<p>Types as sets of values</p>
-
-<h2 id="level-1-1">Level 1</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bool;
-</code></pre>
-</div>
-
-<p>2 (<code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">false</code>)</p>
-
-<h2 id="level-1-2">Level 1</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>char;
-</code></pre>
-</div>
-
-<p>256</p>
-
-<h2 id="level-1-3">Level 1</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>void;
-</code></pre>
-</div>
-
-<p>0</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>struct Foo { Foo() = delete; };
-
-struct Bar { template &lt;typename T&gt; Bar(); };
-</code></pre>
-</div>
-
-<div class="NOTES">
-cf BASIC's function vs procedure
-
-</div>
-
-<h2 id="level-1-4">Level 1</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>struct Foo {};
-</code></pre>
-</div>
-
-<p>1</p>
-
-<h2 id="level-1-5">Level 1</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>enum FireSwampDangers : int8_t {
-  FLAME_SPURTS,
-  LIGHTNING_SAND,
-  ROUSES
-};
-</code></pre>
-</div>
-
-<p>3</p>
-
-<div class="NOTES">
-It is possible to put something into FireSwampDangers that fits
-representationally (eg. the value 4). But that would be meaningless: there would
-be no connection between the value represented and its interpretation. Because
-there is no interpretation: cf. an unconstructed object.
-
-</div>
-
-<h2 id="level-1-6">Level 1</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-struct Foo {
-  T m_t;
-};
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">Foo</code> has as many values as <code class="highlighter-rouge">T</code></p>
-
-<h2 id="end-of-level-1">End of Level 1</h2>
-
-<p>Algebraically, a type is the number of values that inhabit it.</p>
-
-<p>These types are equivalent:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bool;
-
-enum class InatorButtons {
-  ON_OFF,
-  SELF_DESTRUCT
-};
-</code></pre>
-</div>
-
-<p>Let’s move on to level 2.</p>
-
-<h2 id="level-2">Level 2</h2>
-
-<p>Aggregating Types</p>
-
-<h2 id="level-2-1">Level 2</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>std::pair&lt;char, bool&gt;;
-</code></pre>
-</div>
-
-<p>256 * 2 = 512</p>
-
-<h2 id="level-2-2">Level 2</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>struct Foo {
-  char a;
-  bool b;
-};
-</code></pre>
-</div>
-
-<p>256 * 2 = 512</p>
-
-<h2 id="level-2-3">Level 2</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>std::tuple&lt;bool, bool, bool&gt;;
-</code></pre>
-</div>
-
-<p>2 * 2 * 2 = 8</p>
-
-<h2 id="level-2-4">Level 2</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
-struct Foo {
-  T m_t;
-  U m_u;
-};
-</code></pre>
-</div>
-
-<p>(# of values in <code class="highlighter-rouge">T</code>) * (# of values in <code class="highlighter-rouge">U</code>)</p>
-
-<h2 id="end-of-level-2">End of Level 2</h2>
-
-<p>When two types are “concatenated” into one compound type, we <span class="underline">multiply</span> the # of
-inhabitants of the components.</p>
-
-<p>This kind of compounding gives us a <span class="underline">product type</span>.</p>
-
-<p>On to Level 3.</p>
-
-<h2 id="level-3">Level 3</h2>
-
-<p>Alternating Types</p>
-
-<h2 id="level-3-1">Level 3</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>std::optional&lt;char&gt;;
-</code></pre>
-</div>
-
-<p>256 + 1 = 257</p>
-
-<h2 id="level-3-2">Level 3</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>std::variant&lt;char, bool&gt;;
-</code></pre>
-</div>
-
-<p>256 + 2 = 258</p>
-
-<h2 id="level-3-3">Level 3</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
-struct Foo {
-  std::variant&lt;T, U&gt;;
-}
-</code></pre>
-</div>
-
-<p>(# of values in <code class="highlighter-rouge">T</code>) + (# of values in <code class="highlighter-rouge">U</code>)</p>
-
-<h2 id="end-of-level-3">End of Level 3</h2>
-
-<p>When two types are “alternated” into one compound type, we <span class="underline">add</span> the # of
-inhabitants of the components.</p>
-
-<p>This kind of compounding gives us a <span class="underline">sum type</span>.</p>
-
-<h2 id="level-4">Level 4</h2>
-
-<p>Function Types</p>
-
-<h2 id="level-4-1">Level 4</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bool f(bool);
-</code></pre>
-</div>
-
-<p>4</p>
-
-<h2 id="level-4-2">Level 4</h2>
-
-<p>Four possible values
- <img src="./function_bool.svg" alt="img" /></p>
-
-<h2 id="level-4-3">Level 4</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bool f1(bool b) { return b; }
-bool f2(bool) { return true; }
-bool f3(bool) { return false; }
-bool f4(bool b) { return !b; }
-</code></pre>
-</div>
-
-<h2 id="level-4-4">Level 4</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>char f(bool);
-</code></pre>
-</div>
-
-<p>256 * 256 = 65,536</p>
-
-<h2 id="level-4-5">Level 4</h2>
-
-<p>How many values (for <code class="highlighter-rouge">f</code>)?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>enum class Foo
-{
-  BAR,
-  BAZ,
-  QUUX
-};
-char f(Foo);
-</code></pre>
-</div>
-
-<p>256 * 256 * 256 = 16,777,216</p>
-
-<h2 id="level-4-6">Level 4</h2>
-
-<p>The number of values of a function is the number of different ways we can draw
-arrows between the inputs and the outputs.
- <img src="./function.svg" alt="img" /></p>
-
-<h2 id="level-4-7">Level 4</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;class T, class U&gt;
-U f(T);
-</code></pre>
-</div>
-
-<table>
-  <tbody>
-    <tr>
-      <td>(</td>
-      <td>U</td>
-      <td>^{</td>
-      <td>T</td>
-      <td>})</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="end-of-level-4">End of Level 4</h2>
-
-<p>When we have a <span class="underline">function</span> from (A) to (B), we raise the # of inhabitants of
-(B) to the power of the # of inhabitants of (A).</p>
-
-<h2 id="end-of-level-4-corollary">End of Level 4 (corollary)</h2>
-
-<p>Hence a curried function is equivalent to its uncurried alternative.</p>
-
-<p>[\begin{align<em>}
-F_{uncurried}::(A,B) \rightarrow C &amp; \Leftrightarrow C^{A</em>B} <br />
-&amp; = C^{B<em>A} <br />
-&amp; = (C^B)^A <br />
-&amp; \Leftrightarrow (B \rightarrow C)^A <br />
-&amp; \Leftrightarrow F_{curried}::A \rightarrow (B \rightarrow C)
-\end{align</em>}]</p>
-
-<h2 id="victory">Victory!</h2>
-
-<h2 id="equivalences">Equivalences</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-struct Foo {
-  std::variant&lt;T, T&gt; m_v;
-};
-
-template &lt;typename T&gt;
-struct Bar {
-  T m_t;
-  bool m_b;
-};
-</code></pre>
-</div>
-
-<p>We have a choice over how to represent values. <code class="highlighter-rouge">std::variant</code> will quickly
-become a very important tool for proper expression of states.</p>
-
-<p>This is one reason why <code class="highlighter-rouge">std::variant</code>’s “never-empty” guarantee is important.</p>
-
-<div class="NOTES">
-T + T = 2T.
-
-But note that in `Bar`, we need to manually keep the two variables "in sync".
-
-</div>
-
-<h2 id="algebraic-datatypes">Algebraic Datatypes</h2>
-
-<p>This is what it means to have an algebra of datatypes.</p>
-
-<ul>
-  <li>the ability to reason about equality of types</li>
-  <li>to find equivalent formulations
-    <ul>
-      <li>more natural</li>
-      <li>more easily understood</li>
-      <li>more efficient</li>
-    </ul>
-  </li>
-  <li>to identify mismatches between state spaces and the types used to implement
-them</li>
-  <li>to eliminate illegal states by making them inexpressible</li>
-</ul>
-
-<h2 id="making-illegal-states-unrepresentable">Making Illegal States Unrepresentable</h2>
-
-<p><code class="highlighter-rouge">std::variant</code> is a game changer because it allows us to (more) properly express
-types, so that (more) illegal states are unrepresentable.</p>
-
-<p><img src="./variant-tweet.png" alt="img" /></p>
-
-<div class="NOTES">
-C++'s type system is still not perfect by a long shot. But `std::variant` is an
-amazing upgrade.
-
-</div>
-
-<h2 id="making-illegal-states-unrepresentable-1">Making Illegal States Unrepresentable</h2>
-
-<p>Let’s look at some possible alternative data formulations, using sum types
-(<code class="highlighter-rouge">variant</code>, <code class="highlighter-rouge">optional</code>) as well as product types (structs).</p>
-
-<h2 id="example-connection-state">Example: Connection State</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>enum class ConnectionState {
-  DISCONNECTED,
-  CONNECTING,
-  CONNECTED,
-  CONNECTION_INTERRUPTED
-};
-
-struct Connection {
-  ConnectionState m_connectionState;
-
-  std::string m_serverAddress;
-  ConnectionId m_id;
-  std::chrono::system_clock::time_point m_connectedTime;
-  std::chrono::milliseconds m_lastPingTime;
-  Timer m_reconnectTimer;
-};
-</code></pre>
-</div>
-
-<div class="NOTES">
-A very simple example of what a connection class might look like today.
-
-Functions interacting with this class would typically use a switch statement
-over the `ConnectionState`.
-
-There are hidden invariants here that aren't enforced by the Connection type.
-
-Some of the fields are dependent on the connection state (reconnect time, last
-ping time). So it seems that some of these fields need sentinel values (eg
-invalid connection id).
-
-Worse, there is temptation to reuse fields for multiple states. Connected
-timestamp is perhaps likely to get reused to mean the instant of connection and
-the instant of disconnection.
-
-</div>
-
-<h2 id="example-connection-state-1">Example: Connection State</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>struct Connection {
-  std::string m_serverAddress;
-
-  struct Disconnected {};
-  struct Connecting {};
-  struct Connected {
-    ConnectionId m_id;
-    std::chrono::system_clock::time_point m_connectedTime;
-    std::optional&lt;std::chrono::milliseconds&gt; m_lastPingTime;
-  };
-  struct ConnectionInterrupted {
-    std::chrono::system_clock::time_point m_disconnectedTime;
-    Timer m_reconnectTimer;
-  };
-
-  std::variant&lt;Disconnected,
-	       Connecting,
-	       Connected,
-	       ConnectionInterrupted&gt; m_connection;
-};
-</code></pre>
-</div>
-
-<div class="NOTES">
-With types structured correctly, it's not possible to express illegal states.
-
-e.g. Ping time does not exist if we're not connected.
-
-(There are still things that are common to all states, e.g. perhaps this class
-represents connection to a specific server.)
-
-A switch statement could still exist, switching on the `variant`'s `index()`, or
-a visitor-based approach could be used.
-
-</div>
-
-<h2 id="example-nullable-field">Example: Nullable field</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>class Friend {
-  std::string m_alias;
-  bool m_aliasPopulated;
-  ...
-};
-</code></pre>
-</div>
-
-<p>These two fields need to be kept in sync everywhere.</p>
-
-<div class="NOTES">
-Here, a field is populated from a remote source and happens lazily and/or
-asynchronously. It is possible that the field never gets populated.
-
-All the code that deals with this field has to ensure that both variables are
-kept up to date in sync with each other.
-
-</div>
-
-<h2 id="example-nullable-field-1">Example: Nullable field</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>class Friend {
-  std::optional&lt;std::string&gt; m_alias;
-  ...
-};
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">std::optional</code> provides a sentinel value that is outside the type.</p>
-
-<div class="NOTES">
-`std::optional` captures the true state space of the variable. It is not
-possible for two fields to get out of step now.
-
-</div>
-
-<h2 id="example-monster-ai">Example: Monster AI</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>enum class AggroState {
-  IDLE,
-  CHASING,
-  FIGHTING
-};
-
-class MonsterAI {
-  AggroState m_aggroState;
-
-  float m_aggroRadius;
-  PlayerId m_target;
-  Timer m_chaseTimer;
-};
-</code></pre>
-</div>
-
-<div class="NOTES">
-Once again, presumably PlayerId has some invalid sentinel value.
-
-</div>
-
-<h2 id="example-monster-ai-1">Example: Monster AI</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>class MonsterAI {
-  struct Idle {
-    float m_aggroRadius;
-  };
-  struct Chasing {
-    PlayerId m_target;
-    Timer m_chaseTimer;
-  };
-  struct Fighting {
-    PlayerId m_target;
-  };
-
-  std::variant&lt;Idle, Chasing, Fighting&gt; m_aggroState;
-};
-</code></pre>
-</div>
-
-<div class="NOTES">
-Now the variables are properly placed into the states that use them.
-
-Chasing and Fighting states could inherit from an Aggroed state that holds a target.
-
-</div>
-
-<h2 id="example-design-patterns">Example: Design Patterns</h2>
-
-<p>The addition of sum types to C++ offers an alternative formulation for some
-design patterns.</p>
-
-<p>State machines and expressions are naturally modelled with sum types.</p>
-
-<div class="NOTES">
-Traditional runtime polymorphism approach can lead to bloated base class issue.
-
-Type erasure is another way to go.
-
-Sum types + visitor/pattern matching is a third possibility, particularly
-natural for things like ASTs.
-
-</div>
-
-<h2 id="example-design-patterns-1">Example: Design Patterns</h2>
-
-<ul>
-  <li>Command</li>
-  <li>Composite</li>
-  <li>State</li>
-  <li>Interpreter</li>
-</ul>
-
-<div class="NOTES">
-Command uses a flat, wide class hierarchy to encapsulate requests in objects.
-
-Composite: model part-whole hierarchies with uniform interface.
-
-State is obvious: simply replace the contained polymorphic object with a
-variant.
-
-Sum types are especially good for representing expressions (think JSON).
-
-Interpreter tackles the expression problem: easy to add new classes (use
-OO/interfaces) or new operations (use sum types/visitors)?
-
-</div>
-
-<h2 id="designing-with-types">Designing with Types</h2>
-
-<p><code class="highlighter-rouge">std::variant</code> and <code class="highlighter-rouge">std::optional</code> are valuable tools that allow us to model the
-state of our business logic more accurately.</p>
-
-<p>When you match the types to the domain accurately, certain categories of tests
-just disappear.</p>
-
-<div class="NOTES">
-You don't have to test the edge cases where the representation can fall outside
-your reality - because that can't happen.
-
-</div>
-
-<h2 id="designing-with-types-1">Designing with Types</h2>
-
-<p>Fitting types to their function more accurately makes code easier to understand
-and removes pitfalls.</p>
-
-<p>The bigger the codebase and the more vital the functionality, the more value
-there is in correct representation with types.</p>
-
-<div class="NOTES">
-When illegal states are unrepresentable, you don't have to worry about other
-programmers misunderstanding the code, or misusing data. In a sense, they
-*cannot* write something that is wrong.
-
-And when I say "other programmers" of course I mean myself in 3 months&#x2026;
-
-Questionably reusing fields, bending semantics, etc. These are bad practices.
-But they happen when we're chasing a deadline.
-
-</div>
-
-<h2 id="using-types-to-constrain-behaviour">Using Types to Constrain Behaviour</h2>
-
-<p>We’ve seen how an expressive type system (with product and sum types) allows us
-to model state more accurately.</p>
-
-<p>“Phantom types” is one technique that helps us to model the <em>behaviour</em> of our
-business logic in the type system. Illegal behaviour becomes a type error.</p>
-
-<h2 id="phantom-types-before">Phantom Types: Before</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>std::string GetFormData();
-
-std::string SanitizeFormData(const std::string&amp;);
-
-void ExecuteQuery(const std::string&amp;);
-</code></pre>
-</div>
-
-<p>An injection bug waiting to happen.</p>
-
-<div class="NOTES">
-Let's hope we don't meet little Bobby Tables, and that everywhere we execute a
-query we remembered to sanitize the data provided by the user.
-
-The type system is not helping us here. How can we use types to make sure that
-we stay safe?
-
-</div>
-
-<h2 id="phantom-types-the-setup">Phantom Types: The setup</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-struct FormData {
-  explicit FormData(const string&amp; input) : m_input(input) {}
-  std::string m_input;
-};
-
-struct sanitized {};
-struct unsanitized {};
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">T</code> is the “Phantom Type” here.</p>
-
-<div class="NOTES">
-Note that the template argument is unused. It exists <span class="underline">only</span> for compile time
-type checking. There is no runtime overhead.
-
-</div>
-
-<h2 id="phantom-types-after">Phantom Types: After</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>FormData&lt;unsanitized&gt; GetFormData();
-
-std::optional&lt;FormData&lt;sanitized&gt;&gt;
-SanitizeFormData(const FormData&lt;unsanitized&gt;&amp;);
-
-void ExecuteQuery(const FormData&lt;sanitized&gt;&amp;);
-</code></pre>
-</div>
-
-<div class="NOTES">
-User input is born unsanitized.
-
-It is impossible for us to execute unsanitized input. The compiler simply won't
-compile it.
-
-We've used types to help enforce the business logic.
-
-This is something similar to a strong typedef, or what enum class effectively
-does for integral types. This technique can also be used e.g. in a units
-library.
-
-</div>
-
-<h2 id="total-functions">Total Functions</h2>
-
-<p>A <em>total function</em> is a function that is defined for all inputs in its domain.</p>
-
-<p><code class="highlighter-rouge">template &lt;typename T&gt;
-const T&amp; min(const T&amp; a, const T&amp; b);</code></p>
-
-<p><code class="highlighter-rouge">float sqrt(float f);</code></p>
-
-<div class="NOTES">
-We are straying into the realm of Concepts here.
-
-I'm not saying that total is the same thing as "no preconditions". The type must
-satisfy the requirements on it. But you can see that with functions like `sqrt`
-there is a clear mismatch between the type of the function and the actual type
-of its domain.
-
-</div>
-
-<h2 id="lets-play-another-game">Let’s play another game</h2>
-
-<p>To help us see how total functions with the right types can result in
-unsurprising code.</p>
-
-<p>I’ll give you a function signature with no names attached.</p>
-
-<p>You tell me what it’s called… (and you’ll even know how to implement it).</p>
-
-<p>The only rule… it must be a <em>total</em> function.</p>
-
-<div class="NOTES">
-Assume regular types. Assume that the function is doing something "interesting"
-rather than "boring" when you have a choice. (ie. that it uses its argument).
-But you needn't assume anything else.
-
-And there are always ways to make things unexpected in C++. But assume nothing
-surprising here.
-
-</div>
-
-<h2 id="name-that-function">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-T f(T);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">identity</code></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>int f(int);
-</code></pre>
-</div>
-
-<div class="NOTES">
-Note the odd situation here: we know more about `f(T)` than we do about
-`f(int)`.
-
-</div>
-
-<h2 id="name-that-function-1">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
-T f(pair&lt;T, U&gt;);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">first</code></p>
-
-<h2 id="name-that-function-2">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-T f(bool, T, T);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">select</code></p>
-
-<h2 id="name-that-function-3">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
-U f(function&lt;U(T)&gt;, T);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">apply</code> or <code class="highlighter-rouge">call</code></p>
-
-<h2 id="name-that-function-4">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-vector&lt;T&gt; f(vector&lt;T&gt;);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">reverse</code>, <code class="highlighter-rouge">shuffle</code>, …</p>
-
-<div class="NOTES">
-For simplicity, I haven't written this signature in terms of iterators, but it
-would be just the same.
-
-</div>
-
-<h2 id="name-that-function-5">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-T f(vector&lt;T&gt;);
-</code></pre>
-</div>
-
-<p>Not possible! It’s a partial function - the <code class="highlighter-rouge">vector</code> might be empty.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>T&amp; vector&lt;T&gt;::front();
-</code></pre>
-</div>
-
-<h2 id="name-that-function-6">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-optional&lt;T&gt; f(vector&lt;T&gt;);
-</code></pre>
-</div>
-
-<h2 id="name-that-function-7">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T, typename U&gt;
-vector&lt;U&gt; f(function&lt;U(T)&gt;, vector&lt;T&gt;);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">transform</code></p>
-
-<h2 id="name-that-function-8">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-vector&lt;T&gt; f(function&lt;bool(T)&gt;, vector&lt;T&gt;);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">remove_if</code>, <code class="highlighter-rouge">partition</code>, …</p>
-
-<h2 id="name-that-function-9">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-T f(optional&lt;T&gt;);
-</code></pre>
-</div>
-
-<p>Not possible!</p>
-
-<h2 id="name-that-function-10">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename K, typename V&gt;
-V f(map&lt;K, V&gt;, K);
-</code></pre>
-</div>
-
-<p>Not possible! (The key might not be in the <code class="highlighter-rouge">map</code>.)</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>V&amp; map&lt;K, V&gt;::operator[](const K&amp;);
-</code></pre>
-</div>
-
-<h2 id="name-that-function-11">Name That Function</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename K, typename V&gt;
-optional&lt;V&gt; f(map&lt;K, V&gt;, K);
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">lookup</code></p>
-
-<h2 id="what-just-happened">What Just Happened?</h2>
-
-<p>I gave you <em>almost nothing</em>.</p>
-
-<p>No variable names. No function names. No type names.</p>
-
-<p>Just bare type signatures.</p>
-
-<p>You were able to tell me exactly what the functions should be called, and likely
-knew instantly how to implement them.</p>
-
-<p>You will note that partial functions gave us some issues…</p>
-
-<div class="NOTES">
-Naming is one of the hardest problems in Comp Sci. Getting the types right is
-much easier. And if your types model the logic properly, perhaps you have
-"self-documenting code"?
-
-</div>
-
-<h2 id="well-typed-functions">Well-typed Functions</h2>
-
-<p>Writing <em>total functions</em> with well-typed signatures can tell us a lot about
-functionality.</p>
-
-<p>Using types appropriately makes interfaces unsurprising, safer to use and harder
-to misuse.</p>
-
-<p>Total functions make more test categories vanish.</p>
-
-<h2 id="about-testing">About Testing…</h2>
-
-<p>In a previous talk, I talked about unit testing and in particular property-based testing.</p>
-
-<p>Effectively using types can reduce test code.</p>
-
-<p>Property-based tests say “for all values, this property is true”.</p>
-
-<p>That is exactly what types <em>are</em>: universal quantifications about what can be
-done with data.</p>
-
-<p>Types scale better than tests. Instead of TDD, maybe try TDD!</p>
-
-<div class="NOTES">
-C++'s type system isn't yet powerful enough to be able to say goodbye to tests,
-but it is powerful enough that used effectively, we can reduce some of the
-drudgery of writing tests.
-
-Any time you're thinking something is true for all values, that's what a type
-can do.
-
-</div>
-
-<h2 id="further-down-the-rabbit-hole">Further Down the Rabbit Hole</h2>
-
-<ul>
-  <li><a href="http://en.wikipedia.org/wiki/Algebraic_data_type">http://en.wikipedia.org/wiki/Algebraic_data_type</a></li>
-  <li><a href="http://chris-taylor.github.io/blog/2013/02/10/the-algebra-of-algebraic-data-types/">http://chris-taylor.github.io/blog/2013/02/10/the-algebra-of-algebraic-data-types/</a></li>
-  <li><a href="https://vimeo.com/14313378">https://vimeo.com/14313378</a> (Effective ML: Making Illegal States Unrepresentable)</li>
-  <li><a href="http://www.infoq.com/presentations/Types-Tests">http://www.infoq.com/presentations/Types-Tests</a> (Types vs Tests: Strange Loop 2012)</li>
-</ul>
-
-<h2 id="thanks-for-listening">Thanks For Listening</h2>
-
-<p>“On the whole, I’m inclined to say that when in doubt, make a new type.”</p>
-
-<p>– Martin Fowler, <a href="http://martinfowler.com/ieeeSoftware/whenType.pdf"><em>When to Make a Type</em></a></p>
-
-<p>“Don’t set a flag; set the data.”</p>
-
-<p>– Leo Brodie, <em><a href="http://thinking-forth.sourceforge.net/">Thinking Forth</a></em></p>
-
-<h2 id="goals-for-well-typed-code">Goals for Well-typed Code</h2>
-
-<ul>
-  <li>Make illegal states unrepresentable</li>
-  <li>Use <code class="highlighter-rouge">std::variant</code> and <code class="highlighter-rouge">std::optional</code> for formulations that
-    <ul>
-      <li>are more natural</li>
-      <li>fit the business logic state better</li>
-    </ul>
-  </li>
-  <li>Use phantom types for safety
-    <ul>
-      <li>Make illegal behaviour a compile error</li>
-    </ul>
-  </li>
-  <li>Write total functions
-    <ul>
-      <li>Unsurprising behaviour</li>
-      <li>Easy to use, hard to misuse</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="epilogue">Epilogue</h2>
-
-<p>A taste of algebra with datatypes</p>
-
-<h2 id="a-taste-of-algebra-with-datatypes">A Taste of Algebra with Datatypes</h2>
-
-<p>How many values?</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>template &lt;typename T&gt;
-class vector&lt;T&gt;;
-</code></pre>
-</div>
-
-<p>We can define a <code class="highlighter-rouge">vector&lt;T&gt;</code> recursively:</p>
-
-<p>({v(t)} = {1 + t v(t)})</p>
-
-<p>(empty vector or (+) head element and (*) tail vector)</p>
-
-<h2 id="a-taste-of-algebra-with-datatypes-1">A Taste of Algebra with Datatypes</h2>
-
-<p>And rearrange…</p>
-
-<p>What does that mean? Subtracting and dividing types?</p>
-
-<h2 id="a-taste-of-algebra-with-datatypes-2">A Taste of Algebra with Datatypes</h2>
-
-<p>When we don’t know how to interpret something mathematical?</p>
-
-<h2 id="a-taste-of-algebra-with-datatypes-3">A Taste of Algebra with Datatypes</h2>
-
-<p>Series expansion at ({t = 0}):</p>
-
-<p>({1 + t + t^2 + t^3 + t^4 +{ }…})</p>
-
-<p>A <code class="highlighter-rouge">vector&lt;T&gt;</code> can have:</p>
-
-<ul>
-  <li>0 elements (({1}))</li>
-  <li>or (+) 1 element (({t}))</li>
-  <li>or (+) 2 elements (({t^2}))</li>
-  <li>etc.</li>
-</ul>
-
-<h2 id="goals-for-well-typed-code-1">Goals for Well-typed Code</h2>
-
-<ul>
-  <li>Make illegal states unrepresentable</li>
-  <li>Use <code class="highlighter-rouge">std::variant</code> and <code class="highlighter-rouge">std::optional</code> for formulations that
-    <ul>
-      <li>are more natural</li>
-      <li>fit the business logic state better</li>
-    </ul>
-  </li>
-  <li>Use phantom types for safety
-    <ul>
-      <li>Make illegal behaviour a compile error</li>
-    </ul>
-  </li>
-  <li>Write total functions
-    <ul>
-      <li>Unsurprising behaviour</li>
-      <li>Easy to use, hard to misuse</li>
-    </ul>
-  </li>
-</ul>
-
-
-      </div>
-    </div>
-
-    <script src="/reveal.js/lib/js/head.min.js"></script>
-    <script src="/reveal.js/js/reveal.js"></script>
-    <script>
-      // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        
-          transition: 'convex',
-        
-      
-        // optional reveal.js plugins
-        dependencies: [
-          { src: '/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: '/reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: '/reveal.js/plugin/notes/notes.js', async: true }
-        ]
-      });
-
-    </script>
-
-  </body>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
 </html>
-

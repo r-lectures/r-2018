@@ -15,3 +15,10 @@ lectures:
     - title: "Slides clase 2"
       url: slides/02-lecture-slides.html
 
+- title: "Clase 3 - dplyr"
+  url: 03-lecture.html
+
+  subitems:
+    - title: "Slides clase 3"
+      url: slides/03-lecture-slides.html
+
