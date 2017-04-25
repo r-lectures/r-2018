@@ -152,7 +152,7 @@ Con `mutate` podemos armarnos una nueva columna a partir de otra(s)
     promedio_por_anyo <-  
     		  summarise( por_anyo, promedio = mean(births) )
     # calculo el promedio anual total
-    promedio_tot <- mean(anyo_promedio$promedio)
+    promedio_tot <- mean(promedio_por_anyo$promedio)
     # calculo el promedio _normalizado_ a través de los años
     mutate(promedio_por_anyo, 
            births_normalizado = promedio/promedio_tot)
