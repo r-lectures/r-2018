@@ -162,12 +162,12 @@ Con `mutate` podemos armarnos una nueva columna a partir de otra(s)
 
 <ul class="smallfont">
   <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
-  <li>Esto es así año a año? Cuál está en 1er lugar durante más tiempo?</li>
+  <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
   <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
   <li>En promedio, qué més del año tiene más nacimientos?</li>
   <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
   <li>Hay algún día (de cualquier año) sin nacimientos?</li>
   <li>Y considerando los estados individualmente?</li>
-  <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos</li>
+  <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
 </ul>
 
