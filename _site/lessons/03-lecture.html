@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Posts</title>
+    <title>Clase 2</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/posts.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/03-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -124,41 +124,179 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <ul>
-  
-    <li>
-      <a href="/2017/04/05/simple.html">using types effectively</a>
-    </li>
-  
-    <li>
-      <a href="/2017/04/05/simple.html">Simple</a>
-    </li>
-  
-    <li>
-      <a href="/haskell/2015/08/30/hello-world-in-haskell.html">hello world in haskell</a>
-    </li>
-  
-    <li>
-      <a href="/jekyll/update/2015/08/29/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-    </li>
-  
-    <li>
-      <a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a>
-    </li>
-  
-    <li>
-      <a href="/2015/01/06/dummy-post-2.html">Programación en R</a>
-    </li>
-  
-    <li>
-      <a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a>
-    </li>
-  
-    <li>
-      <a href="/2015/01/06/dummy-post-1.html">Programación en R</a>
-    </li>
-  
+                <h1 id="repaso-de-la-clase-pasada">Repaso de la clase pasada</h1>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">ggplot2</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p &lt;- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
+p &lt;- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
+p &lt;- p + geom_point() # le agrego como quiero que represente ese mapeo
+p                     # imprimo la figura
+
+ggplot(data = mi-data-frame) + 
+      geom_point/line/etc(mapping = aes(col1, col2, colour="blue", etc.))
+</code></pre>
+</div>
+
+<p><span class="underline">solo</span> <code class="highlighter-rouge">data.frames</code></p>
+
+<p>##</p>
+
+<ul class="smallfont">
+<li><b>data</b>: el dataframe que contiene los datos a graficar</li>
+<li><b>geoms</b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
+<li><b>aesthetics</b>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc </li>
+<li><b>scale</b>: para cada aesthetic, describe como se mapea la característica visual a valores
+ por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</li>
+<li><b>stats</b>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión  </li>
+<li><b>facets</b>: permite separar en gráficos distintos de acuerdo a variables categóricas</li>
+ </ul>
+
+<h2 id="práctica-1">Práctica 1</h2>
+
+<ol>
+  <li>Elegir un conjunto de datos <em>built-in</em> con datos continuos y categóricos</li>
+  <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
+  <li>Graficar las relaciones más importantes</li>
+  <li>Encontrar la manera de hacer <em>scatterplots</em> e histogramas</li>
+  <li>Agregar información (título, ejes, descripción de los datos)</li>
+</ol>
+
+<h2 id="práctica-2">Práctica 2</h2>
+
+<ul>
+  <li>Seleccionen de <code class="highlighter-rouge">data()</code> un data.frame con alguna variable categórica</li>
+  <li>Qué pasa si hacen solo <code class="highlighter-rouge">ggplot(mi_data)</code>?</li>
+  <li>Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
+  <li>Para que sirve <code class="highlighter-rouge">jitter</code>? Para que sirve <code class="highlighter-rouge">stroke</code>?</li>
+  <li>Podemos usar formas condicionales (&gt;, &lt;, etc) en aes()?</li>
+  <li>Cómo difieren <code class="highlighter-rouge">facet_grid</code> y <code class="highlighter-rouge">facet_wrap</code>?</li>
+  <li>Usar <code class="highlighter-rouge">box-plot</code> y <code class="highlighter-rouge">geom_smooth()</code>. Cuándo conviene usarlas?</li>
 </ul>
+
+<h1 id="manipulación-de-datos">Manipulación de datos</h1>
+
+<p><code class="highlighter-rouge">library(dplyr)</code></p>
+
+<p>(igual que <code class="highlighter-rouge">ggplot2</code>, <code class="highlighter-rouge">dplyr</code> solo acepta data.frames)</p>
+
+<h2 id="principales-funciones">principales funciones</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">select()</code>: seleccionar columnas</li>
+  <li><code class="highlighter-rouge">arrange()</code>:reordenar filas</li>
+  <li><code class="highlighter-rouge">filter()</code>: filtrar observaciones por sus valores</li>
+  <li><code class="highlighter-rouge">mutate()</code>: crear variables a partir de otras</li>
+  <li><code class="highlighter-rouge">summarise()</code>: reducir varios valores a uno solo
+(muchas veces agrupamos primero con <code class="highlighter-rouge">group_by</code>)</li>
+</ul>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">select()</code></p>
+
+<p>Con <code class="highlighter-rouge">select</code> podemos elegir las columnas</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(mosaicData) # cargo el paquete que ya viene instalado
+b &lt;- tbl_df(Birthdays) # cambio el nombre del data.frame (por fiaca)
+str(b)  # que pinta tiene el data.frame?
+
+select(b, state, births) # quiero dos columnas
+
+
+select(b, state, births, year) # o tres
+
+
+select(b, -wday, -date) # podemos sacar columnas
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">arrange()</code></p>
+
+<p>Con <code class="highlighter-rouge">arrange</code> podemos ordenar según valores de columnas</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>b # ordenados por año
+
+arrange(b, state) # ahora ordeno por estados
+
+arrange(b, state, births) # ahora por estados y por nacimientos
+
+arrange(b, state, desc(births)) # idem pero nacimientos de mayor a menor
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">filter()</code></p>
+
+<p>Con <code class="highlighter-rouge">filter</code> podemos filtrar observaciones mediante condiciones lógicas
+(&gt;, &gt;=, &lt;, &lt;=, !=, ==, más los operadores &amp; y |)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>filter(b, state == "WA") # solo estado de Washington
+
+filter(b, state == "WA"  &amp; year == 1974) # Washington en 1974
+
+filter(b, state == "WA" &amp; year == 1974 &amp; births &gt; 180) # idem 
+				# pero más de 180 nacimientos
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">summarise()</code> y <code class="highlighter-rouge">group_by</code></p>
+
+<p>Con <code class="highlighter-rouge">summarise</code> podemos resumir variables</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>summarise(b, promedio = mean(births) ) # gran-promedio-gran
+
+# pero es mucho mejor si sacamos resúmenes de datos agrupados
+por_mes &lt;- group_by(b, month)
+summarise(por_mes, births_por_mes = mean(births))
+
+por_estado &lt;- group_by(b, state)
+summarise(por_estado, births_por_estado = mean(births))
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">mutate()</code></p>
+
+<p>Con <code class="highlighter-rouge">mutate</code> podemos armarnos una nueva columna a partir de otra(s)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mutate(b, normalized = births/mean(births)) # normalizando
+
+
+# me armo un df agrupado como yo quiero
+por_anyo &lt;- group_by(b, year) 
+# le calculo el promedio a través de los años
+promedio_por_anyo &lt;-  
+		  summarise( por_anyo, promedio = mean(births) )
+# calculo el promedio anual total
+promedio_tot &lt;- mean(anyo_promedio$promedio)
+# calculo el promedio _normalizado_ a través de los años
+mutate(promedio_por_anyo, 
+       births_normalizado = promedio/promedio_tot)
+</code></pre>
+</div>
+
+<h2 id="práctica-3">práctica 3</h2>
+
+<ul class="smallfont">
+  <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
+  <li>Esto es así año a año? Cuál está en 1er lugar durante más tiempo?</li>
+  <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
+  <li>En promedio, qué més del año tiene más nacimientos?</li>
+  <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
+  <li>Hay algún día (de cualquier año) sin nacimientos?</li>
+  <li>Y considerando los estados individualmente?</li>
+  <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos</li>
+</ul>
+
 
             </div>
             <div id="site-side-bar" class="col-md-3">
