@@ -30,12 +30,12 @@
 <section id="sec-title-slide"><h1>R 2017</h1><h3>25/04/2017</h3>
 </section>
 <section>
-<section id="slide-org4322ed9">
-<h2 id="org4322ed9">Repaso de la clase pasada</h2>
-<div class="outline-text-2" id="text-org4322ed9">
+<section id="slide-org6501847">
+<h2 id="org6501847">Repaso de la clase pasada</h2>
+<div class="outline-text-2" id="text-org6501847">
 </div></section>
-<section id="slide-org4a9f705">
-<h3 id="org4a9f705"></h3>
+<section id="slide-orgac5fe9b">
+<h3 id="orgac5fe9b"></h3>
 <p>
 <code>ggplot2</code>
 </p>
@@ -61,8 +61,8 @@ p                     # imprimo la figura
 </p>
 
 </section>
-<section id="slide-org5e63db1">
-<h3 id="org5e63db1"></h3>
+<section id="slide-orga913d28">
+<h3 id="orga913d28"></h3>
  <ul class="smallfont">
 <li><b>data</b>: el dataframe que contiene los datos a graficar</li>
 <li><b>geoms</b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
@@ -74,8 +74,8 @@ p                     # imprimo la figura
  </ul>
 
 </section>
-<section id="slide-orgc55016e" data-background="#123456">
-<h3 id="orgc55016e">Práctica 1</h3>
+<section id="slide-org5870860" data-background="#123456">
+<h3 id="org5870860">Práctica 1</h3>
 <ol>
 <li>Elegir un conjunto de datos <i>built-in</i> con datos continuos y categóricos</li>
 <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
@@ -86,8 +86,8 @@ p                     # imprimo la figura
 </ol>
 
 </section>
-<section id="slide-orgfe302c2" data-background="#123456">
-<h3 id="orgfe302c2">Práctica 2</h3>
+<section id="slide-org9c3465d" data-background="#123456">
+<h3 id="org9c3465d">Práctica 2</h3>
 <ul>
 <li>Seleccionen de <code>data()</code> un data.frame con alguna variable categórica</li>
 <li>Qué pasa si hacen solo <code>ggplot(mi_data)</code>?</li>
@@ -102,8 +102,8 @@ p                     # imprimo la figura
 </section>
 </section>
 <section>
-<section id="slide-org8a1ffb4">
-<h2 id="org8a1ffb4">Manipulación de datos</h2>
+<section id="slide-orgd5d632c">
+<h2 id="orgd5d632c">Manipulación de datos</h2>
 <p>
 <code>library(dplyr)</code>
 </p>
@@ -112,8 +112,8 @@ p                     # imprimo la figura
 (igual que <code>ggplot2</code>, <code>dplyr</code> solo acepta data.frames)
 </p>
 </section>
-<section id="slide-org39120f2">
-<h3 id="org39120f2">principales funciones</h3>
+<section id="slide-orgac6d7ed">
+<h3 id="orgac6d7ed">principales funciones</h3>
 <ul>
 <li><code>select()</code>: seleccionar columnas</li>
 <li><code>arrange()</code>:reordenar filas</li>
@@ -124,8 +124,8 @@ p                     # imprimo la figura
 
 </ul>
 </section>
-<section id="slide-org59d9f40">
-<h3 id="org59d9f40"></h3>
+<section id="slide-org63d083d">
+<h3 id="org63d083d"></h3>
 <p>
 <code>select()</code>
 </p>
@@ -149,8 +149,8 @@ select(b, -wday, -date) # podemos sacar columnas
 </code></pre>
 </div>
 </section>
-<section id="slide-orgad0afc4">
-<h3 id="orgad0afc4"></h3>
+<section id="slide-orgac7753f">
+<h3 id="orgac7753f"></h3>
 <p>
 <code>arrange()</code>
 </p>
@@ -172,8 +172,8 @@ arrange(b, state, desc(births)) # idem pero nacimientos de mayor a menor
 </div>
 
 </section>
-<section id="slide-orgdc6aaea">
-<h3 id="orgdc6aaea"></h3>
+<section id="slide-org96f89ff">
+<h3 id="org96f89ff"></h3>
 <p>
 <code>filter()</code>
 </p>
@@ -194,8 +194,8 @@ filter(b, state == "WA" & year == 1974 & births > 180) # idem
 </code></pre>
 </div>
 </section>
-<section id="slide-orgdfe26e9">
-<h3 id="orgdfe26e9"></h3>
+<section id="slide-orgf7c8c20">
+<h3 id="orgf7c8c20"></h3>
 <p>
 <code>summarise()</code> y <code>group_by</code>
 </p>
@@ -217,8 +217,8 @@ summarise(por_estado, births_por_estado = mean(births))
 </code></pre>
 </div>
 </section>
-<section id="slide-org86c7b3b">
-<h3 id="org86c7b3b"></h3>
+<section id="slide-org81c98aa">
+<h3 id="org81c98aa"></h3>
 <p>
 <code>mutate()</code>
 </p>
@@ -238,7 +238,7 @@ por_anyo <- group_by(b, year)
 promedio_por_anyo <-  
 		  summarise( por_anyo, promedio = mean(births) )
 # calculo el promedio anual total
-promedio_tot <- mean(anyo_promedio$promedio)
+promedio_tot <- mean(promedio_por_anyo$promedio)
 # calculo el promedio _normalizado_ a través de los años
 mutate(promedio_por_anyo, 
        births_normalizado = promedio/promedio_tot)
@@ -246,17 +246,17 @@ mutate(promedio_por_anyo,
 </div>
 
 </section>
-<section id="slide-org2468dc8" data-background="#123456">
-<h3 id="org2468dc8">práctica 3</h3>
+<section id="slide-orgc366b33" data-background="#123456">
+<h3 id="orgc366b33">práctica 3</h3>
 <ul class="smallfont">
   <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
-  <li>Esto es así año a año? Cuál está en 1er lugar durante más tiempo?</li>
+  <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
   <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
   <li>En promedio, qué més del año tiene más nacimientos?</li>
   <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
   <li>Hay algún día (de cualquier año) sin nacimientos?</li>
   <li>Y considerando los estados individualmente?</li>
-  <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos</li>
+  <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
 </ul>
 </section>
 </section>
