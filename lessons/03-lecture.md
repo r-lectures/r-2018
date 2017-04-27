@@ -160,7 +160,7 @@ Con `mutate` podemos armarnos una nueva columna a partir de otra(s)
 
 ## práctica 3
 
-<ul class="smallfont">
+<ol class="smallfont">
   <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
   <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
   <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
@@ -169,5 +169,5 @@ Con `mutate` podemos armarnos una nueva columna a partir de otra(s)
   <li>Hay algún día (de cualquier año) sin nacimientos?</li>
   <li>Y considerando los estados individualmente?</li>
   <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
-</ul>
+</ol>
 
