@@ -1,0 +1,125 @@
+#    -*- mode: org -*-
+#+TITLE: R 2017
+#+DATE: 25/04/2017
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+
+#+OPTIONS: author:nil date:t email:nil
+#+STARTUP: showall expand
+#+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: fast
+#+REVEAL_THEME: my_moon
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+REVEAL_HLEVEL: 1
+
+# # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
+# # (setq org-reveal-title-slide 'auto)
+# # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+
+
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
+--- 
+layout: default 
+title: Clase 4
+--- 
+#+end_src 
+#+results:
+
+# #+begin_html
+# <img src="right-fail.png">
+# #+end_html
+
+# #+ATTR_REVEAL: :frag roll-in
+
+
+
+* parcial 
+~17 de Mayo~
+** mecánica: dos problemas, 50% de peso cada uno
+** qué se evaluará
+1. ética - 100% 
+2. corrección o no de la solución propuesta - 25%
+3. dominio de librerías vistas en clase - 25%
+   - riqueza de recursos
+4. puntos extras por:
+   - autocorrección
+   - innovación de ideas
+   - ...
+** parcial - más detalles
+- dura una hora (vamos a tener clases después)
+- se tienen que sacar un 6 para aprobar! ojo...
+- disponibles cualquier material online 
+- ~NO~ pueden consultarse entre sí (ver punto 1.)
+* repaso de la clase anterior
+** principales funciones dplyr
+    - ~select()~: seleccionar columnas
+    - ~arrange()~:reordenar filas
+    - ~filter()~: filtrar observaciones por sus valores
+    - ~mutate()~: crear variables a partir de otras
+    - ~summarise()~: reducir varios valores a uno solo
+         (muchas veces agrupamos primero con ~group_by~)
+** ejemplos group_by/summarise
+** práctica 3
+:PROPERTIES:
+:reveal_background: #123456
+:END:
+
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
+   <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
+   <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
+   <li>En promedio, qué més del año tiene más nacimientos?</li>
+   <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
+   <li>Hay algún día (de cualquier año) sin nacimientos?</li>
+   <li>Y considerando los estados individualmente?</li>
+   <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
+ </ol>
+#+END_EXPORT
+** respuestas práctica 3
+
+* lectura/escritura
+
+* %>% 
+/Piping/ con /Magrittr/
+
+* más dplyr
+** sql type commands & data bases
+** repaso del cheat-sheet
+
+* snippets
+- stringr
+- lubridate
+- u otro
+
+* práctica 4
+
+:PROPERTIES:
+:reveal_background: #123456
+:END:
+
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li>Open data buenos aires</li>
+ </ol>
+#+END_EXPORT

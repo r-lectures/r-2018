@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2017</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2017</h1><h3>25/04/2017</h3>
+</section>
+
+
+
+<section>
+<section id="slide-orgbd8dda9">
+<h2 id="orgbd8dda9">parcial</h2>
+<p>
+<code>17 de Mayo</code>
+</p>
+</section>
+<section id="slide-org856f653">
+<h3 id="org856f653">mecánica: dos problemas, 50% de peso cada uno</h3>
+</section>
+<section id="slide-org448c1c7">
+<h3 id="org448c1c7">qué se evaluará</h3>
+<ol>
+<li>ética - 100%</li>
+<li>corrección o no de la solución propuesta - 25%</li>
+<li>dominio de librerías vistas en clase - 25%
+<ul>
+<li>riqueza de recursos</li>
+
+</ul></li>
+<li>puntos extras por:
+<ul>
+<li>autocorrección</li>
+<li>innovación de ideas</li>
+<li>&#x2026;</li>
+
+</ul></li>
+
+</ol>
+</section>
+<section id="slide-org31abc07">
+<h3 id="org31abc07">parcial - más detalles</h3>
+<ul>
+<li>dura una hora (vamos a tener clases después)</li>
+<li>se tienen que sacar un 6 para aprobar! ojo&#x2026;</li>
+<li>disponibles cualquier material online</li>
+<li><code>NO</code> pueden consultarse entre sí (ver punto 1.)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org4ca6dc3">
+<h2 id="org4ca6dc3">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org4ca6dc3">
+</div></section>
+<section id="slide-orgff510d6">
+<h3 id="orgff510d6">principales funciones dplyr</h3>
+<ul>
+<li><code>select()</code>: seleccionar columnas</li>
+<li><code>arrange()</code>:reordenar filas</li>
+<li><code>filter()</code>: filtrar observaciones por sus valores</li>
+<li><code>mutate()</code>: crear variables a partir de otras</li>
+<li><code>summarise()</code>: reducir varios valores a uno solo
+(muchas veces agrupamos primero con <code>group_by</code>)</li>
+
+</ul>
+</section>
+<section id="slide-org300310b">
+<h3 id="org300310b">ejemplos group<sub>by</sub>/summarise</h3>
+</section>
+<section id="slide-orgb4e7f85" data-background="#123456">
+<h3 id="orgb4e7f85">práctica 3</h3>
+<ol class="smallfont">
+  <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
+  <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
+  <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
+  <li>En promedio, qué més del año tiene más nacimientos?</li>
+  <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
+  <li>Hay algún día (de cualquier año) sin nacimientos?</li>
+  <li>Y considerando los estados individualmente?</li>
+  <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
+</ol>
+</section>
+<section id="slide-org75cf2eb">
+<h3 id="org75cf2eb">respuestas práctica 3</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org8886945">
+<h2 id="org8886945">lectura/escritura</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org6e1a2fa">
+<h2 id="org6e1a2fa">%&gt;%</h2>
+<p>
+<i>Piping</i> con <i>Magrittr</i>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org66af73b">
+<h2 id="org66af73b">más dplyr</h2>
+<div class="outline-text-2" id="text-org66af73b">
+</div></section>
+<section id="slide-org2582fa2">
+<h3 id="org2582fa2">sql type commands &amp; data bases</h3>
+</section>
+<section id="slide-orgdd19706">
+<h3 id="orgdd19706">repaso del cheat-sheet</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org587a5b8">
+<h2 id="org587a5b8">snippets</h2>
+<ul>
+<li>stringr</li>
+<li>lubridate</li>
+<li>u otro</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgadd63c8">
+<h2 id="orgadd63c8">práctica 4</h2>
+<p>
+:reveal<sub>background</sub>: #123456
+</p>
+
+<ol class="smallfont">
+  <li>Open data buenos aires</li>
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

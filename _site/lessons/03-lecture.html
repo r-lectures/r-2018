@@ -71,9 +71,13 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/lessons/04-lecture.html">Clase 4</a></li> -->
+              <!--  -->
               <!--  -->
               <!--  -->
               <!-- <li><a href="/">index</a></li> -->
+              <!--  -->
+              <!--  -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -277,7 +281,7 @@ por_anyo &lt;- group_by(b, year)
 promedio_por_anyo &lt;-  
 		  summarise( por_anyo, promedio = mean(births) )
 # calculo el promedio anual total
-promedio_tot &lt;- mean(anyo_promedio$promedio)
+promedio_tot &lt;- mean(promedio_por_anyo$promedio)
 # calculo el promedio _normalizado_ a través de los años
 mutate(promedio_por_anyo, 
        births_normalizado = promedio/promedio_tot)
@@ -288,7 +292,7 @@ mutate(promedio_por_anyo,
 
 <ol class="smallfont">
   <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
-  <li>Esto es así año a año? Cuál está en 1er lugar durante más tiempo?</li>
+  <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
   <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
   <li>En promedio, qué més del año tiene más nacimientos?</li>
   <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
@@ -296,6 +300,7 @@ mutate(promedio_por_anyo,
   <li>Y considerando los estados individualmente?</li>
   <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
 </ol>
+
 
             </div>
             <div id="site-side-bar" class="col-md-3">
