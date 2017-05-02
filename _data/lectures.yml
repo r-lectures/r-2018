@@ -22,3 +22,10 @@ lectures:
     - title: "Slides clase 3"
       url: slides/03-lecture-slides.html
 
+- title: "Clase 4 - más dplyr + magrittr"
+  url: 04-lecture.html
+
+  subitems:
+    - title: "Slides clase 4"
+      url: slides/04-lecture-slides.html
+
