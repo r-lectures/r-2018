@@ -88,6 +88,7 @@ title: Clase 4
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
 library(mosaicData)
 library(dplyr)
@@ -104,11 +105,13 @@ arrange(births_by_state, desc(tot_births))
 # el que menos: el que queda en 1er lugar sin desc(): VT (Vermont)
 arrange(births_by_state, tot_births)
 #+END_SRC
+
 *** Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?
 :PROPERTIES:
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
 # agrupo por año y por estado
 by_state_year <- group_by(b, state, year)
@@ -135,6 +138,7 @@ manualmente, por ejemplo ver esta pregunta en StackOverflow: http://stackoverflo
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
   mean_by_state <- summarise(by_state, mean = mean(births))
   overall_mean <- mean( mean_by_state$mean ) 
@@ -153,6 +157,7 @@ manualmente, por ejemplo ver esta pregunta en StackOverflow: http://stackoverflo
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
 births_by_month <- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
 
@@ -167,6 +172,7 @@ mutate(births_by_month, monthly/mean_by_month)
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
 # dia del mes
 births_by_day <- arrange(summarise(group_by(b, day), daily = sum(births)), desc(daily))
@@ -184,6 +190,7 @@ mutate(births_by_wday, wdaily/mean_by_wday)
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
 # hay alguna observación 0 o NA?
 filter( b, births == 0 )
@@ -224,6 +231,7 @@ print( filter(bCA, year == 1969 ) , n = 100 )
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
 by_state_day <- group_by(b, state, date)
 births_by_state_day <- summarise(by_state_day, bsd = sum(births))
@@ -236,6 +244,7 @@ min( births_by_state_day$bsd )
 :reveal_background: #123456
 :END:
 
+#+ATTR_REVEAL: :frag roll-in
 #+BEGIN_SRC R 
 ?lag
 ?dplyr::lag # mejor aún
