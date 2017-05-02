@@ -41,7 +41,7 @@
 #+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
 --- 
 layout: default 
-title: Clase 4
+title: Clase 5
 --- 
 #+end_src 
 #+results:
@@ -51,8 +51,6 @@ title: Clase 4
 # #+end_html
 
 # #+ATTR_REVEAL: :frag roll-in
-
-
 
 * repaso de la clase anterior
 ** lectura/escritura
@@ -104,8 +102,7 @@ arrange(desc(frac)) # ordeno de mayor a menor
 #+END_EXPORT
 
 - miren con cuidado el cheat-sheet de dplyr
-
-** práctica 4
+* repaso práctica 4
 :PROPERTIES:
 :reveal_background: #123456
 :END:
@@ -113,7 +110,7 @@ arrange(desc(frac)) # ordeno de mayor a menor
 #+BEGIN_EXPORT html
  <ol class="smallfont">
    <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
-   <li>Ira a datos de Contaminación sonora </li>
+   <li>Ir a datos de Contaminación sonora </li>
    <li>Bajar csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
    <li>Cargar todo en R </li>
    <li>Hacer un gran data.frame con TMI y las tres mediciones</li>
@@ -121,5 +118,96 @@ arrange(desc(frac)) # ordeno de mayor a menor
    <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
  </ol>
 #+END_EXPORT
+** hacer gran-dataframe-gran
+#+BEGIN_SRC R 
+  library(readr)
+  tmi <- read_csv("~/Downloads/torres-de-monitoreo-inteligente.csv")
+  ## Parsed with column specification:
+  ## cols(
+  ##   TMI = col_integer(),
+  ##   BARRIO = col_character(),
+  ##   DIRECCION = col_character()
+  ## )
+  ## > tmi
+  ## # A tibble: 16 × 3
+  ##      TMI            BARRIO                 DIRECCION
+  ##    <int>             <chr>                     <chr>
+  ## 1   1282         Mataderos        Av. Eva Perón 5251
+  ## 2   1283           Liniers   Lisandro de la Torre 39
+  ## 3   1284   Vélez Sarsfield          Av. Segurola 726
+  m2011 <- read_csv2("~/Downloads/mediciones-2011.csv")
+  m2012 <- read_csv2("~/Downloads/mediciones-2012.csv")
+  m2013 <- read_csv2("~/Downloads/mediciones-2013.csv")
 
+  # construyo data.frame
+  ruido_bsas <- bind_rows(m2011, m2012, m2013)
+  ruido_bsas <- left_join(ruido_bsas, tmi)
+
+#+END_SRC
+** Ruidosos? Tranquilos?
+
+#+BEGIN_SRC R 
+  # 5 barrios más (menos) ruidosos
+  ruido_barrios <- ruido_bsas %>% 
+  group_by(BARRIO) %>% 
+  summarise(ruido_avg = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %>% 
+  arrange(desc(ruido_avg)) 
+  # pregunta: de dónde viene el NA? (Assumptions...)
+
+  ruido_barrios %>% head(n=5) # o tail(n=5) para ver los menos ruidosos
+#+END_SRC
+** Extremos vs. media?
+#+BEGIN_SRC R 
+  # como se comparan los valores extremos y la media
+  ruido_barrios %>% summary # o más elegante: ruido_barrios %>% select(ruido_avg) %>% summary
+   
+  ## también funciona esto:
+  ## ruido_barrios %>% summarise(mean(ruido_avg))
+  ## ruido_barrios %>% summarise(max(ruido_avg))
+  ## ruido_barrios %>% summarise(min(ruido_avg))
+
+  59.79/70.49
+  # [1] 0.8482054
+  74.94/70.49
+  # [1] 1.06313
+#+END_SRC
+* RStudio
+** cómo grabo lo que hago?
+** proyectos
+** atajos de teclado
+* Funciones
+#+BEGIN_NOTES
+Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
+sobre objetos distintos cada vez. Por ejemplo, la función `read_csv` o `plot` contiene código que no
+querríamos escribir cada vez que queremos cargar datos de un archivo csv o hacer un gráfico. A su
+vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier gráfico.
+
+Más información en http://r4ds.had.co.nz/functions.html.
+#+END_NOTES
+** anatomía de f()
+
+#+BEGIN_SRC R 
+alta_funcion <- function(arg1, arg2, ...){
+  alto código
+  código y más código
+  alto_resultado <- manso código
+  
+  return(alto_resultado)
+}
+#+END_SRC
+** ejemplo
+** paso a paso
+- Note the overall process: I only made the function after I’d figured out how to make it work with
+  a simple input. It’s easier to start with working code and turn it into a function; it’s harder to
+  create a function and then try to make it work.
+* Práctica 5
+:PROPERTIES:
+:reveal_background: #123456
+:END:
+
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li></li>
+ </ol>
+#+END_EXPORT
 

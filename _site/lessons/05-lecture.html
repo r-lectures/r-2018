@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Clase 2</title>
+    <title>Clase 5</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/lessons/02-lecture.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/05-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -132,233 +132,168 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="r-2017slackcom">r-2017.slack.com/</h1>
+                <h1 id="repaso-de-la-clase-anterior">repaso de la clase anterior</h1>
 
-<p><img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png" /></p>
+<h2 id="lecturaescritura">lectura/escritura</h2>
 
-<h2 id="slack">Slack</h2>
+<p>“read_csv()” lee un archivo delimitado por comas.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>read_csv(readr_example("mtcars.csv"))
+read_csv(readr_example("mtcars.csv.zip"))
+read_csv(readr_example("mtcars.csv.bz2"))
+read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
+</code></pre>
+</div>
+
+<p>Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros.</p>
+
+<p>Existe una “write_csv” equivalente.</p>
+
+<h2 id="piping--con--magrittr-y-operador-"><em>Piping</em>  con  <em>Magrittr</em> y operador %&gt;%</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x %&gt;% f en vez de f(x) # el valor de x se direcciona a f()
+
+x %&gt;% f(., arg2, arg3) # por default pasa al 1er argumento
+x %&gt;% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
+x %&gt;% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
+
+mean_by_state %&gt;% # mi data.frame
+mutate(frac = mean/overall_mean) %&gt;% # creo la columna frac
+filter(frac &gt;= 1) %&gt;% # filtro la columna frac
+arrange(desc(frac)) # ordeno de mayor a menor
+</code></pre>
+</div>
+
+<h2 id="combinando-dataframes-sin-llaves">combinando data.frames (sin llaves)</h2>
+
+<p><img src="./figs/binds.png" /></p>
+
+<h2 id="combinando-dataframes-con-llaves">combinando data.frames (con llaves)</h2>
+
+<p><img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png" /></p>
+
+<p><img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png" /></p>
 
 <ul>
-  <li>canales (<em>channels</em>) (#general, #random, creen los que hagan falta)</li>
-  <li>hilos (<em>threads</em>), en los casos en que quieran comentar sin entorpecer la discusión principal</li>
-  <li>mensajes directos - son privados</li>
-  <li>
-    <p>se puede compartir archivos y código (usar el signo “+” abajo a la izq.)</p>
-  </li>
-  <li>=&gt; pregúntenle a slackbot: how do I use Slack?</li>
+  <li>miren con cuidado el cheat-sheet de dplyr</li>
 </ul>
 
-<h1 id="githubcomr-2017">github.com/r-2017/</h1>
+<h1 id="repaso-práctica-4">repaso práctica 4</h1>
 
-<p><img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png" /></p>
-
-<h2 id="github">github</h2>
-
-<ul>
-  <li>repositório de código</li>
-  <li>sistema de versiones
-    <ul>
-      <li>“fotos” de nuestro código en distintos tiempos</li>
-      <li>versiones distintas pueden convivir en paralelo</li>
-    </ul>
-  </li>
-  <li>muy fácil de compartir</li>
-</ul>
-
-<h1 id="repaso-de-la-clase-pasada">Repaso de la clase pasada</h1>
-
-<h2 id="conceptos-principales">Conceptos principales</h2>
-
-<ul>
-  <li>
-    <p><strong>Paquetes</strong> contienen <strong>funciones</strong></p>
-
-    <p>library(ggplot2) # cargo el paquete ggplot2 en mi sesión
-install.packages(“ggplot2”) # instalo el paquete de internet si no lo tengo</p>
-  </li>
-  <li>
-    <p><strong>Funciones</strong> actuan sobre <strong>datos y variables</strong></p>
-
-    <p>str(mis_datos) # str() me dice la estructura de mis_datos
-summary(mis_datos) # summary() me los resume
-head(mis_datos) # head() me muestra algunas primeras líneas
-plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica</p>
-  </li>
-</ul>
-
-<h2 id="hicieron-la-práctica">Hicieron la práctica??</h2>
-
-<ol>
-  <li>Elegir un conjunto de datos <em>built-in</em> con datos continuos y categóricos</li>
-  <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
-  <li>Graficar las relaciones más importantes</li>
-  <li>
-    <p>Encontrar la manera de hacer <em>scatterplots</em> e histogramas</p>
-  </li>
-  <li>Agregar información (título, ejes, descripción de los datos)</li>
+<ol class="smallfont">
+  <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
+  <li>Ir a datos de Contaminación sonora </li>
+  <li>Bajar csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
+  <li>Cargar todo en R </li>
+  <li>Hacer un gran data.frame con TMI y las tres mediciones</li>
+  <li>Cuales son los 5 barrios en donde hay más (menos) promedio energético hora?</li>
+  <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
 </ol>
 
-<h2 id="visualización">Visualización</h2>
+<h2 id="hacer-gran-dataframe-gran">hacer gran-dataframe-gran</h2>
 
-<p><code class="highlighter-rouge">base::plot()</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>library(readr)
+tmi &lt;- read_csv("~/Downloads/torres-de-monitoreo-inteligente.csv")
+## Parsed with column specification:
+## cols(
+##   TMI = col_integer(),
+##   BARRIO = col_character(),
+##   DIRECCION = col_character()
+## )
+## &gt; tmi
+## # A tibble: 16 × 3
+##      TMI            BARRIO                 DIRECCION
+##    &lt;int&gt;             &lt;chr&gt;                     &lt;chr&gt;
+## 1   1282         Mataderos        Av. Eva Perón 5251
+## 2   1283           Liniers   Lisandro de la Torre 39
+## 3   1284   Vélez Sarsfield          Av. Segurola 726
+m2011 &lt;- read_csv2("~/Downloads/mediciones-2011.csv")
+m2012 &lt;- read_csv2("~/Downloads/mediciones-2012.csv")
+m2013 &lt;- read_csv2("~/Downloads/mediciones-2013.csv")
 
-<div class="highlighter-rouge"><pre class="highlight"><code># Define the cars vector with 5 values
-cars &lt;- c(1, 3, 6, 4, 9)
-
-# Graph the cars vector with all defaults
-plot(cars)
-
-# Graph cars using blue points overlayed by a line 
-plot(cars, type="o", col="blue")
-
-# Create a title with a red, bold/italic font
-title(main="Autos", col.main="red", font.main=4)
+# construyo data.frame
+ruido_bsas &lt;- bind_rows(m2011, m2012, m2013)
+ruido_bsas &lt;- left_join(ruido_bsas, tmi)
 </code></pre>
 </div>
 
-<h2 id="visualización-1">Visualización</h2>
+<h2 id="ruidosos-tranquilos">Ruidosos? Tranquilos?</h2>
 
-<p><code class="highlighter-rouge">base::plot()</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code># 5 barrios más (menos) ruidosos
+ruido_barrios &lt;- ruido_bsas %&gt;% 
+group_by(BARRIO) %&gt;% 
+summarise(ruido_avg = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %&gt;% 
+arrange(desc(ruido_avg)) 
+# pregunta: de dónde viene el NA? (Assumptions...)
 
-<div class="highlighter-rouge"><pre class="highlight"><code># Get a random log-normal distribution (=&gt; ?rlnorm)
-r &lt;- rlnorm(1000)
-
-# Get the distribution without plotting it using tighter breaks =&gt; ?seq ?hist
-h &lt;- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
-
-# Plot the distribution using log scale on both axes, and use
-# blue points
-plot(h$counts, log="xy", pch=20, col="blue",
-	main="Log-normal distribution",
-	xlab="Value", ylab="Frequency")
+ruido_barrios %&gt;% head(n=5) # o tail(n=5) para ver los menos ruidosos
 </code></pre>
 </div>
 
-<h2 id="visualización-2">Visualización</h2>
+<h2 id="extremos-vs-media">Extremos vs. media?</h2>
 
-<p><code class="highlighter-rouge">ggplot2::qplot()</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code># como se comparan los valores extremos y la media
+ruido_barrios %&gt;% summary # o más elegante: ruido_barrios %&gt;% select(ruido_avg) %&gt;% summary
 
-<ul>
-  <li>similar a plot()</li>
-  <li>para hacer figuras básicas está ok</li>
-  <li>
-    <p>para gráficas más elaboradas vamos a usar ggplot2()</p>
+## también funciona esto:
+## ruido_barrios %&gt;% summarise(mean(ruido_avg))
+## ruido_barrios %&gt;% summarise(max(ruido_avg))
+## ruido_barrios %&gt;% summarise(min(ruido_avg))
 
-    <h2 id="scaterplot-de-displ-vs-hwy-del-dataframe-mpg">scaterplot de displ vs. hwy del data.frame mpg</h2>
-    <p>qplot(displ, hwy, data = mpg)</p>
-
-    <h2 id="idem-pero-usando-una-escala-de-colores-para-class">idem pero usando una escala de colores para “class”</h2>
-    <p>qplot(displ, hwy, colour = class, data = mpg)</p>
-  </li>
-</ul>
-
-<h1 id="ggplot2"><code class="highlighter-rouge">ggplot2</code></h1>
-
-<p>##</p>
-
-<p><code class="highlighter-rouge">ggplot2</code></p>
-
-<ul>
-  <li>
-    <p><em>grammar of graphics</em> <a href="http://vita.had.co.nz/papers/layered-grammar.pdf">(Wilkinson, 2005)</a></p>
-
-    <ul>
-      <li>se trata de construir capas de código, cada una agregando un concepto a la figura final</li>
-      <li>cada capa controla un aspecto independiente de la figura</li>
-      <li>
-        <p>la figura <em>es</em> el código (se puede guardar, extender, reproducir, etc.)</p>
-
-        <p>p &lt;- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
-p &lt;- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
-p &lt;- p + geom_point() # le agrego como quiero que represente ese mapeo
-p                     # imprimo la figura</p>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="en-general">En general:</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ggplot(data = {DATA}) + 
-      {GEOM_FUNCTION}(mapping = aes( {MAPPINGS} ))
+59.79/70.49
+# [1] 0.8482054
+74.94/70.49
+# [1] 1.06313
 </code></pre>
 </div>
 
-<p>Cuidado! <code class="highlighter-rouge">ggplot2</code> trabaja <span class="underline">solo</span> con <code class="highlighter-rouge">data.frames</code>, al igual que el resto del tidyverse (dplyr, tidyr, etc.)</p>
+<h1 id="rstudio">RStudio</h1>
 
-<p>Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)</p>
+<h2 id="cómo-grabo-lo-que-hago">cómo grabo lo que hago?</h2>
 
-<h2 id="y-qué-vendría-siendo-un-dataframe">Y qué vendría siendo un data.frame?</h2>
+<h2 id="proyectos">proyectos</h2>
 
-<ul>
-  <li>un data.frame es el objeto más común para analizar datos en R</li>
-  <li>
-    <p>es una lista de vectores de igual dimensión</p>
+<h2 id="atajos-de-teclado">atajos de teclado</h2>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>df &lt;- data.frame() # creo un data.frame llamado df
-is.data.frame(df)  # es un data.frame?
-[1] TRUE
-is.list(df)        # es una lista?
-[1] TRUE
+<h1 id="funciones">Funciones</h1>
+
+<div class="NOTES">
+Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
+sobre objetos distintos cada vez. Por ejemplo, la función \`read\_csv\` o \`plot\` contiene código que no
+querríamos escribir cada vez que queremos cargar datos de un archivo csv o hacer un gráfico. A su
+vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier gráfico.
+
+Más información en &lt;http://r4ds.had.co.nz/functions.html&gt;.
+
+</div>
+
+<h2 id="anatomía-de-f">anatomía de f()</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>alta_funcion &lt;- function(arg1, arg2, ...){
+  alto código
+  código y más código
+  alto_resultado &lt;- manso código
+
+  return(alto_resultado)
+}
 </code></pre>
-    </div>
-  </li>
-  <li>tiene entonces propiedades de matrices y de listas</li>
-  <li>busquen un data.frame con data() y prueben las funciones <code class="highlighter-rouge">length()</code> y <code class="highlighter-rouge">nrow()</code></li>
-</ul>
+</div>
 
-<h2 id="aesthetics-y-geoms">Aesthetics y Geoms</h2>
+<h2 id="ejemplo">ejemplo</h2>
+
+<h2 id="paso-a-paso">paso a paso</h2>
 
 <ul>
-  <li>aesthetics, aes(), controla mapeos entre variables y elementos visuales</li>
-  <li>
-    <p>ejempo: variable A &lt;-&gt; coordenada x, o variable C &lt;-&gt; forma del punto</p>
-
-    <p>data(economics)
-?economics
-str(economics)
-ggplot(economics, aes(x = pce)) + geom_histogram()
-ggplot(economics, aes(x = date, y = unemploy)) + geom_line()
-ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # colour, size, shape, etc.</p>
-  </li>
+  <li>Note the overall process: I only made the function after I’d figured out how to make it work with
+a simple input. It’s easier to start with working code and turn it into a function; it’s harder to
+create a function and then try to make it work.</li>
 </ul>
 
-<h2 id="facets-y-scales"><em>Facets</em> y <em>scales</em></h2>
+<h1 id="práctica-5">Práctica 5</h1>
 
-<ul>
-  <li><em>Facets</em> se usan para dividir la figura en varias, filtrando con alguna variable categórica</li>
-  <li>
-    <p><em>scales</em> permiten modificar el tipo de ejes de la figura</p>
-
-    <p>ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) + 
-geom_line() + 
-facet_wrap(~ state) + 
-scale_x_log10()</p>
-  </li>
-</ul>
-
-<h2 id="glosario-ggplot2">Glosario <code class="highlighter-rouge">ggplot2</code></h2>
-
-<ul>
-  <li><strong><code class="highlighter-rouge">data</code></strong>: el <em>dataframe</em> que contiene los datos a graficar</li>
-  <li><strong><code class="highlighter-rouge">geoms</code></strong>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
-  <li><strong><code class="highlighter-rouge">aesthetics</code></strong>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc</li>
-  <li><strong><code class="highlighter-rouge">scale</code></strong>: para cada <em>aesthetic</em>, describe como se mapea la característica visual a valores
-por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</li>
-  <li><strong><code class="highlighter-rouge">stats</code></strong>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión</li>
-</ul>
-
-<h1 id="práctica">Práctica</h1>
-
-<ul>
-  <li>Seleccionen de <code class="highlighter-rouge">data()</code> un data.frame con alguna variable categórica</li>
-  <li>Qué pasa si hacen solo <code class="highlighter-rouge">ggplot(mi_data)</code>?</li>
-  <li>Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
-  <li>Para que sirve <code class="highlighter-rouge">jitter</code>? Para que sirve <code class="highlighter-rouge">stroke</code>?</li>
-  <li>Podemos usar formas condicionales (&gt;, &lt;, etc) en aes()?</li>
-  <li>Cómo difieren <code class="highlighter-rouge">facet_grid</code> y <code class="highlighter-rouge">facet_wrap</code>?</li>
-  <li>Usar <code class="highlighter-rouge">box-plot</code> y <code class="highlighter-rouge">geom_smooth()</code>. Cuándo conviene usarlas?</li>
-</ul>
+<ol class="smallfont">
+  <li></li>
+</ol>
 
 
             </div>
