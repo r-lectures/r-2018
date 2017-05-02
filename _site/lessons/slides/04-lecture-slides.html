@@ -33,14 +33,14 @@
 
 
 <section>
-<section id="slide-orgec557b3">
-<h2 id="orgec557b3">parcial</h2>
+<section id="slide-orgf66dae2">
+<h2 id="orgf66dae2">parcial</h2>
 <p>
 <code>17 de Mayo</code>
 </p>
 </section>
-<section id="slide-orgc4be303">
-<h3 id="orgc4be303">parcial</h3>
+<section id="slide-orga4300b3">
+<h3 id="orga4300b3">parcial</h3>
 <ul>
 <li>dos problemas dos, 50% de peso cada uno</li>
 <li>dura una hora (vamos a tener clases después)</li>
@@ -50,8 +50,8 @@
 
 </ul>
 </section>
-<section id="slide-org544ada5">
-<h3 id="org544ada5">qué voy a evaluar</h3>
+<section id="slide-org1b8beb8">
+<h3 id="org1b8beb8">qué voy a evaluar</h3>
 <ol>
 <li>ética - 100%</li>
 <li>corrección o no de la solución propuesta - 25%</li>
@@ -68,12 +68,12 @@
 </section>
 </section>
 <section>
-<section id="slide-orgdcda331">
-<h2 id="orgdcda331">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgdcda331">
+<section id="slide-orgdc48eb6">
+<h2 id="orgdc48eb6">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgdc48eb6">
 </div></section>
-<section id="slide-orgf55c927">
-<h3 id="orgf55c927">principales funciones dplyr</h3>
+<section id="slide-org61db526">
+<h3 id="org61db526">principales funciones dplyr</h3>
 <ul>
 <li><code>select()</code>: seleccionar columnas</li>
 <li><code>arrange()</code>:reordenar filas</li>
@@ -84,14 +84,14 @@
 
 </ul>
 </section>
-<section id="slide-org3581c47" data-background="#123456">
-<h3 id="org3581c47">repaso práctica 3</h3>
+<section id="slide-orgb66fda0" data-background="#123456">
+<h3 id="orgb66fda0">repaso práctica 3</h3>
 </section>
-<section id="slide-orge668cb5" data-background="#123456">
-<h4 id="orge668cb5">Cuál es el estado que más nacimientos tiene en total? El que menos?</h4>
+<section id="slide-org7c09ab6" data-background="#123456">
+<h4 id="org7c09ab6">Cuál es el estado que más nacimientos tiene en total? El que menos?</h4>
 <div class="org-src-container">
 
-<pre><code class="R" >library(mosaicData)
+<pre class="fragment roll-in"><code class="R" >library(mosaicData)
 library(dplyr)
 b <- Birthdays
 
@@ -107,12 +107,13 @@ arrange(births_by_state, desc(tot_births))
 arrange(births_by_state, tot_births)
 </code></pre>
 </div>
+
 </section>
-<section id="slide-org5491d33" data-background="#123456">
-<h4 id="org5491d33">Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</h4>
+<section id="slide-orgb93258c" data-background="#123456">
+<h4 id="orgb93258c">Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</h4>
 <div class="org-src-container">
 
-<pre><code class="R" ># agrupo por año y por estado
+<pre class="fragment roll-in"><code class="R" ># agrupo por año y por estado
 by_state_year <- group_by(b, state, year)
 
 # calculo el total de nacimientos
@@ -137,11 +138,11 @@ manualmente, por ejemplo ver esta pregunta en StackOverflow: <a href="http://sta
 </aside>
 
 </section>
-<section id="slide-orga9d040b" data-background="#123456">
-<h4 id="orga9d040b">Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</h4>
+<section id="slide-orga26ed9a" data-background="#123456">
+<h4 id="orga26ed9a">Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</h4>
 <div class="org-src-container">
 
-<pre><code class="R" >mean_by_state <- summarise(by_state, mean = mean(births))
+<pre class="fragment roll-in"><code class="R" >mean_by_state <- summarise(by_state, mean = mean(births))
 overall_mean <- mean( mean_by_state$mean ) 
 arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
 # A tibble: 18 × 3
@@ -155,11 +156,11 @@ arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc
 </div>
 
 </section>
-<section id="slide-org0541a88" data-background="#123456">
-<h4 id="org0541a88">En promedio, qué més del año tiene más nacimientos?</h4>
+<section id="slide-orge3ef9e9" data-background="#123456">
+<h4 id="orge3ef9e9">En promedio, qué més del año tiene más nacimientos?</h4>
 <div class="org-src-container">
 
-<pre><code class="R" >births_by_month <- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
+<pre class="fragment roll-in"><code class="R" >births_by_month <- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
 
 # normalizando con el promedio, para ver cuanta variación hay en realidad
 mean_by_month <- mean(births_by_month$monthly)
@@ -168,11 +169,11 @@ mutate(births_by_month, monthly/mean_by_month)
 </div>
 
 </section>
-<section id="slide-org7f66d72" data-background="#123456">
-<h4 id="org7f66d72">Hay algún día del mes o de la semana que esté muy por encima de la media?</h4>
+<section id="slide-org87e41f4" data-background="#123456">
+<h4 id="org87e41f4">Hay algún día del mes o de la semana que esté muy por encima de la media?</h4>
 <div class="org-src-container">
 
-<pre><code class="R" ># dia del mes
+<pre class="fragment roll-in"><code class="R" ># dia del mes
 births_by_day <- arrange(summarise(group_by(b, day), daily = sum(births)), desc(daily))
 mean_by_day <- mean(births_by_day$daily)
 mutate(births_by_day, daily/mean_by_day)
@@ -185,11 +186,11 @@ mutate(births_by_wday, wdaily/mean_by_wday)
 </div>
 
 </section>
-<section id="slide-org83ace3e" data-background="#123456">
-<h4 id="org83ace3e">Hay algún día (de cualquier año) sin nacimientos?</h4>
+<section id="slide-org4d88d42" data-background="#123456">
+<h4 id="org4d88d42">Hay algún día (de cualquier año) sin nacimientos?</h4>
 <div class="org-src-container">
 
-<pre><code class="R" ># hay alguna observación 0 o NA?
+<pre class="fragment roll-in"><code class="R" ># hay alguna observación 0 o NA?
 filter( b, births == 0 )
 filter( b, births == NA )
 
@@ -224,11 +225,11 @@ print( filter(bCA, year == 1969 ) , n = 100 )
 </div>
 
 </section>
-<section id="slide-org35f162f" data-background="#123456">
-<h4 id="org35f162f">Y considerando los estados individualmente?</h4>
+<section id="slide-org45ccec9" data-background="#123456">
+<h4 id="org45ccec9">Y considerando los estados individualmente?</h4>
 <div class="org-src-container">
 
-<pre><code class="R" >by_state_day <- group_by(b, state, date)
+<pre class="fragment roll-in"><code class="R" >by_state_day <- group_by(b, state, date)
 births_by_state_day <- summarise(by_state_day, bsd = sum(births))
 min( births_by_state_day$bsd )
 # [1] 2
@@ -236,11 +237,11 @@ min( births_by_state_day$bsd )
 </div>
 
 </section>
-<section id="slide-org8e6e403" data-background="#123456">
-<h4 id="org8e6e403">Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</h4>
+<section id="slide-org3a7de2b" data-background="#123456">
+<h4 id="org3a7de2b">Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</h4>
 <div class="org-src-container">
 
-<pre><code class="R" >?lag
+<pre class="fragment roll-in"><code class="R" >?lag
 ?dplyr::lag # mejor aún
 
 by_year <- group_by(b, year)
@@ -256,8 +257,8 @@ ggplot(births_by_year, aes(year, birth_diff)) + geom_col() + xlab("año") + ylab
 </section>
 </section>
 <section>
-<section id="slide-org5f8be27">
-<h2 id="org5f8be27">lectura/escritura</h2>
+<section id="slide-org52b921d">
+<h2 id="org52b921d">lectura/escritura</h2>
 <p>
 "read_csv()" lee un archivo delimitado por comas.
 </p>
@@ -282,12 +283,12 @@ Existe una "write_csv" equivalente.
 </section>
 </section>
 <section>
-<section id="slide-orgad5fd14">
-<h2 id="orgad5fd14">%&gt;%</h2>
-<div class="outline-text-2" id="text-orgad5fd14">
+<section id="slide-orgf8db107">
+<h2 id="orgf8db107">%&gt;%</h2>
+<div class="outline-text-2" id="text-orgf8db107">
 </div></section>
-<section id="slide-orgf003282">
-<h3 id="orgf003282"><i>Piping</i>  con  <i>Magrittr</i></h3>
+<section id="slide-org64f5ca6">
+<h3 id="org64f5ca6"><i>Piping</i>  con  <i>Magrittr</i></h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
@@ -303,8 +304,8 @@ x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
 </div>
 
 </section>
-<section id="slide-orgd7b4e6f">
-<h3 id="orgd7b4e6f">Ejemplos</h3>
+<section id="slide-orgc903f0d">
+<h3 id="orgc903f0d">Ejemplos</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
@@ -319,17 +320,17 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-orgb8659f1">
-<h2 id="orgb8659f1">más dplyr</h2>
-<div class="outline-text-2" id="text-orgb8659f1">
+<section id="slide-org440770d">
+<h2 id="org440770d">más dplyr</h2>
+<div class="outline-text-2" id="text-org440770d">
 </div></section>
-<section id="slide-orga4bdc56">
-<h3 id="orga4bdc56">combinando data.frames (sin llaves)</h3>
+<section id="slide-org348b6a5">
+<h3 id="org348b6a5">combinando data.frames (sin llaves)</h3>
 <img src="./figs/binds.png">
 
 </section>
-<section id="slide-orgd3aef81">
-<h3 id="orgd3aef81">combinando data.frames (con llaves)</h3>
+<section id="slide-orgf6e74bf">
+<h3 id="orgf6e74bf">combinando data.frames (con llaves)</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
 
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
@@ -342,8 +343,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org19ad2d1">
-<h2 id="org19ad2d1">para contar la próxima</h2>
+<section id="slide-org8a62dd8">
+<h2 id="org8a62dd8">para contar la próxima</h2>
 <ul>
 <li>stringr</li>
 <li>lubridate</li>
@@ -354,8 +355,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org783d68f" data-background="#123456">
-<h2 id="org783d68f">práctica 4</h2>
+<section id="slide-org936c1e3" data-background="#123456">
+<h2 id="org936c1e3">práctica 4</h2>
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ira a datos de Contaminación sonora </li>
