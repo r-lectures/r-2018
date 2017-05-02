@@ -29,3 +29,10 @@ lectures:
     - title: "Slides clase 4"
       url: slides/04-lecture-slides.html
 
+- title: "Clase 5 - Funciones + RStudio"
+  url: 05-lecture.html
+
+  subitems:
+    - title: "Slides clase 5"
+      url: slides/05-lecture-slides.html
+

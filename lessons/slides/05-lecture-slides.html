@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-orgda5c968">
-<h2 id="orgda5c968">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgda5c968">
+<section id="slide-org2f65a93">
+<h2 id="org2f65a93">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org2f65a93">
 </div></section>
-<section id="slide-org27acce5">
-<h3 id="org27acce5">lectura/escritura</h3>
+<section id="slide-org4df871f">
+<h3 id="org4df871f">lectura/escritura</h3>
 <p>
 "read_csv()" lee un archivo delimitado por comas.
 </p>
@@ -59,8 +59,8 @@ Existe una "write_csv" equivalente.
 </p>
 
 </section>
-<section id="slide-org75e8c18">
-<h3 id="org75e8c18"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
+<section id="slide-org3fd6af4">
+<h3 id="org3fd6af4"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
@@ -81,13 +81,13 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </div>
 
 </section>
-<section id="slide-org5c2d037">
-<h3 id="org5c2d037">combinando data.frames (sin llaves)</h3>
+<section id="slide-orgc29e2b9">
+<h3 id="orgc29e2b9">combinando data.frames (sin llaves)</h3>
 <img src="./figs/binds.png">
 
 </section>
-<section id="slide-org1595c52">
-<h3 id="org1595c52">combinando data.frames (con llaves)</h3>
+<section id="slide-orgb0264f6">
+<h3 id="orgb0264f6">combinando data.frames (con llaves)</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
 
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
@@ -99,8 +99,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-orgc50823c" data-background="#123456">
-<h2 id="orgc50823c">repaso práctica 4</h2>
+<section id="slide-org4578bed" data-background="#123456">
+<h2 id="org4578bed">repaso práctica 4</h2>
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ir a datos de Contaminación sonora </li>
@@ -111,8 +111,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
   <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
 </ol>
 </section>
-<section id="slide-org9a5268d">
-<h3 id="org9a5268d">hacer gran-dataframe-gran</h3>
+<section id="slide-org3855d50">
+<h3 id="org3855d50">hacer gran-dataframe-gran</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >library(readr)
@@ -140,8 +140,8 @@ ruido_bsas <- left_join(ruido_bsas, tmi)
 </code></pre>
 </div>
 </section>
-<section id="slide-org1245ccd">
-<h3 id="org1245ccd">Ruidosos? Tranquilos?</h3>
+<section id="slide-org4d6170b">
+<h3 id="org4d6170b">Ruidosos? Tranquilos?</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># 5 barrios más (menos) ruidosos
@@ -155,8 +155,8 @@ ruido_barrios %>% head(n=5) # o tail(n=5) para ver los menos ruidosos
 </code></pre>
 </div>
 </section>
-<section id="slide-orgfd069b3">
-<h3 id="orgfd069b3">Extremos vs. media?</h3>
+<section id="slide-orgbe5ce89">
+<h3 id="orgbe5ce89">Extremos vs. media?</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># como se comparan los valores extremos y la media
@@ -176,23 +176,36 @@ ruido_barrios %>% summary # o más elegante: ruido_barrios %>% select(ruido_avg)
 </section>
 </section>
 <section>
-<section id="slide-org9d591f5">
-<h2 id="org9d591f5">RStudio</h2>
-<div class="outline-text-2" id="text-org9d591f5">
-</div></section>
-<section id="slide-org3c075b0">
-<h3 id="org3c075b0">cómo grabo lo que hago?</h3>
-</section>
-<section id="slide-orgc4e32c3">
-<h3 id="orgc4e32c3">proyectos</h3>
-</section>
-<section id="slide-org3cce773">
-<h3 id="org3cce773">atajos de teclado</h3>
+<section id="slide-orgc151b59">
+<h2 id="orgc151b59">RStudio</h2>
+<ul>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects</a></li>
+<li><p>
+working directory / workspace
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >getwd() # para saber donde estoy
+setwd("path/to/dir") # para decirle donde quiero estar
+</code></pre>
+</div></li>
+<li>PROYECTOS
+Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc</li>
+<li>Cómo grabo lo que hago?
+<ol>
+<li>abrir un proyecto nuevo y grabar después</li>
+<li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+<li>gestionar todo uno mismo (no recomendado)</li>
+
+</ol></li>
+<li>atajos de teclado!</li>
+
+</ul>
 </section>
 </section>
 <section>
-<section id="slide-org8fbf168">
-<h2 id="org8fbf168">Funciones</h2>
+<section id="slide-org0c87a2a">
+<h2 id="org0c87a2a">Funciones</h2>
 <aside class="notes">
 <p>
 Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
@@ -207,38 +220,93 @@ Más información en <a href="http://r4ds.had.co.nz/functions.html">http://r4ds.
 
 </aside>
 </section>
-<section id="slide-org059bed0">
-<h3 id="org059bed0">anatomía de f()</h3>
+<section id="slide-orge1e2420">
+<h3 id="orge1e2420">anatomía de f()</h3>
 <div class="org-src-container">
 
-<pre><code class="R" >alta_funcion <- function(arg1, arg2, ...){
+<pre><code class="R" ># mi función se llama alta_funcion, con dos argumentos
+alta_funcion <- function(arg1 = 10, arg2 = TRUE, ...){
+
+  # acá empieza mi código
+  library(paquete_externo)
+  x <- funcion_externa(arg_ext = arg1) 
+  ...
   alto código
   código y más código
-  alto_resultado <- manso código
+  ...
+  alto_resultado <- mansa_funcion(arg2) # genero alto_resultado
 
-  return(alto_resultado)
+  return(alto_resultado) # devuelvo alto resultado
 }
 </code></pre>
 </div>
-</section>
-<section id="slide-org8720e60">
-<h3 id="org8720e60">ejemplo</h3>
-</section>
-<section id="slide-org76763c8">
-<h3 id="org76763c8">paso a paso</h3>
-<ul>
-<li>Note the overall process: I only made the function after I’d figured out how to make it work with
-a simple input. It’s easier to start with working code and turn it into a function; it’s harder to
-create a function and then try to make it work.</li>
 
-</ul>
+<div class="org-src-container">
+
+<pre><code class="R" ># llamo a mi función de distintas maneras
+x_default <- alta_funcion() # uso arg1 = 10 y arg2 = TRUE
+x_100_F   <- alta_funcion(100, FALSE)
+x_200_T   <- alta_funcion(200, TRUE)
+mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
+</code></pre>
+</div>
+</section>
+<section id="slide-orgfbf4eef">
+<h3 id="orgfbf4eef">ejemplo</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >normaliza_vector <- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
+
+    if(square_root == TRUE) N <- sum(vector^2)^(1/2)
+    else                    N <- sum(vector)/length(vector) # ojo, da error si vector está vacio
+
+    if(N != 0) return(vector/N)
+    else print("error: Norma igual a cero!")
+}
+
+normaliza_vector()
+# [1] 1.250 1.125 1.000 0.875 0.750
+x <- c(10, 9, 8, 7 , 6)
+normaliza_vector(x)
+# [1] 1.250 1.125 1.000 0.875 0.750
+y <- c(1, 2, 3)
+normaliza_vector()
+# [1] 0.5 1.0 1.5
+normaliza_vector(y, TRUE)
+# [1] 0.2672612 0.5345225 0.8017837
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+La idea de las funciones es que vamos escribiendo código y que, cuando funciona, lo metemos dentro
+de la función. Luego se puede ir extendiendo a medida que se va necesitando (por ejemplo, agregando
+argumentos, etc). 
+</p>
+
+<p>
+Es más fácil escribir una función a partir de código que ya sabemos que funciona que sentarse a
+escribir una función de cero.
+</p>
+
+</aside>
+
 </section>
 </section>
 <section>
-<section id="slide-org9541ba3" data-background="#123456">
-<h2 id="org9541ba3">Práctica 5</h2>
-<ol class="smallfont">
-  <li></li>
+<section id="slide-orgb689686" data-background="#123456">
+<h2 id="orgb689686">Práctica 5</h2>
+<ol>
+<li>Escribir una función que devuelva el min, máx y promedio de ruido dependiendo del barrio</li>
+<li>Porqué obtengo un NA en los resultados de la práctica anterior?
+<ol>
+<li>Usar lo aprendido sobre joins para no tener este NA</li>
+
+</ol></li>
+<li>Cómo puedo mejorar la columna FECHA de la práctica 3? Ayuda: usar el paquete stringr y tidyr::separate</li>
+<li>Cual es la hora de mayor ruido del día? Cuál dia de la semana? Hay algún barrio con mucho ruido
+durante el fin de semana?</li>
+
 </ol>
 </section>
 </section>

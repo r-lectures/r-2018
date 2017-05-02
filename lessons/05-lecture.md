@@ -118,14 +118,18 @@ Existe una "write\_csv" equivalente.
 
 # RStudio
 
-
-## cómo grabo lo que hago?
-
-
-## proyectos
-
-
-## atajos de teclado
+-   <https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>
+-   working directory / workspace
+    
+        getwd() # para saber donde estoy
+        setwd("path/to/dir") # para decirle donde quiero estar
+-   PROYECTOS
+    Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc
+-   Cómo grabo lo que hago?
+    1.  abrir un proyecto nuevo y grabar después
+    2.  grabar en algún directorio y después decirle que haga un proyecto ahí
+    3.  gestionar todo uno mismo (no recomendado)
+-   atajos de teclado!
 
 
 # Funciones
@@ -143,28 +147,67 @@ Más información en <http://r4ds.had.co.nz/functions.html>.
 
 ## anatomía de f()
 
-    alta_funcion <- function(arg1, arg2, ...){
+    # mi función se llama alta_funcion, con dos argumentos
+    alta_funcion <- function(arg1 = 10, arg2 = TRUE, ...){
+    
+      # acá empieza mi código
+      library(paquete_externo)
+      x <- funcion_externa(arg_ext = arg1) 
+      ...
       alto código
       código y más código
-      alto_resultado <- manso código
+      ...
+      alto_resultado <- mansa_funcion(arg2) # genero alto_resultado
     
-      return(alto_resultado)
+      return(alto_resultado) # devuelvo alto resultado
     }
+
+    # llamo a mi función de distintas maneras
+    x_default <- alta_funcion() # uso arg1 = 10 y arg2 = TRUE
+    x_100_F   <- alta_funcion(100, FALSE)
+    x_200_T   <- alta_funcion(200, TRUE)
+    mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 
 
 ## ejemplo
 
+    normaliza_vector <- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
+    
+        if(square_root == TRUE) N <- sum(vector^2)^(1/2)
+        else                    N <- sum(vector)/length(vector) # ojo, da error si vector está vacio
+    
+        if(N != 0) return(vector/N)
+        else print("error: Norma igual a cero!")
+    }
+    
+    normaliza_vector()
+    # [1] 1.250 1.125 1.000 0.875 0.750
+    x <- c(10, 9, 8, 7 , 6)
+    normaliza_vector(x)
+    # [1] 1.250 1.125 1.000 0.875 0.750
+    y <- c(1, 2, 3)
+    normaliza_vector()
+    # [1] 0.5 1.0 1.5
+    normaliza_vector(y, TRUE)
+    # [1] 0.2672612 0.5345225 0.8017837
 
-## paso a paso
+<div class="NOTES">
+La idea de las funciones es que vamos escribiendo código y que, cuando funciona, lo metemos dentro
+de la función. Luego se puede ir extendiendo a medida que se va necesitando (por ejemplo, agregando
+argumentos, etc). 
 
--   Note the overall process: I only made the function after I’d figured out how to make it work with
-    a simple input. It’s easier to start with working code and turn it into a function; it’s harder to
-    create a function and then try to make it work.
+Es más fácil escribir una función a partir de código que ya sabemos que funciona que sentarse a
+escribir una función de cero.
+
+</div>
 
 
 # Práctica 5
 
-<ol class="smallfont">
-  <li></li>
-</ol>
+1.  Escribir una función que devuelva el min, máx y promedio de ruido dependiendo del barrio
+2.  Porqué obtengo un NA en los resultados de la práctica anterior?
+    1.  Usar lo aprendido sobre joins para no tener este NA
+3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Ayuda: usar el paquete stringr y tidyr::separate
+4.  Cual es la hora de mayor ruido del día? Cuál dia de la semana? Hay algún barrio con mucho ruido
+    durante el fin de semana?
 
