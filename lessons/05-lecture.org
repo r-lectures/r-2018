@@ -1,0 +1,125 @@
+#    -*- mode: org -*-
+#+TITLE: R 2017
+#+DATE: 03/05/2017
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+
+#+OPTIONS: author:nil date:t email:nil
+#+OPTIONS: ^:nil _:nil
+#+STARTUP: showall expand
+#+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: fast
+#+REVEAL_THEME: my_moon
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+REVEAL_HLEVEL: 1
+
+# # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
+# # (setq org-reveal-title-slide 'auto)
+# # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+
+
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
+--- 
+layout: default 
+title: Clase 4
+--- 
+#+end_src 
+#+results:
+
+# #+begin_html
+# <img src="right-fail.png">
+# #+end_html
+
+# #+ATTR_REVEAL: :frag roll-in
+
+
+
+* repaso de la clase anterior
+** lectura/escritura
+
+"read_csv()" lee un archivo delimitado por comas.
+
+#+BEGIN_SRC R
+read_csv(readr_example("mtcars.csv"))
+read_csv(readr_example("mtcars.csv.zip"))
+read_csv(readr_example("mtcars.csv.bz2"))
+read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
+#+END_SRC
+
+Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros. 
+
+Existe una "write_csv" equivalente.
+
+** /Piping/  con  /Magrittr/ y operador %>%
+
+#+BEGIN_SRC R 
+x %>% f en vez de f(x) # el valor de x se direcciona a f()
+#+END_SRC
+
+#+BEGIN_SRC R 
+x %>% f(., arg2, arg3) # por default pasa al 1er argumento
+x %>% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
+x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
+
+mean_by_state %>% # mi data.frame
+mutate(frac = mean/overall_mean) %>% # creo la columna frac
+filter(frac >= 1) %>% # filtro la columna frac
+arrange(desc(frac)) # ordeno de mayor a menor
+#+END_SRC
+
+** combinando data.frames (sin llaves)
+
+#+BEGIN_EXPORT html
+<img src="./figs/binds.png">
+#+END_EXPORT
+
+** combinando data.frames (con llaves)
+
+#+BEGIN_EXPORT html
+<img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
+#+END_EXPORT
+
+#+BEGIN_EXPORT html
+<img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
+#+END_EXPORT
+
+- miren con cuidado el cheat-sheet de dplyr
+
+** práctica 4
+:PROPERTIES:
+:reveal_background: #123456
+:END:
+
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
+   <li>Ira a datos de Contaminación sonora </li>
+   <li>Bajar csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
+   <li>Cargar todo en R </li>
+   <li>Hacer un gran data.frame con TMI y las tres mediciones</li>
+   <li>Cuales son los 5 barrios en donde hay más (menos) promedio energético hora?</li>
+   <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
+ </ol>
+#+END_EXPORT
+
+
