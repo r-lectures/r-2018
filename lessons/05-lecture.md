@@ -118,18 +118,24 @@ Existe una "write\_csv" equivalente.
 
 # RStudio
 
--   <https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>
--   working directory / workspace
+-   Working directory / Workspace
     
         getwd() # para saber donde estoy
         setwd("path/to/dir") # para decirle donde quiero estar
--   PROYECTOS
-    Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc
+-   Proyectos: Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc
 -   Cómo grabo lo que hago?
-    1.  abrir un proyecto nuevo y grabar después
-    2.  grabar en algún directorio y después decirle que haga un proyecto ahí
-    3.  gestionar todo uno mismo (no recomendado)
+
+<ol class="smallfont">
+  <li>abrir un proyecto nuevo y grabar después</li>
+  <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+  <li>gestionar todo uno mismo (no recomendado)</li>
+</ol>
+
+<div class="NOTES">
+-   <https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>
 -   atajos de teclado!
+
+</div>
 
 
 # Funciones
