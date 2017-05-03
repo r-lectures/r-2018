@@ -172,19 +172,25 @@ arrange(desc(frac)) # ordeno de mayor a menor
   # [1] 1.06313
 #+END_SRC
 * RStudio
-- https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
-- working directory / workspace
+- Working directory / Workspace
   #+Begin_src R 
   getwd() # para saber donde estoy
   setwd("path/to/dir") # para decirle donde quiero estar
   #+END_SRC
-- PROYECTOS
-  Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc
+- Proyectos: Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc
 - Cómo grabo lo que hago?
-  1. abrir un proyecto nuevo y grabar después
-  2. grabar en algún directorio y después decirle que haga un proyecto ahí
-  3. gestionar todo uno mismo (no recomendado)
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li>abrir un proyecto nuevo y grabar después</li>
+   <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+   <li>gestionar todo uno mismo (no recomendado)</li>
+ </ol>
+#+END_EXPORT
+#+BEGIN_NOTES
+- https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
 - atajos de teclado!
+#+END_NOTES
+
 * Funciones
 #+BEGIN_NOTES
 Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
@@ -265,9 +271,3 @@ escribir una función de cero.
 3. Cómo puedo mejorar la columna FECHA de la práctica 3? Ayuda: usar el paquete stringr y tidyr::separate
 4. Cual es la hora de mayor ruido del día? Cuál dia de la semana? Hay algún barrio con mucho ruido
    durante el fin de semana?
-
-# #+BEGIN_EXPORT html
-#  <ol class="smallfont">
-#    <li></li>
-#  </ol>
-# #+END_EXPORT
