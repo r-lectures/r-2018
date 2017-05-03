@@ -122,18 +122,18 @@ Existe una "write\_csv" equivalente.
     
         getwd() # para saber donde estoy
         setwd("path/to/dir") # para decirle donde quiero estar
--   Proyectos: Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc
+-   Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc
 -   Cómo grabo lo que hago?
 
 <ol class="smallfont">
   <li>abrir un proyecto nuevo y grabar después</li>
   <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
-  <li>gestionar todo uno mismo (no recomendado)</li>
+  <li>sin proyectos, gestionar todo uno mismo (no muy recomendado)</li>
 </ol>
 
 <div class="NOTES">
 -   <https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>
--   atajos de teclado!
+-   Usen atajos de teclado! Ver machete de RStudio (cheatsheet) en Slack
 
 </div>
 
@@ -177,6 +177,7 @@ Más información en <http://r4ds.had.co.nz/functions.html>.
 
 ## ejemplo
 
+    # función que normaliza de dos maneras distintas un vector de valores 
     normaliza_vector <- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
     
         if(square_root == TRUE) N <- sum(vector^2)^(1/2)
@@ -186,15 +187,16 @@ Más información en <http://r4ds.had.co.nz/functions.html>.
         else print("error: Norma igual a cero!")
     }
     
-    normaliza_vector()
+    # distintas maneras de llamar la función
+    normaliza_vector() # con los argumentos por default
     # [1] 1.250 1.125 1.000 0.875 0.750
-    x <- c(10, 9, 8, 7 , 6)
-    normaliza_vector(x)
+    x <- c(10, 9, 8, 7 , 6) # c() es una función que toma N argumentos y devuelve un vector
+    normaliza_vector(x) # haciendo explícito el vector
     # [1] 1.250 1.125 1.000 0.875 0.750
     y <- c(1, 2, 3)
-    normaliza_vector()
+    normaliza_vector(y) # un vector diferente
     # [1] 0.5 1.0 1.5
-    normaliza_vector(y, TRUE)
+    normaliza_vector(y, TRUE) # usando la norma euclidiana
     # [1] 0.2672612 0.5345225 0.8017837
 
 <div class="NOTES">
@@ -210,10 +212,13 @@ escribir una función de cero.
 
 # Práctica 5
 
-1.  Escribir una función que devuelva el min, máx y promedio de ruido dependiendo del barrio
-2.  Porqué obtengo un NA en los resultados de la práctica anterior?
-    1.  Usar lo aprendido sobre joins para no tener este NA
-3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Ayuda: usar el paquete stringr y tidyr::separate
-4.  Cual es la hora de mayor ruido del día? Cuál dia de la semana? Hay algún barrio con mucho ruido
-    durante el fin de semana?
+Trabajamos sobre datos de ruido de Buenos Aires Data. 
+
+1.  Escribir una función que devuelva el min, máx y
+    promedio (mean) del ruido dependiendo del barrio
+2.  Porqué obtengo un `NA` en los resultados de la práctica anterior?
+    1.  Usar lo aprendido sobre joins para no tener este `NA`
+3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete `stringr` más `tidyr::separate`
+4.  Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
+    con mucho más ruido durante el fin de semana que el resto?
 
