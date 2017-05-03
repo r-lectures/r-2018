@@ -1,104 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>R 2017</title>
-<meta name="author" content="(Luis G. Moyano)"/>
-<style type="text/css">
-.underline { text-decoration: underline; }
-</style>
-<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+<html>
 
-<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../../reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-<meta name="description" content="Programación en R 2017">
+    <title>Clase 4</title>
+    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/lessons/04-lecture.html">
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
-<body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>02/05/2017</h3>
-</section>
 
 
+    <body>
 
-<section>
-<section id="slide-orgf66dae2">
-<h2 id="orgf66dae2">parcial</h2>
-<p>
-<code>17 de Mayo</code>
+        <header id="header" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/lessons/" >Clases</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/resources.html" >Biblio</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/datasets.html" >Data</a></li>
+	  
+	  
+	  
+	  
+	  
+	  
+
+	      <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-lecture.html">Clase 1 - Intro</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/02-lecture.html">Clase 2</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/03-lecture.html">Clase 2</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/04-lecture.html">Clase 4</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/05-lecture.html">Clase 5</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/">Clases</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/posts.html">Posts</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/datasets.html">Datos</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/resources.html">Biblio</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/about.html">Sobre el curso</a></li> -->
+              <!--  -->
+              <!--  -->
+        </ul>
+	<ul class="nav navbar-nav navbar-right">
+	  
+	  
+	  <li><a href="http://localhost:4000/about.html" >Sobre la materia</a></li>
+	</ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div>
+</header>
+
+<style>
+  .bottom-three {
+     margin-bottom: 2cm;
+  }
+</style>
+
+
+<p class="bottom-three">
 </p>
-</section>
-<section id="slide-orga4300b3">
-<h3 id="orga4300b3">parcial</h3>
-<ul>
-<li>dos problemas dos, 50% de peso cada uno</li>
-<li>dura una hora (vamos a tener clases después)</li>
-<li>se tienen que sacar un 6 para aprobar! ojo</li>
-<li>disponible cualquier material online</li>
-<li><code>NO</code> pueden consultarse entre sí</li>
+<!-- <div class="site-banner"> -->
+<!--     <img src="/images/banner.jpg"></img> -->
+<!-- </div> -->
 
+
+
+        <div class="site-content container">
+            <div class="col-md-9">
+                <h1 id="parcial">parcial</h1>
+
+<p><code class="highlighter-rouge">17 de Mayo</code></p>
+
+<h2 id="parcial-1">parcial</h2>
+
+<ul>
+  <li>dos problemas dos, 50% de peso cada uno</li>
+  <li>dura una hora (vamos a tener clases después)</li>
+  <li>se tienen que sacar un 6 para aprobar! ojo</li>
+  <li>disponible cualquier material online</li>
+  <li><code class="highlighter-rouge">NO</code> pueden consultarse entre sí</li>
 </ul>
-</section>
-<section id="slide-org1b8beb8">
-<h3 id="org1b8beb8">qué voy a evaluar</h3>
+
+<h2 id="qué-voy-a-evaluar">qué voy a evaluar</h2>
+
 <ol>
-<li>ética - 100%</li>
-<li>corrección o no de la solución propuesta - 25%</li>
-<li>dominio de librerías vistas en clase - 25%</li>
-<li>puntos extras por:
-<ul>
-<li>autocorrección (saber lo que no se sabe)</li>
-<li>innovación de ideas (creatividad)</li>
-<li>riqueza de recursos (estudio)</li>
-
-</ul></li>
-
+  <li>ética - 100%</li>
+  <li>corrección o no de la solución propuesta - 25%</li>
+  <li>dominio de librerías vistas en clase - 25%</li>
+  <li>puntos extras por:
+    <ul>
+      <li>autocorrección (saber lo que no se sabe)</li>
+      <li>innovación de ideas (creatividad)</li>
+      <li>riqueza de recursos (estudio)</li>
+    </ul>
+  </li>
 </ol>
-</section>
-</section>
-<section>
-<section id="slide-orgdc48eb6">
-<h2 id="orgdc48eb6">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgdc48eb6">
-</div></section>
-<section id="slide-org61db526">
-<h3 id="org61db526">principales funciones dplyr</h3>
+
+<h1 id="repaso-de-la-clase-anterior">repaso de la clase anterior</h1>
+
+<h2 id="principales-funciones-dplyr">principales funciones dplyr</h2>
+
 <ul>
-<li><code>select()</code>: seleccionar columnas</li>
-<li><code>arrange()</code>:reordenar filas</li>
-<li><code>filter()</code>: filtrar observaciones por sus valores</li>
-<li><code>mutate()</code>: crear variables a partir de otras</li>
-<li><code>summarise()</code>: reducir varios valores a uno solo
-(muchas veces agrupamos primero con <code>group_by</code>)</li>
-
+  <li><code class="highlighter-rouge">select()</code>: seleccionar columnas</li>
+  <li><code class="highlighter-rouge">arrange()</code>:reordenar filas</li>
+  <li><code class="highlighter-rouge">filter()</code>: filtrar observaciones por sus valores</li>
+  <li><code class="highlighter-rouge">mutate()</code>: crear variables a partir de otras</li>
+  <li><code class="highlighter-rouge">summarise()</code>: reducir varios valores a uno solo
+(muchas veces agrupamos primero con <code class="highlighter-rouge">group_by</code>)</li>
 </ul>
-</section>
-<section id="slide-orgb66fda0" data-background="#123456">
-<h3 id="orgb66fda0">repaso práctica 3</h3>
-</section>
-<section id="slide-org7c09ab6" data-background="#123456">
-<h4 id="org7c09ab6">Cuál es el estado que más nacimientos tiene en total? El que menos?</h4>
-<div class="org-src-container">
 
-<pre class="fragment roll-in"><code class="R" >library(mosaicData)
+<h2 id="repaso-práctica-3">repaso práctica 3</h2>
+
+<h3 id="cuál-es-el-estado-que-más-nacimientos-tiene-en-total-el-que-menos">Cuál es el estado que más nacimientos tiene en total? El que menos?</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(mosaicData)
 library(dplyr)
-b <- Birthdays
+b &lt;- Birthdays
 
 # agrupo por estado
-by_state <- group_by(b, state)
+by_state &lt;- group_by(b, state)
 # calculo total de nacimientos por estado usando sum()
-births_by_state <- summarise(by_state, tot_births = sum(births))
+births_by_state &lt;- summarise(by_state, tot_births = sum(births))
 
 # el que más: el que queda e 1er lugar, CA (California)
 arrange(births_by_state, desc(tot_births))
@@ -108,46 +195,38 @@ arrange(births_by_state, tot_births)
 </code></pre>
 </div>
 
-</section>
-<section id="slide-orgb93258c" data-background="#123456">
-<h4 id="orgb93258c">Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</h4>
-<div class="org-src-container">
+<h3 id="esto-es-así-año-a-año-graficar-cuál-está-en-1er-lugar-durante-más-tiempo">Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</h3>
 
-<pre class="fragment roll-in"><code class="R" ># agrupo por año y por estado
-by_state_year <- group_by(b, state, year)
+<div class="highlighter-rouge"><pre class="highlight"><code># agrupo por año y por estado
+by_state_year &lt;- group_by(b, state, year)
 
 # calculo el total de nacimientos
-births_by_state_and_year <- summarise(by_state_year, tot_births= sum(births))
+births_by_state_and_year &lt;- summarise(by_state_year, tot_births= sum(births))
 
 # grafico
-p <- ggplot(data = births_by_state_and_year)
-p <- p + aes(year, tot_births, colour = state, shape = state)
-p <- p + geom_line() + geom_point()
-p <- p + xlab("year") + ylab("total births")
-p <- p + scale_y_log10() # para poder ver mejor todos los estados
+p &lt;- ggplot(data = births_by_state_and_year)
+p &lt;- p + aes(year, tot_births, colour = state, shape = state)
+p &lt;- p + geom_line() + geom_point()
+p &lt;- p + xlab("year") + ylab("total births")
+p &lt;- p + scale_y_log10() # para poder ver mejor todos los estados
 p
 </code></pre>
 </div>
 
-<aside class="notes">
-<p>
+<div class="NOTES">
 ggplot2 no pone más de 6 tipos de formas para los puntos. Para más que eso se debe hacer
-manualmente, por ejemplo ver esta pregunta en StackOverflow: <a href="http://stackoverflow.com/questions/26223857/more-than-six-shapes-in-ggplot">http://stackoverflow.com/questions/26223857/more-than-six-shapes-in-ggplot</a> 
-</p>
+manualmente, por ejemplo ver esta pregunta en StackOverflow: &lt;http://stackoverflow.com/questions/26223857/more-than-six-shapes-in-ggplot&gt; 
 
-</aside>
+</div>
 
-</section>
-<section id="slide-orga26ed9a" data-background="#123456">
-<h4 id="orga26ed9a">Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</h4>
-<div class="org-src-container">
+<h3 id="cuántos-estados-están-por-arriba-de-la-media-de-nacimientos-cuáles-son">Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</h3>
 
-<pre class="fragment roll-in"><code class="R" >mean_by_state <- summarise(by_state, mean = mean(births))
-overall_mean <- mean( mean_by_state$mean ) 
-arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
+<div class="highlighter-rouge"><pre class="highlight"><code>mean_by_state &lt;- summarise(by_state, mean = mean(births))
+overall_mean &lt;- mean( mean_by_state$mean ) 
+arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac &gt;= 1), desc(frac))
 # A tibble: 18 × 3
 #    state      mean     frac
-#    <chr>     <dbl>    <dbl>
+#    &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 # 1     CA 1067.9570 5.653908
 # 2     TX  718.0727 3.801574
 # 3     NY  702.7545 3.720477
@@ -155,48 +234,39 @@ arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc
 </code></pre>
 </div>
 
-</section>
-<section id="slide-orge3ef9e9" data-background="#123456">
-<h4 id="orge3ef9e9">En promedio, qué més del año tiene más nacimientos?</h4>
-<div class="org-src-container">
+<h3 id="en-promedio-qué-més-del-año-tiene-más-nacimientos">En promedio, qué més del año tiene más nacimientos?</h3>
 
-<pre class="fragment roll-in"><code class="R" >births_by_month <- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
+<div class="highlighter-rouge"><pre class="highlight"><code>births_by_month &lt;- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
 
 # normalizando con el promedio, para ver cuanta variación hay en realidad
-mean_by_month <- mean(births_by_month$monthly)
+mean_by_month &lt;- mean(births_by_month$monthly)
 mutate(births_by_month, monthly/mean_by_month)
 </code></pre>
 </div>
 
-</section>
-<section id="slide-org87e41f4" data-background="#123456">
-<h4 id="org87e41f4">Hay algún día del mes o de la semana que esté muy por encima de la media?</h4>
-<div class="org-src-container">
+<h3 id="hay-algún-día-del-mes-o-de-la-semana-que-esté-muy-por-encima-de-la-media">Hay algún día del mes o de la semana que esté muy por encima de la media?</h3>
 
-<pre class="fragment roll-in"><code class="R" ># dia del mes
-births_by_day <- arrange(summarise(group_by(b, day), daily = sum(births)), desc(daily))
-mean_by_day <- mean(births_by_day$daily)
+<div class="highlighter-rouge"><pre class="highlight"><code># dia del mes
+births_by_day &lt;- arrange(summarise(group_by(b, day), daily = sum(births)), desc(daily))
+mean_by_day &lt;- mean(births_by_day$daily)
 mutate(births_by_day, daily/mean_by_day)
 
 # dia de la semana
-births_by_wday <- arrange(summarise(group_by(b, wday), wdaily = sum(births)), desc(wdaily))
-mean_by_wday <- mean(births_by_wday$wdaily)
+births_by_wday &lt;- arrange(summarise(group_by(b, wday), wdaily = sum(births)), desc(wdaily))
+mean_by_wday &lt;- mean(births_by_wday$wdaily)
 mutate(births_by_wday, wdaily/mean_by_wday)
 </code></pre>
 </div>
 
-</section>
-<section id="slide-org4d88d42" data-background="#123456">
-<h4 id="org4d88d42">Hay algún día (de cualquier año) sin nacimientos?</h4>
-<div class="org-src-container">
+<h3 id="hay-algún-día-de-cualquier-año-sin-nacimientos">Hay algún día (de cualquier año) sin nacimientos?</h3>
 
-<pre class="fragment roll-in"><code class="R" ># hay alguna observación 0 o NA?
+<div class="highlighter-rouge"><pre class="highlight"><code># hay alguna observación 0 o NA?
 filter( b, births == 0 )
 filter( b, births == NA )
 
 # agrupo por día
-by_day <- group_by(b, date)
-births_by_day2 <- summarise(by_day, daily = sum(births)) # 7305 observaciones
+by_day &lt;- group_by(b, date)
+births_by_day2 &lt;- summarise(by_day, daily = sum(births)) # 7305 observaciones
 filter( births_by_day2, daily == 0 )
 
 unique(b$year) # 20 años
@@ -206,11 +276,11 @@ unique(b$year) # 20 años
 20*365 
 [1] 7300 # faltan 5 dias de 5 años bisiestos que hay en 20 años, 1 cada 4
 
-bCA <- filter(b, state == "CA") 
+bCA &lt;- filter(b, state == "CA") 
 summarise(group_by(bCA, year), n = n()) 
 # A tibble: 20 × 2
 #    year     n
-#   <int> <int>
+#   &lt;int&gt; &lt;int&gt;
 # 1   1969   370
 # 2   1970   370
 # ...
@@ -224,139 +294,95 @@ print( filter(bCA, year == 1969 ) , n = 100 )
 </code></pre>
 </div>
 
-</section>
-<section id="slide-org45ccec9" data-background="#123456">
-<h4 id="org45ccec9">Y considerando los estados individualmente?</h4>
-<div class="org-src-container">
+<h3 id="y-considerando-los-estados-individualmente">Y considerando los estados individualmente?</h3>
 
-<pre class="fragment roll-in"><code class="R" >by_state_day <- group_by(b, state, date)
-births_by_state_day <- summarise(by_state_day, bsd = sum(births))
+<div class="highlighter-rouge"><pre class="highlight"><code>by_state_day &lt;- group_by(b, state, date)
+births_by_state_day &lt;- summarise(by_state_day, bsd = sum(births))
 min( births_by_state_day$bsd )
 # [1] 2
 </code></pre>
 </div>
 
-</section>
-<section id="slide-org3a7de2b" data-background="#123456">
-<h4 id="org3a7de2b">Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</h4>
-<div class="org-src-container">
+<h3 id="explorar-lag-y-ver-en-que-año-hubo-la-mayor-diferencia-de-nacimientos-graficar">Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</h3>
 
-<pre class="fragment roll-in"><code class="R" >?lag
+<div class="highlighter-rouge"><pre class="highlight"><code>?lag
 ?dplyr::lag # mejor aún
 
-by_year <- group_by(b, year)
-births_by_year <- summarise(by_year, tot_births = sum(births))
+by_year &lt;- group_by(b, year)
+births_by_year &lt;- summarise(by_year, tot_births = sum(births))
 # creo la diferencia entre años con lag()
-births_by_year <- mutate(births_by_year, birth_diff = tot_births - lag(tot_births))
+births_by_year &lt;- mutate(births_by_year, birth_diff = tot_births - lag(tot_births))
 # grafico
 ggplot(births_by_year, aes(year, birth_diff)) + geom_col() + xlab("año") + ylab("Diferencia de nacimientos")
 # mayor diferencia en '72, mayor aumento en '79
 </code></pre>
 </div>
 
-</section>
-</section>
-<section>
-<section id="slide-org52b921d">
-<h2 id="org52b921d">lectura/escritura</h2>
-<p>
-"read_csv()" lee un archivo delimitado por comas.
-</p>
+<h1 id="lecturaescritura">lectura/escritura</h1>
 
-<div class="org-src-container">
+<p>“read_csv()” lee un archivo delimitado por comas.</p>
 
-<pre><code class="R" >read_csv(readr_example("mtcars.csv"))
+<div class="highlighter-rouge"><pre class="highlight"><code>read_csv(readr_example("mtcars.csv"))
 read_csv(readr_example("mtcars.csv.zip"))
 read_csv(readr_example("mtcars.csv.bz2"))
 read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
 </code></pre>
 </div>
 
-<p>
-Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros. 
-</p>
+<p>Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros.</p>
 
-<p>
-Existe una "write_csv" equivalente.
-</p>
+<p>Existe una “write_csv” equivalente.</p>
 
-</section>
-</section>
-<section>
-<section id="slide-orgf8db107">
-<h2 id="orgf8db107">%&gt;%</h2>
-<div class="outline-text-2" id="text-orgf8db107">
-</div></section>
-<section id="slide-org64f5ca6">
-<h3 id="org64f5ca6"><i>Piping</i>  con  <i>Magrittr</i></h3>
-<div class="org-src-container">
+<h1>%&gt;%</h1>
 
-<pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
+<h2 id="piping--con--magrittr"><em>Piping</em>  con  <em>Magrittr</em></h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x %&gt;% f en vez de f(x) # el valor de x se direcciona a f()
+
+x %&gt;% f(., arg2, arg3) # por default pasa al 1er argumento
+x %&gt;% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
+x %&gt;% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
 </code></pre>
 </div>
 
-<div class="org-src-container">
+<h2 id="ejemplos">Ejemplos</h2>
 
-<pre><code class="R" >x %>% f(., arg2, arg3) # por default pasa al 1er argumento
-x %>% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
-x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
-</code></pre>
-</div>
-
-</section>
-<section id="slide-orgc903f0d">
-<h3 id="orgc903f0d">Ejemplos</h3>
-<div class="org-src-container">
-
-<pre><code class="R" >arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
+<div class="highlighter-rouge"><pre class="highlight"><code>arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac &gt;= 1), desc(frac))
 
 
-mean_by_state %>% # mi data.frame
-mutate(frac = mean/overall_mean) %>% # creo la columna frac
-filter(frac >= 1) %>% # filtro la columna frac
+mean_by_state %&gt;% # mi data.frame
+mutate(frac = mean/overall_mean) %&gt;% # creo la columna frac
+filter(frac &gt;= 1) %&gt;% # filtro la columna frac
 arrange(desc(frac)) # ordeno de mayor a menor
 </code></pre>
 </div>
-</section>
-</section>
-<section>
-<section id="slide-org440770d">
-<h2 id="org440770d">más dplyr</h2>
-<div class="outline-text-2" id="text-org440770d">
-</div></section>
-<section id="slide-org348b6a5">
-<h3 id="org348b6a5">combinando data.frames (sin llaves)</h3>
-<img src="./figs/binds.png">
 
-</section>
-<section id="slide-orgf6e74bf">
-<h3 id="orgf6e74bf">combinando data.frames (con llaves)</h3>
-<img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
+<h1 id="más-dplyr">más dplyr</h1>
 
-<img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
+<h2 id="combinando-dataframes-sin-llaves">combinando data.frames (sin llaves)</h2>
+
+<p><img src="./figs/binds.png" /></p>
+
+<h2 id="combinando-dataframes-con-llaves">combinando data.frames (con llaves)</h2>
+
+<p><img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png" /></p>
+
+<p><img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png" /></p>
 
 <ul>
-<li>miren con cuidado el cheat-sheet de dplyr</li>
-
+  <li>miren con cuidado el cheat-sheet de dplyr</li>
 </ul>
 
-</section>
-</section>
-<section>
-<section id="slide-org8a62dd8">
-<h2 id="org8a62dd8">para contar la próxima</h2>
+<h1 id="para-contar-la-próxima">para contar la próxima</h1>
+
 <ul>
-<li>stringr</li>
-<li>lubridate</li>
-<li>u otro</li>
-
+  <li>stringr</li>
+  <li>lubridate</li>
+  <li>u otro</li>
 </ul>
 
-</section>
-</section>
-<section>
-<section id="slide-org936c1e3" data-background="#123456">
-<h2 id="org936c1e3">práctica 4</h2>
+<h1 id="práctica-4">práctica 4</h1>
+
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ira a datos de Contaminación sonora </li>
@@ -366,44 +392,103 @@ arrange(desc(frac)) # ordeno de mayor a menor
   <li>Cuales son los 5 barrios en donde hay más (menos) promedio energético hora?</li>
   <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
 </ol>
-</section>
-</section>
+
+
+            </div>
+            <div id="site-side-bar" class="col-md-3">
+                <div id="navigation">
+    <!-- <div class="panel panel-default"> -->
+    <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
+    <!--     <div class="panel-body"> -->
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://github.com/lgmoyano"> -->
+    <!--                     <span class="icon  icon--github"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">lgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://twitter.com/@luisgmoyano"> -->
+    <!--                     <span class="icon  icon--twitter"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809 -->
+    <!--                             c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">@luisgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="panel panel-default"> -->
+    <!--     <div class="panel-heading">Archivo</div> -->
+    <!--     <div class="panel-body"> -->
+    <!--          -->
+
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Apr 2017 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">using types effectively</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">Simple</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Aug 2015 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/haskell/2015/08/30/hello-world-in-haskell.html">hello world in haskell</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/08/29/welcome-to-jekyll.html">Welcome to Jekyll!</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
 </div>
-</div>
-<p> @luisgmoyano </p>
-<script src="../../reveal.js/lib/js/head.min.js"></script>
-<script src="../../reveal.js/js/reveal.js"></script>
 
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
 
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 'c',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-margin: 0.10,
-minScale: 0.50,
-maxScale: 2.50,
+            </div>
+        </div>
 
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'fast',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+        <!-- <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="position:absolute;RIGHT:10px; TOP:550px; border-width:0" src="by-nc.png" height="20" width="95"/></a></p> -->
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
-});
-</script>
-</body>
+
+    </body>
+
 </html>

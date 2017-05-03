@@ -33,14 +33,14 @@
 
 
 <section>
-<section id="slide-orgf66dae2">
-<h2 id="orgf66dae2">parcial</h2>
+<section id="slide-org7858216">
+<h2 id="org7858216">parcial</h2>
 <p>
 <code>17 de Mayo</code>
 </p>
 </section>
-<section id="slide-orga4300b3">
-<h3 id="orga4300b3">parcial</h3>
+<section id="slide-org514b779">
+<h3 id="org514b779">parcial</h3>
 <ul>
 <li>dos problemas dos, 50% de peso cada uno</li>
 <li>dura una hora (vamos a tener clases después)</li>
@@ -50,8 +50,8 @@
 
 </ul>
 </section>
-<section id="slide-org1b8beb8">
-<h3 id="org1b8beb8">qué voy a evaluar</h3>
+<section id="slide-org11e25e9">
+<h3 id="org11e25e9">qué voy a evaluar</h3>
 <ol>
 <li>ética - 100%</li>
 <li>corrección o no de la solución propuesta - 25%</li>
@@ -68,12 +68,12 @@
 </section>
 </section>
 <section>
-<section id="slide-orgdc48eb6">
-<h2 id="orgdc48eb6">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgdc48eb6">
+<section id="slide-orgae41303">
+<h2 id="orgae41303">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgae41303">
 </div></section>
-<section id="slide-org61db526">
-<h3 id="org61db526">principales funciones dplyr</h3>
+<section id="slide-orgda5b45f">
+<h3 id="orgda5b45f">principales funciones dplyr</h3>
 <ul>
 <li><code>select()</code>: seleccionar columnas</li>
 <li><code>arrange()</code>:reordenar filas</li>
@@ -84,11 +84,11 @@
 
 </ul>
 </section>
-<section id="slide-orgb66fda0" data-background="#123456">
-<h3 id="orgb66fda0">repaso práctica 3</h3>
+<section id="slide-org4ea431d" data-background="#123456">
+<h3 id="org4ea431d">repaso práctica 3</h3>
 </section>
-<section id="slide-org7c09ab6" data-background="#123456">
-<h4 id="org7c09ab6">Cuál es el estado que más nacimientos tiene en total? El que menos?</h4>
+<section id="slide-org194c46a" data-background="#123456">
+<h4 id="org194c46a">Cuál es el estado que más nacimientos tiene en total? El que menos?</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" >library(mosaicData)
@@ -109,8 +109,8 @@ arrange(births_by_state, tot_births)
 </div>
 
 </section>
-<section id="slide-orgb93258c" data-background="#123456">
-<h4 id="orgb93258c">Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</h4>
+<section id="slide-org00b29ac" data-background="#123456">
+<h4 id="org00b29ac">Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" ># agrupo por año y por estado
@@ -138,8 +138,8 @@ manualmente, por ejemplo ver esta pregunta en StackOverflow: <a href="http://sta
 </aside>
 
 </section>
-<section id="slide-orga26ed9a" data-background="#123456">
-<h4 id="orga26ed9a">Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</h4>
+<section id="slide-orgdf3d242" data-background="#123456">
+<h4 id="orgdf3d242">Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" >mean_by_state <- summarise(by_state, mean = mean(births))
@@ -156,8 +156,8 @@ arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc
 </div>
 
 </section>
-<section id="slide-orge3ef9e9" data-background="#123456">
-<h4 id="orge3ef9e9">En promedio, qué més del año tiene más nacimientos?</h4>
+<section id="slide-orgef65ed6" data-background="#123456">
+<h4 id="orgef65ed6">En promedio, qué més del año tiene más nacimientos?</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" >births_by_month <- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
@@ -169,8 +169,8 @@ mutate(births_by_month, monthly/mean_by_month)
 </div>
 
 </section>
-<section id="slide-org87e41f4" data-background="#123456">
-<h4 id="org87e41f4">Hay algún día del mes o de la semana que esté muy por encima de la media?</h4>
+<section id="slide-orga9acc6e" data-background="#123456">
+<h4 id="orga9acc6e">Hay algún día del mes o de la semana que esté muy por encima de la media?</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" ># dia del mes
@@ -186,8 +186,8 @@ mutate(births_by_wday, wdaily/mean_by_wday)
 </div>
 
 </section>
-<section id="slide-org4d88d42" data-background="#123456">
-<h4 id="org4d88d42">Hay algún día (de cualquier año) sin nacimientos?</h4>
+<section id="slide-orgda011e6" data-background="#123456">
+<h4 id="orgda011e6">Hay algún día (de cualquier año) sin nacimientos?</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" ># hay alguna observación 0 o NA?
@@ -225,8 +225,8 @@ print( filter(bCA, year == 1969 ) , n = 100 )
 </div>
 
 </section>
-<section id="slide-org45ccec9" data-background="#123456">
-<h4 id="org45ccec9">Y considerando los estados individualmente?</h4>
+<section id="slide-org1db4541" data-background="#123456">
+<h4 id="org1db4541">Y considerando los estados individualmente?</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" >by_state_day <- group_by(b, state, date)
@@ -237,8 +237,8 @@ min( births_by_state_day$bsd )
 </div>
 
 </section>
-<section id="slide-org3a7de2b" data-background="#123456">
-<h4 id="org3a7de2b">Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</h4>
+<section id="slide-org93a4fc0" data-background="#123456">
+<h4 id="org93a4fc0">Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</h4>
 <div class="org-src-container">
 
 <pre class="fragment roll-in"><code class="R" >?lag
@@ -257,8 +257,8 @@ ggplot(births_by_year, aes(year, birth_diff)) + geom_col() + xlab("año") + ylab
 </section>
 </section>
 <section>
-<section id="slide-org52b921d">
-<h2 id="org52b921d">lectura/escritura</h2>
+<section id="slide-orgfe34380">
+<h2 id="orgfe34380">lectura/escritura</h2>
 <p>
 "read_csv()" lee un archivo delimitado por comas.
 </p>
@@ -283,12 +283,12 @@ Existe una "write_csv" equivalente.
 </section>
 </section>
 <section>
-<section id="slide-orgf8db107">
-<h2 id="orgf8db107">%&gt;%</h2>
-<div class="outline-text-2" id="text-orgf8db107">
+<section id="slide-org25d6753">
+<h2 id="org25d6753">%&gt;%</h2>
+<div class="outline-text-2" id="text-org25d6753">
 </div></section>
-<section id="slide-org64f5ca6">
-<h3 id="org64f5ca6"><i>Piping</i>  con  <i>Magrittr</i></h3>
+<section id="slide-orgc3a1821">
+<h3 id="orgc3a1821"><i>Piping</i>  con  <i>Magrittr</i></h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
@@ -304,8 +304,8 @@ x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
 </div>
 
 </section>
-<section id="slide-orgc903f0d">
-<h3 id="orgc903f0d">Ejemplos</h3>
+<section id="slide-orge42c818">
+<h3 id="orge42c818">Ejemplos</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
@@ -320,17 +320,17 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org440770d">
-<h2 id="org440770d">más dplyr</h2>
-<div class="outline-text-2" id="text-org440770d">
+<section id="slide-org493b917">
+<h2 id="org493b917">más dplyr</h2>
+<div class="outline-text-2" id="text-org493b917">
 </div></section>
-<section id="slide-org348b6a5">
-<h3 id="org348b6a5">combinando data.frames (sin llaves)</h3>
+<section id="slide-orgc678152">
+<h3 id="orgc678152">combinando data.frames (sin llaves)</h3>
 <img src="./figs/binds.png">
 
 </section>
-<section id="slide-orgf6e74bf">
-<h3 id="orgf6e74bf">combinando data.frames (con llaves)</h3>
+<section id="slide-org8035141">
+<h3 id="org8035141">combinando data.frames (con llaves)</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
 
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
@@ -343,8 +343,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org8a62dd8">
-<h2 id="org8a62dd8">para contar la próxima</h2>
+<section id="slide-orgbbd10ff">
+<h2 id="orgbbd10ff">para contar la próxima</h2>
 <ul>
 <li>stringr</li>
 <li>lubridate</li>
@@ -355,8 +355,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org936c1e3" data-background="#123456">
-<h2 id="org936c1e3">práctica 4</h2>
+<section id="slide-orgf87769a" data-background="#123456">
+<h2 id="orgf87769a">práctica 4</h2>
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ira a datos de Contaminación sonora </li>
