@@ -337,5 +337,5 @@ x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
    <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
  </ol>
 #+END_EXPORT
-
+m
 
