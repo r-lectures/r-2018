@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-org2f65a93">
-<h2 id="org2f65a93">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org2f65a93">
+<section id="slide-orgc1a60b1">
+<h2 id="orgc1a60b1">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgc1a60b1">
 </div></section>
-<section id="slide-org4df871f">
-<h3 id="org4df871f">lectura/escritura</h3>
+<section id="slide-org75b9de3">
+<h3 id="org75b9de3">lectura/escritura</h3>
 <p>
 "read_csv()" lee un archivo delimitado por comas.
 </p>
@@ -59,8 +59,8 @@ Existe una "write_csv" equivalente.
 </p>
 
 </section>
-<section id="slide-org3fd6af4">
-<h3 id="org3fd6af4"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
+<section id="slide-org77cf25f">
+<h3 id="org77cf25f"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
@@ -81,13 +81,13 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </div>
 
 </section>
-<section id="slide-orgc29e2b9">
-<h3 id="orgc29e2b9">combinando data.frames (sin llaves)</h3>
+<section id="slide-orgfdf8777">
+<h3 id="orgfdf8777">combinando data.frames (sin llaves)</h3>
 <img src="./figs/binds.png">
 
 </section>
-<section id="slide-orgb0264f6">
-<h3 id="orgb0264f6">combinando data.frames (con llaves)</h3>
+<section id="slide-org94ec2f6">
+<h3 id="org94ec2f6">combinando data.frames (con llaves)</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
 
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
@@ -99,8 +99,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org4578bed" data-background="#123456">
-<h2 id="org4578bed">repaso práctica 4</h2>
+<section id="slide-orgf5f1c8c" data-background="#123456">
+<h2 id="orgf5f1c8c">repaso práctica 4</h2>
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ir a datos de Contaminación sonora </li>
@@ -111,8 +111,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
   <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
 </ol>
 </section>
-<section id="slide-org3855d50">
-<h3 id="org3855d50">hacer gran-dataframe-gran</h3>
+<section id="slide-org24d535c">
+<h3 id="org24d535c">hacer gran-dataframe-gran</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >library(readr)
@@ -140,8 +140,8 @@ ruido_bsas <- left_join(ruido_bsas, tmi)
 </code></pre>
 </div>
 </section>
-<section id="slide-org4d6170b">
-<h3 id="org4d6170b">Ruidosos? Tranquilos?</h3>
+<section id="slide-org01f757c">
+<h3 id="org01f757c">Ruidosos? Tranquilos?</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># 5 barrios más (menos) ruidosos
@@ -155,8 +155,8 @@ ruido_barrios %>% head(n=5) # o tail(n=5) para ver los menos ruidosos
 </code></pre>
 </div>
 </section>
-<section id="slide-orgbe5ce89">
-<h3 id="orgbe5ce89">Extremos vs. media?</h3>
+<section id="slide-org12fd146">
+<h3 id="org12fd146">Extremos vs. media?</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># como se comparan los valores extremos y la media
@@ -176,12 +176,11 @@ ruido_barrios %>% summary # o más elegante: ruido_barrios %>% select(ruido_avg)
 </section>
 </section>
 <section>
-<section id="slide-orgc151b59">
-<h2 id="orgc151b59">RStudio</h2>
+<section id="slide-org2f0f099">
+<h2 id="org2f0f099">RStudio</h2>
 <ul>
-<li><a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects</a></li>
 <li><p>
-working directory / workspace
+Working directory / Workspace
 </p>
 <div class="org-src-container">
 
@@ -189,23 +188,29 @@ working directory / workspace
 setwd("path/to/dir") # para decirle donde quiero estar
 </code></pre>
 </div></li>
-<li>PROYECTOS
-Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc</li>
-<li>Cómo grabo lo que hago?
-<ol>
-<li>abrir un proyecto nuevo y grabar después</li>
-<li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
-<li>gestionar todo uno mismo (no recomendado)</li>
+<li>Proyectos: Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc</li>
+<li>Cómo grabo lo que hago?</li>
 
-</ol></li>
+</ul>
+<ol class="smallfont">
+  <li>abrir un proyecto nuevo y grabar después</li>
+  <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+  <li>gestionar todo uno mismo (no recomendado)</li>
+</ol>
+<aside class="notes">
+<ul>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects</a></li>
 <li>atajos de teclado!</li>
 
 </ul>
+
+</aside>
+
 </section>
 </section>
 <section>
-<section id="slide-org0c87a2a">
-<h2 id="org0c87a2a">Funciones</h2>
+<section id="slide-org70e22c4">
+<h2 id="org70e22c4">Funciones</h2>
 <aside class="notes">
 <p>
 Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
@@ -220,8 +225,8 @@ Más información en <a href="http://r4ds.had.co.nz/functions.html">http://r4ds.
 
 </aside>
 </section>
-<section id="slide-orge1e2420">
-<h3 id="orge1e2420">anatomía de f()</h3>
+<section id="slide-org6b8a94a">
+<h3 id="org6b8a94a">anatomía de f()</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># mi función se llama alta_funcion, con dos argumentos
@@ -251,8 +256,8 @@ mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 </code></pre>
 </div>
 </section>
-<section id="slide-orgfbf4eef">
-<h3 id="orgfbf4eef">ejemplo</h3>
+<section id="slide-orgb906456">
+<h3 id="orgb906456">ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >normaliza_vector <- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
@@ -294,8 +299,8 @@ escribir una función de cero.
 </section>
 </section>
 <section>
-<section id="slide-orgb689686" data-background="#123456">
-<h2 id="orgb689686">Práctica 5</h2>
+<section id="slide-orgb6712f0" data-background="#123456">
+<h2 id="orgb6712f0">Práctica 5</h2>
 <ol>
 <li>Escribir una función que devuelva el min, máx y promedio de ruido dependiendo del barrio</li>
 <li>Porqué obtengo un NA en los resultados de la práctica anterior?
