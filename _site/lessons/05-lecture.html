@@ -258,19 +258,19 @@ setwd("path/to/dir") # para decirle donde quiero estar
 </code></pre>
     </div>
   </li>
-  <li>Proyectos: Conjunto de archivos que van juntos: .Rproj, .RData, .Rsession, etc</li>
+  <li>Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc</li>
   <li>Cómo grabo lo que hago?</li>
 </ul>
 
 <ol class="smallfont">
   <li>abrir un proyecto nuevo y grabar después</li>
   <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
-  <li>gestionar todo uno mismo (no recomendado)</li>
+  <li>sin proyectos, gestionar todo uno mismo (no muy recomendado)</li>
 </ol>
 
 <div class="NOTES">
 -   &lt;https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects&gt;
--   atajos de teclado!
+-   Usen atajos de teclado! Ver machete de RStudio (cheatsheet) en Slack
 
 </div>
 
@@ -313,7 +313,8 @@ mi_var    &lt;- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 
 <h2 id="ejemplo">ejemplo</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>normaliza_vector &lt;- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
+<div class="highlighter-rouge"><pre class="highlight"><code># función que normaliza de dos maneras distintas un vector de valores 
+normaliza_vector &lt;- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
 
     if(square_root == TRUE) N &lt;- sum(vector^2)^(1/2)
     else                    N &lt;- sum(vector)/length(vector) # ojo, da error si vector está vacio
@@ -322,15 +323,16 @@ mi_var    &lt;- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
     else print("error: Norma igual a cero!")
 }
 
-normaliza_vector()
+# distintas maneras de llamar la función
+normaliza_vector() # con los argumentos por default
 # [1] 1.250 1.125 1.000 0.875 0.750
-x &lt;- c(10, 9, 8, 7 , 6)
-normaliza_vector(x)
+x &lt;- c(10, 9, 8, 7 , 6) # c() es una función que toma N argumentos y devuelve un vector
+normaliza_vector(x) # haciendo explícito el vector
 # [1] 1.250 1.125 1.000 0.875 0.750
 y &lt;- c(1, 2, 3)
-normaliza_vector()
+normaliza_vector(y) # un vector diferente
 # [1] 0.5 1.0 1.5
-normaliza_vector(y, TRUE)
+normaliza_vector(y, TRUE) # usando la norma euclidiana
 # [1] 0.2672612 0.5345225 0.8017837
 </code></pre>
 </div>
@@ -348,15 +350,16 @@ escribir una función de cero.
 <h1 id="práctica-5">Práctica 5</h1>
 
 <ol>
-  <li>Escribir una función que devuelva el min, máx y promedio de ruido dependiendo del barrio</li>
-  <li>Porqué obtengo un NA en los resultados de la práctica anterior?
+  <li>Trabajamos sobre datos de ruido de Buenos Aires Data. Escribir una función que devuelva el min,
+máx y promedio (mean) del ruido dependiendo del barrio.</li>
+  <li>Porqué obtengo un <code class="highlighter-rouge">NA</code> en los resultados de la práctica 4?
     <ol>
-      <li>Usar lo aprendido sobre joins para no tener este NA</li>
+      <li>Usar lo aprendido sobre joins para no tener este <code class="highlighter-rouge">NA</code>.</li>
     </ol>
   </li>
-  <li>Cómo puedo mejorar la columna FECHA de la práctica 3? Ayuda: usar el paquete stringr y tidyr::separate</li>
-  <li>Cual es la hora de mayor ruido del día? Cuál dia de la semana? Hay algún barrio con mucho ruido
-durante el fin de semana?</li>
+  <li>Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete <code class="highlighter-rouge">stringr</code> más <code class="highlighter-rouge">tidyr::separate</code>.</li>
+  <li>Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
+con más ruido el fin de semana que el resto?</li>
 </ol>
 
 

@@ -212,13 +212,11 @@ escribir una función de cero.
 
 # Práctica 5
 
-Trabajamos sobre datos de ruido de Buenos Aires Data. 
-
-1.  Escribir una función que devuelva el min, máx y
-    promedio (mean) del ruido dependiendo del barrio
-2.  Porqué obtengo un `NA` en los resultados de la práctica anterior?
-    1.  Usar lo aprendido sobre joins para no tener este `NA`
-3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete `stringr` más `tidyr::separate`
+1.  Trabajamos sobre datos de ruido de Buenos Aires Data. Escribir una función que devuelva el min,
+    máx y promedio (mean) del ruido dependiendo del barrio.
+2.  Porqué obtengo un `NA` en los resultados de la práctica 4?
+    1.  Usar lo aprendido sobre joins para no tener este `NA`.
+3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete `stringr` más `tidyr::separate`.
 4.  Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
-    con mucho más ruido durante el fin de semana que el resto?
+    con más ruido el fin de semana que el resto?
 
