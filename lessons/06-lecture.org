@@ -1,0 +1,162 @@
+#    -*- mode: org -*-
+#+TITLE: R 2017
+#+DATE: 09/05/2017
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+
+#+OPTIONS: author:nil date:t email:nil
+#+OPTIONS: ^:nil _:nil
+#+STARTUP: showall expand
+#+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: fast
+#+REVEAL_THEME: my_moon
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+REVEAL_HLEVEL: 1
+
+# # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
+# # (setq org-reveal-title-slide 'auto)
+# # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+
+
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
+--- 
+layout: default 
+title: Clase 6
+--- 
+#+end_src 
+#+results:
+
+# #+begin_html
+# <img src="right-fail.png">
+# #+end_html
+
+# #+ATTR_REVEAL: :frag roll-in
+
+* emma habla de caret
+* repaso de la clase anterior
+** RStudio
+- Working directory / Workspace
+  #+Begin_src R 
+  getwd() # para saber donde estoy
+  setwd("path/to/dir") # para decirle donde quiero estar
+  #+END_SRC
+- Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc
+- Cómo grabo lo que hago?
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li>abrir un proyecto nuevo y grabar después</li>
+   <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+   <li>sin proyectos, gestionar todo uno mismo (no muy recomendado)</li>
+ </ol>
+#+END_EXPORT
+#+BEGIN_NOTES
+- https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
+- Usen atajos de teclado! Ver machete de RStudio (cheatsheet) en Slack
+#+END_NOTES
+
+** Funciones
+#+BEGIN_NOTES
+Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
+sobre objetos distintos cada vez. Por ejemplo, la función `read_csv` o `plot` contiene código que no
+querríamos escribir cada vez que queremos cargar datos de un archivo csv o hacer un gráfico. A su
+vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier gráfico.
+
+Más información en http://r4ds.had.co.nz/functions.html.
+#+END_NOTES
+*** anatomía de f()
+
+#+BEGIN_SRC R 
+# mi función se llama alta_funcion, con dos argumentos
+alta_funcion <- function(arg1 = 10, arg2 = TRUE, ...){
+ 
+  # acá empieza mi código
+  library(paquete_externo)
+  x <- funcion_externa(arg_ext = arg1) 
+  ...
+  alto código
+  código y más código
+  ...
+  alto_resultado <- mansa_funcion(arg2) # genero alto_resultado
+  
+  return(alto_resultado) # devuelvo alto resultado
+}
+#+END_SRC
+
+#+BEGIN_SRC R 
+# llamo a mi función de distintas maneras
+x_default <- alta_funcion() # uso arg1 = 10 y arg2 = TRUE
+x_100_F   <- alta_funcion(100, FALSE)
+x_200_T   <- alta_funcion(200, TRUE)
+mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
+#+END_SRC
+*** ejemplo
+
+#+BEGIN_SRC R 
+# función que normaliza de dos maneras distintas un vector de valores 
+normaliza_vector <- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
+
+    if(square_root == TRUE) N <- sum(vector^2)^(1/2)
+    else                    N <- sum(vector)/length(vector) # ojo, da error si vector está vacio
+
+    if(N != 0) return(vector/N)
+    else print("error: Norma igual a cero!")
+}
+
+# distintas maneras de llamar la función
+normaliza_vector() # con los argumentos por default
+# [1] 1.250 1.125 1.000 0.875 0.750
+x <- c(10, 9, 8, 7 , 6) # c() es una función que toma N argumentos y devuelve un vector
+normaliza_vector(x) # haciendo explícito el vector
+# [1] 1.250 1.125 1.000 0.875 0.750
+y <- c(1, 2, 3)
+normaliza_vector(y) # un vector diferente
+# [1] 0.5 1.0 1.5
+normaliza_vector(y, TRUE) # usando la norma euclidiana
+# [1] 0.2672612 0.5345225 0.8017837
+
+#+END_SRC
+
+#+BEGIN_NOTES
+La idea de las funciones es que vamos escribiendo código y que, cuando funciona, lo metemos dentro
+de la función. Luego se puede ir extendiendo a medida que se va necesitando (por ejemplo, agregando
+argumentos, etc). 
+
+Es más fácil escribir una función a partir de código que ya sabemos que funciona que sentarse a
+escribir una función de cero.
+#+END_NOTES
+* tipos de datos
+* /subsetting/
+* repaso de la práctica 5
+:PROPERTIES:
+:reveal_background: #123456
+:END:
+
+Trabajamos sobre datos de ruido de Buenos Aires Data. 
+
+1. Escribir una función que devuelva el min, máx y
+   promedio (mean) del ruido dependiendo del barrio
+2. Porqué obtengo un ~NA~ en los resultados de la práctica anterior?
+   1. Usar lo aprendido sobre joins para no tener este ~NA~
+3. Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete ~stringr~ más ~tidyr::separate~
+4. Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
+   con mucho más ruido durante el fin de semana que el resto?
