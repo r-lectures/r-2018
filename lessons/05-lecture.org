@@ -120,6 +120,7 @@ arrange(desc(frac)) # ordeno de mayor a menor
 #+END_EXPORT
 ** hacer gran-dataframe-gran
 #+BEGIN_SRC R 
+  library(dplyr)
   library(readr)
   tmi <- read_csv("~/Downloads/torres-de-monitoreo-inteligente.csv")
   ## Parsed with column specification:
