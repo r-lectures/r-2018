@@ -71,84 +71,206 @@ Más información en <http://r4ds.had.co.nz/functions.html>.
 Trabajamos sobre datos de ruido de Buenos Aires Data. 
 
 1.  Escribir una función que devuelva el min, máx y promedio (mean) del ruido dependiendo del barrio
-    
-        myf <- function() {
-           min  <- summarise(group_by(ruido_bsas, BARRIO), em = min(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
-           mean <- summarise(group_by(ruido_bsas, BARRIO), em = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
-           max  <- summarise(group_by(ruido_bsas, BARRIO), em = max(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
-           return(list(min, mean, max)) # return(c(min, mean, max)) #
-        }
 
 2.  Porqué obtengo un `NA` en los resultados de la práctica anterior?
-    
-        # there are many empty measures
-        which(is.na(ruido_bsas$PROMEDIO_ENERGETICO_HORA))
-        # or, alternatively
-        m2013 %>% group_by(PROMEDIO_ENERGETICO_HORA) %>% summarise(n()) %>% print( n = Inf ) # 2011, 2012 también tienen
-        # and also, some TMIs in measures are missing in reference table (2012 and 2013)
-        missing2011 <- m2011$TMI %>% unique %in% tmi$TMI
-        tmi[which(!missing2011), ]
-        missing2012 <- m2012$TMI %>% unique %in% tmi$TMI
-        tmi[which(!missing2012), ]
-        missing2013 <- m2013$TMI %>% unique %in% tmi$TMI
-        tmi[which(!missing2013), ]
-        # which ones? 
-        anti_join(ruido_bsas, tmi, by = "TMI" ) %>% select(TMI) %>% unique()
-    
     1.  Usar lo aprendido sobre joins para no tener este `NA`
-    
-        ruido_bsas_inner <- inner_join(ruido_bsas, tmi)
-        ruido_barrios_inner <- ruido_bsas_inner %>% group_by(BARRIO) %>% summarise(ruido_avg = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %>% arrange(desc(ruido_avg))
 3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete `stringr` más `tidyr::separate`
-    
-        expanded_ruido_bsas <- ruido_bsas_inner %>% separate(FECHA, into = c("date", "h"), sep = " ") %>% separate(date, into = c("d", "m", "y"), sep = "/")
 4.  Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
     con mucho más ruido durante el fin de semana que el resto?
+
+
+# 'Types': tipos de datos
+
+-   'logical':    TRUE o FALSE
+-   'integer':    naturales: &#x2026;, -1, 0, 1, &#x2026;
+-   'double':    irracionales: 3.1415926
+-   'character':    alfanuméricos: "pi"
+-   'complex':    1+i10
+-   'raw':     48 65 6c 6c 6f
+
+
+## logical
+
+    v <- TRUE 
+    print(class(v))
+    #> [1] "logical"
+    is.logical(v) 
+    #> [1] TRUE
+    1:10 %% 3 == 0 #: para generar una secuencia, %% es el operador módulo (hagan ?: y ?%%)
+    #>  [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
+    c(TRUE, TRUE, FALSE, NA)
+    #> [1]  TRUE  TRUE FALSE    NA
+
+
+## integer
+
+    v <- 2L
+    print(class(v))
+    is.integer(v)
+    is.numeric(v) 
+    #> [1] TRUE
+    typeof(1)
+    #> [1] "double"
+    typeof(1L)
+    #> [1] "integer"
+    1.5L
+    #> [1] 1.5
+
+Valor especial: NA
+
+
+## double
+
+    v <- 23.5
+    print(class(v))
+    is.double(v)
+    is.numeric(v)
     
-        # hora del dia de más ruido
-        summarise(group_by(expanded_ruido_bsas, h), mh = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %>% arrange(desc(mh))
-        
-        # dia más ruidoso de la semana  
-        semi_ruido_bsas <- ruido_bsas_inner %>% separate(FECHA, into = c("date", "h"), sep = " ") 
-        daily_em <- summarise(group_by(semi_ruido_bsas, date), me = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
-        daily_em_unique <- summarise( group_by( daily_em, date ), me = mean( me ) ) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% arrange( y, m, d)
-        
-        # 275 dias de 2011, 366 de 2012 y 212 de 2013, 853 dias en total
-        # los datos empiezan el 1 de abril de 2011, un Viernes
-        week <- c("Vie", "Sab", "Dom", "Lun", "Mar", "Mie", "Jue")
-        wday <- tbl_df(rep(week, 122)[1:853]) # alternativamente dos concatenates, c(rep(week, 121),  c("Vie", "Sab", "Dom", "Lun", "Mar", "Mie"))
-        names(wday) <- "wday"
-        
-        daily_em_unique <- bind_cols(daily_em_unique, wday)
-        summarise( group_by(daily_em_unique, wday), me_wday = mean(me, na.rm = TRUE))
-        
-        # cuidado con las mediciones 
-        ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '01') 
-        ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '02') 
-        ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '08')
+    x <- sqrt(2) ^ 2
+    x
+    #> [1] 2
+    x - 2
+    #> [1] 4.44e-16
+    c(-1, 0, 1) / 0
+    #> [1] -Inf  NaN  Inf
+
+Los 'double' son siempre aproximaciones!
+
+Valores especiales: NA, NaN, Inf y -Inf
+
+Usar: is.finite(), is.infinite(), is.na(), is.nan()
 
 
-# vectores
+## character
 
-There are two types of vectors:
+    v <- "TRUE" # v <- "Maldad pura"
+    print(class(v))
+    is.character(v)
+    
+    x <- "Las cadenas de caracteres pueden tener una longitud arbitrariamente larga mal que nos pese"
 
-Atomic vectors, of which there are six types: logical, integer, double, character, complex, and raw. Integer and double vectors are collectively known as numeric vectors.
 
-Lists, which are sometimes called recursive vectors because lists can contain other lists.
+## complex y raw
 
-The chief difference between atomic vectors and lists is that atomic vectors are homogeneous, while
-lists can be heterogeneous. There’s one other related object: NULL. NULL is often used to represent
-the absence of a vector (as opposed to NA which is used to represent the absence of a value in a
-vector). NULL typically behaves like a vector of length 0. 
+Para numeros complejos, complex
 
-<div class="html">
-<img src="figs/data-structures-overview.png">
+    v <- 2+5i
+    print(class(v))
+    is.complex()
+
+Para trabajar en bytes, se puede usar raw
+
+    v <- charToRaw("Hello")
+    print(class(v))
+    is.raw()
+
+
+# Objetos R: vectores
+
+Existen dos clases de vectores:
+
+1.  <span class="underline">Vectores 'atómicos'</span> (*atomic vectors*), todos los elementos del mismo tipo
+    -   puede haber de los 6 tipos: 'logical', 'integer', 'double', 'character', 'complex' y 'raw'
+    -   Integer y double son tratados como 'numeric'
+    -   No hay escalares en R, si no vectores de longitud 1
+
+2.  <span class="underline">Listas</span>
+    -   Pueden a su vez contener listas (vectores recursivos)
+    -   data.frames son caso especial cuando los vectores que la componen son de igual longitud
+
+Las propiedades más importantes de los vectores son que *tipo* de vector es -typeof()-, que
+*longitud* tiene -length()- y cuales *atributos* tiene asociados. Los atributos son metadata
+arbitraria que se puede asociar a cualquier objeto R. Se determinan y consultan con *attr()* para
+alguno en particular y con *attributes()* se consultan todos los que el objeto tenga.
+
+<div class="NOTES">
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
+
+Hay un objeto relacionado, 'NULL', que es la ausencia de un vector (en cambio, NA es la *ausencia* de un valor de un
+vector, además de ser un vector lógico de longitud 1). NULL se puede tratar como un vector de longitud 0. Pueden leer más en los libros (colgados
+en slack) o en <https://www.r-bloggers.com/r-na-vs-null/>
+
+Otro punto importante es que la función is.vector() no dice realmente si es un vector o no, si no
+que devuelve TRUE si el objeto es un vector sin atributos (aparte de su nombre). Para saber si es un
+vector atómico o una lista, usar is.atomic(x) e is.list(x).
 
 </div>
 
 
-# tipos de datos
+## Vectores R
+
+<img style="WIDTH:700px; HEIGHT:600px; border:0"  src="./figs/data-structures-overview.png">
 
 
-# *subsetting*
+### Propiedades de vectores
+
+<span class="underline">Tipo</span>, que se determina con *typeof()*
+
+    typeof(letters)
+    #> [1] "character"
+    typeof(1:10)
+    #> [1] "integer"
+
+<span class="underline">Longitud</span>, que se determina con *length()*
+
+    x <- list("a", "b", 1:10)
+    length(x)
+    #> [1] 3
+
+<span class="underline">Atributos</span>, que se determinan con *attributes()* y *attr()*
+
+    y <- 1:10
+    attr(y, "mi_atributo") <- "Esto es un vector"
+
+Los tres atributos más importantes se obtienen con *names()*, *class()* y *dim()*. Este último
+atributo permite expandir los vectores atómicos a *arrays* multidimensionales (tensores), cuyo caso
+especial 2d son las matrices. *dim()* generaliza también el papel de *length()* al caso de arrays,
+mientras que *nrow()* y *ncol()* lo hacen para el caso especial de matrices ()
+
+
+## Listas
+
+Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
+listas o funciones ¯\\\_(ツ)\_/¯
+
+    # una lista simple
+    x <- list(1, 2, 3)
+    str(x)
+    
+    # elementos con nombre
+    x_named <- list(a = 1, b = 2, c = 3)
+    str(x_named)
+    
+    y <- list("a", 1L, 1.5, TRUE)
+    str(y)
+    
+    # mezcla de tipos en el mismo pbjeto
+    y <- list("a", 1L, 1.5, TRUE)
+    str(y)
+    
+    # listas de listas
+    z <- list(list(1, 2), list(3, 4))
+    str(z)
+    
+    # ya conociemos las listas 
+    is.list(mtcars)
+    #> [1] TRUE
+    
+    unlist(mtcars) # podemos 'aplanar' una lista!
+
+
+## Mañana: Vectores "aumentados" y *subsetting*
+
+-   <span class="underline">Factores</span>, construidos sobre vectores 'integer'
+-   <span class="underline">Data frames</span> (y tibbles) sobre 'lists'
+-   <span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores 'numeric'
+
+
+# Práctica 6
+
+-   Cuáles son las 3 propiedades de un vector, aparte de su contenido?
+-   Cuáles son los 4 tipos más comunes de vectores atómicos? Cuál los dos menos comunes?
+-   Qué son atributos? Cómo se obtienen y como se asignan?
+-   De que manera es una lista diferente de un vector atómico? Porque una matriz es diferente de un data frame?
 

@@ -42,4 +42,5 @@ lectures:
   subitems:
     - title: "Slides clase 6"
       url: slides/06-lecture-slides.html
-
+    - title: "R - Analisis de datos con Caret - Emmanuel"
+      url: ../assets/R - Analisis de datos con Caret.pdf
