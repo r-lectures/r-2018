@@ -64,6 +64,7 @@ Existe una "write\_csv" equivalente.
 
 ## hacer gran-dataframe-gran
 
+    library(dplyr)
     library(readr)
     tmi <- read_csv("~/Downloads/torres-de-monitoreo-inteligente.csv")
     ## Parsed with column specification:

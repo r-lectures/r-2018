@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Clase 5</title>
+    <title>Clase 6</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/lessons/05-lecture.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/06-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -136,123 +136,11 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="repaso-de-la-clase-anterior">repaso de la clase anterior</h1>
+                <h1 id="emma-habla-de-caret">emma habla de caret</h1>
 
-<h2 id="lecturaescritura">lectura/escritura</h2>
+<h1 id="repaso-de-la-clase-anterior">repaso de la clase anterior</h1>
 
-<p>“read_csv()” lee un archivo delimitado por comas.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>read_csv(readr_example("mtcars.csv"))
-read_csv(readr_example("mtcars.csv.zip"))
-read_csv(readr_example("mtcars.csv.bz2"))
-read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
-</code></pre>
-</div>
-
-<p>Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros.</p>
-
-<p>Existe una “write_csv” equivalente.</p>
-
-<h2 id="piping--con--magrittr-y-operador-"><em>Piping</em>  con  <em>Magrittr</em> y operador %&gt;%</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>x %&gt;% f en vez de f(x) # el valor de x se direcciona a f()
-
-x %&gt;% f(., arg2, arg3) # por default pasa al 1er argumento
-x %&gt;% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
-x %&gt;% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
-
-mean_by_state %&gt;% # mi data.frame
-mutate(frac = mean/overall_mean) %&gt;% # creo la columna frac
-filter(frac &gt;= 1) %&gt;% # filtro la columna frac
-arrange(desc(frac)) # ordeno de mayor a menor
-</code></pre>
-</div>
-
-<h2 id="combinando-dataframes-sin-llaves">combinando data.frames (sin llaves)</h2>
-
-<p><img src="./figs/binds.png" /></p>
-
-<h2 id="combinando-dataframes-con-llaves">combinando data.frames (con llaves)</h2>
-
-<p><img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png" /></p>
-
-<p><img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png" /></p>
-
-<ul>
-  <li>miren con cuidado el cheat-sheet de dplyr</li>
-</ul>
-
-<h1 id="repaso-práctica-4">repaso práctica 4</h1>
-
-<ol class="smallfont">
-  <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
-  <li>Ir a datos de Contaminación sonora </li>
-  <li>Bajar csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
-  <li>Cargar todo en R </li>
-  <li>Hacer un gran data.frame con TMI y las tres mediciones</li>
-  <li>Cuales son los 5 barrios en donde hay más (menos) promedio energético hora?</li>
-  <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
-</ol>
-
-<h2 id="hacer-gran-dataframe-gran">hacer gran-dataframe-gran</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>library(dplyr)
-library(readr)
-tmi &lt;- read_csv("~/Downloads/torres-de-monitoreo-inteligente.csv")
-## Parsed with column specification:
-## cols(
-##   TMI = col_integer(),
-##   BARRIO = col_character(),
-##   DIRECCION = col_character()
-## )
-## &gt; tmi
-## # A tibble: 16 × 3
-##      TMI            BARRIO                 DIRECCION
-##    &lt;int&gt;             &lt;chr&gt;                     &lt;chr&gt;
-## 1   1282         Mataderos        Av. Eva Perón 5251
-## 2   1283           Liniers   Lisandro de la Torre 39
-## 3   1284   Vélez Sarsfield          Av. Segurola 726
-m2011 &lt;- read_csv2("~/Downloads/mediciones-2011.csv")
-m2012 &lt;- read_csv2("~/Downloads/mediciones-2012.csv")
-m2013 &lt;- read_csv2("~/Downloads/mediciones-2013.csv")
-
-# construyo data.frame
-ruido_bsas &lt;- bind_rows(m2011, m2012, m2013)
-ruido_bsas &lt;- left_join(ruido_bsas, tmi)
-</code></pre>
-</div>
-
-<h2 id="ruidosos-tranquilos">Ruidosos? Tranquilos?</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 5 barrios más (menos) ruidosos
-ruido_barrios &lt;- ruido_bsas %&gt;% 
-group_by(BARRIO) %&gt;% 
-summarise(ruido_avg = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %&gt;% 
-arrange(desc(ruido_avg)) 
-# pregunta: de dónde viene el NA? (Assumptions...)
-
-ruido_barrios %&gt;% head(n=5) # o tail(n=5) para ver los menos ruidosos
-</code></pre>
-</div>
-
-<h2 id="extremos-vs-media">Extremos vs. media?</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># como se comparan los valores extremos y la media
-ruido_barrios %&gt;% summary # o más elegante: ruido_barrios %&gt;% select(ruido_avg) %&gt;% summary
-
-## también funciona esto:
-## ruido_barrios %&gt;% summarise(mean(ruido_avg))
-## ruido_barrios %&gt;% summarise(max(ruido_avg))
-## ruido_barrios %&gt;% summarise(min(ruido_avg))
-
-59.79/70.49
-# [1] 0.8482054
-74.94/70.49
-# [1] 1.06313
-</code></pre>
-</div>
-
-<h1 id="rstudio">RStudio</h1>
+<h2 id="rstudio">RStudio</h2>
 
 <ul>
   <li>
@@ -279,7 +167,7 @@ setwd("path/to/dir") # para decirle donde quiero estar
 
 </div>
 
-<h1 id="funciones">Funciones</h1>
+<h2 id="funciones">Funciones</h2>
 
 <div class="NOTES">
 Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
@@ -290,8 +178,6 @@ vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier g
 Más información en &lt;http://r4ds.had.co.nz/functions.html&gt;.
 
 </div>
-
-<h2 id="anatomía-de-f">anatomía de f()</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># mi función se llama alta_funcion, con dos argumentos
 alta_funcion &lt;- function(arg1 = 10, arg2 = TRUE, ...){
@@ -316,56 +202,240 @@ mi_var    &lt;- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 </code></pre>
 </div>
 
-<h2 id="ejemplo">ejemplo</h2>
+<h1 id="repaso-de-la-práctica-5">repaso de la práctica 5</h1>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># función que normaliza de dos maneras distintas un vector de valores 
-normaliza_vector &lt;- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
+<p>Trabajamos sobre datos de ruido de Buenos Aires Data.</p>
 
-    if(square_root == TRUE) N &lt;- sum(vector^2)^(1/2)
-    else                    N &lt;- sum(vector)/length(vector) # ojo, da error si vector está vacio
+<ol>
+  <li>
+    <p>Escribir una función que devuelva el min, máx y promedio (mean) del ruido dependiendo del barrio</p>
+  </li>
+  <li>Porqué obtengo un <code class="highlighter-rouge">NA</code> en los resultados de la práctica anterior?
+    <ol>
+      <li>Usar lo aprendido sobre joins para no tener este <code class="highlighter-rouge">NA</code></li>
+    </ol>
+  </li>
+  <li>Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete <code class="highlighter-rouge">stringr</code> más <code class="highlighter-rouge">tidyr::separate</code></li>
+  <li>Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
+con mucho más ruido durante el fin de semana que el resto?</li>
+</ol>
 
-    if(N != 0) return(vector/N)
-    else print("error: Norma igual a cero!")
-}
+<h1 id="types-tipos-de-datos">‘Types’: tipos de datos</h1>
 
-# distintas maneras de llamar la función
-normaliza_vector() # con los argumentos por default
-# [1] 1.250 1.125 1.000 0.875 0.750
-x &lt;- c(10, 9, 8, 7 , 6) # c() es una función que toma N argumentos y devuelve un vector
-normaliza_vector(x) # haciendo explícito el vector
-# [1] 1.250 1.125 1.000 0.875 0.750
-y &lt;- c(1, 2, 3)
-normaliza_vector(y) # un vector diferente
-# [1] 0.5 1.0 1.5
-normaliza_vector(y, TRUE) # usando la norma euclidiana
-# [1] 0.2672612 0.5345225 0.8017837
+<ul>
+  <li>‘logical’:    TRUE o FALSE</li>
+  <li>‘integer’:    naturales: …, -1, 0, 1, …</li>
+  <li>‘double’:    irracionales: 3.1415926</li>
+  <li>‘character’:    alfanuméricos: “pi”</li>
+  <li>‘complex’:    1+i10</li>
+  <li>‘raw’:     48 65 6c 6c 6f</li>
+</ul>
+
+<h2 id="logical">logical</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- TRUE 
+print(class(v))
+#&gt; [1] "logical"
+is.logical(v) 
+#&gt; [1] TRUE
+1:10 %% 3 == 0 #: para generar una secuencia, %% es el operador módulo (hagan ?: y ?%%)
+#&gt;  [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
+c(TRUE, TRUE, FALSE, NA)
+#&gt; [1]  TRUE  TRUE FALSE    NA
 </code></pre>
 </div>
 
-<div class="NOTES">
-La idea de las funciones es que vamos escribiendo código y que, cuando funciona, lo metemos dentro
-de la función. Luego se puede ir extendiendo a medida que se va necesitando (por ejemplo, agregando
-argumentos, etc). 
+<h2 id="integer">integer</h2>
 
-Es más fácil escribir una función a partir de código que ya sabemos que funciona que sentarse a
-escribir una función de cero.
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- 2L
+print(class(v))
+is.integer(v)
+is.numeric(v) 
+#&gt; [1] TRUE
+typeof(1)
+#&gt; [1] "double"
+typeof(1L)
+#&gt; [1] "integer"
+1.5L
+#&gt; [1] 1.5
+</code></pre>
+</div>
+
+<p>Valor especial: NA</p>
+
+<h2 id="double">double</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- 23.5
+print(class(v))
+is.double(v)
+is.numeric(v)
+
+x &lt;- sqrt(2) ^ 2
+x
+#&gt; [1] 2
+x - 2
+#&gt; [1] 4.44e-16
+c(-1, 0, 1) / 0
+#&gt; [1] -Inf  NaN  Inf
+</code></pre>
+</div>
+
+<p>Los ‘double’ son siempre aproximaciones!</p>
+
+<p>Valores especiales: NA, NaN, Inf y -Inf</p>
+
+<p>Usar: is.finite(), is.infinite(), is.na(), is.nan()</p>
+
+<h2 id="character">character</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- "TRUE" # v &lt;- "Maldad pura"
+print(class(v))
+is.character(v)
+
+x &lt;- "Las cadenas de caracteres pueden tener una longitud arbitrariamente larga mal que nos pese"
+</code></pre>
+</div>
+
+<h2 id="complex-y-raw">complex y raw</h2>
+
+<p>Para numeros complejos, complex</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- 2+5i
+print(class(v))
+is.complex()
+</code></pre>
+</div>
+
+<p>Para trabajar en bytes, se puede usar raw</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- charToRaw("Hello")
+print(class(v))
+is.raw()
+</code></pre>
+</div>
+
+<h1 id="objetos-r-vectores">Objetos R: vectores</h1>
+
+<p>Existen dos clases de vectores:</p>
+
+<ol>
+  <li><span class="underline">Vectores ‘atómicos’</span> (<em>atomic vectors</em>), todos los elementos del mismo tipo
+    <ul>
+      <li>puede haber de los 6 tipos: ‘logical’, ‘integer’, ‘double’, ‘character’, ‘complex’ y ‘raw’</li>
+      <li>Integer y double son tratados como ‘numeric’</li>
+      <li>No hay escalares en R, si no vectores de longitud 1</li>
+    </ul>
+  </li>
+  <li><span class="underline">Listas</span>
+    <ul>
+      <li>Pueden a su vez contener listas (vectores recursivos)</li>
+      <li>data.frames son caso especial cuando los vectores que la componen son de igual longitud</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Las propiedades más importantes de los vectores son que <em>tipo</em> de vector es -typeof()-, que
+<em>longitud</em> tiene -length()- y cuales <em>atributos</em> tiene asociados. Los atributos son metadata
+arbitraria que se puede asociar a cualquier objeto R. Se determinan y consultan con <em>attr()</em> para
+alguno en particular y con <em>attributes()</em> se consultan todos los que el objeto tenga.</p>
+
+<div class="NOTES">
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
+
+Hay un objeto relacionado, 'NULL', que es la ausencia de un vector (en cambio, NA es la *ausencia* de un valor de un
+vector, además de ser un vector lógico de longitud 1). NULL se puede tratar como un vector de longitud 0. Pueden leer más en los libros (colgados
+en slack) o en &lt;https://www.r-bloggers.com/r-na-vs-null/&gt;
+
+Otro punto importante es que la función is.vector() no dice realmente si es un vector o no, si no
+que devuelve TRUE si el objeto es un vector sin atributos (aparte de su nombre). Para saber si es un
+vector atómico o una lista, usar is.atomic(x) e is.list(x).
 
 </div>
 
-<h1 id="práctica-5">Práctica 5</h1>
+<h2 id="vectores-r">Vectores R</h2>
 
-<ol>
-  <li>Trabajamos sobre datos de ruido de Buenos Aires Data. Escribir una función que devuelva el min,
-máx y promedio (mean) del ruido dependiendo del barrio.</li>
-  <li>Porqué obtengo un <code class="highlighter-rouge">NA</code> en los resultados de la práctica 4?
-    <ol>
-      <li>Usar lo aprendido sobre joins para no tener este <code class="highlighter-rouge">NA</code>.</li>
-    </ol>
-  </li>
-  <li>Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete <code class="highlighter-rouge">stringr</code> más <code class="highlighter-rouge">tidyr::separate</code>.</li>
-  <li>Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
-con más ruido el fin de semana que el resto?</li>
-</ol>
+<p><img style="WIDTH:700px; HEIGHT:600px; border:0" src="./figs/data-structures-overview.png" /></p>
+
+<h3 id="propiedades-de-vectores">Propiedades de vectores</h3>
+
+<p><span class="underline">Tipo</span>, que se determina con <em>typeof()</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>typeof(letters)
+#&gt; [1] "character"
+typeof(1:10)
+#&gt; [1] "integer"
+</code></pre>
+</div>
+
+<p><span class="underline">Longitud</span>, que se determina con <em>length()</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- list("a", "b", 1:10)
+length(x)
+#&gt; [1] 3
+</code></pre>
+</div>
+
+<p><span class="underline">Atributos</span>, que se determinan con <em>attributes()</em> y <em>attr()</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>y &lt;- 1:10
+attr(y, "mi_atributo") &lt;- "Esto es un vector"
+</code></pre>
+</div>
+
+<p>Los tres atributos más importantes se obtienen con <em>names()</em>, <em>class()</em> y <em>dim()</em>. Este último
+atributo permite expandir los vectores atómicos a <em>arrays</em> multidimensionales (tensores), cuyo caso
+especial 2d son las matrices. <em>dim()</em> generaliza también el papel de <em>length()</em> al caso de arrays,
+mientras que <em>nrow()</em> y <em>ncol()</em> lo hacen para el caso especial de matrices ()</p>
+
+<h2 id="listas">Listas</h2>
+
+<p>Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
+listas o funciones ¯\_(ツ)_/¯</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># una lista simple
+x &lt;- list(1, 2, 3)
+str(x)
+
+# elementos con nombre
+x_named &lt;- list(a = 1, b = 2, c = 3)
+str(x_named)
+
+y &lt;- list("a", 1L, 1.5, TRUE)
+str(y)
+
+# mezcla de tipos en el mismo pbjeto
+y &lt;- list("a", 1L, 1.5, TRUE)
+str(y)
+
+# listas de listas
+z &lt;- list(list(1, 2), list(3, 4))
+str(z)
+
+# ya conociemos las listas 
+is.list(mtcars)
+#&gt; [1] TRUE
+
+unlist(mtcars) # podemos 'aplanar' una lista!
+</code></pre>
+</div>
+
+<h2 id="mañana-vectores-aumentados-y-subsetting">Mañana: Vectores “aumentados” y <em>subsetting</em></h2>
+
+<ul>
+  <li><span class="underline">Factores</span>, construidos sobre vectores ‘integer’</li>
+  <li><span class="underline">Data frames</span> (y tibbles) sobre ‘lists’</li>
+  <li><span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores ‘numeric’</li>
+</ul>
+
+<h1 id="práctica-6">Práctica 6</h1>
+
+<ul>
+  <li>Cuáles son las 3 propiedades de un vector, aparte de su contenido?</li>
+  <li>Cuáles son los 4 tipos más comunes de vectores atómicos? Cuál los dos menos comunes?</li>
+  <li>Qué son atributos? Cómo se obtienen y como se asignan?</li>
+  <li>De que manera es una lista diferente de un vector atómico? Porque una matriz es diferente de un data frame?</li>
+</ul>
 
 
             </div>

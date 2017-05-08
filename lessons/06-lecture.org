@@ -1,0 +1,362 @@
+#    -*- mode: org -*-
+#+TITLE: R 2017
+#+DATE: 09/05/2017
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+
+#+OPTIONS: author:nil date:t email:nil
+#+OPTIONS: ^:nil _:nil
+#+STARTUP: showall expand
+#+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: fast
+#+REVEAL_THEME: my_moon
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+REVEAL_HLEVEL: 1
+
+# # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
+# # (setq org-reveal-title-slide 'auto)
+# # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+
+
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
+--- 
+layout: default 
+title: Clase 6
+--- 
+#+end_src 
+#+results:
+
+# #+begin_html
+# <img src="right-fail.png">
+# #+end_html
+
+# #+ATTR_REVEAL: :frag roll-in
+
+* emma habla de caret
+* repaso de la clase anterior
+** RStudio
+- Working directory / Workspace
+  #+Begin_src R 
+  getwd() # para saber donde estoy
+  setwd("path/to/dir") # para decirle donde quiero estar
+  #+END_SRC
+- Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc
+- Cómo grabo lo que hago?
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li>abrir un proyecto nuevo y grabar después</li>
+   <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+   <li>sin proyectos, gestionar todo uno mismo (no muy recomendado)</li>
+ </ol>
+#+END_EXPORT
+#+BEGIN_NOTES
+- https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
+- Usen atajos de teclado! Ver machete de RStudio (cheatsheet) en Slack
+#+END_NOTES
+
+** Funciones
+#+BEGIN_NOTES
+Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
+sobre objetos distintos cada vez. Por ejemplo, la función `read_csv` o `plot` contiene código que no
+querríamos escribir cada vez que queremos cargar datos de un archivo csv o hacer un gráfico. A su
+vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier gráfico.
+
+Más información en http://r4ds.had.co.nz/functions.html.
+#+END_NOTES
+
+#+BEGIN_SRC R 
+# mi función se llama alta_funcion, con dos argumentos
+alta_funcion <- function(arg1 = 10, arg2 = TRUE, ...){
+ 
+  # acá empieza mi código
+  library(paquete_externo)
+  x <- funcion_externa(arg_ext = arg1) 
+  ...
+  alto código
+  código y más código
+  ...
+  alto_resultado <- mansa_funcion(arg2) # genero alto_resultado
+  
+  return(alto_resultado) # devuelvo alto resultado
+}
+#+END_SRC
+
+#+BEGIN_SRC R 
+# llamo a mi función de distintas maneras
+x_default <- alta_funcion() # uso arg1 = 10 y arg2 = TRUE
+x_100_F   <- alta_funcion(100, FALSE)
+x_200_T   <- alta_funcion(200, TRUE)
+mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
+#+END_SRC
+
+* repaso de la práctica 5
+:PROPERTIES:
+:reveal_background: #123456
+:END:
+
+Trabajamos sobre datos de ruido de Buenos Aires Data. 
+
+1. Escribir una función que devuelva el min, máx y promedio (mean) del ruido dependiendo del barrio
+   # #+BEGIN_SRC R 
+   # myf <- function() {
+   #    min  <- summarise(group_by(ruido_bsas, BARRIO), em = min(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+   #    mean <- summarise(group_by(ruido_bsas, BARRIO), em = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+   #    max  <- summarise(group_by(ruido_bsas, BARRIO), em = max(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+   #    return(list(min, mean, max)) # return(c(min, mean, max)) #
+   # } 
+   # #+END_SRC
+  
+2. Porqué obtengo un ~NA~ en los resultados de la práctica anterior?
+   # #+BEGIN_SRC R 
+   # # there are many empty measures
+   # which(is.na(ruido_bsas$PROMEDIO_ENERGETICO_HORA))
+   # # or, alternatively
+   # m2013 %>% group_by(PROMEDIO_ENERGETICO_HORA) %>% summarise(n()) %>% print( n = Inf ) # 2011, 2012 también tienen
+   # # and also, some TMIs in measures are missing in reference table (2012 and 2013)
+   # missing2011 <- m2011$TMI %>% unique %in% tmi$TMI
+   # tmi[which(!missing2011), ]
+   # missing2012 <- m2012$TMI %>% unique %in% tmi$TMI
+   # tmi[which(!missing2012), ]
+   # missing2013 <- m2013$TMI %>% unique %in% tmi$TMI
+   # tmi[which(!missing2013), ]
+   # # which ones? 
+   # anti_join(ruido_bsas, tmi, by = "TMI" ) %>% select(TMI) %>% unique()   
+   # #+END_SRC
+
+   1. Usar lo aprendido sobre joins para no tener este ~NA~
+     # #+BEGIN_SRC R 
+     # # ruido_bsas_inner <- inner_join(ruido_bsas, tmi) 
+     # # ruido_barrios_inner <- ruido_bsas_inner %>% group_by(BARRIO) %>% summarise(ruido_avg = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %>% arrange(desc(ruido_avg)) 
+    # #+END_SRC
+3. Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete ~stringr~ más ~tidyr::separate~
+   # #+BEGIN_SRC R 
+   # expanded_ruido_bsas <- ruido_bsas_inner %>% separate(FECHA, into = c("date", "h"), sep = " ") %>% separate(date, into = c("d", "m", "y"), sep = "/")
+   # #+END_SRC
+4. Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
+   con mucho más ruido durante el fin de semana que el resto?
+   # #+BEGIN_SRC R 
+   #   # hora del dia de más ruido
+   #   summarise(group_by(expanded_ruido_bsas, h), mh = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %>% arrange(desc(mh))
+
+   #   # dia más ruidoso de la semana  
+   #   semi_ruido_bsas <- ruido_bsas_inner %>% separate(FECHA, into = c("date", "h"), sep = " ") 
+   #   daily_em <- summarise(group_by(semi_ruido_bsas, date), me = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+   #   daily_em_unique <- summarise( group_by( daily_em, date ), me = mean( me ) ) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% arrange( y, m, d)
+
+   #   # 275 dias de 2011, 366 de 2012 y 212 de 2013, 853 dias en total
+   #   # los datos empiezan el 1 de abril de 2011, un Viernes
+   #   week <- c("Vie", "Sab", "Dom", "Lun", "Mar", "Mie", "Jue")
+   #   wday <- tbl_df(rep(week, 122)[1:853]) # alternativamente dos concatenates, c(rep(week, 121),  c("Vie", "Sab", "Dom", "Lun", "Mar", "Mie"))
+   #   names(wday) <- "wday"
+
+   #   daily_em_unique <- bind_cols(daily_em_unique, wday)
+   #   summarise( group_by(daily_em_unique, wday), me_wday = mean(me, na.rm = TRUE))
+
+   #   # cuidado con las mediciones 
+   #   ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '01') 
+   #   ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '02') 
+   #   ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '08') 
+   # #+END_SRC
+* 'Types': tipos de datos 
+- 'logical':    TRUE o FALSE
+- 'integer':    naturales: ..., -1, 0, 1, ...
+- 'double':    irracionales: 3.1415926
+- 'character':    alfanuméricos: "pi"
+- 'complex':    1+i10
+- 'raw':     48 65 6c 6c 6f
+** logical
+
+#+BEGIN_SRC R 
+v <- TRUE 
+print(class(v))
+#> [1] "logical"
+is.logical(v) 
+#> [1] TRUE
+1:10 %% 3 == 0 #: para generar una secuencia, %% es el operador módulo (hagan ?: y ?%%)
+#>  [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
+c(TRUE, TRUE, FALSE, NA)
+#> [1]  TRUE  TRUE FALSE    NA
+#+END_SRC
+** integer
+#+BEGIN_SRC R 
+v <- 2L
+print(class(v))
+is.integer(v)
+is.numeric(v) 
+#> [1] TRUE
+typeof(1)
+#> [1] "double"
+typeof(1L)
+#> [1] "integer"
+1.5L
+#> [1] 1.5
+#+END_SRC
+
+Valor especial: NA
+** double
+#+BEGIN_SRC R 
+v <- 23.5
+print(class(v))
+is.double(v)
+is.numeric(v)
+
+x <- sqrt(2) ^ 2
+x
+#> [1] 2
+x - 2
+#> [1] 4.44e-16
+c(-1, 0, 1) / 0
+#> [1] -Inf  NaN  Inf
+#+END_SRC
+
+Los 'double' son siempre aproximaciones!
+
+Valores especiales: NA, NaN, Inf y -Inf
+
+Usar: is.finite(), is.infinite(), is.na(), is.nan()
+** character
+#+BEGIN_SRC R 
+v <- "TRUE" # v <- "Maldad pura"
+print(class(v))
+is.character(v)
+
+x <- "Las cadenas de caracteres pueden tener una longitud arbitrariamente larga mal que nos pese"
+#+END_SRC
+** complex y raw
+Para numeros complejos, complex
+#+BEGIN_SRC R 
+v <- 2+5i
+print(class(v))
+is.complex()
+#+END_SRC
+
+Para trabajar en bytes, se puede usar raw
+#+BEGIN_SRC R 
+v <- charToRaw("Hello")
+print(class(v))
+is.raw()
+#+END_SRC
+
+* Objetos R: vectores
+Existen dos clases de vectores:
+1. _Vectores 'atómicos'_ (/atomic vectors/), todos los elementos del mismo tipo
+   - puede haber de los 6 tipos: 'logical', 'integer', 'double', 'character', 'complex' y 'raw'
+   - Integer y double son tratados como 'numeric'
+   - No hay escalares en R, si no vectores de longitud 1
+
+2. _Listas_
+   - Pueden a su vez contener listas (vectores recursivos)
+   - data.frames son caso especial cuando los vectores que la componen son de igual longitud
+
+Las propiedades más importantes de los vectores son que /tipo/ de vector es -typeof()-, que
+/longitud/ tiene -length()- y cuales /atributos/ tiene asociados. Los atributos son metadata
+arbitraria que se puede asociar a cualquier objeto R. Se determinan y consultan con /attr()/ para
+alguno en particular y con /attributes()/ se consultan todos los que el objeto tenga.
+
+#+BEGIN_NOTES
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
+
+Hay un objeto relacionado, 'NULL', que es la ausencia de un vector (en cambio, NA es la /ausencia/ de un valor de un
+vector, además de ser un vector lógico de longitud 1). NULL se puede tratar como un vector de longitud 0. Pueden leer más en los libros (colgados
+en slack) o en https://www.r-bloggers.com/r-na-vs-null/
+
+Otro punto importante es que la función is.vector() no dice realmente si es un vector o no, si no
+que devuelve TRUE si el objeto es un vector sin atributos (aparte de su nombre). Para saber si es un
+vector atómico o una lista, usar is.atomic(x) e is.list(x).
+#+END_NOTES
+** Vectores R
+#+BEGIN_EXPORT html
+<img style="WIDTH:700px; HEIGHT:600px; border:0"  src="./figs/data-structures-overview.png">
+#+END_EXPORT
+
+*** Propiedades de vectores
+_Tipo_, que se determina con /typeof()/
+#+BEGIN_SRC R 
+typeof(letters)
+#> [1] "character"
+typeof(1:10)
+#> [1] "integer"
+#+END_SRC
+
+_Longitud_, que se determina con /length()/
+#+BEGIN_SRC R 
+x <- list("a", "b", 1:10)
+length(x)
+#> [1] 3
+#+END_SRC
+
+_Atributos_, que se determinan con /attributes()/ y /attr()/
+#+BEGIN_SRC R 
+y <- 1:10
+attr(y, "mi_atributo") <- "Esto es un vector"
+#+END_SRC
+
+Los tres atributos más importantes se obtienen con /names()/, /class()/ y /dim()/. Este último
+atributo permite expandir los vectores atómicos a /arrays/ multidimensionales (tensores), cuyo caso
+especial 2d son las matrices. /dim()/ generaliza también el papel de /length()/ al caso de arrays,
+mientras que /nrow()/ y /ncol()/ lo hacen para el caso especial de matrices ()
+
+** Listas
+
+Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
+listas o funciones ¯\_(ツ)_/¯
+
+#+BEGIN_SRC R 
+# una lista simple
+x <- list(1, 2, 3)
+str(x)
+
+# elementos con nombre
+x_named <- list(a = 1, b = 2, c = 3)
+str(x_named)
+
+y <- list("a", 1L, 1.5, TRUE)
+str(y)
+
+# mezcla de tipos en el mismo pbjeto
+y <- list("a", 1L, 1.5, TRUE)
+str(y)
+
+# listas de listas
+z <- list(list(1, 2), list(3, 4))
+str(z)
+
+# ya conociemos las listas 
+is.list(mtcars)
+#> [1] TRUE
+
+unlist(mtcars) # podemos 'aplanar' una lista!
+#+END_SRC
+
+** Mañana: Vectores "aumentados" y /subsetting/
+   - _Factores_, construidos sobre vectores 'integer'
+   - _Data frames_ (y tibbles) sobre 'lists'
+   - _Dates_ y _date-times_, sobre vectores 'numeric'
+
+* Práctica 6
+
+- Cuáles son las 3 propiedades de un vector, aparte de su contenido?
+- Cuáles son los 4 tipos más comunes de vectores atómicos? Cuál los dos menos comunes?
+- Qué son atributos? Cómo se obtienen y como se asignan?
+- De que manera es una lista diferente de un vector atómico? Porque una matriz es diferente de un data frame?
