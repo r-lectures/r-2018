@@ -83,7 +83,6 @@ vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier g
 
 Más información en http://r4ds.had.co.nz/functions.html.
 #+END_NOTES
-*** anatomía de f()
 
 #+BEGIN_SRC R 
 # mi función se llama alta_funcion, con dos argumentos
@@ -109,43 +108,7 @@ x_100_F   <- alta_funcion(100, FALSE)
 x_200_T   <- alta_funcion(200, TRUE)
 mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 #+END_SRC
-*** ejemplo
 
-#+BEGIN_SRC R 
-# función que normaliza de dos maneras distintas un vector de valores 
-normaliza_vector <- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
-
-    if(square_root == TRUE) N <- sum(vector^2)^(1/2)
-    else                    N <- sum(vector)/length(vector) # ojo, da error si vector está vacio
-
-    if(N != 0) return(vector/N)
-    else print("error: Norma igual a cero!")
-}
-
-# distintas maneras de llamar la función
-normaliza_vector() # con los argumentos por default
-# [1] 1.250 1.125 1.000 0.875 0.750
-x <- c(10, 9, 8, 7 , 6) # c() es una función que toma N argumentos y devuelve un vector
-normaliza_vector(x) # haciendo explícito el vector
-# [1] 1.250 1.125 1.000 0.875 0.750
-y <- c(1, 2, 3)
-normaliza_vector(y) # un vector diferente
-# [1] 0.5 1.0 1.5
-normaliza_vector(y, TRUE) # usando la norma euclidiana
-# [1] 0.2672612 0.5345225 0.8017837
-
-#+END_SRC
-
-#+BEGIN_NOTES
-La idea de las funciones es que vamos escribiendo código y que, cuando funciona, lo metemos dentro
-de la función. Luego se puede ir extendiendo a medida que se va necesitando (por ejemplo, agregando
-argumentos, etc). 
-
-Es más fácil escribir una función a partir de código que ya sabemos que funciona que sentarse a
-escribir una función de cero.
-#+END_NOTES
-* tipos de datos
-* /subsetting/
 * repaso de la práctica 5
 :PROPERTIES:
 :reveal_background: #123456
@@ -153,10 +116,143 @@ escribir una función de cero.
 
 Trabajamos sobre datos de ruido de Buenos Aires Data. 
 
-1. Escribir una función que devuelva el min, máx y
-   promedio (mean) del ruido dependiendo del barrio
+1. Escribir una función que devuelva el min, máx y promedio (mean) del ruido dependiendo del barrio
+   #+BEGIN_SRC R 
+   myf <- function() {
+      min  <- summarise(group_by(ruido_bsas, BARRIO), em = min(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+      mean <- summarise(group_by(ruido_bsas, BARRIO), em = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+      max  <- summarise(group_by(ruido_bsas, BARRIO), em = max(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+      return(list(min, mean, max)) # return(c(min, mean, max)) #
+   } 
+   #+END_SRC
+  
 2. Porqué obtengo un ~NA~ en los resultados de la práctica anterior?
+   #+BEGIN_SRC R 
+   # there are many empty measures
+   which(is.na(ruido_bsas$PROMEDIO_ENERGETICO_HORA))
+   # or, alternatively
+   m2013 %>% group_by(PROMEDIO_ENERGETICO_HORA) %>% summarise(n()) %>% print( n = Inf ) # 2011, 2012 también tienen
+   # and also, some TMIs in measures are missing in reference table (2012 and 2013)
+   missing2011 <- m2011$TMI %>% unique %in% tmi$TMI
+   tmi[which(!missing2011), ]
+   missing2012 <- m2012$TMI %>% unique %in% tmi$TMI
+   tmi[which(!missing2012), ]
+   missing2013 <- m2013$TMI %>% unique %in% tmi$TMI
+   tmi[which(!missing2013), ]
+   # which ones? 
+   anti_join(ruido_bsas, tmi, by = "TMI" ) %>% select(TMI) %>% unique()
+   
+#+END_SRC
+
    1. Usar lo aprendido sobre joins para no tener este ~NA~
+   #+BEGIN_SRC R 
+   ruido_bsas_inner <- inner_join(ruido_bsas, tmi)
+   ruido_barrios_inner <- ruido_bsas_inner %>% group_by(BARRIO) %>% summarise(ruido_avg = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %>% arrange(desc(ruido_avg))
+   #+END_SRC
 3. Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete ~stringr~ más ~tidyr::separate~
+   #+BEGIN_SRC R 
+   expanded_ruido_bsas <- ruido_bsas_inner %>% separate(FECHA, into = c("date", "h"), sep = " ") %>% separate(date, into = c("d", "m", "y"), sep = "/")
+   #+END_SRC
 4. Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
    con mucho más ruido durante el fin de semana que el resto?
+   #+BEGIN_SRC R 
+     # hora del dia de más ruido
+     summarise(group_by(expanded_ruido_bsas, h), mh = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %>% arrange(desc(mh))
+
+     # dia más ruidoso de la semana  
+     semi_ruido_bsas <- ruido_bsas_inner %>% separate(FECHA, into = c("date", "h"), sep = " ") 
+     daily_em <- summarise(group_by(semi_ruido_bsas, date), me = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE))
+     daily_em_unique <- summarise( group_by( daily_em, date ), me = mean( me ) ) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% arrange( y, m, d)
+
+     # 275 dias de 2011, 366 de 2012 y 212 de 2013, 853 dias en total
+     # los datos empiezan el 1 de abril de 2011, un Viernes
+     week <- c("Vie", "Sab", "Dom", "Lun", "Mar", "Mie", "Jue")
+     wday <- tbl_df(rep(week, 122)[1:853]) # alternativamente dos concatenates, c(rep(week, 121),  c("Vie", "Sab", "Dom", "Lun", "Mar", "Mie"))
+     names(wday) <- "wday"
+
+     daily_em_unique <- bind_cols(daily_em_unique, wday)
+     summarise( group_by(daily_em_unique, wday), me_wday = mean(me, na.rm = TRUE))
+
+     # cuidado con las mediciones 
+     ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '01') 
+     ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '02') 
+     ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '08') 
+   #+END_SRC
+* 'Types': tipos de datos 
+- 'logical':    TRUE o FALSE
+- 'integer':    naturales: ..., -1, 0, 1, ...
+- 'double':    irracionales: 3.1415926
+- 'character':    alfanuméricos: "pi"
+- 'complex':    1+i10
+- 'raw':     48 65 6c 6c 6f
+** logical
+#+BEGIN_SRC R 
+v <- TRUE 
+print(class(v))
+#+END_SRC
+** integer
+#+BEGIN_SRC R 
+v <- 2L
+print(class(v))
+#+END_SRC
+** double
+#+BEGIN_SRC R 
+v <- 23.5
+print(class(v))
+#+END_SRC
+** character
+#+BEGIN_SRC R 
+v <- "TRUE" # v <- "Maldad pura"
+print(class(v))
+#+END_SRC
+** complex
+#+BEGIN_SRC R 
+v <- 2+5i
+print(class(v))
+#+END_SRC
+** raw
+#+BEGIN_SRC R 
+v <- charToRaw("Hello")
+print(class(v))
+#+END_SRC
+* Vectores
+1. Vectores 'atómicos' (/atomic vectors/), de los cuales hay 6 tipos
+   - 'logical', 'integer', 'double', 'character', 'complex' y 'raw'. 
+   - Integer y double son tratados como 'numeric'
+
+2. 'Listas'
+   - Pueden a su vez contener listas (vectores recursivos)
+
+#+BEGIN_NOTES
+La principal diferencia entre los vectores atómicos y las listas es que son homogeneos, mientras que
+las listas no. Hay un objeto relacionado, 'NULL', que es la ausencia de un vector (NA es la ausencia
+de un valor de un vector). NULL se puede tratar como un vector de largo 0.
+#+END_NOTES
+
+#+BEGIN_EXPORT html
+<img style="WIDTH:350px; HEIGHT:300px; border:0"  src="./figs/data-structures-overview.png">
+#+END_EXPORT
+* Propiedades de vectores
+
+1. Su tipo (type), que se determina con /typeof()/
+
+#+BEGIN_SRC R 
+typeof(letters)
+#> [1] "character"
+typeof(1:10)
+#> [1] "integer"
+#+END_SRC
+
+2. Su largo (length), que se determina con /length()/
+#+BEGIN_SRC R 
+x <- list("a", "b", 1:10)
+length(x)
+#> [1] 3
+#+END_SRC
+
+3. Atributos: vectores "aumentados"
+   - Factores, construidos sobre vectores 'integer'
+   - Dates y date-times, sobre vectores 'numeric'
+   - Data frames (y tibbles) sobre listas
+
+
