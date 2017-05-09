@@ -4,10 +4,10 @@ title: Clase 6
 --- 
 
 
-# emma habla de caret
+# Emma habla de Caret
 
 
-# repaso de la clase anterior
+# Repaso de la clase anterior
 
 
 ## RStudio
@@ -66,7 +66,7 @@ Más información en <http://r4ds.had.co.nz/functions.html>.
     mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 
 
-# repaso de la práctica 5
+# Repaso de la práctica 5
 
 Trabajamos sobre datos de ruido de Buenos Aires Data. 
 
