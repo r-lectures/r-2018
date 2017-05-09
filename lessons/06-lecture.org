@@ -52,8 +52,8 @@ title: Clase 6
 
 # #+ATTR_REVEAL: :frag roll-in
 
-* emma habla de caret
-* repaso de la clase anterior
+* Emma habla de Caret
+* Repaso de la clase anterior
 ** RStudio
 - Working directory / Workspace
   #+Begin_src R 
@@ -109,7 +109,7 @@ x_200_T   <- alta_funcion(200, TRUE)
 mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 #+END_SRC
 
-* repaso de la práctica 5
+* Repaso de la práctica 5
 :PROPERTIES:
 :reveal_background: #123456
 :END:
