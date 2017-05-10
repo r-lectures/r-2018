@@ -237,10 +237,10 @@ Más sobre subsetting en los siguientes links:
 
 ## Práctica 7 bis
 
-Cargar ggplto2 y sobre el data frame 'diamonds' seleccionar diamantes que:
+Cargar ggplot2, y sobre el data frame 'diamonds' seleccionar diamantes que:
 
 1.  tienen x e y iguales
 2.  tienen depth entre 55 y 70
 3.  tienen carat menor que la media de carat
-4.  cuestan más que $10000 por carat. Son de calidad *good* o de calidad *better*?
+4.  cuestan más que $10000 por carat. De que calidad son?
 
