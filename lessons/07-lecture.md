@@ -237,7 +237,7 @@ Más sobre subsetting en los siguientes links:
 
 ## Práctica 7 bis
 
-Cargar ggplto2 y sobre el data frame 'diamonds' seleccionar diamantes que:
+Cargar ggplot2, y sobre el data frame 'diamonds' seleccionar diamantes que:
 
 1.  tienen x e y iguales
 2.  tienen depth entre 55 y 70
