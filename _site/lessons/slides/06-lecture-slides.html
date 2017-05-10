@@ -31,17 +31,17 @@
 </section>
 
 <section>
-<section id="slide-orgc21a18d">
-<h2 id="orgc21a18d">emma habla de caret</h2>
+<section id="slide-org055c994">
+<h2 id="org055c994">Emma habla de Caret</h2>
 </section>
 </section>
 <section>
-<section id="slide-org190dbfc">
-<h2 id="org190dbfc">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org190dbfc">
+<section id="slide-org0e2b61f">
+<h2 id="org0e2b61f">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org0e2b61f">
 </div></section>
-<section id="slide-orgee15675">
-<h3 id="orgee15675">RStudio</h3>
+<section id="slide-org8bdd13c">
+<h3 id="org8bdd13c">RStudio</h3>
 <ul>
 <li><p>
 Working directory / Workspace
@@ -71,8 +71,8 @@ setwd("path/to/dir") # para decirle donde quiero estar
 </aside>
 
 </section>
-<section id="slide-orgbdd02c0">
-<h3 id="orgbdd02c0">Funciones</h3>
+<section id="slide-org85cab78">
+<h3 id="org85cab78">Funciones</h3>
 <aside class="notes">
 <p>
 Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
@@ -119,8 +119,8 @@ mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 </section>
 </section>
 <section>
-<section id="slide-org3647568" data-background="#123456">
-<h2 id="org3647568">repaso de la práctica 5</h2>
+<section id="slide-org648e6dc" data-background="#123456">
+<h2 id="org648e6dc">Repaso de la práctica 5</h2>
 <p>
 Trabajamos sobre datos de ruido de Buenos Aires Data. 
 </p>
@@ -142,8 +142,8 @@ con mucho más ruido durante el fin de semana que el resto?</li>
 </section>
 </section>
 <section>
-<section id="slide-org15339a9">
-<h2 id="org15339a9">'Types': tipos de datos</h2>
+<section id="slide-org00a1008">
+<h2 id="org00a1008">'Types': tipos de datos</h2>
 <ul>
 <li>'logical':    TRUE o FALSE</li>
 <li>'integer':    naturales: &#x2026;, -1, 0, 1, &#x2026;</li>
@@ -154,8 +154,8 @@ con mucho más ruido durante el fin de semana que el resto?</li>
 
 </ul>
 </section>
-<section id="slide-org444d5b8">
-<h3 id="org444d5b8">logical</h3>
+<section id="slide-org4e20f51">
+<h3 id="org4e20f51">logical</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- TRUE 
@@ -170,8 +170,8 @@ c(TRUE, TRUE, FALSE, NA)
 </code></pre>
 </div>
 </section>
-<section id="slide-orge07eaf7">
-<h3 id="orge07eaf7">integer</h3>
+<section id="slide-org277a60f">
+<h3 id="org277a60f">integer</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- 2L
@@ -192,8 +192,8 @@ typeof(1L)
 Valor especial: NA
 </p>
 </section>
-<section id="slide-org0982244">
-<h3 id="org0982244">double</h3>
+<section id="slide-orgc588521">
+<h3 id="orgc588521">double</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- 23.5
@@ -223,8 +223,8 @@ Valores especiales: NA, NaN, Inf y -Inf
 Usar: is.finite(), is.infinite(), is.na(), is.nan()
 </p>
 </section>
-<section id="slide-orgb4c1516">
-<h3 id="orgb4c1516">character</h3>
+<section id="slide-org8bd8604">
+<h3 id="org8bd8604">character</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- "TRUE" # v <- "Maldad pura"
@@ -235,8 +235,8 @@ x <- "Las cadenas de caracteres pueden tener una longitud arbitrariamente larga 
 </code></pre>
 </div>
 </section>
-<section id="slide-org055eec9">
-<h3 id="org055eec9">complex y raw</h3>
+<section id="slide-orgcf1f8fb">
+<h3 id="orgcf1f8fb">complex y raw</h3>
 <p>
 Para numeros complejos, complex
 </p>
@@ -262,8 +262,8 @@ is.raw()
 </section>
 </section>
 <section>
-<section id="slide-org057b947">
-<h2 id="org057b947">Objetos R: vectores</h2>
+<section id="slide-org2524205">
+<h2 id="org2524205">Objetos R: vectores</h2>
 <p>
 Existen dos clases de vectores:
 </p>
@@ -312,13 +312,13 @@ vector atómico o una lista, usar is.atomic(x) e is.list(x).
 
 </aside>
 </section>
-<section id="slide-org8866a94">
-<h3 id="org8866a94">Vectores R</h3>
+<section id="slide-org327a642">
+<h3 id="org327a642">Vectores R</h3>
 <img style="WIDTH:700px; HEIGHT:600px; border:0"  src="./figs/data-structures-overview.png">
 
 </section>
-<section id="slide-orgd0fc4fd">
-<h4 id="orgd0fc4fd">Propiedades de vectores</h4>
+<section id="slide-orga3e756d">
+<h4 id="orga3e756d">Propiedades de vectores</h4>
 <p>
 <span class="underline">Tipo</span>, que se determina con <i>typeof()</i>
 </p>
@@ -360,8 +360,8 @@ mientras que <i>nrow()</i> y <i>ncol()</i> lo hacen para el caso especial de mat
 </p>
 
 </section>
-<section id="slide-org5a82d01">
-<h3 id="org5a82d01">Listas</h3>
+<section id="slide-org285d29e">
+<h3 id="org285d29e">Listas</h3>
 <p>
 Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
 listas o funciones ¯\_(ツ)_/¯
@@ -397,8 +397,8 @@ unlist(mtcars) # podemos 'aplanar' una lista!
 </div>
 
 </section>
-<section id="slide-org6adc34e">
-<h3 id="org6adc34e">Mañana: Vectores "aumentados" y <i>subsetting</i></h3>
+<section id="slide-org5b41c52">
+<h3 id="org5b41c52">Mañana: Vectores "aumentados" y <i>subsetting</i></h3>
 <ul>
 <li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
 <li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
@@ -409,8 +409,8 @@ unlist(mtcars) # podemos 'aplanar' una lista!
 </section>
 </section>
 <section>
-<section id="slide-org75ec9c1">
-<h2 id="org75ec9c1">Práctica 6</h2>
+<section id="slide-org9738a6f">
+<h2 id="org9738a6f">Práctica 6</h2>
 <ul>
 <li>Cuáles son las 3 propiedades de un vector, aparte de su contenido?</li>
 <li>Cuáles son los 4 tipos más comunes de vectores atómicos? Cuál los dos menos comunes?</li>
