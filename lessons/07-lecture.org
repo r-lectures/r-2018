@@ -253,3 +253,14 @@ http://r4ds.had.co.nz/vectors.html#vector-subsetting
 3. Cuando hay que usar drop = FALSE?
 
 4. Si x es una matriz, qué hace x[] <- 0? Cuál es la diferencia de hacer x <- 0?
+
+* Práctica 7 bis
+
+Cargar ggplto2 y sobre el data frame 'diamonds' Seleccionar diamantes que tienen:
+
+1. tienen x e y iguales
+2. tienen depth entre 55 y 70
+3. tienen carat menor que la media de carat
+4. cuestan m;as que $10000 por carat. Son de calidad /good/ o de calidad /better/? 
+
+
