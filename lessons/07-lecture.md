@@ -234,3 +234,13 @@ Más sobre subsetting en los siguientes links:
 
 4.  Si x es una matriz, qué hace x[] <- 0? Cuál es la diferencia de hacer x <- 0?
 
+
+## Práctica 7 bis
+
+Cargar ggplto2 y sobre el data frame 'diamonds' seleccionar diamantes que:
+
+1.  tienen x e y iguales
+2.  tienen depth entre 55 y 70
+3.  tienen carat menor que la media de carat
+4.  cuestan más que $10000 por carat. Son de calidad *good* o de calidad *better*?
+
