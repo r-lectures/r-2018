@@ -52,7 +52,7 @@ lectures:
   subitems:
     - title: "Slides clase 7"
       url: slides/07-lecture-slides.html
-    # - title: "R - Analisis de datos con Caret - Emmanuel"
-    #   url: ../assets/R - Analisis de datos con Caret.pdf
+    - title: "Anova en R - Brenda"
+      url: ../assets/Anova-en-R-2.pdf
 
       
