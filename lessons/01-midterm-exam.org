@@ -72,7 +72,7 @@ title: Parcial 1
 
 ** Problema 1
 1. DATOS 
-   1. Cargar los datos "economics" en la sesión (o verificar si ya se encuentran disponibles).
+   1. Cargar los datos "economics" del paquete ggplot2 en la sesión (o verificar si ya se encuentran disponibles).
       Consejo: Lean la ayuda (?economics), como para tener una idea sobre que son los datos.
    2. Renombrar el dataframe a "e" ---sin comillas--- (o sea, asignar el objeto economics al objeto e).
 2. PRIMER ANÁLISIS
