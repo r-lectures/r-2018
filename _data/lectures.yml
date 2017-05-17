@@ -55,4 +55,14 @@ lectures:
     - title: "Anova en R - Brenda"
       url: ../assets/Anova-en-R-2.pdf
 
-      
+- title: "Primer parcial"
+  url: 01-midterm-exam.html
+
+
+- title: "Clase 8 - if + for"
+  url: 08-lecture.html
+
+  subitems:
+    - title: "Slides clase 8"
+      url: slides/08-lecture-slides.html
+
