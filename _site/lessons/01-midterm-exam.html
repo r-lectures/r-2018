@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Clase 2</title>
+    <title>Parcial 1</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/lessons/02-lecture.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/01-midterm-exam.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -144,233 +144,128 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="r-2017slackcom">r-2017.slack.com/</h1>
+                <h1 id="1er-parcial">1er parcial</h1>
 
-<p><img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png" /></p>
-
-<h2 id="slack">Slack</h2>
+<h2 id="instrucciones">Instrucciones</h2>
 
 <ul>
-  <li>canales (<em>channels</em>) (#general, #random, creen los que hagan falta)</li>
-  <li>hilos (<em>threads</em>), en los casos en que quieran comentar sin entorpecer la discusión principal</li>
-  <li>mensajes directos - son privados</li>
-  <li>
-    <p>se puede compartir archivos y código (usar el signo “+” abajo a la izq.)</p>
-  </li>
-  <li>=&gt; pregúntenle a slackbot: how do I use Slack?</li>
+  <li>El parcial dura como máximo dos horas.</li>
+  <li>Tienen todo el material de clase y online disponible para consulta.</li>
+  <li>NO tienen a sus compañeros disponibles.</li>
+  <li>Tienen que resolver los ejercicios escribiendo las respuestas (tanto texto como código) en un
+archivo con extensión .R (evitar usar Word, si esto es un problema, avisenme por favor).</li>
+  <li>Cada pregunta y subpregunta están numeradas. <strong>Importantísimo</strong>: enumerar <span class="underline">de la misma manera</span> las
+respuestas (aún que estén vacías) y que coincidan correctamente.</li>
+  <li>Algunas preguntas tienen la palabra <code class="highlighter-rouge">PhD</code> adelante, que significan que son para los que cursan la
+materia como posgrado. Para el resto son opcionales, pero suman puntos.</li>
+  <li>Al final del parcial me mandan por favor el archivo .R por mail o por <span class="underline">canal privado</span> de Slack.</li>
+  <li>Si no saben o no les sale algo, intenten explicar todo lo que sí saben al respecto,
+aunque sea parcial. Si una línea de código les da algún error, expliquen la lógica de lo que
+quisieron hacer, ya que si es correcta, eso suma. Si identifican la causa del error, aunque no lo
+sepan corregir, nuevamente eso suma. En general, mejor poner de más que de menos.</li>
+  <li>No se estresen.</li>
 </ul>
 
-<h1 id="githubcomr-2017">github.com/r-2017/</h1>
-
-<p><img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png" /></p>
-
-<h2 id="github">github</h2>
-
-<ul>
-  <li>repositório de código</li>
-  <li>sistema de versiones
-    <ul>
-      <li>“fotos” de nuestro código en distintos tiempos</li>
-      <li>versiones distintas pueden convivir en paralelo</li>
-    </ul>
-  </li>
-  <li>muy fácil de compartir</li>
-</ul>
-
-<h1 id="repaso-de-la-clase-pasada">Repaso de la clase pasada</h1>
-
-<h2 id="conceptos-principales">Conceptos principales</h2>
-
-<ul>
-  <li>
-    <p><strong>Paquetes</strong> contienen <strong>funciones</strong></p>
-
-    <p>library(ggplot2) # cargo el paquete ggplot2 en mi sesión
-install.packages(“ggplot2”) # instalo el paquete de internet si no lo tengo</p>
-  </li>
-  <li>
-    <p><strong>Funciones</strong> actuan sobre <strong>datos y variables</strong></p>
-
-    <p>str(mis_datos) # str() me dice la estructura de mis_datos
-summary(mis_datos) # summary() me los resume
-head(mis_datos) # head() me muestra algunas primeras líneas
-plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica</p>
-  </li>
-</ul>
-
-<h2 id="hicieron-la-práctica">Hicieron la práctica??</h2>
+<h2 id="problema-1">Problema 1</h2>
 
 <ol>
-  <li>Elegir un conjunto de datos <em>built-in</em> con datos continuos y categóricos</li>
-  <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
-  <li>Graficar las relaciones más importantes</li>
-  <li>
-    <p>Encontrar la manera de hacer <em>scatterplots</em> e histogramas</p>
+  <li>DATOS
+    <ol>
+      <li>Cargar los datos “economics” en la sesión (o verificar si ya se encuentran disponibles).
+Consejo: Lean la ayuda (?economics), como para tener una idea sobre que son los datos.</li>
+      <li>Renombrar el dataframe a “e” —sin comillas— (o sea, asignar el objeto economics al objeto e).</li>
+    </ol>
   </li>
-  <li>Agregar información (título, ejes, descripción de los datos)</li>
+  <li>PRIMER ANÁLISIS
+    <ol>
+      <li>Qué clase de estructura de datos es?
+        <ol>
+          <li>Es un vector atómico?</li>
+          <li>Contiene vectores atómicos? Cuáles?</li>
+          <li>Cuántos atributos tiene y como se llaman?</li>
+        </ol>
+      </li>
+      <li>Cuántas filas y columnas tiene?</li>
+      <li>Cómo son los tipos de datos de cada columna?</li>
+    </ol>
+  </li>
+  <li>GRAFICAR (preferiblemente con ggplot2)
+    <ol>
+      <li>Hacer un scatterplot de la variable de desempleo (<code class="highlighter-rouge">unemploy</code>) en función del tiempo (<code class="highlighter-rouge">date</code>).</li>
+      <li>Colorear los puntos que tengan la variable <code class="highlighter-rouge">psavert</code> menor que el promedio de <code class="highlighter-rouge">psavert</code> a lo largo de
+los años (es decir, el promedio de todos los elementos de la columna).</li>
+      <li>Ponerle texto explicativo a los ejes x e y.</li>
+      <li><code class="highlighter-rouge">PhD</code>: mejorar la “legenda” con un título y descripción de los dos colores.</li>
+    </ol>
+  </li>
+  <li>PREGUNTAS
+    <ol>
+      <li>De cuándo a cuándo van los datos temporales? (o sea, fecha mínima y fecha máxima).</li>
+      <li>Aproximadamente cuantos “picos” se ven en el desempleo? (consejo: verlo gráficamente).</li>
+      <li>Se encuentran “picos” de ese estilo en las otras variables (<code class="highlighter-rouge">pce</code>, <code class="highlighter-rouge">pop</code>, <code class="highlighter-rouge">psavert</code>, <code class="highlighter-rouge">uempmed</code>)? En
+alguna variable coinciden (más o menos) los “picos”? Decir cuál (consejo: verlo gráficamente).</li>
+      <li>Separar la columna ‘date’ en tres columnas “d”, “m” y “y”.</li>
+      <li>Hacer una tabla con el desempleo medio por año (o sea, una columna “año” y otra de “desempleo
+medio” de ese año).</li>
+      <li>En qué años se registran el mayor y menor valor de desempleo?</li>
+      <li>Usar los datos de ‘presidential’ —ver data()— para ver a que administración corresponden esos
+dos extremos de desempleo encontrados.</li>
+      <li><code class="highlighter-rouge">PhD</code>: Hacer una columna extra con desempleo per cápita (consejo, vean en la ayuda de
+economics donde está la variable de población). Cambian los años de mayor y menos desempleo
+para esta nueva variable?</li>
+    </ol>
+  </li>
 </ol>
 
-<h2 id="visualización">Visualización</h2>
+<h2 id="problema-2">Problema 2</h2>
 
-<p><code class="highlighter-rouge">base::plot()</code></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># Define the cars vector with 5 values
-cars &lt;- c(1, 3, 6, 4, 9)
-
-# Graph the cars vector with all defaults
-plot(cars)
-
-# Graph cars using blue points overlayed by a line 
-plot(cars, type="o", col="blue")
-
-# Create a title with a red, bold/italic font
-title(main="Autos", col.main="red", font.main=4)
-</code></pre>
-</div>
-
-<h2 id="visualización-1">Visualización</h2>
-
-<p><code class="highlighter-rouge">base::plot()</code></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># Get a random log-normal distribution (=&gt; ?rlnorm)
-r &lt;- rlnorm(1000)
-
-# Get the distribution without plotting it using tighter breaks =&gt; ?seq ?hist
-h &lt;- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
-
-# Plot the distribution using log scale on both axes, and use
-# blue points
-plot(h$counts, log="xy", pch=20, col="blue",
-	main="Log-normal distribution",
-	xlab="Value", ylab="Frequency")
-</code></pre>
-</div>
-
-<h2 id="visualización-2">Visualización</h2>
-
-<p><code class="highlighter-rouge">ggplot2::qplot()</code></p>
-
-<ul>
-  <li>similar a plot()</li>
-  <li>para hacer figuras básicas está ok</li>
-  <li>
-    <p>para gráficas más elaboradas vamos a usar ggplot2()</p>
-
-    <h2 id="scaterplot-de-displ-vs-hwy-del-dataframe-mpg">scaterplot de displ vs. hwy del data.frame mpg</h2>
-    <p>qplot(displ, hwy, data = mpg)</p>
-
-    <h2 id="idem-pero-usando-una-escala-de-colores-para-class">idem pero usando una escala de colores para “class”</h2>
-    <p>qplot(displ, hwy, colour = class, data = mpg)</p>
+<ol>
+  <li>DATOS
+En data() tenemos dos datasets (separados) sobre la temperatura corporal de dos castores: beaver1
+y beaver2. La temperatura está en Celsius.
+    <ol>
+      <li>Hacer una función llamada <code class="highlighter-rouge">c2f()</code> que reciba un valor (double) representando una temperatura en
+Celsius y que devuelva un valor (double) representando una temperatura en
+Fahrenheit (consejo: usar wikipedia o google para recordar como se hace la conversión de una
+unidad a otra).</li>
+    </ol>
   </li>
-</ul>
-
-<h1 id="ggplot2"><code class="highlighter-rouge">ggplot2</code></h1>
-
-<p>##</p>
-
-<p><code class="highlighter-rouge">ggplot2</code></p>
-
-<ul>
-  <li>
-    <p><em>grammar of graphics</em> <a href="http://vita.had.co.nz/papers/layered-grammar.pdf">(Wilkinson, 2005)</a></p>
-
-    <ul>
-      <li>se trata de construir capas de código, cada una agregando un concepto a la figura final</li>
-      <li>cada capa controla un aspecto independiente de la figura</li>
-      <li>
-        <p>la figura <em>es</em> el código (se puede guardar, extender, reproducir, etc.)</p>
-
-        <p>p &lt;- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
-p &lt;- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
-p &lt;- p + geom_point() # le agrego como quiero que represente ese mapeo
-p                     # imprimo la figura</p>
-      </li>
-    </ul>
+  <li>PRIMER ANÁLISIS
+    <ol>
+      <li>Qué estructura son beaver1 y beaver2?</li>
+      <li>Tienen las mismas columnas (en número, en tipo y en significado de datos)?</li>
+      <li>Tienen las mismas filas u observaciones?</li>
+    </ol>
   </li>
-</ul>
-
-<h2 id="en-general">En general:</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ggplot(data = {DATA}) + 
-      {GEOM_FUNCTION}(mapping = aes( {MAPPINGS} ))
-</code></pre>
-</div>
-
-<p>Cuidado! <code class="highlighter-rouge">ggplot2</code> trabaja <span class="underline">solo</span> con <code class="highlighter-rouge">data.frames</code>, al igual que el resto del tidyverse (dplyr, tidyr, etc.)</p>
-
-<p>Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)</p>
-
-<h2 id="y-qué-vendría-siendo-un-dataframe">Y qué vendría siendo un data.frame?</h2>
-
-<ul>
-  <li>un data.frame es el objeto más común para analizar datos en R</li>
-  <li>
-    <p>es una lista de vectores de igual dimensión</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>df &lt;- data.frame() # creo un data.frame llamado df
-is.data.frame(df)  # es un data.frame?
-[1] TRUE
-is.list(df)        # es una lista?
-[1] TRUE
-</code></pre>
-    </div>
+  <li>PREGUNTAS
+    <ol>
+      <li>Usar la función del primer punto <code class="highlighter-rouge">c2f()</code> para generar una columna extra en cada dataset que
+tenga la temperatura en Fahrenheit. Conviene que la columna tenga nombre para poder
+manipularla después. Pueden generar la nueva columna con las funciones de <code class="highlighter-rouge">dplyr</code> o con
+<em>subsetting</em> de base. En las preguntas subsiguientes siempre me refiero a esta temperatura.</li>
+      <li>Cuál es la temperatura promedio del castor 1 y cuál la del castor 2?</li>
+      <li>Cuál es la temperatura promedio de cada castor estando en actividad y cuál estando en reposo?
+O sea, para cada castor, queremos dos columnas: <code class="highlighter-rouge">activ</code> y temperatura media, con
+dos filas solamente.</li>
+      <li>Porqué esta distinción es útil en el caso de un castor y no en el del otro?</li>
+      <li><code class="highlighter-rouge">PhD</code>: para el castor 2, calcular cuál es la diferencia entre los promedios de la temperatura
+entre los dos estados de actividad</li>
+    </ol>
   </li>
-  <li>tiene entonces propiedades de matrices y de listas</li>
-  <li>busquen un data.frame con data() y prueben las funciones <code class="highlighter-rouge">length()</code> y <code class="highlighter-rouge">nrow()</code></li>
-</ul>
-
-<h2 id="aesthetics-y-geoms">Aesthetics y Geoms</h2>
-
-<ul>
-  <li>aesthetics, aes(), controla mapeos entre variables y elementos visuales</li>
-  <li>
-    <p>ejempo: variable A &lt;-&gt; coordenada x, o variable C &lt;-&gt; forma del punto</p>
-
-    <p>data(economics)
-?economics
-str(economics)
-ggplot(economics, aes(x = pce)) + geom_histogram()
-ggplot(economics, aes(x = date, y = unemploy)) + geom_line()
-ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # colour, size, shape, etc.</p>
+  <li>GRAFICAR (preferiblemente con <code class="highlighter-rouge">ggplot2</code>)
+    <ol>
+      <li>Para cada dataset (beaver1 y beaver2), graficar dos histogramas de temperatura <span class="underline">pero en la
+misma figura</span> (en el mismo “lienzo”, es decir, sin usar <em>facetting</em>). Cada histograma
+representará cada una de las dos temperaturas.</li>
+      <li>Poner un título y nombre a los ejes.</li>
+      <li>Colorear ambos histogramas, por ejemplo en azul y rojo, con la opción <code class="highlighter-rouge">fill</code>.</li>
+      <li><code class="highlighter-rouge">PhD</code>: Usen la opción transparencia <code class="highlighter-rouge">alpha</code> (consejo, vean machete de <code class="highlighter-rouge">ggplot2</code> y/o
+<code class="highlighter-rouge">?ggplot2::alpha</code>, y prueben distintos valores de <code class="highlighter-rouge">alpha</code> para ver el efecto que tiene). Porque
+la opción <code class="highlighter-rouge">alpha</code> es útil en este caso? Qué cosa me permite ver, que sin <code class="highlighter-rouge">alpha</code> no podría ver
+bien?</li>
+    </ol>
   </li>
-</ul>
-
-<h2 id="facets-y-scales"><em>Facets</em> y <em>scales</em></h2>
-
-<ul>
-  <li><em>Facets</em> se usan para dividir la figura en varias, filtrando con alguna variable categórica</li>
-  <li>
-    <p><em>scales</em> permiten modificar el tipo de ejes de la figura</p>
-
-    <p>ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) + 
-geom_line() + 
-facet_wrap(~ state) + 
-scale_x_log10()</p>
-  </li>
-</ul>
-
-<h2 id="glosario-ggplot2">Glosario <code class="highlighter-rouge">ggplot2</code></h2>
-
-<ul>
-  <li><strong><code class="highlighter-rouge">data</code></strong>: el <em>dataframe</em> que contiene los datos a graficar</li>
-  <li><strong><code class="highlighter-rouge">geoms</code></strong>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
-  <li><strong><code class="highlighter-rouge">aesthetics</code></strong>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc</li>
-  <li><strong><code class="highlighter-rouge">scale</code></strong>: para cada <em>aesthetic</em>, describe como se mapea la característica visual a valores
-por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</li>
-  <li><strong><code class="highlighter-rouge">stats</code></strong>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión</li>
-</ul>
-
-<h1 id="práctica">Práctica</h1>
-
-<ul>
-  <li>Seleccionen de <code class="highlighter-rouge">data()</code> un data.frame con alguna variable categórica</li>
-  <li>Qué pasa si hacen solo <code class="highlighter-rouge">ggplot(mi_data)</code>?</li>
-  <li>Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
-  <li>Para que sirve <code class="highlighter-rouge">jitter</code>? Para que sirve <code class="highlighter-rouge">stroke</code>?</li>
-  <li>Podemos usar formas condicionales (&gt;, &lt;, etc) en aes()?</li>
-  <li>Cómo difieren <code class="highlighter-rouge">facet_grid</code> y <code class="highlighter-rouge">facet_wrap</code>?</li>
-  <li>Usar <code class="highlighter-rouge">box-plot</code> y <code class="highlighter-rouge">geom_smooth()</code>. Cuándo conviene usarlas?</li>
-</ul>
+</ol>
 
 
             </div>
