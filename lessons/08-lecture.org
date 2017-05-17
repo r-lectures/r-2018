@@ -1,0 +1,201 @@
+#    -*- mode: org -*-
+#+TITLE: R 2017
+#+DATE: 17/05/2017
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+
+#+OPTIONS: author:nil date:t email:nil
+#+OPTIONS: ^:nil _:nil
+#+STARTUP: showall expand
+#+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: fast
+#+REVEAL_THEME: my_moon
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+REVEAL_HLEVEL: 1
+
+# # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
+# # (setq org-reveal-title-slide 'auto)
+# # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+
+
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
+--- 
+layout: default 
+title: Clase 8
+--- 
+#+end_src 
+#+results:
+
+# #+begin_html
+# <img src="right-fail.png">
+# #+end_html
+
+# #+ATTR_REVEAL: :frag roll-in
+
+* Repaso de la clase anterior
+** Vectores "aumentados" 
+   - _Data frames_ (y tibbles) sobre 'lists'
+   - _Factores_, construidos sobre vectores 'integer'
+   - _Dates_ y _date-times_, sobre vectores 'numeric'
+** /Subsetting/
+'[' es el operador para hacer /subsetting/, se usa poniendo algo el tipo x[a]. Hay distintas
+maneras de usarlo.
+1. Usando vectores de enteros positivos o negativos
+2. Usando vectores de lógicos
+3. Usando vectores de caracteres para devolver elementos con los respectivos nombres 
+4. No usando nada
+
+Otros operadores de subsetting: '[[' y '$'
+* Operadores lógicos
+Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico
+
+- >, >= 
+- <, <=
+- !=, == 
+
++ los operadores & (AND) y | (OR) para elaborar enunciados más complejos
+
+#+BEGIN_SRC R 
+10 == 10
+# [1] TRUE
+
+x <- 10
+x == 10
+# [1] TRUE
+
+y <- NA
+is.na(y)
+# [1] TRUE
+
+is.na(y) & x==10
+[1] TRUE
+#+END_SRC
+* Ejecución condicional
+
+#+BEGIN_SRC R 
+if (condición) {
+  # código que se ejecuta cuando la condición evalua a TRUE
+} else {
+  # código que se ejecuta cuando la condición evalua a FALSE
+}
+#+END_SRC
+
+#+BEGIN_SRC R 
+if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+#+END_SRC
+
+** Ejemplo
+
+#+BEGIN_SRC R 
+pretty_length <- function(x) {
+l <- length(x)
+if(is.null(x)) 
+   print("el vector tiene cero elementos")
+   else 
+   print(paste("el vector tiene longitud", l, sep = " "))
+}
+
+y <- NULL
+pretty_length(y)
+# [1] "el vector tiene cero elementos"
+
+x <- rep("relleno", 5)
+pretty_length(x)
+# [1] "el vector tiene longitud 5"
+#+END_SRC
+
+** funciones lógicas accesorias
+- any()
+- all()
+- is.na(), is.null() y el resto de la familia is.algo()
+- %in% 
+- identical()
+- muchas otras
+
+#+BEGIN_SRC R 
+"relleno" %in% x 
+# [1] TRUE
+
+identical(0L, 0)
+# [1] FALSE
+#+END_SRC
+* loops
+Loops son bucles y se usan para repetir código.
+
+#+BEGIN_SRC R 
+for (secuencia){
+# código que se repite
+}
+#+END_SRC
+** Ejemplo
+
+#+BEGIN_SRC R 
+df <- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+
+output <- vector("double", ncol(df))  
+for (i in seq_along(df)) {            # seq_along(df) es parecida a 1:length(df)
+  output[[i]] <- median(df[[i]])      
+}
+output
+# [1] -0.2458 -0.2873 -0.0567  0.1443
+#+END_SRC
+** Componentes de un for
+1. Output: siempre es buena idea crear el objeto antes de calcularlo
+2. Secuencia: variable sobre la que funciona el bucle
+#+BEGIN_SRC R 
+  for (x in xs)
+  for(i in seq_along(df))
+  for (nm in names(xs))
+#+END_SRC
+3. Cuerpo: código que se ejecuta las veces que la secuencia indique
+
+** Con secuencia condicional
+#+BEGIN_SRC R 
+while (condition) {
+  # body
+}
+#+END_SRC
+** Vectorización!
+
+Para otra clase
+
+* Práctica 8
+1. Cuál es la diferencia entre ~if~ y ~ifelse~? Ver manual, mostrar ejemplos.
+2. Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
+   hora del día usando lubridate::now().
+4. Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).
+5. Qué pasa si usamos (nm in names(x)) y x no tiene nombres? Qué pasa si solo algunos tienen nombre
+   o hay nombres repetidos? Hacer tests.
+6. Crear un vector tal que sus elementos indiquen, para cada columna de un dataframe cualquiera, si
+   son una columna de factor o no.
