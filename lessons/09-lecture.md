@@ -247,7 +247,9 @@ para aplicar funciones a vectores con factores
     2 M      59  88000  1
     ...
     > tapply(d$income,list(d$gender,d$over25),mean)
-    01 F 39050 123000.00 M NA 73166.67
+    0       1 
+    F 39050 123000.00 
+    M NA    73166.67
 
 
 # Práctica 9
