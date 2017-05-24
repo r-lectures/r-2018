@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-org4eb59df">
-<h2 id="org4eb59df">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org4eb59df">
+<section id="slide-org0e3b23d">
+<h2 id="org0e3b23d">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org0e3b23d">
 </div></section>
-<section id="slide-orgb7b5fc3">
-<h3 id="orgb7b5fc3">"subsetting" con la función subset()</h3>
+<section id="slide-org20c0271">
+<h3 id="org20c0271">"subsetting" con la función subset()</h3>
 <p>
 Return subsets of vectors, matrices or data frames which meet conditions.
 </p>
@@ -50,10 +50,10 @@ subset(airquality, select = Ozone:Wind)
 </div>
 
 </section>
-<section id="slide-orga44bb2e">
-<h3 id="orga44bb2e">Operadores lógicos</h3>
+<section id="slide-org34f8f18">
+<h3 id="org34f8f18">Operadores lógicos</h3>
 <p>
-Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico
+Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico. 
 </p>
 
 <ul>
@@ -61,13 +61,17 @@ Son operadores que permiten comparar dos enunciados y evaluan a resultado lógic
 <li>&lt;, &lt;=</li>
 <li>!=, ==</li>
 
-<li>los operadores &amp; (AND) y | (OR) para elaborar enunciados más complejos</li>
+<li>los operadores &amp; (AND) y | (OR) para elaborar enunciados más complejos.</li>
 
 </ul>
 
+<p>
+Combinando operadores construimos expresiones condicionales, que R evalua a TRUE o FALSE (o NA).
+</p>
+
 </section>
-<section id="slide-orgda967b3">
-<h3 id="orgda967b3">Ejecución condicional</h3>
+<section id="slide-org75eba75">
+<h3 id="org75eba75">Ejecución condicional</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >if (condición) {
@@ -95,8 +99,8 @@ Nota: Si el if() tiene una sola línea, podemos obviar las {} ;-)
 </div>
 
 </section>
-<section id="slide-orgfd38858">
-<h3 id="orgfd38858">funciones lógicas accesorias</h3>
+<section id="slide-orgec60682">
+<h3 id="orgec60682">funciones lógicas accesorias</h3>
 <ul>
 <li>any()</li>
 <li>all()</li>
@@ -108,8 +112,8 @@ Nota: Si el if() tiene una sola línea, podemos obviar las {} ;-)
 </ul>
 
 </section>
-<section id="slide-org997f896">
-<h3 id="org997f896">Componentes de un for</h3>
+<section id="slide-org670eea0">
+<h3 id="org670eea0">Componentes de un for</h3>
 <p>
 Loops son bucles y se usan para repetir código
 </p>
@@ -139,10 +143,10 @@ Nota: Si el for() o el while() tienen una sola línea, podemos obviar las {} ;-)
 </section>
 </section>
 <section>
-<section id="slide-org8909d91">
-<h2 id="org8909d91">Vectorización</h2>
+<section id="slide-org93a0867">
+<h2 id="org93a0867">Vectorización</h2>
 <p>
-Es aplicar una operación a un vector elemento por elemento
+Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 </p>
 
 <ol>
@@ -162,12 +166,13 @@ rápidos.</li>
 </code></pre>
 </div>
 
-<p>
-Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a>
-</p>
+<ul>
+<li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+
+</ul>
 </section>
-<section id="slide-orgb5d713b">
-<h3 id="orgb5d713b">operadores y funciones vectorizados</h3>
+<section id="slide-org56081ae">
+<h3 id="org56081ae">operadores y funciones vectorizados</h3>
 <ol>
 <li>==, &amp;, y |</li>
 <li>corchetito: Por ej, x[is.na(x)] &lt;- 0 donde x es vector, matriz o df</li>
@@ -187,8 +192,8 @@ Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Ad
 </code></pre>
 </div>
 </section>
-<section id="slide-org679bd74">
-<h3 id="org679bd74">Eficiencia</h3>
+<section id="slide-org0b47d47">
+<h3 id="org0b47d47">Eficiencia</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >> x <- runif(1000000)
@@ -207,18 +212,27 @@ Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Ad
 </section>
 </section>
 <section>
-<section id="slide-orgdaba378">
-<h2 id="orgdaba378">Funcionales - Familia *apply()</h2>
+<section id="slide-orga8cd448">
+<h2 id="orga8cd448">Funcionales - Familia *apply()</h2>
 <p>
-Son: lapply(), sapply(), apply() y tapply()
+lapply(), sapply(), apply() y tapply() (hay más&#x2026;)
 </p>
 
 <p>
-Funciones para extender 
+Combinan aldo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
+</p>
+
+<p>
+Hemos hecho cosas similares con summarise() + group_by() y mutate().
+</p>
+
+<p>
+Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
 </p>
 </section>
-<section id="slide-org252ba18">
-<h3 id="org252ba18">lapply()</h3>
+<section id="slide-orgffb9e48">
+<h3 id="orgffb9e48">lapply()</h3>
 <p>
 LLama a una función especificada en cada componente de una lista y devuelve otra lista
 </p>
@@ -236,8 +250,8 @@ LLama a una función especificada en cada componente de una lista y devuelve otr
 </div>
 
 </section>
-<section id="slide-org5bd2d98">
-<h3 id="org5bd2d98">sapply()</h3>
+<section id="slide-org817b643">
+<h3 id="org817b643">sapply()</h3>
 <p>
 En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o a una
 matriz. Esto es justo lo que hace sapply().
@@ -251,8 +265,8 @@ matriz. Esto es justo lo que hace sapply().
 </code></pre>
 </div>
 </section>
-<section id="slide-org012c78a">
-<h3 id="org012c78a">lapply() y sapply() en Data Frames</h3>
+<section id="slide-orga87cdc5">
+<h3 id="orga87cdc5">lapply() y sapply() en Data Frames</h3>
 <p>
 Tanto lapply como sapply están pensados para listas, por lo tanto funcionan bien en data.frames
 </p>
@@ -284,8 +298,8 @@ $unemploy
 </code></pre>
 </div>
 </section>
-<section id="slide-org003440a">
-<h3 id="org003440a">apply()</h3>
+<section id="slide-orgf678335">
+<h3 id="orgf678335">apply()</h3>
 <p>
 apply es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a
 columnas.
@@ -315,8 +329,8 @@ apply(m,dimcode,f,fargs)
 </code></pre>
 </div>
 </section>
-<section id="slide-org0ba0fe9">
-<h3 id="org0ba0fe9">apply() - un ejemplo con función propia</h3>
+<section id="slide-orgd546b2d">
+<h3 id="orgd546b2d">apply() - un ejemplo con función propia</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >> z
@@ -333,8 +347,8 @@ apply(m,dimcode,f,fargs)
 </code></pre>
 </div>
 </section>
-<section id="slide-org9d236af">
-<h3 id="org9d236af">tapply()</h3>
+<section id="slide-orga2d8b6b">
+<h3 id="orga2d8b6b">tapply()</h3>
 <p>
 para aplicar funciones a vectores con factores
 </p>
@@ -371,16 +385,17 @@ D   R   U
 </section>
 </section>
 <section>
-<section id="slide-org7b6d4b4">
-<h2 id="org7b6d4b4">Práctica 9</h2>
+<section id="slide-org4e3dfa0">
+<h2 id="org4e3dfa0">Práctica 9</h2>
 <ol>
 <li>Como se comparan los resultados de mean() y mean.default() con 10000 observaciones, en vez de con
 100? Usar system.time().</li>
 <li>Comparar la velocidad de apply(x, 1, sum) con rowSums(x) para x de distintos tamaños. Usar system.time().</li>
 <li><p>
 El código a continuación simula el desempeño de un t-test para datos no normales. Usen sapply() y
-una función (puede ser anónima) para extraer el p-value de cada 'tirada'. Nota: rpois() nos
-devuelve una 'tirada' de variable aleatoria de una distribución de Poisson.
+una función (puede ser anónima, es decir no necesitan nombrarla) para extraer el p-value de cada
+'tirada'. Nota: rpois() nos devuelve una 'tirada' de variable aleatoria (como si fuera tirar una
+moneda) de una distribución de Poisson.
 </p>
 <div class="org-src-container">
 

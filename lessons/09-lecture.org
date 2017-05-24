@@ -64,13 +64,15 @@ Return subsets of vectors, matrices or data frames which meet conditions.
 #+END_SRC
 
 ** Operadores lógicos
-Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico
+Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico. 
 
 - >, >= 
 - <, <=
 - !=, == 
 
-+ los operadores & (AND) y | (OR) para elaborar enunciados más complejos
++ los operadores & (AND) y | (OR) para elaborar enunciados más complejos. 
+
+Combinando operadores construimos expresiones condicionales, que R evalua a TRUE o FALSE (o NA).
 
 ** Ejecución condicional
 
@@ -117,7 +119,7 @@ While es un loop controlado por una expresión condicional
 
 Nota: Si el for() o el while() tienen una sola línea, podemos obviar las {} ;-)
 * Vectorización
-Es aplicar una operación a un vector elemento por elemento
+Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 
 1. Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.
 2. Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
@@ -131,7 +133,7 @@ Es aplicar una operación a un vector elemento por elemento
 > z <- x + y
 #+END_SRC
 
-Ref: [[http://adv-r.had.co.nz/Profiling.html#vectorise][Vectorise from Advanced R]]
+- Ref: [[http://adv-r.had.co.nz/Profiling.html#vectorise][Vectorise from Advanced R]]
 ** operadores y funciones vectorizados
 1) ==, &, y |
 2) corchetito: Por ej, x[is.na(x)] <- 0 donde x es vector, matriz o df
@@ -161,9 +163,14 @@ Ref: [[http://adv-r.had.co.nz/Profiling.html#vectorise][Vectorise from Advanced 
  8.088   0.044   8.175
 #+END_SRC
 * Funcionales - Familia *apply()
-Son: lapply(), sapply(), apply() y tapply()
+lapply(), sapply(), apply() y tapply() (hay más...)
 
-Funciones para extender 
+Combinan aldo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
+
+Hemos hecho cosas similares con summarise() + group_by() y mutate().
+
+Ref: ver también el [[https://www.rdocumentation.org/packages/plyr/versions/1.8.4][paquete plyr]], [[http://stat545.com/block013_plyr-ddply.html][esta web]] y [[http://www.jstatsoft.org/v40/i01/][este paper]]
 ** lapply()
 LLama a una función especificada en cada componente de una lista y devuelve otra lista
 
@@ -287,8 +294,9 @@ D   R   U
    100? Usar system.time().
 2. Comparar la velocidad de apply(x, 1, sum) con rowSums(x) para x de distintos tamaños. Usar system.time().
 3. El código a continuación simula el desempeño de un t-test para datos no normales. Usen sapply() y
-   una función (puede ser anónima) para extraer el p-value de cada 'tirada'. Nota: rpois() nos
-   devuelve una 'tirada' de variable aleatoria de una distribución de Poisson.
+   una función (puede ser anónima, es decir no necesitan nombrarla) para extraer el p-value de cada
+   'tirada'. Nota: rpois() nos devuelve una 'tirada' de variable aleatoria (como si fuera tirar una
+   moneda) de una distribución de Poisson.
   #+BEGIN_SRC R 
   trials <- replicate(
     100, 
