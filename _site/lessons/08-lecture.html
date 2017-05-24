@@ -95,6 +95,10 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
               <!--  -->
               <!--  -->
               <!-- <li><a href="/lessons/08-lecture.html">Clase 8</a></li> -->
@@ -160,8 +164,8 @@
 
 <h2 id="subsetting"><em>Subsetting</em></h2>
 
-<p>’[’ es el operador para hacer <em>subsetting</em>, se usa poniendo algo el tipo x[a]. Hay distintas
-maneras de usarlo.</p>
+<p>’[’ es el operador para hacer <em>subsetting</em>, se usa poniendo algo del tipo x[a]. Hay distintas
+maneras de usarlo:</p>
 
 <ol>
   <li>Usando vectores de enteros positivos o negativos</li>
@@ -299,17 +303,19 @@ output
 
 <h2 id="componentes-de-un-for">Componentes de un for</h2>
 
-<ol>
+<ul>
   <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
   <li>
     <p>Secuencia: variable sobre la que funciona el bucle</p>
 
-    <p>for (x in xs)
+    <div class="highlighter-rouge"><pre class="highlight"><code>for (x in xs)
 for(i in seq_along(df))
-for (nm in names(xs))</p>
+for (nm in names(xs))
+</code></pre>
+    </div>
   </li>
   <li>Cuerpo: código que se ejecuta las veces que la secuencia indique</li>
-</ol>
+</ul>
 
 <h2 id="con-secuencia-condicional">Con secuencia condicional</h2>
 
@@ -319,16 +325,12 @@ for (nm in names(xs))</p>
 </code></pre>
 </div>
 
-<h2 id="vectorización">Vectorización!</h2>
-
-<p>Para otra clase</p>
-
 <h1 id="práctica-8">Práctica 8</h1>
 
 <ol>
   <li>Cuál es la diferencia entre <code class="highlighter-rouge">if</code> y <code class="highlighter-rouge">ifelse</code>? Ver manual, mostrar ejemplos.</li>
   <li>Escribir una función que diga “Buenos días”, “Buenas tardes” o “Buenas noches” dependiendo de la
-hora del día usando lubridate::now().</li>
+hora del día usando lubridate::now() y lubridate::dhours().</li>
   <li>Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).</li>
   <li>Qué pasa si usamos (nm in names(x)) y x no tiene nombres? Qué pasa si solo algunos tienen nombre
 o hay nombres repetidos? Hacer tests.</li>
