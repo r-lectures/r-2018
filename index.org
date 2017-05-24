@@ -43,5 +43,5 @@ flexible lenguaje de programación.
 - _lgmoyano@gmail.com_ / twitter: [[https://twitter.com/luisgmoyano][@luisgmoyano]]
 ***** Créditos
 Esta web está construida con [[https://jekyllrb.com/][Jekyll]]  + [[https://github.com/hakimel/reveal.js][Reveal.js]] de Hakim El Hattab, y está fuertemente basado en el
-[[https://jennybc.github.io/purrr-tutorial][Tutorial de purrr de Jenny Brian]]. El código fuente está en disponible en [[https://github.com/r-2017/r-2017.github.io][Github]], que hace a su vez
+Tutorial de purrr de Jenny Brian]]. El código fuente está en disponible en [[https://github.com/r-2017/r-2017.github.io][Github]], que hace a su vez
 de host de la página.
