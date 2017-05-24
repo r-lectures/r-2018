@@ -7,9 +7,10 @@
 
 # Bibliografía
 
--   [Advanced R](http://adv-r.had.co.nz/)
--   [R Markdown from RStudio](http://rmarkdown.rstudio.com/lesson-1.html)
+-   [aRrgh: a newcomer’s (angry) guide to R](http://arrgh.tim-smith.us/)
 -   [R for Data Science](http://r4ds.had.co.nz/index.html)
+-   [R Markdown from RStudio](http://rmarkdown.rstudio.com/lesson-1.html)
+-   [Advanced R](http://adv-r.had.co.nz/)
 -   [The Hitchhiker's Guide to the Hadleyverse](http://adolfoalvarez.cl/the-hitchhikers-guide-to-the-hadleyverse/)
 -   [The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/) (libro)
 -   Hands-On Programming with R (libro)

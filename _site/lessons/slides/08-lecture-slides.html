@@ -27,16 +27,16 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>17/05/2017</h3>
+<section id="sec-title-slide"><h1>R 2017</h1><h3>23/05/2017</h3>
 </section>
 
 <section>
-<section id="slide-orgad9af9d">
-<h2 id="orgad9af9d">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgad9af9d">
+<section id="slide-org2281621">
+<h2 id="org2281621">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org2281621">
 </div></section>
-<section id="slide-org2cbb0fa">
-<h3 id="org2cbb0fa">Vectores "aumentados"</h3>
+<section id="slide-org1f68489">
+<h3 id="org1f68489">Vectores "aumentados"</h3>
 <ul>
 <li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
 <li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
@@ -44,11 +44,11 @@
 
 </ul>
 </section>
-<section id="slide-org681c4b3">
-<h3 id="org681c4b3"><i>Subsetting</i></h3>
+<section id="slide-orgbdd8fe7">
+<h3 id="orgbdd8fe7"><i>Subsetting</i></h3>
 <p>
-'[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo el tipo x[a]. Hay distintas
-maneras de usarlo.
+'[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo del tipo x[a]. Hay distintas
+maneras de usarlo:
 </p>
 <ol>
 <li>Usando vectores de enteros positivos o negativos</li>
@@ -64,8 +64,8 @@ Otros operadores de subsetting: '[[' y '$'
 </section>
 </section>
 <section>
-<section id="slide-org6503a86">
-<h2 id="org6503a86">Operadores lógicos</h2>
+<section id="slide-org491e1cf">
+<h2 id="org491e1cf">Operadores lógicos</h2>
 <p>
 Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico
 </p>
@@ -99,8 +99,8 @@ is.na(y) & x==10
 </section>
 </section>
 <section>
-<section id="slide-org99f0566">
-<h2 id="org99f0566">Ejecución condicional</h2>
+<section id="slide-org8ecb9f7">
+<h2 id="org8ecb9f7">Ejecución condicional</h2>
 <div class="org-src-container">
 
 <pre><code class="R" >if (condición) {
@@ -124,8 +124,8 @@ is.na(y) & x==10
 </div>
 
 </section>
-<section id="slide-org7d6d480">
-<h3 id="org7d6d480">Ejemplo</h3>
+<section id="slide-orgc0d3fe0">
+<h3 id="orgc0d3fe0">Ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >pretty_length <- function(x) {
@@ -147,8 +147,8 @@ pretty_length(x)
 </div>
 
 </section>
-<section id="slide-org60e9cc3">
-<h3 id="org60e9cc3">funciones lógicas accesorias</h3>
+<section id="slide-org09021b6">
+<h3 id="org09021b6">funciones lógicas accesorias</h3>
 <ul>
 <li>any()</li>
 <li>all()</li>
@@ -171,8 +171,8 @@ identical(0L, 0)
 </section>
 </section>
 <section>
-<section id="slide-org49d3d3b">
-<h2 id="org49d3d3b">loops</h2>
+<section id="slide-org3ee8ded">
+<h2 id="org3ee8ded">loops</h2>
 <p>
 Loops son bucles y se usan para repetir código.
 </p>
@@ -185,8 +185,8 @@ Loops son bucles y se usan para repetir código.
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf63e84a">
-<h3 id="orgf63e84a">Ejemplo</h3>
+<section id="slide-org2030b37">
+<h3 id="org2030b37">Ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >df <- tibble(
@@ -205,28 +205,27 @@ output
 </code></pre>
 </div>
 </section>
-<section id="slide-org0c12aad">
-<h3 id="org0c12aad">Componentes de un for</h3>
-<ol>
+<section id="slide-org019264a">
+<h3 id="org019264a">Componentes de un for</h3>
+<ul>
 <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
-<li>Secuencia: variable sobre la que funciona el bucle</li>
-
-</ol>
+<li><p>
+Secuencia: variable sobre la que funciona el bucle
+</p>
 <div class="org-src-container">
 
 <pre><code class="R" >for (x in xs)
 for(i in seq_along(df))
 for (nm in names(xs))
 </code></pre>
-</div>
-<ol>
+</div></li>
 <li>Cuerpo: código que se ejecuta las veces que la secuencia indique</li>
 
-</ol>
+</ul>
 
 </section>
-<section id="slide-org97b4e02">
-<h3 id="org97b4e02">Con secuencia condicional</h3>
+<section id="slide-org5265e4b">
+<h3 id="org5265e4b">Con secuencia condicional</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >while (condition) {
@@ -234,22 +233,16 @@ for (nm in names(xs))
 }
 </code></pre>
 </div>
-</section>
-<section id="slide-orgf6d7475">
-<h3 id="orgf6d7475">Vectorización!</h3>
-<p>
-Para otra clase
-</p>
 
 </section>
 </section>
 <section>
-<section id="slide-orged8c4b2">
-<h2 id="orged8c4b2">Práctica 8</h2>
+<section id="slide-org31c612a">
+<h2 id="org31c612a">Práctica 8</h2>
 <ol>
 <li>Cuál es la diferencia entre <code>if</code> y <code>ifelse</code>? Ver manual, mostrar ejemplos.</li>
 <li>Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
-hora del día usando lubridate::now().</li>
+hora del día usando lubridate::now() y lubridate::dhours().</li>
 <li>Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).</li>
 <li>Qué pasa si usamos (nm in names(x)) y x no tiene nombres? Qué pasa si solo algunos tienen nombre
 o hay nombres repetidos? Hacer tests.</li>

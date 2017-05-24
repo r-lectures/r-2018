@@ -27,16 +27,16 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>21/05/2017</h3>
+<section id="sec-title-slide"><h1>R 2017</h1><h3>23/05/2017</h3>
 </section>
 
 <section>
-<section id="slide-orgd838f61">
-<h2 id="orgd838f61">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgd838f61">
+<section id="slide-org2281621">
+<h2 id="org2281621">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org2281621">
 </div></section>
-<section id="slide-org7de90c0">
-<h3 id="org7de90c0">Vectores "aumentados"</h3>
+<section id="slide-org1f68489">
+<h3 id="org1f68489">Vectores "aumentados"</h3>
 <ul>
 <li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
 <li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
@@ -44,8 +44,8 @@
 
 </ul>
 </section>
-<section id="slide-org2612354">
-<h3 id="org2612354"><i>Subsetting</i></h3>
+<section id="slide-orgbdd8fe7">
+<h3 id="orgbdd8fe7"><i>Subsetting</i></h3>
 <p>
 '[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo del tipo x[a]. Hay distintas
 maneras de usarlo:
@@ -64,8 +64,8 @@ Otros operadores de subsetting: '[[' y '$'
 </section>
 </section>
 <section>
-<section id="slide-org3fe0890">
-<h2 id="org3fe0890">Operadores lógicos</h2>
+<section id="slide-org491e1cf">
+<h2 id="org491e1cf">Operadores lógicos</h2>
 <p>
 Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico
 </p>
@@ -99,8 +99,8 @@ is.na(y) & x==10
 </section>
 </section>
 <section>
-<section id="slide-org99ada43">
-<h2 id="org99ada43">Ejecución condicional</h2>
+<section id="slide-org8ecb9f7">
+<h2 id="org8ecb9f7">Ejecución condicional</h2>
 <div class="org-src-container">
 
 <pre><code class="R" >if (condición) {
@@ -124,8 +124,8 @@ is.na(y) & x==10
 </div>
 
 </section>
-<section id="slide-orgcf919ad">
-<h3 id="orgcf919ad">Ejemplo</h3>
+<section id="slide-orgc0d3fe0">
+<h3 id="orgc0d3fe0">Ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >pretty_length <- function(x) {
@@ -147,8 +147,8 @@ pretty_length(x)
 </div>
 
 </section>
-<section id="slide-org678c2c2">
-<h3 id="org678c2c2">funciones lógicas accesorias</h3>
+<section id="slide-org09021b6">
+<h3 id="org09021b6">funciones lógicas accesorias</h3>
 <ul>
 <li>any()</li>
 <li>all()</li>
@@ -171,8 +171,8 @@ identical(0L, 0)
 </section>
 </section>
 <section>
-<section id="slide-orgd2a7309">
-<h2 id="orgd2a7309">loops</h2>
+<section id="slide-org3ee8ded">
+<h2 id="org3ee8ded">loops</h2>
 <p>
 Loops son bucles y se usan para repetir código.
 </p>
@@ -185,8 +185,8 @@ Loops son bucles y se usan para repetir código.
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf166dc4">
-<h3 id="orgf166dc4">Ejemplo</h3>
+<section id="slide-org2030b37">
+<h3 id="org2030b37">Ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >df <- tibble(
@@ -205,8 +205,8 @@ output
 </code></pre>
 </div>
 </section>
-<section id="slide-org50f423f">
-<h3 id="org50f423f">Componentes de un for</h3>
+<section id="slide-org019264a">
+<h3 id="org019264a">Componentes de un for</h3>
 <ul>
 <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
 <li><p>
@@ -224,8 +224,8 @@ for (nm in names(xs))
 </ul>
 
 </section>
-<section id="slide-org6d5700f">
-<h3 id="org6d5700f">Con secuencia condicional</h3>
+<section id="slide-org5265e4b">
+<h3 id="org5265e4b">Con secuencia condicional</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >while (condition) {
@@ -237,8 +237,8 @@ for (nm in names(xs))
 </section>
 </section>
 <section>
-<section id="slide-org9955efa">
-<h2 id="org9955efa">Práctica 8</h2>
+<section id="slide-org31c612a">
+<h2 id="org31c612a">Práctica 8</h2>
 <ol>
 <li>Cuál es la diferencia entre <code>if</code> y <code>ifelse</code>? Ver manual, mostrar ejemplos.</li>
 <li>Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
