@@ -166,7 +166,7 @@ subset(airquality, select = Ozone:Wind)
 
 <h2 id="operadores-lógicos">Operadores lógicos</h2>
 
-<p>Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico</p>
+<p>Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico.</p>
 
 <ul>
   <li>
@@ -183,12 +183,14 @@ subset(airquality, select = Ozone:Wind)
       <tbody>
         <tr>
           <td>los operadores &amp; (AND) y</td>
-          <td>(OR) para elaborar enunciados más complejos</td>
+          <td>(OR) para elaborar enunciados más complejos.</td>
         </tr>
       </tbody>
     </table>
   </li>
 </ul>
+
+<p>Combinando operadores construimos expresiones condicionales, que R evalua a TRUE o FALSE (o NA).</p>
 
 <h2 id="ejecución-condicional">Ejecución condicional</h2>
 
@@ -247,7 +249,7 @@ for (nm in names(xs))
 
 <h1 id="vectorización">Vectorización</h1>
 
-<p>Es aplicar una operación a un vector elemento por elemento</p>
+<p>Se trata de operaciones que aplican a un vector, pero elemento por elemento.</p>
 
 <ol>
   <li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
@@ -267,7 +269,9 @@ rápidos.</p>
   </li>
 </ol>
 
-<p>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></p>
+<ul>
+  <li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+</ul>
 
 <h2 id="operadores-y-funciones-vectorizados">operadores y funciones vectorizados</h2>
 
@@ -315,9 +319,14 @@ c(T,T,F,F) | c(T,F,T,F)
 
 <h1 id="funcionales---familia-apply">Funcionales - Familia *apply()</h1>
 
-<p>Son: lapply(), sapply(), apply() y tapply()</p>
+<p>lapply(), sapply(), apply() y tapply() (hay más…)</p>
 
-<p>Funciones para extender</p>
+<p>Combinan aldo similar a vectorización con funciones. Suelen ser la respuesta a “cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?”</p>
+
+<p>Hemos hecho cosas similares con summarise() + group_by() y mutate().</p>
+
+<p>Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a></p>
 
 <h2 id="lapply">lapply()</h2>
 
@@ -455,8 +464,9 @@ D   R   U
   <li>Comparar la velocidad de apply(x, 1, sum) con rowSums(x) para x de distintos tamaños. Usar system.time().</li>
   <li>
     <p>El código a continuación simula el desempeño de un t-test para datos no normales. Usen sapply() y
-una función (puede ser anónima) para extraer el p-value de cada ‘tirada’. Nota: rpois() nos
-devuelve una ‘tirada’ de variable aleatoria de una distribución de Poisson.</p>
+una función (puede ser anónima, es decir no necesitan nombrarla) para extraer el p-value de cada
+‘tirada’. Nota: rpois() nos devuelve una ‘tirada’ de variable aleatoria (como si fuera tirar una
+moneda) de una distribución de Poisson.</p>
 
     <div class="highlighter-rouge"><pre class="highlight"><code>trials &lt;- replicate(
   100, 
