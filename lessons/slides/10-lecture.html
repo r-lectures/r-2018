@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2017</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2017</h1><h3>30/05/2017</h3>
+</section>
+
+<section>
+<section id="slide-org7e31f72">
+<h2 id="org7e31f72">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org7e31f72">
+</div></section>
+<section id="slide-org87b7a51">
+<h3 id="org87b7a51">Vectorización</h3>
+<p>
+Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
+</p>
+
+<ol>
+<li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
+<li>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
+rápidos.</li>
+
+</ol>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># sin vectorización
+> for (i in 1:length(x)) z[i] <- x[i] + y[i]
+
+# con vectorización
+> z <- x + y
+</code></pre>
+</div>
+
+<ul>
+<li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+
+</ul>
+</section>
+<section id="slide-org8538262">
+<h3 id="org8538262">Funcionales - Familia *apply()</h3>
+<ul>
+<li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
+<li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
+a una matriz.</li>
+<li><b>apply()</b>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
+<li><b>tapply()</b>: para aplicar funciones a vectores con factores</li>
+
+</ul>
+
+<p>
+Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
+</p>
+
+<p>
+Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org41dcd74">
+<h2 id="org41dcd74">modo interactivo: source() y R CMD BATCH</h2>
+<div class="org-src-container">
+
+<pre><code class="R" >##En un editor de texto creamos el script z.R
+pdf("xh.pdf")  # configuramos un archivo de salido
+hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
+dev.off()  # cerramos el archivo de salida
+
+## En el terminal:
+R CMD BATCH z.R
+
+## En R:
+source("z.R")
+</code></pre>
+</div>
+
+<ul>
+<li>Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
+encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "dos <code>", 4, sep</code>" "))</li>
+
+</ul>
+</section>
+<section id="slide-org1d47c0f">
+<h3 id="org1d47c0f">Workflow científico</h3>
+<ul>
+<li>trabajar con scripts permite 'mantener' nuestro proceso científico
+<ul>
+<li>el trabajo pasa a ser gradual, mejorando a cada vez</li>
+
+</ul></li>
+<li>modularizar nuestros procesos! Scripts de scripts
+<ul>
+<li>nos da flexibilidad y claridad</li>
+<li>permite separar 'físicamente' procesos computacionales diferentes</li>
+<li>permite reciclar código!</li>
+
+</ul></li>
+
+</ul>
+
+<p>
+Ejemplo: hago freaking_good_data_analysis.R, que contiene:
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >source("0-input-data.R")
+source("1-clean-data.R")
+source("2-parse-data.R")
+source("3-graph-data.R")
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org336cb7f">
+<h2 id="org336cb7f">R project y CRAN</h2>
+<p>
+<a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
+</p>
+
+<p>
+<a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a>
+</p>
+
+<ul>
+<li>El proyecto R mantiene el código, <a href="https://cran.r-project.org/manuals.html">la documentación</a>, y la comunidad, entre otras cosas</li>
+<li>CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
+idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">paquetes aceptados oficialmente</a></li>
+<li>CRAN tiene <a href="https://cran.r-project.org/web/views/">Task Views</a>, páginas web que nuclean paquetes por temas</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9df7ea6">
+<h2 id="org9df7ea6">Estadística</h2>
+<div class="outline-text-2" id="text-org9df7ea6">
+</div></section>
+<section id="slide-org4f6cb9b">
+<h3 id="org4f6cb9b">Estadística descriptiva</h3>
+<p>
+Una manera de hacer estadística descriptiva es con sapply:
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >sapply(mydata, mean, na.rm=TRUE) 
+</code></pre>
+</div>
+<p>
+(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().
+</p>
+
+<p>
+Tenemos también group_by() + summarise() con las mismas funciones básicas.
+</p>
+</section>
+<section id="slide-org8b16410">
+<h3 id="org8b16410">Distribuciones</h3>
+<p>
+En general R usa la siguiente convención:
+</p>
+
+<ul>
+<li>dDIST(x, &#x2026;) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+valor x</li>
+<li>pDIST(x, &#x2026;) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+valor menor a x (mayor si usamos lower.tail=F)</li>
+<li>rDIST(n, &#x2026;) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
+<li>qDIST(p, &#x2026;) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+lower.tail=F, devuelve 1 - el percentil p.</li>
+
+</ul>
+
+<img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
+
+<p>
+Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
+</p>
+</section>
+<section id="slide-orgc3bb29a">
+<h4 id="orgc3bb29a">Distribución Normal</h4>
+<p>
+Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >library(ggplot2)
+set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
+x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
+f <- dnorm(x) # normal con media 0 y sd 1 
+ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
+</code></pre>
+</div>
+</section>
+<section id="slide-orgab0fe73">
+<h4 id="orgab0fe73">Otras distribuciones</h4>
+<p>
+Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
+de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- rbinom(100000,5,0.5)
+mean(x)
+# [1] 2.5004
+
+mean(x >= 4)
+# [1] 0.18829
+</code></pre>
+</div>
+</section>
+<section id="slide-org9aa3bef">
+<h3 id="org9aa3bef">Modelado estadístico</h3>
+<div class="outline-text-3" id="text-org9aa3bef">
+</div></section>
+<section id="slide-orga692d77">
+<h4 id="orga692d77">Regresión lineal (lm)</h4>
+<p>
+Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.
+</p>
+
+<ol>
+<li>Propongo una determinada relación de variables</li>
+<li>Calculo coeficientes del modelo</li>
+<li>Compruebo que tan bien se ajusta el modelo a nuevas observaciones</li>
+
+</ol>
+
+<div class="org-src-container">
+
+<pre><code class="R" >y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
+## b[i] son los coeficientes o betas
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org0d1d291">
+<h4 id="org0d1d291">Ejemplo con datos de 2011 US Census PUMS</h4>
+<p>
+Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## hacemos la regresión:
+load("psub.RData")
+dtrain <- subset(psub, ORIGRANDGROUP >= 500)
+dtest <- subset(psub, ORIGRANDGROUP < 500)
+model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest$predLogPINCP <- predict(model,newdata=dtest) 
+dtrain$predLogPINCP <- predict(model,newdata=dtrain)
+
+## resultados:
+summary(model)
+
+## graficamos:
+library(ggplot2)
+ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
+geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
+geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
+scale_x_continuous(limits=c(4,5)) +
+scale_y_continuous(limits=c(3.5,5.5))
+
+## residuos:
+ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
+geom_point(alpha=0.2,color="black") +
+geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
+
+</code></pre>
+</div>
+</section>
+<section id="slide-org1b62c38">
+<h4 id="org1b62c38">Regresión lineal generalizada (glm)</h4>
+<p>
+Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones. 
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
+</code></pre>
+</div>
+
+<p>
+Ejemplito: Regresión logística, para variables categóricas.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># F es un factor binario
+# x1, x2 y x3 son predictores continuos 
+fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
+
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf0500da">
+<h3 id="orgf0500da">Estadística avanzada - material infinito</h3>
+<ul>
+<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
+<li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
+<li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
+<li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1b013eb">
+<h2 id="org1b013eb">Práctica 10</h2>
+<ol>
+<li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
+5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+figura (o sea, que queden dos histogramas y una curva). Usar el argumento <i>alpha</i> para poder
+distinguir los histogramas.</li>
+<li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
+función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
+una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
+en otro gráfico.</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

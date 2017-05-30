@@ -43,3 +43,9 @@ flexible lenguaje de programación.
 -   Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)
 -   <span class="underline">lgmoyano@gmail.com</span> / twitter: [@luisgmoyano](https://twitter.com/luisgmoyano)
 
+1.  Créditos
+
+    Esta web está construida con [Jekyll](https://jekyllrb.com/)  + [Reveal.js](https://github.com/hakimel/reveal.js) de Hakim El Hattab, y está fuertemente basado en el
+    [Tutorial de purrr de Jenny Brian](https://jennybc.github.io/purrr-tutorial). El código fuente está en disponible en [Github](https://github.com/r-2017/r-2017.github.io), que hace a su vez
+    de host de la página.
+

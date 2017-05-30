@@ -41,3 +41,7 @@ flexible lenguaje de programación.
 - Física Estadística y sistemas complejos
 - Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)
 - _lgmoyano@gmail.com_ / twitter: [[https://twitter.com/luisgmoyano][@luisgmoyano]]
+***** Créditos
+Esta web está construida con [[https://jekyllrb.com/][Jekyll]]  + [[https://github.com/hakimel/reveal.js][Reveal.js]] de Hakim El Hattab, y está fuertemente basado en el
+Tutorial de purrr de Jenny Brian]]. El código fuente está en disponible en [[https://github.com/r-2017/r-2017.github.io][Github]], que hace a su vez
+de host de la página.
