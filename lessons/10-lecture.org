@@ -255,6 +255,8 @@ https://cran.r-project.org/web/views/TimeSeries.html
    función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
    una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
    en otro gráfico.
+* Práctica 10 bis
+3. Bajarse el Quijote (de Project Gutenberg). 
 
 ** COMMENT Funciones matemáticas básicas
 #+BEGIN_SRC R 

@@ -253,12 +253,8 @@ source("3-graph-data.R")
 
 <ul>
   <li>El proyecto R mantiene el código, <a href="https://cran.r-project.org/manuals.html">la documentación</a>, y la comunidad, entre otras cosas</li>
-  <li>CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e</li>
-</ul>
-
-<p>idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">paquetes aceptados oficialmente</a></p>
-
-<ul>
+  <li>CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
+idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">paquetes aceptados oficialmente</a></li>
   <li>CRAN tiene <a href="https://cran.r-project.org/web/views/">Task Views</a>, páginas web que nuclean paquetes por temas</li>
 </ul>
 
@@ -290,7 +286,7 @@ valor menor a x (mayor si usamos lower.tail=F)</li>
 lower.tail=F, devuelve 1 - el percentil p.</li>
 </ul>
 
-<p><img style="WIDTH:800px; HEIGHT:420px; border:0" src="./figs/dists.png" /></p>
+<p><img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png" /></p>
 
 <p>Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a></p>
 
@@ -299,7 +295,7 @@ lower.tail=F, devuelve 1 - el percentil p.</li>
 <p>Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>library(ggplot2)
-set.seed(8888)
+set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
 x &lt;- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
 f &lt;- dnorm(x) # normal con media 0 y sd 1 
 ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
@@ -324,32 +320,71 @@ mean(x &gt;= 4)
 
 <h3 id="regresión-lineal-lm">Regresión lineal (lm)</h3>
 
-<p><a href="https://datascienceplus.com/category/regression-models/">https://datascienceplus.com/category/regression-models/</a></p>
+<p>Construimos un “modelo” (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.</p>
+
+<ol>
+  <li>Propongo una determinada relación de variables</li>
+  <li>Calculo coeficientes del modelo</li>
+  <li>
+    <p>Compruebo que tan bien se ajusta el modelo a nuevas observaciones</p>
+
+    <p>y[i] ~ f(x[i,]) = b[1] x[i,1] + … b[n] x[i,n]</p>
+    <h2 id="bi-son-los-coeficientes-o-betas">b[i] son los coeficientes o betas</h2>
+  </li>
+</ol>
+
+<h3 id="ejemplo-con-datos-de-2011-us-census-pums">Ejemplo con datos de 2011 US Census PUMS</h3>
+
+<p>Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## hacemos la regresión:
+load("psub.RData")
+dtrain &lt;- subset(psub, ORIGRANDGROUP &gt;= 500)
+dtest &lt;- subset(psub, ORIGRANDGROUP &lt; 500)
+model &lt;- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest$predLogPINCP &lt;- predict(model,newdata=dtest) 
+dtrain$predLogPINCP &lt;- predict(model,newdata=dtrain)
+
+## resultados:
+summary(model)
+
+## graficamos:
+library(ggplot2)
+ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
+geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
+geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
+scale_x_continuous(limits=c(4,5)) +
+scale_y_continuous(limits=c(3.5,5.5))
+
+## residuos:
+ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
+geom_point(alpha=0.2,color="black") +
+geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
+</code></pre>
+</div>
 
 <h3 id="regresión-lineal-generalizada-glm">Regresión lineal generalizada (glm)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>glm(formula, family=familytype(link=linkfunction), data=)
+<p>Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
+“normales”. Los modelos lineales generalizados relajan estas suposiciones.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
 </code></pre>
 </div>
 
-<p>Ejemplo: Regresión logística</p>
+<p>Ejemplito: Regresión logística, para variables categóricas.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># Logistic Regression
-# where F is a binary factor and
-# x1-x3 are continuous predictors
+<div class="highlighter-rouge"><pre class="highlight"><code># F es un factor binario
+# x1, x2 y x3 son predictores continuos 
 fit &lt;- glm(F~x1+x2+x3,data=mydata,family=binomial())
-summary(fit) # display results
-confint(fit) # 95% CI for the coefficients
-exp(coef(fit)) # exponentiated coefficients
-exp(confint(fit)) # 95% CI for exponentiated coefficients
-predict(fit, type="response") # predicted values
-residuals(fit, type="deviance") # residuals 
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
 </code></pre>
 </div>
-
-<h2 id="series-temporales">Series temporales</h2>
-
-<p><a href="https://cran.r-project.org/web/views/TimeSeries.html">https://cran.r-project.org/web/views/TimeSeries.html</a></p>
 
 <h2 id="estadística-avanzada---material-infinito">Estadística avanzada - material infinito</h2>
 
@@ -363,8 +398,15 @@ residuals(fit, type="deviance") # residuals
 <h1 id="práctica-10">Práctica 10</h1>
 
 <ol>
-  <li></li>
-  <li></li>
+  <li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
+5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+figura (o sea, que queden dos histogramas y una curva). Usar el argumento <em>alpha</em> para poder
+distinguir los histogramas.</li>
+  <li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
+función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
+una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
+en otro gráfico.</li>
 </ol>
 
 
