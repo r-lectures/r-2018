@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>index</title>
+    <title>Clase 10</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/lessons/10-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -156,59 +156,215 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="programación-y-análisis-de-datos-en-r-con-aplicaciones-científicas">Programación y análisis de datos en R con aplicaciones científicas</h1>
+                <h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
 
-<p>Este curso tiene como objetivo transmitir los principales conceptos del lenguaje de programación R y
-entrenar en su utilización ya que es una útil herramienta para la investigación científica. Nos
-proponemos explorar, desde un punto de vista eminentemente práctico, el lenguaje y su ecosistema de
-paquetes, funciones y demás elementos relacionados. No haremos hincapié en aprender a programar en
-sí (aunque necesariamente cubriremos lo básico), si no más bien pondremos el foco en como usar el
-lenguaje de manera eficaz, siempre con los objetivos científicos en el horizonte.</p>
+<h2 id="vectorización">Vectorización</h2>
 
-<p>El lenguaje R está fuertemente relacionado con dos áreas de las cuales se ha nutrido desde su
-origen: la estadística y el análisis de datos empíricos. Por ello, a lo largo del curso, vamos a usar
-elementos de ambas áreas como soporte para explorar en detalle las distintas utilidades de este
-flexible lenguaje de programación.</p>
-
-<h2 id="fechas-y-horarios">Fechas y Horarios</h2>
-
-<ul>
-  <li>Martes y Miércoles, de 9:00 a 12:00</li>
-  <li>Fecha de inicio: 18 de Abril</li>
-  <li>Duración: 48 hs (8 semanas) para carreras de grado, 60 hs (10 semanas) para carreras de posgrado</li>
-  <li>La materia de dicta en la sala de computación</li>
-</ul>
-
-<h2 id="herramientas">Herramientas</h2>
-
-<ul>
-  <li><a href="https://www.rstudio.com/">RStudio</a> - para trabajar con R
-    <ul>
-      <li>Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
-que quieran (por ejemplo, <a href="https://www.gnu.org/software/emacs/">emacs</a> o, si no hay otra, <a href="http://www.vim.org/">vim</a> ;)</li>
-    </ul>
-  </li>
-  <li><a href="https://slack.com/">Slack</a> - para mantenernos en contacto entre todos</li>
-  <li><a href="https://github.com/">Github</a> - para compartir código</li>
-</ul>
-
-<h3 id="prof-luis-g-moyano">Prof. Luis G. Moyano</h3>
-
-<ul>
-  <li>Inv. Adjunto CONICET y Prof. Adjunto FCEN</li>
-  <li>Física Estadística y sistemas complejos</li>
-  <li>Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)</li>
-  <li><span class="underline">lgmoyano@gmail.com</span> / twitter: <a href="https://twitter.com/luisgmoyano">@luisgmoyano</a></li>
-</ul>
+<p>Se trata de operaciones que aplican a un vector, pero elemento por elemento.</p>
 
 <ol>
+  <li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
   <li>
-    <p>Créditos</p>
+    <p>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
+rápidos.</p>
 
-    <p>Esta web está construida con <a href="https://jekyllrb.com/">Jekyll</a>  + <a href="https://github.com/hakimel/reveal.js">Reveal.js</a> de Hakim El Hattab, y está fuertemente basado en el
-<a href="https://jennybc.github.io/purrr-tutorial">Tutorial de purrr de Jenny Brian</a>. El código fuente está en disponible en <a href="https://github.com/r-2017/r-2017.github.io">Github</a>, que hace a su vez
-de host de la página.</p>
+    <h1 id="sin-vectorización">sin vectorización</h1>
+    <blockquote>
+      <p>for (i in 1:length(x)) z[i] &lt;- x[i] + y[i]</p>
+    </blockquote>
+
+    <h1 id="con-vectorización">con vectorización</h1>
+    <blockquote>
+      <p>z &lt;- x + y</p>
+    </blockquote>
   </li>
+</ol>
+
+<ul>
+  <li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+</ul>
+
+<h2 id="funcionales---familia-apply">Funcionales - Familia *apply()</h2>
+
+<ul>
+  <li><strong>lapply()</strong>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
+  <li><strong>sapply()</strong>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
+a una matriz.</li>
+  <li><strong>apply()</strong>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
+  <li><strong>tapply()</strong>: para aplicar funciones a vectores con factores</li>
+</ul>
+
+<p>Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a “cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?”</p>
+
+<p>Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a></p>
+
+<h1 id="modo-interactivo-source-y-r-cmd-batch">modo interactivo: source() y R CMD BATCH</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##En un editor de texto creamos el script z.R
+pdf("xh.pdf")  # configuramos un archivo de salido
+hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
+dev.off()  # cerramos el archivo de salida
+
+## En el terminal:
+R CMD BATCH z.R
+
+## En R:
+source("z.R")
+</code></pre>
+</div>
+
+<ul>
+  <li>Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
+encadenar texto con variables usar paste(). Por ej. print(paste(“dos”, “mas”, “dos <code class="highlighter-rouge">", 4, sep</code>” “))</li>
+</ul>
+
+<h2 id="workflow-científico">Workflow científico</h2>
+
+<ul>
+  <li>trabajar con scripts permite ‘mantener’ nuestro proceso científico
+    <ul>
+      <li>el trabajo pasa a ser gradual, mejorando a cada vez</li>
+    </ul>
+  </li>
+  <li>modularizar nuestros procesos! Scripts de scripts
+    <ul>
+      <li>nos da flexibilidad y claridad</li>
+      <li>permite separar ‘físicamente’ procesos computacionales diferentes</li>
+      <li>permite reciclar código!</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Ejemplo: hago freaking_good_data_analysis.R, que contiene:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source("0-input-data.R")
+source("1-clean-data.R")
+source("2-parse-data.R")
+source("3-graph-data.R")
+</code></pre>
+</div>
+
+<h1 id="r-project-y-cran">R project y CRAN</h1>
+
+<p><a href="https://www.r-project.org/">The R Project for Statistical Computing</a></p>
+
+<p><a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a></p>
+
+<ul>
+  <li>El proyecto R mantiene el código, <a href="https://cran.r-project.org/manuals.html">la documentación</a>, y la comunidad, entre otras cosas</li>
+  <li>CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e</li>
+</ul>
+
+<p>idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">paquetes aceptados oficialmente</a></p>
+
+<ul>
+  <li>CRAN tiene <a href="https://cran.r-project.org/web/views/">Task Views</a>, páginas web que nuclean paquetes por temas</li>
+</ul>
+
+<h1 id="estadística">Estadística</h1>
+
+<h2 id="estadística-descriptiva">Estadística descriptiva</h2>
+
+<p>Una manera de hacer estadística descriptiva es con sapply:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sapply(mydata, mean, na.rm=TRUE) 
+</code></pre>
+</div>
+
+<p>(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().</p>
+
+<p>Tenemos también group_by() + summarise() con las mismas funciones básicas.</p>
+
+<h2 id="distribuciones">Distribuciones</h2>
+
+<p>En general R usa la siguiente convención:</p>
+
+<ul>
+  <li>dDIST(x, …) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+valor x</li>
+  <li>pDIST(x, …) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+valor menor a x (mayor si usamos lower.tail=F)</li>
+  <li>rDIST(n, …) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
+  <li>qDIST(p, …) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+lower.tail=F, devuelve 1 - el percentil p.</li>
+</ul>
+
+<p><img style="WIDTH:800px; HEIGHT:420px; border:0" src="./figs/dists.png" /></p>
+
+<p>Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a></p>
+
+<h3 id="distribución-normal">Distribución Normal</h3>
+
+<p>Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(ggplot2)
+set.seed(8888)
+x &lt;- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
+f &lt;- dnorm(x) # normal con media 0 y sd 1 
+ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
+</code></pre>
+</div>
+
+<h3 id="otras-distribuciones">Otras distribuciones</h3>
+
+<p>Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
+de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- rbinom(100000,5,0.5)
+mean(x)
+# [1] 2.5004
+
+mean(x &gt;= 4)
+# [1] 0.18829
+</code></pre>
+</div>
+
+<h2 id="modelado-estadístico">Modelado estadístico</h2>
+
+<h3 id="regresión-lineal-lm">Regresión lineal (lm)</h3>
+
+<p><a href="https://datascienceplus.com/category/regression-models/">https://datascienceplus.com/category/regression-models/</a></p>
+
+<h3 id="regresión-lineal-generalizada-glm">Regresión lineal generalizada (glm)</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>glm(formula, family=familytype(link=linkfunction), data=)
+</code></pre>
+</div>
+
+<p>Ejemplo: Regresión logística</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Logistic Regression
+# where F is a binary factor and
+# x1-x3 are continuous predictors
+fit &lt;- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # display results
+confint(fit) # 95% CI for the coefficients
+exp(coef(fit)) # exponentiated coefficients
+exp(confint(fit)) # 95% CI for exponentiated coefficients
+predict(fit, type="response") # predicted values
+residuals(fit, type="deviance") # residuals 
+</code></pre>
+</div>
+
+<h2 id="series-temporales">Series temporales</h2>
+
+<p><a href="https://cran.r-project.org/web/views/TimeSeries.html">https://cran.r-project.org/web/views/TimeSeries.html</a></p>
+
+<h2 id="estadística-avanzada---material-infinito">Estadística avanzada - material infinito</h2>
+
+<ul>
+  <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
+  <li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
+  <li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
+  <li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
+</ul>
+
+<h1 id="práctica-10">Práctica 10</h1>
+
+<ol>
+  <li></li>
+  <li></li>
 </ol>
 
 

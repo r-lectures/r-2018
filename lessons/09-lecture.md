@@ -126,7 +126,7 @@ Se trata de operaciones que aplican a un vector, pero elemento por elemento.
 
 lapply(), sapply(), apply() y tapply() (hay más&#x2026;)
 
-Combinan aldo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
 procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
 
 Hemos hecho cosas similares con summarise() + group\_by() y mutate().

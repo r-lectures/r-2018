@@ -73,3 +73,9 @@ lectures:
     - title: "Slides clase 9"
       url: slides/09-lecture-slides.html
 
+- title: "Clase 10 - Estadística "
+  url: 10-lecture.html
+
+  subitems:
+    - title: "Slides clase 10"
+      url: slides/10-lecture-slides.html
