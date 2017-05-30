@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-org704ce03">
-<h2 id="org704ce03">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org704ce03">
+<section id="slide-org4550a00">
+<h2 id="org4550a00">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org4550a00">
 </div></section>
-<section id="slide-org71b2a3d">
-<h3 id="org71b2a3d">"subsetting" con la función subset()</h3>
+<section id="slide-org456c761">
+<h3 id="org456c761">"subsetting" con la función subset()</h3>
 <p>
 Return subsets of vectors, matrices or data frames which meet conditions.
 </p>
@@ -50,8 +50,8 @@ subset(airquality, select = Ozone:Wind)
 </div>
 
 </section>
-<section id="slide-org7e4392d">
-<h3 id="org7e4392d">Operadores lógicos</h3>
+<section id="slide-org768c661">
+<h3 id="org768c661">Operadores lógicos</h3>
 <p>
 Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico. 
 </p>
@@ -70,8 +70,8 @@ Combinando operadores construimos expresiones condicionales, que R evalua a TRUE
 </p>
 
 </section>
-<section id="slide-orgf0c80d5">
-<h3 id="orgf0c80d5">Ejecución condicional</h3>
+<section id="slide-org21cbb9a">
+<h3 id="org21cbb9a">Ejecución condicional</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >if (condición) {
@@ -99,8 +99,8 @@ Nota: Si el if() tiene una sola línea, podemos obviar las {} ;-)
 </div>
 
 </section>
-<section id="slide-org09361ef">
-<h3 id="org09361ef">funciones lógicas accesorias</h3>
+<section id="slide-org87102d4">
+<h3 id="org87102d4">funciones lógicas accesorias</h3>
 <ul>
 <li>any()</li>
 <li>all()</li>
@@ -112,8 +112,8 @@ Nota: Si el if() tiene una sola línea, podemos obviar las {} ;-)
 </ul>
 
 </section>
-<section id="slide-org5a039ae">
-<h3 id="org5a039ae">Componentes de un for</h3>
+<section id="slide-org68bb1ca">
+<h3 id="org68bb1ca">Componentes de un for</h3>
 <p>
 Loops son bucles y se usan para repetir código
 </p>
@@ -143,8 +143,8 @@ Nota: Si el for() o el while() tienen una sola línea, podemos obviar las {} ;-)
 </section>
 </section>
 <section>
-<section id="slide-orge55ae14">
-<h2 id="orge55ae14">Vectorización</h2>
+<section id="slide-org94dd694">
+<h2 id="org94dd694">Vectorización</h2>
 <p>
 Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 </p>
@@ -171,8 +171,8 @@ rápidos.</li>
 
 </ul>
 </section>
-<section id="slide-orgb28a6f7">
-<h3 id="orgb28a6f7">operadores y funciones vectorizados</h3>
+<section id="slide-org0760155">
+<h3 id="org0760155">operadores y funciones vectorizados</h3>
 <ol>
 <li>==, &amp;, y |</li>
 <li>corchetito: Por ej, x[is.na(x)] &lt;- 0 donde x es vector, matriz o df</li>
@@ -192,8 +192,8 @@ rápidos.</li>
 </code></pre>
 </div>
 </section>
-<section id="slide-org5e78c27">
-<h3 id="org5e78c27">Eficiencia</h3>
+<section id="slide-org4fe6385">
+<h3 id="org4fe6385">Eficiencia</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >> x <- runif(1000000)
@@ -212,14 +212,14 @@ rápidos.</li>
 </section>
 </section>
 <section>
-<section id="slide-org33739e0">
-<h2 id="org33739e0">Funcionales - Familia *apply()</h2>
+<section id="slide-org2467fe8">
+<h2 id="org2467fe8">Funcionales - Familia *apply()</h2>
 <p>
 lapply(), sapply(), apply() y tapply() (hay más&#x2026;)
 </p>
 
 <p>
-Combinan aldo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
 procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
 </p>
 
@@ -231,8 +231,8 @@ Hemos hecho cosas similares con summarise() + group_by() y mutate().
 Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
 </p>
 </section>
-<section id="slide-org095a18f">
-<h3 id="org095a18f">lapply()</h3>
+<section id="slide-orgeb3b8a4">
+<h3 id="orgeb3b8a4">lapply()</h3>
 <p>
 LLama a una función especificada en cada componente de una lista y devuelve otra lista
 </p>
@@ -250,8 +250,8 @@ LLama a una función especificada en cada componente de una lista y devuelve otr
 </div>
 
 </section>
-<section id="slide-orgf6c6cd7">
-<h3 id="orgf6c6cd7">sapply()</h3>
+<section id="slide-org2c1aac3">
+<h3 id="org2c1aac3">sapply()</h3>
 <p>
 En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o a una
 matriz. Esto es justo lo que hace sapply().
@@ -265,8 +265,8 @@ matriz. Esto es justo lo que hace sapply().
 </code></pre>
 </div>
 </section>
-<section id="slide-org39be25c">
-<h3 id="org39be25c">lapply() y sapply() en Data Frames</h3>
+<section id="slide-orgf2077e7">
+<h3 id="orgf2077e7">lapply() y sapply() en Data Frames</h3>
 <p>
 Tanto lapply como sapply están pensados para listas, por lo tanto funcionan bien en data.frames
 </p>
@@ -298,8 +298,8 @@ $unemploy
 </code></pre>
 </div>
 </section>
-<section id="slide-org6a0362c">
-<h3 id="org6a0362c">apply()</h3>
+<section id="slide-orgc946119">
+<h3 id="orgc946119">apply()</h3>
 <p>
 apply es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a
 columnas.
@@ -329,8 +329,8 @@ apply(m,dimcode,f,fargs)
 </code></pre>
 </div>
 </section>
-<section id="slide-org5f27f99">
-<h3 id="org5f27f99">apply() - un ejemplo con función propia</h3>
+<section id="slide-org6c700b7">
+<h3 id="org6c700b7">apply() - un ejemplo con función propia</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >> z
@@ -347,8 +347,8 @@ apply(m,dimcode,f,fargs)
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb36596f">
-<h3 id="orgb36596f">tapply()</h3>
+<section id="slide-org0a40719">
+<h3 id="org0a40719">tapply()</h3>
 <p>
 para aplicar funciones a vectores con factores
 </p>
@@ -387,8 +387,8 @@ M NA    73166.67
 </section>
 </section>
 <section>
-<section id="slide-org36a18a1">
-<h2 id="org36a18a1">Práctica 9</h2>
+<section id="slide-orgc785b96">
+<h2 id="orgc785b96">Práctica 9</h2>
 <ol>
 <li>Como se comparan los resultados de mean() y mean.default() con 10000 observaciones, en vez de con
 100? Usar system.time().</li>

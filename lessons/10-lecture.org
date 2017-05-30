@@ -1,0 +1,271 @@
+#    -*- mode: org -*-
+#+TITLE: R 2017
+#+DATE: 30/05/2017
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+
+#+OPTIONS: author:nil date:t email:nil
+#+OPTIONS: ^:nil _:nil
+#+STARTUP: showall expand
+#+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: fast
+#+REVEAL_THEME: my_simple
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+REVEAL_HLEVEL: 1
+
+# # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
+# # (setq org-reveal-title-slide 'auto)
+# # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+
+
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
+--- 
+layout: default 
+title: Clase 10
+--- 
+#+end_src 
+#+results:
+
+# #+begin_html
+# <img src="right-fail.png">
+# #+end_html
+
+# #+ATTR_REVEAL: :frag roll-in
+
+* Repaso de la clase anterior
+** Vectorización
+Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
+
+1. Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.
+2. Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
+   rápidos.
+
+#+BEGIN_SRC R 
+# sin vectorización
+> for (i in 1:length(x)) z[i] <- x[i] + y[i]
+
+# con vectorización
+> z <- x + y
+#+END_SRC
+
+- Ref: [[http://adv-r.had.co.nz/Profiling.html#vectorise][Vectorise from Advanced R]]
+** Funcionales - Familia *apply()
+
+- *lapply()*: LLama a una función especificada en cada componente de una lista y devuelve otra lista
+- *sapply()*: En _algunos_ casos, la lista que devuelve lapply() puede ser simplificada a un vector o
+  a una matriz. 
+- *apply()*: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.
+- *tapply()*: para aplicar funciones a vectores con factores
+
+Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
+
+Ref: ver también el [[https://www.rdocumentation.org/packages/plyr/versions/1.8.4][paquete plyr]], [[http://stat545.com/block013_plyr-ddply.html][esta web]] y [[http://www.jstatsoft.org/v40/i01/][este paper]]
+* modo interactivo: source() y R CMD BATCH
+
+#+BEGIN_SRC R 
+##En un editor de texto creamos el script z.R
+pdf("xh.pdf")  # configuramos un archivo de salido
+hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
+dev.off()  # cerramos el archivo de salida
+
+## En el terminal:
+R CMD BATCH z.R
+
+## En R:
+source("z.R")
+#+END_SRC
+
+- Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
+  encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "dos =", 4, sep=" "))
+** Workflow científico
+- trabajar con scripts permite 'mantener' nuestro proceso científico
+  - el trabajo pasa a ser gradual, mejorando a cada vez
+- modularizar nuestros procesos! Scripts de scripts
+  - nos da flexibilidad y claridad 
+  - permite separar 'físicamente' procesos computacionales diferentes
+  - permite reciclar código!
+
+Ejemplo: hago freaking_good_data_analysis.R, que contiene:
+#+BEGIN_SRC R 
+source("0-input-data.R")
+source("1-clean-data.R")
+source("2-parse-data.R")
+source("3-graph-data.R")
+#+END_SRC
+ 
+* R project y CRAN
+[[https://www.r-project.org/][The R Project for Statistical Computing]]
+
+[[https://cran.r-project.org/][The Comprehensive R Archive Network]]
+
+- El proyecto R mantiene el código, [[https://cran.r-project.org/manuals.html][la documentación]], y la comunidad, entre otras cosas
+- CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
+  idénticas de R. De acá se baja R y los [[https://cran.r-project.org/web/packages/available_packages_by_date.html][paquetes aceptados oficialmente]]
+- CRAN tiene [[https://cran.r-project.org/web/views/][Task Views]], páginas web que nuclean paquetes por temas
+
+* Estadística
+** Estadística descriptiva
+Una manera de hacer estadística descriptiva es con sapply:
+#+BEGIN_SRC R 
+ sapply(mydata, mean, na.rm=TRUE) 
+#+END_SRC
+(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().
+
+Tenemos también group_by() + summarise() con las mismas funciones básicas.
+** Distribuciones
+En general R usa la siguiente convención:
+
+- dDIST(x, ...) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+  valor x
+- pDIST(x, ...) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+  valor menor a x (mayor si usamos lower.tail=F)  
+- rDIST(n, ...) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
+- qDIST(p, ...) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+  lower.tail=F, devuelve 1 - el percentil p.
+
+#+BEGIN_EXPORT html
+<img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
+#+END_EXPORT
+
+Para ver las distribuciones disponibles, ver el [[https://cran.r-project.org/web/views/Distributions.html][task view de distribuciones]]
+*** Distribución Normal
+Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
+
+#+BEGIN_SRC R 
+library(ggplot2)
+set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
+x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
+f <- dnorm(x) # normal con media 0 y sd 1 
+ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
+#+END_SRC
+*** Otras distribuciones
+Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
+de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
+
+#+BEGIN_SRC R 
+x <- rbinom(100000,5,0.5)
+mean(x)
+# [1] 2.5004
+
+mean(x >= 4)
+# [1] 0.18829
+#+END_SRC
+** Modelado estadístico 
+*** Regresión lineal (lm)
+Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.
+
+1. Propongo una determinada relación de variables
+2. Calculo coeficientes del modelo
+3. Compruebo que tan bien se ajusta el modelo a nuevas observaciones
+
+#+BEGIN_SRC R 
+y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
+## b[i] son los coeficientes o betas
+#+END_SRC
+
+*** Ejemplo con datos de 2011 US Census PUMS
+
+Bajar los datos de [[https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData][acá]].
+
+#+BEGIN_SRC R 
+## hacemos la regresión:
+load("psub.RData")
+dtrain <- subset(psub, ORIGRANDGROUP >= 500)
+dtest <- subset(psub, ORIGRANDGROUP < 500)
+model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest$predLogPINCP <- predict(model,newdata=dtest) 
+dtrain$predLogPINCP <- predict(model,newdata=dtrain)
+
+## resultados:
+summary(model)
+
+## graficamos:
+library(ggplot2)
+ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
+geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
+geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
+scale_x_continuous(limits=c(4,5)) +
+scale_y_continuous(limits=c(3.5,5.5))
+
+## residuos:
+ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
+geom_point(alpha=0.2,color="black") +
+geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
+
+#+END_SRC
+*** Regresión lineal generalizada (glm)
+
+Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones. 
+
+#+BEGIN_SRC R 
+## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
+#+END_SRC
+
+Ejemplito: Regresión logística, para variables categóricas.
+
+#+BEGIN_SRC R 
+# F es un factor binario
+# x1, x2 y x3 son predictores continuos 
+fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
+
+#+END_SRC
+** COMMENT Series temporales
+https://cran.r-project.org/web/views/TimeSeries.html
+** Estadística avanzada - material infinito
+- [[https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html][Paquete stats]]
+- [[https://cran.r-project.org/web/views/Distributions.html][CRAN view de distribuciones]]
+- [[https://www.stats.ox.ac.uk/pub/MASS4/][Modern Applied Statistics with S. Fourth Edition]] - [[https://cran.r-project.org/web/packages/MASS/index.html][(MASS book)]]
+- [[http://statweb.stanford.edu/~tibs/ElemStatLearn/][The elements of statistical learning]] - [[https://cran.r-project.org/web/packages/ElemStatLearn/index.html][(ElemStatLearn book)]]
+
+* Práctica 10
+1. Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
+   5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+   pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+   figura (o sea, que queden dos histogramas y una curva). Usar el argumento /alpha/ para poder
+   distinguir los histogramas.
+2. En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
+   función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
+   una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
+   en otro gráfico.
+
+** COMMENT Funciones matemáticas básicas
+#+BEGIN_SRC R 
+
+#+END_SRC
+** COMMENT Algebra Lineal
+- vector/matrix properties
+   - 8.4 Linear Algebra Operations on Vectors and Matrices
+   - appendix E Matrix Algebra in R in "R in Action"
+- diagonalization etc.
+- bigalgebra::bigalgebra-package?
+** COMMENT Ecuaciones diferenciales
+- https://cran.r-project.org/web/views/DifferentialEquations.html
+- libro pdf en #bibliografia
