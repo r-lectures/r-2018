@@ -38,7 +38,7 @@ procesar (por ejemplo transformar o extraer información de) cada elemento de es
 Ref: ver también el [paquete plyr](https://www.rdocumentation.org/packages/plyr/versions/1.8.4), [esta web](http://stat545.com/block013_plyr-ddply.html) y [este paper](http://www.jstatsoft.org/v40/i01/)
 
 
-# modo interactivo: source() y R CMD BATCH
+# modo interactivo vs. source() y R CMD BATCH
 
     ##En un editor de texto creamos el script z.R
     pdf("xh.pdf")  # configuramos un archivo de salido
@@ -139,78 +139,6 @@ de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
     # [1] 0.18829
 
 
-## Modelado estadístico
-
-
-### Regresión lineal (lm)
-
-Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
-parámetros para poder predecir.
-
-1.  Propongo una determinada relación de variables
-2.  Calculo coeficientes del modelo
-3.  Compruebo que tan bien se ajusta el modelo a nuevas observaciones
-
-    y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
-    ## b[i] son los coeficientes o betas
-
-
-### Ejemplo con datos de 2011 US Census PUMS
-
-Bajar los datos de [acá](https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData).
-
-    ## hacemos la regresión:
-    load("psub.RData")
-    dtrain <- subset(psub, ORIGRANDGROUP >= 500)
-    dtest <- subset(psub, ORIGRANDGROUP < 500)
-    model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
-    dtest$predLogPINCP <- predict(model,newdata=dtest) 
-    dtrain$predLogPINCP <- predict(model,newdata=dtrain)
-    
-    ## resultados:
-    summary(model)
-    
-    ## graficamos:
-    library(ggplot2)
-    ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
-    geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
-    geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
-    scale_x_continuous(limits=c(4,5)) +
-    scale_y_continuous(limits=c(3.5,5.5))
-    
-    ## residuos:
-    ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
-    geom_point(alpha=0.2,color="black") +
-    geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
-
-
-### Regresión lineal generalizada (glm)
-
-Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
-"normales". Los modelos lineales generalizados relajan estas suposiciones. 
-
-    ## expresión general
-    glm(formula, family=familytype(link=linkfunction), data=)
-
-Ejemplito: Regresión logística, para variables categóricas.
-
-    # F es un factor binario
-    # x1, x2 y x3 son predictores continuos 
-    fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
-    summary(fit) # resultados
-    exp(coef(fit)) # coeficientes
-    predict(fit, type="response") # predicciones
-    residuals(fit, type="deviance") # residuos 
-
-
-## Estadística avanzada - material infinito
-
--   [Paquete stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html)
--   [CRAN view de distribuciones](https://cran.r-project.org/web/views/Distributions.html)
--   [Modern Applied Statistics with S. Fourth Edition](https://www.stats.ox.ac.uk/pub/MASS4/) - [(MASS book)](https://cran.r-project.org/web/packages/MASS/index.html)
--   [The elements of statistical learning](http://statweb.stanford.edu/~tibs/ElemStatLearn/) - [(ElemStatLearn book)](https://cran.r-project.org/web/packages/ElemStatLearn/index.html)
-
-
 # Práctica 10
 
 1.  Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
@@ -218,8 +146,15 @@ Ejemplito: Regresión logística, para variables categóricas.
     pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
     figura (o sea, que queden dos histogramas y una curva). Usar el argumento *alpha* para poder
     distinguir los histogramas.
-2.  En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
-    función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
-    una línea) sobre el scatterplot (usar geom\_hex() para este último). Luego graficar los residuos
-    en otro gráfico.
+2.  i)  Bajarse el Quijote de Project Gutenberg en formato "Plain Text UTF-8" (o sea, formato texto o
+    ASCII)
+    ii) Meter el libro entero en un vector character, o sea, una palabra por en cada elemento del vector. Tip: stringr::str\_split 
+    iii) Usar group\_by y summarise para contar cuantas veces aparece cada palabra. Tip: buenos
+    nombres para las columnas + función n(). Cuál es la palabra que más aparece? Cuantas veces
+    aparece "quijote" y en que posición (o sea, en que ranking)?
+    iv) Hacer un plot del ranking de la palabra (es decir, 1, 2, 3, etc) vs la cantidad de veces que
+    aparece. Qué se ve? Tip: ambos ejes logarítmicos
+    v) Qué función de distribución describiría bien lo que encontramos? Una normal? Probar distintas
+    posibilidades (usando la familia dDIST()) sobre los datos para ver si podemos acercarnos. Tip:
+    buscar "quijote distribution" en Google Scholar.
 

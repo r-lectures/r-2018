@@ -27,66 +27,16 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>30/05/2017</h3>
+<section id="sec-title-slide"><h1>R 2017</h1><h3>31/05/2017</h3>
 </section>
 
 <section>
-<section id="slide-org7e31f72">
-<h2 id="org7e31f72">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org7e31f72">
+<section id="slide-org2213c99">
+<h2 id="org2213c99">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org2213c99">
 </div></section>
-<section id="slide-org87b7a51">
-<h3 id="org87b7a51">Vectorización</h3>
-<p>
-Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
-</p>
-
-<ol>
-<li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
-<li>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
-rápidos.</li>
-
-</ol>
-
-<div class="org-src-container">
-
-<pre><code class="R" ># sin vectorización
-> for (i in 1:length(x)) z[i] <- x[i] + y[i]
-
-# con vectorización
-> z <- x + y
-</code></pre>
-</div>
-
-<ul>
-<li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
-
-</ul>
-</section>
-<section id="slide-org8538262">
-<h3 id="org8538262">Funcionales - Familia *apply()</h3>
-<ul>
-<li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
-<li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
-a una matriz.</li>
-<li><b>apply()</b>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
-<li><b>tapply()</b>: para aplicar funciones a vectores con factores</li>
-
-</ul>
-
-<p>
-Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
-procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
-</p>
-
-<p>
-Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
-</p>
-</section>
-</section>
-<section>
-<section id="slide-org41dcd74">
-<h2 id="org41dcd74">modo interactivo: source() y R CMD BATCH</h2>
+<section id="slide-org504d374">
+<h3 id="org504d374">modo interactivo vs. source() y R CMD BATCH</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >##En un editor de texto creamos el script z.R
@@ -108,8 +58,8 @@ encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "d
 
 </ul>
 </section>
-<section id="slide-org1d47c0f">
-<h3 id="org1d47c0f">Workflow científico</h3>
+<section id="slide-org4e45bd3">
+<h4 id="org4e45bd3">Workflow científico</h4>
 <ul>
 <li>trabajar con scripts permite 'mantener' nuestro proceso científico
 <ul>
@@ -139,10 +89,8 @@ source("3-graph-data.R")
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-org336cb7f">
-<h2 id="org336cb7f">R project y CRAN</h2>
+<section id="slide-org60ca389">
+<h3 id="org60ca389">R project y CRAN</h3>
 <p>
 <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
 </p>
@@ -160,14 +108,8 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 </ul>
 
 </section>
-</section>
-<section>
-<section id="slide-org9df7ea6">
-<h2 id="org9df7ea6">Estadística</h2>
-<div class="outline-text-2" id="text-org9df7ea6">
-</div></section>
-<section id="slide-org4f6cb9b">
-<h3 id="org4f6cb9b">Estadística descriptiva</h3>
+<section id="slide-org097b6ea">
+<h3 id="org097b6ea">Estadística descriptiva</h3>
 <p>
 Una manera de hacer estadística descriptiva es con sapply:
 </p>
@@ -184,8 +126,8 @@ Una manera de hacer estadística descriptiva es con sapply:
 Tenemos también group_by() + summarise() con las mismas funciones básicas.
 </p>
 </section>
-<section id="slide-org8b16410">
-<h3 id="org8b16410">Distribuciones</h3>
+<section id="slide-org4910916">
+<h3 id="org4910916">Distribuciones</h3>
 <p>
 En general R usa la siguiente convención:
 </p>
@@ -207,46 +149,14 @@ lower.tail=F, devuelve 1 - el percentil p.</li>
 Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
 </p>
 </section>
-<section id="slide-orgc3bb29a">
-<h4 id="orgc3bb29a">Distribución Normal</h4>
-<p>
-Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
-</p>
-
-<div class="org-src-container">
-
-<pre><code class="R" >library(ggplot2)
-set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
-x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
-f <- dnorm(x) # normal con media 0 y sd 1 
-ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
-</code></pre>
-</div>
 </section>
-<section id="slide-orgab0fe73">
-<h4 id="orgab0fe73">Otras distribuciones</h4>
-<p>
-Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
-de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
-</p>
-
-<div class="org-src-container">
-
-<pre><code class="R" >x <- rbinom(100000,5,0.5)
-mean(x)
-# [1] 2.5004
-
-mean(x >= 4)
-# [1] 0.18829
-</code></pre>
-</div>
-</section>
-<section id="slide-org9aa3bef">
-<h3 id="org9aa3bef">Modelado estadístico</h3>
-<div class="outline-text-3" id="text-org9aa3bef">
+<section>
+<section id="slide-orgc78c013">
+<h2 id="orgc78c013">Modelado estadístico</h2>
+<div class="outline-text-2" id="text-orgc78c013">
 </div></section>
-<section id="slide-orga692d77">
-<h4 id="orga692d77">Regresión lineal (lm)</h4>
+<section id="slide-org33ebf09">
+<h4 id="org33ebf09">Regresión lineal (lm)</h4>
 <p>
 Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
 parámetros para poder predecir.
@@ -267,8 +177,8 @@ parámetros para poder predecir.
 </div>
 
 </section>
-<section id="slide-org0d1d291">
-<h4 id="org0d1d291">Ejemplo con datos de 2011 US Census PUMS</h4>
+<section id="slide-orgc2eb1d6">
+<h4 id="orgc2eb1d6">Ejemplo con datos de 2011 US Census PUMS</h4>
 <p>
 Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
 </p>
@@ -302,8 +212,8 @@ geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black
 </code></pre>
 </div>
 </section>
-<section id="slide-org1b62c38">
-<h4 id="org1b62c38">Regresión lineal generalizada (glm)</h4>
+<section id="slide-org5474bcc">
+<h4 id="org5474bcc">Regresión lineal generalizada (glm)</h4>
 <p>
 Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
 "normales". Los modelos lineales generalizados relajan estas suposiciones. 
@@ -333,8 +243,10 @@ residuals(fit, type="deviance") # residuos
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf0500da">
-<h3 id="orgf0500da">Estadística avanzada - material infinito</h3>
+</section>
+<section>
+<section id="slide-orgc4e0372">
+<h2 id="orgc4e0372">Estadística avanzada - material infinito</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
 <li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
@@ -342,18 +254,55 @@ residuals(fit, type="deviance") # residuos
 <li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
 
 </ul>
+</section>
+</section>
+<section>
+<section id="slide-orgd4740ea">
+<h2 id="orgd4740ea">Matemática</h2>
+<div class="outline-text-2" id="text-orgd4740ea">
+</div></section>
+<section id="slide-org0b8a06a">
+<h3 id="org0b8a06a">Funciones matemáticas básicas</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >
+</code></pre>
+</div>
+</section>
+<section id="slide-org70a46c8">
+<h3 id="org70a46c8">Algebra Lineal</h3>
+<ul>
+<li>vector/matrix properties
+<ul>
+<li>8.4 Linear Algebra Operations on Vectors and Matrices</li>
+<li>appendix E Matrix Algebra in R in "R in Action"</li>
+
+</ul></li>
+<li>diagonalization etc.</li>
+<li>bigalgebra::bigalgebra-package?</li>
+
+</ul>
+</section>
+<section id="slide-orgbc4f0eb">
+<h3 id="orgbc4f0eb">Otros paquetes de interés</h3>
+<ul>
+<li>Ecuaciones diferenciales
+<a href="https://cran.r-project.org/web/views/DifferentialEquations.html">https://cran.r-project.org/web/views/DifferentialEquations.html</a>
+<ul>
+<li>libro pdf en #bibliografia</li>
+
+</ul></li>
+<li>Series temporales
+<a href="https://cran.r-project.org/web/views/TimeSeries.html">https://cran.r-project.org/web/views/TimeSeries.html</a></li>
+
+</ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org1b013eb">
-<h2 id="org1b013eb">Práctica 10</h2>
+<section id="slide-orgbd3f3fa">
+<h2 id="orgbd3f3fa">Práctica 11</h2>
 <ol>
-<li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
-5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
-pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
-figura (o sea, que queden dos histogramas y una curva). Usar el argumento <i>alpha</i> para poder
-distinguir los histogramas.</li>
 <li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
 función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
 una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos

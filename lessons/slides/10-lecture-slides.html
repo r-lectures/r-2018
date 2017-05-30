@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-org7e31f72">
-<h2 id="org7e31f72">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org7e31f72">
+<section id="slide-orgafd8dfe">
+<h2 id="orgafd8dfe">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgafd8dfe">
 </div></section>
-<section id="slide-org87b7a51">
-<h3 id="org87b7a51">Vectorización</h3>
+<section id="slide-org0aa898f">
+<h3 id="org0aa898f">Vectorización</h3>
 <p>
 Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 </p>
@@ -63,8 +63,8 @@ rápidos.</li>
 
 </ul>
 </section>
-<section id="slide-org8538262">
-<h3 id="org8538262">Funcionales - Familia *apply()</h3>
+<section id="slide-orgff1274c">
+<h3 id="orgff1274c">Funcionales - Familia *apply()</h3>
 <ul>
 <li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
 <li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
@@ -85,8 +85,8 @@ Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versi
 </section>
 </section>
 <section>
-<section id="slide-org41dcd74">
-<h2 id="org41dcd74">modo interactivo: source() y R CMD BATCH</h2>
+<section id="slide-org49e92bf">
+<h2 id="org49e92bf">modo interactivo vs. source() y R CMD BATCH</h2>
 <div class="org-src-container">
 
 <pre><code class="R" >##En un editor de texto creamos el script z.R
@@ -108,8 +108,8 @@ encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "d
 
 </ul>
 </section>
-<section id="slide-org1d47c0f">
-<h3 id="org1d47c0f">Workflow científico</h3>
+<section id="slide-orgc2fadff">
+<h3 id="orgc2fadff">Workflow científico</h3>
 <ul>
 <li>trabajar con scripts permite 'mantener' nuestro proceso científico
 <ul>
@@ -141,8 +141,8 @@ source("3-graph-data.R")
 </section>
 </section>
 <section>
-<section id="slide-org336cb7f">
-<h2 id="org336cb7f">R project y CRAN</h2>
+<section id="slide-orgf4e9780">
+<h2 id="orgf4e9780">R project y CRAN</h2>
 <p>
 <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
 </p>
@@ -162,12 +162,12 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 </section>
 </section>
 <section>
-<section id="slide-org9df7ea6">
-<h2 id="org9df7ea6">Estadística</h2>
-<div class="outline-text-2" id="text-org9df7ea6">
+<section id="slide-orgb37218c">
+<h2 id="orgb37218c">Estadística</h2>
+<div class="outline-text-2" id="text-orgb37218c">
 </div></section>
-<section id="slide-org4f6cb9b">
-<h3 id="org4f6cb9b">Estadística descriptiva</h3>
+<section id="slide-orgf507f4d">
+<h3 id="orgf507f4d">Estadística descriptiva</h3>
 <p>
 Una manera de hacer estadística descriptiva es con sapply:
 </p>
@@ -184,8 +184,8 @@ Una manera de hacer estadística descriptiva es con sapply:
 Tenemos también group_by() + summarise() con las mismas funciones básicas.
 </p>
 </section>
-<section id="slide-org8b16410">
-<h3 id="org8b16410">Distribuciones</h3>
+<section id="slide-org7a045fa">
+<h3 id="org7a045fa">Distribuciones</h3>
 <p>
 En general R usa la siguiente convención:
 </p>
@@ -207,8 +207,8 @@ lower.tail=F, devuelve 1 - el percentil p.</li>
 Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
 </p>
 </section>
-<section id="slide-orgc3bb29a">
-<h4 id="orgc3bb29a">Distribución Normal</h4>
+<section id="slide-org9342c35">
+<h4 id="org9342c35">Distribución Normal</h4>
 <p>
 Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
 </p>
@@ -223,8 +223,8 @@ ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
 </code></pre>
 </div>
 </section>
-<section id="slide-orgab0fe73">
-<h4 id="orgab0fe73">Otras distribuciones</h4>
+<section id="slide-org13a8d6c">
+<h4 id="org13a8d6c">Otras distribuciones</h4>
 <p>
 Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
 de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
@@ -241,123 +241,27 @@ mean(x >= 4)
 </code></pre>
 </div>
 </section>
-<section id="slide-org9aa3bef">
-<h3 id="org9aa3bef">Modelado estadístico</h3>
-<div class="outline-text-3" id="text-org9aa3bef">
-</div></section>
-<section id="slide-orga692d77">
-<h4 id="orga692d77">Regresión lineal (lm)</h4>
-<p>
-Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
-parámetros para poder predecir.
-</p>
-
-<ol>
-<li>Propongo una determinada relación de variables</li>
-<li>Calculo coeficientes del modelo</li>
-<li>Compruebo que tan bien se ajusta el modelo a nuevas observaciones</li>
-
-</ol>
-
-<div class="org-src-container">
-
-<pre><code class="R" >y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
-## b[i] son los coeficientes o betas
-</code></pre>
-</div>
-
-</section>
-<section id="slide-org0d1d291">
-<h4 id="org0d1d291">Ejemplo con datos de 2011 US Census PUMS</h4>
-<p>
-Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
-</p>
-
-<div class="org-src-container">
-
-<pre><code class="R" >## hacemos la regresión:
-load("psub.RData")
-dtrain <- subset(psub, ORIGRANDGROUP >= 500)
-dtest <- subset(psub, ORIGRANDGROUP < 500)
-model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
-dtest$predLogPINCP <- predict(model,newdata=dtest) 
-dtrain$predLogPINCP <- predict(model,newdata=dtrain)
-
-## resultados:
-summary(model)
-
-## graficamos:
-library(ggplot2)
-ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
-geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
-geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
-scale_x_continuous(limits=c(4,5)) +
-scale_y_continuous(limits=c(3.5,5.5))
-
-## residuos:
-ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
-geom_point(alpha=0.2,color="black") +
-geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
-
-</code></pre>
-</div>
-</section>
-<section id="slide-org1b62c38">
-<h4 id="org1b62c38">Regresión lineal generalizada (glm)</h4>
-<p>
-Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
-"normales". Los modelos lineales generalizados relajan estas suposiciones. 
-</p>
-
-<div class="org-src-container">
-
-<pre><code class="R" >## expresión general
-glm(formula, family=familytype(link=linkfunction), data=)
-</code></pre>
-</div>
-
-<p>
-Ejemplito: Regresión logística, para variables categóricas.
-</p>
-
-<div class="org-src-container">
-
-<pre><code class="R" ># F es un factor binario
-# x1, x2 y x3 son predictores continuos 
-fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
-summary(fit) # resultados
-exp(coef(fit)) # coeficientes
-predict(fit, type="response") # predicciones
-residuals(fit, type="deviance") # residuos 
-
-</code></pre>
-</div>
-</section>
-<section id="slide-orgf0500da">
-<h3 id="orgf0500da">Estadística avanzada - material infinito</h3>
-<ul>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
-<li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
-<li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
-<li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
-
-</ul>
-
-</section>
 </section>
 <section>
-<section id="slide-org1b013eb">
-<h2 id="org1b013eb">Práctica 10</h2>
+<section id="slide-org8132707">
+<h2 id="org8132707">Práctica 10</h2>
 <ol>
 <li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
 5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
 pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
 figura (o sea, que queden dos histogramas y una curva). Usar el argumento <i>alpha</i> para poder
 distinguir los histogramas.</li>
-<li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
-función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
-una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
-en otro gráfico.</li>
+<li>i)  Bajarse el Quijote de Project Gutenberg en formato "Plain Text UTF-8" (o sea, formato texto o
+ASCII)
+ii) Meter el libro entero en un vector character, o sea, una palabra por en cada elemento del vector. Tip: stringr::str_split 
+iii) Usar group_by y summarise para contar cuantas veces aparece cada palabra. Tip: buenos
+nombres para las columnas + función n(). Cuál es la palabra que más aparece? Cuantas veces
+aparece "quijote" y en que posición (o sea, en que ranking)?
+iv) Hacer un plot del ranking de la palabra (es decir, 1, 2, 3, etc) vs la cantidad de veces que
+aparece. Qué se ve? Tip: ambos ejes logarítmicos
+v) Qué función de distribución describiría bien lo que encontramos? Una normal? Probar distintas
+posibilidades (usando la familia dDIST()) sobre los datos para ver si podemos acercarnos. Tip:
+buscar "quijote distribution" en Google Scholar.</li>
 
 </ol>
 </section>
