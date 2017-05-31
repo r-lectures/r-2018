@@ -194,7 +194,7 @@ residuals(fit, type="deviance") # residuos
 - [[https://cran.r-project.org/web/views/Distributions.html][CRAN view de distribuciones]]
 - [[https://www.stats.ox.ac.uk/pub/MASS4/][Modern Applied Statistics with S. Fourth Edition]] - [[https://cran.r-project.org/web/packages/MASS/index.html][(MASS book)]]
 - [[http://statweb.stanford.edu/~tibs/ElemStatLearn/][The elements of statistical learning]] - [[https://cran.r-project.org/web/packages/ElemStatLearn/index.html][(ElemStatLearn book)]]
-* Matemática
+* Matemáticas
 ** Funciones matemáticas básicas
 #+BEGIN_SRC R 
 - exp(): Exponential function, base e
