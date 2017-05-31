@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Clase 10</title>
+    <title>Clase 11</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/lessons/10-lecture.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/11-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -162,48 +162,7 @@
             <div class="col-md-9">
                 <h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
 
-<h2 id="vectorización">Vectorización</h2>
-
-<p>Se trata de operaciones que aplican a un vector, pero elemento por elemento.</p>
-
-<ol>
-  <li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
-  <li>
-    <p>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
-rápidos.</p>
-
-    <h1 id="sin-vectorización">sin vectorización</h1>
-    <blockquote>
-      <p>for (i in 1:length(x)) z[i] &lt;- x[i] + y[i]</p>
-    </blockquote>
-
-    <h1 id="con-vectorización">con vectorización</h1>
-    <blockquote>
-      <p>z &lt;- x + y</p>
-    </blockquote>
-  </li>
-</ol>
-
-<ul>
-  <li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
-</ul>
-
-<h2 id="funcionales---familia-apply">Funcionales - Familia *apply()</h2>
-
-<ul>
-  <li><strong>lapply()</strong>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
-  <li><strong>sapply()</strong>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
-a una matriz.</li>
-  <li><strong>apply()</strong>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
-  <li><strong>tapply()</strong>: para aplicar funciones a vectores con factores</li>
-</ul>
-
-<p>Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a “cómo hago para
-procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?”</p>
-
-<p>Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a></p>
-
-<h1 id="modo-interactivo-vs-source-y-r-cmd-batch">modo interactivo vs. source() y R CMD BATCH</h1>
+<h2 id="modo-interactivo-vs-source-y-r-cmd-batch">modo interactivo vs. source() y R CMD BATCH</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>##En un editor de texto creamos el script z.R
 pdf("xh.pdf")  # configuramos un archivo de salido
@@ -219,8 +178,7 @@ source("z.R")
 </div>
 
 <ul>
-  <li>Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
-encadenar texto con variables usar paste(). Por ej. print(paste(“dos”, “mas”, “dos <code class="highlighter-rouge">", 4, sep</code>” “))</li>
+  <li>Acordarse que para imprimir en pantalla desde un script, tienen que usar print().</li>
 </ul>
 
 <h2 id="workflow-científico">Workflow científico</h2>
@@ -249,7 +207,7 @@ source("3-graph-data.R")
 </code></pre>
 </div>
 
-<h1 id="r-project-y-cran">R project y CRAN</h1>
+<h2 id="r-project-y-cran">R project y CRAN</h2>
 
 <p><a href="https://www.r-project.org/">The R Project for Statistical Computing</a></p>
 
@@ -261,8 +219,6 @@ source("3-graph-data.R")
 idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">paquetes aceptados oficialmente</a></li>
   <li>CRAN tiene <a href="https://cran.r-project.org/web/views/">Task Views</a>, páginas web que nuclean paquetes por temas</li>
 </ul>
-
-<h1 id="estadística">Estadística</h1>
 
 <h2 id="estadística-descriptiva">Estadística descriptiva</h2>
 
@@ -294,61 +250,227 @@ lower.tail=F, devuelve 1 - el percentil p.</li>
 
 <p>Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a></p>
 
-<h3 id="distribución-normal">Distribución Normal</h3>
+<h1 id="modelado-estadístico">Modelado estadístico</h1>
 
-<p>Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.</p>
+<p>Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o <em>variable respuesta</em> y otras variables independientes o
+<em>variables explicativas</em>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>library(ggplot2)
-set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
-x &lt;- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
-f &lt;- dnorm(x) # normal con media 0 y sd 1 
-ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
-</code></pre>
-</div>
+<p>En R la función lm() se usa para regresión lineal (<em>linear models</em>) y glm() para <em>generalized linear models</em>.</p>
 
-<h3 id="otras-distribuciones">Otras distribuciones</h3>
+<h3 id="regresión-lineal-lm">Regresión lineal (lm)</h3>
 
-<p>Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
-de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- rbinom(100000,5,0.5)
-mean(x)
-# [1] 2.5004
-
-mean(x &gt;= 4)
-# [1] 0.18829
-</code></pre>
-</div>
-
-<h1 id="práctica-10">Práctica 10</h1>
+<p>Construimos un “modelo” (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.</p>
 
 <ol>
-  <li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
-5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
-pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
-figura (o sea, que queden dos histogramas y una curva). Usar el argumento <em>alpha</em> para poder
-distinguir los histogramas.</li>
+  <li>Propongo una determinada relación de variables</li>
+  <li>Calculo coeficientes del modelo</li>
+  <li>
+    <p>Compruebo que tan bien se ajusta el modelo a nuevas observaciones</p>
+
+    <p>y[i] ~ f(x[i,]) = b[1] x[i,1] + … b[n] x[i,n]</p>
+    <h2 id="bi-son-los-coeficientes-o-betas">b[i] son los coeficientes o betas</h2>
+  </li>
 </ol>
 
-<h2 id="práctica-10-bis">Práctica 10 bis</h2>
+<h3 id="ejemplo-con-datos-de-2011-us-census-pums">Ejemplo con datos de 2011 US Census PUMS</h3>
+
+<p>Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## hacemos la regresión:
+load("psub.RData")
+dtrain &lt;- subset(psub, ORIGRANDGROUP &gt;= 500)
+dtest &lt;- subset(psub, ORIGRANDGROUP &lt; 500)
+model &lt;- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest$predLogPINCP &lt;- predict(model,newdata=dtest) 
+
+## resultados:
+summary(model)
+
+## graficamos:
+library(ggplot2)
+ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
+geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
+geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
+scale_x_continuous(limits=c(4,5)) +
+scale_y_continuous(limits=c(3.5,5.5))
+
+## residuos:
+ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
+geom_point(alpha=0.2,color="black") +
+geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
+</code></pre>
+</div>
+
+<h3 id="regresión-lineal-generalizada-glm">Regresión lineal generalizada (glm)</h3>
+
+<p>Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
+“normales”. Los modelos lineales generalizados relajan estas suposiciones.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
+</code></pre>
+</div>
+
+<p>Ejemplito: Regresión logística, para variables categóricas.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># F es un factor binario
+# x1, x2 y x3 son predictores continuos 
+fit &lt;- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
+</code></pre>
+</div>
+
+<h1 id="estadística-avanzada---material-infinito">Estadística avanzada - material infinito</h1>
+
+<ul>
+  <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
+  <li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
+  <li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
+  <li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
+</ul>
+
+<h1 id="matemática">Matemática</h1>
+
+<h2 id="funciones-matemáticas-básicas">Funciones matemáticas básicas</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- exp(): Exponential function, base e
+- log(): Natural logarithm
+- log10(): Logarithm base 10
+- sqrt(): Square root
+- abs(): Absolute value
+- sin(), cos(), and so on: Trig functions
+- min() and max(): Minimum value and maximum value within a vector
+- which.min() and which.max(): Index of the minimal element and maximal element of a vector
+- pmin() and pmax(): Element-wise minima and maxima of several vectors
+- sum() and prod(): Sum and product of the elements of a vector
+- cumsum() and cumprod(): Cumulative sum and product of the elements of a vector
+- round(), floor(), and ceiling(): Round to the closest integer, to the clos- est integer below, and to the closest integer above
+- factorial(): Factorial function
+
+&gt; x &lt;- c(12,5,13)
+&gt; cumsum(x)
+[1] 12 17 30
+&gt; cumprod(x)
+[1] 12 60 780
+</code></pre>
+</div>
+
+<h2 id="cálculo">Cálculo</h2>
+
+<p>R tiene capacidades simples de hacer cuentas analíticas:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>D(expression(exp(x^2)),"x")  # derivative
+exp(x^2) * (2 * x)
+&gt; integrate(function(x) x^2,0,1)
+0.3333333 with absolute error &lt; 3.7e-15
+</code></pre>
+</div>
+
+<h2 id="algebra-lineal">Algebra Lineal</h2>
+
+<h3 id="multiplicación-de-matrices">multiplicación de matrices</h3>
+
+<p>Directamente con el operador %*%</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;a
+    [,1] [,2]
+[1,]   1    2 
+[2,]   3    4 
+&gt;b
+     [,1] [,2]
+[1,]    1   -1
+[2,]    0    1
+&gt; a %*% b
+     [,1] [,2]
+[1,]    1    1
+[2,]    3    1
+</code></pre>
+</div>
+
+<h3 id="sistema-de-ecuaciones-lineales-o-invertir-una-matriz">Sistema de ecuaciones lineales (o invertir una matriz)</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a &lt;- matrix(c(1,1,-1,1),nrow=2,ncol=2)
+&gt; b &lt;- c(2,4)
+&gt; solve(a,b)
+[1] 3 1
+&gt; solve(a) ## sin el segundo argumento, invierte la matriz
+  [,1] [,2]
+[1,]  0.5  0.5
+[2,] -0.5  0.5
+</code></pre>
+</div>
+
+<h3 id="autovectores-y-autovalores">Autovectores y autovalores</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a
+     [,1] [,2]
+[1,]    1   -1
+[2,]    1    1
+&gt; e &lt;- eigen(a)
+$values
+[1] 1+1i 1-1i
+
+$vectors
+		     [,1]                 [,2]
+[1,] 0.7071068+0.0000000i 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i 0.0000000+0.7071068i
+&gt; eigenvector1 &lt;- e$vectors[,1]
+&gt; eigenvalue1 &lt;-  e$values[1]
+&gt; a %*% eigenvector1 / eigenvalue1
+		     [,1]
+[1,] 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i
+&gt; 
+</code></pre>
+</div>
+
+<h3 id="otras-operaciones-posibles-son">Otras operaciones posibles son:</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- t(): Matrix transpose
+- qr(): QR decomposition
+- chol(): Cholesky decomposition
+- det(): Determinant
+- eigen(): Eigenvalues/eigenvectors
+- diag(): Extracts the diagonal of a square matrix
+- svd(A): Single value decomposition of A
+- ...
+</code></pre>
+</div>
+
+<h2 id="otros-paquetes-de-interés">Otros paquetes de interés</h2>
+
+<ul>
+  <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
+  <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
+    <ul>
+      <li>tienen también el libro “2012 - Book - Solving Differential Equations in R.pdf” en #bibliografia @slack</li>
+    </ul>
+  </li>
+  <li><a href="https://cran.r-project.org/web/views/TimeSeries.html">Series temporales</a></li>
+  <li><a href="https://cran.r-project.org/web/views/Optimization.html">Optimización y programación matemática</a></li>
+  <li>Aritmética de precisión múltiple con <a href="https://cran.r-project.org/web/packages/gmp/index.html">gmp</a></li>
+  <li>Paquete <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl</a>, una interface a la Biblioteca Científica GNU</li>
+  <li>Mil cosas más :D</li>
+</ul>
+
+<h1 id="práctica-11">Práctica 11</h1>
 
 <ol>
-  <li>
-    <p>i)  Bajarse el Quijote de <a href="http://www.gutenberg.org">“Project Gutenberg”</a> en formato texto.</p>
-
-    <p>ii) Meter el libro en un vector de tipo “character”, una palabra en cada elemento del
-vector. Tip: stringr::str_split(). Cuántas palabras hay en total? Cuántas únicas?</p>
-
-    <p>iii) Cuántas veces aparece cada palabra? Tip: dplyr + nombrar las columnas + n() o
-tally(). Cuál es la 1era palabra del ranking? Cuanto aparece “Quijote” y en que ranking?</p>
-
-    <p>iv) Hacer un plot del ranking vs. su frecuencia. Qué llama la atención? Tip: ambos ejes logarítmicos.</p>
-
-    <p>v) Qué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
-distintas distribuciones (con dDIST()) para aproximar los datos. Tip: poner “quijote
-distribution” en Google Scholar. Qué parámetro que controla la distribución es importante y
-cuando vale (intentar calcularlo con R)?</p>
-  </li>
+  <li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
+función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con
+una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
+en otro gráfico.</li>
+  <li>Si tengo dos vectores a y b del mismo largo, que obtengo al hacer sum(a * b)? Y sqrt(sum(a * a))?</li>
+  <li>En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
+tranquis. Uno de la primer mesa les dice a los de la segunda: “si se viene uno de uds. acá,
+entonces vamos a ser la misma cantidad en las dos mesas”. “Si”, le responden, “pero si se viene
+uno de uds. para acá, vamos a ser el doble acá que la de ustedes”. Escriban unas ecuaciones
+para resolver en R y saber cuántos pájaros había en cada mesa.</li>
 </ol>
 
 

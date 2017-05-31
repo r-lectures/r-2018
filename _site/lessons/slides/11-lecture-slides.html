@@ -27,66 +27,16 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>30/05/2017</h3>
+<section id="sec-title-slide"><h1>R 2017</h1><h3>31/05/2017</h3>
 </section>
 
 <section>
-<section id="slide-org7e31f72">
-<h2 id="org7e31f72">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org7e31f72">
+<section id="slide-org5f05991">
+<h2 id="org5f05991">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org5f05991">
 </div></section>
-<section id="slide-org87b7a51">
-<h3 id="org87b7a51">Vectorización</h3>
-<p>
-Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
-</p>
-
-<ol>
-<li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
-<li>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
-rápidos.</li>
-
-</ol>
-
-<div class="org-src-container">
-
-<pre><code class="R" ># sin vectorización
-> for (i in 1:length(x)) z[i] <- x[i] + y[i]
-
-# con vectorización
-> z <- x + y
-</code></pre>
-</div>
-
-<ul>
-<li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
-
-</ul>
-</section>
-<section id="slide-org8538262">
-<h3 id="org8538262">Funcionales - Familia *apply()</h3>
-<ul>
-<li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
-<li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
-a una matriz.</li>
-<li><b>apply()</b>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
-<li><b>tapply()</b>: para aplicar funciones a vectores con factores</li>
-
-</ul>
-
-<p>
-Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
-procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
-</p>
-
-<p>
-Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
-</p>
-</section>
-</section>
-<section>
-<section id="slide-org41dcd74">
-<h2 id="org41dcd74">modo interactivo: source() y R CMD BATCH</h2>
+<section id="slide-org4c9dc83">
+<h3 id="org4c9dc83">modo interactivo vs. source() y R CMD BATCH</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >##En un editor de texto creamos el script z.R
@@ -103,13 +53,12 @@ source("z.R")
 </div>
 
 <ul>
-<li>Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
-encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "dos <code>", 4, sep</code>" "))</li>
+<li>Acordarse que para imprimir en pantalla desde un script, tienen que usar print().</li>
 
 </ul>
 </section>
-<section id="slide-org1d47c0f">
-<h3 id="org1d47c0f">Workflow científico</h3>
+<section id="slide-org02b8fc0">
+<h3 id="org02b8fc0">Workflow científico</h3>
 <ul>
 <li>trabajar con scripts permite 'mantener' nuestro proceso científico
 <ul>
@@ -139,10 +88,8 @@ source("3-graph-data.R")
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-org336cb7f">
-<h2 id="org336cb7f">R project y CRAN</h2>
+<section id="slide-org538fc61">
+<h3 id="org538fc61">R project y CRAN</h3>
 <p>
 <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
 </p>
@@ -160,14 +107,8 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 </ul>
 
 </section>
-</section>
-<section>
-<section id="slide-org9df7ea6">
-<h2 id="org9df7ea6">Estadística</h2>
-<div class="outline-text-2" id="text-org9df7ea6">
-</div></section>
-<section id="slide-org4f6cb9b">
-<h3 id="org4f6cb9b">Estadística descriptiva</h3>
+<section id="slide-orgc2e4bd0">
+<h3 id="orgc2e4bd0">Estadística descriptiva</h3>
 <p>
 Una manera de hacer estadística descriptiva es con sapply:
 </p>
@@ -184,8 +125,8 @@ Una manera de hacer estadística descriptiva es con sapply:
 Tenemos también group_by() + summarise() con las mismas funciones básicas.
 </p>
 </section>
-<section id="slide-org8b16410">
-<h3 id="org8b16410">Distribuciones</h3>
+<section id="slide-org1ed04f6">
+<h3 id="org1ed04f6">Distribuciones</h3>
 <p>
 En general R usa la siguiente convención:
 </p>
@@ -207,46 +148,22 @@ lower.tail=F, devuelve 1 - el percentil p.</li>
 Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
 </p>
 </section>
-<section id="slide-orgc3bb29a">
-<h4 id="orgc3bb29a">Distribución Normal</h4>
+</section>
+<section>
+<section id="slide-org77af014">
+<h2 id="org77af014">Modelado estadístico</h2>
 <p>
-Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
+Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o <i>variable respuesta</i> y otras variables independientes o
+<i>variables explicativas</i>. 
 </p>
 
-<div class="org-src-container">
-
-<pre><code class="R" >library(ggplot2)
-set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
-x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
-f <- dnorm(x) # normal con media 0 y sd 1 
-ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
-</code></pre>
-</div>
-</section>
-<section id="slide-orgab0fe73">
-<h4 id="orgab0fe73">Otras distribuciones</h4>
 <p>
-Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
-de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
+En R la función lm() se usa para regresión lineal (<i>linear models</i>) y glm() para <i>generalized linear models</i>.
 </p>
-
-<div class="org-src-container">
-
-<pre><code class="R" >x <- rbinom(100000,5,0.5)
-mean(x)
-# [1] 2.5004
-
-mean(x >= 4)
-# [1] 0.18829
-</code></pre>
-</div>
 </section>
-<section id="slide-org9aa3bef">
-<h3 id="org9aa3bef">Modelado estadístico</h3>
-<div class="outline-text-3" id="text-org9aa3bef">
-</div></section>
-<section id="slide-orga692d77">
-<h4 id="orga692d77">Regresión lineal (lm)</h4>
+<section id="slide-org06dcd96">
+<h4 id="org06dcd96">Regresión lineal (lm)</h4>
 <p>
 Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
 parámetros para poder predecir.
@@ -267,8 +184,8 @@ parámetros para poder predecir.
 </div>
 
 </section>
-<section id="slide-org0d1d291">
-<h4 id="org0d1d291">Ejemplo con datos de 2011 US Census PUMS</h4>
+<section id="slide-orge062127">
+<h4 id="orge062127">Ejemplo con datos de 2011 US Census PUMS</h4>
 <p>
 Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
 </p>
@@ -281,7 +198,6 @@ dtrain <- subset(psub, ORIGRANDGROUP >= 500)
 dtest <- subset(psub, ORIGRANDGROUP < 500)
 model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
 dtest$predLogPINCP <- predict(model,newdata=dtest) 
-dtrain$predLogPINCP <- predict(model,newdata=dtrain)
 
 ## resultados:
 summary(model)
@@ -302,8 +218,8 @@ geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black
 </code></pre>
 </div>
 </section>
-<section id="slide-org1b62c38">
-<h4 id="org1b62c38">Regresión lineal generalizada (glm)</h4>
+<section id="slide-org56ba8dc">
+<h4 id="org56ba8dc">Regresión lineal generalizada (glm)</h4>
 <p>
 Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
 "normales". Los modelos lineales generalizados relajan estas suposiciones. 
@@ -333,8 +249,10 @@ residuals(fit, type="deviance") # residuos
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf0500da">
-<h3 id="orgf0500da">Estadística avanzada - material infinito</h3>
+</section>
+<section>
+<section id="slide-orgc652116">
+<h2 id="orgc652116">Estadística avanzada - material infinito</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
 <li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
@@ -342,22 +260,176 @@ residuals(fit, type="deviance") # residuos
 <li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
 
 </ul>
+</section>
+</section>
+<section>
+<section id="slide-org76d7038">
+<h2 id="org76d7038">Matemática</h2>
+<div class="outline-text-2" id="text-org76d7038">
+</div></section>
+<section id="slide-org9ab495d">
+<h3 id="org9ab495d">Funciones matemáticas básicas</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >- exp(): Exponential function, base e
+- log(): Natural logarithm
+- log10(): Logarithm base 10
+- sqrt(): Square root
+- abs(): Absolute value
+- sin(), cos(), and so on: Trig functions
+- min() and max(): Minimum value and maximum value within a vector
+- which.min() and which.max(): Index of the minimal element and maximal element of a vector
+- pmin() and pmax(): Element-wise minima and maxima of several vectors
+- sum() and prod(): Sum and product of the elements of a vector
+- cumsum() and cumprod(): Cumulative sum and product of the elements of a vector
+- round(), floor(), and ceiling(): Round to the closest integer, to the clos- est integer below, and to the closest integer above
+- factorial(): Factorial function
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >> x <- c(12,5,13)
+> cumsum(x)
+[1] 12 17 30
+> cumprod(x)
+[1] 12 60 780
+</code></pre>
+</div>
+</section>
+<section id="slide-org95a5b91">
+<h3 id="org95a5b91">Cálculo</h3>
+<p>
+R tiene capacidades simples de hacer cuentas analíticas:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >D(expression(exp(x^2)),"x")  # derivative
+exp(x^2) * (2 * x)
+> integrate(function(x) x^2,0,1)
+0.3333333 with absolute error < 3.7e-15
+</code></pre>
+</div>
+</section>
+<section id="slide-org2452a53">
+<h3 id="org2452a53">Algebra Lineal</h3>
+<div class="outline-text-3" id="text-org2452a53">
+</div></section>
+<section id="slide-orgcb76952">
+<h4 id="orgcb76952">multiplicación de matrices</h4>
+<p>
+Directamente con el operador %*%
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >>a
+    [,1] [,2]
+[1,]   1    2 
+[2,]   3    4 
+>b
+     [,1] [,2]
+[1,]    1   -1
+[2,]    0    1
+> a %*% b
+     [,1] [,2]
+[1,]    1    1
+[2,]    3    1
+</code></pre>
+</div>
+</section>
+<section id="slide-orgbe01e6c">
+<h4 id="orgbe01e6c">Sistema de ecuaciones lineales (o invertir una matriz)</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >> a <- matrix(c(1,1,-1,1),nrow=2,ncol=2)
+> b <- c(2,4)
+> solve(a,b)
+[1] 3 1
+> solve(a) ## sin el segundo argumento, invierte la matriz
+  [,1] [,2]
+[1,]  0.5  0.5
+[2,] -0.5  0.5
+</code></pre>
+</div>
+</section>
+<section id="slide-orga632294">
+<h4 id="orga632294">Autovectores y autovalores</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >> a
+     [,1] [,2]
+[1,]    1   -1
+[2,]    1    1
+> e <- eigen(a)
+$values
+[1] 1+1i 1-1i
+
+$vectors
+		     [,1]                 [,2]
+[1,] 0.7071068+0.0000000i 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i 0.0000000+0.7071068i
+> eigenvector1 <- e$vectors[,1]
+> eigenvalue1 <-  e$values[1]
+> a %*% eigenvector1 / eigenvalue1
+		     [,1]
+[1,] 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i
+> 
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org8b40f9d">
+<h4 id="org8b40f9d">Otras operaciones posibles son:</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >- t(): Matrix transpose
+- qr(): QR decomposition
+- chol(): Cholesky decomposition
+- det(): Determinant
+- eigen(): Eigenvalues/eigenvectors
+- diag(): Extracts the diagonal of a square matrix
+- svd(A): Single value decomposition of A
+- ...
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgd014efe">
+<h3 id="orgd014efe">Otros paquetes de interés</h3>
+<ul>
+<li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
+<li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
+<ul>
+<li>tienen también el libro "2012 - Book - Solving Differential Equations in R.pdf" en #bibliografia @slack</li>
+
+</ul></li>
+<li><a href="https://cran.r-project.org/web/views/TimeSeries.html">Series temporales</a></li>
+<li><a href="https://cran.r-project.org/web/views/Optimization.html">Optimización y programación matemática</a></li>
+<li>Aritmética de precisión múltiple con <a href="https://cran.r-project.org/web/packages/gmp/index.html">gmp</a></li>
+<li>Paquete <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl</a>, una interface a la Biblioteca Científica GNU</li>
+<li>Mil cosas más :D</li>
+
+</ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org1b013eb">
-<h2 id="org1b013eb">Práctica 10</h2>
+<section id="slide-org0424eea">
+<h2 id="org0424eea">Práctica 11</h2>
 <ol>
-<li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
-5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
-pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
-figura (o sea, que queden dos histogramas y una curva). Usar el argumento <i>alpha</i> para poder
-distinguir los histogramas.</li>
-<li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
-función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
+<li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
+función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con
 una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
 en otro gráfico.</li>
+<li>Si tengo dos vectores a y b del mismo largo, que obtengo al hacer sum(a * b)? Y sqrt(sum(a * a))?</li>
+<li>En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
+tranquis. Uno de la primer mesa les dice a los de la segunda: "si se viene uno de uds. acá,
+entonces vamos a ser la misma cantidad en las dos mesas". "Si", le responden, "pero si se viene
+uno de uds. para acá, vamos a ser el doble acá que la de ustedes". Escriban unas ecuaciones
+para resolver en R y saber cuántos pájaros había en cada mesa.</li>
 
 </ol>
 </section>
