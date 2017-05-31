@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2017</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2017</h1><h3>24/05/2017</h3>
+</section>
+
+<section>
+<section id="slide-org4550a00">
+<h2 id="org4550a00">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org4550a00">
+</div></section>
+<section id="slide-org456c761">
+<h3 id="org456c761">"subsetting" con la función subset()</h3>
+<p>
+Return subsets of vectors, matrices or data frames which meet conditions.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >subset(airquality, Temp > 80, select = c(Ozone, Temp))
+subset(airquality, Day == 1, select = -Temp)
+subset(airquality, select = Ozone:Wind)
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org768c661">
+<h3 id="org768c661">Operadores lógicos</h3>
+<p>
+Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico. 
+</p>
+
+<ul>
+<li>&gt;, &gt;=</li>
+<li>&lt;, &lt;=</li>
+<li>!=, ==</li>
+
+<li>los operadores &amp; (AND) y | (OR) para elaborar enunciados más complejos.</li>
+
+</ul>
+
+<p>
+Combinando operadores construimos expresiones condicionales, que R evalua a TRUE o FALSE (o NA).
+</p>
+
+</section>
+<section id="slide-org21cbb9a">
+<h3 id="org21cbb9a">Ejecución condicional</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >if (condición) {
+  # código que se ejecuta cuando la condición evalua a TRUE
+} else {
+  # código que se ejecuta cuando la condición evalua a FALSE
+}
+</code></pre>
+</div>
+
+<p>
+Nota: Si el if() tiene una sola línea, podemos obviar las {} ;-)
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org87102d4">
+<h3 id="org87102d4">funciones lógicas accesorias</h3>
+<ul>
+<li>any()</li>
+<li>all()</li>
+<li>is.na(), is.null() y el resto de la familia is.algo()</li>
+<li>%in%</li>
+<li>identical()</li>
+<li>muchas otras</li>
+
+</ul>
+
+</section>
+<section id="slide-org68bb1ca">
+<h3 id="org68bb1ca">Componentes de un for</h3>
+<p>
+Loops son bucles y se usan para repetir código
+</p>
+<ul>
+<li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
+<li><p>
+Secuencia: variable sobre la que funciona el bucle
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >for (x in xs)
+for(i in seq_along(df))
+for (nm in names(xs))
+</code></pre>
+</div></li>
+<li>Cuerpo: código que se ejecuta las veces que la secuencia indique</li>
+
+</ul>
+
+<p>
+While es un loop controlado por una expresión condicional
+</p>
+
+<p>
+Nota: Si el for() o el while() tienen una sola línea, podemos obviar las {} ;-)
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org94dd694">
+<h2 id="org94dd694">Vectorización</h2>
+<p>
+Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
+</p>
+
+<ol>
+<li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
+<li>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
+rápidos.</li>
+
+</ol>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># sin vectorización
+> for (i in 1:length(x)) z[i] <- x[i] + y[i]
+
+# con vectorización
+> z <- x + y
+</code></pre>
+</div>
+
+<ul>
+<li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+
+</ul>
+</section>
+<section id="slide-org0760155">
+<h3 id="org0760155">operadores y funciones vectorizados</h3>
+<ol>
+<li>==, &amp;, y |</li>
+<li>corchetito: Por ej, x[is.na(x)] &lt;- 0 donde x es vector, matriz o df</li>
+<li>otras funciones: +, -, *, cumsum(), diff(), rowSums(), colSums(), rowMeans(), colMeans(), etc.</li>
+<li>any(x == 10) es mucho más rápido que 10 %in% x.</li>
+
+</ol>
+
+<div class="org-src-container">
+
+<pre><code class="R" >> c(T,T,F,F) == c(T,F,T,F)
+[1]  TRUE FALSE FALSE  TRUE
+> c(T,T,F,F) & c(T,F,T,F)
+[1]  TRUE FALSE FALSE FALSE
+> c(T,T,F,F) | c(T,F,T,F)
+[1]  TRUE  TRUE  TRUE FALSE
+</code></pre>
+</div>
+</section>
+<section id="slide-org4fe6385">
+<h3 id="org4fe6385">Eficiencia</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >> x <- runif(1000000)
+> y <- runif(1000000)
+> z <- vector(length=1000000)
+
+> system.time(z <- x + y)
+  user  system elapsed
+  0.052   0.016   0.068
+
+> system.time(for (i in 1:length(x)) z[i] <- x[i] + y[i])
+ user  system elapsed
+ 8.088   0.044   8.175
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2467fe8">
+<h2 id="org2467fe8">Funcionales - Familia *apply()</h2>
+<p>
+lapply(), sapply(), apply() y tapply() (hay más&#x2026;)
+</p>
+
+<p>
+Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
+</p>
+
+<p>
+Hemos hecho cosas similares con summarise() + group_by() y mutate().
+</p>
+
+<p>
+Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
+</p>
+</section>
+<section id="slide-orgeb3b8a4">
+<h3 id="orgeb3b8a4">lapply()</h3>
+<p>
+LLama a una función especificada en cada componente de una lista y devuelve otra lista
+</p>
+
+<img style="WIDTH:400px; HEIGHT:300px; border:0" src="./figs/lapply.png">
+
+<div class="org-src-container">
+
+<pre><code class="R" >> lapply(list(1:3,25:29), median)
+[[1]]
+[1] 2
+[[2]] 
+[1] 27
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org2c1aac3">
+<h3 id="org2c1aac3">sapply()</h3>
+<p>
+En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o a una
+matriz. Esto es justo lo que hace sapply().
+</p>
+<img style="WIDTH:400px; HEIGHT:300px; border:0" src="./figs/sapply.png">
+
+<div class="org-src-container">
+
+<pre><code class="R" >> sapply(list(1:3,25:29),median)
+[1]  2 27
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf2077e7">
+<h3 id="orgf2077e7">lapply() y sapply() en Data Frames</h3>
+<p>
+Tanto lapply como sapply están pensados para listas, por lo tanto funcionan bien en data.frames
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >lapply(economics, mean)
+$date
+[1] "1991-05-17"
+
+$pce
+[1] 4843.51
+
+$pop
+[1] 257189.4
+
+$psavert
+[1] 7.936585
+
+$uempmed
+[1] 8.610105
+
+$unemploy
+[1] 7771.557
+
+> sapply(economics, mean)
+	date          pce          pop      psavert      uempmed     unemploy 
+7.806399e+03 4.843510e+03 2.571894e+05 7.936585e+00 8.610105e+00 7.771557e+03 
+</code></pre>
+</div>
+</section>
+<section id="slide-orgc946119">
+<h3 id="orgc946119">apply()</h3>
+<p>
+apply es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a
+columnas.
+</p>
+
+<p>
+apply(m,dimcode,f,fargs)
+</p>
+<ul>
+<li>m: matriz</li>
+<li>dimcode: 1 o 2, 1 se aplicamos a filas, 2 a columnas</li>
+<li>f: función que vamos a aplicar</li>
+<li>fargs: argumentos adicionales</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre><code class="R" >>z
+[,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+
+> apply(z,2,mean)
+[1] 2 5
+</code></pre>
+</div>
+</section>
+<section id="slide-org6c700b7">
+<h3 id="org6c700b7">apply() - un ejemplo con función propia</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >> z
+[,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+> f <- function(x) x/c(2,8)
+> y <- apply(z,1,f)
+>y
+[,1] [,2] [,3]
+[1,]  0.5 1.000 1.50
+[2,]  0.5 0.625 0.75
+</code></pre>
+</div>
+</section>
+<section id="slide-org0a40719">
+<h3 id="org0a40719">tapply()</h3>
+<p>
+para aplicar funciones a vectores con factores
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >> ages <- c(25,26,55,37,21,42)
+> affils <- c("R","D","D","R","U","D")
+> tapply(ages,affils,mean)
+D   R   U 
+41  31  21
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >> d <- data.frame(list(gender=c("M","M","F","M","F","F"),
++ age=c(47,59,21,32,33,24),income=c(55000,88000,32450,76500,123000,45650))) 
+>d
+  gender age income
+1 M      47  55000
+2 M      5 9 88000
+...
+> d$over25 <- ifelse(d$age > 25,1,0) 
+>d
+  gender age income over25
+1 M      47  55000  1
+2 M      59  88000  1
+...
+> tapply(d$income,list(d$gender,d$over25),mean)
+0       1 
+F 39050 123000.00 
+M NA    73166.67
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc785b96">
+<h2 id="orgc785b96">Práctica 9</h2>
+<ol>
+<li>Como se comparan los resultados de mean() y mean.default() con 10000 observaciones, en vez de con
+100? Usar system.time().</li>
+<li>Comparar la velocidad de apply(x, 1, sum) con rowSums(x) para x de distintos tamaños. Usar system.time().</li>
+<li><p>
+El código a continuación simula el desempeño de un t-test para datos no normales. Usen sapply() y
+una función (puede ser anónima, es decir no necesitan nombrarla) para extraer el p-value de cada
+'tirada'. Nota: rpois() nos devuelve una 'tirada' de variable aleatoria (como si fuera tirar una
+moneda) de una distribución de Poisson.
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >trials <- replicate(
+  100, 
+  t.test(rpois(10, 10), rpois(7, 10)),
+  simplify = FALSE
+)
+</code></pre>
+</div></li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>index</title>
+    <title>Clase 9</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/lessons/09-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -156,58 +156,331 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="programación-y-análisis-de-datos-en-r-con-aplicaciones-científicas">Programación y análisis de datos en R con aplicaciones científicas</h1>
+                <h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
 
-<p>Este curso tiene como objetivo transmitir los principales conceptos del lenguaje de programación R y
-entrenar en su utilización ya que es una útil herramienta para la investigación científica. Nos
-proponemos explorar, desde un punto de vista eminentemente práctico, el lenguaje y su ecosistema de
-paquetes, funciones y demás elementos relacionados. No haremos hincapié en aprender a programar en
-sí (aunque necesariamente cubriremos lo básico), si no más bien pondremos el foco en como usar el
-lenguaje de manera eficaz, siempre con los objetivos científicos en el horizonte.</p>
+<h2 id="subsetting-con-la-función-subset">“subsetting” con la función subset()</h2>
 
-<p>El lenguaje R está fuertemente relacionado con dos áreas de las cuales se ha nutrido desde su
-origen: la estadística y el análisis de datos empíricos. Por ello, a lo largo del curso, vamos a usar
-elementos de ambas áreas como soporte para explorar en detalle las distintas utilidades de este
-flexible lenguaje de programación.</p>
+<p>Return subsets of vectors, matrices or data frames which meet conditions.</p>
 
-<h2 id="fechas-y-horarios">Fechas y Horarios</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>subset(airquality, Temp &gt; 80, select = c(Ozone, Temp))
+subset(airquality, Day == 1, select = -Temp)
+subset(airquality, select = Ozone:Wind)
+</code></pre>
+</div>
 
-<ul>
-  <li>Martes y Miércoles, de 9:00 a 12:00</li>
-  <li>Fecha de inicio: 18 de Abril</li>
-  <li>Duración: 48 hs (8 semanas) para carreras de grado, 60 hs (10 semanas) para carreras de posgrado</li>
-  <li>La materia de dicta en la sala de computación</li>
-</ul>
+<h2 id="operadores-lógicos">Operadores lógicos</h2>
 
-<h2 id="herramientas">Herramientas</h2>
+<p>Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico.</p>
 
 <ul>
-  <li><a href="https://www.rstudio.com/">RStudio</a> - para trabajar con R
-    <ul>
-      <li>Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
-que quieran (por ejemplo, <a href="https://www.gnu.org/software/emacs/">emacs</a> o, si no hay otra, <a href="http://www.vim.org/">vim</a> ;)</li>
-    </ul>
+  <li>
+    <blockquote>
+      <p>, &gt;=</p>
+    </blockquote>
   </li>
-  <li><a href="https://slack.com/">Slack</a> - para mantenernos en contacto entre todos</li>
-  <li><a href="https://github.com/">Github</a> - para compartir código</li>
+  <li>&lt;, &lt;=</li>
+  <li>
+    <p>!=, ==</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>los operadores &amp; (AND) y</td>
+          <td>(OR) para elaborar enunciados más complejos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
 </ul>
 
-<h3 id="prof-luis-g-moyano">Prof. Luis G. Moyano</h3>
+<p>Combinando operadores construimos expresiones condicionales, que R evalua a TRUE o FALSE (o NA).</p>
+
+<h2 id="ejecución-condicional">Ejecución condicional</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if (condición) {
+  # código que se ejecuta cuando la condición evalua a TRUE
+} else {
+  # código que se ejecuta cuando la condición evalua a FALSE
+}
+</code></pre>
+</div>
+
+<p>Nota: Si el if() tiene una sola línea, podemos obviar las {} ;-)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+</code></pre>
+</div>
+
+<h2 id="funciones-lógicas-accesorias">funciones lógicas accesorias</h2>
 
 <ul>
-  <li>Inv. Adjunto CONICET y Prof. Adjunto FCEN</li>
-  <li>Física Estadística y sistemas complejos</li>
-  <li>Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)</li>
-  <li><span class="underline">lgmoyano@gmail.com</span> / twitter: <a href="https://twitter.com/luisgmoyano">@luisgmoyano</a></li>
+  <li>any()</li>
+  <li>all()</li>
+  <li>is.na(), is.null() y el resto de la familia is.algo()</li>
+  <li>%in%</li>
+  <li>identical()</li>
+  <li>muchas otras</li>
 </ul>
+
+<h2 id="componentes-de-un-for">Componentes de un for</h2>
+
+<p>Loops son bucles y se usan para repetir código</p>
+
+<ul>
+  <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
+  <li>
+    <p>Secuencia: variable sobre la que funciona el bucle</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>for (x in xs)
+for(i in seq_along(df))
+for (nm in names(xs))
+</code></pre>
+    </div>
+  </li>
+  <li>Cuerpo: código que se ejecuta las veces que la secuencia indique</li>
+</ul>
+
+<p>While es un loop controlado por una expresión condicional</p>
+
+<p>Nota: Si el for() o el while() tienen una sola línea, podemos obviar las {} ;-)</p>
+
+<h1 id="vectorización">Vectorización</h1>
+
+<p>Se trata de operaciones que aplican a un vector, pero elemento por elemento.</p>
+
+<ol>
+  <li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
+  <li>
+    <p>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
+rápidos.</p>
+
+    <h1 id="sin-vectorización">sin vectorización</h1>
+    <blockquote>
+      <p>for (i in 1:length(x)) z[i] &lt;- x[i] + y[i]</p>
+    </blockquote>
+
+    <h1 id="con-vectorización">con vectorización</h1>
+    <blockquote>
+      <p>z &lt;- x + y</p>
+    </blockquote>
+  </li>
+</ol>
+
+<ul>
+  <li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+</ul>
+
+<h2 id="operadores-y-funciones-vectorizados">operadores y funciones vectorizados</h2>
 
 <ol>
   <li>
-    <p>Créditos</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>==, &amp;, y</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>corchetito: Por ej, x[is.na(x)] &lt;- 0 donde x es vector, matriz o df</li>
+  <li>otras funciones: +, -, *, cumsum(), diff(), rowSums(), colSums(), rowMeans(), colMeans(), etc.</li>
+  <li>
+    <p>any(x == 10) es mucho más rápido que 10 %in% x.</p>
 
-    <p>Esta web está construida con <a href="https://jekyllrb.com/">Jekyll</a>  + <a href="https://github.com/hakimel/reveal.js">Reveal.js</a> de Hakim El Hattab, y está fuertemente basado en el
-<a href="https://jennybc.github.io/purrr-tutorial">Tutorial de purrr de Jenny Brian</a>. El código fuente está en disponible en <a href="https://github.com/r-2017/r-2017.github.io">Github</a>, que hace a su vez
-de host de la página.</p>
+    <blockquote>
+      <p>c(T,T,F,F) == c(T,F,T,F)
+[1]  TRUE FALSE FALSE  TRUE
+c(T,T,F,F) &amp; c(T,F,T,F)
+[1]  TRUE FALSE FALSE FALSE
+c(T,T,F,F) | c(T,F,T,F)
+[1]  TRUE  TRUE  TRUE FALSE</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h2 id="eficiencia">Eficiencia</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; x &lt;- runif(1000000)
+&gt; y &lt;- runif(1000000)
+&gt; z &lt;- vector(length=1000000)
+
+&gt; system.time(z &lt;- x + y)
+  user  system elapsed
+  0.052   0.016   0.068
+
+&gt; system.time(for (i in 1:length(x)) z[i] &lt;- x[i] + y[i])
+ user  system elapsed
+ 8.088   0.044   8.175
+</code></pre>
+</div>
+
+<h1 id="funcionales---familia-apply">Funcionales - Familia *apply()</h1>
+
+<p>lapply(), sapply(), apply() y tapply() (hay más…)</p>
+
+<p>Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a “cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?”</p>
+
+<p>Hemos hecho cosas similares con summarise() + group_by() y mutate().</p>
+
+<p>Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a></p>
+
+<h2 id="lapply">lapply()</h2>
+
+<p>LLama a una función especificada en cada componente de una lista y devuelve otra lista</p>
+
+<p><img style="WIDTH:400px; HEIGHT:300px; border:0" src="./figs/lapply.png" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; lapply(list(1:3,25:29), median)
+[[1]]
+[1] 2
+[[2]] 
+[1] 27
+</code></pre>
+</div>
+
+<h2 id="sapply">sapply()</h2>
+
+<p>En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o a una
+matriz. Esto es justo lo que hace sapply().</p>
+
+<p><img style="WIDTH:400px; HEIGHT:300px; border:0" src="./figs/sapply.png" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; sapply(list(1:3,25:29),median)
+[1]  2 27
+</code></pre>
+</div>
+
+<h2 id="lapply-y-sapply-en-data-frames">lapply() y sapply() en Data Frames</h2>
+
+<p>Tanto lapply como sapply están pensados para listas, por lo tanto funcionan bien en data.frames</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>lapply(economics, mean)
+$date
+[1] "1991-05-17"
+
+$pce
+[1] 4843.51
+
+$pop
+[1] 257189.4
+
+$psavert
+[1] 7.936585
+
+$uempmed
+[1] 8.610105
+
+$unemploy
+[1] 7771.557
+
+&gt; sapply(economics, mean)
+	date          pce          pop      psavert      uempmed     unemploy 
+7.806399e+03 4.843510e+03 2.571894e+05 7.936585e+00 8.610105e+00 7.771557e+03 
+</code></pre>
+</div>
+
+<h2 id="apply">apply()</h2>
+
+<p>apply es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a
+columnas.</p>
+
+<p>apply(m,dimcode,f,fargs)</p>
+
+<ul>
+  <li>m: matriz</li>
+  <li>dimcode: 1 o 2, 1 se aplicamos a filas, 2 a columnas</li>
+  <li>f: función que vamos a aplicar</li>
+  <li>
+    <p>fargs: argumentos adicionales</p>
+
+    <blockquote>
+      <p>z
+[,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6</p>
+    </blockquote>
+
+    <blockquote>
+      <p>apply(z,2,mean)
+[1] 2 5</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="apply---un-ejemplo-con-función-propia">apply() - un ejemplo con función propia</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; z
+[,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+&gt; f &lt;- function(x) x/c(2,8)
+&gt; y &lt;- apply(z,1,f)
+&gt;y
+[,1] [,2] [,3]
+[1,]  0.5 1.000 1.50
+[2,]  0.5 0.625 0.75
+</code></pre>
+</div>
+
+<h2 id="tapply">tapply()</h2>
+
+<p>para aplicar funciones a vectores con factores</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ages &lt;- c(25,26,55,37,21,42)
+&gt; affils &lt;- c("R","D","D","R","U","D")
+&gt; tapply(ages,affils,mean)
+D   R   U 
+41  31  21
+
+&gt; d &lt;- data.frame(list(gender=c("M","M","F","M","F","F"),
++ age=c(47,59,21,32,33,24),income=c(55000,88000,32450,76500,123000,45650))) 
+&gt;d
+  gender age income
+1 M      47  55000
+2 M      5 9 88000
+...
+&gt; d$over25 &lt;- ifelse(d$age &gt; 25,1,0) 
+&gt;d
+  gender age income over25
+1 M      47  55000  1
+2 M      59  88000  1
+...
+&gt; tapply(d$income,list(d$gender,d$over25),mean)
+0       1 
+F 39050 123000.00 
+M NA    73166.67
+</code></pre>
+</div>
+
+<h1 id="práctica-9">Práctica 9</h1>
+
+<ol>
+  <li>Como se comparan los resultados de mean() y mean.default() con 10000 observaciones, en vez de con
+100? Usar system.time().</li>
+  <li>Comparar la velocidad de apply(x, 1, sum) con rowSums(x) para x de distintos tamaños. Usar system.time().</li>
+  <li>
+    <p>El código a continuación simula el desempeño de un t-test para datos no normales. Usen sapply() y
+una función (puede ser anónima, es decir no necesitan nombrarla) para extraer el p-value de cada
+‘tirada’. Nota: rpois() nos devuelve una ‘tirada’ de variable aleatoria (como si fuera tirar una
+moneda) de una distribución de Poisson.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>trials &lt;- replicate(
+  100, 
+  t.test(rpois(10, 10), rpois(7, 10)),
+  simplify = FALSE
+)
+</code></pre>
+    </div>
   </li>
 </ol>
 

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>index</title>
+    <title>Clase 8</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/lessons/08-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -156,59 +156,276 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="programación-y-análisis-de-datos-en-r-con-aplicaciones-científicas">Programación y análisis de datos en R con aplicaciones científicas</h1>
+                <h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
 
-<p>Este curso tiene como objetivo transmitir los principales conceptos del lenguaje de programación R y
-entrenar en su utilización ya que es una útil herramienta para la investigación científica. Nos
-proponemos explorar, desde un punto de vista eminentemente práctico, el lenguaje y su ecosistema de
-paquetes, funciones y demás elementos relacionados. No haremos hincapié en aprender a programar en
-sí (aunque necesariamente cubriremos lo básico), si no más bien pondremos el foco en como usar el
-lenguaje de manera eficaz, siempre con los objetivos científicos en el horizonte.</p>
-
-<p>El lenguaje R está fuertemente relacionado con dos áreas de las cuales se ha nutrido desde su
-origen: la estadística y el análisis de datos empíricos. Por ello, a lo largo del curso, vamos a usar
-elementos de ambas áreas como soporte para explorar en detalle las distintas utilidades de este
-flexible lenguaje de programación.</p>
-
-<h2 id="fechas-y-horarios">Fechas y Horarios</h2>
+<h2 id="vectores-aumentados">Vectores “aumentados”</h2>
 
 <ul>
-  <li>Martes y Miércoles, de 9:00 a 12:00</li>
-  <li>Fecha de inicio: 18 de Abril</li>
-  <li>Duración: 48 hs (8 semanas) para carreras de grado, 60 hs (10 semanas) para carreras de posgrado</li>
-  <li>La materia de dicta en la sala de computación</li>
+  <li><span class="underline">Data frames</span> (y tibbles) sobre ‘lists’</li>
+  <li><span class="underline">Factores</span>, construidos sobre vectores ‘integer’</li>
+  <li><span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores ‘numeric’</li>
 </ul>
 
-<h2 id="herramientas">Herramientas</h2>
+<h2 id="subsetting"><em>Subsetting</em></h2>
 
-<ul>
-  <li><a href="https://www.rstudio.com/">RStudio</a> - para trabajar con R
-    <ul>
-      <li>Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
-que quieran (por ejemplo, <a href="https://www.gnu.org/software/emacs/">emacs</a> o, si no hay otra, <a href="http://www.vim.org/">vim</a> ;)</li>
-    </ul>
-  </li>
-  <li><a href="https://slack.com/">Slack</a> - para mantenernos en contacto entre todos</li>
-  <li><a href="https://github.com/">Github</a> - para compartir código</li>
-</ul>
-
-<h3 id="prof-luis-g-moyano">Prof. Luis G. Moyano</h3>
-
-<ul>
-  <li>Inv. Adjunto CONICET y Prof. Adjunto FCEN</li>
-  <li>Física Estadística y sistemas complejos</li>
-  <li>Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)</li>
-  <li><span class="underline">lgmoyano@gmail.com</span> / twitter: <a href="https://twitter.com/luisgmoyano">@luisgmoyano</a></li>
-</ul>
+<p>«««&lt; HEAD
+‘[’ es el operador para hacer <em>subsetting</em>, se usa poniendo algo el tipo x[a]. Hay distintas
+maneras de usarlo.
+=======
+‘[’ es el operador para hacer <em>subsetting</em>, se usa poniendo algo del tipo x[a]. Hay distintas
+maneras de usarlo:</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p>master</p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
 <ol>
-  <li>
-    <p>Créditos</p>
+  <li>Usando vectores de enteros positivos o negativos</li>
+  <li>Usando vectores de lógicos</li>
+  <li>Usando vectores de caracteres para devolver elementos con los respectivos nombres</li>
+  <li>No usando nada</li>
+</ol>
 
-    <p>Esta web está construida con <a href="https://jekyllrb.com/">Jekyll</a>  + <a href="https://github.com/hakimel/reveal.js">Reveal.js</a> de Hakim El Hattab, y está fuertemente basado en el
-<a href="https://jennybc.github.io/purrr-tutorial">Tutorial de purrr de Jenny Brian</a>. El código fuente está en disponible en <a href="https://github.com/r-2017/r-2017.github.io">Github</a>, que hace a su vez
-de host de la página.</p>
+<p>Otros operadores de subsetting: ‘[[’ y ‘$’</p>
+
+<h1 id="operadores-lógicos">Operadores lógicos</h1>
+
+<p>Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico</p>
+
+<ul>
+  <li>
+    <blockquote>
+      <p>, &gt;=</p>
+    </blockquote>
   </li>
+  <li>&lt;, &lt;=</li>
+  <li>
+    <p>!=, ==</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>los operadores &amp; (AND) y</td>
+          <td>(OR) para elaborar enunciados más complejos</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>10 == 10</p>
+    <h1 id="1-true">[1] TRUE</h1>
+
+    <p>x &lt;- 10
+x == 10</p>
+    <h1 id="1-true-1">[1] TRUE</h1>
+
+    <p>y &lt;- NA
+is.na(y)</p>
+    <h1 id="1-true-2">[1] TRUE</h1>
+
+    <p>is.na(y) &amp; x==10
+[1] TRUE</p>
+  </li>
+</ul>
+
+<h1 id="ejecución-condicional">Ejecución condicional</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if (condición) {
+  # código que se ejecuta cuando la condición evalua a TRUE
+} else {
+  # código que se ejecuta cuando la condición evalua a FALSE
+}
+
+if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+</code></pre>
+</div>
+
+<h2 id="ejemplo">Ejemplo</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pretty_length &lt;- function(x) {
+l &lt;- length(x)
+if(is.null(x)) 
+   print("el vector tiene cero elementos")
+   else 
+   print(paste("el vector tiene longitud", l, sep = " "))
+}
+
+y &lt;- NULL
+pretty_length(y)
+# [1] "el vector tiene cero elementos"
+
+x &lt;- rep("relleno", 5)
+pretty_length(x)
+# [1] "el vector tiene longitud 5"
+</code></pre>
+</div>
+
+<h2 id="funciones-lógicas-accesorias">funciones lógicas accesorias</h2>
+
+<ul>
+  <li>any()</li>
+  <li>all()</li>
+  <li>is.na(), is.null() y el resto de la familia is.algo()</li>
+  <li>%in%</li>
+  <li>identical()</li>
+  <li>
+    <p>muchas otras</p>
+
+    <p>“relleno” %in% x</p>
+    <h1 id="1-true-3">[1] TRUE</h1>
+
+    <p>identical(0L, 0)</p>
+    <h1 id="1-false">[1] FALSE</h1>
+  </li>
+</ul>
+
+<h1 id="loops">loops</h1>
+
+<p>Loops son bucles y se usan para repetir código.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for (secuencia){
+# código que se repite
+}
+</code></pre>
+</div>
+
+<h2 id="ejemplo-1">Ejemplo</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>df &lt;- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+
+output &lt;- vector("double", ncol(df))  
+for (i in seq_along(df)) {            # seq_along(df) es parecida a 1:length(df)
+  output[[i]] &lt;- median(df[[i]])      
+}
+output
+# [1] -0.2458 -0.2873 -0.0567  0.1443
+</code></pre>
+</div>
+
+<h2 id="componentes-de-un-for">Componentes de un for</h2>
+
+<p>«««&lt; HEAD</p>
+<ol>
+  <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
+  <li>
+    <p>Secuencia: variable sobre la que funciona el bucle</p>
+
+    <p>for (x in xs)
+for(i in seq_along(df))
+for (nm in names(xs))</p>
+  </li>
+  <li>
+    <h1 id="cuerpo-código-que-se-ejecuta-las-veces-que-la-secuencia-indique">Cuerpo: código que se ejecuta las veces que la secuencia indique</h1>
+    <ul>
+      <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
+      <li>
+        <p>Secuencia: variable sobre la que funciona el bucle</p>
+
+        <p>for (x in xs)
+for(i in seq_along(df))
+for (nm in names(xs))
+    -   Cuerpo: código que se ejecuta las veces que la secuencia indique</p>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <blockquote>
+                      <p>master</p>
+                    </blockquote>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="con-secuencia-condicional">Con secuencia condicional</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>while (condition) {
+  # body
+}
+</code></pre>
+</div>
+
+<p>«««&lt; HEAD</p>
+<h2 id="vectorización">Vectorización!</h2>
+
+<p>Para otra clase</p>
+
+<p>=======</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p>master</p>
+              <h1 id="práctica-8">Práctica 8</h1>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ol>
+  <li>Cuál es la diferencia entre <code class="highlighter-rouge">if</code> y <code class="highlighter-rouge">ifelse</code>? Ver manual, mostrar ejemplos.</li>
+  <li>Escribir una función que diga “Buenos días”, “Buenas tardes” o “Buenas noches” dependiendo de la
+«««&lt; HEAD
+hora del día usando lubridate::now().
+=======
+hora del día usando lubridate::now() y lubridate::dhours().
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <p>master</p>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </li>
+  <li>Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).</li>
+  <li>Qué pasa si usamos (nm in names(x)) y x no tiene nombres? Qué pasa si solo algunos tienen nombre
+o hay nombres repetidos? Hacer tests.</li>
+  <li>Crear un vector tal que sus elementos indiquen, para cada columna de un dataframe cualquiera, si
+son una columna de factor o no.</li>
 </ol>
 
 

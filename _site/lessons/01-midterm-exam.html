@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>index</title>
+    <title>Parcial 1</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/lessons/01-midterm-exam.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -156,58 +156,126 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="programación-y-análisis-de-datos-en-r-con-aplicaciones-científicas">Programación y análisis de datos en R con aplicaciones científicas</h1>
+                <h1 id="1er-parcial">1er parcial</h1>
 
-<p>Este curso tiene como objetivo transmitir los principales conceptos del lenguaje de programación R y
-entrenar en su utilización ya que es una útil herramienta para la investigación científica. Nos
-proponemos explorar, desde un punto de vista eminentemente práctico, el lenguaje y su ecosistema de
-paquetes, funciones y demás elementos relacionados. No haremos hincapié en aprender a programar en
-sí (aunque necesariamente cubriremos lo básico), si no más bien pondremos el foco en como usar el
-lenguaje de manera eficaz, siempre con los objetivos científicos en el horizonte.</p>
-
-<p>El lenguaje R está fuertemente relacionado con dos áreas de las cuales se ha nutrido desde su
-origen: la estadística y el análisis de datos empíricos. Por ello, a lo largo del curso, vamos a usar
-elementos de ambas áreas como soporte para explorar en detalle las distintas utilidades de este
-flexible lenguaje de programación.</p>
-
-<h2 id="fechas-y-horarios">Fechas y Horarios</h2>
+<h2 id="instrucciones">Instrucciones</h2>
 
 <ul>
-  <li>Martes y Miércoles, de 9:00 a 12:00</li>
-  <li>Fecha de inicio: 18 de Abril</li>
-  <li>Duración: 48 hs (8 semanas) para carreras de grado, 60 hs (10 semanas) para carreras de posgrado</li>
-  <li>La materia de dicta en la sala de computación</li>
+  <li>El parcial dura como máximo dos horas.</li>
+  <li>Tienen todo el material de clase y online disponible para consulta.</li>
+  <li>NO tienen a sus compañeros disponibles.</li>
+  <li>Tienen que resolver los ejercicios escribiendo las respuestas (tanto texto como código) en un
+archivo con extensión .R (evitar usar Word, si esto es un problema, avisenme por favor).</li>
+  <li>Cada pregunta y subpregunta están numeradas. <strong>Importantísimo</strong>: enumerar <span class="underline">de la misma manera</span> las
+respuestas (aún que estén vacías) y que coincidan correctamente.</li>
+  <li>Algunas preguntas tienen la palabra <code class="highlighter-rouge">PhD</code> adelante, que significan que son para los que cursan la
+materia como posgrado. Para el resto son opcionales, pero suman puntos.</li>
+  <li>Al final del parcial me mandan por favor el archivo .R por mail o por <span class="underline">canal privado</span> de Slack.</li>
+  <li>Si no saben o no les sale algo, intenten explicar todo lo que sí saben al respecto,
+aunque sea parcial. Si una línea de código les da algún error, expliquen la lógica de lo que
+quisieron hacer, ya que si es correcta, eso suma. Si identifican la causa del error, aunque no lo
+sepan corregir, nuevamente eso suma. En general, mejor poner de más que de menos.</li>
+  <li>No se estresen.</li>
 </ul>
 
-<h2 id="herramientas">Herramientas</h2>
-
-<ul>
-  <li><a href="https://www.rstudio.com/">RStudio</a> - para trabajar con R
-    <ul>
-      <li>Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
-que quieran (por ejemplo, <a href="https://www.gnu.org/software/emacs/">emacs</a> o, si no hay otra, <a href="http://www.vim.org/">vim</a> ;)</li>
-    </ul>
-  </li>
-  <li><a href="https://slack.com/">Slack</a> - para mantenernos en contacto entre todos</li>
-  <li><a href="https://github.com/">Github</a> - para compartir código</li>
-</ul>
-
-<h3 id="prof-luis-g-moyano">Prof. Luis G. Moyano</h3>
-
-<ul>
-  <li>Inv. Adjunto CONICET y Prof. Adjunto FCEN</li>
-  <li>Física Estadística y sistemas complejos</li>
-  <li>Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)</li>
-  <li><span class="underline">lgmoyano@gmail.com</span> / twitter: <a href="https://twitter.com/luisgmoyano">@luisgmoyano</a></li>
-</ul>
+<h2 id="problema-1">Problema 1</h2>
 
 <ol>
-  <li>
-    <p>Créditos</p>
+  <li>DATOS
+    <ol>
+      <li>Cargar los datos “economics” del paquete ggplot2 en la sesión (o verificar si ya se encuentran disponibles).
+Consejo: Lean la ayuda (?economics), como para tener una idea sobre que son los datos.</li>
+      <li>Renombrar el dataframe a “e” —sin comillas— (o sea, asignar el objeto economics al objeto e).</li>
+    </ol>
+  </li>
+  <li>PRIMER ANÁLISIS
+    <ol>
+      <li>Qué clase de estructura de datos es?
+        <ol>
+          <li>Es un vector atómico?</li>
+          <li>Contiene vectores atómicos? Cuáles?</li>
+          <li>Cuántos atributos tiene y como se llaman?</li>
+        </ol>
+      </li>
+      <li>Cuántas filas y columnas tiene?</li>
+      <li>Cómo son los tipos de datos de cada columna?</li>
+    </ol>
+  </li>
+  <li>GRAFICAR (preferiblemente con ggplot2)
+    <ol>
+      <li>Hacer un scatterplot de la variable de desempleo (<code class="highlighter-rouge">unemploy</code>) en función del tiempo (<code class="highlighter-rouge">date</code>).</li>
+      <li>Colorear los puntos que tengan la variable <code class="highlighter-rouge">psavert</code> menor que el promedio de <code class="highlighter-rouge">psavert</code> a lo largo de
+los años (es decir, el promedio de todos los elementos de la columna).</li>
+      <li>Ponerle texto explicativo a los ejes x e y.</li>
+      <li><code class="highlighter-rouge">PhD</code>: mejorar la “legenda” con un título y descripción de los dos colores.</li>
+    </ol>
+  </li>
+  <li>PREGUNTAS
+    <ol>
+      <li>De cuándo a cuándo van los datos temporales? (o sea, fecha mínima y fecha máxima).</li>
+      <li>Aproximadamente cuantos “picos” se ven en el desempleo? (consejo: verlo gráficamente).</li>
+      <li>Se encuentran “picos” de ese estilo en las otras variables (<code class="highlighter-rouge">pce</code>, <code class="highlighter-rouge">pop</code>, <code class="highlighter-rouge">psavert</code>, <code class="highlighter-rouge">uempmed</code>)? En
+alguna variable coinciden (más o menos) los “picos”? Decir cuál (consejo: verlo gráficamente).</li>
+      <li>Separar la columna ‘date’ en tres columnas “d”, “m” y “y”.</li>
+      <li>Hacer una tabla con el desempleo medio por año (o sea, una columna “año” y otra de “desempleo
+medio” de ese año).</li>
+      <li>En qué años se registran el mayor y menor valor de desempleo?</li>
+      <li>Usar los datos de ‘presidential’ —ver data()— para ver a que administración corresponden esos
+dos extremos de desempleo encontrados.</li>
+      <li><code class="highlighter-rouge">PhD</code>: Hacer una columna extra con desempleo per cápita (consejo, vean en la ayuda de
+economics donde está la variable de población). Cambian los años de mayor y menos desempleo
+para esta nueva variable?</li>
+    </ol>
+  </li>
+</ol>
 
-    <p>Esta web está construida con <a href="https://jekyllrb.com/">Jekyll</a>  + <a href="https://github.com/hakimel/reveal.js">Reveal.js</a> de Hakim El Hattab, y está fuertemente basado en el
-<a href="https://jennybc.github.io/purrr-tutorial">Tutorial de purrr de Jenny Brian</a>. El código fuente está en disponible en <a href="https://github.com/r-2017/r-2017.github.io">Github</a>, que hace a su vez
-de host de la página.</p>
+<h2 id="problema-2">Problema 2</h2>
+
+<ol>
+  <li>DATOS
+En data() tenemos dos datasets (separados) sobre la temperatura corporal de dos castores: beaver1
+y beaver2. La temperatura está en Celsius.
+    <ol>
+      <li>Hacer una función llamada <code class="highlighter-rouge">c2f()</code> que reciba un valor (double) representando una temperatura en
+Celsius y que devuelva un valor (double) representando una temperatura en
+Fahrenheit (consejo: usar wikipedia o google para recordar como se hace la conversión de una
+unidad a otra).</li>
+    </ol>
+  </li>
+  <li>PRIMER ANÁLISIS
+    <ol>
+      <li>Qué estructura son beaver1 y beaver2?</li>
+      <li>Tienen las mismas columnas (en número, en tipo y en significado de datos)?</li>
+      <li>Tienen las mismas filas u observaciones?</li>
+    </ol>
+  </li>
+  <li>PREGUNTAS
+    <ol>
+      <li>Usar la función del primer punto <code class="highlighter-rouge">c2f()</code> para generar una columna extra en cada dataset que
+tenga la temperatura en Fahrenheit. Conviene que la columna tenga nombre para poder
+manipularla después. Pueden generar la nueva columna con las funciones de <code class="highlighter-rouge">dplyr</code> o con
+<em>subsetting</em> de base. En las preguntas subsiguientes siempre me refiero a esta temperatura.</li>
+      <li>Cuál es la temperatura promedio del castor 1 y cuál la del castor 2?</li>
+      <li>Cuál es la temperatura promedio de cada castor estando en actividad y cuál estando en reposo?
+O sea, para cada castor, queremos dos columnas: <code class="highlighter-rouge">activ</code> y temperatura media, con
+dos filas solamente.</li>
+      <li>Porqué esta distinción es útil en el caso de un castor y no en el del otro?</li>
+      <li><code class="highlighter-rouge">PhD</code>: para el castor 2, calcular cuál es la diferencia entre los promedios de la temperatura
+entre los dos estados de actividad</li>
+    </ol>
+  </li>
+  <li>GRAFICAR (preferiblemente con <code class="highlighter-rouge">ggplot2</code>)
+    <ol>
+      <li>Para cada dataset (beaver1 y beaver2), graficar dos histogramas de temperatura <span class="underline">pero en la
+misma figura</span> (en el mismo “lienzo”, es decir, sin usar <em>facetting</em>). Cada histograma
+representará cada una de las dos temperaturas.</li>
+      <li>Poner un título y nombre a los ejes.</li>
+      <li>Colorear ambos histogramas, por ejemplo en azul y rojo, con la opción <code class="highlighter-rouge">fill</code>.</li>
+      <li><code class="highlighter-rouge">PhD</code>: Usen la opción transparencia <code class="highlighter-rouge">alpha</code> (consejo, vean machete de <code class="highlighter-rouge">ggplot2</code> y/o
+<code class="highlighter-rouge">?ggplot2::alpha</code>, y prueben distintos valores de <code class="highlighter-rouge">alpha</code> para ver el efecto que tiene). Porque
+la opción <code class="highlighter-rouge">alpha</code> es útil en este caso? Qué cosa me permite ver, que sin <code class="highlighter-rouge">alpha</code> no podría ver
+bien?</li>
+    </ol>
   </li>
 </ol>
 
