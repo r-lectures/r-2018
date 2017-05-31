@@ -1,45 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>R 2017</title>
-<meta name="author" content="(Luis G. Moyano)"/>
-<style type="text/css">
-.underline { text-decoration: underline; }
-</style>
-<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+<html>
 
-<link rel="stylesheet" href="../../reveal.js/css/theme/my_simple.css" id="theme"/>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../../reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-<meta name="description" content="Programación en R 2017">
+    <title>Clase 11</title>
+    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/lessons/11-lecture.html">
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
-<body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>31/05/2017</h3>
-</section>
 
-<section>
-<section id="slide-org3c7de8c">
-<h2 id="org3c7de8c">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org3c7de8c">
-</div></section>
-<section id="slide-org67990fe">
-<h3 id="org67990fe">modo interactivo vs. source() y R CMD BATCH</h3>
-<div class="org-src-container">
 
-<pre><code class="R" >##En un editor de texto creamos el script z.R
+    <body>
+
+        <header id="header" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/lessons/" >Clases</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/resources.html" >Biblio</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/datasets.html" >Data</a></li>
+	  
+	  
+	  
+	  
+	  
+	  
+
+	      <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-lecture.html">Clase 1 - Intro</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-midterm-exam.html">Parcial 1</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/02-lecture.html">Clase 2</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/03-lecture.html">Clase 2</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/04-lecture.html">Clase 4</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/05-lecture.html">Clase 5</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/06-lecture.html">Clase 6</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/07-lecture.html">Clase 7</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/08-lecture.html">Clase 8</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/10-lecture.html">Clase 10</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/11-lecture.html">Clase 11</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/">Clases</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/posts.html">Posts</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/datasets.html">Datos</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/resources.html">Biblio</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/about.html">Sobre el curso</a></li> -->
+              <!--  -->
+              <!--  -->
+        </ul>
+	<ul class="nav navbar-nav navbar-right">
+	  
+	  
+	  <li><a href="http://localhost:4000/about.html" >Sobre la materia</a></li>
+	</ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div>
+</header>
+
+<style>
+  .bottom-three {
+     margin-bottom: 2cm;
+  }
+</style>
+
+
+<p class="bottom-three">
+</p>
+<!-- <div class="site-banner"> -->
+<!--     <img src="/images/banner.jpg"></img> -->
+<!-- </div> -->
+
+
+
+        <div class="site-content container">
+            <div class="col-md-9">
+                <h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
+
+<h2 id="modo-interactivo-vs-source-y-r-cmd-batch">modo interactivo vs. source() y R CMD BATCH</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##En un editor de texto creamos el script z.R
 pdf("xh.pdf")  # configuramos un archivo de salido
 hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
 dev.off()  # cerramos el archivo de salida
@@ -53,145 +178,112 @@ source("z.R")
 </div>
 
 <ul>
-<li>Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
-encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "dos <code>", 4, sep</code>" "))</li>
-
-</ul>
-</section>
-<section id="slide-orgfed31d7">
-<h4 id="orgfed31d7">Workflow científico</h4>
-<ul>
-<li>trabajar con scripts permite 'mantener' nuestro proceso científico
-<ul>
-<li>el trabajo pasa a ser gradual, mejorando a cada vez</li>
-
-</ul></li>
-<li>modularizar nuestros procesos! Scripts de scripts
-<ul>
-<li>nos da flexibilidad y claridad</li>
-<li>permite separar 'físicamente' procesos computacionales diferentes</li>
-<li>permite reciclar código!</li>
-
-</ul></li>
-
+  <li>Acordarse que para imprimir en pantalla desde un script, tienen que usar print().</li>
 </ul>
 
-<p>
-Ejemplo: hago freaking_good_data_analysis.R, que contiene:
-</p>
-<div class="org-src-container">
+<h2 id="workflow-científico">Workflow científico</h2>
 
-<pre><code class="R" >source("0-input-data.R")
+<ul>
+  <li>trabajar con scripts permite ‘mantener’ nuestro proceso científico
+    <ul>
+      <li>el trabajo pasa a ser gradual, mejorando a cada vez</li>
+    </ul>
+  </li>
+  <li>modularizar nuestros procesos! Scripts de scripts
+    <ul>
+      <li>nos da flexibilidad y claridad</li>
+      <li>permite separar ‘físicamente’ procesos computacionales diferentes</li>
+      <li>permite reciclar código!</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Ejemplo: hago freaking_good_data_analysis.R, que contiene:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source("0-input-data.R")
 source("1-clean-data.R")
 source("2-parse-data.R")
 source("3-graph-data.R")
 </code></pre>
 </div>
 
-</section>
-<section id="slide-org10b594b">
-<h3 id="org10b594b">R project y CRAN</h3>
-<p>
-<a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
-</p>
+<h2 id="r-project-y-cran">R project y CRAN</h2>
 
-<p>
-<a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a>
-</p>
+<p><a href="https://www.r-project.org/">The R Project for Statistical Computing</a></p>
+
+<p><a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a></p>
 
 <ul>
-<li>El proyecto R mantiene el código, <a href="https://cran.r-project.org/manuals.html">la documentación</a>, y la comunidad, entre otras cosas</li>
-<li>CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
+  <li>El proyecto R mantiene el código, <a href="https://cran.r-project.org/manuals.html">la documentación</a>, y la comunidad, entre otras cosas</li>
+  <li>CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
 idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">paquetes aceptados oficialmente</a></li>
-<li>CRAN tiene <a href="https://cran.r-project.org/web/views/">Task Views</a>, páginas web que nuclean paquetes por temas</li>
-
+  <li>CRAN tiene <a href="https://cran.r-project.org/web/views/">Task Views</a>, páginas web que nuclean paquetes por temas</li>
 </ul>
 
-</section>
-<section id="slide-org9e36d08">
-<h3 id="org9e36d08">Estadística descriptiva</h3>
-<p>
-Una manera de hacer estadística descriptiva es con sapply:
-</p>
-<div class="org-src-container">
+<h2 id="estadística-descriptiva">Estadística descriptiva</h2>
 
-<pre><code class="R" >sapply(mydata, mean, na.rm=TRUE) 
+<p>Una manera de hacer estadística descriptiva es con sapply:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sapply(mydata, mean, na.rm=TRUE) 
 </code></pre>
 </div>
-<p>
-(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().
-</p>
 
-<p>
-Tenemos también group_by() + summarise() con las mismas funciones básicas.
-</p>
-</section>
-<section id="slide-org89169fc">
-<h3 id="org89169fc">Distribuciones</h3>
-<p>
-En general R usa la siguiente convención:
-</p>
+<p>(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().</p>
+
+<p>Tenemos también group_by() + summarise() con las mismas funciones básicas.</p>
+
+<h2 id="distribuciones">Distribuciones</h2>
+
+<p>En general R usa la siguiente convención:</p>
 
 <ul>
-<li>dDIST(x, &#x2026;) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+  <li>dDIST(x, …) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
 valor x</li>
-<li>pDIST(x, &#x2026;) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+  <li>pDIST(x, …) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
 valor menor a x (mayor si usamos lower.tail=F)</li>
-<li>rDIST(n, &#x2026;) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
-<li>qDIST(p, &#x2026;) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+  <li>rDIST(n, …) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
+  <li>qDIST(p, …) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
 lower.tail=F, devuelve 1 - el percentil p.</li>
-
 </ul>
 
-<img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
+<p><img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png" /></p>
 
-<p>
-Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
-</p>
-</section>
-</section>
-<section>
-<section id="slide-org26c256f">
-<h2 id="org26c256f">Modelado estadístico</h2>
-<div class="outline-text-2" id="text-org26c256f">
-</div></section>
-<section id="slide-org0ebf374">
-<h4 id="org0ebf374">Regresión lineal (lm)</h4>
-<p>
-Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
-parámetros para poder predecir.
-</p>
+<p>Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a></p>
+
+<h1 id="modelado-estadístico">Modelado estadístico</h1>
+
+<p>Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o <em>variable respuesta</em> y otras variables independientes o
+<em>variables explicativas</em>.</p>
+
+<p>En R la función lm() se usa para regresión lineal (<em>linear models</em>) y glm() para <em>generalized linear models</em>.</p>
+
+<h3 id="regresión-lineal-lm">Regresión lineal (lm)</h3>
+
+<p>Construimos un “modelo” (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.</p>
 
 <ol>
-<li>Propongo una determinada relación de variables</li>
-<li>Calculo coeficientes del modelo</li>
-<li>Compruebo que tan bien se ajusta el modelo a nuevas observaciones</li>
+  <li>Propongo una determinada relación de variables</li>
+  <li>Calculo coeficientes del modelo</li>
+  <li>
+    <p>Compruebo que tan bien se ajusta el modelo a nuevas observaciones</p>
 
+    <p>y[i] ~ f(x[i,]) = b[1] x[i,1] + … b[n] x[i,n]</p>
+    <h2 id="bi-son-los-coeficientes-o-betas">b[i] son los coeficientes o betas</h2>
+  </li>
 </ol>
 
-<div class="org-src-container">
+<h3 id="ejemplo-con-datos-de-2011-us-census-pums">Ejemplo con datos de 2011 US Census PUMS</h3>
 
-<pre><code class="R" >y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
-## b[i] son los coeficientes o betas
-</code></pre>
-</div>
+<p>Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.</p>
 
-</section>
-<section id="slide-orgd7d4686">
-<h4 id="orgd7d4686">Ejemplo con datos de 2011 US Census PUMS</h4>
-<p>
-Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
-</p>
-
-<div class="org-src-container">
-
-<pre><code class="R" >## hacemos la regresión:
+<div class="highlighter-rouge"><pre class="highlight"><code>## hacemos la regresión:
 load("psub.RData")
-dtrain <- subset(psub, ORIGRANDGROUP >= 500)
-dtest <- subset(psub, ORIGRANDGROUP < 500)
-model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
-dtest$predLogPINCP <- predict(model,newdata=dtest) 
-dtrain$predLogPINCP <- predict(model,newdata=dtrain)
+dtrain &lt;- subset(psub, ORIGRANDGROUP &gt;= 500)
+dtest &lt;- subset(psub, ORIGRANDGROUP &lt; 500)
+model &lt;- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest$predLogPINCP &lt;- predict(model,newdata=dtest) 
 
 ## resultados:
 summary(model)
@@ -208,145 +300,275 @@ scale_y_continuous(limits=c(3.5,5.5))
 ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
 geom_point(alpha=0.2,color="black") +
 geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
-
 </code></pre>
 </div>
-</section>
-<section id="slide-orge883d39">
-<h4 id="orge883d39">Regresión lineal generalizada (glm)</h4>
-<p>
-Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
-"normales". Los modelos lineales generalizados relajan estas suposiciones. 
-</p>
 
-<div class="org-src-container">
+<h3 id="regresión-lineal-generalizada-glm">Regresión lineal generalizada (glm)</h3>
 
-<pre><code class="R" >## expresión general
+<p>Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
+“normales”. Los modelos lineales generalizados relajan estas suposiciones.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## expresión general
 glm(formula, family=familytype(link=linkfunction), data=)
 </code></pre>
 </div>
 
-<p>
-Ejemplito: Regresión logística, para variables categóricas.
-</p>
+<p>Ejemplito: Regresión logística, para variables categóricas.</p>
 
-<div class="org-src-container">
-
-<pre><code class="R" ># F es un factor binario
+<div class="highlighter-rouge"><pre class="highlight"><code># F es un factor binario
 # x1, x2 y x3 son predictores continuos 
-fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+fit &lt;- glm(F~x1+x2+x3,data=mydata,family=binomial())
 summary(fit) # resultados
 exp(coef(fit)) # coeficientes
 predict(fit, type="response") # predicciones
 residuals(fit, type="deviance") # residuos 
-
 </code></pre>
 </div>
-</section>
-</section>
-<section>
-<section id="slide-orgc478cbf">
-<h2 id="orgc478cbf">Estadística avanzada - material infinito</h2>
+
+<h1 id="estadística-avanzada---material-infinito">Estadística avanzada - material infinito</h1>
+
 <ul>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
-<li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
-<li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
-<li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
-
+  <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
+  <li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
+  <li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
+  <li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-orgb0fc7e4">
-<h2 id="orgb0fc7e4">Matemática</h2>
-<div class="outline-text-2" id="text-orgb0fc7e4">
-</div></section>
-<section id="slide-orge80fff9">
-<h3 id="orge80fff9">Funciones matemáticas básicas</h3>
-<div class="org-src-container">
 
-<pre><code class="R" >
+<h1 id="matemática">Matemática</h1>
+
+<h2 id="funciones-matemáticas-básicas">Funciones matemáticas básicas</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- exp(): Exponential function, base e
+- log(): Natural logarithm
+- log10(): Logarithm base 10
+- sqrt(): Square root
+- abs(): Absolute value
+- sin(), cos(), and so on: Trig functions
+- min() and max(): Minimum value and maximum value within a vector
+- which.min() and which.max(): Index of the minimal element and maximal element of a vector
+- pmin() and pmax(): Element-wise minima and maxima of several vectors
+- sum() and prod(): Sum and product of the elements of a vector
+- cumsum() and cumprod(): Cumulative sum and product of the elements of a vector
+- round(), floor(), and ceiling(): Round to the closest integer, to the clos- est integer below, and to the closest integer above
+- factorial(): Factorial function
+
+&gt; x &lt;- c(12,5,13)
+&gt; cumsum(x)
+[1] 12 17 30
+&gt; cumprod(x)
+[1] 12 60 780
 </code></pre>
 </div>
-</section>
-<section id="slide-org397c916">
-<h3 id="org397c916">Algebra Lineal</h3>
-<ul>
-<li>vector/matrix properties
-<ul>
-<li>8.4 Linear Algebra Operations on Vectors and Matrices</li>
-<li>appendix E Matrix Algebra in R in "R in Action"</li>
 
-</ul></li>
-<li>diagonalization etc.</li>
-<li>bigalgebra::bigalgebra-package?</li>
+<h2 id="cálculo">Cálculo</h2>
 
+<p>R tiene capacidades simples de hacer cuentas analíticas:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>D(expression(exp(x^2)),"x")  # derivative
+exp(x^2) * (2 * x)
+&gt; integrate(function(x) x^2,0,1)
+0.3333333 with absolute error &lt; 3.7e-15
+</code></pre>
+</div>
+
+<h2 id="algebra-lineal">Algebra Lineal</h2>
+
+<h3 id="multiplicación-de-matrices">multiplicación de matrices</h3>
+
+<p>Directamente con el operador %*%</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;a
+    [,1] [,2]
+[1,]   1    2 
+[2,]   3    4 
+&gt;b
+     [,1] [,2]
+[1,]    1   -1
+[2,]    0    1
+&gt; a %*% b
+     [,1] [,2]
+[1,]    1    1
+[2,]    3    1
+</code></pre>
+</div>
+
+<h3 id="sistema-de-ecuaciones-lineales-o-invertir-una-matriz">Sistema de ecuaciones lineales (o invertir una matriz)</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a &lt;- matrix(c(1,1,-1,1),nrow=2,ncol=2)
+&gt; b &lt;- c(2,4)
+&gt; solve(a,b)
+[1] 3 1
+&gt; solve(a) ## sin el segundo argumento, invierte la matriz
+  [,1] [,2]
+[1,]  0.5  0.5
+[2,] -0.5  0.5
+</code></pre>
+</div>
+
+<h3 id="autovectores-y-autovalores">Autovectores y autovalores</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a
+     [,1] [,2]
+[1,]    1   -1
+[2,]    1    1
+&gt; e &lt;- eigen(a)
+$values
+[1] 1+1i 1-1i
+
+$vectors
+		     [,1]                 [,2]
+[1,] 0.7071068+0.0000000i 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i 0.0000000+0.7071068i
+&gt; eigenvector1 &lt;- e$vectors[,1]
+&gt; eigenvalue1 &lt;-  e$values[1]
+&gt; a %*% eigenvector1 / eigenvalue1
+		     [,1]
+[1,] 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i
+&gt; 
+</code></pre>
+</div>
+
+<h3 id="otras-operaciones-posibles-son">Otras operaciones posibles son:</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- t(): Matrix transpose
+- qr(): QR decomposition
+- chol(): Cholesky decomposition
+- det(): Determinant
+- eigen(): Eigenvalues/eigenvectors
+- diag(): Extracts the diagonal of a square matrix
+- svd(A): Single value decomposition of A
+- ...
+</code></pre>
+</div>
+
+<h2 id="otros-paquetes-de-interés">Otros paquetes de interés</h2>
+
+<ul>
+  <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
+  <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
+    <ul>
+      <li>tienen también el libro “2012 - Book - Solving Differential Equations in R.pdf” en #bibliografia @slack</li>
+    </ul>
+  </li>
+  <li><a href="https://cran.r-project.org/web/views/TimeSeries.html">Series temporales</a></li>
+  <li><a href="https://cran.r-project.org/web/views/Optimization.html">Optimización y programación matemática</a></li>
+  <li>Aritmética de precisión múltiple con <a href="https://cran.r-project.org/web/packages/gmp/index.html">gmp</a></li>
+  <li>Paquete <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl</a>, una interface a la Biblioteca Científica GNU</li>
+  <li>Mil cosas más :D</li>
 </ul>
-</section>
-<section id="slide-orga3b922e">
-<h3 id="orga3b922e">Otros paquetes de interés</h3>
-<ul>
-<li>Ecuaciones diferenciales
-<a href="https://cran.r-project.org/web/views/DifferentialEquations.html">https://cran.r-project.org/web/views/DifferentialEquations.html</a>
-<ul>
-<li>libro pdf en #bibliografia</li>
 
-</ul></li>
-<li>Series temporales
-<a href="https://cran.r-project.org/web/views/TimeSeries.html">https://cran.r-project.org/web/views/TimeSeries.html</a></li>
+<h1 id="práctica-11">Práctica 11</h1>
 
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-orgb96c9e4">
-<h2 id="orgb96c9e4">Práctica 11</h2>
 <ol>
-<li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo de precio como
-función del logaritmo del carat. Sacar los coeficientes y usarlos para graficar el modelo (como
+  <li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
+función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con
 una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos
 en otro gráfico.</li>
-
+  <li>Si tengo dos vectores a y b del mismo largo, que obtengo al hacer sum(a * b)? Y sqrt(sum(a * a))?</li>
+  <li>En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
+tranquis. Uno de la primer mesa les dice a los de la segunda: “si se viene uno de uds. acá,
+entonces vamos a ser la misma cantidad en las dos mesas”. “Si”, le responden, “pero si se viene
+uno de uds. para acá, vamos a ser el doble acá que la de ustedes”. Escriban unas ecuaciones
+para resolver en R y saber cuántos pájaros había en cada mesa.</li>
 </ol>
-</section>
-</section>
+
+
+            </div>
+            <div id="site-side-bar" class="col-md-3">
+                <div id="navigation">
+    <!-- <div class="panel panel-default"> -->
+    <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
+    <!--     <div class="panel-body"> -->
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://github.com/lgmoyano"> -->
+    <!--                     <span class="icon  icon--github"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">lgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://twitter.com/@luisgmoyano"> -->
+    <!--                     <span class="icon  icon--twitter"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809 -->
+    <!--                             c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">@luisgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="panel panel-default"> -->
+    <!--     <div class="panel-heading">Archivo</div> -->
+    <!--     <div class="panel-body"> -->
+    <!--          -->
+
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Apr 2017 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">using types effectively</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">Simple</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Aug 2015 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/haskell/2015/08/30/hello-world-in-haskell.html">hello world in haskell</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/08/29/welcome-to-jekyll.html">Welcome to Jekyll!</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
 </div>
-</div>
-<p> @luisgmoyano </p>
-<script src="../../reveal.js/lib/js/head.min.js"></script>
-<script src="../../reveal.js/js/reveal.js"></script>
 
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
 
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 'c',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-margin: 0.10,
-minScale: 0.50,
-maxScale: 2.50,
+            </div>
+        </div>
 
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'fast',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+        <!-- <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="position:absolute;RIGHT:10px; TOP:550px; border-width:0" src="by-nc.png" height="20" width="95"/></a></p> -->
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
-});
-</script>
-</body>
+
+    </body>
+
 </html>
