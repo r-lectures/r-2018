@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-org5f05991">
-<h2 id="org5f05991">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org5f05991">
+<section id="slide-org182b31d">
+<h2 id="org182b31d">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org182b31d">
 </div></section>
-<section id="slide-org4c9dc83">
-<h3 id="org4c9dc83">modo interactivo vs. source() y R CMD BATCH</h3>
+<section id="slide-org5d370f4">
+<h3 id="org5d370f4">modo interactivo vs. source() y R CMD BATCH</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >##En un editor de texto creamos el script z.R
@@ -57,8 +57,8 @@ source("z.R")
 
 </ul>
 </section>
-<section id="slide-org02b8fc0">
-<h3 id="org02b8fc0">Workflow científico</h3>
+<section id="slide-org8e7deec">
+<h3 id="org8e7deec">Workflow científico</h3>
 <ul>
 <li>trabajar con scripts permite 'mantener' nuestro proceso científico
 <ul>
@@ -88,8 +88,8 @@ source("3-graph-data.R")
 </div>
 
 </section>
-<section id="slide-org538fc61">
-<h3 id="org538fc61">R project y CRAN</h3>
+<section id="slide-org903ecee">
+<h3 id="org903ecee">R project y CRAN</h3>
 <p>
 <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
 </p>
@@ -107,8 +107,8 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 </ul>
 
 </section>
-<section id="slide-orgc2e4bd0">
-<h3 id="orgc2e4bd0">Estadística descriptiva</h3>
+<section id="slide-orgf433ff1">
+<h3 id="orgf433ff1">Estadística descriptiva</h3>
 <p>
 Una manera de hacer estadística descriptiva es con sapply:
 </p>
@@ -125,8 +125,8 @@ Una manera de hacer estadística descriptiva es con sapply:
 Tenemos también group_by() + summarise() con las mismas funciones básicas.
 </p>
 </section>
-<section id="slide-org1ed04f6">
-<h3 id="org1ed04f6">Distribuciones</h3>
+<section id="slide-orgf934e89">
+<h3 id="orgf934e89">Distribuciones</h3>
 <p>
 En general R usa la siguiente convención:
 </p>
@@ -150,8 +150,8 @@ Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.
 </section>
 </section>
 <section>
-<section id="slide-org77af014">
-<h2 id="org77af014">Modelado estadístico</h2>
+<section id="slide-orgb4d34cc">
+<h2 id="orgb4d34cc">Modelado estadístico</h2>
 <p>
 Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
 relación entre una variable dependiente o <i>variable respuesta</i> y otras variables independientes o
@@ -162,8 +162,8 @@ relación entre una variable dependiente o <i>variable respuesta</i> y otras var
 En R la función lm() se usa para regresión lineal (<i>linear models</i>) y glm() para <i>generalized linear models</i>.
 </p>
 </section>
-<section id="slide-org06dcd96">
-<h4 id="org06dcd96">Regresión lineal (lm)</h4>
+<section id="slide-orgdbe8371">
+<h4 id="orgdbe8371">Regresión lineal (lm)</h4>
 <p>
 Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
 parámetros para poder predecir.
@@ -184,8 +184,8 @@ parámetros para poder predecir.
 </div>
 
 </section>
-<section id="slide-orge062127">
-<h4 id="orge062127">Ejemplo con datos de 2011 US Census PUMS</h4>
+<section id="slide-orgb1e28b2">
+<h4 id="orgb1e28b2">Ejemplo con datos de 2011 US Census PUMS</h4>
 <p>
 Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
 </p>
@@ -218,8 +218,8 @@ geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black
 </code></pre>
 </div>
 </section>
-<section id="slide-org56ba8dc">
-<h4 id="org56ba8dc">Regresión lineal generalizada (glm)</h4>
+<section id="slide-org244b4ab">
+<h4 id="org244b4ab">Regresión lineal generalizada (glm)</h4>
 <p>
 Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
 "normales". Los modelos lineales generalizados relajan estas suposiciones. 
@@ -251,8 +251,8 @@ residuals(fit, type="deviance") # residuos
 </section>
 </section>
 <section>
-<section id="slide-orgc652116">
-<h2 id="orgc652116">Estadística avanzada - material infinito</h2>
+<section id="slide-org7a7bc99">
+<h2 id="org7a7bc99">Estadística avanzada - material infinito</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
 <li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
@@ -263,12 +263,12 @@ residuals(fit, type="deviance") # residuos
 </section>
 </section>
 <section>
-<section id="slide-org76d7038">
-<h2 id="org76d7038">Matemática</h2>
-<div class="outline-text-2" id="text-org76d7038">
+<section id="slide-org1c9cdb5">
+<h2 id="org1c9cdb5">Matemáticas</h2>
+<div class="outline-text-2" id="text-org1c9cdb5">
 </div></section>
-<section id="slide-org9ab495d">
-<h3 id="org9ab495d">Funciones matemáticas básicas</h3>
+<section id="slide-orgcb1e690">
+<h3 id="orgcb1e690">Funciones matemáticas básicas</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >- exp(): Exponential function, base e
@@ -297,8 +297,8 @@ residuals(fit, type="deviance") # residuos
 </code></pre>
 </div>
 </section>
-<section id="slide-org95a5b91">
-<h3 id="org95a5b91">Cálculo</h3>
+<section id="slide-org7d3c6ec">
+<h3 id="org7d3c6ec">Cálculo</h3>
 <p>
 R tiene capacidades simples de hacer cuentas analíticas:
 </p>
@@ -312,12 +312,12 @@ exp(x^2) * (2 * x)
 </code></pre>
 </div>
 </section>
-<section id="slide-org2452a53">
-<h3 id="org2452a53">Algebra Lineal</h3>
-<div class="outline-text-3" id="text-org2452a53">
+<section id="slide-orgd734146">
+<h3 id="orgd734146">Algebra Lineal</h3>
+<div class="outline-text-3" id="text-orgd734146">
 </div></section>
-<section id="slide-orgcb76952">
-<h4 id="orgcb76952">multiplicación de matrices</h4>
+<section id="slide-org9765f29">
+<h4 id="org9765f29">multiplicación de matrices</h4>
 <p>
 Directamente con el operador %*%
 </p>
@@ -339,8 +339,8 @@ Directamente con el operador %*%
 </code></pre>
 </div>
 </section>
-<section id="slide-orgbe01e6c">
-<h4 id="orgbe01e6c">Sistema de ecuaciones lineales (o invertir una matriz)</h4>
+<section id="slide-org949aeaa">
+<h4 id="org949aeaa">Sistema de ecuaciones lineales (o invertir una matriz)</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >> a <- matrix(c(1,1,-1,1),nrow=2,ncol=2)
@@ -354,8 +354,8 @@ Directamente con el operador %*%
 </code></pre>
 </div>
 </section>
-<section id="slide-orga632294">
-<h4 id="orga632294">Autovectores y autovalores</h4>
+<section id="slide-org789d44a">
+<h4 id="org789d44a">Autovectores y autovalores</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >> a
@@ -381,8 +381,8 @@ $vectors
 </div>
 
 </section>
-<section id="slide-org8b40f9d">
-<h4 id="org8b40f9d">Otras operaciones posibles son:</h4>
+<section id="slide-org4c45eca">
+<h4 id="org4c45eca">Otras operaciones posibles son:</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >- t(): Matrix transpose
@@ -397,8 +397,8 @@ $vectors
 </div>
 
 </section>
-<section id="slide-orgd014efe">
-<h3 id="orgd014efe">Otros paquetes de interés</h3>
+<section id="slide-org9ceb8ac">
+<h3 id="org9ceb8ac">Otros paquetes de interés</h3>
 <ul>
 <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
 <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
@@ -417,8 +417,8 @@ $vectors
 </section>
 </section>
 <section>
-<section id="slide-org0424eea">
-<h2 id="org0424eea">Práctica 11</h2>
+<section id="slide-orged36767">
+<h2 id="orged36767">Práctica 11</h2>
 <ol>
 <li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
 función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con

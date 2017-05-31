@@ -157,7 +157,7 @@ Ejemplito: Regresión logística, para variables categóricas.
 -   [The elements of statistical learning](http://statweb.stanford.edu/~tibs/ElemStatLearn/) - [(ElemStatLearn book)](https://cran.r-project.org/web/packages/ElemStatLearn/index.html)
 
 
-# Matemática
+# Matemáticas
 
 
 ## Funciones matemáticas básicas
