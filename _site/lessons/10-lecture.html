@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Datos</title>
+    <title>Clase 10</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/datasets.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/10-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -160,67 +160,196 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h2 id="datasets">Datasets</h2>
+                <h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
 
-<p>Se irán agregando items, sugerencias bienvenidas.</p>
+<h2 id="vectorización">Vectorización</h2>
+
+<p>Se trata de operaciones que aplican a un vector, pero elemento por elemento.</p>
+
+<ol>
+  <li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
+  <li>
+    <p>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
+rápidos.</p>
+
+    <h1 id="sin-vectorización">sin vectorización</h1>
+    <blockquote>
+      <p>for (i in 1:length(x)) z[i] &lt;- x[i] + y[i]</p>
+    </blockquote>
+
+    <h1 id="con-vectorización">con vectorización</h1>
+    <blockquote>
+      <p>z &lt;- x + y</p>
+    </blockquote>
+  </li>
+</ol>
 
 <ul>
-  <li>R built-in datasets - <a href="http://stackoverflow.com/questions/33797666/how-to-get-a-list-of-built-in-data-sets-in-r">credit: answer from Jaap in stackoverflow</a>
-    <ol>
-      <li>Using data() will give you a list of the datasets of all loaded packages (and not only the ones
-from the datasets package); the datasets are order by package</li>
-      <li>Using data(package = .packages(all.available = TRUE)) will give you a list of all datasets in
-the available packages on your computer (i.e. also the not-loaded ones)</li>
-      <li>
-        <p>Using data(package = “packagename”) will give you the datasets of that specific package, so
-data(package = “plyr”) will give the datasets in the plyr package
-Example:</p>
-
-        <div class="highlighter-rouge"><pre class="highlight"><code># Built-in datasets
-data()
-data(ToothGrowth)
-?ToothGrowth
-ToothGrowth
-summary(ToothGrowth)
-plot(ToothGrowth)
-</code></pre>
-        </div>
-      </li>
-    </ol>
-  </li>
-  <li><a href="https://mran.microsoft.com/packages/">Explore Packages Currently on CRAN (search for “dataset”)</a></li>
-  <li><a href="http://ckan.ciudaddemendoza.gov.ar/">open data mendoza</a></li>
-  <li><a href="https://data.buenosaires.gob.ar/">buenos aires data</a> - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.</li>
-  <li><a href="https://data.gov.uk">data.gov.uk - opening up government</a></li>
-  <li><a href="http://www.curitiba.pr.gov.br/dadosabertos/consulta/">Dados Abertos Curitiba</a></li>
-  <li><a href="http://berkeleyearth.org/data/">Berkeley Earth</a></li>
-  <li><a href="http://linkedscience.org/data/linked-brazilian-amazon-rainforest/">Linked Brazilian Amazon Rainforest</a></li>
-  <li><a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">Kaggle Climate Change: Earth Surface Temperature Data</a></li>
-  <li><a href="https://aws.amazon.com/datasets/">AWS Public Datasets</a></li>
-  <li><a href="https://snap.stanford.edu/data/">Stanford Large Network Dataset Collection</a></li>
-  <li><a href="http://www.rug.nl/ggdc/productivity/pwt/">Penn World Table</a> - University of Groningen
-    <ul>
-      <li>data from the Penn World Tables 9.0.</li>
-      <li>PWT version 9.0 is a database with information on relative levels of income, output, input and
-productivity, covering 182 countries between 1950 and 2014</li>
-      <li>Install R package called “pwt9”</li>
-    </ul>
-  </li>
-  <li><a href="https://www.kaggle.com/benhamner/2016-us-election">Kaggle - 2016 US Election</a></li>
-  <li><a href="https://www.kaggle.com/cdc/mortality">Death in the United States</a></li>
-  <li><a href="https://catalog.data.gov/dataset">Data Gov -  191,705 datasets</a>
-    <ul>
-      <li><a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9">U.S. Chronic Disease Indicators (CDI)</a></li>
-    </ul>
-  </li>
-  <li><a href="https://www.kaggle.com/c/shelter-animal-outcomes/data">Shelter Animal Outcomes</a></li>
-  <li><a href="https://www.kaggle.com/c/facebook-v-predicting-check-ins/data">Facebook V: Predicting Check Ins</a></li>
-  <li><a href="http://www.gutenberg.org/">Free ebooks by Project Gutenberg</a></li>
-  <li><a href="http://www.pro-football-reference.com/">Football Stats and History</a></li>
-  <li><a href="http://www.basketball-reference.com/">Basketball Stats and History</a></li>
-  <li><a href="http://www.baseball-reference.com/">Baseball Stats and History</a></li>
-  <li><a href="http://archive.ics.uci.edu/ml/datasets/Bag+of+Words">Bag of Words Data Set</a></li>
+  <li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
 </ul>
+
+<h2 id="funcionales---familia-apply">Funcionales - Familia *apply()</h2>
+
+<ul>
+  <li><strong>lapply()</strong>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
+  <li><strong>sapply()</strong>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
+a una matriz.</li>
+  <li><strong>apply()</strong>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
+  <li><strong>tapply()</strong>: para aplicar funciones a vectores con factores</li>
+</ul>
+
+<p>Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a “cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?”</p>
+
+<p>Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a></p>
+
+<h1 id="modo-interactivo-vs-source-y-r-cmd-batch">modo interactivo vs. source() y R CMD BATCH</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##En un editor de texto creamos el script z.R
+pdf("xh.pdf")  # configuramos un archivo de salido
+hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
+dev.off()  # cerramos el archivo de salida
+
+## En el terminal:
+R CMD BATCH z.R
+
+## En R:
+source("z.R")
+</code></pre>
+</div>
+
+<ul>
+  <li>Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
+encadenar texto con variables usar paste(). Por ej. print(paste(“dos”, “mas”, “dos <code class="highlighter-rouge">", 4, sep</code>” “))</li>
+</ul>
+
+<h2 id="workflow-científico">Workflow científico</h2>
+
+<ul>
+  <li>trabajar con scripts permite ‘mantener’ nuestro proceso científico
+    <ul>
+      <li>el trabajo pasa a ser gradual, mejorando a cada vez</li>
+    </ul>
+  </li>
+  <li>modularizar nuestros procesos! Scripts de scripts
+    <ul>
+      <li>nos da flexibilidad y claridad</li>
+      <li>permite separar ‘físicamente’ procesos computacionales diferentes</li>
+      <li>permite reciclar código!</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Ejemplo: hago freaking_good_data_analysis.R, que contiene:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source("0-input-data.R")
+source("1-clean-data.R")
+source("2-parse-data.R")
+source("3-graph-data.R")
+</code></pre>
+</div>
+
+<h1 id="r-project-y-cran">R project y CRAN</h1>
+
+<p><a href="https://www.r-project.org/">The R Project for Statistical Computing</a></p>
+
+<p><a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a></p>
+
+<ul>
+  <li>El proyecto R mantiene el código, <a href="https://cran.r-project.org/manuals.html">la documentación</a>, y la comunidad, entre otras cosas</li>
+  <li>CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
+idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">paquetes aceptados oficialmente</a></li>
+  <li>CRAN tiene <a href="https://cran.r-project.org/web/views/">Task Views</a>, páginas web que nuclean paquetes por temas</li>
+</ul>
+
+<h1 id="estadística">Estadística</h1>
+
+<h2 id="estadística-descriptiva">Estadística descriptiva</h2>
+
+<p>Una manera de hacer estadística descriptiva es con sapply:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sapply(mydata, mean, na.rm=TRUE) 
+</code></pre>
+</div>
+
+<p>(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().</p>
+
+<p>Tenemos también group_by() + summarise() con las mismas funciones básicas.</p>
+
+<h2 id="distribuciones">Distribuciones</h2>
+
+<p>En general R usa la siguiente convención:</p>
+
+<ul>
+  <li>dDIST(x, …) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+valor x</li>
+  <li>pDIST(x, …) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+valor menor a x (mayor si usamos lower.tail=F)</li>
+  <li>rDIST(n, …) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
+  <li>qDIST(p, …) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+lower.tail=F, devuelve 1 - el percentil p.</li>
+</ul>
+
+<p><img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png" /></p>
+
+<p>Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a></p>
+
+<h3 id="distribución-normal">Distribución Normal</h3>
+
+<p>Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(ggplot2)
+set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
+x &lt;- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
+f &lt;- dnorm(x) # normal con media 0 y sd 1 
+ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
+</code></pre>
+</div>
+
+<h3 id="otras-distribuciones">Otras distribuciones</h3>
+
+<p>Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
+de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- rbinom(100000,5,0.5)
+mean(x)
+# [1] 2.5004
+
+mean(x &gt;= 4)
+# [1] 0.18829
+</code></pre>
+</div>
+
+<h1 id="práctica-10">Práctica 10</h1>
+
+<ol>
+  <li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
+5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+figura (o sea, que queden dos histogramas y una curva). Usar el argumento <em>alpha</em> para poder
+distinguir los histogramas.</li>
+</ol>
+
+<h2 id="práctica-10-bis">Práctica 10 bis</h2>
+
+<ol>
+  <li>
+    <p>i)  Bajarse el Quijote de <a href="http://www.gutenberg.org">“Project Gutenberg”</a> en formato texto.</p>
+
+    <p>ii) Meter el libro en un vector de tipo “character”, una palabra en cada elemento del
+vector. Tip: stringr::str_split(). Cuántas palabras hay en total? Cuántas únicas?</p>
+
+    <p>iii) Cuántas veces aparece cada palabra? Tip: dplyr + nombrar las columnas + n() o
+tally(). Cuál es la 1era palabra del ranking? Cuanto aparece “Quijote” y en que ranking?</p>
+
+    <p>iv) Hacer un plot del ranking vs. su frecuencia. Qué llama la atención? Tip: ambos ejes logarítmicos.</p>
+
+    <p>v) Qué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
+distintas distribuciones (con dDIST()) para aproximar los datos. Tip: poner “quijote
+distribution” en Google Scholar. Qué parámetro que controla la distribución es importante y
+cuando vale (intentar calcularlo con R)?</p>
+  </li>
+</ol>
 
 
             </div>

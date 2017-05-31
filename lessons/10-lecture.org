@@ -177,14 +177,18 @@ mean(x >= 4)
    pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
    figura (o sea, que queden dos histogramas y una curva). Usar el argumento /alpha/ para poder
    distinguir los histogramas.
-2. i)  Bajarse el Quijote de Project Gutenberg en formato "Plain Text UTF-8" (o sea, formato texto o
-   ASCII)
-   ii) Meter el libro entero en un vector character, o sea, una palabra por en cada elemento del vector. Tip: stringr::str_split 
-   iii) Usar group_by y summarise para contar cuantas veces aparece cada palabra. Tip: buenos
-   nombres para las columnas + función n(). Cuál es la palabra que más aparece? Cuantas veces
-   aparece "quijote" y en que posición (o sea, en que ranking)?
-   iv) Hacer un plot del ranking de la palabra (es decir, 1, 2, 3, etc) vs la cantidad de veces que
-   aparece. Qué se ve? Tip: ambos ejes logarítmicos
-   v) Qué función de distribución describiría bien lo que encontramos? Una normal? Probar distintas
-   posibilidades (usando la familia dDIST()) sobre los datos para ver si podemos acercarnos. Tip:
-   buscar "quijote distribution" en Google Scholar.
+** Práctica 10 bis
+2. i)  Bajarse el Quijote de [[http://www.gutenberg.org]["Project Gutenberg"]] en formato texto.
+ 
+   ii) Meter el libro en un vector de tipo "character", una palabra en cada elemento del
+   vector. Tip: stringr::str_split(). Cuántas palabras hay en total? Cuántas únicas?
+
+   iii) Cuántas veces aparece cada palabra? Tip: dplyr + nombrar las columnas + n() o
+   tally(). Cuál es la 1era palabra del ranking? Cuanto aparece "Quijote" y en que ranking?
+
+   iv) Hacer un plot del ranking vs. su frecuencia. Qué llama la atención? Tip: ambos ejes logarítmicos.
+
+   v) Qué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
+   distintas distribuciones (con dDIST()) para aproximar los datos. Tip: poner "quijote
+   distribution" en Google Scholar. Qué parámetro que controla la distribución es importante y
+   cuando vale (intentar calcularlo con R)?

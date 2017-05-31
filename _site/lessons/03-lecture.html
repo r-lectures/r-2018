@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Datos</title>
+    <title>Clase 2</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/datasets.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/03-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -160,67 +160,178 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h2 id="datasets">Datasets</h2>
+                <h1 id="repaso-de-la-clase-pasada">Repaso de la clase pasada</h1>
 
-<p>Se irán agregando items, sugerencias bienvenidas.</p>
+<p>##</p>
+
+<p><code class="highlighter-rouge">ggplot2</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p &lt;- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
+p &lt;- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
+p &lt;- p + geom_point() # le agrego como quiero que represente ese mapeo
+p                     # imprimo la figura
+
+ggplot(data = mi-data-frame) + 
+      geom_point/line/etc(mapping = aes(col1, col2, colour="blue", etc.))
+</code></pre>
+</div>
+
+<p><span class="underline">solo</span> <code class="highlighter-rouge">data.frames</code></p>
+
+<p>##</p>
+
+<ul class="smallfont">
+<li><b>data</b>: el dataframe que contiene los datos a graficar</li>
+<li><b>geoms</b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
+<li><b>aesthetics</b>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc </li>
+<li><b>scale</b>: para cada aesthetic, describe como se mapea la característica visual a valores
+ por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</li>
+<li><b>stats</b>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión  </li>
+<li><b>facets</b>: permite separar en gráficos distintos de acuerdo a variables categóricas</li>
+ </ul>
+
+<h2 id="práctica-1">Práctica 1</h2>
+
+<ol>
+  <li>Elegir un conjunto de datos <em>built-in</em> con datos continuos y categóricos</li>
+  <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
+  <li>Graficar las relaciones más importantes</li>
+  <li>Encontrar la manera de hacer <em>scatterplots</em> e histogramas</li>
+  <li>Agregar información (título, ejes, descripción de los datos)</li>
+</ol>
+
+<h2 id="práctica-2">Práctica 2</h2>
 
 <ul>
-  <li>R built-in datasets - <a href="http://stackoverflow.com/questions/33797666/how-to-get-a-list-of-built-in-data-sets-in-r">credit: answer from Jaap in stackoverflow</a>
-    <ol>
-      <li>Using data() will give you a list of the datasets of all loaded packages (and not only the ones
-from the datasets package); the datasets are order by package</li>
-      <li>Using data(package = .packages(all.available = TRUE)) will give you a list of all datasets in
-the available packages on your computer (i.e. also the not-loaded ones)</li>
-      <li>
-        <p>Using data(package = “packagename”) will give you the datasets of that specific package, so
-data(package = “plyr”) will give the datasets in the plyr package
-Example:</p>
-
-        <div class="highlighter-rouge"><pre class="highlight"><code># Built-in datasets
-data()
-data(ToothGrowth)
-?ToothGrowth
-ToothGrowth
-summary(ToothGrowth)
-plot(ToothGrowth)
-</code></pre>
-        </div>
-      </li>
-    </ol>
-  </li>
-  <li><a href="https://mran.microsoft.com/packages/">Explore Packages Currently on CRAN (search for “dataset”)</a></li>
-  <li><a href="http://ckan.ciudaddemendoza.gov.ar/">open data mendoza</a></li>
-  <li><a href="https://data.buenosaires.gob.ar/">buenos aires data</a> - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.</li>
-  <li><a href="https://data.gov.uk">data.gov.uk - opening up government</a></li>
-  <li><a href="http://www.curitiba.pr.gov.br/dadosabertos/consulta/">Dados Abertos Curitiba</a></li>
-  <li><a href="http://berkeleyearth.org/data/">Berkeley Earth</a></li>
-  <li><a href="http://linkedscience.org/data/linked-brazilian-amazon-rainforest/">Linked Brazilian Amazon Rainforest</a></li>
-  <li><a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">Kaggle Climate Change: Earth Surface Temperature Data</a></li>
-  <li><a href="https://aws.amazon.com/datasets/">AWS Public Datasets</a></li>
-  <li><a href="https://snap.stanford.edu/data/">Stanford Large Network Dataset Collection</a></li>
-  <li><a href="http://www.rug.nl/ggdc/productivity/pwt/">Penn World Table</a> - University of Groningen
-    <ul>
-      <li>data from the Penn World Tables 9.0.</li>
-      <li>PWT version 9.0 is a database with information on relative levels of income, output, input and
-productivity, covering 182 countries between 1950 and 2014</li>
-      <li>Install R package called “pwt9”</li>
-    </ul>
-  </li>
-  <li><a href="https://www.kaggle.com/benhamner/2016-us-election">Kaggle - 2016 US Election</a></li>
-  <li><a href="https://www.kaggle.com/cdc/mortality">Death in the United States</a></li>
-  <li><a href="https://catalog.data.gov/dataset">Data Gov -  191,705 datasets</a>
-    <ul>
-      <li><a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9">U.S. Chronic Disease Indicators (CDI)</a></li>
-    </ul>
-  </li>
-  <li><a href="https://www.kaggle.com/c/shelter-animal-outcomes/data">Shelter Animal Outcomes</a></li>
-  <li><a href="https://www.kaggle.com/c/facebook-v-predicting-check-ins/data">Facebook V: Predicting Check Ins</a></li>
-  <li><a href="http://www.gutenberg.org/">Free ebooks by Project Gutenberg</a></li>
-  <li><a href="http://www.pro-football-reference.com/">Football Stats and History</a></li>
-  <li><a href="http://www.basketball-reference.com/">Basketball Stats and History</a></li>
-  <li><a href="http://www.baseball-reference.com/">Baseball Stats and History</a></li>
-  <li><a href="http://archive.ics.uci.edu/ml/datasets/Bag+of+Words">Bag of Words Data Set</a></li>
+  <li>Seleccionen de <code class="highlighter-rouge">data()</code> un data.frame con alguna variable categórica</li>
+  <li>Qué pasa si hacen solo <code class="highlighter-rouge">ggplot(mi_data)</code>?</li>
+  <li>Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
+  <li>Para que sirve <code class="highlighter-rouge">jitter</code>? Para que sirve <code class="highlighter-rouge">stroke</code>?</li>
+  <li>Podemos usar formas condicionales (&gt;, &lt;, etc) en aes()?</li>
+  <li>Cómo difieren <code class="highlighter-rouge">facet_grid</code> y <code class="highlighter-rouge">facet_wrap</code>?</li>
+  <li>Usar <code class="highlighter-rouge">box-plot</code> y <code class="highlighter-rouge">geom_smooth()</code>. Cuándo conviene usarlas?</li>
 </ul>
+
+<h1 id="manipulación-de-datos">Manipulación de datos</h1>
+
+<p><code class="highlighter-rouge">library(dplyr)</code></p>
+
+<p>(igual que <code class="highlighter-rouge">ggplot2</code>, <code class="highlighter-rouge">dplyr</code> solo acepta data.frames)</p>
+
+<h2 id="principales-funciones">principales funciones</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">select()</code>: seleccionar columnas</li>
+  <li><code class="highlighter-rouge">arrange()</code>:reordenar filas</li>
+  <li><code class="highlighter-rouge">filter()</code>: filtrar observaciones por sus valores</li>
+  <li><code class="highlighter-rouge">mutate()</code>: crear variables a partir de otras</li>
+  <li><code class="highlighter-rouge">summarise()</code>: reducir varios valores a uno solo
+(muchas veces agrupamos primero con <code class="highlighter-rouge">group_by</code>)</li>
+</ul>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">select()</code></p>
+
+<p>Con <code class="highlighter-rouge">select</code> podemos elegir las columnas</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(mosaicData) # cargo el paquete que ya viene instalado
+b &lt;- tbl_df(Birthdays) # cambio el nombre del data.frame (por fiaca)
+str(b)  # que pinta tiene el data.frame?
+
+select(b, state, births) # quiero dos columnas
+
+
+select(b, state, births, year) # o tres
+
+
+select(b, -wday, -date) # podemos sacar columnas
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">arrange()</code></p>
+
+<p>Con <code class="highlighter-rouge">arrange</code> podemos ordenar según valores de columnas</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>b # ordenados por año
+
+arrange(b, state) # ahora ordeno por estados
+
+arrange(b, state, births) # ahora por estados y por nacimientos
+
+arrange(b, state, desc(births)) # idem pero nacimientos de mayor a menor
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">filter()</code></p>
+
+<p>Con <code class="highlighter-rouge">filter</code> podemos filtrar observaciones mediante condiciones lógicas
+(&gt;, &gt;=, &lt;, &lt;=, !=, ==, más los operadores &amp; y |)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>filter(b, state == "WA") # solo estado de Washington
+
+filter(b, state == "WA"  &amp; year == 1974) # Washington en 1974
+
+filter(b, state == "WA" &amp; year == 1974 &amp; births &gt; 180) # idem 
+				# pero más de 180 nacimientos
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">summarise()</code> y <code class="highlighter-rouge">group_by</code></p>
+
+<p>Con <code class="highlighter-rouge">summarise</code> podemos resumir variables</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>summarise(b, promedio = mean(births) ) # gran-promedio-gran
+
+# pero es mucho mejor si sacamos resúmenes de datos agrupados
+por_mes &lt;- group_by(b, month)
+summarise(por_mes, births_por_mes = mean(births))
+
+por_estado &lt;- group_by(b, state)
+summarise(por_estado, births_por_estado = mean(births))
+</code></pre>
+</div>
+
+<p>##</p>
+
+<p><code class="highlighter-rouge">mutate()</code></p>
+
+<p>Con <code class="highlighter-rouge">mutate</code> podemos armarnos una nueva columna a partir de otra(s)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mutate(b, normalized = births/mean(births)) # normalizando
+
+
+# me armo un df agrupado como yo quiero
+por_anyo &lt;- group_by(b, year) 
+# le calculo el promedio a través de los años
+promedio_por_anyo &lt;-  
+		  summarise( por_anyo, promedio = mean(births) )
+# calculo el promedio anual total
+promedio_tot &lt;- mean(promedio_por_anyo$promedio)
+# calculo el promedio _normalizado_ a través de los años
+mutate(promedio_por_anyo, 
+       births_normalizado = promedio/promedio_tot)
+</code></pre>
+</div>
+
+<h2 id="práctica-3">práctica 3</h2>
+
+<ol class="smallfont">
+  <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
+  <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
+  <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
+  <li>En promedio, qué més del año tiene más nacimientos?</li>
+  <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
+  <li>Hay algún día (de cualquier año) sin nacimientos?</li>
+  <li>Y considerando los estados individualmente?</li>
+  <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
+</ol>
 
 
             </div>

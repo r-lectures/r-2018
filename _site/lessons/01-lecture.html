@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Datos</title>
+    <title>Clase 1 - Intro</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/datasets.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/01-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -160,67 +160,348 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h2 id="datasets">Datasets</h2>
+                <h1 id="presentaciones">Presentaciones</h1>
 
-<p>Se irán agregando items, sugerencias bienvenidas.</p>
+<p>Profe Luis G. Moyano</p>
+
+<p>lgmoyano@gmail.com</p>
+
+<p>@luisgmoyano</p>
+
+<p>#</p>
+
+<p>r-2017.github.io</p>
+
+<h1 id="qué-es-r">Qué es R?</h1>
+
+<p><img style="position:absolute; TOP:0px; LEFT:300px; WIDTH:150px; HEIGHT:150px; border:0" src="./figs/r_logo.png" /></p>
 
 <ul>
-  <li>R built-in datasets - <a href="http://stackoverflow.com/questions/33797666/how-to-get-a-list-of-built-in-data-sets-in-r">credit: answer from Jaap in stackoverflow</a>
-    <ol>
-      <li>Using data() will give you a list of the datasets of all loaded packages (and not only the ones
-from the datasets package); the datasets are order by package</li>
-      <li>Using data(package = .packages(all.available = TRUE)) will give you a list of all datasets in
-the available packages on your computer (i.e. also the not-loaded ones)</li>
-      <li>
-        <p>Using data(package = “packagename”) will give you the datasets of that specific package, so
-data(package = “plyr”) will give the datasets in the plyr package
-Example:</p>
-
-        <div class="highlighter-rouge"><pre class="highlight"><code># Built-in datasets
-data()
-data(ToothGrowth)
-?ToothGrowth
-ToothGrowth
-summary(ToothGrowth)
-plot(ToothGrowth)
-</code></pre>
-        </div>
-      </li>
-    </ol>
-  </li>
-  <li><a href="https://mran.microsoft.com/packages/">Explore Packages Currently on CRAN (search for “dataset”)</a></li>
-  <li><a href="http://ckan.ciudaddemendoza.gov.ar/">open data mendoza</a></li>
-  <li><a href="https://data.buenosaires.gob.ar/">buenos aires data</a> - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.</li>
-  <li><a href="https://data.gov.uk">data.gov.uk - opening up government</a></li>
-  <li><a href="http://www.curitiba.pr.gov.br/dadosabertos/consulta/">Dados Abertos Curitiba</a></li>
-  <li><a href="http://berkeleyearth.org/data/">Berkeley Earth</a></li>
-  <li><a href="http://linkedscience.org/data/linked-brazilian-amazon-rainforest/">Linked Brazilian Amazon Rainforest</a></li>
-  <li><a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">Kaggle Climate Change: Earth Surface Temperature Data</a></li>
-  <li><a href="https://aws.amazon.com/datasets/">AWS Public Datasets</a></li>
-  <li><a href="https://snap.stanford.edu/data/">Stanford Large Network Dataset Collection</a></li>
-  <li><a href="http://www.rug.nl/ggdc/productivity/pwt/">Penn World Table</a> - University of Groningen
-    <ul>
-      <li>data from the Penn World Tables 9.0.</li>
-      <li>PWT version 9.0 is a database with information on relative levels of income, output, input and
-productivity, covering 182 countries between 1950 and 2014</li>
-      <li>Install R package called “pwt9”</li>
-    </ul>
-  </li>
-  <li><a href="https://www.kaggle.com/benhamner/2016-us-election">Kaggle - 2016 US Election</a></li>
-  <li><a href="https://www.kaggle.com/cdc/mortality">Death in the United States</a></li>
-  <li><a href="https://catalog.data.gov/dataset">Data Gov -  191,705 datasets</a>
-    <ul>
-      <li><a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9">U.S. Chronic Disease Indicators (CDI)</a></li>
-    </ul>
-  </li>
-  <li><a href="https://www.kaggle.com/c/shelter-animal-outcomes/data">Shelter Animal Outcomes</a></li>
-  <li><a href="https://www.kaggle.com/c/facebook-v-predicting-check-ins/data">Facebook V: Predicting Check Ins</a></li>
-  <li><a href="http://www.gutenberg.org/">Free ebooks by Project Gutenberg</a></li>
-  <li><a href="http://www.pro-football-reference.com/">Football Stats and History</a></li>
-  <li><a href="http://www.basketball-reference.com/">Basketball Stats and History</a></li>
-  <li><a href="http://www.baseball-reference.com/">Baseball Stats and History</a></li>
-  <li><a href="http://archive.ics.uci.edu/ml/datasets/Bag+of+Words">Bag of Words Data Set</a></li>
+  <li>Software estadístico para GNU</li>
+  <li>Manipulación de datos, cálculo y gráficos</li>
+  <li>Implementación de S</li>
+  <li>Abierto, extensible y colaborativo</li>
 </ul>
+
+<h2 id="qué-vamos-a-aprender-en-esta-materia">Qué vamos a aprender en esta materia</h2>
+
+<ul>
+  <li>R cómo herramienta científica</li>
+  <li>Foco en <strong>datos</strong></li>
+  <li>Horizontal para todas las carreras</li>
+  <li>Autonomía</li>
+</ul>
+
+<h2 id="qué-no-vamos-a-aprender-en-esta-materia">Qué no vamos a aprender en esta materia</h2>
+
+<ul>
+  <li>No vamos a hacer énfasis en la lógica de programación</li>
+  <li>No vamos a ver algoritmos en profundidad</li>
+  <li>No vamos a cubrir R en su totalidad</li>
+</ul>
+
+<h2 id="r-en-la-programación-y-el-análisis-de-datos">R en la programación y el análisis de datos</h2>
+
+<ul>
+  <li>Adoptado ampliamente en estadística, biología y ciencias de la computación</li>
+  <li>R vs. Python y otros</li>
+  <li><em>Scripting</em> vs. <em>Interactive</em>
+    <ul>
+      <li>Workflow científico</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ventajas-de-r">Ventajas de R</h2>
+
+<ul>
+  <li>
+    <p>Exploración</p>
+
+    <div class="NOTES">
+-   Liviano
+-   Interpretado, no compilado
+    
+</div>
+  </li>
+  <li>
+    <p>Flexibilidad</p>
+
+    <div class="NOTES">
+-   R puede ser interactivo o puede ser secuencial (via scripts)
+    
+</div>
+  </li>
+  <li>
+    <p>Comunidad</p>
+
+    <div class="NOTES">
+-   paquetes!
+    
+</div>
+  </li>
+</ul>
+
+<h2 id="desventajas-de-r">Desventajas de R</h2>
+
+<ul>
+  <li>
+    <p>Memoria</p>
+
+    <div class="NOTES">
+R carga todo en RAM (pero hay trucos)
+    
+</div>
+  </li>
+  <li>Velocidad (pero están <a href="http://www.rcpp.org/">Rcpp</a> y <a href="http://www.rfortran.org/">Rfortran</a>)</li>
+  <li>
+    <p>Nivel de adopción heterogéneo</p>
+
+    <div class="NOTES">
+No todas las áreas científicas tiene el mismo nivel de adopción y por lo tanto hay muchas cosas ya
+disponibles para ciertas áreas y menos para otras. Esto está cambiando a pasos agigantados,
+mientras R se bate a duelo con Python.
+    
+</div>
+  </li>
+</ul>
+
+<h2 id="prepárense-para-frustrarse">Prepárense para frustrarse</h2>
+
+<p><img style="position:absolute; TOP:250px; LEFT:600px; WIDTH:360px; HEIGHT:300px; border:0" src="./figs/frustration.png" /></p>
+
+<ul>
+  <li>R es idiosincrático</li>
+  <li>Frustrarse es típico y <span class="underline">temporal</span></li>
+  <li>Persisitencia!</li>
+</ul>
+
+<h1 id="organización-de-la-materia">Organización de la materia</h1>
+
+<h3 id="horarios">Horarios</h3>
+
+<ul>
+  <li>martes y miércoles de 9 a 12</li>
+  <li>~ 1 hora de teoría</li>
+  <li>resto de practica/consulta</li>
+  <li>presentaciones alrededor de “paquetes”</li>
+</ul>
+
+<h3 id="guías-de-ejercicios">Guías de ejercicios</h3>
+
+<ul>
+  <li>Parte principal del curso</li>
+  <li>Aproximadamente uno por semana</li>
+  <li>Haremos hincapié en desarrollar “reproducible research”
+    <ul>
+      <li>informe + código + datos</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="parciales">Parciales</h3>
+
+<ul>
+  <li>Dos parciales, en la 4ta y 8va semana aprox.</li>
+  <li>Tendrán toda la información disponible durante el parcial</li>
+  <li>Estarán fuertemente basados en las guías prácticas</li>
+</ul>
+
+<h3 id="proyecto-final">Proyecto final</h3>
+
+<ul>
+  <li>Informe escrito y presentación oral</li>
+  <li>Cada uno buscará tema y datos propios, acordando conmigo</li>
+</ul>
+
+<h3 id="calendario">Calendario</h3>
+
+<ul>
+  <li>Parcial 1, aprox. 10 de Mayo</li>
+  <li>Clase invitada de Diego Bustos, bioinformático, 6 o 7 de Junio</li>
+  <li>Parcial 2, aprox. 13 de Junio</li>
+  <li>Presentación proyecto final, 20 y 21 de Junio</li>
+</ul>
+
+<h3 id="herramientas">Herramientas</h3>
+
+<ul>
+  <li>
+    <p>Github</p>
+
+    <div class="NOTES">
+Vamos a usar Github para intercambiar código
+    
+</div>
+  </li>
+  <li>
+    <p>Slack</p>
+
+    <div class="NOTES">
+Vamos a usar Slack para intercambiar información
+    
+</div>
+  </li>
+  <li>
+    <p>R en una terminal</p>
+
+    <div class="NOTES">
+Más cualquier editor de texto, o sea, Emacs
+    
+</div>
+  </li>
+  <li>
+    <p>R con RStudio</p>
+  </li>
+</ul>
+
+<h1 id="r-en-el-terminal">R en el terminal</h1>
+
+<ul>
+  <li>Abran un terminal</li>
+  <li>Pongan “R”</li>
+  <li>Voilá</li>
+</ul>
+
+<p><img src="./figs/rterminal.png" /></p>
+
+<h1 id="r-con-rstudio">R con Rstudio</h1>
+
+<ul>
+  <li>Abran RStudio</li>
+  <li>Voilá</li>
+</ul>
+
+<p><img src="./figs/rstudio.png" /></p>
+
+<h1 id="ayuda">Ayuda</h1>
+
+<ol>
+  <li>
+    <p>R</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>&gt; ?plot &lt;- ayuda de la función *plot*
+&gt; ??plot &lt;- "apropos"
+</code></pre>
+    </div>
+  </li>
+  <li>Vignettes</li>
+  <li>Google - StackOverflow - R-bloogers</li>
+  <li>
+    <p>Slack</p>
+
+    <div class="NOTES">
+Pregunten por Slack a sus compañeros, usen los canales con criterio, usen y abusen de los *threads*
+    
+</div>
+  </li>
+  <li>Luis (último recurso! ;)</li>
+</ol>
+
+<h1 id="comandos-básicos-i">Comandos básicos I</h1>
+
+<ul>
+  <li>Ayuda: <code class="highlighter-rouge">?</code> y <code class="highlighter-rouge">??</code></li>
+  <li>Carga de paquetes: <code class="highlighter-rouge">library(GenomicRanges)</code></li>
+  <li>Instalación de paquetes: <code class="highlighter-rouge">install.packages(GenomicRanges)</code></li>
+  <li>Exploración y carga de datos: <code class="highlighter-rouge">data(CO2)</code></li>
+  <li>qué objetos tenemos? <code class="highlighter-rouge">ls()</code></li>
+  <li>cargar código local: <code class="highlighter-rouge">source("./my_code.R")</code></li>
+</ul>
+
+<h1 id="comandos-básicos-ii">Comandos básicos II</h1>
+
+<ul>
+  <li>imprimir algunas líneas: <code class="highlighter-rouge">head(mpg)</code></li>
+  <li>estructura de un objeto: <code class="highlighter-rouge">str(mpg)</code></li>
+  <li>resumen de un objeto: <code class="highlighter-rouge">summary(mpg)</code></li>
+  <li>hacer una figura: <code class="highlighter-rouge">plot(displ, hwy)</code></li>
+</ul>
+
+<h1 id="the-tidyverse-aka-hadleyverse"><a href="http://tidyverse.org/">The tidyverse</a> (aka <a href="https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/">Hadleyverse</a>)</h1>
+
+<p><em>An ecosystem of packages designed with common APIs and a shared philosophy.</em></p>
+
+<ul>
+  <li>
+    <p>Desarrollado por <a href="http://hadley.nz/">Hadley Wickham</a></p>
+
+    <div class="NOTES">
+Hadley Wickham es un computer scientist neozelandés, y en los últimos años, se ha convertido en
+una máquina de crear paquetes de R. Trabaja para Rstudio.
+    
+</div>
+  </li>
+  <li>Principales paquetes: <a href="http://dplyr.tidyverse.org/">dplyr</a> y <a href="http://ggplot2.tidyverse.org/">ggplot2</a></li>
+  <li>Orden y centralización a través de paquetes coherentes entre sí</li>
+  <li>
+    <p>La gramática como orden conceptual: verbos y sustantivos</p>
+
+    <div class="NOTES">
+"The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016)
+    
+-   Papel de los verbos y de los sustantivos
+    
+</div>
+  </li>
+</ul>
+
+<h1 id="visualización">Visualización</h1>
+
+<h3 id="package-base--función-plot">Package <em>base</em> : función <code class="highlighter-rouge">plot()</code></h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Define the cars vector with 5 values
+cars &lt;- c(1, 3, 6, 4, 9)
+
+# Graph the cars vector with all defaults
+plot(cars)
+
+# Graph cars using blue points overlayed by a line 
+plot(cars, type="o", col="blue")
+
+# Create a title with a red, bold/italic font
+title(main="Autos", col.main="red", font.main=4)
+</code></pre>
+</div>
+
+<h3 id="package-base--función-plot-1">Package <em>base</em> : función <code class="highlighter-rouge">plot()</code></h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Get a random log-normal distribution
+r &lt;- rlnorm(1000)
+
+# Get the distribution without plotting it using tighter breaks
+h &lt;- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
+
+# Plot the distribution using log scale on both axes, and use
+# blue points
+plot(h$counts, log="xy", pch=20, col="blue",
+	main="Log-normal distribution",
+	xlab="Value", ylab="Frequency")
+</code></pre>
+</div>
+
+<h3 id="package-ggplot2--función-qplot">package <em>ggplot2</em> : función <code class="highlighter-rouge">qplot()</code></h3>
+
+<ul>
+  <li>similar a plot()</li>
+  <li>
+    <p>para hacer figuras básicas</p>
+
+    <p>qplot(displ, hwy, data = mpg)</p>
+
+    <p>qplot(displ, hwy, colour = class, data = mpg)</p>
+  </li>
+</ul>
+
+<h2 id="práctica">Práctica</h2>
+
+<ol>
+  <li>Elegir un conjunto de datos <em>built-in</em> con datos continuos y categóricos</li>
+  <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
+  <li>Graficar las relaciones más importantes</li>
+  <li>Encontrar la manera de hacer <em>scatterplots</em> e histogramas</li>
+  <li>Agregar información (título, ejes, descripción de los datos)</li>
+</ol>
 
 
             </div>

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Datos</title>
+    <title>Clase 6</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/datasets.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/06-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -160,66 +160,305 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h2 id="datasets">Datasets</h2>
+                <h1 id="emma-habla-de-caret">Emma habla de Caret</h1>
 
-<p>Se irán agregando items, sugerencias bienvenidas.</p>
+<h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
+
+<h2 id="rstudio">RStudio</h2>
 
 <ul>
-  <li>R built-in datasets - <a href="http://stackoverflow.com/questions/33797666/how-to-get-a-list-of-built-in-data-sets-in-r">credit: answer from Jaap in stackoverflow</a>
-    <ol>
-      <li>Using data() will give you a list of the datasets of all loaded packages (and not only the ones
-from the datasets package); the datasets are order by package</li>
-      <li>Using data(package = .packages(all.available = TRUE)) will give you a list of all datasets in
-the available packages on your computer (i.e. also the not-loaded ones)</li>
-      <li>
-        <p>Using data(package = “packagename”) will give you the datasets of that specific package, so
-data(package = “plyr”) will give the datasets in the plyr package
-Example:</p>
+  <li>
+    <p>Working directory / Workspace</p>
 
-        <div class="highlighter-rouge"><pre class="highlight"><code># Built-in datasets
-data()
-data(ToothGrowth)
-?ToothGrowth
-ToothGrowth
-summary(ToothGrowth)
-plot(ToothGrowth)
+    <div class="highlighter-rouge"><pre class="highlight"><code>getwd() # para saber donde estoy
+setwd("path/to/dir") # para decirle donde quiero estar
 </code></pre>
-        </div>
-      </li>
+    </div>
+  </li>
+  <li>Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc</li>
+  <li>Cómo grabo lo que hago?</li>
+</ul>
+
+<ol class="smallfont">
+  <li>abrir un proyecto nuevo y grabar después</li>
+  <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+  <li>sin proyectos, gestionar todo uno mismo (no muy recomendado)</li>
+</ol>
+
+<div class="NOTES">
+-   &lt;https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects&gt;
+-   Usen atajos de teclado! Ver machete de RStudio (cheatsheet) en Slack
+
+</div>
+
+<h2 id="funciones">Funciones</h2>
+
+<div class="NOTES">
+Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
+sobre objetos distintos cada vez. Por ejemplo, la función \`read\_csv\` o \`plot\` contiene código que no
+querríamos escribir cada vez que queremos cargar datos de un archivo csv o hacer un gráfico. A su
+vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier gráfico.
+
+Más información en &lt;http://r4ds.had.co.nz/functions.html&gt;.
+
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># mi función se llama alta_funcion, con dos argumentos
+alta_funcion &lt;- function(arg1 = 10, arg2 = TRUE, ...){
+
+  # acá empieza mi código
+  library(paquete_externo)
+  x &lt;- funcion_externa(arg_ext = arg1) 
+  ...
+  alto código
+  código y más código
+  ...
+  alto_resultado &lt;- mansa_funcion(arg2) # genero alto_resultado
+
+  return(alto_resultado) # devuelvo alto resultado
+}
+
+# llamo a mi función de distintas maneras
+x_default &lt;- alta_funcion() # uso arg1 = 10 y arg2 = TRUE
+x_100_F   &lt;- alta_funcion(100, FALSE)
+x_200_T   &lt;- alta_funcion(200, TRUE)
+mi_var    &lt;- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
+</code></pre>
+</div>
+
+<h1 id="repaso-de-la-práctica-5">Repaso de la práctica 5</h1>
+
+<p>Trabajamos sobre datos de ruido de Buenos Aires Data.</p>
+
+<ol>
+  <li>
+    <p>Escribir una función que devuelva el min, máx y promedio (mean) del ruido dependiendo del barrio</p>
+  </li>
+  <li>Porqué obtengo un <code class="highlighter-rouge">NA</code> en los resultados de la práctica anterior?
+    <ol>
+      <li>Usar lo aprendido sobre joins para no tener este <code class="highlighter-rouge">NA</code></li>
     </ol>
   </li>
-  <li><a href="https://mran.microsoft.com/packages/">Explore Packages Currently on CRAN (search for “dataset”)</a></li>
-  <li><a href="http://ckan.ciudaddemendoza.gov.ar/">open data mendoza</a></li>
-  <li><a href="https://data.buenosaires.gob.ar/">buenos aires data</a> - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.</li>
-  <li><a href="https://data.gov.uk">data.gov.uk - opening up government</a></li>
-  <li><a href="http://www.curitiba.pr.gov.br/dadosabertos/consulta/">Dados Abertos Curitiba</a></li>
-  <li><a href="http://berkeleyearth.org/data/">Berkeley Earth</a></li>
-  <li><a href="http://linkedscience.org/data/linked-brazilian-amazon-rainforest/">Linked Brazilian Amazon Rainforest</a></li>
-  <li><a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">Kaggle Climate Change: Earth Surface Temperature Data</a></li>
-  <li><a href="https://aws.amazon.com/datasets/">AWS Public Datasets</a></li>
-  <li><a href="https://snap.stanford.edu/data/">Stanford Large Network Dataset Collection</a></li>
-  <li><a href="http://www.rug.nl/ggdc/productivity/pwt/">Penn World Table</a> - University of Groningen
+  <li>Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete <code class="highlighter-rouge">stringr</code> más <code class="highlighter-rouge">tidyr::separate</code></li>
+  <li>Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
+con mucho más ruido durante el fin de semana que el resto?</li>
+</ol>
+
+<h1 id="types-tipos-de-datos">‘Types’: tipos de datos</h1>
+
+<ul>
+  <li>‘logical’:    TRUE o FALSE</li>
+  <li>‘integer’:    naturales: …, -1, 0, 1, …</li>
+  <li>‘double’:    irracionales: 3.1415926</li>
+  <li>‘character’:    alfanuméricos: “pi”</li>
+  <li>‘complex’:    1+i10</li>
+  <li>‘raw’:     48 65 6c 6c 6f</li>
+</ul>
+
+<h2 id="logical">logical</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- TRUE 
+print(class(v))
+#&gt; [1] "logical"
+is.logical(v) 
+#&gt; [1] TRUE
+1:10 %% 3 == 0 #: para generar una secuencia, %% es el operador módulo (hagan ?: y ?%%)
+#&gt;  [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
+c(TRUE, TRUE, FALSE, NA)
+#&gt; [1]  TRUE  TRUE FALSE    NA
+</code></pre>
+</div>
+
+<h2 id="integer">integer</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- 2L
+print(class(v))
+is.integer(v)
+is.numeric(v) 
+#&gt; [1] TRUE
+typeof(1)
+#&gt; [1] "double"
+typeof(1L)
+#&gt; [1] "integer"
+1.5L
+#&gt; [1] 1.5
+</code></pre>
+</div>
+
+<p>Valor especial: NA</p>
+
+<h2 id="double">double</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- 23.5
+print(class(v))
+is.double(v)
+is.numeric(v)
+
+x &lt;- sqrt(2) ^ 2
+x
+#&gt; [1] 2
+x - 2
+#&gt; [1] 4.44e-16
+c(-1, 0, 1) / 0
+#&gt; [1] -Inf  NaN  Inf
+</code></pre>
+</div>
+
+<p>Los ‘double’ son siempre aproximaciones!</p>
+
+<p>Valores especiales: NA, NaN, Inf y -Inf</p>
+
+<p>Usar: is.finite(), is.infinite(), is.na(), is.nan()</p>
+
+<h2 id="character">character</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- "TRUE" # v &lt;- "Maldad pura"
+print(class(v))
+is.character(v)
+
+x &lt;- "Las cadenas de caracteres pueden tener una longitud arbitrariamente larga mal que nos pese"
+</code></pre>
+</div>
+
+<h2 id="complex-y-raw">complex y raw</h2>
+
+<p>Para numeros complejos, complex</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- 2+5i
+print(class(v))
+is.complex()
+</code></pre>
+</div>
+
+<p>Para trabajar en bytes, se puede usar raw</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>v &lt;- charToRaw("Hello")
+print(class(v))
+is.raw()
+</code></pre>
+</div>
+
+<h1 id="objetos-r-vectores">Objetos R: vectores</h1>
+
+<p>Existen dos clases de vectores:</p>
+
+<ol>
+  <li><span class="underline">Vectores ‘atómicos’</span> (<em>atomic vectors</em>), todos los elementos del mismo tipo
     <ul>
-      <li>data from the Penn World Tables 9.0.</li>
-      <li>PWT version 9.0 is a database with information on relative levels of income, output, input and
-productivity, covering 182 countries between 1950 and 2014</li>
-      <li>Install R package called “pwt9”</li>
+      <li>puede haber de los 6 tipos: ‘logical’, ‘integer’, ‘double’, ‘character’, ‘complex’ y ‘raw’</li>
+      <li>Integer y double son tratados como ‘numeric’</li>
+      <li>No hay escalares en R, si no vectores de longitud 1</li>
     </ul>
   </li>
-  <li><a href="https://www.kaggle.com/benhamner/2016-us-election">Kaggle - 2016 US Election</a></li>
-  <li><a href="https://www.kaggle.com/cdc/mortality">Death in the United States</a></li>
-  <li><a href="https://catalog.data.gov/dataset">Data Gov -  191,705 datasets</a>
+  <li><span class="underline">Listas</span>
     <ul>
-      <li><a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi-e50c9">U.S. Chronic Disease Indicators (CDI)</a></li>
+      <li>Pueden a su vez contener listas (vectores recursivos)</li>
+      <li>data.frames son caso especial cuando los vectores que la componen son de igual longitud</li>
     </ul>
   </li>
-  <li><a href="https://www.kaggle.com/c/shelter-animal-outcomes/data">Shelter Animal Outcomes</a></li>
-  <li><a href="https://www.kaggle.com/c/facebook-v-predicting-check-ins/data">Facebook V: Predicting Check Ins</a></li>
-  <li><a href="http://www.gutenberg.org/">Free ebooks by Project Gutenberg</a></li>
-  <li><a href="http://www.pro-football-reference.com/">Football Stats and History</a></li>
-  <li><a href="http://www.basketball-reference.com/">Basketball Stats and History</a></li>
-  <li><a href="http://www.baseball-reference.com/">Baseball Stats and History</a></li>
-  <li><a href="http://archive.ics.uci.edu/ml/datasets/Bag+of+Words">Bag of Words Data Set</a></li>
+</ol>
+
+<p>Las propiedades más importantes de los vectores son que <em>tipo</em> de vector es -typeof()-, que
+<em>longitud</em> tiene -length()- y cuales <em>atributos</em> tiene asociados. Los atributos son metadata
+arbitraria que se puede asociar a cualquier objeto R. Se determinan y consultan con <em>attr()</em> para
+alguno en particular y con <em>attributes()</em> se consultan todos los que el objeto tenga.</p>
+
+<div class="NOTES">
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
+
+Hay un objeto relacionado, 'NULL', que es la ausencia de un vector (en cambio, NA es la *ausencia* de un valor de un
+vector, además de ser un vector lógico de longitud 1). NULL se puede tratar como un vector de longitud 0. Pueden leer más en los libros (colgados
+en slack) o en &lt;https://www.r-bloggers.com/r-na-vs-null/&gt;
+
+Otro punto importante es que la función is.vector() no dice realmente si es un vector o no, si no
+que devuelve TRUE si el objeto es un vector sin atributos (aparte de su nombre). Para saber si es un
+vector atómico o una lista, usar is.atomic(x) e is.list(x).
+
+</div>
+
+<h2 id="vectores-r">Vectores R</h2>
+
+<p><img style="WIDTH:700px; HEIGHT:600px; border:0" src="./figs/data-structures-overview.png" /></p>
+
+<h3 id="propiedades-de-vectores">Propiedades de vectores</h3>
+
+<p><span class="underline">Tipo</span>, que se determina con <em>typeof()</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>typeof(letters)
+#&gt; [1] "character"
+typeof(1:10)
+#&gt; [1] "integer"
+</code></pre>
+</div>
+
+<p><span class="underline">Longitud</span>, que se determina con <em>length()</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- list("a", "b", 1:10)
+length(x)
+#&gt; [1] 3
+</code></pre>
+</div>
+
+<p><span class="underline">Atributos</span>, que se determinan con <em>attributes()</em> y <em>attr()</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>y &lt;- 1:10
+attr(y, "mi_atributo") &lt;- "Esto es un vector"
+</code></pre>
+</div>
+
+<p>Los tres atributos más importantes se obtienen con <em>names()</em>, <em>class()</em> y <em>dim()</em>. Este último
+atributo permite expandir los vectores atómicos a <em>arrays</em> multidimensionales (tensores), cuyo caso
+especial 2d son las matrices. <em>dim()</em> generaliza también el papel de <em>length()</em> al caso de arrays,
+mientras que <em>nrow()</em> y <em>ncol()</em> lo hacen para el caso especial de matrices ()</p>
+
+<h2 id="listas">Listas</h2>
+
+<p>Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
+listas o funciones ¯\_(ツ)_/¯</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># una lista simple
+x &lt;- list(1, 2, 3)
+str(x)
+
+# elementos con nombre
+x_named &lt;- list(a = 1, b = 2, c = 3)
+str(x_named)
+
+y &lt;- list("a", 1L, 1.5, TRUE)
+str(y)
+
+# mezcla de tipos en el mismo pbjeto
+y &lt;- list("a", 1L, 1.5, TRUE)
+str(y)
+
+# listas de listas
+z &lt;- list(list(1, 2), list(3, 4))
+str(z)
+
+# ya conociemos las listas 
+is.list(mtcars)
+#&gt; [1] TRUE
+
+unlist(mtcars) # podemos 'aplanar' una lista!
+</code></pre>
+</div>
+
+<h2 id="mañana-vectores-aumentados-y-subsetting">Mañana: Vectores “aumentados” y <em>subsetting</em></h2>
+
+<ul>
+  <li><span class="underline">Factores</span>, construidos sobre vectores ‘integer’</li>
+  <li><span class="underline">Data frames</span> (y tibbles) sobre ‘lists’</li>
+  <li><span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores ‘numeric’</li>
+</ul>
+
+<h1 id="práctica-6">Práctica 6</h1>
+
+<ul>
+  <li>Cuáles son las 3 propiedades de un vector, aparte de su contenido?</li>
+  <li>Cuáles son los 4 tipos más comunes de vectores atómicos? Cuál los dos menos comunes?</li>
+  <li>Qué son atributos? Cómo se obtienen y como se asignan?</li>
+  <li>De que manera es una lista diferente de un vector atómico? Porque una matriz es diferente de un data frame?</li>
 </ul>
 
 
