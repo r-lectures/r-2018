@@ -87,7 +87,7 @@ title: Parcial 1
    2. Colorear los puntos que tengan la variable ~psavert~ menor que el promedio de ~psavert~ a lo largo de
       los años (es decir, el promedio de todos los elementos de la columna).
    3. Ponerle texto explicativo a los ejes x e y. 
-   4. ~PhD~: mejorar la "legenda" con un título y descripción de los dos colores.
+   4. ~PhD~: mejorar la "leyenda" con un título y descripción de los dos colores.
 4. PREGUNTAS
    1. De cuándo a cuándo van los datos temporales? (o sea, fecha mínima y fecha máxima).
    2. Aproximadamente cuantos "picos" se ven en el desempleo? (consejo: verlo gráficamente).

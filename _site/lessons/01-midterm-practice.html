@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Welcome to Jekyll!</title>
-    <meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+    <title>Práctica para recuperatorio</title>
+    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/jekyll/update/2015/08/29/welcome-to-jekyll.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/01-midterm-practice.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -163,30 +164,40 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <div>
-    <header class="page-header">
-        <h1 class="post-title">Welcome to Jekyll!</h1>
-    </header>
-    <p class="text-muted">Aug 29, 2015</p>
+                <h1 id="práctica-para-recuperatorio">Práctica para recuperatorio</h1>
 
-    <article>
-        <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<h2 id="nycflights13">nycflights13</h2>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<ol>
+  <li>Instalar le paquete “nycflights13” y cargarlo en la sesión.</li>
+  <li>El paquete contiene los datos llamados “flights”. Ver el help de flights para ver de que se tratan.</li>
+  <li>Calcular cuantos vuelos salen de NYC por dia. Hacerlo de dos maneras: una con summarise + n, otra
+con tally. Pensar de antemano las dimensiones del dataframe que van a generar, y chequear las
+dimensiones después de generarlo.</li>
+  <li>Agregarle a este último dataframe una columna con el día de la semana.</li>
+  <li>Hacer un boxplot, para cada día de la semana, de los vuelos por dia. Tip: le paso estas dos
+variables al aes() de la capa boxplot. Cuál es el día más distinto?</li>
+  <li>Qué dia de la semana tiene mayor demora en las salidas de los vuelos?</li>
+  <li>Para qué destino hay mayor demora en los vuelos de salida?</li>
+</ol>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<h2 id="estructuras-y-subsetting">Estructuras y subsetting</h2>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">def</span><span class="w"> </span><span class="n">print_hi</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w">
-  </span><span class="n">puts</span><span class="w"> </span><span class="s2">"Hi, #{name}"</span><span class="w">
-</span><span class="n">end</span><span class="w">
-</span><span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span><span class="w">
-</span><span class="err">#</span><span class="o">=&gt;</span><span class="w"> </span><span class="n">prints</span><span class="w"> </span><span class="s1">'Hi, Tom'</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">STDOUT.</span></code></pre></figure>
+<ol>
+  <li>Dado un vector x arbitrario, qué información me da mean(is.na(x))? Y sum(!is.finite(x))? Hacer
+pruebas si es necesario.</li>
+  <li>Crear funciones que tomen un vector como input y que retornen:
+    <ol>
+      <li>El último valor. Usamos [ o [[?</li>
+      <li>Los elementos en posiciones pares.</li>
+      <li>Todos los elementos menos el último.</li>
+      <li>Sólo <span class="underline">números</span> impares (sin NAs).</li>
+    </ol>
+  </li>
+  <li>Qué pasa si se hace subset con un entero positivo mayor a la longitud del vector? Y que pasa si
+se hace subset con un nombre que no existe?</li>
+</ol>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
-
-
-    </article>
-</div>
 
             </div>
             <div id="site-side-bar" class="col-md-3">

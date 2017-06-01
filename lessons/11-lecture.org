@@ -313,5 +313,7 @@ $vectors
 3. En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
    tranquis. Uno de la primer mesa les dice a los de la segunda: "si se viene uno de uds. acá,
    entonces vamos a ser la misma cantidad en las dos mesas". "Si", le responden, "pero si se viene
-   uno de uds. para acá, vamos a ser el doble acá que la de ustedes". Escriban unas ecuaciones
-   para resolver en R y saber cuántos pájaros había en cada mesa.
+   uno de uds. para acá, vamos a ser el doble acá que la de ustedes". Escriban unas ecuaciones para
+   resolver en R y saber cuántos pájaros había en cada mesa. (Tomado de "Linear algebra in R", Søren Højsgaard
+   15 de Febrero de 2005.)
+   

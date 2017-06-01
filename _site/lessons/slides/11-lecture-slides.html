@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-org182b31d">
-<h2 id="org182b31d">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org182b31d">
+<section id="slide-org69ea59b">
+<h2 id="org69ea59b">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org69ea59b">
 </div></section>
-<section id="slide-org5d370f4">
-<h3 id="org5d370f4">modo interactivo vs. source() y R CMD BATCH</h3>
+<section id="slide-orgc637d6a">
+<h3 id="orgc637d6a">modo interactivo vs. source() y R CMD BATCH</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >##En un editor de texto creamos el script z.R
@@ -57,8 +57,8 @@ source("z.R")
 
 </ul>
 </section>
-<section id="slide-org8e7deec">
-<h3 id="org8e7deec">Workflow científico</h3>
+<section id="slide-orgbfdfb88">
+<h3 id="orgbfdfb88">Workflow científico</h3>
 <ul>
 <li>trabajar con scripts permite 'mantener' nuestro proceso científico
 <ul>
@@ -88,8 +88,8 @@ source("3-graph-data.R")
 </div>
 
 </section>
-<section id="slide-org903ecee">
-<h3 id="org903ecee">R project y CRAN</h3>
+<section id="slide-org29b3e1d">
+<h3 id="org29b3e1d">R project y CRAN</h3>
 <p>
 <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
 </p>
@@ -107,8 +107,8 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 </ul>
 
 </section>
-<section id="slide-orgf433ff1">
-<h3 id="orgf433ff1">Estadística descriptiva</h3>
+<section id="slide-org97f4f53">
+<h3 id="org97f4f53">Estadística descriptiva</h3>
 <p>
 Una manera de hacer estadística descriptiva es con sapply:
 </p>
@@ -125,8 +125,8 @@ Una manera de hacer estadística descriptiva es con sapply:
 Tenemos también group_by() + summarise() con las mismas funciones básicas.
 </p>
 </section>
-<section id="slide-orgf934e89">
-<h3 id="orgf934e89">Distribuciones</h3>
+<section id="slide-org7cdf40d">
+<h3 id="org7cdf40d">Distribuciones</h3>
 <p>
 En general R usa la siguiente convención:
 </p>
@@ -150,8 +150,8 @@ Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.
 </section>
 </section>
 <section>
-<section id="slide-orgb4d34cc">
-<h2 id="orgb4d34cc">Modelado estadístico</h2>
+<section id="slide-orgaa48e3f">
+<h2 id="orgaa48e3f">Modelado estadístico</h2>
 <p>
 Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
 relación entre una variable dependiente o <i>variable respuesta</i> y otras variables independientes o
@@ -162,8 +162,8 @@ relación entre una variable dependiente o <i>variable respuesta</i> y otras var
 En R la función lm() se usa para regresión lineal (<i>linear models</i>) y glm() para <i>generalized linear models</i>.
 </p>
 </section>
-<section id="slide-orgdbe8371">
-<h4 id="orgdbe8371">Regresión lineal (lm)</h4>
+<section id="slide-org63c9324">
+<h4 id="org63c9324">Regresión lineal (lm)</h4>
 <p>
 Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
 parámetros para poder predecir.
@@ -184,8 +184,8 @@ parámetros para poder predecir.
 </div>
 
 </section>
-<section id="slide-orgb1e28b2">
-<h4 id="orgb1e28b2">Ejemplo con datos de 2011 US Census PUMS</h4>
+<section id="slide-org1aa0921">
+<h4 id="org1aa0921">Ejemplo con datos de 2011 US Census PUMS</h4>
 <p>
 Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
 </p>
@@ -218,8 +218,8 @@ geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black
 </code></pre>
 </div>
 </section>
-<section id="slide-org244b4ab">
-<h4 id="org244b4ab">Regresión lineal generalizada (glm)</h4>
+<section id="slide-org1df45ea">
+<h4 id="org1df45ea">Regresión lineal generalizada (glm)</h4>
 <p>
 Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
 "normales". Los modelos lineales generalizados relajan estas suposiciones. 
@@ -251,8 +251,8 @@ residuals(fit, type="deviance") # residuos
 </section>
 </section>
 <section>
-<section id="slide-org7a7bc99">
-<h2 id="org7a7bc99">Estadística avanzada - material infinito</h2>
+<section id="slide-orga3407a4">
+<h2 id="orga3407a4">Estadística avanzada - material infinito</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
 <li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
@@ -263,12 +263,12 @@ residuals(fit, type="deviance") # residuos
 </section>
 </section>
 <section>
-<section id="slide-org1c9cdb5">
-<h2 id="org1c9cdb5">Matemáticas</h2>
-<div class="outline-text-2" id="text-org1c9cdb5">
+<section id="slide-orgbec9de9">
+<h2 id="orgbec9de9">Matemáticas</h2>
+<div class="outline-text-2" id="text-orgbec9de9">
 </div></section>
-<section id="slide-orgcb1e690">
-<h3 id="orgcb1e690">Funciones matemáticas básicas</h3>
+<section id="slide-orga107ebb">
+<h3 id="orga107ebb">Funciones matemáticas básicas</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >- exp(): Exponential function, base e
@@ -297,8 +297,8 @@ residuals(fit, type="deviance") # residuos
 </code></pre>
 </div>
 </section>
-<section id="slide-org7d3c6ec">
-<h3 id="org7d3c6ec">Cálculo</h3>
+<section id="slide-org812fdda">
+<h3 id="org812fdda">Cálculo</h3>
 <p>
 R tiene capacidades simples de hacer cuentas analíticas:
 </p>
@@ -312,12 +312,12 @@ exp(x^2) * (2 * x)
 </code></pre>
 </div>
 </section>
-<section id="slide-orgd734146">
-<h3 id="orgd734146">Algebra Lineal</h3>
-<div class="outline-text-3" id="text-orgd734146">
+<section id="slide-orga0066ff">
+<h3 id="orga0066ff">Algebra Lineal</h3>
+<div class="outline-text-3" id="text-orga0066ff">
 </div></section>
-<section id="slide-org9765f29">
-<h4 id="org9765f29">multiplicación de matrices</h4>
+<section id="slide-org0857f48">
+<h4 id="org0857f48">multiplicación de matrices</h4>
 <p>
 Directamente con el operador %*%
 </p>
@@ -339,8 +339,8 @@ Directamente con el operador %*%
 </code></pre>
 </div>
 </section>
-<section id="slide-org949aeaa">
-<h4 id="org949aeaa">Sistema de ecuaciones lineales (o invertir una matriz)</h4>
+<section id="slide-org65c89c1">
+<h4 id="org65c89c1">Sistema de ecuaciones lineales (o invertir una matriz)</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >> a <- matrix(c(1,1,-1,1),nrow=2,ncol=2)
@@ -354,8 +354,8 @@ Directamente con el operador %*%
 </code></pre>
 </div>
 </section>
-<section id="slide-org789d44a">
-<h4 id="org789d44a">Autovectores y autovalores</h4>
+<section id="slide-orgdca5b44">
+<h4 id="orgdca5b44">Autovectores y autovalores</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >> a
@@ -381,8 +381,8 @@ $vectors
 </div>
 
 </section>
-<section id="slide-org4c45eca">
-<h4 id="org4c45eca">Otras operaciones posibles son:</h4>
+<section id="slide-org0860ccb">
+<h4 id="org0860ccb">Otras operaciones posibles son:</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >- t(): Matrix transpose
@@ -397,8 +397,8 @@ $vectors
 </div>
 
 </section>
-<section id="slide-org9ceb8ac">
-<h3 id="org9ceb8ac">Otros paquetes de interés</h3>
+<section id="slide-orgba34278">
+<h3 id="orgba34278">Otros paquetes de interés</h3>
 <ul>
 <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
 <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
@@ -417,8 +417,8 @@ $vectors
 </section>
 </section>
 <section>
-<section id="slide-orged36767">
-<h2 id="orged36767">Práctica 11</h2>
+<section id="slide-org2667846">
+<h2 id="org2667846">Práctica 11</h2>
 <ol>
 <li>En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
 función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con
@@ -428,8 +428,9 @@ en otro gráfico.</li>
 <li>En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
 tranquis. Uno de la primer mesa les dice a los de la segunda: "si se viene uno de uds. acá,
 entonces vamos a ser la misma cantidad en las dos mesas". "Si", le responden, "pero si se viene
-uno de uds. para acá, vamos a ser el doble acá que la de ustedes". Escriban unas ecuaciones
-para resolver en R y saber cuántos pájaros había en cada mesa.</li>
+uno de uds. para acá, vamos a ser el doble acá que la de ustedes". Escriban unas ecuaciones para
+resolver en R y saber cuántos pájaros había en cada mesa. (Tomado de "Linear algebra in R", Søren Højsgaard
+15 de Febrero de 2005.)</li>
 
 </ol>
 </section>

@@ -3,7 +3,7 @@ lectures:
   
 - title: "Clase 1 - Intro"
   url: "01-lecture.html"
-
+  
   subitems:
   - title: "Slides clase 1"
     url: slides/01-lecture-slides.html
@@ -58,7 +58,6 @@ lectures:
 - title: "Primer parcial"
   url: 01-midterm-exam.html
 
-
 - title: "Clase 8 - if + for"
   url: 08-lecture.html
 
@@ -86,3 +85,6 @@ lectures:
   subitems:
     - title: "Slides clase 11"
       url: slides/11-lecture-slides.html
+
+- title: "Repaso recuperatorio 1er parcial"
+  url: 01-midterm-practice.html
