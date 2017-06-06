@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title:es Clase 8
+title: Clase 8
 --- 
 
 
