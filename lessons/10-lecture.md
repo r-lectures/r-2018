@@ -142,8 +142,8 @@ de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
 # Práctica 10
 
 1.  Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
-    5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
-    pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+    5 y variación estándar 1. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+    parámetros (5,1) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
     figura (o sea, que queden dos histogramas y una curva). Usar el argumento *alpha* para poder
     distinguir los histogramas.
 

@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-orgd3c2232">
-<h2 id="orgd3c2232">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgd3c2232">
+<section id="slide-orgb3f74b6">
+<h2 id="orgb3f74b6">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgb3f74b6">
 </div></section>
-<section id="slide-orgfad49fe">
-<h3 id="orgfad49fe">Vectorización</h3>
+<section id="slide-orgf08a3bd">
+<h3 id="orgf08a3bd">Vectorización</h3>
 <p>
 Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 </p>
@@ -63,8 +63,8 @@ rápidos.</li>
 
 </ul>
 </section>
-<section id="slide-org37d96cc">
-<h3 id="org37d96cc">Funcionales - Familia *apply()</h3>
+<section id="slide-org77cef52">
+<h3 id="org77cef52">Funcionales - Familia *apply()</h3>
 <ul>
 <li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
 <li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
@@ -85,8 +85,8 @@ Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versi
 </section>
 </section>
 <section>
-<section id="slide-org9a283c9">
-<h2 id="org9a283c9">modo interactivo vs. source() y R CMD BATCH</h2>
+<section id="slide-orgb2a1989">
+<h2 id="orgb2a1989">modo interactivo vs. source() y R CMD BATCH</h2>
 <div class="org-src-container">
 
 <pre><code class="R" >##En un editor de texto creamos el script z.R
@@ -108,8 +108,8 @@ encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "d
 
 </ul>
 </section>
-<section id="slide-org070acdb">
-<h3 id="org070acdb">Workflow científico</h3>
+<section id="slide-orgbdc8f59">
+<h3 id="orgbdc8f59">Workflow científico</h3>
 <ul>
 <li>trabajar con scripts permite 'mantener' nuestro proceso científico
 <ul>
@@ -141,8 +141,8 @@ source("3-graph-data.R")
 </section>
 </section>
 <section>
-<section id="slide-orgbfd6ae1">
-<h2 id="orgbfd6ae1">R project y CRAN</h2>
+<section id="slide-orgfca2c4f">
+<h2 id="orgfca2c4f">R project y CRAN</h2>
 <p>
 <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
 </p>
@@ -162,12 +162,12 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 </section>
 </section>
 <section>
-<section id="slide-org24569cc">
-<h2 id="org24569cc">Estadística</h2>
-<div class="outline-text-2" id="text-org24569cc">
+<section id="slide-org569a66c">
+<h2 id="org569a66c">Estadística</h2>
+<div class="outline-text-2" id="text-org569a66c">
 </div></section>
-<section id="slide-orgce679f7">
-<h3 id="orgce679f7">Estadística descriptiva</h3>
+<section id="slide-orga9dacb1">
+<h3 id="orga9dacb1">Estadística descriptiva</h3>
 <p>
 Una manera de hacer estadística descriptiva es con sapply:
 </p>
@@ -184,8 +184,8 @@ Una manera de hacer estadística descriptiva es con sapply:
 Tenemos también group_by() + summarise() con las mismas funciones básicas.
 </p>
 </section>
-<section id="slide-orgbbbd6f3">
-<h3 id="orgbbbd6f3">Distribuciones</h3>
+<section id="slide-org513a798">
+<h3 id="org513a798">Distribuciones</h3>
 <p>
 En general R usa la siguiente convención:
 </p>
@@ -207,8 +207,8 @@ lower.tail=F, devuelve 1 - el percentil p.</li>
 Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
 </p>
 </section>
-<section id="slide-orgc38b51a">
-<h4 id="orgc38b51a">Distribución Normal</h4>
+<section id="slide-org434b5a8">
+<h4 id="org434b5a8">Distribución Normal</h4>
 <p>
 Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
 </p>
@@ -223,8 +223,8 @@ ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
 </code></pre>
 </div>
 </section>
-<section id="slide-org44f94a0">
-<h4 id="org44f94a0">Otras distribuciones</h4>
+<section id="slide-org23ca85b">
+<h4 id="org23ca85b">Otras distribuciones</h4>
 <p>
 Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
 de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
@@ -243,19 +243,19 @@ mean(x >= 4)
 </section>
 </section>
 <section>
-<section id="slide-orga2c8965">
-<h2 id="orga2c8965">Práctica 10</h2>
+<section id="slide-org2131a62">
+<h2 id="org2131a62">Práctica 10</h2>
 <ol>
 <li>Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
-5 y variación estándar 3. Hacer su histograma con ggplot2 y compararlo con la lognormal con
-pparámetros (5,3) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+5 y variación estándar 1. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+parámetros (5,1) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
 figura (o sea, que queden dos histogramas y una curva). Usar el argumento <i>alpha</i> para poder
 distinguir los histogramas.</li>
 
 </ol>
 </section>
-<section id="slide-org3651c1b">
-<h3 id="org3651c1b">Práctica 10 bis</h3>
+<section id="slide-org6e151a4">
+<h3 id="org6e151a4">Práctica 10 bis</h3>
 <ol>
 <li><p>
 i)  Bajarse el Quijote de <a href="http://www.gutenberg.org">"Project Gutenberg"</a> en formato texto.
