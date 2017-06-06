@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Clase 9</title>
+    <title>Clase 12</title>
     <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/lessons/09-lecture.html">
+    <link rel="canonical" href="http://localhost:4000/lessons/12-lecture.html">
     <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
@@ -174,330 +174,222 @@
             <div class="col-md-9">
                 <h1 id="repaso-de-la-clase-anterior">Repaso de la clase anterior</h1>
 
-<h2 id="subsetting-con-la-función-subset">“subsetting” con la función subset()</h2>
+<p><em>Modelado</em> se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o <em>variable respuesta</em> y otras variables independientes o
+<em>variables explicativas</em>.</p>
 
-<p>Return subsets of vectors, matrices or data frames which meet conditions.</p>
+<p>En R la función lm() se usa para regresión lineal (<em>linear models</em>) y glm() para <em>generalized linear models</em>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>subset(airquality, Temp &gt; 80, select = c(Ozone, Temp))
-subset(airquality, Day == 1, select = -Temp)
-subset(airquality, select = Ozone:Wind)
-</code></pre>
-</div>
+<h3 id="regresión-lineal-lm">Regresión lineal (lm)</h3>
 
-<h2 id="operadores-lógicos">Operadores lógicos</h2>
-
-<p>Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico.</p>
-
-<ul>
-  <li>
-    <blockquote>
-      <p>, &gt;=</p>
-    </blockquote>
-  </li>
-  <li>&lt;, &lt;=</li>
-  <li>
-    <p>!=, ==</p>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>los operadores &amp; (AND) y</td>
-          <td>(OR) para elaborar enunciados más complejos.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
-
-<p>Combinando operadores construimos expresiones condicionales, que R evalua a TRUE o FALSE (o NA).</p>
-
-<h2 id="ejecución-condicional">Ejecución condicional</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>if (condición) {
-  # código que se ejecuta cuando la condición evalua a TRUE
-} else {
-  # código que se ejecuta cuando la condición evalua a FALSE
-}
-</code></pre>
-</div>
-
-<p>Nota: Si el if() tiene una sola línea, podemos obviar las {} ;-)</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>if (this) {
-  # do that
-} else if (that) {
-  # do something else
-} else {
-  # 
-}
-</code></pre>
-</div>
-
-<h2 id="funciones-lógicas-accesorias">funciones lógicas accesorias</h2>
-
-<ul>
-  <li>any()</li>
-  <li>all()</li>
-  <li>is.na(), is.null() y el resto de la familia is.algo()</li>
-  <li>%in%</li>
-  <li>identical()</li>
-  <li>muchas otras</li>
-</ul>
-
-<h2 id="componentes-de-un-for">Componentes de un for</h2>
-
-<p>Loops son bucles y se usan para repetir código</p>
-
-<ul>
-  <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
-  <li>
-    <p>Secuencia: variable sobre la que funciona el bucle</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>for (x in xs)
-for(i in seq_along(df))
-for (nm in names(xs))
-</code></pre>
-    </div>
-  </li>
-  <li>Cuerpo: código que se ejecuta las veces que la secuencia indique</li>
-</ul>
-
-<p>While es un loop controlado por una expresión condicional</p>
-
-<p>Nota: Si el for() o el while() tienen una sola línea, podemos obviar las {} ;-)</p>
-
-<h1 id="vectorización">Vectorización</h1>
-
-<p>Se trata de operaciones que aplican a un vector, pero elemento por elemento.</p>
+<p>Construimos un “modelo” (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.</p>
 
 <ol>
-  <li>Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.</li>
+  <li>Propongo una determinada relación de variables</li>
+  <li>Calculo coeficientes del modelo</li>
   <li>
-    <p>Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
-rápidos.</p>
+    <p>Compruebo que tan bien se ajusta el modelo a nuevas observaciones</p>
 
-    <h1 id="sin-vectorización">sin vectorización</h1>
-    <blockquote>
-      <p>for (i in 1:length(x)) z[i] &lt;- x[i] + y[i]</p>
-    </blockquote>
-
-    <h1 id="con-vectorización">con vectorización</h1>
-    <blockquote>
-      <p>z &lt;- x + y</p>
-    </blockquote>
+    <p>y[i] ~ f(x[i,]) = b[1] x[i,1] + … b[n] x[i,n]</p>
+    <h2 id="bi-son-los-coeficientes-o-betas">b[i] son los coeficientes o betas</h2>
   </li>
 </ol>
 
+<h3 id="ejemplo-con-datos-de-2011-us-census-pums">Ejemplo con datos de 2011 US Census PUMS</h3>
+
+<p>Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## hacemos la regresión:
+load("psub.RData")
+dtrain &lt;- subset(psub, ORIGRANDGROUP &gt;= 500)
+dtest &lt;- subset(psub, ORIGRANDGROUP &lt; 500)
+model &lt;- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest$predLogPINCP &lt;- predict(model,newdata=dtest) 
+
+## resultados:
+summary(model)
+
+## graficamos:
+library(ggplot2)
+ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
+geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
+geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
+scale_x_continuous(limits=c(4,5)) +
+scale_y_continuous(limits=c(3.5,5.5))
+
+## residuos:
+ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
+geom_point(alpha=0.2,color="black") +
+geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
+</code></pre>
+</div>
+
+<h3 id="regresión-lineal-generalizada-glm">Regresión lineal generalizada (glm)</h3>
+
+<p>Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
+“normales”. Los modelos lineales generalizados relajan estas suposiciones.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
+</code></pre>
+</div>
+
+<p>Ejemplito: Regresión logística, para variables categóricas.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># F es un factor binario
+# x1, x2 y x3 son predictores continuos 
+fit &lt;- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
+</code></pre>
+</div>
+
+<h1 id="matemáticas">Matemáticas</h1>
+
+<h2 id="funciones-matemáticas-básicas">Funciones matemáticas básicas</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- exp(): Exponential function, base e
+- log(): Natural logarithm
+- log10(): Logarithm base 10
+- sqrt(): Square root
+- abs(): Absolute value
+- sin(), cos(), and so on: Trig functions
+- min() and max(): Minimum value and maximum value within a vector
+- which.min() and which.max(): Index of the minimal element and maximal element of a vector
+- pmin() and pmax(): Element-wise minima and maxima of several vectors
+- sum() and prod(): Sum and product of the elements of a vector
+- cumsum() and cumprod(): Cumulative sum and product of the elements of a vector
+- round(), floor(), and ceiling(): Round to the closest integer, to the clos- est integer below, and to the closest integer above
+- factorial(): Factorial function
+
+&gt; x &lt;- c(12,5,13)
+&gt; cumsum(x)
+[1] 12 17 30
+&gt; cumprod(x)
+[1] 12 60 780
+</code></pre>
+</div>
+
+<h2 id="cálculo">Cálculo</h2>
+
+<p>R tiene capacidades simples de hacer cuentas analíticas:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>D(expression(exp(x^2)),"x")  # derivative
+exp(x^2) * (2 * x)
+&gt; integrate(function(x) x^2,0,1)
+0.3333333 with absolute error &lt; 3.7e-15
+</code></pre>
+</div>
+
+<h2 id="algebra-lineal">Algebra Lineal</h2>
+
+<h3 id="multiplicación-de-matrices">Multiplicación de matrices</h3>
+
+<p>Directamente con el operador %*%</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;a
+    [,1] [,2]
+[1,]   1    2 
+[2,]   3    4 
+&gt;b
+     [,1] [,2]
+[1,]    1   -1
+[2,]    0    1
+&gt; a %*% b
+     [,1] [,2]
+[1,]    1    1
+[2,]    3    1
+</code></pre>
+</div>
+
+<h3 id="sistema-de-ecuaciones-lineales-o-invertir-una-matriz">Sistema de ecuaciones lineales (o invertir una matriz)</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a &lt;- matrix(c(1,1,-1,1),nrow=2,ncol=2)
+&gt; b &lt;- c(2,4)
+&gt; solve(a,b)
+[1] 3 1
+&gt; solve(a) ## sin el segundo argumento, invierte la matriz
+  [,1] [,2]
+[1,]  0.5  0.5
+[2,] -0.5  0.5
+</code></pre>
+</div>
+
+<h3 id="autovectores-y-autovalores">Autovectores y autovalores</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a
+     [,1] [,2]
+[1,]    1   -1
+[2,]    1    1
+&gt; e &lt;- eigen(a)
+$values
+[1] 1+1i 1-1i
+
+$vectors
+		     [,1]                 [,2]
+[1,] 0.7071068+0.0000000i 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i 0.0000000+0.7071068i
+&gt; eigenvector1 &lt;- e$vectors[,1]
+&gt; eigenvalue1 &lt;-  e$values[1]
+&gt; a %*% eigenvector1 / eigenvalue1
+		     [,1]
+[1,] 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i
+&gt; 
+</code></pre>
+</div>
+
+<h3 id="otras-operaciones-posibles-son">Otras operaciones posibles son:</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- t(): Matrix transpose
+- qr(): QR decomposition
+- chol(): Cholesky decomposition
+- det(): Determinant
+- eigen(): Eigenvalues/eigenvectors
+- diag(): Extracts the diagonal of a square matrix
+- svd(A): Single value decomposition of A
+- ...
+</code></pre>
+</div>
+
+<h2 id="otros-paquetes-de-interés">Otros paquetes de interés</h2>
+
 <ul>
-  <li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+  <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
+  <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
+    <ul>
+      <li>tienen también el libro “2012 - Book - Solving Differential Equations in R.pdf” en #bibliografia @slack</li>
+    </ul>
+  </li>
+  <li><a href="https://cran.r-project.org/web/views/TimeSeries.html">Series temporales</a></li>
+  <li><a href="https://cran.r-project.org/web/views/Optimization.html">Optimización y programación matemática</a></li>
+  <li>Aritmética de precisión múltiple con <a href="https://cran.r-project.org/web/packages/gmp/index.html">gmp</a></li>
+  <li>Paquete <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl</a>, una interface a la Biblioteca Científica GNU</li>
+  <li>Mil cosas más :D</li>
 </ul>
 
-<h2 id="operadores-y-funciones-vectorizados">operadores y funciones vectorizados</h2>
+<h1 id="práctica-12">Práctica 12</h1>
 
 <ol>
+  <li>Integrar numéricamente la función dlnorm(5, 1) entre 0 y xf, con xf=10^i e i=1:4. Comparar con la
+función acumulada correspondiente evaluada en el límite adecuado.</li>
+  <li>Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de
+NxN, donde N=10^i, con i = 1:4? Hacer una figura con ggplot2 y hacer una regresión (con lm o
+loess, lo que sea más adecuado). Confirmar, para el caso i = 1, la identidad A x = lamba x, para el
+caso del autovalor principal.</li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>==, &amp;, y</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Resolver el siguiente SEL y comprobar que A x = B.</p>
+
+    <p>3x1 + 4x2 + 5x3 = 0,</p>
+
+    <p>6x1 + 2x2 + 7x3 = 5,</p>
+
+    <p>7x1 +  x2       = 6</p>
   </li>
-  <li>corchetito: Por ej, x[is.na(x)] &lt;- 0 donde x es vector, matriz o df</li>
-  <li>otras funciones: +, -, *, cumsum(), diff(), rowSums(), colSums(), rowMeans(), colMeans(), etc.</li>
-  <li>
-    <p>any(x == 10) es mucho más rápido que 10 %in% x.</p>
-
-    <blockquote>
-      <p>c(T,T,F,F) == c(T,F,T,F)
-[1]  TRUE FALSE FALSE  TRUE
-c(T,T,F,F) &amp; c(T,F,T,F)
-[1]  TRUE FALSE FALSE FALSE
-c(T,T,F,F) | c(T,F,T,F)
-[1]  TRUE  TRUE  TRUE FALSE</p>
-    </blockquote>
-  </li>
-</ol>
-
-<h2 id="eficiencia">Eficiencia</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; x &lt;- runif(1000000)
-&gt; y &lt;- runif(1000000)
-&gt; z &lt;- vector(length=1000000)
-
-&gt; system.time(z &lt;- x + y)
-  user  system elapsed
-  0.052   0.016   0.068
-
-&gt; system.time(for (i in 1:length(x)) z[i] &lt;- x[i] + y[i])
- user  system elapsed
- 8.088   0.044   8.175
-</code></pre>
-</div>
-
-<h1 id="funcionales---familia-apply">Funcionales - Familia *apply()</h1>
-
-<p>lapply(), sapply(), apply() y tapply() (hay más…)</p>
-
-<p>Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a “cómo hago para
-procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?”</p>
-
-<p>Hemos hecho cosas similares con summarise() + group_by() y mutate().</p>
-
-<p>Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a></p>
-
-<h2 id="lapply">lapply()</h2>
-
-<p>LLama a una función especificada en cada componente de una lista y devuelve otra lista</p>
-
-<p><img style="WIDTH:400px; HEIGHT:300px; border:0" src="./figs/lapply.png" /></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; lapply(list(1:3,25:29), median)
-[[1]]
-[1] 2
-[[2]] 
-[1] 27
-</code></pre>
-</div>
-
-<h2 id="sapply">sapply()</h2>
-
-<p>En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o a una
-matriz. Esto es justo lo que hace sapply().</p>
-
-<p><img style="WIDTH:400px; HEIGHT:300px; border:0" src="./figs/sapply.png" /></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; sapply(list(1:3,25:29),median)
-[1]  2 27
-</code></pre>
-</div>
-
-<h2 id="lapply-y-sapply-en-data-frames">lapply() y sapply() en Data Frames</h2>
-
-<p>Tanto lapply como sapply están pensados para listas, por lo tanto funcionan bien en data.frames</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>lapply(economics, mean)
-$date
-[1] "1991-05-17"
-
-$pce
-[1] 4843.51
-
-$pop
-[1] 257189.4
-
-$psavert
-[1] 7.936585
-
-$uempmed
-[1] 8.610105
-
-$unemploy
-[1] 7771.557
-
-&gt; sapply(economics, mean)
-	date          pce          pop      psavert      uempmed     unemploy 
-7.806399e+03 4.843510e+03 2.571894e+05 7.936585e+00 8.610105e+00 7.771557e+03 
-</code></pre>
-</div>
-
-<h2 id="apply">apply()</h2>
-
-<p>apply es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a
-columnas.</p>
-
-<p>apply(m,dimcode,f,fargs)</p>
-
-<ul>
-  <li>m: matriz</li>
-  <li>dimcode: 1 o 2, 1 se aplicamos a filas, 2 a columnas</li>
-  <li>f: función que vamos a aplicar</li>
-  <li>
-    <p>fargs: argumentos adicionales</p>
-
-    <blockquote>
-      <p>z
-[,1] [,2]
-[1,]    1    4
-[2,]    2    5
-[3,]    3    6</p>
-    </blockquote>
-
-    <blockquote>
-      <p>apply(z,2,mean)
-[1] 2 5</p>
-    </blockquote>
-  </li>
-</ul>
-
-<h2 id="apply---un-ejemplo-con-función-propia">apply() - un ejemplo con función propia</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; z
-[,1] [,2]
-[1,]    1    4
-[2,]    2    5
-[3,]    3    6
-&gt; f &lt;- function(x) x/c(2,8)
-&gt; y &lt;- apply(z,1,f)
-&gt;y
-[,1] [,2] [,3]
-[1,]  0.5 1.000 1.50
-[2,]  0.5 0.625 0.75
-</code></pre>
-</div>
-
-<h2 id="tapply">tapply()</h2>
-
-<p>para aplicar funciones a vectores con factores</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; ages &lt;- c(25,26,55,37,21,42)
-&gt; affils &lt;- c("R","D","D","R","U","D")
-&gt; tapply(ages,affils,mean)
-D   R   U 
-41  31  21
-
-&gt; d &lt;- data.frame(list(gender=c("M","M","F","M","F","F"),
-+ age=c(47,59,21,32,33,24),income=c(55000,88000,32450,76500,123000,45650))) 
-&gt;d
-  gender age income
-1 M      47  55000
-2 M      5 9 88000
-...
-&gt; d$over25 &lt;- ifelse(d$age &gt; 25,1,0) 
-&gt;d
-  gender age income over25
-1 M      47  55000  1
-2 M      59  88000  1
-...
-&gt; tapply(d$income,list(d$gender,d$over25),mean)
-0       1 
-F 39050 123000.00 
-M NA    73166.67
-</code></pre>
-</div>
-
-<h1 id="práctica-9">Práctica 9</h1>
-
-<ol>
-  <li>Como se comparan los resultados de mean() y mean.default() con 10000 observaciones, en vez de con
-100? Usar system.time().</li>
-  <li>Comparar la velocidad de apply(x, 1, sum) con rowSums(x) para x de distintos tamaños. Usar system.time().</li>
-  <li>
-    <p>El código a continuación simula el desempeño de un t-test para datos no normales. Usen sapply() y
-una función (puede ser anónima, es decir no necesitan nombrarla) para extraer el p-value de cada
-‘tirada’. Nota: rpois() nos devuelve una ‘tirada’ de variable aleatoria (como si fuera tirar una
-moneda) de una distribución de Poisson.</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>trials &lt;- replicate(
-  100, 
-  t.test(rpois(10, 10), rpois(7, 10)),
-  simplify = FALSE
-)
-</code></pre>
-    </div>
-  </li>
+  <li>Calcular analíticamente la 3era derivada de log(x) * sin(x) respecto de x.</li>
 </ol>
 
 

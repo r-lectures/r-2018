@@ -79,7 +79,7 @@ lectures:
     - title: "Slides clase 10"
       url: slides/10-lecture-slides.html
 
-- title: "Clase 11 - Matemáticas"
+- title: "Clase 11 - Regresiones"
   url: 11-lecture.html
 
   subitems:
@@ -91,3 +91,10 @@ lectures:
 
 - title: "Recuperatorio del primer parcial"
   url: 01b-midterm-exam.html
+
+- title: "Clase 12 - Matemáticas"
+  url: 12-lecture.html
+
+  subitems:
+    - title: "Slides clase 12"
+      url: slides/12-lecture-slides.html
