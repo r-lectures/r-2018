@@ -31,12 +31,12 @@
 </section>
 
 <section>
-<section id="slide-org2281621">
-<h2 id="org2281621">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org2281621">
+<section id="slide-orgb9dc319">
+<h2 id="orgb9dc319">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgb9dc319">
 </div></section>
-<section id="slide-org1f68489">
-<h3 id="org1f68489">Vectores "aumentados"</h3>
+<section id="slide-org9d19a18">
+<h3 id="org9d19a18">Vectores "aumentados"</h3>
 <ul>
 <li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
 <li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
@@ -44,8 +44,8 @@
 
 </ul>
 </section>
-<section id="slide-orgbdd8fe7">
-<h3 id="orgbdd8fe7"><i>Subsetting</i></h3>
+<section id="slide-orgce53e23">
+<h3 id="orgce53e23"><i>Subsetting</i></h3>
 <p>
 '[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo del tipo x[a]. Hay distintas
 maneras de usarlo:
@@ -64,8 +64,8 @@ Otros operadores de subsetting: '[[' y '$'
 </section>
 </section>
 <section>
-<section id="slide-org491e1cf">
-<h2 id="org491e1cf">Operadores lógicos</h2>
+<section id="slide-org76c505b">
+<h2 id="org76c505b">Operadores lógicos</h2>
 <p>
 Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico
 </p>
@@ -99,8 +99,8 @@ is.na(y) & x==10
 </section>
 </section>
 <section>
-<section id="slide-org8ecb9f7">
-<h2 id="org8ecb9f7">Ejecución condicional</h2>
+<section id="slide-orge955c27">
+<h2 id="orge955c27">Ejecución condicional</h2>
 <div class="org-src-container">
 
 <pre><code class="R" >if (condición) {
@@ -124,8 +124,8 @@ is.na(y) & x==10
 </div>
 
 </section>
-<section id="slide-orgc0d3fe0">
-<h3 id="orgc0d3fe0">Ejemplo</h3>
+<section id="slide-orgd1c834a">
+<h3 id="orgd1c834a">Ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >pretty_length <- function(x) {
@@ -147,8 +147,8 @@ pretty_length(x)
 </div>
 
 </section>
-<section id="slide-org09021b6">
-<h3 id="org09021b6">funciones lógicas accesorias</h3>
+<section id="slide-orged9e1de">
+<h3 id="orged9e1de">funciones lógicas accesorias</h3>
 <ul>
 <li>any()</li>
 <li>all()</li>
@@ -171,8 +171,8 @@ identical(0L, 0)
 </section>
 </section>
 <section>
-<section id="slide-org3ee8ded">
-<h2 id="org3ee8ded">loops</h2>
+<section id="slide-orgd965bcc">
+<h2 id="orgd965bcc">loops</h2>
 <p>
 Loops son bucles y se usan para repetir código.
 </p>
@@ -185,8 +185,8 @@ Loops son bucles y se usan para repetir código.
 </code></pre>
 </div>
 </section>
-<section id="slide-org2030b37">
-<h3 id="org2030b37">Ejemplo</h3>
+<section id="slide-orgbfb1855">
+<h3 id="orgbfb1855">Ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >df <- tibble(
@@ -205,27 +205,28 @@ output
 </code></pre>
 </div>
 </section>
-<section id="slide-org019264a">
-<h3 id="org019264a">Componentes de un for</h3>
-<ul>
+<section id="slide-orgcf7fa12">
+<h3 id="orgcf7fa12">Componentes de un for</h3>
+<ol>
 <li>Output: siempre es buena idea crear el objeto antes de calcularlo</li>
-<li><p>
-Secuencia: variable sobre la que funciona el bucle
-</p>
+<li>Secuencia: variable sobre la que funciona el bucle</li>
+
+</ol>
 <div class="org-src-container">
 
 <pre><code class="R" >for (x in xs)
 for(i in seq_along(df))
 for (nm in names(xs))
 </code></pre>
-</div></li>
+</div>
+<ol>
 <li>Cuerpo: código que se ejecuta las veces que la secuencia indique</li>
 
-</ul>
+</ol>
 
 </section>
-<section id="slide-org5265e4b">
-<h3 id="org5265e4b">Con secuencia condicional</h3>
+<section id="slide-orgd4bd4b1">
+<h3 id="orgd4bd4b1">Con secuencia condicional</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >while (condition) {
@@ -235,10 +236,17 @@ for (nm in names(xs))
 </div>
 
 </section>
+<section id="slide-org07dad0e">
+<h3 id="org07dad0e">Vectorización!</h3>
+<p>
+Para otra clase
+</p>
+
+</section>
 </section>
 <section>
-<section id="slide-org31c612a">
-<h2 id="org31c612a">Práctica 8</h2>
+<section id="slide-orgf4f54ef">
+<h2 id="orgf4f54ef">Práctica 8</h2>
 <ol>
 <li>Cuál es la diferencia entre <code>if</code> y <code>ifelse</code>? Ver manual, mostrar ejemplos.</li>
 <li>Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la

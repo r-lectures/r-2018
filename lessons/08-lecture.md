@@ -16,13 +16,8 @@ title: Clase 8
 
 ## *Subsetting*
 
-<<<<<<< HEAD
-'[' es el operador para hacer *subsetting*, se usa poniendo algo el tipo x[a]. Hay distintas
-maneras de usarlo.
-=======
 '[' es el operador para hacer *subsetting*, se usa poniendo algo del tipo x[a]. Hay distintas
 maneras de usarlo:
->>>>>>> master
 
 1.  Usando vectores de enteros positivos o negativos
 2.  Usando vectores de lógicos
@@ -137,7 +132,6 @@ Loops son bucles y se usan para repetir código.
 
 ## Componentes de un for
 
-<<<<<<< HEAD
 1.  Output: siempre es buena idea crear el objeto antes de calcularlo
 2.  Secuencia: variable sobre la que funciona el bucle
 
@@ -146,15 +140,6 @@ Loops son bucles y se usan para repetir código.
     for (nm in names(xs))
 
 1.  Cuerpo: código que se ejecuta las veces que la secuencia indique
-=======
--   Output: siempre es buena idea crear el objeto antes de calcularlo
--   Secuencia: variable sobre la que funciona el bucle
-    
-        for (x in xs)
-        for(i in seq_along(df))
-        for (nm in names(xs))
--   Cuerpo: código que se ejecuta las veces que la secuencia indique
->>>>>>> master
 
 
 ## Con secuencia condicional
@@ -164,23 +149,16 @@ Loops son bucles y se usan para repetir código.
     }
 
 
-<<<<<<< HEAD
 ## Vectorización!
 
 Para otra clase
 
 
-=======
->>>>>>> master
 # Práctica 8
 
 1.  Cuál es la diferencia entre `if` y `ifelse`? Ver manual, mostrar ejemplos.
 2.  Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
-<<<<<<< HEAD
-    hora del día usando lubridate::now().
-=======
     hora del día usando lubridate::now() y lubridate::dhours().
->>>>>>> master
 3.  Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).
 4.  Qué pasa si usamos (nm in names(x)) y x no tiene nombres? Qué pasa si solo algunos tienen nombre
     o hay nombres repetidos? Hacer tests.
