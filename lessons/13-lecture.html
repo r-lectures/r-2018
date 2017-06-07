@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2017</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2017</h1><h3>07/06/2017</h3>
+</section>
+
+<section>
+<section id="slide-org240c661">
+<h2 id="org240c661">Profe invitado: Dr. Diego Bustos - Bioinformática</h2>
+</section>
+</section>
+<section>
+<section id="slide-org22fb1b5">
+<h2 id="org22fb1b5">R en Biología</h2>
+<p>
+Existe una enorme intersección entre estadística y algunas áreas de la biología, como la
+genética. Por esto, la bioinformática fue una de las principales áreas en adoptar R fuera de la
+comunidad estadística inicial.
+</p>
+
+</section>
+<section id="slide-org4e8a1ad">
+<h3 id="org4e8a1ad">R en Bioestadística</h3>
+<p>
+Análisis estadístico (tradicional) aplicado a biología, en particular en áreas como la farmacéutica,
+la epidemiología, etc. con énfasis en datos empíricos. Incluye temas generales como:
+</p>
+
+<ul>
+<li>Tests de hipótesis</li>
+<li>Estimación de intervalos</li>
+<li>Análisis de Variancia</li>
+<li>Modelado</li>
+<li>Diseño experimental y métodos de <i>sampling</i></li>
+<li>etc.</li>
+
+</ul>
+
+<p>
+<span class="underline">Referencias</span> (#bibliografía)
+</p>
+<ol>
+<li>"Biostatistical Design and Analysis Using R: A Practical Guide", Logan, 2010</li>
+<li>"Introduction to Biostatistics", Winner,  2004</li>
+
+</ol>
+
+</section>
+<section id="slide-org21434e5">
+<h3 id="org21434e5">R en Bioinformática</h3>
+<div class="outline-text-3" id="text-org21434e5">
+</div></section>
+<section id="slide-org6d015e2">
+<h4 id="org6d015e2"><a href="http://www.bioconductor.org/">Bioconductor</a></h4>
+<p>
+Es un proyecto de código libre y abierto para la comprensión y el análisis de datos genéticos
+generados en laboratorio en experimentos de biología molecular.
+</p>
+
+<ul>
+<li>Está basado en R y funciona desde 2001.</li>
+<li>Tiene su propio gestor de paquetes, `biocLite()`</li>
+<li>Contiene (1200+) paquetes para:
+<ul>
+<li>Análisis estadistico</li>
+<li>Métodos gráficos</li>
+<li>Secuenciamiento y <i>Gene annotation</i> - mapeo de la ubicación y función de genes</li>
+<li>Acceso a otros tipos de metadata</li>
+<li>Cursos y otros recursos</li>
+<li>Soporte/Comunidad</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgfbe115c">
+<h4 id="orgfbe115c">Ejemplo: paquete GenomicRanges</h4>
+<p>
+Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
+</p>
+
+<img style="WIDTH:400px; HEIGHT:400px; border:0" src="./figs/genomicranges.png">
+
+<ul>
+<li>Contiene funciones como findOverlaps(), nearest(), y otras operaciones útiles basadas en rangos del genoma</li>
+<li>Más en este <a href="http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.R">link</a></li>
+
+</ul>
+
+</section>
+<section id="slide-orgf645d13">
+<h4 id="orgf645d13">Genética</h4>
+<ul>
+<li>Paquete core <a href="https://cran.r-project.org/web/packages/genetics/index.html"><i>genetics</i></a></li>
+<li><a href="https://grunwaldlab.github.io/Population_Genetics_in_R/index.html">Genética de poblaciones con R</a></li>
+<li><a href="https://cran.r-project.org/web/views/Genetics.html">CRAN Task View: Statistical Genetics</a>: genética de poblaciones, filogenética, linkage, GWAS, etc.</li>
+<li><a href="http://www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/s-plus-r-functions">R packages from Divison of Biostatistics, Mayo Clinic</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

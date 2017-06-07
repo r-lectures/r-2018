@@ -37,8 +37,9 @@ la epidemiología, etc. con énfasis en datos empíricos. Incluye temas generale
 
 ### [Bioconductor](http://www.bioconductor.org/)
 
--   Es un proyecto de código libre y abierto para la comprensión y el análisis de datos genéticos
-    generados en laboratorio en experimentos de biología molecular.
+Es un proyecto de código libre y abierto para la comprensión y el análisis de datos genéticos
+generados en laboratorio en experimentos de biología molecular.
+
 -   Está basado en R y funciona desde 2001.
 -   Tiene su propio gestor de paquetes, \`biocLite()\`
 -   Contiene (1200+) paquetes para:
@@ -49,14 +50,15 @@ la epidemiología, etc. con énfasis en datos empíricos. Incluye temas generale
     -   Cursos y otros recursos
     -   Soporte/Comunidad
 
--   Ejemplo: paquete GenomicRanges
 
-    Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
-    
-    <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/genomicranges.png">
-    
-    -   Contiene funciones como findOverlaps(), nearest(), y otras operaciones útiles basadas en rangos del genoma
-    -   Más en este [link](http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.R)
+### Ejemplo: paquete GenomicRanges
+
+Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
+
+<img style="WIDTH:400px; HEIGHT:400px; border:0" src="./figs/genomicranges.png">
+
+-   Contiene funciones como findOverlaps(), nearest(), y otras operaciones útiles basadas en rangos del genoma
+-   Más en este [link](http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.R)
 
 
 ### Genética

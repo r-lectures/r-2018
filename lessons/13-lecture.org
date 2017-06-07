@@ -77,8 +77,9 @@ _Referencias_ (#bibliografía)
 ** R en Bioinformática
   
 *** [[http://www.bioconductor.org/][Bioconductor]]
-- Es un proyecto de código libre y abierto para la comprensión y el análisis de datos genéticos
-  generados en laboratorio en experimentos de biología molecular. 
+Es un proyecto de código libre y abierto para la comprensión y el análisis de datos genéticos
+generados en laboratorio en experimentos de biología molecular.
+
 - Está basado en R y funciona desde 2001.
 - Tiene su propio gestor de paquetes, `biocLite()`
 - Contiene (1200+) paquetes para:
@@ -88,11 +89,12 @@ _Referencias_ (#bibliografía)
   - Acceso a otros tipos de metadata
   - Cursos y otros recursos
   - Soporte/Comunidad
-**** Ejemplo: paquete GenomicRanges
+
+*** Ejemplo: paquete GenomicRanges
 Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
 
 #+BEGIN_EXPORT html
-<img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/genomicranges.png">
+<img style="WIDTH:400px; HEIGHT:400px; border:0" src="./figs/genomicranges.png">
 #+END_EXPORT
 
 - Contiene funciones como findOverlaps(), nearest(), y otras operaciones útiles basadas en rangos del genoma
