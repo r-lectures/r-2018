@@ -98,3 +98,11 @@ lectures:
   subitems:
     - title: "Slides clase 12"
       url: slides/12-lecture-slides.html
+
+- title: "Clase 13 - Biología"
+  url: 13-lecture.html
+
+  subitems:
+    - title: "Slides clase 13"
+      url: slides/13-lecture-slides.html
+

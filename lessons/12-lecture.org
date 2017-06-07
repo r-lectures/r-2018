@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
 #+TITLE: R 2017
-#+DATE: 06/05/2017
+#+DATE: 06/06/2017
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
