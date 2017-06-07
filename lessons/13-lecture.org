@@ -74,7 +74,9 @@ _Referencias_ (#bibliografía)
 2. "Introduction to Biostatistics", Winner,  2004 
 
 ** R en Bioinformática
+
 ** [[http://www.bioconductor.org/][Bioconductor]]
+
 Es un proyecto de código libre y abierto para la comprensión y el análisis de datos genéticos
 generados en laboratorio en experimentos de biología molecular.
 
@@ -87,6 +89,7 @@ generados en laboratorio en experimentos de biología molecular.
   - Acceso a otros tipos de metadata
   - Cursos y otros recursos
   - Soporte/Comunidad
+
 
 ** Ejemplo: paquete GenomicRanges
 Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
