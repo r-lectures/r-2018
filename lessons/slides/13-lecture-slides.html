@@ -31,13 +31,13 @@
 </section>
 
 <section>
-<section id="slide-orgd2174e9">
-<h2 id="orgd2174e9">Profe invitado: Dr. Diego Bustos - Bioinformática</h2>
+<section id="slide-org317edcc">
+<h2 id="org317edcc">Profe invitado: Dr. Diego Bustos - Bioinformática</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgdc39284">
-<h2 id="orgdc39284">R en Biología</h2>
+<section id="slide-org11ddf80">
+<h2 id="org11ddf80">R en Biología</h2>
 <p>
 Existe una enorme intersección entre estadística y algunas áreas de la biología, como la
 genética. Por esto, la bioinformática fue una de las principales áreas en adoptar R fuera de la
@@ -45,8 +45,8 @@ comunidad estadística inicial.
 </p>
 
 </section>
-<section id="slide-org27f594c">
-<h3 id="org27f594c">R en Bioestadística</h3>
+<section id="slide-org97e5e4c">
+<h3 id="org97e5e4c">R en Bioestadística</h3>
 <p>
 Análisis estadístico (tradicional) aplicado a biología, en particular en áreas como la farmacéutica,
 la epidemiología, etc. con énfasis en datos empíricos. Incluye temas generales como:
@@ -75,12 +75,12 @@ la epidemiología, etc. con énfasis en datos empíricos. Incluye temas generale
 </ol>
 
 </section>
-<section id="slide-org69f670e">
-<h3 id="org69f670e">R en Bioinformática</h3>
+<section id="slide-org00f987b">
+<h3 id="org00f987b">R en Bioinformática</h3>
 
 </section>
-<section id="slide-org9c8f597">
-<h3 id="org9c8f597"><a href="http://www.bioconductor.org/">Bioconductor</a></h3>
+<section id="slide-orgee27bad">
+<h3 id="orgee27bad"><a href="http://www.bioconductor.org/">Bioconductor</a></h3>
 <p>
 Es un proyecto de código libre y abierto para la comprensión y el análisis de datos genéticos
 generados en laboratorio en experimentos de biología molecular.
@@ -101,11 +101,9 @@ generados en laboratorio en experimentos de biología molecular.
 </ul></li>
 
 </ul>
-
-
 </section>
-<section id="slide-org0793e85">
-<h3 id="org0793e85">Ejemplo: paquete GenomicRanges</h3>
+<section id="slide-orge8903b2">
+<h3 id="orge8903b2">Ejemplo: paquete GenomicRanges</h3>
 <p>
 Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
 </p>
@@ -119,8 +117,32 @@ Representación y manipulación de intervalos genómicos y variables definidas a
 </ul>
 
 </section>
-<section id="slide-orgc26ad1f">
-<h3 id="orgc26ad1f">Bioinformática y Genética</h3>
+<section id="slide-org38a3089">
+<h3 id="org38a3089">Biostrings</h3>
+<p>
+Cadenas de caracteres representando secuencias biológicas (ADN, ARN, proteinas) y algoritmos de
+coincidencia.
+</p>
+
+<p>
+Usa contendores de memoria de manera eficiente para manipulación rápida y simple de secuencias
+o grupos de secuencias.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >> d <- DNAString("TTGAAAA-CTC-N")
+>d
+  13-letter "DNAString" instance
+seq: TTGAAAA-CTC-N
+> length(d)
+[1] 13
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org2820206">
+<h3 id="org2820206">Bioinformática y Genética</h3>
 <ul>
 <li>Paquete core <a href="https://cran.r-project.org/web/packages/genetics/index.html"><i>genetics</i></a></li>
 <li><a href="https://grunwaldlab.github.io/Population_Genetics_in_R/index.html">Genética de poblaciones con R</a></li>

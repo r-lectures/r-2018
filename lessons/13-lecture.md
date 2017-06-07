@@ -64,6 +64,22 @@ Representación y manipulación de intervalos genómicos y variables definidas a
 -   Más en este [link](http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.R)
 
 
+## Biostrings
+
+Cadenas de caracteres representando secuencias biológicas (ADN, ARN, proteinas) y algoritmos de
+coincidencia.
+
+Usa contendores de memoria de manera eficiente para manipulación rápida y simple de secuencias
+o grupos de secuencias.
+
+    > d <- DNAString("TTGAAAA-CTC-N")
+    >d
+      13-letter "DNAString" instance
+    seq: TTGAAAA-CTC-N
+    > length(d)
+    [1] 13
+
+
 ## Bioinformática y Genética
 
 -   Paquete core [*genetics*](https://cran.r-project.org/web/packages/genetics/index.html)
