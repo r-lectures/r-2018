@@ -27,12 +27,12 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1>R 2017</h1><h3>06/05/2017</h3>
+<section id="sec-title-slide"><h1>R 2017</h1><h3>06/06/2017</h3>
 </section>
 
 <section>
-<section id="slide-orgf013291">
-<h2 id="orgf013291">Repaso de la clase anterior</h2>
+<section id="slide-orgb975c45">
+<h2 id="orgb975c45">Repaso de la clase anterior</h2>
 <p>
 <i>Modelado</i> se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
 relación entre una variable dependiente o <i>variable respuesta</i> y otras variables independientes o
@@ -43,8 +43,8 @@ relación entre una variable dependiente o <i>variable respuesta</i> y otras var
 En R la función lm() se usa para regresión lineal (<i>linear models</i>) y glm() para <i>generalized linear models</i>.
 </p>
 </section>
-<section id="slide-orgbb0b7d2">
-<h4 id="orgbb0b7d2">Regresión lineal (lm)</h4>
+<section id="slide-org5049929">
+<h4 id="org5049929">Regresión lineal (lm)</h4>
 <p>
 Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
 parámetros para poder predecir.
@@ -65,8 +65,8 @@ parámetros para poder predecir.
 </div>
 
 </section>
-<section id="slide-org8bb98bb">
-<h4 id="org8bb98bb">Ejemplo con datos de 2011 US Census PUMS</h4>
+<section id="slide-orgbffd682">
+<h4 id="orgbffd682">Ejemplo con datos de 2011 US Census PUMS</h4>
 <p>
 Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
 </p>
@@ -99,8 +99,8 @@ geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black
 </code></pre>
 </div>
 </section>
-<section id="slide-org1dbac69">
-<h4 id="org1dbac69">Regresión lineal generalizada (glm)</h4>
+<section id="slide-org78788db">
+<h4 id="org78788db">Regresión lineal generalizada (glm)</h4>
 <p>
 Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
 "normales". Los modelos lineales generalizados relajan estas suposiciones. 
@@ -132,12 +132,12 @@ residuals(fit, type="deviance") # residuos
 </section>
 </section>
 <section>
-<section id="slide-org677ae36">
-<h2 id="org677ae36">Matemáticas</h2>
-<div class="outline-text-2" id="text-org677ae36">
+<section id="slide-org39e4ef4">
+<h2 id="org39e4ef4">Matemáticas</h2>
+<div class="outline-text-2" id="text-org39e4ef4">
 </div></section>
-<section id="slide-org652999f">
-<h3 id="org652999f">Funciones matemáticas básicas</h3>
+<section id="slide-org0d0f8e6">
+<h3 id="org0d0f8e6">Funciones matemáticas básicas</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >- exp(): Exponential function, base e
@@ -166,8 +166,8 @@ residuals(fit, type="deviance") # residuos
 </code></pre>
 </div>
 </section>
-<section id="slide-orge637292">
-<h3 id="orge637292">Cálculo</h3>
+<section id="slide-org1e659fd">
+<h3 id="org1e659fd">Cálculo</h3>
 <p>
 R tiene capacidades simples de hacer cuentas analíticas:
 </p>
@@ -181,12 +181,12 @@ exp(x^2) * (2 * x)
 </code></pre>
 </div>
 </section>
-<section id="slide-org07ac883">
-<h3 id="org07ac883">Algebra Lineal</h3>
-<div class="outline-text-3" id="text-org07ac883">
+<section id="slide-org986e966">
+<h3 id="org986e966">Algebra Lineal</h3>
+<div class="outline-text-3" id="text-org986e966">
 </div></section>
-<section id="slide-orga8bbba9">
-<h4 id="orga8bbba9">Multiplicación de matrices</h4>
+<section id="slide-org3e926d5">
+<h4 id="org3e926d5">Multiplicación de matrices</h4>
 <p>
 Directamente con el operador %*%
 </p>
@@ -208,8 +208,8 @@ Directamente con el operador %*%
 </code></pre>
 </div>
 </section>
-<section id="slide-org8df0324">
-<h4 id="org8df0324">Sistema de ecuaciones lineales (o invertir una matriz)</h4>
+<section id="slide-org6aff4dc">
+<h4 id="org6aff4dc">Sistema de ecuaciones lineales (o invertir una matriz)</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >> a <- matrix(c(1,1,-1,1),nrow=2,ncol=2)
@@ -223,8 +223,8 @@ Directamente con el operador %*%
 </code></pre>
 </div>
 </section>
-<section id="slide-orgd2f5e78">
-<h4 id="orgd2f5e78">Autovectores y autovalores</h4>
+<section id="slide-org1719011">
+<h4 id="org1719011">Autovectores y autovalores</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >> a
@@ -250,8 +250,8 @@ $vectors
 </div>
 
 </section>
-<section id="slide-org0d40d8a">
-<h4 id="org0d40d8a">Otras operaciones posibles son:</h4>
+<section id="slide-org76062a4">
+<h4 id="org76062a4">Otras operaciones posibles son:</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >- t(): Matrix transpose
@@ -266,8 +266,8 @@ $vectors
 </div>
 
 </section>
-<section id="slide-org23cf4e8">
-<h3 id="org23cf4e8">Otros paquetes de interés</h3>
+<section id="slide-org353c386">
+<h3 id="org353c386">Otros paquetes de interés</h3>
 <ul>
 <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
 <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
@@ -286,11 +286,11 @@ $vectors
 </section>
 </section>
 <section>
-<section id="slide-org7e8c56e">
-<h2 id="org7e8c56e">Práctica 12</h2>
+<section id="slide-org633a59e">
+<h2 id="org633a59e">Práctica 12</h2>
 <ol>
 <li>Integrar numéricamente la función dlnorm(5, 1) entre 0 y xf, con xf=10^i e i=1:4. Comparar con la
-función acumulada correspondiente evaluada en el límite adecuado.</li>
+función acumulada correspondientemente evaluada en el límite adecuado.</li>
 <li>Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de
 NxN, donde N=10^i, con i = 1:4? Hacer una figura con ggplot2 y hacer una regresión (con lm o
 loess, lo que sea más adecuado). Confirmar, para el caso i = 1, la identidad A x = lamba x, para el

@@ -26,10 +26,13 @@ la epidemiología, etc. con énfasis en datos empíricos. Incluye temas generale
 -   Diseño experimental y métodos de *sampling*
 -   etc.
 
-<span class="underline">Referencias</span> (#bibliografía)
+<span class="underline">Referencias</span> (ver #bibliografía)
 
-1.  "Biostatistical Design and Analysis Using R: A Practical Guide", Logan, 2010
-2.  "Introduction to Biostatistics", Winner,  2004
+1.  "Biostatistical Design and Analysis Using R", Logan, 2010
+2.  "Introduction to Biostatistics", Winner, 2004
+3.  "Biostatistics with R", 2012, Shahbaba
+4.  "An Introduction to Biostatistics Using R", Glover, 2015
+5.  "Introductory Statistics with R", Dalgaard, 2008
 
 
 ## R en Bioinformática
@@ -55,16 +58,21 @@ generados en laboratorio en experimentos de biología molecular.
 
 Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
 
-<img style="WIDTH:400px; HEIGHT:400px; border:0" src="./figs/genomicranges.png">
+<img style="WIDTH:700px; HEIGHT:400px; border:0" src="./figs/genomicranges.png">
 
 -   Contiene funciones como findOverlaps(), nearest(), y otras operaciones útiles basadas en rangos del genoma
 -   Más en este [link](http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.R)
 
 
-## Genética
+## Bioinformática y Genética
 
 -   Paquete core [*genetics*](https://cran.r-project.org/web/packages/genetics/index.html)
 -   [Genética de poblaciones con R](https://grunwaldlab.github.io/Population_Genetics_in_R/index.html)
 -   [CRAN Task View: Statistical Genetics](https://cran.r-project.org/web/views/Genetics.html): genética de poblaciones, filogenética, linkage, GWAS, etc.
 -   [R packages from Divison of Biostatistics, Mayo Clinic](http://www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/s-plus-r-functions)
+
+<span class="underline">Referencias</span> (ver #bibliografía)
+
+1.  "R programming for Bioinformatics", Gentleman, 2009
+2.  "A Little Book of R For Bioinformatics", Coghlan, 2017
 

@@ -69,9 +69,12 @@ la epidemiología, etc. con énfasis en datos empíricos. Incluye temas generale
 - Diseño experimental y métodos de /sampling/
 - etc.
 
-_Referencias_ (#bibliografía)
-1. "Biostatistical Design and Analysis Using R: A Practical Guide", Logan, 2010 
-2. "Introduction to Biostatistics", Winner,  2004 
+_Referencias_ (ver #bibliografía)
+1. "Biostatistical Design and Analysis Using R", Logan, 2010 
+2. "Introduction to Biostatistics", Winner, 2004
+3. "Biostatistics with R", 2012, Shahbaba
+4. "An Introduction to Biostatistics Using R", Glover, 2015
+5. "Introductory Statistics with R", Dalgaard, 2008
 
 ** R en Bioinformática
 
@@ -95,14 +98,18 @@ generados en laboratorio en experimentos de biología molecular.
 Representación y manipulación de intervalos genómicos y variables definidas a lo largo de un genoma
 
 #+BEGIN_EXPORT html
-<img style="WIDTH:400px; HEIGHT:400px; border:0" src="./figs/genomicranges.png">
+<img style="WIDTH:700px; HEIGHT:400px; border:0" src="./figs/genomicranges.png">
 #+END_EXPORT
 
 - Contiene funciones como findOverlaps(), nearest(), y otras operaciones útiles basadas en rangos del genoma
 - Más en este [[http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.R][link]] 
 
-** Genética
+** Bioinformática y Genética
 - Paquete core [[https://cran.r-project.org/web/packages/genetics/index.html][/genetics/]]
 - [[https://grunwaldlab.github.io/Population_Genetics_in_R/index.html][Genética de poblaciones con R]]
 - [[https://cran.r-project.org/web/views/Genetics.html][CRAN Task View: Statistical Genetics]]: genética de poblaciones, filogenética, linkage, GWAS, etc.
 - [[http://www.mayo.edu/research/departments-divisions/department-health-sciences-research/division-biomedical-statistics-informatics/software/s-plus-r-functions][R packages from Divison of Biostatistics, Mayo Clinic]]
+
+_Referencias_ (ver #bibliografía)
+1. "R programming for Bioinformatics", Gentleman, 2009
+2. "A Little Book of R For Bioinformatics", Coghlan, 2017
