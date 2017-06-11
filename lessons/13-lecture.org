@@ -118,6 +118,9 @@ seq: TTGAAAA-CTC-N
 [1] 13
 #+END_SRC
 
+Biostring References
+- [[https://web.stanford.edu/class/bios221/labs/biostrings/lab_1_biostrings.html][Biostrings in R - Stanford Stats 366 - Bios 221]]
+- 
 ** Bioinformática y Genética
 - Paquete core [[https://cran.r-project.org/web/packages/genetics/index.html][/genetics/]]
 - [[https://grunwaldlab.github.io/Population_Genetics_in_R/index.html][Genética de poblaciones con R]]

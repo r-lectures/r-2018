@@ -29,13 +29,13 @@ Otros operadores de subsetting: '[[' y '$'
 
 # Operadores lógicos
 
-Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico
+Son operadores que permiten comparar dos enunciados y evaluan a un resultado lógico
 
 -   >, >=
 -   <, <=
 -   !=, ==
 
--   los operadores & (AND) y | (OR) para elaborar enunciados más complejos
+-   los operadores && (AND) y || (OR) para elaborar enunciados más complejos
 
     10 == 10
     # [1] TRUE
@@ -48,7 +48,8 @@ Son operadores que permiten comparar dos enunciados y evaluan a resultado lógic
     is.na(y)
     # [1] TRUE
     
-    is.na(y) & x==10
+    ## podemos combinar expresiones condicionales con || y && 
+    is.na(y) && x==10
     [1] TRUE
 
 
