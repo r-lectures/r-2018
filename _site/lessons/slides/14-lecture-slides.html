@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2017</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2017</h1><h3>13/06/2017</h3>
+</section>
+<section>
+<section id="slide-org885a525">
+<h2 id="org885a525">Repaso de clase anterior</h2>
+<p>
+<span class="underline">R en Biología</span>
+</p>
+
+<p>
+Existe una enorme intersección entre estadística y algunas áreas de la biología, como la
+genética. Por esto, la bioinformática fue una de las principales áreas en adoptar R fuera de la
+comunidad estadística inicial.
+</p>
+
+<ul>
+<li>R en Bioestadística</li>
+<li>R en Bioinformática
+<ul>
+<li><a href="http://www.bioconductor.org/">Bioconductor</a></li>
+<li>Bioinformática y Genética</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org39bcc7b">
+<h2 id="org39bcc7b">R y bases de datos</h2>
+<p>
+R puede acceder a distintos tipos de bases de datos (DBMSs - Database Management Systems): Microsoft
+SQL Server, Microsoft Access, MySQL, Oracle, PostgreSQL, DB2 de IBM, Sybase, Teradata, and SQLite.
+</p>
+
+<p>
+Se puede 'hablar' con estas bases de datos con interfaces (protocolos) como ODBC con el paquete
+RODBC. Existen otras alternativas, por ejemplo, JODBC, RMySQL, ROracle, RPostgreSQL y RSQLite.
+</p>
+
+<ul>
+<li>Ejemplo con RODBC. Asegurarse de instalar el paquete y los drivers OBDC correspondientes.</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre><code class="R" >library(RODBC)
+## abro una conexión a la base de datos OBDC
+myconn <-odbcConnect("mydsn", uid="Rob", pwd="aardvark")
+## bajo datos
+crimedat <- sqlFetch(myconn, Crime)
+## hago una 'query': selecciono todo de la tabla Punishment
+pundat <- sqlQuery(myconn, "select * from Punishment")
+## cierro conexión
+close(myconn)
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org09c937e">
+<h2 id="org09c937e">R en Física</h2>
+<p>
+Al igual que otras áreas, R es usado en Física directamente o a través de paquetes
+especializados. Algunos ejemplos de <a href="https://cran.r-project.org/web/views/ChemPhys.html">CRAN Task View: Chemometrics and Computational Physics</a>:
+</p>
+
+<ul>
+<li>Self-Organizing Maps</li>
+<li>Differential Equations</li>
+<li>Cellular Automata</li>
+<li>Thermodynamics</li>
+<li>Mass Spectrometry</li>
+<li>Functional Magnetic Resonance Imaging</li>
+<li>Carbon Dating</li>
+<li>X-Ray Diffractograms</li>
+<li>Optics and Scattering Approximations</li>
+<li>Energy Modeling</li>
+<li>Positron Emission Tomography</li>
+<li>etc.</li>
+
+</ul>
+
+</section>
+<section id="slide-org738ebb8">
+<h3 id="org738ebb8">Física computacional</h3>
+<ul>
+<li><a href="http://web.csulb.edu/~woollett/#cpmr">Computational Physics with Maxima or R</a>: libro que hace uso de R en aplicaciones de Física.</li>
+<li><a href="http://iopscience.iop.org/article/10.1088/0143-0807/31/4/021/meta">Data analysis and graphing in an introductory physics laboratory: spreadsheet versus statistics
+suite</a>: comparación de softwares en el laboratorio. Meritos y limitaciones.</li>
+
+</ul>
+</section>
+<section id="slide-org17541ff">
+<h3 id="org17541ff">Física de Partículas</h3>
+<ul>
+<li><a href="https://cdcvs.fnal.gov/redmine/projects/roottreetor/wiki">RootTreeToR</a> - paquete R para interactuar con ROOT (<a href="http://user2007.org/program/presentations/lyon.pdf">Fermilab</a>)
+<ul>
+<li>Combina llamadas a ROOT para analizar datos pequeños en R</li>
+
+</ul></li>
+<li><a href="http://andrewjohnlowe.github.io/LHC-ML-WG-1/#/slide-1">ML in particle Physics with R</a></li>
+<li><a href="https://github.com/apfeiffer1/aidar">aidar</a> - interface para AIDA (Abstract Interfaces for Data Analysis)</li>
+
+</ul>
+
+</section>
+<section id="slide-org84f47b9">
+<h3 id="org84f47b9">Astronomía</h3>
+<p>
+<a href="https://asaip.psu.edu/forums/software-forum/459833927">Paquetes para astronomía en CRAN</a> 
+</p>
+
+<ul>
+<li>astro: Funciones astronómicas, herramientas y algoritmos</li>
+<li>astrodatR: Datos astronomicos</li>
+<li>astroFns: Funciones de tiempo y posición</li>
+<li>astrolibR: Biblioteca de usuarios</li>
+<li>celestial: Colección de algoritmos de conversión frecuentes</li>
+<li>&#x2026; y 20 paquetes más</li>
+
+</ul>
+
+</section>
+<section id="slide-org8ab3d43">
+<h3 id="org8ab3d43">Usos específicos de R:</h3>
+<ol>
+<li><a href="https://cran.r-project.org/web/packages/soilphysics/index.html">soilphysics</a>: Análisis y modelado de física de suelos</li>
+<li><a href="https://cran.r-project.org/web/packages/planar/index.html">planar: Multilayer Optics</a>: Resuelve el problema electromagnético de reflexión y transmisión en una
+interface planar multicapa</li>
+<li><a href="https://cran.r-project.org/web/packages/simecol/index.html">simecol:</a> Simulación de sistemas dinámicos para ecología</li>
+<li><p>
+<a href="http://igraph.org/r">igraph</a> - Grafos y redes
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >library(igraph) # Cargo el paquete en la sesión
+ba <-  sample_pa(n=100, power=1, m=1,  directed=F) ## creo una red tipo modelo Barabási-Albert
+plot(ba, vertex.size=6, vertex.label=NA) ## hago una figura de la red
+</code></pre>
+</div>
+
+<img style="WIDTH:400px; HEIGHT:300px; ANGLE:90" src="./figs/ba.png"></li>
+
+<li>etc.</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

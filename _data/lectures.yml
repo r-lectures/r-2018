@@ -109,3 +109,10 @@ lectures:
 - title: "Repaso 2do parcial"
   url: 02-midterm-practice.html
 
+- title: "Clase 14 - Física"
+  url: 14-lecture.html
+
+  subitems:
+    - title: "Slides clase 14"
+      url: slides/14-lecture-slides.html
+
