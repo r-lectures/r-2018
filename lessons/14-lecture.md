@@ -75,7 +75,7 @@ especializados. Algunos ejemplos de [CRAN Task View: Chemometrics and Computatio
 
 ## Astronomía
 
-[Paquetes para astronomía en CRAN](https://asaip.psu.edu/forums/software-forum/459833927) 
+[Paquetes para astronomía en ASAIP](https://asaip.psu.edu/forums/software-forum/459833927) - Astrostatistics and Astroinformatics Portal 
 
 -   astro: Funciones astronómicas, herramientas y algoritmos
 -   astrodatR: Datos astronomicos
