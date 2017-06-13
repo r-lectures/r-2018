@@ -106,6 +106,7 @@ especializados. Algunos ejemplos de [[https://cran.r-project.org/web/views/ChemP
 - [[http://web.csulb.edu/~woollett/#cpmr][Computational Physics with Maxima or R]]: libro que hace uso de R en aplicaciones de Física.
 - [[http://iopscience.iop.org/article/10.1088/0143-0807/31/4/021/meta][Data analysis and graphing in an introductory physics laboratory: spreadsheet versus statistics
   suite]]: comparación de softwares en el laboratorio. Meritos y limitaciones.
+
 ** Física de Partículas
 - [[https://cdcvs.fnal.gov/redmine/projects/roottreetor/wiki][RootTreeToR]] - paquete R para interactuar con ROOT ([[http://user2007.org/program/presentations/lyon.pdf][Fermilab]])
   - Combina llamadas a ROOT para analizar datos pequeños en R 
@@ -113,7 +114,7 @@ especializados. Algunos ejemplos de [[https://cran.r-project.org/web/views/ChemP
 - [[https://github.com/apfeiffer1/aidar][aidar]] - interface para AIDA (Abstract Interfaces for Data Analysis)
 
 ** Astronomía
-[[https://asaip.psu.edu/forums/software-forum/459833927][Paquetes para astronomía en CRAN]] 
+[[https://asaip.psu.edu/forums/software-forum/459833927][Paquetes para astronomía en ASAIP]] - Astrostatistics and Astroinformatics Portal 
 
 - astro: Funciones astronómicas, herramientas y algoritmos
 - astrodatR: Datos astronomicos
