@@ -78,11 +78,15 @@ especializados. Algunos ejemplos de [CRAN Task View: Chemometrics and Computatio
 [Paquetes para astronomía en ASAIP](https://asaip.psu.edu/forums/software-forum/459833927) - Astrostatistics and Astroinformatics Portal 
 
 -   astro: Funciones astronómicas, herramientas y algoritmos
--   astrodatR: Datos astronomicos
+-   astrodatR: Datos astronómicos
 -   astroFns: Funciones de tiempo y posición
 -   astrolibR: Biblioteca de usuarios
 -   celestial: Colección de algoritmos de conversión frecuentes
 -   &#x2026; y 20 paquetes más
+
+[Modern Statistical Methods for Astronomy With R Applications](http://astrostatistics.psu.edu/MSMA/), Feigelson and Babu, Cambridge,
+
+1.  Ver también [Statistical Methods for Astronomy](https://arxiv.org/abs/1205.2064), 2012.
 
 
 ## Usos específicos de R:

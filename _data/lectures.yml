@@ -116,3 +116,10 @@ lectures:
     - title: "Slides clase 14"
       url: slides/14-lecture-slides.html
 
+- title: "Clase 15 - Química"
+  url: 15-lecture.html
+
+  subitems:
+    - title: "Slides clase 15"
+      url: slides/15-lecture-slides.html
+
