@@ -67,20 +67,21 @@ computacionales para calcular propiedades y estructuras de moléculas.
 ## [ChemmineR: Cheminformatics Toolkit for R](https://www.bioconductor.org/packages/3.3/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html)
 
 -   Paquete para analizar (gran cantidad de) pequeñas moléculas en R
-    -   bioconductor!
-    -   lee archivos SDF directamente en R
-    -   calcula descriptores, *fingerprints* y valores de Tanimoto
-    -   Muesrta moléculas en 2D (JChemPaint) y 3D (Jmol),
-    -   calcula cadenas SMILES, y puede acceder campos de propiedad en formatos aceptados
+    -   Bioconductor!
+    -   Lee archivos SDF directamente en R
+    -   Calcula descriptores, *fingerprints* y valores de Tanimoto
+    -   Muestra moléculas en 2D (JChemPaint) y 3D (Jmol),
+    -   Calcula cadenas *SMILES*, y puede acceder campos de propiedad en formatos aceptados
 
 <img style="WIDTH:450px; HEIGHT:380px; border:0" src="./figs/ChemmineR.png">
 
 
-## ChemmineR - ejemplito
+## ChemmineR - Ejemplito
 
     library("ChemmineR") # Cargamos el paquete
-    data(sdfsample) # cargamos una "structure-data file (sdf)"
-    sdfsample[[1]] # retorna contenido resumido
+    sdfset <- data(sdfsample) # cargamos una "structure-data file (sdf)"
+    sdfset <- read.SDFset("http://faculty.ucr.edu/tgirke/Documents/R_BioCond/Samples/sdfsample.sdf") ## o de un archivo remoto
+    sdfset[[1]] # retorna un contenido resumido de C_23 H_28 N_4 O_6
     ## An instance of "SDF"
     ## 
     ## <<header>>

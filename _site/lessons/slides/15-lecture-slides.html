@@ -30,12 +30,12 @@
 <section id="sec-title-slide"><h1>R 2017</h1><h3>14/06/2017</h3>
 </section>
 <section>
-<section id="slide-org30a659b">
-<h2 id="org30a659b">Repaso de clase anterior</h2>
-<div class="outline-text-2" id="text-org30a659b">
+<section id="slide-orgb0bee6a">
+<h2 id="orgb0bee6a">Repaso de clase anterior</h2>
+<div class="outline-text-2" id="text-orgb0bee6a">
 </div></section>
-<section id="slide-orgaf3ba80">
-<h3 id="orgaf3ba80">R y bases de datos</h3>
+<section id="slide-org9a7c4e3">
+<h3 id="org9a7c4e3">R y bases de datos</h3>
 <p>
 R puede acceder a distintos tipos de bases de datos. Se puede 'hablar' con estas bases de datos con
 interfaces (protocolos), por ejemplo ODBC, con el paquete RODBC.
@@ -56,8 +56,8 @@ close(myconn)
 </div>
 
 </section>
-<section id="slide-org94e7016">
-<h3 id="org94e7016">R en Física</h3>
+<section id="slide-org51f21c8">
+<h3 id="org51f21c8">R en Física</h3>
 <p>
 Al igual que otras áreas, R es usado en Física directamente o a través de paquetes
 especializados. Algunos ejemplos de <a href="https://cran.r-project.org/web/views/ChemPhys.html">CRAN Task View: Chemometrics and Computational Physics</a>:
@@ -81,8 +81,8 @@ especializados. Algunos ejemplos de <a href="https://cran.r-project.org/web/view
 </section>
 </section>
 <section>
-<section id="slide-org9490544">
-<h2 id="org9490544">R en Química</h2>
+<section id="slide-orgf326b1e">
+<h2 id="orgf326b1e">R en Química</h2>
 <p>
 <i>Quimiometría</i>, el uso de métodos matemáticos y estadísticos para analizar información
   química y correlacionarla con datos instrumentales.
@@ -96,8 +96,8 @@ computacionales para calcular propiedades y estructuras de moléculas.
 <img style="WIDTH:500px; HEIGHT:350px; border:0" src="./figs/caffeine.png">
 
 </section>
-<section id="slide-org59bf690">
-<h3 id="org59bf690"><a href="https://cran.r-project.org/web/views/ChemPhys.html">CRAN Task View: Chemometrics and Computational Physics</a></h3>
+<section id="slide-org6e45885">
+<h3 id="org6e45885"><a href="https://cran.r-project.org/web/views/ChemPhys.html">CRAN Task View: Chemometrics and Computational Physics</a></h3>
 <ul>
 <li>Interfaces to External Libraries (para interactuar con Chemistry Development Kit (CDK), PubChem, etc.)</li>
 <li>Spectroscopy (libros con paquetes, ver link)</li>
@@ -110,16 +110,16 @@ computacionales para calcular propiedades y estructuras de moléculas.
 </ul>
 
 </section>
-<section id="slide-org23c25ad">
-<h3 id="org23c25ad"><a href="https://www.bioconductor.org/packages/3.3/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html">ChemmineR: Cheminformatics Toolkit for R</a></h3>
+<section id="slide-orgf79eaa0">
+<h3 id="orgf79eaa0"><a href="https://www.bioconductor.org/packages/3.3/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html">ChemmineR: Cheminformatics Toolkit for R</a></h3>
 <ul>
 <li>Paquete para analizar (gran cantidad de) pequeñas moléculas en R
 <ul>
-<li>bioconductor!</li>
-<li>lee archivos SDF directamente en R</li>
-<li>calcula descriptores, <i>fingerprints</i> y valores de Tanimoto</li>
-<li>Muesrta moléculas en 2D (JChemPaint) y 3D (Jmol),</li>
-<li>calcula cadenas SMILES, y puede acceder campos de propiedad en formatos aceptados</li>
+<li>Bioconductor!</li>
+<li>Lee archivos SDF directamente en R</li>
+<li>Calcula descriptores, <i>fingerprints</i> y valores de Tanimoto</li>
+<li>Muestra moléculas en 2D (JChemPaint) y 3D (Jmol),</li>
+<li>Calcula cadenas <i>SMILES</i>, y puede acceder campos de propiedad en formatos aceptados</li>
 
 </ul></li>
 
@@ -128,13 +128,14 @@ computacionales para calcular propiedades y estructuras de moléculas.
 <img style="WIDTH:450px; HEIGHT:380px; border:0" src="./figs/ChemmineR.png">
 
 </section>
-<section id="slide-org0399e80">
-<h3 id="org0399e80">ChemmineR - ejemplito</h3>
+<section id="slide-org89ba29c">
+<h3 id="org89ba29c">ChemmineR - Ejemplito</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >library("ChemmineR") # Cargamos el paquete
-data(sdfsample) # cargamos una "structure-data file (sdf)"
-sdfsample[[1]] # retorna contenido resumido
+sdfset <- data(sdfsample) # cargamos una "structure-data file (sdf)"
+sdfset <- read.SDFset("http://faculty.ucr.edu/tgirke/Documents/R_BioCond/Samples/sdfsample.sdf") ## o de un archivo remoto
+sdfset[[1]] # retorna un contenido resumido de C_23 H_28 N_4 O_6
 ## An instance of "SDF"
 ## 
 ## <header>>
@@ -167,8 +168,8 @@ sdfsample[[1]] # retorna contenido resumido
 </code></pre>
 </div>
 </section>
-<section id="slide-org6cc41a2">
-<h3 id="org6cc41a2"><a href="https://cdk.github.io/">CDK</a> - Chemistry Development Kit</h3>
+<section id="slide-orgfcfc652">
+<h3 id="orgfcfc652"><a href="https://cdk.github.io/">CDK</a> - Chemistry Development Kit</h3>
 <p>
 CDK es una colección de bibliotecas modulares en Java para Quimioinformática y Química
 computacional. Es código libre. Referencias <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-017-0220-4">acá</a>, <a href="https://jcheminf.springeropen.com/articles/10.1186/1758-2946-6-3">acá</a> y <a href="http://www.eurekaselect.com/56225/article">acá</a>. <a href="http://ctr.wikia.com/wiki/Chemistry_Toolkit_Rosetta_Wiki">Relación con SWs similares.</a>
@@ -188,8 +189,8 @@ computacional. Es código libre. Referencias <a href="https://jcheminf.springero
 </ul>
 
 </section>
-<section id="slide-org1ade3c0">
-<h3 id="org1ade3c0">Paquete <a href="http://cran.r-project.org/web/packages/rcdk/rcdk.pdf">rcdk</a> y CDK</h3>
+<section id="slide-orgfe9d1fa">
+<h3 id="orgfe9d1fa">Paquete <a href="http://cran.r-project.org/web/packages/rcdk/rcdk.pdf">rcdk</a> y CDK</h3>
 <ul>
 <li><a href="http://www.cureffi.org/2013/09/23/a-quick-intro-to-chemical-informatics-in-r/">http://www.cureffi.org/2013/09/23/a-quick-intro-to-chemical-informatics-in-r/</a></li>
 
@@ -208,8 +209,8 @@ fp.list <- lapply(mols, get.fingerprint)
 </code></pre>
 </div>
 </section>
-<section id="slide-orgc84dcd6">
-<h3 id="orgc84dcd6">Paquete <a href="http://cran.r-project.org/web/packages/rpubchem/rpubchem.pdf">rpubchem</a> y <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a></h3>
+<section id="slide-org1ee7fdf">
+<h3 id="org1ee7fdf">Paquete <a href="http://cran.r-project.org/web/packages/rpubchem/rpubchem.pdf">rpubchem</a> y <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a></h3>
 <p>
 PubChem es un componente de la <i>Molecular Libraries Roadmap Initiative</i> de la <a href="https://www.nih.gov/">NIH</a>. Provee
 información de las actividades biologicas de moléculas pequeñas y datos de análisis biológicos. Está
@@ -225,8 +226,8 @@ química.
 <img style="WIDTH:600px; HEIGHT:400px; border:0" src="./figs/pubchem-caffeine.png">
 
 </section>
-<section id="slide-org2537884">
-<h3 id="org2537884"><a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> - <a href="https://www.ebi.ac.uk/about">EMBL-EBI</a></h3>
+<section id="slide-org7ae9001">
+<h3 id="org7ae9001"><a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> - <a href="https://www.ebi.ac.uk/about">EMBL-EBI</a></h3>
 <p>
 El European Bioinformatics Institute mantiene la base de datos ChEMBL, para ofrecer de manera
 abierta datos públicos de moléculas bioactivas. Está curada manualmente. Ver esta <a href="https://www.ncbi.nlm.nih.gov/pubmed/24214965">referencia</a> y <a href="http://pubs.acs.org/doi/abs/10.1021/ci200260t">esta</a>.
@@ -239,8 +240,8 @@ El paquete <a href="https://github.com/rajarshi/chemblr">chemblr</a> actúa como
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/chembl-caffeine.png">
 
 </section>
-<section id="slide-orgf0df988">
-<h3 id="orgf0df988">Bibliografía de Quimiometría y Quimioinformática</h3>
+<section id="slide-org8090502">
+<h3 id="org8090502">Bibliografía de Quimiometría y Quimioinformática</h3>
 <ul>
 <li><i>Introduction to Multivariate Statistical Analysis in Chemometrics</i>, 2009, paquete <i>chemometrics</i>.</li>
 <li><i>Chemometrics with R</i>, 2011, paquetes <i>ChemometricsWithR</i> y <i>ChemometricsWithRData</i>.</li>

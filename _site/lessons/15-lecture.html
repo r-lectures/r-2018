@@ -254,22 +254,23 @@ computacionales para calcular propiedades y estructuras de moléculas.</p>
 <ul>
   <li>Paquete para analizar (gran cantidad de) pequeñas moléculas en R
     <ul>
-      <li>bioconductor!</li>
-      <li>lee archivos SDF directamente en R</li>
-      <li>calcula descriptores, <em>fingerprints</em> y valores de Tanimoto</li>
-      <li>Muesrta moléculas en 2D (JChemPaint) y 3D (Jmol),</li>
-      <li>calcula cadenas SMILES, y puede acceder campos de propiedad en formatos aceptados</li>
+      <li>Bioconductor!</li>
+      <li>Lee archivos SDF directamente en R</li>
+      <li>Calcula descriptores, <em>fingerprints</em> y valores de Tanimoto</li>
+      <li>Muestra moléculas en 2D (JChemPaint) y 3D (Jmol),</li>
+      <li>Calcula cadenas <em>SMILES</em>, y puede acceder campos de propiedad en formatos aceptados</li>
     </ul>
   </li>
 </ul>
 
 <p><img style="WIDTH:450px; HEIGHT:380px; border:0" src="./figs/ChemmineR.png" /></p>
 
-<h2 id="chemminer---ejemplito">ChemmineR - ejemplito</h2>
+<h2 id="chemminer---ejemplito">ChemmineR - Ejemplito</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>library("ChemmineR") # Cargamos el paquete
-data(sdfsample) # cargamos una "structure-data file (sdf)"
-sdfsample[[1]] # retorna contenido resumido
+sdfset &lt;- data(sdfsample) # cargamos una "structure-data file (sdf)"
+sdfset &lt;- read.SDFset("http://faculty.ucr.edu/tgirke/Documents/R_BioCond/Samples/sdfsample.sdf") ## o de un archivo remoto
+sdfset[[1]] # retorna un contenido resumido de C_23 H_28 N_4 O_6
 ## An instance of "SDF"
 ## 
 ## &lt;&lt;header&gt;&gt;
