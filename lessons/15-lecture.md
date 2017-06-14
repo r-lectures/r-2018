@@ -84,7 +84,7 @@ computacionales para calcular propiedades y estructuras de moléculas.
     sdfset[[1]] # retorna un contenido resumido de C_23 H_28 N_4 O_6
     ## An instance of "SDF"
     ## 
-    ## < <header> >
+    ## <<header>>
     ##                             Molecule_Name                                    Source 
     ##                                  "650001"                  "  -OEChem-07071010512D" 
     ##                                   Comment                               Counts_Line 
