@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Clase 15</title>
+    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/lessons/15-lecture.html">
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+</head>
+
+
+    <body>
+
+        <header id="header" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/lessons/" >Clases</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/resources.html" >Biblio</a></li>
+	  
+	  
+	  
+	  
+	  
+	  <li><a href="http://localhost:4000/datasets.html" >Data</a></li>
+	  
+	  
+	  
+	  
+	  
+	  
+
+	      <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-lecture.html">Clase 1 - Intro</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-midterm-exam.html">Parcial 1</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01-midterm-practice.html">Práctica para recuperatorio</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/01b-midterm-exam.html">Recuperatorio Parcial 1</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/02-lecture.html">Clase 2</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/02-midterm-practice.html">Práctica para segundo parcial</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/03-lecture.html">Clase 2</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/04-lecture.html">Clase 4</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/05-lecture.html">Clase 5</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/06-lecture.html">Clase 6</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/07-lecture.html">Clase 7</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/08-lecture.html">Clase 8</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/11-lecture.html">Clase 11</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/12-lecture.html">Clase 12</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/13-lecture.html">Clase 13</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/14-lecture.html">Clase 14</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/15-lecture.html">Clase 15</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/10-lecture.html">Clase 10</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/lessons/">Clases - index</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/posts.html">Posts</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/datasets.html">Datos</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/resources.html">Biblio</a></li> -->
+              <!--  -->
+              <!--  -->
+              <!--  -->
+              <!-- <li><a href="/about.html">Sobre el curso</a></li> -->
+              <!--  -->
+              <!--  -->
+        </ul>
+	<ul class="nav navbar-nav navbar-right">
+	  
+	  
+	  <li><a href="http://localhost:4000/about.html" >Sobre la materia</a></li>
+	</ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div>
+</header>
+
+<style>
+  .bottom-three {
+     margin-bottom: 2cm;
+  }
+</style>
+
+
+<p class="bottom-three">
+</p>
+<!-- <div class="site-banner"> -->
+<!--     <img src="/images/banner.jpg"></img> -->
+<!-- </div> -->
+
+
+
+        <div class="site-content container">
+            <div class="col-md-9">
+                <h1 id="repaso-de-clase-anterior">Repaso de clase anterior</h1>
+
+<h2 id="r-y-bases-de-datos">R y bases de datos</h2>
+
+<p>R puede acceder a distintos tipos de bases de datos. Se puede ‘hablar’ con estas bases de datos con
+interfaces (protocolos), por ejemplo ODBC, con el paquete RODBC.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library(RODBC)
+## abro una conexión a la base de datos OBDC
+myconn &lt;-odbcConnect("mydsn", uid="Rob", pwd="aardvark")
+## bajo datos
+crimedat &lt;- sqlFetch(myconn, Crime)
+## hago una 'query': selecciono todo de la tabla Punishment
+pundat &lt;- sqlQuery(myconn, "select * from Punishment")
+## cierro conexión
+close(myconn)
+</code></pre>
+</div>
+
+<h2 id="r-en-física">R en Física</h2>
+
+<p>Al igual que otras áreas, R es usado en Física directamente o a través de paquetes
+especializados. Algunos ejemplos de <a href="https://cran.r-project.org/web/views/ChemPhys.html">CRAN Task View: Chemometrics and Computational Physics</a>:</p>
+
+<ul>
+  <li>Self-Organizing Maps</li>
+  <li>Differential Equations</li>
+  <li>Cellular Automata</li>
+  <li>Thermodynamics</li>
+  <li>Mass Spectrometry</li>
+  <li>Functional Magnetic Resonance Imaging</li>
+  <li>Carbon Dating</li>
+  <li>X-Ray Diffractograms</li>
+  <li>Optics and Scattering Approximations</li>
+  <li>Energy Modeling</li>
+  <li>Positron Emission Tomography</li>
+  <li>etc.</li>
+</ul>
+
+<h1 id="r-en-química">R en Química</h1>
+
+<p><em>Quimiometría</em>, el uso de métodos matemáticos y estadísticos para analizar información
+  química y correlacionarla con datos instrumentales.</p>
+
+<p><em>Química computacional</em>, área de la química que incorpora química teórica a simulaciones
+computacionales para calcular propiedades y estructuras de moléculas.</p>
+
+<p><img style="WIDTH:500px; HEIGHT:350px; border:0" src="./figs/caffeine.png" /></p>
+
+<h2 id="cran-task-view-chemometrics-and-computational-physics"><a href="https://cran.r-project.org/web/views/ChemPhys.html">CRAN Task View: Chemometrics and Computational Physics</a></h2>
+
+<ul>
+  <li>Interfaces to External Libraries (para interactuar con Chemistry Development Kit (CDK), PubChem, etc.)</li>
+  <li>Spectroscopy (libros con paquetes, ver link)</li>
+  <li>Fluorescence Lifetime Imaging Microscopy</li>
+  <li>Fluorescence Excitation-Emission Matrix (EEM)</li>
+  <li>Water and Soil Chemistry (acidificación de mares, etc. Más en <em>Environmetrics Task View</em>)</li>
+  <li>Calibration (modelos)</li>
+  <li>Titration Curves</li>
+</ul>
+
+<h2 id="chemminer-cheminformatics-toolkit-for-r"><a href="https://www.bioconductor.org/packages/3.3/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html">ChemmineR: Cheminformatics Toolkit for R</a></h2>
+
+<ul>
+  <li>Paquete para analizar (gran cantidad de) pequeñas moléculas en R
+    <ul>
+      <li>bioconductor!</li>
+      <li>lee archivos SDF directamente en R</li>
+      <li>calcula descriptores, <em>fingerprints</em> y valores de Tanimoto</li>
+      <li>Muesrta moléculas en 2D (JChemPaint) y 3D (Jmol),</li>
+      <li>calcula cadenas SMILES, y puede acceder campos de propiedad en formatos aceptados</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img style="WIDTH:450px; HEIGHT:380px; border:0" src="./figs/ChemmineR.png" /></p>
+
+<h2 id="chemminer---ejemplito">ChemmineR - ejemplito</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library("ChemmineR") # Cargamos el paquete
+data(sdfsample) # cargamos una "structure-data file (sdf)"
+sdfsample[[1]] # retorna contenido resumido
+## An instance of "SDF"
+## 
+## &lt;&lt;header&gt;&gt;
+##                             Molecule_Name                                    Source 
+##                                  "650001"                  "  -OEChem-07071010512D" 
+##                                   Comment                               Counts_Line 
+##                                        "" " 61 64  0     0  0  0  0  0  0999 V2000" 
+## 
+## &lt;&lt;atomblock&gt;&gt;
+##           C1      C2  C3  C5  C6  C7  C8  C9 C10 C11 C12 C13 C14 C15 C16
+## O_1   7.0468  0.0839   0   0   0   0   0   0   0   0   0   0   0   0   0
+## O_2  12.2708  1.0492   0   0   0   0   0   0   0   0   0   0   0   0   0
+## ...      ...     ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+## H_60  1.8411 -1.5985   0   0   0   0   0   0   0   0   0   0   0   0   0
+## H_61  2.6597 -1.2843   0   0   0   0   0   0   0   0   0   0   0   0   0
+## 
+## &lt;&lt;bondblock&gt;&gt;
+##      C1  C2  C3  C4  C5  C6  C7
+## 1     1  16   2   0   0   0   0
+## 2     2  23   1   0   0   0   0
+## ... ... ... ... ... ... ... ...
+## 63   33  60   1   0   0   0   0
+## 64   33  61   1   0   0   0   0
+## 
+## &lt;&lt;datablock&gt;&gt; (33 data items)
+##           PUBCHEM_COMPOUND_CID PUBCHEM_COMPOUND_CANONICALIZED      PUBCHEM_CACTVS_COMPLEXITY 
+##                       "650001"                            "1"                          "700" 
+##  PUBCHEM_CACTVS_HBOND_ACCEPTOR                                
+##                            "7"                          "..."
+</code></pre>
+</div>
+
+<h2 id="cdk---chemistry-development-kit"><a href="https://cdk.github.io/">CDK</a> - Chemistry Development Kit</h2>
+
+<p>CDK es una colección de bibliotecas modulares en Java para Quimioinformática y Química
+computacional. Es código libre. Referencias <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-017-0220-4">acá</a>, <a href="https://jcheminf.springeropen.com/articles/10.1186/1758-2946-6-3">acá</a> y <a href="http://www.eurekaselect.com/56225/article">acá</a>. <a href="http://ctr.wikia.com/wiki/Chemistry_Toolkit_Rosetta_Wiki">Relación con SWs similares.</a></p>
+
+<ul>
+  <li>Representación de ligación de valencia en moleculas y reacciones</li>
+  <li>Escribe y lee formatos: SMILES, SDF, InChI, Mol2, CML, y otros</li>
+  <li>Algoritmos eficientes para procesar moleculas: búsqueda de anillos, “Kekulisation”, Aromaticidad</li>
+  <li>Generación de coordenadas y <em>rendering</em></li>
+  <li>Identificadores canónicos par búsqueda exacta rápida</li>
+  <li>Subestructuras y búsqueda de padrones SMARTS</li>
+  <li>ECFP, Daylight, MACCS, y otros métodos de huellas para búsqueda por similaridad</li>
+  <li>cómputo de descriptores QSAR</li>
+  <li>…y mucho más</li>
+</ul>
+
+<h2 id="paquete-rcdk-y-cdk">Paquete <a href="http://cran.r-project.org/web/packages/rcdk/rcdk.pdf">rcdk</a> y CDK</h2>
+
+<ul>
+  <li><a href="http://www.cureffi.org/2013/09/23/a-quick-intro-to-chemical-informatics-in-r/">http://www.cureffi.org/2013/09/23/a-quick-intro-to-chemical-informatics-in-r/</a></li>
+</ul>
+
+<p>rcdk permite al usuario acceder a CDK, cargar moleculas, evaluar sus descriptores y ver estructuras
+2D.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>library("rcdk")
+mols &lt;- load.molecules("dhfr_3d.sd")
+fp.list &lt;- lapply(mols, get.fingerprint)
+</code></pre>
+</div>
+
+<h2 id="paquete-rpubchem-y-pubchem">Paquete <a href="http://cran.r-project.org/web/packages/rpubchem/rpubchem.pdf">rpubchem</a> y <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a></h2>
+
+<p>PubChem es un componente de la <em>Molecular Libraries Roadmap Initiative</em> de la <a href="https://www.nih.gov/">NIH</a>. Provee
+información de las actividades biologicas de moléculas pequeñas y datos de análisis biológicos. Está
+organizada en tres bases de datos interconectadas: PubChem <strong>Substance</strong>, PubChem <strong>Compound</strong>, y
+PubChem <strong>BioAssay</strong>. PubChem también provee de una herramienta de búsqueda rápida de similaridad
+química.</p>
+
+<p><em>rpubchem</em> es una interfaz para acceder desde R a datos de PubChem.</p>
+
+<p><img style="WIDTH:600px; HEIGHT:400px; border:0" src="./figs/pubchem-caffeine.png" /></p>
+
+<h2 id="chembl---embl-ebi"><a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> - <a href="https://www.ebi.ac.uk/about">EMBL-EBI</a></h2>
+
+<p>El European Bioinformatics Institute mantiene la base de datos ChEMBL, para ofrecer de manera
+abierta datos públicos de moléculas bioactivas. Está curada manualmente. Ver esta <a href="https://www.ncbi.nlm.nih.gov/pubmed/24214965">referencia</a> y <a href="http://pubs.acs.org/doi/abs/10.1021/ci200260t">esta</a>.</p>
+
+<p>El paquete <a href="https://github.com/rajarshi/chemblr">chemblr</a> actúa como interfaz entre R y ChEMBL.</p>
+
+<p><img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/chembl-caffeine.png" /></p>
+
+<h2 id="bibliografía-de-quimiometría-y-quimioinformática">Bibliografía de Quimiometría y Quimioinformática</h2>
+
+<ul>
+  <li><em>Introduction to Multivariate Statistical Analysis in Chemometrics</em>, 2009, paquete <em>chemometrics</em>.</li>
+  <li><em>Chemometrics with R</em>, 2011, paquetes <em>ChemometricsWithR</em> y <em>ChemometricsWithRData</em>.</li>
+  <li>Edición especial de ‘R News’ llamada ‘R in Chemistry’ (2006) y volumen especial de <em>Journal of
+Statistical Software</em> (2007) dedicado a Quimiometría con R.</li>
+  <li><a href="http://www.cureffi.org/2013/09/23/a-quick-intro-to-chemical-informatics-in-r/">A quick intro to chemical informatics in R</a></li>
+  <li><a href="http://rstudio-pubs-static.s3.amazonaws.com/170579_8e38571e7ea4499aa7b66cec287318e4.html#(1)">R for computational chemistry</a></li>
+</ul>
+
+
+            </div>
+            <div id="site-side-bar" class="col-md-3">
+                <div id="navigation">
+    <!-- <div class="panel panel-default"> -->
+    <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
+    <!--     <div class="panel-body"> -->
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://github.com/lgmoyano"> -->
+    <!--                     <span class="icon  icon--github"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">lgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--              -->
+    <!--             <li> -->
+    <!--                 <a href="https://twitter.com/@luisgmoyano"> -->
+    <!--                     <span class="icon  icon--twitter"> -->
+    <!--                         <svg viewBox="0 0 16 16"> -->
+    <!--                             <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809 -->
+    <!--                             c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/> -->
+    <!--                         </svg> -->
+    <!--                     </span> -->
+
+    <!--                     <span class="username">@luisgmoyano</span> -->
+    <!--                 </a> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="panel panel-default"> -->
+    <!--     <div class="panel-heading">Archivo</div> -->
+    <!--     <div class="panel-body"> -->
+    <!--          -->
+
+    <!--         <ul class="nav"> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Apr 2017 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">using types effectively</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2017/04/05/simple.html">Simple</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Aug 2015 <span class="badge pull-right">2</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/haskell/2015/08/30/hello-world-in-haskell.html">hello world in haskell</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/08/29/welcome-to-jekyll.html">Welcome to Jekyll!</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--             <li class="archive-entry"> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <ul> -->
+    <!--                      -->
+    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
+    <!--                      -->
+    <!--                 </ul> -->
+    <!--             </li> -->
+    <!--              -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+</div>
+
+
+            </div>
+        </div>
+
+        <!-- <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="position:absolute;RIGHT:10px; TOP:550px; border-width:0" src="by-nc.png" height="20" width="95"/></a></p> -->
+
+
+    </body>
+
+</html>
