@@ -77,9 +77,9 @@ title: Práctica para segundo parcial
     cargado).
 2.  Construir un conjunto artificial de 43.42 millones de alturas de personas ("población") de mu =
     174.46 cm y sigma = 7.5. Obtener una "muestra" aleatoria de N = 1000. Comparar el promedio de la
-    "muestra " con el promedio de la "población" (y con el valor teórico mu determinado por ustedes
-    en un principio). Calcular el error de los dos promedios: está dentro de lo esperado, que sería
-    del orden de mu/N?
+    "muestra " con el promedio de la "población" (y con el valor teórico *mu* determinado por ustedes
+    en un principio). Calcular el error estándar del promedio de la muestra: está dentro de lo
+    esperado, que sería del orden de sigma/sqrt(N), donde sigma es la desviación estándar?
 
 
 ## Matemática
