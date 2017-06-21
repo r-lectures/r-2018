@@ -103,10 +103,10 @@ title: Práctica para segundo parcial
 ** Estadística
 1. Construir un vector que contenga los resultados del proceso de tirar 100 veces un dado (no
    cargado). 
-2. Construir un conjunto artificial de 43.42 millones de alturas de personas ("población") de mu =
-   174.46 cm y sigma = 7.5. Obtener una "muestra" aleatoria de N = 1000. Comparar el promedio de la
-   "muestra " con el promedio de la "población" (y con el valor teórico /mu/ determinado por ustedes
-   en un principio). Calcular el error estándar del promedio de la muestra: está dentro de lo
-   esperado, que sería del orden de sigma/sqrt(N), donde sigma es la desviación estándar?
+2. Construir un conjunto artificial de N = 43.42 millones de alturas de personas ("población") de
+   /mu/ = 174.46 cm y /sigma/ = 7.5. Obtener una "muestra" aleatoria de M = 1000. Comparar el
+   promedio de la "muestra " /mu_M/ con el promedio de la "población" /mu_N/ (y con el valor teórico
+   /mu/ determinado por ustedes en un principio). Calcular el error estándar del promedio de la
+   muestra (/sem/=/sigma_M//sqrt(M)). Confirmar que /mu_M/ - /sem/ < /mu_N/ < /mu_M/ + /sem/.
 ** Matemática
 1. Usar integrate() para dibujar la [[https://en.wikipedia.org/wiki/Error_function][función error]] entre -3 y 3. Tip: usar seq(, by=) y sapply().
