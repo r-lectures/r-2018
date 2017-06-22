@@ -217,25 +217,29 @@ sepan corregir, nuevamente eso suma. En general, mejor poner de más que de meno
 <h2 id="1er-problema">1er problema</h2>
 
 <p>Los datos <em>faithful</em> del paquete <em>datasets</em> describen los tiempos de espera entre erupciones y la
-duración de las erupciones del geiser ‘Old Faithful’ en el parque nacional Yellowstone en Wyoming,
+duración de las erupciones del géiser ‘Old Faithful’ en el parque nacional Yellowstone en Wyoming,
 EEUU.</p>
 
 <ol>
-  <li>Dividir el data.frame <em>faithful</em> en dos dataframes, <em>training</em> con 200 observaciones y el resto de las
-observaciones en otro llamado <em>testing</em>. (No necesitan, aunque pueden si uds. quieren, ser
-índices elegidos al azar.)</li>
+  <li>Dividir el data.frame <em>faithful</em> en dos dataframes, uno llamado <em>training</em> con 200 observaciones
+y el resto de las observaciones en otro llamado <em>testing</em>. (No necesitan, aunque pueden si
+uds. quieren, ser índices elegidos al azar.)</li>
   <li>Hacer una regresion lineal de la variable tiempo de erupción proporcional a tiempo de espera.</li>
   <li>Imprimir en pantalla un resumen del modelo generado.
-3.1 Qué coeficientes se obtienen? 
-3.2 Cuál es la mediana de los residuos?</li>
-  <li>Hacer un scatterplot de <em>training</em> y agregarle una línea con el resultado de hacer predict()
-sobre <em>testing</em>. (para esto último armar un data.frame con esos datos y valores de x de
-<em>testing</em>.)</li>
+    <ol>
+      <li>Qué coeficientes se obtienen?</li>
+      <li>Cuál es la mediana de los residuos?</li>
+    </ol>
+  </li>
+  <li>Hacer un scatterplot con los datos de <em>training</em>. Después armar un data.frame con valores de
+<em>waiting</em> de <em>testing</em> en la primer columna y el resultado de hacer predict() en <em>testing</em> en la
+segunda columna. Agregar este data.frame como línea de color al scatterplot anterior.</li>
   <li><code class="highlighter-rouge">PhD</code> Hacer un histograma con los residuos del modelo.
     <ol>
-      <li>El histograma está centrado en cero?</li>
+      <li>El histograma está aproximadamente centrado en cero?</li>
       <li>Es más o menos simétrico?</li>
-      <li>Es factible decir que los residuos se distribuyen normalmente?</li>
+      <li>Sería factible decir que los residuos se distribuyen normalmente y por lo tanto que lm() está
+justificado?</li>
     </ol>
   </li>
 </ol>
@@ -247,11 +251,15 @@ sobre <em>testing</em>. (para esto último armar un data.frame con esos datos y 
 <ol>
   <li>Usando <em>for</em> e <em>if</em> y <em>else</em>, construir un vector con una nueva variable <em>depthcat</em> creada a partir de la
 variable <em>depth</em>, que valga 1 si <em>depth</em> es menor que 100, 2 si es menor que 300, o 3 si es mayor.</li>
-  <li>Usar tapply para determinar el promedio de la magnitud (<em>mag</em>) para cada caso de <em>depthcat</em>.
-2.1 En cuál caso hay más magnitud y en cuál menos?</li>
-  <li><code class="highlighter-rouge">PhD</code> Usar tapply para determinar cuál es la estación (<em>station</em>) con más eventos sísmicos (o sea, más
-observaciones). Tip: internamente tapply forma <em>vectores</em> antes de aplicar la función elegida. Además,
-pueden ordenar el resultado final con <em>sort()</em>.</li>
+  <li>Usar <em>tapply</em> para determinar el promedio de la magnitud (variable <em>mag</em>) para cada caso de <em>depthcat</em>.
+    <ol>
+      <li>En cuál caso los terremotos son más fuertes (o sea, hay más magnitud en promedio) y en cuál
+menos?</li>
+    </ol>
+  </li>
+  <li><code class="highlighter-rouge">PhD</code> Usar <em>tapply</em> para determinar cuál es la estación (variable <em>stations</em>) con más eventos sísmicos (o sea, más
+observaciones). <em>Tip</em>: internamente, <em>tapply</em> forma <em>vectores</em> antes de aplicar la función
+elegida.</li>
 </ol>
 
 <h2 id="3er-problema">3er problema</h2>
@@ -261,16 +269,52 @@ conjunto de los reales. Tienen la propiedad de que dicha matriz por su transpues
 matriz identidad, es decir UU’= I, donde U’ es la transpuesta de U.</p>
 
 <ol>
-  <li>Escribir una función que tome un número <em>phi</em> y devuelva una matriz U con cos(<em>phi</em>) en su diagonal, sin(<em>phi</em>)
-en la fila 2/columna 1 y -sin(<em>phi</em>) en la fila 1/columna 2.</li>
-  <li>Generar un valor aleatorio entre 0 y 2*pi y usarlo en la función del punto 1 para generar la
-matriz U correspondiente.</li>
+  <li>
+    <p>Escribir una función que tome un número x y devuelva una matriz U tal como se indica a
+continuación:</p>
+
+    <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+    
+    
+<colgroup>
+<col class="org-left" />
+    
+<col class="org-left" />
+    
+<col class="org-left" />
+    
+<col class="org-left" />
+    
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">cos(x)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-sin(x)</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">sin(x)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">cos(x)</td>
+</tr>
+</tbody>
+</table>
+  </li>
+  <li>Generar un valor aleatorio entre 0 y 2*pi y usarlo como valor de x para obtener la matriz U
+correspondiente con la función del punto 1.</li>
   <li>Confirmar la propiedad mencionada en el enunciado multiplicando U por su transpuesta U’ y viendo
 si se obtiene la matriz identidad I.</li>
-  <li>Con lapply, comprobar esta propiedad para 10 matrices generadas a partir de 10 valores aleatorios
-entre 0 y 2*pi.</li>
-  <li><code class="highlighter-rouge">PhD</code> De la misma manera, también para los 10 valores aleatorios entre 0 y 2*pi, calcular el valor absoluto
-(abs()) de los autovalores de las matrices generadas. Qué propiedad se deduce?</li>
+  <li>Con <em>lapply</em>, comprobar esta propiedad para 10 matrices generadas a partir de 10 valores aleatorios
+distintos entre 0 y 2*pi.</li>
+  <li><code class="highlighter-rouge">PhD</code> De la misma manera, también para los 10 valores aleatorios entre 0 y 2*pi, calcular el
+valor absoluto de los autovalores de las matrices generadas. Qué propiedad se deduce?</li>
 </ol>
 
 
