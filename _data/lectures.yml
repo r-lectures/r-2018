@@ -120,8 +120,8 @@ lectures:
     - title: "Script para empezar"
       url: 01b-midterm-exam.R
 
-# - title: "Repaso 2do parcial"
-#   url: 02-midterm-practice.html
+- title: "Repaso para 2do parcial"
+  url: 02-midterm-practice.html
 
 # - title: "Clase 14 - Física"
 #   url: 14-lecture.html
