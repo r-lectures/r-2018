@@ -23,7 +23,7 @@ flexible lenguaje de programación.
 
 -   Martes y Miércoles, de 9:00 a 12:00
 -   Fecha de inicio: 18 de Abril
--   Duración: 48 hs (8 semanas) para carreras de grado, 60 hs (10 semanas) para carreras de posgrado
+-   Duración: 80 hs para carreras de grado, 120 hs para carreras de posgrado (12 semanas12 semanas) )
 -   La materia de dicta en la sala de computación
 
 
@@ -46,6 +46,6 @@ flexible lenguaje de programación.
 1.  Créditos
 
     Esta web está construida con [Jekyll](https://jekyllrb.com/)  + [Reveal.js](https://github.com/hakimel/reveal.js) de Hakim El Hattab, y está fuertemente basado en el
-    [Tutorial de purrr de Jenny Brian](https://jennybc.github.io/purrr-tutorial). El código fuente está en disponible en [Github](https://github.com/r-2017/r-2017.github.io), que hace a su vez
+    Tutorial de purrr de Jenny Brian]]. El código fuente está en disponible en [Github](https://github.com/r-2017/r-2017.github.io), que hace a su vez
     de host de la página.
 

@@ -1,4 +1,4 @@
-#+title: Programación y análisis de datos en R con aplicaciones científicas - 2017
+#+title: Programación y análisis de datos en R con aplicaciones científicas - 2018
 #+STARTUP: showall expand
 #+options: toc:nil
 
@@ -26,7 +26,7 @@ flexible lenguaje de programación.
 ** Fechas y Horarios
 - Martes y Miércoles, de 9:00 a 12:00
 - Fecha de inicio: 18 de Abril
-- Duración: 48 hs (8 semanas) para carreras de grado, 60 hs (10 semanas) para carreras de posgrado
+- Duración: 80 hs para carreras de grado, 120 hs para carreras de posgrado (12 semanas12 semanas) )
 - La materia de dicta en la sala de computación
 
 ** Herramientas
