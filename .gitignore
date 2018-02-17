@@ -11,3 +11,5 @@ feed.xml
 /.RData
 */.DS_Store
 *.Rsession
+/_site/
+/_site/*
