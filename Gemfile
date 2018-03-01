@@ -12,8 +12,8 @@ ruby RUBY_VERSION
 # gem "jekyll", "3.4.3"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-#gem "jekyll-theme-tactile"
-# gem "jekyll-theme-minimal"
+# gem "jekyll-theme-tactile"
+gem "jekyll-theme-minimal"
 #gem  "minima", "~> 2.0.0"
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
@@ -29,4 +29,4 @@ ruby RUBY_VERSION
 #gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # from https://jekyllrb.com/docs/github-pages/
-gem "github-pages", group: :jekyll_plugins
+# gem "github-pages", group: :jekyll_plugins

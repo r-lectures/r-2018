@@ -13,3 +13,4 @@ feed.xml
 *.Rsession
 /_site/
 /_site/*
+*.lock
