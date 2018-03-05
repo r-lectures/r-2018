@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Clase 5</title>
-    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+    <meta name="description" content="Análisis de datos científicos con R
 ">
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="canonical" href="http://localhost:4000/lessons/05-lecture.html">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2018" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
 
@@ -21,7 +21,7 @@
 
         <header id="header" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <a href="/index.html" class="navbar-brand">Programación en R - 2018</a>
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
           <span class="icon-bar"></span>
@@ -111,7 +111,7 @@
               <!--  -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/">index</a></li> -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -139,9 +139,9 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -198,12 +198,11 @@
 
 <p>“read_csv()” lee un archivo delimitado por comas.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>read_csv(readr_example("mtcars.csv"))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>read_csv(readr_example("mtcars.csv"))
 read_csv(readr_example("mtcars.csv.zip"))
 read_csv(readr_example("mtcars.csv.bz2"))
 read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros.</p>
 
@@ -211,7 +210,7 @@ read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv"
 
 <h2 id="piping--con--magrittr-y-operador-"><em>Piping</em>  con  <em>Magrittr</em> y operador %&gt;%</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x %&gt;% f en vez de f(x) # el valor de x se direcciona a f()
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x %&gt;% f en vez de f(x) # el valor de x se direcciona a f()
 
 x %&gt;% f(., arg2, arg3) # por default pasa al 1er argumento
 x %&gt;% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
@@ -221,8 +220,7 @@ mean_by_state %&gt;% # mi data.frame
 mutate(frac = mean/overall_mean) %&gt;% # creo la columna frac
 filter(frac &gt;= 1) %&gt;% # filtro la columna frac
 arrange(desc(frac)) # ordeno de mayor a menor
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="combinando-dataframes-sin-llaves">combinando data.frames (sin llaves)</h2>
 
@@ -252,7 +250,7 @@ arrange(desc(frac)) # ordeno de mayor a menor
 
 <h2 id="hacer-gran-dataframe-gran">hacer gran-dataframe-gran</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>library(dplyr)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library(dplyr)
 library(readr)
 tmi &lt;- read_csv("~/Downloads/torres-de-monitoreo-inteligente.csv")
 ## Parsed with column specification:
@@ -275,12 +273,11 @@ m2013 &lt;- read_csv2("~/Downloads/mediciones-2013.csv")
 # construyo data.frame
 ruido_bsas &lt;- bind_rows(m2011, m2012, m2013)
 ruido_bsas &lt;- left_join(ruido_bsas, tmi)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="ruidosos-tranquilos">Ruidosos? Tranquilos?</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 5 barrios más (menos) ruidosos
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 5 barrios más (menos) ruidosos
 ruido_barrios &lt;- ruido_bsas %&gt;% 
 group_by(BARRIO) %&gt;% 
 summarise(ruido_avg = mean(PROMEDIO_ENERGETICO_HORA, na.rm = TRUE)) %&gt;% 
@@ -288,12 +285,11 @@ arrange(desc(ruido_avg))
 # pregunta: de dónde viene el NA? (Assumptions...)
 
 ruido_barrios %&gt;% head(n=5) # o tail(n=5) para ver los menos ruidosos
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="extremos-vs-media">Extremos vs. media?</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># como se comparan los valores extremos y la media
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># como se comparan los valores extremos y la media
 ruido_barrios %&gt;% summary # o más elegante: ruido_barrios %&gt;% select(ruido_avg) %&gt;% summary
 
 ## también funciona esto:
@@ -305,8 +301,7 @@ ruido_barrios %&gt;% summary # o más elegante: ruido_barrios %&gt;% select(ruid
 # [1] 0.8482054
 74.94/70.49
 # [1] 1.06313
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="rstudio">RStudio</h1>
 
@@ -314,10 +309,9 @@ ruido_barrios %&gt;% summary # o más elegante: ruido_barrios %&gt;% select(ruid
   <li>
     <p>Working directory / Workspace</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>getwd() # para saber donde estoy
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>getwd() # para saber donde estoy
 setwd("path/to/dir") # para decirle donde quiero estar
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc</li>
   <li>Cómo grabo lo que hago?</li>
@@ -349,7 +343,7 @@ Más información en &lt;http://r4ds.had.co.nz/functions.html&gt;.
 
 <h2 id="anatomía-de-f">anatomía de f()</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># mi función se llama alta_funcion, con dos argumentos
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mi función se llama alta_funcion, con dos argumentos
 alta_funcion &lt;- function(arg1 = 10, arg2 = TRUE, ...){
 
   # acá empieza mi código
@@ -369,12 +363,11 @@ x_default &lt;- alta_funcion() # uso arg1 = 10 y arg2 = TRUE
 x_100_F   &lt;- alta_funcion(100, FALSE)
 x_200_T   &lt;- alta_funcion(200, TRUE)
 mi_var    &lt;- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="ejemplo">ejemplo</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># función que normaliza de dos maneras distintas un vector de valores 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># función que normaliza de dos maneras distintas un vector de valores 
 normaliza_vector &lt;- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
 
     if(square_root == TRUE) N &lt;- sum(vector^2)^(1/2)
@@ -395,8 +388,7 @@ normaliza_vector(y) # un vector diferente
 # [1] 0.5 1.0 1.5
 normaliza_vector(y, TRUE) # usando la norma euclidiana
 # [1] 0.2672612 0.5345225 0.8017837
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <div class="NOTES">
 La idea de las funciones es que vamos escribiendo código y que, cuando funciona, lo metemos dentro
@@ -426,7 +418,7 @@ con más ruido el fin de semana que el resto?</li>
 
             </div>
             <div id="site-side-bar" class="col-md-3">
-                <div id="navigation">
+                <!-- <div id="navigation">
     <!-- <div class="panel panel-default"> -->
     <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
     <!--     <div class="panel-body"> -->
@@ -492,14 +484,16 @@ con más ruido el fin de semana que el resto?</li>
     <!--             </li> -->
     <!--              -->
     <!--             <li class="archive-entry"> -->
-    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">5</span></a> -->
     <!--                 <ul> -->
     <!--                      -->
-    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.org">Dummy Post 2</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.org">Dummy Post 1</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
     <!--                      -->
@@ -512,7 +506,7 @@ con más ruido el fin de semana que el resto?</li>
 
 </div>
 
-
+ -->
             </div>
         </div>
 

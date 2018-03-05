@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Clase 10</title>
-    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+    <meta name="description" content="Análisis de datos científicos con R
 ">
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="canonical" href="http://localhost:4000/lessons/10-lecture.html">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2018" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
 
@@ -21,7 +21,7 @@
 
         <header id="header" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <a href="/index.html" class="navbar-brand">Programación en R - 2018</a>
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
           <span class="icon-bar"></span>
@@ -111,7 +111,7 @@
               <!--  -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/">index</a></li> -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -139,9 +139,9 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -237,7 +237,7 @@ procesar (por ejemplo transformar o extraer información de) cada elemento de es
 
 <h1 id="modo-interactivo-vs-source-y-r-cmd-batch">modo interactivo vs. source() y R CMD BATCH</h1>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>##En un editor de texto creamos el script z.R
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##En un editor de texto creamos el script z.R
 pdf("xh.pdf")  # configuramos un archivo de salido
 hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
 dev.off()  # cerramos el archivo de salida
@@ -247,8 +247,7 @@ R CMD BATCH z.R
 
 ## En R:
 source("z.R")
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
@@ -274,12 +273,11 @@ encadenar texto con variables usar paste(). Por ej. print(paste(“dos”, “ma
 
 <p>Ejemplo: hago freaking_good_data_analysis.R, que contiene:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>source("0-input-data.R")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source("0-input-data.R")
 source("1-clean-data.R")
 source("2-parse-data.R")
 source("3-graph-data.R")
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="r-project-y-cran">R project y CRAN</h1>
 
@@ -300,9 +298,8 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 
 <p>Una manera de hacer estadística descriptiva es con sapply:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sapply(mydata, mean, na.rm=TRUE) 
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sapply(mydata, mean, na.rm=TRUE) 
+</code></pre></div></div>
 
 <p>(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().</p>
 
@@ -330,27 +327,25 @@ lower.tail=F, devuelve 1 - el percentil p.</li>
 
 <p>Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>library(ggplot2)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library(ggplot2)
 set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
 x &lt;- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
 f &lt;- dnorm(x) # normal con media 0 y sd 1 
 ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="otras-distribuciones">Otras distribuciones</h3>
 
 <p>Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
 de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- rbinom(100000,5,0.5)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x &lt;- rbinom(100000,5,0.5)
 mean(x)
 # [1] 2.5004
 
 mean(x &gt;= 4)
 # [1] 0.18829
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="práctica-10">Práctica 10</h1>
 
@@ -386,7 +381,7 @@ cuando vale (intentar calcularlo con R)?</p>
 
             </div>
             <div id="site-side-bar" class="col-md-3">
-                <div id="navigation">
+                <!-- <div id="navigation">
     <!-- <div class="panel panel-default"> -->
     <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
     <!--     <div class="panel-body"> -->
@@ -452,14 +447,16 @@ cuando vale (intentar calcularlo con R)?</p>
     <!--             </li> -->
     <!--              -->
     <!--             <li class="archive-entry"> -->
-    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">5</span></a> -->
     <!--                 <ul> -->
     <!--                      -->
-    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.org">Dummy Post 2</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.org">Dummy Post 1</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
     <!--                      -->
@@ -472,7 +469,7 @@ cuando vale (intentar calcularlo con R)?</p>
 
 </div>
 
-
+ -->
             </div>
         </div>
 

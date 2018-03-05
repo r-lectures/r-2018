@@ -1,18 +1,25 @@
 # Site settings
-title: Programación en R - 2018
-email: lgmoyano@gmail.com
+title: "Programación en R - 2018"
+email: "lgmoyano@gmail.com"
 description: > # this means to ignore newlines until "baseurl:"
-  Análisis de datos científicos con R
+  "Análisis de datos científicos con R"
 baseurl: "" # the subpath of your site, e.g. /blog/
 # url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: "@luisgmoyano"
-github_username:  lgmoyano
+github_username:  "lgmoyano"
 #baseurl: "/r-lectures/"
 
 # Build settings
 markdown: kramdown
 show_drafts: FALSE
-plugins_dir: _plugins
-exclude: ["gulp", '*.org', '*feed*', 'Gemfile*']
+# plugins:
+#   - jekyll-feed
+
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+
+#plugins_dir: _plugins
+#exclude: ["gulp", '*.org', '*feed*', 'Gemfile*'] 
 
 # theme: jekyll-theme-minimal

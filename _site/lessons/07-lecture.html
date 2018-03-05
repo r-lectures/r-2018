@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Clase 7</title>
-    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+    <meta name="description" content="Análisis de datos científicos con R
 ">
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="canonical" href="http://localhost:4000/lessons/07-lecture.html">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2018" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
 
@@ -21,7 +21,7 @@
 
         <header id="header" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <a href="/index.html" class="navbar-brand">Programación en R - 2018</a>
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
           <span class="icon-bar"></span>
@@ -111,7 +111,7 @@
               <!--  -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/">index</a></li> -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -139,9 +139,9 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -249,7 +249,7 @@ objeto tenga. Los tres atributos más importantes se obtienen con <em>names()</e
 <p>Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
 listas o funciones ¯\_(ツ)_/¯</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- list(1, 2, 1:100)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x &lt;- list(1, 2, 1:100)
 x
 ## [[1]]
 ## [1] 1
@@ -281,8 +281,7 @@ str(nasa)
 ##   ..$ month: int [1:12] 1 2 3 4 5 6 7 8 9 10 ...
 ##   ..$ year : int [1:6] 1995 1996 1997 1998 1999 2000
 ##  - attr(*, "class")= chr "tbl_cube"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="vectores-aumentados">Vectores “aumentados”</h1>
 
@@ -298,10 +297,9 @@ str(nasa)
 cosas en común con listas y con matrices. Se le pueden aplicar names(), colnames() y rownames(). La
 longitud del data frame (length()) es la longitud de la lista, por lo tanto igual a ncol().</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>df &lt;- data.frame(x = 1:3, y = c("a", "b", "c"))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df &lt;- data.frame(x = 1:3, y = c("a", "b", "c"))
 str(df)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="factores">Factores</h2>
 
@@ -309,7 +307,7 @@ str(df)
 categóricas. Estos datos pueden tomar sus valores de un conjunto fijo de elementos. Internamente son
 representados por enteros, y tienen un atributo ‘levels’.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- factor(c("ab", "cd", "ab"), levels = c("ab", "cd", "ef"))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x &lt;- factor(c("ab", "cd", "ab"), levels = c("ab", "cd", "ef"))
 typeof(x)
 #&gt; [1] "integer"
 attributes(x)
@@ -318,8 +316,7 @@ attributes(x)
 #&gt; 
 #&gt; $class
 #&gt; [1] "factor"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="dates-y-date-times">Dates y date-times</h2>
 
@@ -334,7 +331,7 @@ maneras de usarlo.</p>
 
 <p>Un vector numerico con enteros, todos positivos, todos negativos, o cero.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- c("one", "two", "three", "four", "five")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x &lt;- c("one", "two", "three", "four", "five")
 x[c(3, 2, 5)]
 #&gt; [1] "three" "two"   "five"
 
@@ -347,15 +344,14 @@ x[c(-1, -3, -5)]
 # caso particular, el cero, devuelve un vector vacio
 x[0]
 ## numeric(0)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="usando-vectores-de-lógicos">Usando vectores de lógicos</h2>
 
 <p><em>Subsetting</em> con un vector lógico devuelve los valores de correspondientes a TRUE. Como <em>filter</em>, se
 usa frecuentemente en conjunto con expresiones lógicas.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- c(10, 3, NA, 5, 8, 1, NA)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x &lt;- c(10, 3, NA, 5, 8, 1, NA)
 
 # Todos los valores que no son NA de x
 x[!is.na(x)]
@@ -364,14 +360,13 @@ x[!is.na(x)]
 # Todos los valores pares (o NAs!) de x
 x[x %% 2 == 0]
 #&gt; [1] 10 NA  8 NA
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="usando-vectores-de-caracteres-para-devolver-elementos-con-los-respectivos-nombres">Usando vectores de caracteres para devolver elementos con los respectivos nombres</h2>
 
 <p>Si tenemos un vector con nombres, podemos hacer algo del tipo:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- c(abc = 1, def = 2, xyz = 5)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x &lt;- c(abc = 1, def = 2, xyz = 5)
 x[c("xyz", "def")]
 #&gt; xyz def 
 #&gt;   5   2
@@ -382,8 +377,7 @@ mtcars[, c("mpg", "disp")]
 ## Mazda RX4 Wag       21.0 160.0
 ## Datsun 710          22.8 108.0
 ## ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="no-usando-nada">No usando nada</h2>
 
@@ -451,7 +445,7 @@ negativos iii) vectores lógicos y iv) vectores de caracteres?</p>
 
             </div>
             <div id="site-side-bar" class="col-md-3">
-                <div id="navigation">
+                <!-- <div id="navigation">
     <!-- <div class="panel panel-default"> -->
     <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
     <!--     <div class="panel-body"> -->
@@ -517,14 +511,16 @@ negativos iii) vectores lógicos y iv) vectores de caracteres?</p>
     <!--             </li> -->
     <!--              -->
     <!--             <li class="archive-entry"> -->
-    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">5</span></a> -->
     <!--                 <ul> -->
     <!--                      -->
-    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.org">Dummy Post 2</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.org">Dummy Post 1</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
     <!--                      -->
@@ -537,7 +533,7 @@ negativos iii) vectores lógicos y iv) vectores de caracteres?</p>
 
 </div>
 
-
+ -->
             </div>
         </div>
 

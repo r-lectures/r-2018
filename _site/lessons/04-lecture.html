@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Clase 4</title>
-    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+    <meta name="description" content="Análisis de datos científicos con R
 ">
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="canonical" href="http://localhost:4000/lessons/04-lecture.html">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2018" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
 
@@ -21,7 +21,7 @@
 
         <header id="header" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <a href="/index.html" class="navbar-brand">Programación en R - 2018</a>
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
           <span class="icon-bar"></span>
@@ -111,7 +111,7 @@
               <!--  -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/">index</a></li> -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -139,9 +139,9 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -238,7 +238,7 @@
 
 <h3 id="cuál-es-el-estado-que-más-nacimientos-tiene-en-total-el-que-menos">Cuál es el estado que más nacimientos tiene en total? El que menos?</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>library(mosaicData)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library(mosaicData)
 library(dplyr)
 b &lt;- Birthdays
 
@@ -252,12 +252,11 @@ arrange(births_by_state, desc(tot_births))
 
 # el que menos: el que queda en 1er lugar sin desc(): VT (Vermont)
 arrange(births_by_state, tot_births)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="esto-es-así-año-a-año-graficar-cuál-está-en-1er-lugar-durante-más-tiempo">Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># agrupo por año y por estado
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># agrupo por año y por estado
 by_state_year &lt;- group_by(b, state, year)
 
 # calculo el total de nacimientos
@@ -270,8 +269,7 @@ p &lt;- p + geom_line() + geom_point()
 p &lt;- p + xlab("year") + ylab("total births")
 p &lt;- p + scale_y_log10() # para poder ver mejor todos los estados
 p
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <div class="NOTES">
 ggplot2 no pone más de 6 tipos de formas para los puntos. Para más que eso se debe hacer
@@ -281,7 +279,7 @@ manualmente, por ejemplo ver esta pregunta en StackOverflow: &lt;http://stackove
 
 <h3 id="cuántos-estados-están-por-arriba-de-la-media-de-nacimientos-cuáles-son">Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mean_by_state &lt;- summarise(by_state, mean = mean(births))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mean_by_state &lt;- summarise(by_state, mean = mean(births))
 overall_mean &lt;- mean( mean_by_state$mean ) 
 arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac &gt;= 1), desc(frac))
 # A tibble: 18 × 3
@@ -291,22 +289,20 @@ arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac &gt;= 1), d
 # 2     TX  718.0727 3.801574
 # 3     NY  702.7545 3.720477
 # 4     ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="en-promedio-qué-més-del-año-tiene-más-nacimientos">En promedio, qué més del año tiene más nacimientos?</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>births_by_month &lt;- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>births_by_month &lt;- arrange(summarise(group_by(b, month), monthly = sum(births)), desc(monthly))
 
 # normalizando con el promedio, para ver cuanta variación hay en realidad
 mean_by_month &lt;- mean(births_by_month$monthly)
 mutate(births_by_month, monthly/mean_by_month)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="hay-algún-día-del-mes-o-de-la-semana-que-esté-muy-por-encima-de-la-media">Hay algún día del mes o de la semana que esté muy por encima de la media?</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># dia del mes
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># dia del mes
 births_by_day &lt;- arrange(summarise(group_by(b, day), daily = sum(births)), desc(daily))
 mean_by_day &lt;- mean(births_by_day$daily)
 mutate(births_by_day, daily/mean_by_day)
@@ -315,12 +311,11 @@ mutate(births_by_day, daily/mean_by_day)
 births_by_wday &lt;- arrange(summarise(group_by(b, wday), wdaily = sum(births)), desc(wdaily))
 mean_by_wday &lt;- mean(births_by_wday$wdaily)
 mutate(births_by_wday, wdaily/mean_by_wday)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="hay-algún-día-de-cualquier-año-sin-nacimientos">Hay algún día (de cualquier año) sin nacimientos?</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># hay alguna observación 0 o NA?
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># hay alguna observación 0 o NA?
 filter( b, births == 0 )
 filter( b, births == NA )
 
@@ -351,21 +346,19 @@ print( filter(bCA, year == 1969 ) , n = 100 )
 # 60     CA  1969     2    29 1969-03-01   Sat      2
 # 61     CA  1969     2    31 1969-03-03   Mon      2
 #...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="y-considerando-los-estados-individualmente">Y considerando los estados individualmente?</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>by_state_day &lt;- group_by(b, state, date)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>by_state_day &lt;- group_by(b, state, date)
 births_by_state_day &lt;- summarise(by_state_day, bsd = sum(births))
 min( births_by_state_day$bsd )
 # [1] 2
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="explorar-lag-y-ver-en-que-año-hubo-la-mayor-diferencia-de-nacimientos-graficar">Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>?lag
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?lag
 ?dplyr::lag # mejor aún
 
 by_year &lt;- group_by(b, year)
@@ -375,19 +368,17 @@ births_by_year &lt;- mutate(births_by_year, birth_diff = tot_births - lag(tot_bi
 # grafico
 ggplot(births_by_year, aes(year, birth_diff)) + geom_col() + xlab("año") + ylab("Diferencia de nacimientos")
 # mayor diferencia en '72, mayor aumento en '79
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="lecturaescritura">lectura/escritura</h1>
 
 <p>“read_csv()” lee un archivo delimitado por comas.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>read_csv(readr_example("mtcars.csv"))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>read_csv(readr_example("mtcars.csv"))
 read_csv(readr_example("mtcars.csv.zip"))
 read_csv(readr_example("mtcars.csv.bz2"))
 read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros.</p>
 
@@ -397,25 +388,23 @@ read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv"
 
 <h2 id="piping--con--magrittr"><em>Piping</em>  con  <em>Magrittr</em></h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>x %&gt;% f en vez de f(x) # el valor de x se direcciona a f()
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x %&gt;% f en vez de f(x) # el valor de x se direcciona a f()
 
 x %&gt;% f(., arg2, arg3) # por default pasa al 1er argumento
 x %&gt;% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
 x %&gt;% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="ejemplos">Ejemplos</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac &gt;= 1), desc(frac))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac &gt;= 1), desc(frac))
 
 
 mean_by_state %&gt;% # mi data.frame
 mutate(frac = mean/overall_mean) %&gt;% # creo la columna frac
 filter(frac &gt;= 1) %&gt;% # filtro la columna frac
 arrange(desc(frac)) # ordeno de mayor a menor
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="más-dplyr">más dplyr</h1>
 
@@ -456,7 +445,7 @@ arrange(desc(frac)) # ordeno de mayor a menor
 
             </div>
             <div id="site-side-bar" class="col-md-3">
-                <div id="navigation">
+                <!-- <div id="navigation">
     <!-- <div class="panel panel-default"> -->
     <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
     <!--     <div class="panel-body"> -->
@@ -522,14 +511,16 @@ arrange(desc(frac)) # ordeno de mayor a menor
     <!--             </li> -->
     <!--              -->
     <!--             <li class="archive-entry"> -->
-    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">5</span></a> -->
     <!--                 <ul> -->
     <!--                      -->
-    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.org">Dummy Post 2</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.org">Dummy Post 1</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
     <!--                      -->
@@ -542,7 +533,7 @@ arrange(desc(frac)) # ordeno de mayor a menor
 
 </div>
 
-
+ -->
             </div>
         </div>
 

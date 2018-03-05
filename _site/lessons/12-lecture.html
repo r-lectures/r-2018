@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Clase 12</title>
-    <meta name="description" content="Programación y análisis de datos en R con aplicaciones científicas
+    <meta name="description" content="Análisis de datos científicos con R
 ">
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="canonical" href="http://localhost:4000/lessons/12-lecture.html">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2017" href="http://localhost:4000/feed.xml" /> -->
+    <!-- <link rel="alternate" type="application/rss+xml" title="Programación en R - 2018" href="http://localhost:4000/feed.xml" /> -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </head>
 
@@ -21,7 +21,7 @@
 
         <header id="header" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a href="/index.html" class="navbar-brand">Programación en R - 2017</a>
+      <a href="/index.html" class="navbar-brand">Programación en R - 2018</a>
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
           <span class="icon-bar"></span>
@@ -111,7 +111,7 @@
               <!--  -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/">index</a></li> -->
+              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -139,9 +139,9 @@
               <!--  -->
               <!--  -->
               <!--  -->
+              <!-- <li><a href="/">index</a></li> -->
               <!--  -->
               <!--  -->
-              <!-- <li><a href="/lessons/09-lecture.html">Clase 9</a></li> -->
               <!--  -->
               <!--  -->
               <!--  -->
@@ -220,58 +220,55 @@ parámetros para poder predecir.</p>
 
 <p>Bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>## hacemos la regresión:
-load("psub.RData")
-dtrain &lt;- subset(psub, ORIGRANDGROUP &gt;= 500)
-dtest &lt;- subset(psub, ORIGRANDGROUP &lt; 500)
-model &lt;- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
-dtest$predLogPINCP &lt;- predict(model,newdata=dtest) 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">##</span> <span class="n">hacemos</span> <span class="n">la</span> <span class="n">regresi</span><span class="err">ó</span><span class="n">n</span><span class="p">:</span>
+<span class="nf">load</span><span class="p">(</span><span class="s2">"psub.RData"</span><span class="p">)</span>
+<span class="n">dtrain</span> <span class="p">&lt;-</span> <span class="n">subset</span><span class="p">(</span><span class="n">psub</span><span class="p">,</span> <span class="n">ORIGRANDGROUP</span> <span class="p">&gt;=</span> <span class="m">500</span><span class="p">)</span>
+<span class="n">dtest</span> <span class="p">&lt;-</span> <span class="n">subset</span><span class="p">(</span><span class="n">psub</span><span class="p">,</span> <span class="n">ORIGRANDGROUP</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
+<span class="k">model</span> <span class="p">&lt;-</span> <span class="n">lm</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="n">PINCP</span><span class="p">,</span><span class="n">base</span><span class="p">=</span><span class="m">10</span><span class="p">)</span> <span class="p">~</span> <span class="n">AGEP</span> <span class="p">+</span> <span class="n">SEX</span> <span class="p">+</span> <span class="n">COW</span> <span class="p">+</span> <span class="n">SCHL</span><span class="p">,</span> <span class="n">data</span><span class="p">=</span><span class="n">dtrain</span><span class="p">)</span> 
+<span class="n">dtest</span><span class="p">$</span><span class="n">predLogPINCP</span> <span class="p">&lt;-</span> <span class="n">predict</span><span class="p">(</span><span class="k">model</span><span class="p">,</span><span class="n">newdata</span><span class="p">=</span><span class="n">dtest</span><span class="p">)</span> 
 
-## resultados:
-summary(model)
+<span class="p">##</span> <span class="n">resultados</span><span class="p">:</span>
+<span class="n">summary</span><span class="p">(</span><span class="k">model</span><span class="p">)</span>
 
-## graficamos:
-library(ggplot2)
-ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
-geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
-geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
-scale_x_continuous(limits=c(4,5)) +
-scale_y_continuous(limits=c(3.5,5.5))
+<span class="p">##</span> <span class="n">graficamos</span><span class="p">:</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">=</span><span class="n">dtest</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="n">predLogPINCP</span><span class="p">,</span><span class="n">y</span><span class="p">=</span><span class="nb">log</span><span class="p">(</span><span class="n">PINCP</span><span class="p">,</span><span class="n">base</span><span class="p">=</span><span class="m">10</span><span class="p">)))</span> <span class="p">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="p">=</span><span class="m">0.2</span><span class="p">,</span><span class="n">color</span><span class="p">=</span><span class="s2">"black"</span><span class="p">)</span> <span class="p">+</span> 
+<span class="n">geom_smooth</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="n">predLogPINCP</span><span class="p">,</span> <span class="n">y</span><span class="p">=</span><span class="nb">log</span><span class="p">(</span><span class="n">PINCP</span><span class="p">,</span><span class="n">base</span><span class="p">=</span><span class="m">10</span><span class="p">)),</span><span class="n">color</span><span class="p">=</span><span class="s2">"black"</span><span class="p">)</span> <span class="p">+</span>
+<span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="nb">log</span><span class="p">(</span><span class="n">PINCP</span><span class="p">,</span><span class="n">base</span><span class="p">=</span><span class="m">10</span><span class="p">),</span> <span class="n">y</span><span class="p">=</span><span class="nb">log</span><span class="p">(</span><span class="n">PINCP</span><span class="p">,</span><span class="n">base</span><span class="p">=</span><span class="m">10</span><span class="p">)),</span><span class="n">color</span><span class="p">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="n">linetype</span><span class="p">=</span><span class="m">2</span><span class="p">)</span> <span class="p">+</span>
+<span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span><span class="p">=</span><span class="n">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">))</span> <span class="p">+</span>
+<span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span><span class="p">=</span><span class="n">c</span><span class="p">(</span><span class="m">3.5</span><span class="p">,</span><span class="m">5.5</span><span class="p">))</span>
 
-## residuos:
-ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
-geom_point(alpha=0.2,color="black") +
-geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
-</code></pre>
-</div>
+<span class="p">##</span> <span class="n">residuos</span><span class="p">:</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">=</span><span class="n">dtest</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="n">predLogPINCP</span><span class="p">,</span> <span class="n">y</span><span class="p">=</span><span class="n">predLogPINCP</span><span class="p">-</span><span class="nb">log</span><span class="p">(</span><span class="n">PINCP</span><span class="p">,</span><span class="n">base</span><span class="p">=</span><span class="m">10</span><span class="p">)))</span> <span class="p">+</span>
+<span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="p">=</span><span class="m">0.2</span><span class="p">,</span><span class="n">color</span><span class="p">=</span><span class="s2">"black"</span><span class="p">)</span> <span class="p">+</span>
+<span class="n">geom_smooth</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="n">predLogPINCP</span><span class="p">,</span> <span class="n">y</span><span class="p">=</span><span class="n">predLogPINCP</span><span class="p">-</span><span class="nb">log</span><span class="p">(</span><span class="n">PINCP</span><span class="p">,</span><span class="n">base</span><span class="p">=</span><span class="m">10</span><span class="p">)),</span> <span class="n">color</span><span class="p">=</span><span class="s2">"black"</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h3 id="regresión-lineal-generalizada-glm">Regresión lineal generalizada (glm)</h3>
 
 <p>Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
 “normales”. Los modelos lineales generalizados relajan estas suposiciones.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>## expresión general
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## expresión general
 glm(formula, family=familytype(link=linkfunction), data=)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Ejemplito: Regresión logística, para variables categóricas.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># F es un factor binario
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># F es un factor binario
 # x1, x2 y x3 son predictores continuos 
 fit &lt;- glm(F~x1+x2+x3,data=mydata,family=binomial())
 summary(fit) # resultados
 exp(coef(fit)) # coeficientes
 predict(fit, type="response") # predicciones
 residuals(fit, type="deviance") # residuos 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="matemáticas">Matemáticas</h1>
 
 <h2 id="funciones-matemáticas-básicas">Funciones matemáticas básicas</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>- exp(): Exponential function, base e
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- exp(): Exponential function, base e
 - log(): Natural logarithm
 - log10(): Logarithm base 10
 - sqrt(): Square root
@@ -290,19 +287,17 @@ residuals(fit, type="deviance") # residuos
 [1] 12 17 30
 &gt; cumprod(x)
 [1] 12 60 780
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="cálculo">Cálculo</h2>
 
 <p>R tiene capacidades simples de hacer cuentas analíticas:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>D(expression(exp(x^2)),"x")  # derivative
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D(expression(exp(x^2)),"x")  # derivative
 exp(x^2) * (2 * x)
 &gt; integrate(function(x) x^2,0,1)
 0.3333333 with absolute error &lt; 3.7e-15
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="algebra-lineal">Algebra Lineal</h2>
 
@@ -310,7 +305,7 @@ exp(x^2) * (2 * x)
 
 <p>Directamente con el operador %*%</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt;a
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;a
     [,1] [,2]
 [1,]   1    2 
 [2,]   3    4 
@@ -322,12 +317,11 @@ exp(x^2) * (2 * x)
      [,1] [,2]
 [1,]    1    1
 [2,]    3    1
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="sistema-de-ecuaciones-lineales-o-invertir-una-matriz">Sistema de ecuaciones lineales (o invertir una matriz)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a &lt;- matrix(c(1,1,-1,1),nrow=2,ncol=2)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; a &lt;- matrix(c(1,1,-1,1),nrow=2,ncol=2)
 &gt; b &lt;- c(2,4)
 &gt; solve(a,b)
 [1] 3 1
@@ -335,12 +329,11 @@ exp(x^2) * (2 * x)
   [,1] [,2]
 [1,]  0.5  0.5
 [2,] -0.5  0.5
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="autovectores-y-autovalores">Autovectores y autovalores</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt; a
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; a
      [,1] [,2]
 [1,]    1   -1
 [2,]    1    1
@@ -359,12 +352,11 @@ $vectors
 [1,] 0.7071068+0.0000000i
 [2,] 0.0000000-0.7071068i
 &gt; 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="otras-operaciones-posibles-son">Otras operaciones posibles son:</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>- t(): Matrix transpose
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- t(): Matrix transpose
 - qr(): QR decomposition
 - chol(): Cholesky decomposition
 - det(): Determinant
@@ -372,8 +364,7 @@ $vectors
 - diag(): Extracts the diagonal of a square matrix
 - svd(A): Single value decomposition of A
 - ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="otros-paquetes-de-interés">Otros paquetes de interés</h2>
 
@@ -415,7 +406,7 @@ caso del autovalor principal.</li>
 
             </div>
             <div id="site-side-bar" class="col-md-3">
-                <div id="navigation">
+                <!-- <div id="navigation">
     <!-- <div class="panel panel-default"> -->
     <!--     <\!-- <div class="panel-heading">Social Media</div> -\-> -->
     <!--     <div class="panel-body"> -->
@@ -481,14 +472,16 @@ caso del autovalor principal.</li>
     <!--             </li> -->
     <!--              -->
     <!--             <li class="archive-entry"> -->
-    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">4</span></a> -->
+    <!--                 <a href="javascript:void(0)">Jan 2015 <span class="badge pull-right">5</span></a> -->
     <!--                 <ul> -->
     <!--                      -->
-    <!--                     <li><a href="/jekyll/update/2015/01/07/dummy-post-2.html">dummy 2</a></li> -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-2.org">Dummy Post 2</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Programación en R</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-2.html">Dummy Post 2</a></li> -->
+    <!--                      -->
+    <!--                     <li><a href="/2015/01/06/dummy-post-1.org">Dummy Post 1</a></li> -->
     <!--                      -->
     <!--                     <li><a href="/2015/01/06/dummy-post-1.html">Programación en R</a></li> -->
     <!--                      -->
@@ -501,7 +494,7 @@ caso del autovalor principal.</li>
 
 </div>
 
-
+ -->
             </div>
         </div>
 
