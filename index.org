@@ -1,4 +1,4 @@
-#+title: Programación y análisis de datos en R con aplicaciones científicas - 2018
+#+title: Análisis de datos científicos en R - 2018
 #+STARTUP: showall expand
 #+options: toc:nil
 
@@ -9,39 +9,37 @@ title: index
 --- 
 #+end_src 
 #+results:
-* Programación y análisis de datos en R con aplicaciones científicas 
+* Análisis de Datos Científicos en R
 
-Este curso tiene como objetivo transmitir los principales conceptos del lenguaje de programación R y
-entrenar en su utilización ya que es una útil herramienta para la investigación científica. Nos
-proponemos explorar, desde un punto de vista eminentemente práctico, el lenguaje y su ecosistema de
-paquetes, funciones y demás elementos relacionados. No haremos hincapié en aprender a programar en
-sí (aunque necesariamente cubriremos lo básico), si no más bien pondremos el foco en como usar el
-lenguaje de manera eficaz, siempre con los objetivos científicos en el horizonte.
+Este curso tiene como objetivo transmitir los principales conceptos para el análisis de datos con el
+lenguaje R y entrenar en su utilización, ya que es una herramienta muy eficiente y versátil para la
+investigación científica.  Nos proponemos explorar, desde un punto de vista eminentemente práctico,
+el lenguaje y su ecosistema de paquetes, funciones y demás elementos relacionados.  No haremos
+demasiado hincapié en aprender a programar en sí (aunque necesariamente cubriremos lo básico), si no
+más bien pondremos el foco en como usar el lenguaje de manera eficaz, siempre con los objetivos
+científicos en el horizonte.
 
 El lenguaje R está fuertemente relacionado con dos áreas de las cuales se ha nutrido desde su
 origen: la estadística y el análisis de datos empíricos. Por ello, a lo largo del curso, vamos a usar
 elementos de ambas áreas como soporte para explorar en detalle las distintas utilidades de este
 flexible lenguaje de programación.
 
-** Fechas y Horarios
-- Martes y Miércoles, de 9:00 a 12:00
-- Fecha de inicio: 18 de Abril
-- Duración: 80 hs para carreras de grado, 120 hs para carreras de posgrado (12 semanas12 semanas) )
+** Horarios y Fechas
+- Lunes de 15:00 a 17:00 y Miércoles de 9:00 a 12:00
+- Fecha de inicio: 19 de Marzo
+- Duración: 80 hs para carreras de grado, 120 hs para carreras de posgrado
 - La materia de dicta en la sala de computación
+- Se recomienda traer laptop si se tiene esa posibilidad
 
 ** Herramientas
-- [[https://www.rstudio.com/][RStudio]] - para trabajar con R
+- [[https://www.rstudio.com/][RStudio]] - aunque opcional, se lo recomienda para trabajar con R
   - Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
     que quieran (por ejemplo, [[https://www.gnu.org/software/emacs/][emacs]] o, si no hay otra, [[http://www.vim.org/][vim]] ;)
-- [[https://slack.com/][Slack]] - para mantenernos en contacto entre todos
-- [[https://github.com/][Github]] - para compartir código
+- [[https://slack.com/][Slack]] - para coordinarnos entre los miembros del curso
+- [[https://github.com/][Github]] - recomendable para compartir código
 
 *** Prof. Luis G. Moyano 
 - Inv. Adjunto CONICET y Prof. Adjunto FCEN
-- Física Estadística y sistemas complejos
+- Física Estadística y Sistemas Complejos
 - Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)
 - _lgmoyano@gmail.com_ / twitter: [[https://twitter.com/luisgmoyano][@luisgmoyano]]
-***** Créditos
-Esta web está construida con [[https://jekyllrb.com/][Jekyll]]  + [[https://github.com/hakimel/reveal.js][Reveal.js]] de Hakim El Hattab, y está fuertemente basado en el
-Tutorial de purrr de Jenny Brian]]. El código fuente está en disponible en [[https://github.com/r-2017/r-2017.github.io][Github]], que hace a su vez
-de host de la página.
