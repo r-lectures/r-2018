@@ -113,10 +113,10 @@ r-lectures.github.io
 
 ### Horarios
 
--   martes y miércoles de 9 a 12
+-   Lunes y Miércoles de 15 a 18
 -   ~ 1 hora de teoría
--   resto de practica/consulta
--   presentaciones alrededor de "paquetes"
+-   resto de práctica/consulta
+-   presentaciones de alumnos de "paquetes"
 
 
 ### Guías de ejercicios
@@ -129,7 +129,7 @@ r-lectures.github.io
 
 ### Parciales
 
--   Dos parciales, en la 4ta y 8va semana aprox.
+-   Dos parciales, en la 5ta y 10ma semana aprox.
 -   Tendrán toda la información disponible durante el parcial
 -   Estarán fuertemente basados en las guías prácticas
 
@@ -142,10 +142,9 @@ r-lectures.github.io
 
 ### Calendario
 
--   Parcial 1, aprox. 10 de Mayo
--   Clase invitada de Diego Bustos, bioinformático, 6 o 7 de Junio
--   Parcial 2, aprox. 13 de Junio
--   Presentación proyecto final, 20 y 21 de Junio
+-   Parcial 1, 18 de Abril
+-   Parcial 2, 23 de Mayo
+-   Presentación proyecto final, a partir del 10 de Junio
 
 
 ### Herramientas

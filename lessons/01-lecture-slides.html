@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2018</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/beige.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2018</h1><h2>19/03/2018</h2>
+</section>
+<section>
+<section id="slide-org9298ca0">
+<h2 id="org9298ca0">Presentaciones</h2>
+<p>
+Profe Luis G. Moyano
+</p>
+
+<p>
+lgmoyano@gmail.com
+</p>
+
+<p>
+@luisgmoyano
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgab71412">
+<h2 id="orgab71412"></h2>
+<p>
+r-lectures.github.io
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org35558dd">
+<h2 id="org35558dd">Qué es R?</h2>
+<img style="position:absolute; TOP:-150px; LEFT:-100px; WIDTH:200px; HEIGHT:200px; border:0" src="./figs/r_logo.png">
+
+<ul>
+<li>Software estadístico para GNU</li>
+<li>Manipulación de datos, cálculo y gráficos</li>
+<li>Implementación de S</li>
+<li>Abierto, extensible y colaborativo</li>
+
+</ul>
+
+</section>
+<section id="slide-org571d8ef">
+<h3 id="org571d8ef">Qué vamos a aprender en esta materia</h3>
+<ul>
+<li>R cómo herramienta científica</li>
+<li>Foco en <b>datos</b></li>
+<li>Horizontal para todas las carreras</li>
+<li>Autonomía</li>
+
+</ul>
+</section>
+<section id="slide-org650da5b">
+<h3 id="org650da5b">Qué no vamos a aprender en esta materia</h3>
+<ul>
+<li>No vamos a hacer énfasis en la lógica de programación</li>
+<li>No vamos a ver algoritmos en profundidad</li>
+<li>No vamos a cubrir R en su totalidad</li>
+
+</ul>
+</section>
+<section id="slide-org0454f19">
+<h3 id="org0454f19">R en la programación y el análisis de datos</h3>
+<ul>
+<li>Adoptado ampliamente en estadística, biología y ciencias de la computación</li>
+<li><p>
+R vs. Python y otros
+</p>
+<aside class="notes">
+<p>
+Existen infinitas discusiones sobre que lenguaje es mejor que el otro. Ver esta respuesta bastante
+razonable en <a href="https://www.quora.com/Which-is-better-for-data-analysis-R-or-Python">Quora sobre R vs. Python</a>.
+</p>
+
+</aside></li>
+<li><i>Scripting</i> vs. <i>Interactive</i>
+<ul>
+<li>Workflow científico</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org5692607">
+<h3 id="org5692607">Ventajas de R</h3>
+<ul>
+<li><p>
+Exploración
+</p>
+<aside class="notes">
+<ul>
+<li>Liviano</li>
+<li>Interpretado, no compilado</li>
+
+</ul>
+
+</aside></li>
+<li><p>
+Flexibilidad
+</p>
+<aside class="notes">
+<ul>
+<li>R puede ser interactivo o puede ser secuencial (via scripts)</li>
+
+</ul>
+
+</aside></li>
+<li><p>
+Comunidad
+</p>
+<aside class="notes">
+<ul>
+<li>paquetes!</li>
+
+</ul>
+
+</aside></li>
+
+</ul>
+</section>
+<section id="slide-org4beb1a5">
+<h3 id="org4beb1a5">Desventajas de R</h3>
+<ul>
+<li><p>
+Memoria
+</p>
+<aside class="notes">
+<p>
+R carga todo en RAM (pero hay trucos)
+</p>
+
+</aside></li>
+<li>Velocidad (pero están <a href="http://www.rcpp.org/">Rcpp</a> y <a href="http://www.rfortran.org/">Rfortran</a>)</li>
+<li><p>
+Nivel de adopción heterogéneo
+</p>
+<aside class="notes">
+<p>
+No todas las áreas científicas tiene el mismo nivel de adopción y por lo tanto hay muchas cosas ya
+disponibles para ciertas áreas y menos para otras. Esto está cambiando a pasos agigantados,
+mientras R se bate a duelo con Python.
+</p>
+
+</aside></li>
+
+</ul>
+</section>
+<section id="slide-org0e0d421">
+<h3 id="org0e0d421">Prepárense para frustrarse</h3>
+<img style="position:absolute; TOP:250px; LEFT:600px; WIDTH:360px; HEIGHT:300px; border:0" src="./figs/frustration.png">
+
+<ul>
+<li>R es idiosincrático</li>
+<li>Frustrarse es típico y <span class="underline">temporal</span></li>
+<li>Persisitencia!</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org3094d80">
+<h2 id="org3094d80">Organización de la materia</h2>
+<div class="outline-text-2" id="text-org3094d80">
+</div>
+</section>
+<section id="slide-orgfad1da2">
+<h4 id="orgfad1da2">Horarios</h4>
+<ul>
+<li>Lunes y Miércoles de 15 a 18</li>
+<li>~ 1 hora de teoría</li>
+<li>resto de práctica/consulta</li>
+<li>presentaciones de alumnos de "paquetes"</li>
+
+</ul>
+</section>
+<section id="slide-org23a22ba">
+<h4 id="org23a22ba">Guías de ejercicios</h4>
+<ul>
+<li>Parte principal del curso</li>
+<li>Aproximadamente uno por semana</li>
+<li>Haremos hincapié en desarrollar "reproducible research"
+<ul>
+<li>informe + código + datos</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgeef50de">
+<h4 id="orgeef50de">Parciales</h4>
+<ul>
+<li>Dos parciales, en la 5ta y 10ma semana aprox.</li>
+<li>Tendrán toda la información disponible durante el parcial</li>
+<li>Estarán fuertemente basados en las guías prácticas</li>
+
+</ul>
+</section>
+<section id="slide-org85bab51">
+<h4 id="org85bab51">Proyecto final</h4>
+<ul>
+<li>Informe escrito y presentación oral</li>
+<li>Cada uno buscará tema y datos propios, acordando conmigo</li>
+
+</ul>
+</section>
+<section id="slide-org1b3cc13">
+<h4 id="org1b3cc13">Calendario</h4>
+<ul>
+<li>Parcial 1, 18 de Abril</li>
+<li>Parcial 2, 23 de Mayo</li>
+<li>Presentación proyecto final, a partir del 10 de Junio</li>
+
+</ul>
+</section>
+<section id="slide-org8075c0c">
+<h4 id="org8075c0c">Herramientas</h4>
+<ul>
+<li><p>
+Github
+</p>
+<aside class="notes">
+<p>
+Vamos a usar Github para intercambiar código
+</p>
+
+</aside></li>
+<li><p>
+Slack
+</p>
+<aside class="notes">
+<p>
+Vamos a usar Slack para intercambiar información
+</p>
+
+</aside></li>
+<li><p>
+R en una terminal
+</p>
+<aside class="notes">
+<p>
+Más cualquier editor de texto, o sea, Emacs
+</p>
+
+</aside></li>
+<li>R con RStudio</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org77e62f1">
+<h2 id="org77e62f1">R en el terminal</h2>
+<ul>
+<li>Abran un terminal</li>
+<li>Pongan "R"</li>
+<li>Voilá</li>
+
+</ul>
+
+<img src="./figs/rterminal.png">
+
+</section>
+</section>
+<section>
+<section id="slide-org03e10fc">
+<h2 id="org03e10fc">R con Rstudio</h2>
+<ul>
+<li>Abran RStudio</li>
+<li>Voilá</li>
+
+</ul>
+
+<img src="./figs/rstudio.png">
+
+</section>
+</section>
+<section>
+<section id="slide-org652325a">
+<h2 id="org652325a">Ayuda</h2>
+<ol class="fragment roll-in">
+<li><p>
+R
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >> ?plot <- ayuda de la función *plot*
+> ??plot <- "apropos"
+</code></pre>
+</div></li>
+<li>Vignettes</li>
+<li>Google - StackOverflow - R-bloogers</li>
+<li><p>
+Slack
+</p>
+<aside class="notes">
+<p>
+Pregunten por Slack a sus compañeros, usen los canales con criterio, usen y abusen de los <i>threads</i>
+</p>
+
+</aside></li>
+<li>Luis (último recurso! ;)</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org6394441">
+<h2 id="org6394441">Comandos básicos I</h2>
+<ul>
+<li>Ayuda: <code>?</code> y <code>??</code></li>
+<li>Carga de paquetes: <code>library(GenomicRanges)</code></li>
+<li>Instalación de paquetes: <code>install.packages("GenomicRanges")</code></li>
+<li>Exploración y carga de datos: <code>data(CO2)</code></li>
+<li>qué objetos tenemos? <code>ls()</code></li>
+<li>cargar código local: <code>source("./my_code.R")</code></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org576bb40">
+<h2 id="org576bb40">Comandos básicos II</h2>
+<ul>
+<li>imprimir algunas líneas: <code>head(mpg)</code></li>
+<li>estructura de un objeto: <code>str(mpg)</code></li>
+<li>resumen de un objeto: <code>summary(mpg)</code></li>
+<li>hacer una figura: <code>plot(displ, hwy)</code></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org88645f5">
+<h2 id="org88645f5"><a href="http://tidyverse.org/">The tidyverse</a> (aka <a href="https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/">Hadleyverse</a>)</h2>
+<p>
+<i>An ecosystem of packages designed with common APIs and a shared philosophy.</i>
+</p>
+<ul>
+<li><p>
+Desarrollado por <a href="http://hadley.nz/">Hadley Wickham</a> 
+</p>
+<aside class="notes">
+<p>
+Hadley Wickham es un computer scientist neozelandés, y en los últimos años, se ha convertido en
+una máquina de crear paquetes de R. Trabaja para Rstudio.
+</p>
+
+</aside></li>
+<li>Principales paquetes: <a href="http://dplyr.tidyverse.org/">dplyr</a> y <a href="http://ggplot2.tidyverse.org/">ggplot2</a></li>
+<li>Orden y centralización a través de paquetes coherentes entre sí</li>
+<li><p>
+La gramática como orden conceptual: verbos y sustantivos
+</p>
+<aside class="notes">
+<p>
+"The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016) Uno de los
+ objetivos de los paquetes desarrollados por Wickam et al. es que sean consistentes entre sí. Una
+ de los caminos que han utilizado es asociar lo más consistentemnte posible verbos para funciones
+ (filter, sort, arrange, etc.) y sustantivos para datos o variables (por ejemplo flights).
+</p>
+
+</aside></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga0c9839">
+<h2 id="orga0c9839">Visualización</h2>
+<div class="outline-text-2" id="text-orga0c9839">
+</div>
+</section>
+<section id="slide-orga6e32ab">
+<h4 id="orga6e32ab">Package <i>base</i> : función <code>plot()</code></h4>
+<div class="org-src-container">
+
+<pre><code class="R" >
+# Define the cars vector with 5 values
+cars <- c(1, 3, 6, 4, 9)
+
+# Graph the cars vector with all defaults
+plot(cars)
+
+# Graph cars using blue points overlayed by a line 
+plot(cars, type="o", col="blue")
+
+# Create a title with a red, bold/italic font
+title(main="Autos", col.main="red", font.main=4)
+</code></pre>
+</div>
+</section>
+<section id="slide-org9c1005a">
+<h4 id="org9c1005a">Package <i>base</i> : función <code>plot()</code></h4>
+<div class="org-src-container">
+
+<pre><code class="R" ># Get a random log-normal distribution
+r <- rlnorm(1000)
+
+# Get the distribution without plotting it using tighter breaks
+h <- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
+
+# Plot the distribution using log scale on both axes, and use
+# blue points
+plot(h$counts, log="xy", pch=20, col="blue",
+	main="Log-normal distribution",
+	xlab="Value", ylab="Frequency")
+</code></pre>
+</div>
+</section>
+<section id="slide-org5bb412c">
+<h4 id="org5bb412c">package <i>ggplot2</i> : función <code>qplot()</code></h4>
+<ul>
+<li>similar a plot()</li>
+<li>para hacer figuras básicas</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="R" >qplot(displ, hwy, data = mpg)
+
+qplot(displ, hwy, colour = class, data = mpg)
+</code></pre>
+</div>
+</section>
+<section id="slide-org065dcfa">
+<h3 id="org065dcfa">Práctica</h3>
+<ol>
+<li>Elegir un conjunto de datos <i>built-in</i> con datos continuos y categóricos</li>
+<li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
+<li>Graficar las relaciones más importantes</li>
+<li>Encontrar la manera de hacer <i>scatterplots</i> e histogramas</li>
+<li>Agregar información (título, ejes, descripción de los datos)</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
