@@ -1,5 +1,5 @@
-#+TITLE: R 2017
-#+DATE: 18/04/2017
+#+TITLE: R 2018
+#+DATE: 19/03/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 #+OPTIONS: author:nil date:t email:nil
@@ -43,7 +43,7 @@ title: Clase 1 - Intro
 
 # #+ATTR_REVEAL: :frag roll-in
 
-# Clase [2017-04-18 Tue]
+# Clase [2018-03-19 Tue]
 * Presentaciones
 Profe Luis G. Moyano
 
@@ -53,7 +53,7 @@ lgmoyano@gmail.com
 
 * 
 
-r-2017.github.io
+r-lectures.github.io
 
 * Qué es R?
   #+BEGIN_EXPORT html

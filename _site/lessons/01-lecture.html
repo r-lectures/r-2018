@@ -216,11 +216,11 @@
 
 <p>#</p>
 
-<p>r-2017.github.io</p>
+<p>r-lectures.github.io</p>
 
 <h1 id="qué-es-r">Qué es R?</h1>
 
-<p><img style="position:absolute; TOP:0px; LEFT:300px; WIDTH:150px; HEIGHT:150px; border:0" src="./figs/r_logo.png" /></p>
+<p><img style="position:absolute; TOP:-150px; LEFT:-100px; WIDTH:200px; HEIGHT:200px; border:0" src="./figs/r_logo.png" /></p>
 
 <ul>
   <li>Software estadístico para GNU</li>
@@ -250,7 +250,15 @@
 
 <ul>
   <li>Adoptado ampliamente en estadística, biología y ciencias de la computación</li>
-  <li>R vs. Python y otros</li>
+  <li>
+    <p>R vs. Python y otros</p>
+
+    <div class="NOTES">
+Existen infinitas discusiones sobre que lenguaje es mejor que el otro. Ver esta respuesta bastante
+razonable en [Quora sobre R vs. Python](https://www.quora.com/Which-is-better-for-data-analysis-R-or-Python).
+    
+</div>
+  </li>
   <li><em>Scripting</em> vs. <em>Interactive</em>
     <ul>
       <li>Workflow científico</li>
@@ -448,7 +456,7 @@ Pregunten por Slack a sus compañeros, usen los canales con criterio, usen y abu
 <ul>
   <li>Ayuda: <code class="highlighter-rouge">?</code> y <code class="highlighter-rouge">??</code></li>
   <li>Carga de paquetes: <code class="highlighter-rouge">library(GenomicRanges)</code></li>
-  <li>Instalación de paquetes: <code class="highlighter-rouge">install.packages(GenomicRanges)</code></li>
+  <li>Instalación de paquetes: <code class="highlighter-rouge">install.packages("GenomicRanges")</code></li>
   <li>Exploración y carga de datos: <code class="highlighter-rouge">data(CO2)</code></li>
   <li>qué objetos tenemos? <code class="highlighter-rouge">ls()</code></li>
   <li>cargar código local: <code class="highlighter-rouge">source("./my_code.R")</code></li>
@@ -483,9 +491,10 @@ una máquina de crear paquetes de R. Trabaja para Rstudio.
     <p>La gramática como orden conceptual: verbos y sustantivos</p>
 
     <div class="NOTES">
-"The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016)
-    
--   Papel de los verbos y de los sustantivos
+"The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016) Uno de los
+ objetivos de los paquetes desarrollados por Wickam et al. es que sean consistentes entre sí. Una
+ de los caminos que han utilizado es asociar lo más consistentemnte posible verbos para funciones
+ (filter, sort, arrange, etc.) y sustantivos para datos o variables (por ejemplo flights).
     
 </div>
   </li>

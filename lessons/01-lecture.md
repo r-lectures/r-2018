@@ -15,12 +15,12 @@ lgmoyano@gmail.com
 
 # 
 
-r-2017.github.io
+r-lectures.github.io
 
 
 # Qué es R?
 
-<img style="position:absolute; TOP:0px; LEFT:300px; WIDTH:150px; HEIGHT:150px; border:0" src="./figs/r_logo.png">
+<img style="position:absolute; TOP:-150px; LEFT:-100px; WIDTH:200px; HEIGHT:200px; border:0" src="./figs/r_logo.png">
 
 -   Software estadístico para GNU
 -   Manipulación de datos, cálculo y gráficos
@@ -47,6 +47,12 @@ r-2017.github.io
 
 -   Adoptado ampliamente en estadística, biología y ciencias de la computación
 -   R vs. Python y otros
+    
+    <div class="NOTES">
+    Existen infinitas discusiones sobre que lenguaje es mejor que el otro. Ver esta respuesta bastante
+    razonable en [Quora sobre R vs. Python](https://www.quora.com/Which-is-better-for-data-analysis-R-or-Python).
+    
+    </div>
 -   *Scripting* vs. *Interactive*
     -   Workflow científico
 
@@ -203,7 +209,7 @@ r-2017.github.io
 
 -   Ayuda: `?` y `??`
 -   Carga de paquetes: `library(GenomicRanges)`
--   Instalación de paquetes: `install.packages(GenomicRanges)`
+-   Instalación de paquetes: `install.packages("GenomicRanges")`
 -   Exploración y carga de datos: `data(CO2)`
 -   qué objetos tenemos? `ls()`
 -   cargar código local: `source("./my_code.R")`
@@ -233,9 +239,10 @@ r-2017.github.io
 -   La gramática como orden conceptual: verbos y sustantivos
     
     <div class="NOTES">
-    "The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016)
-    
-    -   Papel de los verbos y de los sustantivos
+    "The cornerstone of civilization isn’t language, it’s science" (Arrival, 2016) Uno de los
+     objetivos de los paquetes desarrollados por Wickam et al. es que sean consistentes entre sí. Una
+     de los caminos que han utilizado es asociar lo más consistentemnte posible verbos para funciones
+     (filter, sort, arrange, etc.) y sustantivos para datos o variables (por ejemplo flights).
     
     </div>
 
@@ -245,6 +252,7 @@ r-2017.github.io
 
 ### Package *base* : función `plot()`
 
+    
     # Define the cars vector with 5 values
     cars <- c(1, 3, 6, 4, 9)
     
