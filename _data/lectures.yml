@@ -8,120 +8,120 @@ lectures:
   - title: "Slides clase 1"
     url: slides/01-lecture-slides.html
 
-- title: "Clase 2 - ggplot2"
-  url: 02-lecture.html
+# - title: "Clase 2 - ggplot2"
+#   url: 02-lecture.html
 
-  subitems:
-    - title: "Slides clase 2"
-      url: slides/02-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 2"
+#       url: slides/02-lecture-slides.html
 
-- title: "Clase 3 - dplyr"
-  url: 03-lecture.html
+# - title: "Clase 3 - dplyr"
+#   url: 03-lecture.html
 
-  subitems:
-    - title: "Slides clase 3"
-      url: slides/03-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 3"
+#       url: slides/03-lecture-slides.html
 
-- title: "Clase 4 - más dplyr + magrittr"
-  url: 04-lecture.html
+# - title: "Clase 4 - más dplyr + magrittr"
+#   url: 04-lecture.html
 
-  subitems:
-    - title: "Slides clase 4"
-      url: slides/04-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 4"
+#       url: slides/04-lecture-slides.html
 
-- title: "Clase 5 - Funciones + RStudio"
-  url: 05-lecture.html
+# - title: "Clase 5 - Funciones + RStudio"
+#   url: 05-lecture.html
 
-  subitems:
-    - title: "Slides clase 5"
-      url: slides/05-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 5"
+#       url: slides/05-lecture-slides.html
 
-- title: "Clase 6 - Tipos de datos"
-  url: 06-lecture.html
+# - title: "Clase 6 - Tipos de datos"
+#   url: 06-lecture.html
 
-  subitems:
-    - title: "Slides clase 6"
-      url: slides/06-lecture-slides.html
-    - title: "R - Analisis de datos con Caret - Emmanuel"
-      url: ../assets/R - Analisis de datos con Caret.pdf
+#   subitems:
+#     - title: "Slides clase 6"
+#       url: slides/06-lecture-slides.html
+#     - title: "R - Analisis de datos con Caret - Emmanuel"
+#       url: ../assets/R - Analisis de datos con Caret.pdf
 
       
-- title: "Clase 7 - Vectores extendidos + Subsetting"
-  url: 07-lecture.html
+# - title: "Clase 7 - Vectores extendidos + Subsetting"
+#   url: 07-lecture.html
 
-  subitems:
-    - title: "Slides clase 7"
-      url: slides/07-lecture-slides.html
-    - title: "Anova en R - Brenda"
-      url: ../assets/Anova-en-R-2.pdf
+#   subitems:
+#     - title: "Slides clase 7"
+#       url: slides/07-lecture-slides.html
+#     - title: "Anova en R - Brenda"
+#       url: ../assets/Anova-en-R-2.pdf
 
-- title: "Primer parcial"
-  url: 01-midterm-exam.html
+# - title: "Primer parcial"
+#   url: 01-midterm-exam.html
 
-- title: "Clase 8 - if + for"
-  url: 08-lecture.html
+# - title: "Clase 8 - if + for"
+#   url: 08-lecture.html
 
-  subitems:
-    - title: "Slides clase 8"
-      url: slides/08-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 8"
+#       url: slides/08-lecture-slides.html
 
-- title: "Clase 9 - Vectorization y familia *apply() "
-  url: 09-lecture.html
+# - title: "Clase 9 - Vectorization y familia *apply() "
+#   url: 09-lecture.html
 
-  subitems:
-    - title: "Slides clase 9"
-      url: slides/09-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 9"
+#       url: slides/09-lecture-slides.html
 
-- title: "Clase 10 - Estadística "
-  url: 10-lecture.html
+# - title: "Clase 10 - Estadística "
+#   url: 10-lecture.html
 
-  subitems:
-    - title: "Slides clase 10"
-      url: slides/10-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 10"
+#       url: slides/10-lecture-slides.html
 
-- title: "Clase 11 - Regresiones"
-  url: 11-lecture.html
+# - title: "Clase 11 - Regresiones"
+#   url: 11-lecture.html
 
-  subitems:
-    - title: "Slides clase 11"
-      url: slides/11-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 11"
+#       url: slides/11-lecture-slides.html
 
-- title: "Repaso recuperatorio 1er parcial"
-  url: 01-midterm-practice.html
+# - title: "Repaso recuperatorio 1er parcial"
+#   url: 01-midterm-practice.html
 
-- title: "Recuperatorio del primer parcial"
-  url: 01b-midterm-exam.html
+# - title: "Recuperatorio del primer parcial"
+#   url: 01b-midterm-exam.html
 
-- title: "Clase 12 - Matemáticas"
-  url: 12-lecture.html
+# - title: "Clase 12 - Matemáticas"
+#   url: 12-lecture.html
 
-  subitems:
-    - title: "Slides clase 12"
-      url: slides/12-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 12"
+#       url: slides/12-lecture-slides.html
 
-- title: "Clase 13 - Biología"
-  url: 13-lecture.html
+# - title: "Clase 13 - Biología"
+#   url: 13-lecture.html
 
-  subitems:
-    - title: "Slides clase 13"
-      url: slides/13-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 13"
+#       url: slides/13-lecture-slides.html
 
-- title: "Repaso 2do parcial"
-  url: 02-midterm-practice.html
+# - title: "Repaso 2do parcial"
+#   url: 02-midterm-practice.html
 
-- title: "Clase 14 - Física"
-  url: 14-lecture.html
+# - title: "Clase 14 - Física"
+#   url: 14-lecture.html
 
-  subitems:
-    - title: "Slides clase 14"
-      url: slides/14-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 14"
+#       url: slides/14-lecture-slides.html
 
-- title: "Clase 15 - Química"
-  url: 15-lecture.html
+# - title: "Clase 15 - Química"
+#   url: 15-lecture.html
 
-  subitems:
-    - title: "Slides clase 15"
-      url: slides/15-lecture-slides.html
+#   subitems:
+#     - title: "Slides clase 15"
+#       url: slides/15-lecture-slides.html
 
-- title: "Segundo parcial"
-  url: 02-midterm-exam.html
+# - title: "Segundo parcial"
+#   url: 02-midterm-exam.html
