@@ -3,10 +3,11 @@ lectures:
   
 - title: "Clase 1 - Intro"
   url: "01-lecture.html"
-  
+
   subitems:
-  - title: "Slides clase 1"
-    url: slides/01-lecture-slides.html
+    - title: "Slides - Clase 1"
+      url: "01-lecture-slides.html"
+
 
 # - title: "Clase 2 - ggplot2"
 #   url: 02-lecture.html
