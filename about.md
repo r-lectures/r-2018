@@ -5,11 +5,12 @@ weight: 10
 ---
 
 
-# Carrera/s:
+# Carreras:
 
--   PGU en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química
+-   PGU en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química.
 -   Licenciatura en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y
-    Química
+    Química.
+-   La materia también es válida como curso de posgrado.
 
 
 # Programas:

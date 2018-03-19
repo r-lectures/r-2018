@@ -22,10 +22,10 @@ flexible lenguaje de programación.
 
 ## Horarios y Fechas
 
--   Lunes de 15:00 a 17:00 y Miércoles de 9:00 a 12:00
--   Fecha de inicio: 19 de Marzo
+-   Lunes y Miércoles de 15:00 a 18:00
+-   Fecha de inicio: 19 de Marzo de 2018
 -   Duración: 80 hs para carreras de grado, 120 hs para carreras de posgrado
--   La materia de dicta en la sala de computación
+-   La materia de dicta en la sala de informática
 -   Se recomienda traer laptop si se tiene esa posibilidad
 
 
@@ -40,7 +40,7 @@ flexible lenguaje de programación.
 
 ### Prof. Luis G. Moyano
 
--   Inv. Adjunto CONICET y Prof. Adjunto FCEN
+-   Inv. Adjunto CONICET y Prof. Adjunto FCEN, UNCU
 -   Física Estadística y Sistemas Complejos
 -   Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)
 -   <span class="underline">lgmoyano@gmail.com</span> / twitter: [@luisgmoyano](https://twitter.com/luisgmoyano)
