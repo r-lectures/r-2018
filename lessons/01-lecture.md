@@ -142,9 +142,10 @@ r-lectures.github.io
 
 ### Calendario
 
--   Parcial 1, 18 de Abril
--   Parcial 2, 23 de Mayo
--   Presentación proyecto final, a partir del 10 de Junio
+-   Parcial 1: ~ 18 de Abril
+-   Parcial 2: ~ 23 de Mayo
+-   Proyecto final, a partir del ~ 10 de Junio
+-   Días sin clases: 2, 11, 30 de Abril; 20 de Junio
 
 
 ### Herramientas
@@ -164,7 +165,7 @@ r-lectures.github.io
 -   R en una terminal
     
     <div class="NOTES">
-    Más cualquier editor de texto, o sea, Emacs
+    Agregandole cualquier editor de texto, o sea, Emacs ;)
     
     </div>
 -   R con RStudio
@@ -189,37 +190,37 @@ r-lectures.github.io
 
 # Ayuda
 
-1.  R
+1.  El propio R:
     
         > ?plot <- ayuda de la función *plot*
         > ??plot <- "apropos"
-2.  Vignettes
+2.  *Vignettes* (manuales de paquetes)
 3.  Google - StackOverflow - R-bloogers
-4.  Slack
+4.  Slack (local), Stackoverflow (global)
     
     <div class="NOTES">
     Pregunten por Slack a sus compañeros, usen los canales con criterio, usen y abusen de los *threads*
     
     </div>
-5.  Luis (último recurso! ;)
+5.  Profe Luis (último recurso! ;)
 
 
 # Comandos básicos I
 
 -   Ayuda: `?` y `??`
--   Carga de paquetes: `library(GenomicRanges)`
--   Instalación de paquetes: `install.packages("GenomicRanges")`
--   Exploración y carga de datos: `data(CO2)`
--   qué objetos tenemos? `ls()`
--   cargar código local: `source("./my_code.R")`
+-   Cargar un paquete: `library(GenomicRanges)`
+-   Instalar un paquete: `install.packages("GenomicRanges")`
+-   Explorar y cargar datos: `data(), data(CO2)`
+-   Qué objetos tenemos? `ls()`
+-   Cargar código de disco: `source("./archivito.R")`
 
 
 # Comandos básicos II
 
--   imprimir algunas líneas: `head(mpg)`
--   estructura de un objeto: `str(mpg)`
--   resumen de un objeto: `summary(mpg)`
--   hacer una figura: `plot(displ, hwy)`
+-   Imprimir algunas líneas de un objeto: `head(mpg)`
+-   Estructura de un objeto: `str(mpg)`
+-   Resumen de un objeto: `summary(mpg)`
+-   Gráficar dos variables: `plot(displ, hwy)`
 
 
 # [The tidyverse](http://tidyverse.org/) (aka [Hadleyverse](https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/))
@@ -293,7 +294,7 @@ r-lectures.github.io
 ## Práctica
 
 1.  Elegir un conjunto de datos *built-in* con datos continuos y categóricos
-2.  Explorar sus principales características (media, máxmimo, mínimo, etc)
+2.  Explorar sus principales características (media, máximo, mínimo, etc)
 3.  Graficar las relaciones más importantes
 4.  Encontrar la manera de hacer *scatterplots* e histogramas
 5.  Agregar información (título, ejes, descripción de los datos)
