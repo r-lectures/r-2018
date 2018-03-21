@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 19/04/2017
+#+TITLE: R 2018
+#+DATE: 21/03/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -47,8 +47,8 @@ title: Clase 2
 
 # #+ATTR_REVEAL: :frag roll-in
 
-# Clase [2017-04-19 Wed]
-* r-2017.slack.com/
+# Clase [2018-03-21 Wed]
+* r-lectures.slack.com/
 
 #+BEGIN_EXPORT html
 <img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png">
@@ -60,7 +60,7 @@ title: Clase 2
 - se puede compartir archivos y código (usar el signo "+" abajo a la izq.)
 #+ATTR_REVEAL: frag: highlight-blue
 - => pregúntenle a slackbot: how do I use Slack?
-* github.com/r-2017/
+* COMMENT github.com/r-2017/
 
 #+BEGIN_EXPORT html
   <img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png">
@@ -123,7 +123,7 @@ plot(h$counts, log="xy", pch=20, col="blue",
 	main="Log-normal distribution",
 	xlab="Value", ylab="Frequency")
 #+END_SRC
-** Visualización
+** COMMENT Visualización
 ~ggplot2::qplot()~ 
 - similar a plot()
 - para hacer figuras básicas está ok

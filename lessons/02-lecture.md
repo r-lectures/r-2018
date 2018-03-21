@@ -4,7 +4,7 @@ title: Clase 2
 --- 
 
 
-# r-2017.slack.com/
+# r-lectures.slack.com/
 
 <img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png">
 
@@ -17,20 +17,6 @@ title: Clase 2
 -   se puede compartir archivos y código (usar el signo "+" abajo a la izq.)
 
 -   => pregúntenle a slackbot: how do I use Slack?
-
-
-# github.com/r-2017/
-
-<img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png">
-
-
-## github
-
--   repositório de código
--   sistema de versiones 
-    -   "fotos" de nuestro código en distintos tiempos
-    -   versiones distintas pueden convivir en paralelo
--   muy fácil de compartir
 
 
 # Repaso de la clase pasada
@@ -65,6 +51,7 @@ title: Clase 2
 
 `base::plot()`
 
+    
     # Define the cars vector with 5 values
     cars <- c(1, 3, 6, 4, 9)
     
@@ -93,21 +80,6 @@ title: Clase 2
     plot(h$counts, log="xy", pch=20, col="blue",
     	main="Log-normal distribution",
     	xlab="Value", ylab="Frequency")
-
-
-## Visualización
-
-`ggplot2::qplot()` 
-
--   similar a plot()
--   para hacer figuras básicas está ok
--   para gráficas más elaboradas vamos a usar ggplot2()
-
-    ## scaterplot de displ vs. hwy del data.frame mpg
-    qplot(displ, hwy, data = mpg)
-    
-    ## idem pero usando una escala de colores para "class"
-    qplot(displ, hwy, colour = class, data = mpg)
 
 
 # `ggplot2`
