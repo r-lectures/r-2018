@@ -30,12 +30,12 @@
 <section id="sec-title-slide"><h1>R 2018</h1><h3>21/03/2018</h3>
 </section>
 <section>
-<section id="slide-org838e624">
-<h2 id="org838e624">r-lectures.slack.com/</h2>
+<section id="slide-org6e0aff5">
+<h2 id="org6e0aff5">r-lectures.slack.com/</h2>
 <img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png">
 </section>
-<section id="slide-org8f5e5c8">
-<h3 id="org8f5e5c8">Slack</h3>
+<section id="slide-orgc9507db">
+<h3 id="orgc9507db">Slack</h3>
 <ul>
 <li>canales (<i>channels</i>) (#general, #random, creen los que hagan falta)</li>
 <li>hilos (<i>threads</i>), en los casos en que quieran comentar sin entorpecer la discusión principal</li>
@@ -50,13 +50,13 @@
 </section>
 </section>
 <section>
-<section id="slide-org371bda0">
-<h2 id="org371bda0">Repaso de la clase pasada</h2>
-<div class="outline-text-2" id="text-org371bda0">
+<section id="slide-orgc7b96f5">
+<h2 id="orgc7b96f5">Repaso de la clase pasada</h2>
+<div class="outline-text-2" id="text-orgc7b96f5">
 </div>
 </section>
-<section id="slide-orgee20ac6">
-<h3 id="orgee20ac6">Conceptos principales</h3>
+<section id="slide-org474beaa">
+<h3 id="org474beaa">Conceptos principales</h3>
 <ul>
 <li><b>Paquetes</b> contienen <b>funciones</b></li>
 
@@ -80,8 +80,8 @@ plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica
 </code></pre>
 </div>
 </section>
-<section id="slide-orgdb7a7ce">
-<h3 id="orgdb7a7ce">Hicieron la práctica??</h3>
+<section id="slide-orgd205a7b">
+<h3 id="orgd205a7b">Hicieron la práctica??</h3>
 <ol>
 <li>Elegir un conjunto de datos <i>built-in</i> con datos continuos y categóricos</li>
 <li>Explorar sus principales características (media, máxmimo, mínimo, etc)</li>
@@ -94,8 +94,8 @@ plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica
 
 </ol>
 </section>
-<section id="slide-org8a61802">
-<h3 id="org8a61802">Visualización</h3>
+<section id="slide-org6e780c3">
+<h3 id="org6e780c3">Visualización</h3>
 <p>
 <code>base::plot()</code>
 </p>
@@ -116,8 +116,8 @@ title(main="Autos", col.main="red", font.main=4)
 </code></pre>
 </div>
 </section>
-<section id="slide-org689f55b">
-<h3 id="org689f55b">Visualización</h3>
+<section id="slide-org8470002">
+<h3 id="org8470002">Visualización</h3>
 <p>
 <code>base::plot()</code>
 </p>
@@ -139,13 +139,13 @@ plot(h$counts, log="xy", pch=20, col="blue",
 </section>
 </section>
 <section>
-<section id="slide-orgb8e4a35">
-<h2 id="orgb8e4a35"><code>ggplot2</code></h2>
-<div class="outline-text-2" id="text-orgb8e4a35">
+<section id="slide-org1cb758e">
+<h2 id="org1cb758e"><code>ggplot2</code></h2>
+<div class="outline-text-2" id="text-org1cb758e">
 </div>
 </section>
-<section id="slide-org33105d5">
-<h3 id="org33105d5"></h3>
+<section id="slide-org98d166d">
+<h3 id="org98d166d"></h3>
 <p>
 <code>ggplot2</code>
 </p>
@@ -172,8 +172,8 @@ p                     # imprimo la figura
 </ul>
 
 </section>
-<section id="slide-org7a37beb">
-<h3 id="org7a37beb">En general:</h3>
+<section id="slide-org6434c9e">
+<h3 id="org6434c9e">En general:</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >ggplot(data = {DATA}) + 
@@ -189,8 +189,8 @@ Cuidado! <code>ggplot2</code> trabaja <span class="underline">solo</span> con <c
 Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)
 </p>
 </section>
-<section id="slide-org69d7b63">
-<h3 id="org69d7b63">Y qué vendría siendo un data.frame?</h3>
+<section id="slide-orgb6380f4">
+<h3 id="orgb6380f4">Y qué vendría siendo un data.frame?</h3>
 <ul>
 <li>un data.frame es el objeto más común para analizar datos en R</li>
 <li><p>
@@ -210,11 +210,11 @@ is.list(df)        # es una lista?
 
 </ul>
 </section>
-<section id="slide-orgff82585">
-<h3 id="orgff82585">Aesthetics y Geoms</h3>
+<section id="slide-orgd0b0feb">
+<h3 id="orgd0b0feb">Aesthetics y Geoms</h3>
 <ul>
 <li>aesthetics, aes(), controla mapeos entre variables y elementos visuales</li>
-<li>ejempo: variable A &lt;-&gt; coordenada x, o variable C &lt;-&gt; forma del punto</li>
+<li>ejemplo: variable A &lt;-&gt; coordenada x, o variable C &lt;-&gt; forma del punto</li>
 
 </ul>
 <div class="org-src-container">
@@ -229,8 +229,8 @@ ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # col
 </div>
 
 </section>
-<section id="slide-org779315a">
-<h3 id="org779315a"><i>Facets</i> y <i>scales</i></h3>
+<section id="slide-org7c79c43">
+<h3 id="org7c79c43"><i>Facets</i> y <i>scales</i></h3>
 <ul>
 <li><i>Facets</i> se usan para dividir la figura en varias, filtrando con alguna variable categórica</li>
 <li><i>scales</i> permiten modificar el tipo de ejes de la figura</li>
@@ -247,8 +247,8 @@ scale_x_log10()
 </div>
 
 </section>
-<section id="slide-orge728fe1">
-<h3 id="orge728fe1">Glosario <code>ggplot2</code></h3>
+<section id="slide-org151fda8">
+<h3 id="org151fda8">Glosario <code>ggplot2</code></h3>
 <ul>
 <li><b><code>data</code></b>: el <i>dataframe</i> que contiene los datos a graficar</li>
 <li><b><code>geoms</code></b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
@@ -262,8 +262,8 @@ por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</l
 </section>
 </section>
 <section>
-<section id="slide-org1e0ca77">
-<h2 id="org1e0ca77">Práctica</h2>
+<section id="slide-org2d20f08">
+<h2 id="org2d20f08">Práctica</h2>
 <ul>
 <li>Seleccionen de <code>data()</code> un data.frame con alguna variable categórica</li>
 <li>Qué pasa si hacen solo <code>ggplot(mi_data)</code>?</li>

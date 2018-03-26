@@ -128,7 +128,7 @@ Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)
 ## Aesthetics y Geoms
 
 -   aesthetics, aes(), controla mapeos entre variables y elementos visuales
--   ejempo: variable A <-> coordenada x, o variable C <-> forma del punto
+-   ejemplo: variable A <-> coordenada x, o variable C <-> forma del punto
 
     data(economics)
     ?economics

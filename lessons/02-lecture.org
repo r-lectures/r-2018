@@ -176,7 +176,7 @@ Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)
 - busquen un data.frame con data() y prueben las funciones ~length()~ y ~nrow()~
 ** Aesthetics y Geoms
 - aesthetics, aes(), controla mapeos entre variables y elementos visuales
-- ejempo: variable A <-> coordenada x, o variable C <-> forma del punto
+- ejemplo: variable A <-> coordenada x, o variable C <-> forma del punto
 #+BEGIN_SRC R 
 data(economics)
 ?economics

@@ -113,12 +113,13 @@ Con `arrange` podemos ordenar según valores de columnas
 Con `filter` podemos filtrar observaciones mediante condiciones lógicas
 (>, >=, <, <=, !=, ==, más los operadores & y |)
 
+    
     filter(b, state == "WA") # solo estado de Washington
     
     filter(b, state == "WA"  & year == 1974) # Washington en 1974
     
     filter(b, state == "WA" & year == 1974 & births > 180) # idem 
-    				# pero más de 180 nacimientos
+    				# pero más de 180 nacimientos 
 
 
 ## 
