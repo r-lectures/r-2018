@@ -4,31 +4,6 @@ title: Clase 4
 --- 
 
 
-# parcial
-
-`17 de Mayo`
-
-
-## parcial
-
--   dos problemas dos, 50% de peso cada uno
--   dura una hora (vamos a tener clases después)
--   se tienen que sacar un 6 para aprobar! ojo
--   disponible cualquier material online
--   `NO` pueden consultarse entre sí
-
-
-## qué voy a evaluar
-
-1.  ética - 100%
-2.  corrección o no de la solución propuesta - 25%
-3.  dominio de librerías vistas en clase - 25%
-4.  puntos extras por:
-    -   autocorrección (saber lo que no se sabe)
-    -   innovación de ideas (creatividad)
-    -   riqueza de recursos (estudio)
-
-
 # repaso de la clase anterior
 
 
@@ -43,6 +18,11 @@ title: Clase 4
 
 
 ## repaso práctica 3
+
+<div class="NOTES">
+Veamos ahora un repaso de la práctica 3, en donde vimos las principales funciones de dplyr.
+
+</div>
 
 
 ### Cuál es el estado que más nacimientos tiene en total? El que menos?
@@ -93,7 +73,7 @@ manualmente, por ejemplo ver esta pregunta en StackOverflow: <http://stackoverfl
     arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
     # A tibble: 18 × 3
     #    state      mean     frac
-    #    <chr>     <dbl>    <dbl>
+    #    chr        dbl      dbl
     # 1     CA 1067.9570 5.653908
     # 2     TX  718.0727 3.801574
     # 3     NY  702.7545 3.720477
@@ -231,13 +211,6 @@ Existe una "write\_csv" equivalente.
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
 
 -   miren con cuidado el cheat-sheet de dplyr
-
-
-# para contar la próxima
-
--   stringr
--   lubridate
--   u otro
 
 
 # práctica 4

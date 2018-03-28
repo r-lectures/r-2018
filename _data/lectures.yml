@@ -19,15 +19,15 @@ lectures:
   url: "03-lecture-slides.html"
 
   subitems:
-    - title: "Slides clase 3"
+    - title: "Clase 3 - versión texto"
       url: "03-lecture.html"
 
-# - title: "Clase 4 - más dplyr + magrittr"
-#   url: 04-lecture.html
+- title: "Clase 4 - más dplyr + magrittr"
+  url: "04-lecture-slides.html"
 
-#   subitems:
-#     - title: "Slides clase 4"
-#       url: slides/04-lecture-slides.html
+  subitems:
+    - title: "Clase 4 - versión texto"
+      url: "04-lecture.html"
 
 # - title: "Clase 5 - Funciones + RStudio"
 #   url: 05-lecture.html

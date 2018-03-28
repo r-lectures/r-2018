@@ -206,36 +206,7 @@
 
         <div class="site-content container">
             <div class="col-md-9">
-                <h1 id="parcial">parcial</h1>
-
-<p><code class="highlighter-rouge">17 de Mayo</code></p>
-
-<h2 id="parcial-1">parcial</h2>
-
-<ul>
-  <li>dos problemas dos, 50% de peso cada uno</li>
-  <li>dura una hora (vamos a tener clases después)</li>
-  <li>se tienen que sacar un 6 para aprobar! ojo</li>
-  <li>disponible cualquier material online</li>
-  <li><code class="highlighter-rouge">NO</code> pueden consultarse entre sí</li>
-</ul>
-
-<h2 id="qué-voy-a-evaluar">qué voy a evaluar</h2>
-
-<ol>
-  <li>ética - 100%</li>
-  <li>corrección o no de la solución propuesta - 25%</li>
-  <li>dominio de librerías vistas en clase - 25%</li>
-  <li>puntos extras por:
-    <ul>
-      <li>autocorrección (saber lo que no se sabe)</li>
-      <li>innovación de ideas (creatividad)</li>
-      <li>riqueza de recursos (estudio)</li>
-    </ul>
-  </li>
-</ol>
-
-<h1 id="repaso-de-la-clase-anterior">repaso de la clase anterior</h1>
+                <h1 id="repaso-de-la-clase-anterior">repaso de la clase anterior</h1>
 
 <h2 id="principales-funciones-dplyr">principales funciones dplyr</h2>
 
@@ -249,6 +220,11 @@
 </ul>
 
 <h2 id="repaso-práctica-3">repaso práctica 3</h2>
+
+<div class="NOTES">
+Veamos ahora un repaso de la práctica 3, en donde vimos las principales funciones de dplyr.
+
+</div>
 
 <h3 id="cuál-es-el-estado-que-más-nacimientos-tiene-en-total-el-que-menos">Cuál es el estado que más nacimientos tiene en total? El que menos?</h3>
 
@@ -298,7 +274,7 @@ overall_mean &lt;- mean( mean_by_state$mean )
 arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac &gt;= 1), desc(frac))
 # A tibble: 18 × 3
 #    state      mean     frac
-#    &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+#    chr        dbl      dbl
 # 1     CA 1067.9570 5.653908
 # 2     TX  718.0727 3.801574
 # 3     NY  702.7545 3.720477
@@ -434,14 +410,6 @@ arrange(desc(frac)) # ordeno de mayor a menor
 
 <ul>
   <li>miren con cuidado el cheat-sheet de dplyr</li>
-</ul>
-
-<h1 id="para-contar-la-próxima">para contar la próxima</h1>
-
-<ul>
-  <li>stringr</li>
-  <li>lubridate</li>
-  <li>u otro</li>
 </ul>
 
 <h1 id="práctica-4">práctica 4</h1>

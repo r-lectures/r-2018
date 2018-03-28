@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 02/05/2017
+#+TITLE: R 2018
+#+DATE: 27/03/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -54,7 +54,7 @@ title: Clase 4
 
 
 
-* parcial 
+* COMMENT parcial 
 ~17 de Mayo~
 ** parcial
 - dos problemas dos, 50% de peso cada uno
@@ -82,6 +82,9 @@ title: Clase 4
 :PROPERTIES:
 :reveal_background: #123456
 :END:
+#+BEGIN_NOTES
+Veamos ahora un repaso de la práctica 3, en donde vimos las principales funciones de dplyr.
+#+END_NOTES
 
 *** Cuál es el estado que más nacimientos tiene en total? El que menos?
 :PROPERTIES:
@@ -145,7 +148,7 @@ manualmente, por ejemplo ver esta pregunta en StackOverflow: http://stackoverflo
   arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
   # A tibble: 18 × 3
   #    state      mean     frac
-  #    <chr>     <dbl>    <dbl>
+  #    chr        dbl      dbl
   # 1     CA 1067.9570 5.653908
   # 2     TX  718.0727 3.801574
   # 3     NY  702.7545 3.720477
@@ -316,7 +319,7 @@ x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
 
 - miren con cuidado el cheat-sheet de dplyr
 
-* para contar la próxima
+* COMMENT para contar la próxima
 - stringr
 - lubridate
 - u otro
