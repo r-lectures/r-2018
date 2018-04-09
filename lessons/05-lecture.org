@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 03/05/2017
+#+TITLE: R 2018
+#+DATE: 09/04/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -132,7 +132,6 @@ arrange(desc(frac)) # ordeno de mayor a menor
   ## > tmi
   ## # A tibble: 16 × 3
   ##      TMI            BARRIO                 DIRECCION
-  ##    <int>             <chr>                     <chr>
   ## 1   1282         Mataderos        Av. Eva Perón 5251
   ## 2   1283           Liniers   Lisandro de la Torre 39
   ## 3   1284   Vélez Sarsfield          Av. Segurola 726

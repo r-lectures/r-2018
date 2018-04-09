@@ -76,7 +76,6 @@ Existe una "write\_csv" equivalente.
     ## > tmi
     ## # A tibble: 16 × 3
     ##      TMI            BARRIO                 DIRECCION
-    ##    <int>             <chr>                     <chr>
     ## 1   1282         Mataderos        Av. Eva Perón 5251
     ## 2   1283           Liniers   Lisandro de la Torre 39
     ## 3   1284   Vélez Sarsfield          Av. Segurola 726
