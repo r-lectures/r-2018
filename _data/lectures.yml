@@ -30,11 +30,11 @@ lectures:
       url: "04-lecture.html"
 
 - title: "Clase 5 - Funciones + RStudio"
-  url: 05-lecture-slides.html
+  url: "05-lecture-slides.html"
 
   subitems:
     - title: "Clase 5 - versión texto"
-      url: 05-lecture.html
+      url: "05-lecture.html"
 
 # - title: "Clase 6 - Tipos de datos"
 #   url: 06-lecture.html
