@@ -4,9 +4,6 @@ title: Clase 6
 --- 
 
 
-# Emma habla de Caret
-
-
 # Repaso de la clase anterior
 
 
@@ -152,7 +149,7 @@ Usar: is.finite(), is.infinite(), is.na(), is.nan()
 
 ## complex y raw
 
-Para numeros complejos, complex
+Para números complejos, complex
 
     v <- 2+5i
     print(class(v))
@@ -260,7 +257,7 @@ listas o funciones ¯\\\_(ツ)\_/¯
     unlist(mtcars) # podemos 'aplanar' una lista!
 
 
-## Mañana: Vectores "aumentados" y *subsetting*
+## Próxima: Vectores "aumentados" y *subsetting*
 
 -   <span class="underline">Factores</span>, construidos sobre vectores 'integer'
 -   <span class="underline">Data frames</span> (y tibbles) sobre 'lists'

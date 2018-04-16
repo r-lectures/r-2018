@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 09/05/2017
+#+TITLE: R 2018
+#+DATE: 15/04/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -52,7 +52,7 @@ title: Clase 6
 
 # #+ATTR_REVEAL: :frag roll-in
 
-* Emma habla de Caret
+* COMMENT Emma habla de Caret
 * Repaso de la clase anterior
 ** RStudio
 - Working directory / Workspace
@@ -349,7 +349,7 @@ is.list(mtcars)
 unlist(mtcars) # podemos 'aplanar' una lista!
 #+END_SRC
 
-** Mañana: Vectores "aumentados" y /subsetting/
+** Próxima: Vectores "aumentados" y /subsetting/
    - _Factores_, construidos sobre vectores 'integer'
    - _Data frames_ (y tibbles) sobre 'lists'
    - _Dates_ y _date-times_, sobre vectores 'numeric'
