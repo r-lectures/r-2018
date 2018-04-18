@@ -53,12 +53,12 @@ title: Práctica para parcial
 # #+ATTR_REVEAL: :frag roll-in
 
 * Práctica para recuperatorio
-** nycflights13
-2. Instalar le paquete "nycflights13" y cargarlo en la sesión.
-3. El paquete contiene los datos llamados "flights". Ver el help de flights para ver de que se tratan.
-4. Calcular cuantos vuelos salen de NYC por dia. Hacerlo de dos maneras: una con summarise() + n(), otra
-   con tally(). Pensar de antemano las dimensiones del dataframe que van a generar, y chequear las
-   dimensiones después de generarlo.
+** Dataset nycflights13
+2. Instalar el paquete "nycflights13" y cargarlo en la sesión.
+3. El paquete contiene un objeto de datos llamados "flights". Ver el help de flights para ver de que se tratan.
+4. Calcular cuantos vuelos salen de NYC por dia. Hacerlo de dos maneras: una con summarise() + n() y
+   otra con tally(). Pensar de antemano las dimensiones del dataframe que van a generar y chequear
+   las dimensiones después de generarlo.
 5. Agregarle a este último dataframe una columna con el día de la semana.
 6. Hacer un boxplot, para cada día de la semana, de los vuelos por dia. Tip: le paso estas dos
    variables al aes() de la capa boxplot. Cuál es el día menos similar al resto?
