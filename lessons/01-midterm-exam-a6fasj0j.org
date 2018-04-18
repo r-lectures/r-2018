@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 17/05/2017
+#+TITLE: R 2018
+#+DATE: 25/04/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -54,23 +54,24 @@ title: Parcial 1
 
 * 1er parcial
 ** Instrucciones
-- El parcial dura como máximo dos horas.
+- Tienen tres horas para completar el parcial.
 - Tienen todo el material de clase y online disponible para consulta.
-- NO tienen a sus compañeros disponibles.
+- ~NO~ tienen a sus compañeros disponibles.
 - Tienen que resolver los ejercicios escribiendo las respuestas (tanto texto como código) en un
-  archivo con extensión .R (evitar usar Word, si esto es un problema, avisenme por favor).
+  archivo con extensión .R (evitar usar Word, si esto es un problema, avísenme por favor).
 - Cada pregunta y subpregunta están numeradas. *Importantísimo*: enumerar _de la misma manera_ las
-  respuestas (aún que estén vacías) y que coincidan correctamente.
+  respuestas (aúnque estén vacías) para que coincidan correctamente.
 - Algunas preguntas tienen la palabra ~PhD~ adelante, que significan que son para los que cursan la
-  materia como posgrado. Para el resto son opcionales, pero suman puntos.
-- Al final del parcial me mandan por favor el archivo .R por mail o por _canal privado_ de Slack. 
-- Si no saben o no les sale algo, intenten explicar todo lo que sí saben al respecto,
-  aunque sea parcial. Si una línea de código les da algún error, expliquen la lógica de lo que
-  quisieron hacer, ya que si es correcta, eso suma. Si identifican la causa del error, aunque no lo
-  sepan corregir, nuevamente eso suma. En general, mejor poner de más que de menos.
+  materia como posgrado. Para el resto de la materia son opcionales, pero suman puntos ;) 
+- Al final del parcial me mandan por favor el archivo .R por mail o por _canal privado_ de Slack.
+- Si no saben o no les sale algo, intenten explicar todo lo que sí saben al respecto, aunque sea
+  parcial o incompleto, porque puede sumarles puntos. Si una línea de código les da algún error,
+  expliquen la lógica de lo que quisieron hacer, ya que si la lógica es correcta, eso también
+  suma. Si identifican la causa del error, aunque no lo sepan corregir, nuevamente eso suma. En
+  general, mejor poner de más que de menos.
 - No se estresen.
 
-** Problema 1
+** Problema
 1. DATOS 
    1. Cargar los datos "economics" del paquete ggplot2 en la sesión (o verificar si ya se encuentran disponibles).
       Consejo: Lean la ayuda (?economics), como para tener una idea sobre que son los datos.
@@ -82,17 +83,17 @@ title: Parcial 1
       3. Cuántos atributos tiene y como se llaman?
    2. Cuántas filas y columnas tiene?
    3. Cómo son los tipos de datos de cada columna?
-3. GRAFICAR (preferiblemente con ggplot2)
-   1. Hacer un scatterplot de la variable de desempleo (~unemploy~) en función del tiempo (~date~).
+3. GRAFICAR (preferiblemente con ~ggplot2~)
+   1. Hacer un /scatterplot/ (i.e., puntos) de la variable de desempleo (~unemploy~) en función del tiempo (~date~).
    2. Colorear los puntos que tengan la variable ~psavert~ menor que el promedio de ~psavert~ a lo largo de
       los años (es decir, el promedio de todos los elementos de la columna).
    3. Ponerle texto explicativo a los ejes x e y. 
    4. ~PhD~: mejorar la "leyenda" con un título y descripción de los dos colores.
 4. PREGUNTAS
-   1. De cuándo a cuándo van los datos temporales? (o sea, fecha mínima y fecha máxima).
-   2. Aproximadamente cuantos "picos" se ven en el desempleo? (consejo: verlo gráficamente).
-   3. Se encuentran "picos" de ese estilo en las otras variables (~pce~, ~pop~, ~psavert~, ~uempmed~)? En
-      alguna variable coinciden (más o menos) los "picos"? Decir cuál (consejo: verlo gráficamente).
+   1. De cuándo a cuándo van los datos temporales? (o sea, obtenter fecha mínima y fecha máxima).
+   2. Aproximadamente, cuantos "picos" se ven en el desempleo? Hacerlo gráficamente.
+   3. Se encuentran "picos" de ese estilo en alguna de las otras variables (~pce~, ~pop~, ~psavert~, ~uempmed~)? En
+      alguna variable coinciden (más o menos) los "picos"? Decir cuál o cuales. Hacerlo gráficamente.
    4. Separar la columna 'date' en tres columnas "d", "m" y "y". 
    5. Hacer una tabla con el desempleo medio por año (o sea, una columna "año" y otra de "desempleo
       medio" de ese año).
@@ -103,7 +104,7 @@ title: Parcial 1
       economics donde está la variable de población). Cambian los años de mayor y menos desempleo
       para esta nueva variable?
 
-** Problema 2
+** COMMENT Problema 2
 
 1. DATOS
    En data() tenemos dos datasets (separados) sobre la temperatura corporal de dos castores: beaver1

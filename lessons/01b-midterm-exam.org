@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 02/06/2017
+#+TITLE: R 2018
+#+DATE: 25/04/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -41,7 +41,7 @@
 #+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
 --- 
 layout: default 
-title: Recuperatorio Parcial 1
+title: Parcial 1
 --- 
 #+end_src 
 #+results:
@@ -52,37 +52,38 @@ title: Recuperatorio Parcial 1
 
 # #+ATTR_REVEAL: :frag roll-in
 
-* Recuperatorio 1er parcial
+* 1er parcial
 ** Instrucciones
-- El recuperatorio dura una hora y media.
+- Tienen tres horas para completar el parcial.
 - Tienen todo el material de clase y online disponible para consulta.
-- NO tienen a sus compañeros disponibles.
+- ~NO~ tienen a sus compañeros disponibles.
 - Tienen que resolver los ejercicios escribiendo las respuestas (tanto texto como código) en un
-  archivo con extensión .R. _En todos los casos poner el código del cual obtienen las respuestas._
-  (evitar usar Word, si esto es un problema, avisenme por favor).
-- *Cada pregunta y subpregunta están numeradas. Importantísimo: enumerar _de la misma manera_ las respuestas (aún que estén vacías) y que coincidan correctamente.*
+  archivo con extensión .R (evitar usar Word, si esto es un problema, avísenme por favor).
+- Cada pregunta y subpregunta están numeradas. *Importantísimo*: enumerar _de la misma manera_ las
+  respuestas (aúnque estén vacías) para que coincidan correctamente.
 - Algunas preguntas tienen la palabra ~PhD~ adelante, que significan que son para los que cursan la
-  materia como posgrado. Para el resto son opcionales, pero suman puntos.
-- Al final del parcial me mandan por favor el archivo .R por mail o por _canal privado_ de Slack. 
-- Si no saben o no les sale algo, intenten explicar todo lo que sí saben al respecto,
-  aunque sea parcial. Si una línea de código les da algún error, expliquen la lógica de lo que
-  quisieron hacer, ya que si es correcta, eso suma. Si identifican la causa del error, aunque no lo
-  sepan corregir, nuevamente eso suma. En general, mejor poner de más que de menos.
+  materia como posgrado. Para el resto de la materia son opcionales, pero suman puntos ;) 
+- Al final del parcial me mandan por favor el archivo .R por mail o por _canal privado_ de Slack.
+- Si no saben o no les sale algo, intenten explicar todo lo que sí saben al respecto, aunque sea
+  parcial o incompleto, porque puede sumarles puntos. Si una línea de código les da algún error,
+  expliquen la lógica de lo que quisieron hacer, ya que si la lógica es correcta, eso también
+  suma. Si identifican la causa del error, aunque no lo sepan corregir, nuevamente eso suma. En
+  general, mejor poner de más que de menos.
 - No se estresen.
 
 ** Problema único: 
 
 1. DATOS 
    1. Cargar los datos "txhousing" del paquete ggplot2 en la sesión (o verificar si ya se encuentran
-      disponibles). Son datos de venta de inmuebles en Tejas, con datos de ciudad, año, mes, número
-      de inmuebles vendidos (sales), total vendido en dólares (volume), mediana del valor del
-      inmueble, número de inmuebles disponibles (listings) y meses que se demoraría en vender todo
-      lo disponible al ritmo de venta actual (inventory). Consejo: miren la ayuda de los datos para
-      más información. Preguntar si no entienden alguna cosa en inglés (es gratis ;).
+      disponibles). Son datos de venta de inmuebles en Texas, con datos de ciudad, año, mes, número
+      de inmuebles vendidos (/sales/), total vendido en dólares (/volume/), mediana del valor del
+      inmueble, número de inmuebles disponibles (/listings/) y meses que se demoraría en vender todo
+      lo disponible al ritmo de venta actual (/inventory/). Consejo: miren la ayuda de los datos para
+      más información. Preguntar si no entienden alguna cosa en inglés (preguntar es gratis ;).
    2. Renombrar el dataframe a "tx" (o sea, asignar el objeto txhousing al objeto tx).
 
 1. PRIMER ANÁLISIS
-   1. Qué clase de estructura de datos es tx? 
+   1. Qué clase de estructura de datos es tx?
    2. Cuántos atributos tiene tx y como se llaman?
    3. Qué dimensiones tiene tx?
    4. Cómo son los tipos de datos de cada elemento de tx (las columnas)?
@@ -109,7 +110,6 @@ title: Recuperatorio Parcial 1
    6. Agregar a ese dataframe una columna con el número de inmuebles vendidos totales (por año).
    7. ~PhD~: En que mes y año se vendieron más inmuebles en la ciudad de "Amarillo"? Tip: pensar el
       problema en (dos) partes, conseguir el valor en cuestión y después ver cuando se produjo.
-
 
 4. GRAFICAR (con ggplot2)
 

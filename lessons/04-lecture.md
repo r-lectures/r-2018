@@ -218,10 +218,10 @@ Existe una "write\_csv" equivalente.
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ira a datos de Contaminación sonora </li>
-  <li>Bajar csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
+  <li>Bajar los csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
   <li>Cargar todo en R </li>
-  <li>Hacer un gran data.frame con TMI y las tres mediciones</li>
-  <li>Cuales son los 5 barrios en donde hay más (menos) promedio energético hora?</li>
-  <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
+  <li>Hacer un único data.frame con las tres mediciones</li>
+  <li>Cuales son los 5 barrios en donde hay más (y menos) promedio energético hora?</li>
+  <li>Cómo se comparan los valores extremos de cada barrio con la media de todos los barrios?</li>
 </ol>
 

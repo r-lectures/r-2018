@@ -54,15 +54,15 @@ Existe una "write\_csv" equivalente.
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ir a datos de Contaminación sonora </li>
-  <li>Bajar csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
+  <li>Bajar los csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
   <li>Cargar todo en R </li>
-  <li>Hacer un gran data.frame con TMI y las tres mediciones</li>
-  <li>Cuales son los 5 barrios en donde hay más (menos) promedio energético hora?</li>
-  <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
+  <li>Hacer un único data.frame con los tres de mediciones</li>
+  <li>Cuales son los 5 barrios en donde hay más (y menos) promedio energético hora?</li>
+  <li>Cómo se comparan los valores extremos de cada barrio con la media de todos los barrios?</li>
 </ol>
 
 
-## hacer gran-dataframe-gran
+## hacer un único dataframe
 
     library(dplyr)
     library(readr)
@@ -213,10 +213,11 @@ escribir una función de cero.
 # Práctica 5
 
 1.  Trabajamos sobre datos de ruido de Buenos Aires Data. Escribir una función que devuelva el min,
-    máx y promedio (mean) del ruido dependiendo del barrio.
+    máx y promedio (mean) del ruido para cada barrio.
 2.  Porqué obtengo un `NA` en los resultados de la práctica 4?
     1.  Usar lo aprendido sobre joins para no tener este `NA`.
-3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete `stringr` más `tidyr::separate`.
-4.  Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
-    con más ruido el fin de semana que el resto?
+3.  Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete `stringr` más
+    `tidyr::separate`, o `lubridate`.
+4.  En promedio, cuál es la hora de mayor ruido del día? Y el dia más ruidoso de la semana? Hay algún barrio
+    con más ruido el fin de semana que el resto de los días?
 

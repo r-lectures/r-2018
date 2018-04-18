@@ -31,13 +31,13 @@
 </section>
 
 <section>
-<section id="slide-orga7ac0cc">
-<h2 id="orga7ac0cc">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orga7ac0cc">
+<section id="slide-org2fe6a24">
+<h2 id="org2fe6a24">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org2fe6a24">
 </div>
 </section>
-<section id="slide-orgd20d8be">
-<h3 id="orgd20d8be">lectura/escritura</h3>
+<section id="slide-org72c1b5a">
+<h3 id="org72c1b5a">lectura/escritura</h3>
 <p>
 "read_csv()" lee un archivo delimitado por comas.
 </p>
@@ -60,8 +60,8 @@ Existe una "write_csv" equivalente.
 </p>
 
 </section>
-<section id="slide-org2483db8">
-<h3 id="org2483db8"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
+<section id="slide-orgf2717df">
+<h3 id="orgf2717df"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
@@ -82,13 +82,13 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </div>
 
 </section>
-<section id="slide-org8bcdad9">
-<h3 id="org8bcdad9">combinando data.frames (sin llaves)</h3>
+<section id="slide-org8f3420b">
+<h3 id="org8f3420b">combinando data.frames (sin llaves)</h3>
 <img src="./figs/binds.png">
 
 </section>
-<section id="slide-org590386f">
-<h3 id="org590386f">combinando data.frames (con llaves)</h3>
+<section id="slide-orge255fc0">
+<h3 id="orge255fc0">combinando data.frames (con llaves)</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
 
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
@@ -100,20 +100,20 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org8758bf7" data-background="#123456">
-<h2 id="org8758bf7">repaso práctica 4</h2>
+<section id="slide-org8ea6263" data-background="#123456">
+<h2 id="org8ea6263">repaso práctica 4</h2>
 <ol class="smallfont">
   <li>Entrar en Buenos Aires Data (ver link en la web del curso)</li>
   <li>Ir a datos de Contaminación sonora </li>
-  <li>Bajar csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
+  <li>Bajar los csv's de Torres y Mediciones 2011, 2012 y 2013 </li>
   <li>Cargar todo en R </li>
-  <li>Hacer un gran data.frame con TMI y las tres mediciones</li>
-  <li>Cuales son los 5 barrios en donde hay más (menos) promedio energético hora?</li>
-  <li>Cómo se comparan los valores extremos con la media de todos los barrios?</li>
+  <li>Hacer un único data.frame con los tres de mediciones</li>
+  <li>Cuales son los 5 barrios en donde hay más (y menos) promedio energético hora?</li>
+  <li>Cómo se comparan los valores extremos de cada barrio con la media de todos los barrios?</li>
 </ol>
 </section>
-<section id="slide-orge3c1e51">
-<h3 id="orge3c1e51">hacer gran-dataframe-gran</h3>
+<section id="slide-org8aa9f5f">
+<h3 id="org8aa9f5f">hacer un único dataframe</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >library(dplyr)
@@ -142,8 +142,8 @@ ruido_bsas <- left_join(ruido_bsas, tmi)
 </code></pre>
 </div>
 </section>
-<section id="slide-org25e0569">
-<h3 id="org25e0569">Ruidosos? Tranquilos?</h3>
+<section id="slide-orgae8770d">
+<h3 id="orgae8770d">Ruidosos? Tranquilos?</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># 5 barrios más (menos) ruidosos
@@ -157,8 +157,8 @@ ruido_barrios %>% head(n=5) # o tail(n=5) para ver los menos ruidosos
 </code></pre>
 </div>
 </section>
-<section id="slide-orga2240ee">
-<h3 id="orga2240ee">Extremos vs. media?</h3>
+<section id="slide-orgf8f88f7">
+<h3 id="orgf8f88f7">Extremos vs. media?</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># como se comparan los valores extremos y la media
@@ -178,8 +178,8 @@ ruido_barrios %>% summary # o más elegante: ruido_barrios %>% select(ruido_avg)
 </section>
 </section>
 <section>
-<section id="slide-org1b716a1">
-<h2 id="org1b716a1">RStudio</h2>
+<section id="slide-orgdaea414">
+<h2 id="orgdaea414">RStudio</h2>
 <ul>
 <li><p>
 Working directory / Workspace
@@ -211,8 +211,8 @@ setwd("path/to/dir") # para decirle donde quiero estar
 </section>
 </section>
 <section>
-<section id="slide-org7294456">
-<h2 id="org7294456">Funciones</h2>
+<section id="slide-org7e2dad6">
+<h2 id="org7e2dad6">Funciones</h2>
 <aside class="notes">
 <p>
 Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
@@ -227,8 +227,8 @@ Más información en <a href="http://r4ds.had.co.nz/functions.html">http://r4ds.
 
 </aside>
 </section>
-<section id="slide-org970acb3">
-<h3 id="org970acb3">anatomía de f()</h3>
+<section id="slide-orgf9c28d6">
+<h3 id="orgf9c28d6">anatomía de f()</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># mi función se llama alta_funcion, con dos argumentos
@@ -258,8 +258,8 @@ mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 </code></pre>
 </div>
 </section>
-<section id="slide-org0449272">
-<h3 id="org0449272">ejemplo</h3>
+<section id="slide-org15249f6">
+<h3 id="org15249f6">ejemplo</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># función que normaliza de dos maneras distintas un vector de valores 
@@ -304,19 +304,20 @@ escribir una función de cero.
 </section>
 </section>
 <section>
-<section id="slide-orga691938" data-background="#123456">
-<h2 id="orga691938">Práctica 5</h2>
+<section id="slide-org214e157" data-background="#123456">
+<h2 id="org214e157">Práctica 5</h2>
 <ol>
 <li>Trabajamos sobre datos de ruido de Buenos Aires Data. Escribir una función que devuelva el min,
-máx y promedio (mean) del ruido dependiendo del barrio.</li>
+máx y promedio (mean) del ruido para cada barrio.</li>
 <li>Porqué obtengo un <code>NA</code> en los resultados de la práctica 4?
 <ol>
 <li>Usar lo aprendido sobre joins para no tener este <code>NA</code>.</li>
 
 </ol></li>
-<li>Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete <code>stringr</code> más <code>tidyr::separate</code>.</li>
-<li>Cuál es la hora de mayor ruido del día? Cuál es el dia más ruidoso de la semana? Hay algún barrio
-con más ruido el fin de semana que el resto?</li>
+<li>Cómo puedo mejorar la columna FECHA de la práctica 3? Consejo: usar el paquete <code>stringr</code> más
+<code>tidyr::separate</code>, o <code>lubridate</code>.</li>
+<li>En promedio, cuál es la hora de mayor ruido del día? Y el dia más ruidoso de la semana? Hay algún barrio
+con más ruido el fin de semana que el resto de los días?</li>
 
 </ol>
 </section>

@@ -42,6 +42,10 @@ lectures:
   subitems:
     - title: "Clase 6 - versión texto"
       url: "06-lecture.html"
+
+- title: "Repaso 1er parcial"
+  url: "01-midterm-practice.html"
+
 #     - title: "R - Analisis de datos con Caret - Emmanuel"
 #       url: ../assets/R - Analisis de datos con Caret.pdf
 
@@ -85,9 +89,6 @@ lectures:
 #   subitems:
 #     - title: "Slides clase 11"
 #       url: slides/11-lecture-slides.html
-
-# - title: "Repaso recuperatorio 1er parcial"
-#   url: 01-midterm-practice.html
 
 # - title: "Recuperatorio del primer parcial"
 #   url: 01b-midterm-exam.html
