@@ -19,6 +19,9 @@ show_drafts: FALSE
 #   - Gemfile
 #   - Gemfile.lock
 
+plugins:
+- jekyll-menus
+
 #plugins_dir: _plugins
 #exclude: ["gulp", '*.org', '*feed*', 'Gemfile*'] 
 

@@ -31,3 +31,7 @@ gem 'github-pages', '177', group: :jekyll_plugins
 
 # from https://jekyllrb.com/docs/github-pages/
 # gem "github-pages", group: :jekyll_plugins
+
+group :jekyll_plugins do
+   gem "jekyll-menus"
+end

@@ -43,8 +43,15 @@ lectures:
     - title: "Clase 6 - versión texto"
       url: "06-lecture.html"
 
-- title: "Repaso 1er parcial"
+- title: "Repaso para 1er parcial"
   url: "01-midterm-practice.html"
+
+- title: "Clase repaso - ggplot2"
+  url: "lecture_ggplot-review-slides.html"
+
+  subitems:
+    - title: "Clase repaso - versión texto"
+      url: "lecture_ggplot-review.html"
 
 #     - title: "R - Analisis de datos con Caret - Emmanuel"
 #       url: ../assets/R - Analisis de datos con Caret.pdf
