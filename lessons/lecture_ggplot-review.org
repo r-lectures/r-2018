@@ -1,0 +1,206 @@
+#    -*- mode: org -*-
+#+TITLE: R 2018
+#+DATE: 23/04/2018
+#+AUTHOR: Luis G. Moyano
+#+EMAIL: lgmoyano@gmail.com
+
+#+OPTIONS: author:nil date:t email:nil
+#+OPTIONS: ^:nil _:nil
+#+STARTUP: showall expand
+#+options: toc:nil
+#+REVEAL_ROOT: ../../reveal.js/
+#+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: fast
+#+REVEAL_THEME: my_moon
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+REVEAL_HLEVEL: 1
+
+# # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
+# # (setq org-reveal-title-slide 'auto)
+# # see https://github.com/yjwen/org-reveal/commit/84a445ce48e996182fde6909558824e154b76985
+
+# #+OPTIONS: reveal_width:1200 reveal_height:800
+# #+OPTIONS: toc:1
+# #+REVEAL_PLUGINS: (markdown notes)
+# #+REVEAL_EXTRA_CSS: ./local
+# ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+
+
+#+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
+--- 
+layout: default 
+title: ggplot2 review
+--- 
+#+end_src 
+#+results:
+
+# #+begin_html
+# <img src="right-fail.png">n
+# #+end_html
+
+# #+ATTR_REVEAL: :frag roll-in
+
+
+* Repaso ggplot2
+** ggplot2: figuras combianando capas
+ggplot2 asocia distintas funciones a /capas/ que representan distintas partes de un gráfico. En su
+forma más sencilla tenemos dos funciones:
+
+#+BEGIN_SRC R 
+ggplot(data = DATA) + GEOM_FUNCTION(mapping = aes(MAPPINGS))
+#+END_SRC
+
+En donde ~DATA~ es el dataframe que contiene las columnas a graficar, ~GEOM_FUNCTION~ representa una
+función para asignar una geometría (por ejemplo, ~geom_point~ o ~geom_line~) y ~MAPPINGS~ representa
+las variables que quiero dibujar (x e y, o tal vez solo x).
+
+En este ejemplo general y sencillo tengo cuatro elementos: el lienzo (vacío), los datos, las
+variables y la geometría.
+
+** Ejemplito
+May the source be with you
+#+BEGIN_SRC R 
+  library(dplyr)
+  data(starwars)
+  glimpse(starwars) # glimpse es una versión más simple de str()
+
+  # un primer plot:
+  ggplot(data = starwars) + geom_point(mapping = aes(height, mass))
+
+  # sin nombrar los argumentos explícitamente:
+  ggplot(starwars) + geom_point(aes(height, mass))
+
+  # vale quebrarlo en dos líneas, si dejo el '+' al final de la línea
+  ggplot(starwars) + 
+  geom_point(aes(height, mass))
+
+#+END_SRC
+** Mappings
+
+El llamado /mapping/ es uno de los argumentos de las funciones de geometría y el objeto que hay que
+pasarle se genera con ~aes()~. El mapping conecta elementos de los datos con información visual en
+el gráfico.
+
+Por ejemplo, para asignar variables a ejes, en ~aes()~ asignaremos una columna de nuestro daraframe
+a los argumentos ~x~ y (opcionalmente) ~y~: ~aes(x = height, y = mass)~. Así conectamos posición en
+el gráfico con columnas del dataframe.
+
+Podemos manipular otros aspectos estéticos del gráfico con ~aes()~:
+
+#+BEGIN_SRC R 
+  ggplot(starwars) + geom_point(aes(height, mass))
+  # o, mapeando elementos estéticos a variables:
+  ggplot(starwars) + geom_point(aes(height, mass, color=gender))
+  # podemos bypasear el mapping y definir un color único para la capa entera.
+  ggplot(starwars) + geom_point(aes(height, mass), color="blue")
+
+  ggplot(starwars) + geom_point(aes(height, mass, size=gender))
+  ggplot(starwars) + geom_point(aes(height, mass, shape=gender))
+  ggplot(starwars) + geom_line(aes(height, mass, linetype=gender)) 
+  ggplot(starwars) + geom_point(aes(height, mass, color=gender, shape=eye_color))
+#+END_SRC
+
+** Jerarquías
+Las funciones de geometría pueden llevar su propio mapping, o pueden heredar un mapping de la
+función ~ggplot~.
+
+#+BEGIN_SRC R 
+  # las siguentes dos expresiones funcionan igual
+  ggplot(starwars, aes(height, mass)) + geom_point()
+  ggplot(starwars) + geom_point(aes(height, mass))
+#+END_SRC
+
+Esto nos dá flexibilidad, porque podemos usar distintas variables en distintas capas:
+#+BEGIN_SRC R 
+  ggplot(starwars) + 
+  geom_point(aes(height, mass)) + 
+  geom_smooth(aes(height, birth_year))
+#+END_SRC
+
+Podemos inclusive combinar data.frames distintos (no olvidar poner 'data ='):
+#+BEGIN_SRC R 
+  ggplot() + 
+  geom_point(data = starwars, aes(height, mass), color = "red") + 
+  geom_point(data = morley, aes(Run, Speed), color = "blue")
+#+END_SRC
+
+
+** Texto
+Podemos poner texto de diversas maneras, por ejemplo:
+#+BEGIN_SRC R 
+  ggplot(starwars) + 
+      geom_point(aes(height, mass)) + 
+      labs(colour = "gender", title = "Guerra de las Galaxias", subtitle = "masa en función de altura para algunos personajes", x = "altura", y = "masa")
+
+  ggplot(starwars) + 
+      geom_point(aes(height, mass)) + 
+      xlab("altura") + 
+      ylab("masa")
+#+END_SRC
+** Ejes
+Podemos manipular los ejes de diversas maneras, por ejemplo:
+
+#+BEGIN_SRC R 
+  ggplot(starwars) + 
+      geom_point(aes(height, mass)) + 
+      scale_x_log10() + 
+      scale_y_log10()
+
+  ggplot(starwars) + 
+      geom_point(aes(height, mass)) + 
+      xlim(c(0, 200)) + 
+      ylim(c(0, 150))
+#+END_SRC
+
+** Podemos usar expresiones lógicas
+Podemos mapear experesiones hechas con operadores lógicos a elementos estéticos. Los operadores
+lógicos generan una variable auxiliar categórica. 
+#+BEGIN_SRC R 
+  # color de acuerdo a si son más o menos cuarentones
+  ggplot(starwars) + 
+      geom_point(aes(height, mass, color=birth_year > 40))
+  # forma de acuerdo a si no nacieron en Tatooine
+  ggplot(starwars) + 
+      geom_point(aes(height, mass, shape=homeworld != "Tatooine"))
+  # tamaño de acuerdo al año de nacimiento
+  ggplot(starwars) + 
+      geom_point(aes(height, mass,  size=birth_year))
+#+END_SRC
+** Facets
+Otra manera es dividir un gráfico en más de un gráfico de acuerdo a una variable. Debemos usar una
+~formula~, pero que por ahora podemos pensar como un tilde antes de una variable.
+
+#+BEGIN_SRC R 
+ggplot(starwars) + 
+     geom_point(aes(height, mass)) + facet_grid(~gender)
+
+# pasados de peso para los distintos géneros
+ggplot(starwars) + 
+    geom_point(aes(height, mass, color = mass/(height/100)^2 > 25)) + facet_grid(~gender) + labs (color = "BMI overweight")
+#+END_SRC
+** Otros tipos de gráficos
+#+BEGIN_SRC R 
+  # histogramas
+  ggplot(starwars, aes(height)) + geom_histogram()
+  ggplot(starwars. aes(height)) + geom_histogram(bins = 50)
+  # densidades
+  ggplot(starwars, aes(height)) + geom_density()
+  ggplot(starwars, aes(height)) + geom_density(bw = 0.7)
+  # boxplots (para cada valor que quedó en gender, sobre la variable mass)
+  ggplot(starwars %>% filter(gender == "male" | gender == "female")) + geom_boxplot(aes(gender, mass))
+#+END_SRC
+
+* COMMENT Práctica ggplot2
+- 

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2018</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2018</h1><h3>23/04/2018</h3>
+</section>
+
+
+<section>
+<section id="slide-org6717d8b">
+<h2 id="org6717d8b">Repaso ggplot2</h2>
+<div class="outline-text-2" id="text-org6717d8b">
+</div>
+</section>
+<section id="slide-org4e92a3e">
+<h3 id="org4e92a3e">ggplot2: figuras combianando capas</h3>
+<p>
+ggplot2 asocia distintas funciones a <i>capas</i> que representan distintas partes de un gráfico. En su
+forma más sencilla tenemos dos funciones:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot(data = DATA) + GEOM_FUNCTION(mapping = aes(MAPPINGS))
+</code></pre>
+</div>
+
+<p>
+En donde <code>DATA</code> es el dataframe que contiene las columnas a graficar, <code>GEOM_FUNCTION</code> representa una
+función para asignar una geometría (por ejemplo, <code>geom_point</code> o <code>geom_line</code>) y <code>MAPPINGS</code> representa
+las variables que quiero dibujar (x e y, o tal vez solo x).
+</p>
+
+<p>
+En este ejemplo general y sencillo tengo cuatro elementos: el lienzo (vacío), los datos, las
+variables y la geometría.
+</p>
+
+</section>
+<section id="slide-org22eef14">
+<h3 id="org22eef14">Ejemplito</h3>
+<p>
+May the source be with you
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >library(dplyr)
+data(starwars)
+glimpse(starwars) # glimpse es una versión más simple de str()
+
+# un primer plot:
+ggplot(data = starwars) + geom_point(mapping = aes(height, mass))
+
+# sin nombrar los argumentos explícitamente:
+ggplot(starwars) + geom_point(aes(height, mass))
+
+# vale quebrarlo en dos líneas, si dejo el '+' al final de la línea
+ggplot(starwars) + 
+geom_point(aes(height, mass))
+
+</code></pre>
+</div>
+</section>
+<section id="slide-orga2f60ae">
+<h3 id="orga2f60ae">Mappings</h3>
+<p>
+El llamado <i>mapping</i> es uno de los argumentos de las funciones de geometría y el objeto que hay que
+pasarle se genera con <code>aes()</code>. El mapping conecta elementos de los datos con información visual en
+el gráfico.
+</p>
+
+<p>
+Por ejemplo, para asignar variables a ejes, en <code>aes()</code> asignaremos una columna de nuestro daraframe
+a los argumentos <code>x</code> y (opcionalmente) <code>y</code>: <code>aes(x = height, y = mass)</code>. Así conectamos posición en
+el gráfico con columnas del dataframe.
+</p>
+
+<p>
+Podemos manipular otros aspectos estéticos del gráfico con <code>aes()</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot(starwars) + geom_point(aes(height, mass))
+# o, mapeando elementos estéticos a variables:
+ggplot(starwars) + geom_point(aes(height, mass, color=gender))
+# podemos bypasear el mapping y definir un color único para la capa entera.
+ggplot(starwars) + geom_point(aes(height, mass), color="blue")
+
+ggplot(starwars) + geom_point(aes(height, mass, size=gender))
+ggplot(starwars) + geom_point(aes(height, mass, shape=gender))
+ggplot(starwars) + geom_line(aes(height, mass, linetype=gender)) 
+ggplot(starwars) + geom_point(aes(height, mass, color=gender, shape=eye_color))
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgd832a71">
+<h3 id="orgd832a71">Jerarquías</h3>
+<p>
+Las funciones de geometría pueden llevar su propio mapping, o pueden heredar un mapping de la
+función <code>ggplot</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># las siguentes dos expresiones funcionan igual
+ggplot(starwars, aes(height, mass)) + geom_point()
+ggplot(starwars) + geom_point(aes(height, mass))
+</code></pre>
+</div>
+
+<p>
+Esto nos dá flexibilidad, porque podemos usar distintas variables en distintas capas:
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot(starwars) + 
+geom_point(aes(height, mass)) + 
+geom_smooth(aes(height, birth_year))
+</code></pre>
+</div>
+
+<p>
+Podemos inclusive combinar data.frames distintos (no olvidar poner 'data ='):
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot() + 
+geom_point(data = starwars, aes(height, mass), color = "red") + 
+geom_point(data = morley, aes(Run, Speed), color = "blue")
+</code></pre>
+</div>
+
+
+</section>
+<section id="slide-org80dc4ec">
+<h3 id="org80dc4ec">Texto</h3>
+<p>
+Podemos poner texto de diversas maneras, por ejemplo:
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot(starwars) + 
+    geom_point(aes(height, mass)) + 
+    labs(colour = "gender", title = "Guerra de las Galaxias", subtitle = "masa en función de altura para algunos personajes", x = "altura", y = "masa")
+
+ggplot(starwars) + 
+    geom_point(aes(height, mass)) + 
+    xlab("altura") + 
+    ylab("masa")
+</code></pre>
+</div>
+</section>
+<section id="slide-orga42844d">
+<h3 id="orga42844d">Ejes</h3>
+<p>
+Podemos manipular los ejes de diversas maneras, por ejemplo:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot(starwars) + 
+    geom_point(aes(height, mass)) + 
+    scale_x_log10() + 
+    scale_y_log10()
+
+ggplot(starwars) + 
+    geom_point(aes(height, mass)) + 
+    xlim(c(0, 200)) + 
+    ylim(c(0, 150))
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org242bd4d">
+<h3 id="org242bd4d">Podemos usar expresiones lógicas</h3>
+<p>
+Podemos mapear experesiones hechas con operadores lógicos a elementos estéticos. Los operadores
+lógicos generan una variable auxiliar categórica. 
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" ># color de acuerdo a si son más o menos cuarentones
+ggplot(starwars) + 
+    geom_point(aes(height, mass, color=birth_year > 40))
+# forma de acuerdo a si no nacieron en Tatooine
+ggplot(starwars) + 
+    geom_point(aes(height, mass, shape=homeworld != "Tatooine"))
+# tamaño de acuerdo al año de nacimiento
+ggplot(starwars) + 
+    geom_point(aes(height, mass,  size=birth_year))
+</code></pre>
+</div>
+</section>
+<section id="slide-orgd31ca2d">
+<h3 id="orgd31ca2d">Facets</h3>
+<p>
+Otra manera es dividir un gráfico en más de un gráfico de acuerdo a una variable. Debemos usar una
+<code>formula</code>, pero que por ahora podemos pensar como un tilde antes de una variable.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot(starwars) + 
+     geom_point(aes(height, mass)) + facet_grid(~gender)
+
+# pasados de peso para los distintos géneros
+ggplot(starwars) + 
+    geom_point(aes(height, mass, color = mass/(height/100)^2 > 25)) + facet_grid(~gender) + labs (color = "BMI overweight")
+</code></pre>
+</div>
+</section>
+<section id="slide-org0512d2b">
+<h3 id="org0512d2b">Otros tipos de gráficos</h3>
+<div class="org-src-container">
+
+<pre><code class="R" ># histogramas
+ggplot(starwars, aes(height)) + geom_histogram()
+ggplot(starwars. aes(height)) + geom_histogram(bins = 50)
+# densidades
+ggplot(starwars, aes(height)) + geom_density()
+ggplot(starwars, aes(height)) + geom_density(bw = 0.7)
+# boxplots (para cada valor que quedó en gender, sobre la variable mass)
+ggplot(starwars %>% filter(gender == "male" | gender == "female")) + geom_boxplot(aes(gender, mass))
+</code></pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
