@@ -66,8 +66,11 @@ lectures:
 #     - title: "Anova en R - Brenda"
 #       url: ../assets/Anova-en-R-2.pdf
 
-# - title: "Primer parcial"
-#   url: 01-midterm-exam.html
+- title: "Primer parcial"
+  url: 01-midterm-exam.html
+  subitems:
+    - title: "Script para empezar"
+      url: 01-midterm-exam.R
 
 # - title: "Clase 8 - if + for"
 #   url: 08-lecture.html
