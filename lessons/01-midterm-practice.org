@@ -52,8 +52,7 @@ title: Práctica para parcial
 
 # #+ATTR_REVEAL: :frag roll-in
 
-* Práctica para recuperatorio
-** Dataset nycflights13
+* Dataset nycflights13
 2. Instalar el paquete "nycflights13" y cargarlo en la sesión.
 3. El paquete contiene un objeto de datos llamados "flights". Ver el help de flights para ver de que se tratan.
 4. Calcular cuantos vuelos salen de NYC por dia. Hacerlo de dos maneras: una con summarise() + n() y

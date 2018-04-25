@@ -7,7 +7,7 @@ title: ggplot2 review
 # Repaso ggplot2
 
 
-## ggplot2: figuras combianando capas
+## ggplot2: figuras combinando capas
 
 ggplot2 asocia distintas funciones a *capas* que representan distintas partes de un gráfico. En su
 forma más sencilla tenemos dos funciones:
@@ -74,7 +74,7 @@ función `ggplot`.
     ggplot(starwars, aes(height, mass)) + geom_point()
     ggplot(starwars) + geom_point(aes(height, mass))
 
-Esto nos dá flexibilidad, porque podemos usar distintas variables en distintas capas:
+Esto nos da flexibilidad, porque podemos usar distintas variables en distintas capas:
 
     ggplot(starwars) + 
     geom_point(aes(height, mass)) + 

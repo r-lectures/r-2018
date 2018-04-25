@@ -4,10 +4,7 @@ title: Práctica para parcial
 --- 
 
 
-# Práctica para recuperatorio
-
-
-## Dataset nycflights13
+# Dataset nycflights13
 
 1.  Instalar el paquete "nycflights13" y cargarlo en la sesión.
 2.  El paquete contiene un objeto de datos llamados "flights". Ver el help de flights para ver de que se tratan.

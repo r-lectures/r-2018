@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Parcial 1
+title: Parcial 1 - 25/04/2018
 --- 
 
 
@@ -29,33 +29,32 @@ title: Parcial 1
 
 ## Problema
 
-1.  DATOS 
+1.  `DATOS`
     1.  Cargar los datos "economics" del paquete ggplot2 en la sesión (o verificar si ya se encuentran disponibles).
         Consejo: Lean la ayuda (?economics), como para tener una idea sobre que son los datos.
-    2.  Renombrar el dataframe a "e" &#x2014;sin comillas&#x2014; (o sea, asignar el objeto economics al objeto e).
-2.  PRIMER ANÁLISIS
-    1.  Qué clase de estructura de datos es? 
-        1.  Es un vector atómico?
-        2.  Contiene vectores atómicos? Cuáles?
-        3.  Cuántos atributos tiene y como se llaman?
-    2.  Cuántas filas y columnas tiene?
+    2.  Renombrar el dataframe a "`e`" &#x2014;sin comillas&#x2014; (o sea, asignar el objeto `economics` al objeto `e`).
+2.  `PRIMER ANÁLISIS`
+    1.  Qué estructura tienen los datos? (teníamos un comandito para eso).
+    2.  Cuántas filas y columnas tenemos?
     3.  Cómo son los tipos de datos de cada columna?
-3.  GRAFICAR (preferiblemente con ggplot2)
-    1.  Hacer un scatterplot de la variable de desempleo (`unemploy`) en función del tiempo (`date`).
-    2.  Colorear los puntos que tengan la variable `psavert` menor que el promedio de `psavert` a lo largo de
-        los años (es decir, el promedio de todos los elementos de la columna).
+    4.  `PhD` Para que variable es mayor la razón entre media y mediana? (No considerar la variable `date`)
+3.  `GRAFICAR` (con `ggplot2`)
+    1.  Hacer un *scatterplot* (i.e., gráfico con puntos) de la variable de desempleo (`unemploy`) en función del tiempo (`date`).
+    2.  Colorear los puntos del gráfico que tengan la variable `psavert` menor que el promedio total
+        de `psavert` a lo largo de los años (es decir, el promedio de todos los elementos de la
+        columna).
     3.  Ponerle texto explicativo a los ejes x e y.
     4.  `PhD`: mejorar la "leyenda" con un título y descripción de los dos colores.
-4.  PREGUNTAS
-    1.  De cuándo a cuándo van los datos temporales? (o sea, fecha mínima y fecha máxima).
-    2.  Aproximadamente cuantos "picos" se ven en el desempleo? (consejo: verlo gráficamente).
-    3.  Se encuentran "picos" de ese estilo en las otras variables (`pce`, `pop`, `psavert`, `uempmed`)? En
-        alguna variable coinciden (más o menos) los "picos"? Decir cuál (consejo: verlo gráficamente).
+4.  `PREGUNTAS`
+    1.  De cuándo a cuándo van los datos temporales? (o sea, obtenter fecha mínima y fecha máxima).
+    2.  Aproximadamente, cuantos "picos" se ven en el desempleo? Tip: hacerlo gráficamente.
+    3.  Se encuentran "picos" de ese estilo en alguna de las otras variables (`pce`, `pop`, `psavert`, `uempmed`)? En
+        alguna variable coinciden (más o menos) los "picos"? Decir cuál o cuales.
     4.  Separar la columna 'date' en tres columnas "d", "m" y "y".
     5.  Hacer una tabla con el desempleo medio por año (o sea, una columna "año" y otra de "desempleo
         medio" de ese año).
     6.  En qué años se registran el mayor y menor valor de desempleo?
-    7.  Usar los datos de 'presidential' &#x2014;ver data()&#x2014; para ver a que administración corresponden esos
+    7.  Usar los datos 'presidential' &#x2014;ver data()&#x2014; para ver a que administración corresponden esos
         dos extremos de desempleo encontrados.
     8.  `PhD`: Hacer una columna extra con desempleo per cápita (consejo, vean en la ayuda de
         economics donde está la variable de población). Cambian los años de mayor y menos desempleo
