@@ -67,7 +67,7 @@ lectures:
 #       url: ../assets/Anova-en-R-2.pdf
 
 - title: "Primer parcial"
-  url: 01-midterm-exam.html
+  url: 01-mid-term-exam.html
   subitems:
     - title: "Script para empezar"
       url: 01-midterm-exam.R
