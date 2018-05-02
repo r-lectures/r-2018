@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R lectures</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R lectures</h1><h3>02/05/2018</h3>
+</section>
+
+<section>
+<section id="slide-orgfdf61e4">
+<h2 id="orgfdf61e4">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgfdf61e4">
+</div>
+</section>
+<section id="slide-org6797792">
+<h3 id="org6797792">'Types': tipos de datos</h3>
+<ul>
+<li>'logical':    TRUE o FALSE</li>
+<li>'integer':    naturales: &#x2026;, -1, 0, 1, &#x2026;</li>
+<li>'double':    irracionales: 3.1415926</li>
+<li>'character':    alfanuméricos: "pi"</li>
+<li>'complex':    1+i10</li>
+<li>'raw':     48 65 6c 6c 6f</li>
+
+</ul>
+
+</section>
+<section id="slide-orga4df430">
+<h3 id="orga4df430">Objetos R: vectores</h3>
+<p>
+Existen dos clases de vectores:
+</p>
+<ol>
+<li><span class="underline">Vectores 'atómicos'</span> (<i>atomic vectors</i>), todos los elementos del mismo tipo
+<ul>
+<li>puede haber de los 6 tipos: 'logical', 'integer', 'double', 'character', 'complex' y 'raw'</li>
+<li>Integer y double son tratados como 'numeric'</li>
+<li>No hay escalares en R, si no vectores de longitud 1</li>
+
+</ul></li>
+
+<li><span class="underline">Listas</span>
+<ul>
+<li>Pueden a su vez contener listas (vectores recursivos)</li>
+<li>data.frames son caso especial cuando los vectores que la componen son de igual longitud</li>
+
+</ul></li>
+
+</ol>
+
+<p>
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
+</p>
+
+</section>
+<section id="slide-orgfcfd821">
+<h3 id="orgfcfd821">Propiedades de los vectores</h3>
+<p>
+Las propiedades más importantes de los vectores son:
+</p>
+
+<ol>
+<li>que <i>tipo</i> de vector es -typeof()-</li>
+<li>que <i>longitud</i> tiene -length()-</li>
+<li>cuales <i>atributos</i> tiene asociados.</li>
+
+</ol>
+
+<p>
+Los atributos son metadata arbitraria que se puede asociar a cualquier objeto R. Se determinan y
+consultan con <i>attr()</i> para alguno en particular y con <i>attributes()</i> se consultan todos los que el
+objeto tenga. Los tres atributos más importantes se obtienen con <i>names()</i>, <i>class()</i> y <i>dim()</i>. 
+</p>
+
+</section>
+<section id="slide-org46c542e">
+<h3 id="org46c542e">Listas</h3>
+<p>
+Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
+listas o funciones ¯\_(ツ)_/¯
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- list(1, 2, 1:100)
+x
+## [[1]]
+## [1] 1
+
+## [[2]]
+## [1] 2
+
+## [[3]]
+##  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100
+
+str(nasa)
+## List of 2
+##  $ mets:List of 7
+##   ..$ cloudhigh  : num [1:24, 1:24, 1:12, 1:6] 26 20 16 13 7.5 8 14.5 19.5 22.5 21 ...
+##   ..$ cloudlow   : num [1:24, 1:24, 1:12, 1:6] 7.5 11.5 16.5 20.5 26 30 29.5 26.5 27.5 26 ...
+##   ..$ cloudmid   : num [1:24, 1:24, 1:12, 1:6] 34.5 32.5 26 14.5 10.5 9.5 11 17.5 18.5 16.5 ...
+##   ..$ ozone      : num [1:24, 1:24, 1:12, 1:6] 304 304 298 276 274 264 258 252 250 250 ...
+##   ..$ pressure   : num [1:24, 1:24, 1:12, 1:6] 835 940 960 990 1000 1000 1000 1000 1000 1000 ...
+##   ..$ surftemp   : num [1:24, 1:24, 1:12, 1:6] 273 280 285 289 292 ...
+##   ..$ temperature: num [1:24, 1:24, 1:12, 1:6] 272 282 285 291 293 ...
+##  $ dims:List of 4
+##   ..$ lat  : num [1:24] 36.2 33.7 31.2 28.7 26.2 ...
+##   ..$ long : num [1:24] -114 -111 -109 -106 -104 ...
+##   ..$ month: int [1:12] 1 2 3 4 5 6 7 8 9 10 ...
+##   ..$ year : int [1:6] 1995 1996 1997 1998 1999 2000
+##  - attr(*, "class")= chr "tbl_cube"
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org94c4ad5">
+<h2 id="org94c4ad5">Vectores "aumentados"</h2>
+<ul>
+<li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
+<li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
+<li><span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores 'numeric'</li>
+
+</ul>
+
+</section>
+<section id="slide-org0d51f58">
+<h3 id="org0d51f58">Data frames</h3>
+<p>
+Un data frame es una lista de vectores de igual longitud. Su estructura es 2d, con lo cual tiene
+cosas en común con listas y con matrices. Se le pueden aplicar names(), colnames() y rownames(). La
+longitud del data frame (length()) es la longitud de la lista, por lo tanto igual a ncol().
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >df <- data.frame(x = 1:3, y = c("a", "b", "c"))
+str(df)
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgdeb83e1">
+<h3 id="orgdeb83e1">Factores</h3>
+<p>
+Los factores son vectores no-atómicos 'aumentados' usados para representar variables
+categóricas. Estos datos pueden tomar sus valores de un conjunto fijo de elementos. Internamente son
+representados por enteros, y tienen un atributo 'levels'.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- factor(c("ab", "cd", "ab"), levels = c("ab", "cd", "ef"))
+typeof(x)
+#> [1] "integer"
+attributes(x)
+#> $levels
+#> [1] "ab" "cd" "ef"
+#> 
+#> $class
+#> [1] "factor"
+</code></pre>
+</div>
+</section>
+<section id="slide-org92340b0">
+<h3 id="org92340b0">Dates y date-times</h3>
+<p>
+Lo dejamos para que algún voluntario lo cuente!
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7beccdd">
+<h2 id="org7beccdd"><i>Subsetting</i></h2>
+<p>
+'[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo el tipo x[a]. Hay distintas
+maneras de usarlo.
+</p>
+
+</section>
+<section id="slide-orgaab8e53">
+<h3 id="orgaab8e53">Usando vectores de enteros positivos o negativos</h3>
+<p>
+Un vector numerico con enteros, todos positivos, todos negativos, o cero.
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >x <- c("one", "two", "three", "four", "five")
+x[c(3, 2, 5)]
+#> [1] "three" "two"   "five"
+
+x[c(1, 1, 5, 5, 5, 2)]
+#> [1] "one"  "one"  "five" "five" "five" "two"
+
+x[c(-1, -3, -5)]
+#> [1] "two"  "four"
+
+# caso particular, el cero, devuelve un vector vacio
+x[0]
+## numeric(0)
+</code></pre>
+</div>
+</section>
+<section id="slide-orgaba7e59">
+<h3 id="orgaba7e59">Usando vectores de lógicos</h3>
+<p>
+<i>Subsetting</i> con un vector lógico devuelve los valores de correspondientes a TRUE. Como <i>filter</i>, se
+usa frecuentemente en conjunto con expresiones lógicas.
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >x <- c(10, 3, NA, 5, 8, 1, NA)
+
+# Todos los valores que no son NA de x
+x[!is.na(x)]
+#> [1] 10  3  5  8  1
+
+# Todos los valores pares (o NAs!) de x
+x[x %% 2 == 0]
+#> [1] 10 NA  8 NA
+</code></pre>
+</div>
+</section>
+<section id="slide-org4d58f7c">
+<h3 id="org4d58f7c">Usando vectores de caracteres para devolver elementos con los respectivos nombres</h3>
+<p>
+Si tenemos un vector con nombres, podemos hacer algo del tipo:
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >x <- c(abc = 1, def = 2, xyz = 5)
+x[c("xyz", "def")]
+#> xyz def 
+#>   5   2
+
+mtcars[, c("mpg", "disp")] 
+##                      mpg  disp
+## Mazda RX4           21.0 160.0
+## Mazda RX4 Wag       21.0 160.0
+## Datsun 710          22.8 108.0
+## ...
+</code></pre>
+</div>
+</section>
+<section id="slide-org80d5d0b">
+<h3 id="org80d5d0b">No usando nada</h3>
+<p>
+La manera más simples de hacer <i>subsetting</i> es no usando nada, x[], que devuelve el objeto
+original. Si es 2d, podemos dejar nada en una de las dimensiones, por ej. x[1, ] para obtener la
+primera fila (con todas sus columnas), o x[, -1] que selecciona todas las filas columnas menos la
+primera.
+</p>
+
+<p>
+Para el caso de data frames y matrices, al hacer subsetting es posible usar drop = FALSE para
+preservar las dimensiones del objeto original. 
+</p>
+
+</section>
+<section id="slide-org6d45703">
+<h3 id="org6d45703">Otros operadores de subsetting: '[[' y '$'</h3>
+<p>
+Para listas, necesitamos [[ para acceder al contenido de los elementos de la lista, porque aplicando
+[ a una lista siempre devuelve otra lista (más exactamente, una sub-lista). En cambio, [[ saca un
+nivel de la jerarquía de la lista y dependiendo de su estructura, puede devolver cualquier elemento
+de las lista.
+</p>
+
+<p>
+El operador $ es una abreviación para obtener elementos nombrados de una lista. Se usa parecido a [[
+solo que no hace falta usar comillas.
+</p>
+
+<p>
+Como los data frames son listas de columnas de igual longitud, podemos acceder a sus columnas usando
+mtcars[[1] ], mtcars[["cy"] ] o mtcars$cy. Estos dos últimos son equivalentes.
+</p>
+
+
+<aside class="notes">
+<p>
+Más sobre subsetting en los siguientes links:
+<a href="http://adv-r.had.co.nz/Subsetting.html">http://adv-r.had.co.nz/Subsetting.html</a>
+<a href="http://r4ds.had.co.nz/vectors.html#vector-subsetting">http://r4ds.had.co.nz/vectors.html#vector-subsetting</a>
+</p>
+
+</aside>
+</section>
+<section id="slide-org0588ab0">
+<h3 id="org0588ab0">diferencia entre [ y [[ para listas</h3>
+<img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/lists-subsetting.png">
+
+</section>
+</section>
+<section>
+<section id="slide-org48936ce">
+<h2 id="org48936ce">Práctica 7</h2>
+<ol>
+<li>Cuál es el resultado de hacer subsetting en un vector usando: i) enteros positivos ii) enteros
+negativos iii) vectores lógicos y iv) vectores de caracteres?</li>
+
+<li>Cuál es la diferencia entre [, [[, y $ cuando aplicados a una lista?</li>
+
+<li>Cuando hay que usar drop = FALSE?</li>
+
+<li>Si x es una matriz, qué hace x[] &lt;- 0? Cuál es la diferencia de hacer x &lt;- 0?</li>
+
+</ol>
+
+</section>
+<section id="slide-org38cdd2e">
+<h3 id="org38cdd2e">Práctica 7 bis</h3>
+<p>
+Cargar ggplot2, y sobre el data frame 'diamonds' seleccionar diamantes que:
+</p>
+
+<ol>
+<li>tienen x e y iguales</li>
+<li>tienen depth entre 55 y 70</li>
+<li>tienen carat menor que la media de carat</li>
+<li>cuestan más que $10000 por carat. De que calidad son? Pista: usar table()</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

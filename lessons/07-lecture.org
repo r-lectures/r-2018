@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 10/05/2017
+#+TITLE: R lectures
+#+DATE: 02/05/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -52,7 +52,7 @@ title: Clase 7
 
 # #+ATTR_REVEAL: :frag roll-in
 
-* Brenda habla de stats
+* COMMENT Brenda habla de stats
 * Repaso de la clase anterior
 ** 'Types': tipos de datos 
 - 'logical':    TRUE o FALSE

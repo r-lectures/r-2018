@@ -4,9 +4,6 @@ title: Clase 7
 --- 
 
 
-# Brenda habla de stats
-
-
 # Repaso de la clase anterior
 
 
