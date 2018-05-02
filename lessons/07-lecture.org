@@ -73,7 +73,7 @@ Existen dos clases de vectores:
    - Pueden a su vez contener listas (vectores recursivos)
    - data.frames son caso especial cuando los vectores que la componen son de igual longitud
 
-La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogéneos,
 o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
 
 ** Propiedades de los vectores

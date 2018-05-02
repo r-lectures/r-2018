@@ -274,7 +274,7 @@ arbitraria que se puede asociar a cualquier objeto R. Se determinan y consultan 
 alguno en particular y con /attributes()/ se consultan todos los que el objeto tenga.
 
 #+BEGIN_NOTES
-La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogéneos,
 o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
 
 Hay un objeto relacionado, 'NULL', que es la ausencia de un vector (en cambio, NA es la /ausencia/ de un valor de un
