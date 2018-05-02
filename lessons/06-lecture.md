@@ -79,7 +79,7 @@ Trabajamos sobre datos de ruido de Buenos Aires Data.
 # 'Types': tipos de datos
 
 -   'logical':    TRUE o FALSE
--   'integer':    naturales: &#x2026;, -1, 0, 1, &#x2026;
+-   'integer':    enteros: &#x2026;, -1, 0, 1, &#x2026;
 -   'double':    irracionales: 3.1415926
 -   'character':    alfanuméricos: "pi"
 -   'complex':    1+i10

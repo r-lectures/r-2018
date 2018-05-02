@@ -179,7 +179,7 @@ Trabajamos sobre datos de ruido de Buenos Aires Data.
    # #+END_SRC
 * 'Types': tipos de datos 
 - 'logical':    TRUE o FALSE
-- 'integer':    naturales: ..., -1, 0, 1, ...
+- 'integer':    enteros: ..., -1, 0, 1, ...
 - 'double':    irracionales: 3.1415926
 - 'character':    alfanuméricos: "pi"
 - 'complex':    1+i10

@@ -31,16 +31,16 @@
 </section>
 
 <section>
-<section id="slide-orgfdf61e4">
-<h2 id="orgfdf61e4">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgfdf61e4">
+<section id="slide-org797af5a">
+<h2 id="org797af5a">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org797af5a">
 </div>
 </section>
-<section id="slide-org6797792">
-<h3 id="org6797792">'Types': tipos de datos</h3>
+<section id="slide-orgdc6cb79">
+<h3 id="orgdc6cb79">'Types': tipos de datos</h3>
 <ul>
 <li>'logical':    TRUE o FALSE</li>
-<li>'integer':    naturales: &#x2026;, -1, 0, 1, &#x2026;</li>
+<li>'integer':    enteros: &#x2026;, -1, 0, 1, &#x2026;</li>
 <li>'double':    irracionales: 3.1415926</li>
 <li>'character':    alfanuméricos: "pi"</li>
 <li>'complex':    1+i10</li>
@@ -49,8 +49,8 @@
 </ul>
 
 </section>
-<section id="slide-orga4df430">
-<h3 id="orga4df430">Objetos R: vectores</h3>
+<section id="slide-orgb484f1e">
+<h3 id="orgb484f1e">Objetos R: vectores</h3>
 <p>
 Existen dos clases de vectores:
 </p>
@@ -78,8 +78,8 @@ o sea todos sus elementos son del mismo tipo, mientras que en las listas no es n
 </p>
 
 </section>
-<section id="slide-orgfcfd821">
-<h3 id="orgfcfd821">Propiedades de los vectores</h3>
+<section id="slide-org9483b50">
+<h3 id="org9483b50">Propiedades de los vectores</h3>
 <p>
 Las propiedades más importantes de los vectores son:
 </p>
@@ -98,8 +98,8 @@ objeto tenga. Los tres atributos más importantes se obtienen con <i>names()</i>
 </p>
 
 </section>
-<section id="slide-org46c542e">
-<h3 id="org46c542e">Listas</h3>
+<section id="slide-org0d7bda2">
+<h3 id="org0d7bda2">Listas</h3>
 <p>
 Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
 listas o funciones ¯\_(ツ)_/¯
@@ -145,8 +145,8 @@ str(nasa)
 </section>
 </section>
 <section>
-<section id="slide-org94c4ad5">
-<h2 id="org94c4ad5">Vectores "aumentados"</h2>
+<section id="slide-orgf72c52a">
+<h2 id="orgf72c52a">Vectores "aumentados"</h2>
 <ul>
 <li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
 <li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
@@ -155,8 +155,8 @@ str(nasa)
 </ul>
 
 </section>
-<section id="slide-org0d51f58">
-<h3 id="org0d51f58">Data frames</h3>
+<section id="slide-org300f3b1">
+<h3 id="org300f3b1">Data frames</h3>
 <p>
 Un data frame es una lista de vectores de igual longitud. Su estructura es 2d, con lo cual tiene
 cosas en común con listas y con matrices. Se le pueden aplicar names(), colnames() y rownames(). La
@@ -171,8 +171,8 @@ str(df)
 </div>
 
 </section>
-<section id="slide-orgdeb83e1">
-<h3 id="orgdeb83e1">Factores</h3>
+<section id="slide-org312c6f1">
+<h3 id="org312c6f1">Factores</h3>
 <p>
 Los factores son vectores no-atómicos 'aumentados' usados para representar variables
 categóricas. Estos datos pueden tomar sus valores de un conjunto fijo de elementos. Internamente son
@@ -193,8 +193,8 @@ attributes(x)
 </code></pre>
 </div>
 </section>
-<section id="slide-org92340b0">
-<h3 id="org92340b0">Dates y date-times</h3>
+<section id="slide-org3311ac8">
+<h3 id="org3311ac8">Dates y date-times</h3>
 <p>
 Lo dejamos para que algún voluntario lo cuente!
 </p>
@@ -202,16 +202,16 @@ Lo dejamos para que algún voluntario lo cuente!
 </section>
 </section>
 <section>
-<section id="slide-org7beccdd">
-<h2 id="org7beccdd"><i>Subsetting</i></h2>
+<section id="slide-org861c100">
+<h2 id="org861c100"><i>Subsetting</i></h2>
 <p>
 '[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo el tipo x[a]. Hay distintas
 maneras de usarlo.
 </p>
 
 </section>
-<section id="slide-orgaab8e53">
-<h3 id="orgaab8e53">Usando vectores de enteros positivos o negativos</h3>
+<section id="slide-orgac2b551">
+<h3 id="orgac2b551">Usando vectores de enteros positivos o negativos</h3>
 <p>
 Un vector numerico con enteros, todos positivos, todos negativos, o cero.
 </p>
@@ -233,8 +233,8 @@ x[0]
 </code></pre>
 </div>
 </section>
-<section id="slide-orgaba7e59">
-<h3 id="orgaba7e59">Usando vectores de lógicos</h3>
+<section id="slide-org23e8a4c">
+<h3 id="org23e8a4c">Usando vectores de lógicos</h3>
 <p>
 <i>Subsetting</i> con un vector lógico devuelve los valores de correspondientes a TRUE. Como <i>filter</i>, se
 usa frecuentemente en conjunto con expresiones lógicas.
@@ -253,8 +253,8 @@ x[x %% 2 == 0]
 </code></pre>
 </div>
 </section>
-<section id="slide-org4d58f7c">
-<h3 id="org4d58f7c">Usando vectores de caracteres para devolver elementos con los respectivos nombres</h3>
+<section id="slide-orgee86dc5">
+<h3 id="orgee86dc5">Usando vectores de caracteres para devolver elementos con los respectivos nombres</h3>
 <p>
 Si tenemos un vector con nombres, podemos hacer algo del tipo:
 </p>
@@ -274,8 +274,8 @@ mtcars[, c("mpg", "disp")]
 </code></pre>
 </div>
 </section>
-<section id="slide-org80d5d0b">
-<h3 id="org80d5d0b">No usando nada</h3>
+<section id="slide-orgcd5bad2">
+<h3 id="orgcd5bad2">No usando nada</h3>
 <p>
 La manera más simples de hacer <i>subsetting</i> es no usando nada, x[], que devuelve el objeto
 original. Si es 2d, podemos dejar nada en una de las dimensiones, por ej. x[1, ] para obtener la
@@ -289,8 +289,8 @@ preservar las dimensiones del objeto original.
 </p>
 
 </section>
-<section id="slide-org6d45703">
-<h3 id="org6d45703">Otros operadores de subsetting: '[[' y '$'</h3>
+<section id="slide-org2ea6edf">
+<h3 id="org2ea6edf">Otros operadores de subsetting: '[[' y '$'</h3>
 <p>
 Para listas, necesitamos [[ para acceder al contenido de los elementos de la lista, porque aplicando
 [ a una lista siempre devuelve otra lista (más exactamente, una sub-lista). En cambio, [[ saca un
@@ -318,15 +318,15 @@ Más sobre subsetting en los siguientes links:
 
 </aside>
 </section>
-<section id="slide-org0588ab0">
-<h3 id="org0588ab0">diferencia entre [ y [[ para listas</h3>
+<section id="slide-orgeb5770f">
+<h3 id="orgeb5770f">diferencia entre [ y [[ para listas</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/lists-subsetting.png">
 
 </section>
 </section>
 <section>
-<section id="slide-org48936ce">
-<h2 id="org48936ce">Práctica 7</h2>
+<section id="slide-orgb29d573">
+<h2 id="orgb29d573">Práctica 7</h2>
 <ol>
 <li>Cuál es el resultado de hacer subsetting en un vector usando: i) enteros positivos ii) enteros
 negativos iii) vectores lógicos y iv) vectores de caracteres?</li>
@@ -340,8 +340,8 @@ negativos iii) vectores lógicos y iv) vectores de caracteres?</li>
 </ol>
 
 </section>
-<section id="slide-org38cdd2e">
-<h3 id="org38cdd2e">Práctica 7 bis</h3>
+<section id="slide-org2c3db9e">
+<h3 id="org2c3db9e">Práctica 7 bis</h3>
 <p>
 Cargar ggplot2, y sobre el data frame 'diamonds' seleccionar diamantes que:
 </p>
