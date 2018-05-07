@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 23/05/2017
+#+TITLE: R lectures
+#+DATE: 07/05/2017
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -66,32 +66,51 @@ maneras de usarlo:
 4. No usando nada
 
 Otros operadores de subsetting: '[[' y '$'
-* Operadores lógicos
+** Indexado de listas: '[[' vs. '['
+  #+BEGIN_EXPORT html
+  <img style="border:0" src="./figs/pepper.png">
+  #+END_EXPORT
+crédito - Hadley Wickham: http://t.co/YQ6axb2w7t
+* R notebooks en RStudio 
+En RStudio se pueden crear [[https://rmarkdown.rstudio.com/r_notebooks.html][cuadernos]] o /notebooks/, una mezcla de texto, código y figuras. Pueden
+crear uno con la siguiente combinación:
+
+=Menú -> File -> New File -> R Notebook=
+
+Los cuadernos se escriben en [[http://rmarkdown.rstudio.com][Markdown]], un lenguaje sencillo formateable,
+y además se pueden exportar a distintos formatos: html, pdf, latex, word, etc.  Pueden ver este [[https://www.rstudio.com/resources/webinars/introducing-notebooks-with-r-markdown/][demo]].
+
+El código se pone en los llamados /chunks/. Estos se pueden ejecutar y se puede mostrar el
+resultado (todo esto es configurable), por ejemplo figuras. Los cuadernos aceptan /chunks/ de otros
+lenguajes aparte de R (bash, python, SQL, etc.).
+* Control de Flujo
+** Operadores lógicos
 Son operadores que permiten comparar dos enunciados y evaluan a un resultado lógico
 
-- >, >= 
-- <, <=
-- !=, == 
+        - ~>~ , ~>=~
+        - ~<~ , ~<=~
+        - ~!=~ , ~==~ 
 
-+ los operadores && (AND) y || (OR) para elaborar enunciados más complejos
+Más los operadores && (AND) y || (OR) para elaborar enunciados más complejos
+
 
 #+BEGIN_SRC R 
 10 == 10
-# [1] TRUE
+[1] TRUE
 
 x <- 10
 x == 10
-# [1] TRUE
+[1] TRUE
 
 y <- NA
 is.na(y)
-# [1] TRUE
+[1] TRUE
 
 ## podemos combinar expresiones condicionales con || y && 
 is.na(y) && x==10
 [1] TRUE
 #+END_SRC
-* Ejecución condicional
+** Ejecución condicional
 
 #+BEGIN_SRC R 
 if (condición) {
@@ -111,7 +130,7 @@ if (this) {
 }
 #+END_SRC
 
-** Ejemplo
+*** Ejemplo
 
 #+BEGIN_SRC R 
 pretty_length <- function(x) {
@@ -124,37 +143,46 @@ if(is.null(x))
 
 y <- NULL
 pretty_length(y)
-# [1] "el vector tiene cero elementos"
+[1] "el vector tiene cero elementos"
 
 x <- rep("relleno", 5)
 pretty_length(x)
-# [1] "el vector tiene longitud 5"
+[1] "el vector tiene longitud 5"
 #+END_SRC
 
-** funciones lógicas accesorias
-- any()
-- all()
-- is.na(), is.null() y el resto de la familia is.algo()
-- %in% 
-- identical()
-- muchas otras
+*** Funciones lógicas accesorias
+
+        - ~any()~         # devuelve ~TRUE~ si alguno ~TRUE~
+        - ~all()~         # devuelve ~FALSE~ si alguno ~FALSE~
+        - ~is.na()~, ~is.null()~ y el resto de la familia ~is./algo/()~
+        - ~%in%~          # está ~x~ en este vector?`
+        - ~which()~       # devuelve posiciones de elementos ~TRUE~
+        - ~identical()~   # por ej., numeric vs. integer
+        - muchas otras
+        
+
 
 #+BEGIN_SRC R 
 "relleno" %in% x 
-# [1] TRUE
+[1] TRUE
+
+which( 5 > c(3, 4, 5, 6))
+[1] 1 2
 
 identical(0L, 0)
-# [1] FALSE
+[1] FALSE
 #+END_SRC
-* loops
+
+** Loops
 Loops son bucles y se usan para repetir código.
 
 #+BEGIN_SRC R 
-for (secuencia){
-# código que se repite
+for (variable dentro de /secuencia/){
+# - código que se repite tantas veces como el largo de la secuencia
+# - la variable va cambiando en cada pasada
 }
 #+END_SRC
-** Ejemplo
+*** Ejemplo
 
 #+BEGIN_SRC R 
 df <- tibble(
@@ -171,33 +199,36 @@ for (i in seq_along(df)) {            # seq_along(df) es parecida a 1:length(df)
 output
 # [1] -0.2458 -0.2873 -0.0567  0.1443
 #+END_SRC
-** Componentes de un for
-1. Output: siempre es buena idea crear el objeto antes de calcularlo
-2. Secuencia: variable sobre la que funciona el bucle
+*** Componentes de un for
+- _Output_: siempre es buena idea crear el objeto antes de calcularlo
+- _Secuencia_: variable sobre la que funciona el bucle
 #+BEGIN_SRC R 
   for (x in xs)
   for(i in seq_along(df))
   for (nm in names(xs))
 #+END_SRC
-3. Cuerpo: código que se ejecuta las veces que la secuencia indique
+- _Cuerpo_: código que se ejecuta las veces que la secuencia indique
 
-** Con secuencia condicional
+*** Con secuencia condicional
+
+Útil en el caso en donde no hay un número fijo de 'vueltas'.
+
 #+BEGIN_SRC R 
-while (condition) {
-  # body
+while (condición) {
+  # cuerpo
 }
 #+END_SRC
 
-** Vectorización!
+*** COMMENT Vectorización!
 
-Para otra clase
+Próxima clase
 
 * Práctica 8
 1. Cuál es la diferencia entre ~if~ y ~ifelse~? Ver manual, mostrar ejemplos.
 2. Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
-   hora del día usando lubridate::now() y lubridate::dhours().
+   hora del día usando ~lubridate::now()~ y ~lubridate::dhours()~.
 4. Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).
-5. Qué pasa si usamos (nm in names(x)) y x no tiene nombres? Qué pasa si solo algunos tienen nombre
+5. Qué pasa si usamos (~nm in names(x)~) y ~x~ no tiene nombres? Qué pasa si solo algunos tienen nombre
    o hay nombres repetidos? Hacer tests.
 6. Crear un vector tal que sus elementos indiquen, para cada columna de un dataframe cualquiera, si
    son una columna de factor o no.

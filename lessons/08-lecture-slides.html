@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R lectures</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R lectures</h1><h3>07/05/2017</h3>
+</section>
+
+<section>
+<section id="slide-orgc152814">
+<h2 id="orgc152814">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgc152814">
+</div>
+</section>
+<section id="slide-org18600ee">
+<h3 id="org18600ee">Vectores "aumentados"</h3>
+<ul>
+<li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
+<li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
+<li><span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores 'numeric'</li>
+
+</ul>
+</section>
+<section id="slide-org2198294">
+<h3 id="org2198294"><i>Subsetting</i></h3>
+<p>
+'[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo del tipo x[a]. Hay distintas
+maneras de usarlo:
+</p>
+<ol>
+<li>Usando vectores de enteros positivos o negativos</li>
+<li>Usando vectores de lógicos</li>
+<li>Usando vectores de caracteres para devolver elementos con los respectivos nombres</li>
+<li>No usando nada</li>
+
+</ol>
+
+<p>
+Otros operadores de subsetting: '[[' y '$'
+</p>
+</section>
+<section id="slide-org0ff82f3">
+<h3 id="org0ff82f3">Indexado de listas: '[[' vs. '['</h3>
+<img style="border:0" src="./figs/pepper.png">
+<p>
+crédito - Hadley Wickham: <a href="http://t.co/YQ6axb2w7t">http://t.co/YQ6axb2w7t</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org4ca99b8">
+<h2 id="org4ca99b8">R notebooks en RStudio</h2>
+<p>
+En RStudio se pueden crear <a href="https://rmarkdown.rstudio.com/r_notebooks.html">cuadernos</a> o <i>notebooks</i>, una mezcla de texto, código y figuras. Pueden
+crear uno con la siguiente combinación:
+</p>
+
+<p>
+<code>Menú -&gt; File -&gt; New File -&gt; R Notebook</code>
+</p>
+
+<p>
+Los cuadernos se escriben en <a href="http://rmarkdown.rstudio.com">Markdown</a>, un lenguaje sencillo formateable,
+y además se pueden exportar a distintos formatos: html, pdf, latex, word, etc.  Pueden ver este <a href="https://www.rstudio.com/resources/webinars/introducing-notebooks-with-r-markdown/">demo</a>.
+</p>
+
+<p>
+El código se pone en los llamados <i>chunks</i>. Estos se pueden ejecutar y se puede mostrar el
+resultado (todo esto es configurable), por ejemplo figuras. Los cuadernos aceptan <i>chunks</i> de otros
+lenguajes aparte de R (bash, python, SQL, etc.).
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgc1d0c5a">
+<h2 id="orgc1d0c5a">Control de Flujo</h2>
+<div class="outline-text-2" id="text-orgc1d0c5a">
+</div>
+</section>
+<section id="slide-orgaa4a469">
+<h3 id="orgaa4a469">Operadores lógicos</h3>
+<p>
+Son operadores que permiten comparar dos enunciados y evaluan a un resultado lógico
+</p>
+
+<ul>
+<li><code>&gt;</code> , <code>&gt;=</code></li>
+<li><code>&lt;</code> , <code>&lt;=</code></li>
+<li><code>!=</code> , <code>==</code></li>
+
+</ul>
+
+<p>
+Más los operadores &amp;&amp; (AND) y || (OR) para elaborar enunciados más complejos
+</p>
+
+
+<div class="org-src-container">
+
+<pre><code class="R" >10 == 10
+[1] TRUE
+
+x <- 10
+x == 10
+[1] TRUE
+
+y <- NA
+is.na(y)
+[1] TRUE
+
+## podemos combinar expresiones condicionales con || y && 
+is.na(y) && x==10
+[1] TRUE
+</code></pre>
+</div>
+</section>
+<section id="slide-org7e089dc">
+<h3 id="org7e089dc">Ejecución condicional</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >if (condición) {
+  # código que se ejecuta cuando la condición evalua a TRUE
+} else {
+  # código que se ejecuta cuando la condición evalua a FALSE
+}
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org62fcea5">
+<h4 id="org62fcea5">Ejemplo</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >pretty_length <- function(x) {
+l <- length(x)
+if(is.null(x)) 
+   print("el vector tiene cero elementos")
+   else 
+   print(paste("el vector tiene longitud", l, sep = " "))
+}
+
+y <- NULL
+pretty_length(y)
+[1] "el vector tiene cero elementos"
+
+x <- rep("relleno", 5)
+pretty_length(x)
+[1] "el vector tiene longitud 5"
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgc0ac966">
+<h4 id="orgc0ac966">Funciones lógicas accesorias</h4>
+<ul>
+<li><code>any()</code>         # devuelve <code>TRUE</code> si alguno <code>TRUE</code></li>
+<li><code>all()</code>         # devuelve <code>FALSE</code> si alguno <code>FALSE</code></li>
+<li><code>is.na()</code>, <code>is.null()</code> y el resto de la familia <code>is./algo/()</code></li>
+<li><code>%in%</code>          # está <code>x</code> en este vector?`</li>
+<li><code>which()</code>       # devuelve posiciones de elementos <code>TRUE</code></li>
+<li><code>identical()</code>   # por ej., numeric vs. integer</li>
+<li>muchas otras</li>
+
+</ul>
+
+
+
+<div class="org-src-container">
+
+<pre><code class="R" >"relleno" %in% x 
+[1] TRUE
+
+which( 5 > c(3, 4, 5, 6))
+[1] 1 2
+
+identical(0L, 0)
+[1] FALSE
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org2bad8ac">
+<h3 id="org2bad8ac">Loops</h3>
+<p>
+Loops son bucles y se usan para repetir código.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >for (variable dentro de /secuencia/){
+# - código que se repite tantas veces como el largo de la secuencia
+# - la variable va cambiando en cada pasada
+}
+</code></pre>
+</div>
+</section>
+<section id="slide-org09a1a59">
+<h4 id="org09a1a59">Ejemplo</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >df <- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+
+output <- vector("double", ncol(df))  
+for (i in seq_along(df)) {            # seq_along(df) es parecida a 1:length(df)
+  output[[i]] <- median(df[[i]])      
+}
+output
+# [1] -0.2458 -0.2873 -0.0567  0.1443
+</code></pre>
+</div>
+</section>
+<section id="slide-org05820ac">
+<h4 id="org05820ac">Componentes de un for</h4>
+<ul>
+<li><span class="underline">Output</span>: siempre es buena idea crear el objeto antes de calcularlo</li>
+<li><span class="underline">Secuencia</span>: variable sobre la que funciona el bucle</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="R" >for (x in xs)
+for(i in seq_along(df))
+for (nm in names(xs))
+</code></pre>
+</div>
+<ul>
+<li><span class="underline">Cuerpo</span>: código que se ejecuta las veces que la secuencia indique</li>
+
+</ul>
+
+</section>
+<section id="slide-orgd364fe4">
+<h4 id="orgd364fe4">Con secuencia condicional</h4>
+<p>
+Útil en el caso en donde no hay un número fijo de 'vueltas'.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >while (condición) {
+  # cuerpo
+}
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf99cb89">
+<h2 id="orgf99cb89">Práctica 8</h2>
+<ol>
+<li>Cuál es la diferencia entre <code>if</code> y <code>ifelse</code>? Ver manual, mostrar ejemplos.</li>
+<li>Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
+hora del día usando <code>lubridate::now()</code> y <code>lubridate::dhours()</code>.</li>
+<li>Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).</li>
+<li>Qué pasa si usamos (<code>nm in names(x)</code>) y <code>x</code> no tiene nombres? Qué pasa si solo algunos tienen nombre
+o hay nombres repetidos? Hacer tests.</li>
+<li>Crear un vector tal que sus elementos indiquen, para cada columna de un dataframe cualquiera, si
+son una columna de factor o no.</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

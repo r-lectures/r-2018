@@ -27,33 +27,58 @@ maneras de usarlo:
 Otros operadores de subsetting: '[[' y '$'
 
 
-# Operadores lógicos
+## Indexado de listas: '[[' vs. '['
+
+<img style="border:0" src="./figs/pepper.png">
+
+crédito - Hadley Wickham: <http://t.co/YQ6axb2w7t>
+
+
+# R notebooks en RStudio
+
+En RStudio se pueden crear [cuadernos](https://rmarkdown.rstudio.com/r_notebooks.html) o *notebooks*, una mezcla de texto, código y figuras. Pueden
+crear uno con la siguiente combinación:
+
+`Menú -> File -> New File -> R Notebook`
+
+Los cuadernos se escriben en [Markdown](http://rmarkdown.rstudio.com), un lenguaje sencillo formateable,
+y además se pueden exportar a distintos formatos: html, pdf, latex, word, etc.  Pueden ver este [demo](https://www.rstudio.com/resources/webinars/introducing-notebooks-with-r-markdown/).
+
+El código se pone en los llamados *chunks*. Estos se pueden ejecutar y se puede mostrar el
+resultado (todo esto es configurable), por ejemplo figuras. Los cuadernos aceptan *chunks* de otros
+lenguajes aparte de R (bash, python, SQL, etc.).
+
+
+# Control de Flujo
+
+
+## Operadores lógicos
 
 Son operadores que permiten comparar dos enunciados y evaluan a un resultado lógico
 
--   >, >=
--   <, <=
--   !=, ==
+-   `>` , `>=`
+-   `<` , `<=`
+-   `!=` , `==`
 
--   los operadores && (AND) y || (OR) para elaborar enunciados más complejos
+Más los operadores && (AND) y || (OR) para elaborar enunciados más complejos
 
     10 == 10
-    # [1] TRUE
+    [1] TRUE
     
     x <- 10
     x == 10
-    # [1] TRUE
+    [1] TRUE
     
     y <- NA
     is.na(y)
-    # [1] TRUE
+    [1] TRUE
     
     ## podemos combinar expresiones condicionales con || y && 
     is.na(y) && x==10
     [1] TRUE
 
 
-# Ejecución condicional
+## Ejecución condicional
 
     if (condición) {
       # código que se ejecuta cuando la condición evalua a TRUE
@@ -70,7 +95,7 @@ Son operadores que permiten comparar dos enunciados y evaluan a un resultado ló
     }
 
 
-## Ejemplo
+### Ejemplo
 
     pretty_length <- function(x) {
     l <- length(x)
@@ -82,39 +107,44 @@ Son operadores que permiten comparar dos enunciados y evaluan a un resultado ló
     
     y <- NULL
     pretty_length(y)
-    # [1] "el vector tiene cero elementos"
+    [1] "el vector tiene cero elementos"
     
     x <- rep("relleno", 5)
     pretty_length(x)
-    # [1] "el vector tiene longitud 5"
+    [1] "el vector tiene longitud 5"
 
 
-## funciones lógicas accesorias
+### Funciones lógicas accesorias
 
--   any()
--   all()
--   is.na(), is.null() y el resto de la familia is.algo()
--   %in%
--   identical()
+-   `any()`         # devuelve `TRUE` si alguno `TRUE`
+-   `all()`         # devuelve `FALSE` si alguno `FALSE`
+-   `is.na()`, `is.null()` y el resto de la familia `is./algo/()`
+-   `%in%`          # está `x` en este vector?\`
+-   `which()`       # devuelve posiciones de elementos `TRUE`
+-   `identical()`   # por ej., numeric vs. integer
 -   muchas otras
 
     "relleno" %in% x 
-    # [1] TRUE
+    [1] TRUE
+    
+    which( 5 > c(3, 4, 5, 6))
+    [1] 1 2
     
     identical(0L, 0)
-    # [1] FALSE
+    [1] FALSE
 
 
-# loops
+## Loops
 
 Loops son bucles y se usan para repetir código.
 
-    for (secuencia){
-    # código que se repite
+    for (variable dentro de /secuencia/){
+    # - código que se repite tantas veces como el largo de la secuencia
+    # - la variable va cambiando en cada pasada
     }
 
 
-## Ejemplo
+### Ejemplo
 
     df <- tibble(
       a = rnorm(10),
@@ -131,37 +161,34 @@ Loops son bucles y se usan para repetir código.
     # [1] -0.2458 -0.2873 -0.0567  0.1443
 
 
-## Componentes de un for
+### Componentes de un for
 
-1.  Output: siempre es buena idea crear el objeto antes de calcularlo
-2.  Secuencia: variable sobre la que funciona el bucle
+-   <span class="underline">Output</span>: siempre es buena idea crear el objeto antes de calcularlo
+-   <span class="underline">Secuencia</span>: variable sobre la que funciona el bucle
 
     for (x in xs)
     for(i in seq_along(df))
     for (nm in names(xs))
 
-1.  Cuerpo: código que se ejecuta las veces que la secuencia indique
+-   <span class="underline">Cuerpo</span>: código que se ejecuta las veces que la secuencia indique
 
 
-## Con secuencia condicional
+### Con secuencia condicional
 
-    while (condition) {
-      # body
+Útil en el caso en donde no hay un número fijo de 'vueltas'.
+
+    while (condición) {
+      # cuerpo
     }
-
-
-## Vectorización!
-
-Para otra clase
 
 
 # Práctica 8
 
 1.  Cuál es la diferencia entre `if` y `ifelse`? Ver manual, mostrar ejemplos.
 2.  Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
-    hora del día usando lubridate::now() y lubridate::dhours().
+    hora del día usando `lubridate::now()` y `lubridate::dhours()`.
 3.  Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).
-4.  Qué pasa si usamos (nm in names(x)) y x no tiene nombres? Qué pasa si solo algunos tienen nombre
+4.  Qué pasa si usamos (`nm in names(x)`) y `x` no tiene nombres? Qué pasa si solo algunos tienen nombre
     o hay nombres repetidos? Hacer tests.
 5.  Crear un vector tal que sus elementos indiquen, para cada columna de un dataframe cualquiera, si
     son una columna de factor o no.
