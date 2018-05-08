@@ -186,7 +186,7 @@ Loops son bucles y se usan para repetir código.
 
 1.  Cuál es la diferencia entre `if` y `ifelse`? Ver manual, mostrar ejemplos.
 2.  Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
-    hora del día usando `lubridate::now()` y `lubridate::dhours()`.
+    hora del día usando `lubridate::now()` y `lubridate::hour()`.
 3.  Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).
 4.  Qué pasa si usamos (`nm in names(x)`) y `x` no tiene nombres? Qué pasa si solo algunos tienen nombre
     o hay nombres repetidos? Hacer tests.

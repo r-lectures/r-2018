@@ -159,8 +159,6 @@ pretty_length(x)
         - ~which()~       # devuelve posiciones de elementos ~TRUE~
         - ~identical()~   # por ej., numeric vs. integer
         - muchas otras
-        
-
 
 #+BEGIN_SRC R 
 "relleno" %in% x 
@@ -226,7 +224,7 @@ Próxima clase
 * Práctica 8
 1. Cuál es la diferencia entre ~if~ y ~ifelse~? Ver manual, mostrar ejemplos.
 2. Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
-   hora del día usando ~lubridate::now()~ y ~lubridate::dhours()~.
+   hora del día usando ~lubridate::now()~ y ~lubridate::hour()~.
 4. Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).
 5. Qué pasa si usamos (~nm in names(x)~) y ~x~ no tiene nombres? Qué pasa si solo algunos tienen nombre
    o hay nombres repetidos? Hacer tests.
