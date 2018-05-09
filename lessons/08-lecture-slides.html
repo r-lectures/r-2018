@@ -31,13 +31,13 @@
 </section>
 
 <section>
-<section id="slide-org7e16378">
-<h2 id="org7e16378">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org7e16378">
+<section id="slide-org54ce83d">
+<h2 id="org54ce83d">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org54ce83d">
 </div>
 </section>
-<section id="slide-org057117c">
-<h3 id="org057117c">Vectores "aumentados"</h3>
+<section id="slide-orgc91bf40">
+<h3 id="orgc91bf40">Vectores "aumentados"</h3>
 <ul>
 <li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
 <li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
@@ -45,8 +45,8 @@
 
 </ul>
 </section>
-<section id="slide-org4df639e">
-<h3 id="org4df639e"><i>Subsetting</i></h3>
+<section id="slide-orgfdd3f04">
+<h3 id="orgfdd3f04"><i>Subsetting</i></h3>
 <p>
 '[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo del tipo x[a]. Hay distintas
 maneras de usarlo:
@@ -63,8 +63,8 @@ maneras de usarlo:
 Otros operadores de subsetting: '[[' y '$'
 </p>
 </section>
-<section id="slide-orgfc0d035">
-<h3 id="orgfc0d035">Indexado de listas: '[[' vs. '['</h3>
+<section id="slide-org44b1c1a">
+<h3 id="org44b1c1a">Indexado de listas: '[[' vs. '['</h3>
 <img style="border:0" src="./figs/pepper.png">
 <p>
 crédito - Hadley Wickham: <a href="http://t.co/YQ6axb2w7t">http://t.co/YQ6axb2w7t</a>
@@ -72,8 +72,8 @@ crédito - Hadley Wickham: <a href="http://t.co/YQ6axb2w7t">http://t.co/YQ6axb2w
 </section>
 </section>
 <section>
-<section id="slide-org463b6f2">
-<h2 id="org463b6f2">R notebooks en RStudio</h2>
+<section id="slide-orga9faa92">
+<h2 id="orga9faa92">R notebooks en RStudio</h2>
 <p>
 En RStudio se pueden crear <a href="https://rmarkdown.rstudio.com/r_notebooks.html">cuadernos</a> o <i>notebooks</i>, una mezcla de texto, código y figuras. Pueden
 crear uno con la siguiente combinación:
@@ -96,13 +96,13 @@ lenguajes aparte de R (bash, python, SQL, etc.).
 </section>
 </section>
 <section>
-<section id="slide-org73b9cb0">
-<h2 id="org73b9cb0">Control de Flujo</h2>
-<div class="outline-text-2" id="text-org73b9cb0">
+<section id="slide-orgc92c82b">
+<h2 id="orgc92c82b">Control de Flujo</h2>
+<div class="outline-text-2" id="text-orgc92c82b">
 </div>
 </section>
-<section id="slide-org38e18a5">
-<h3 id="org38e18a5">Operadores lógicos</h3>
+<section id="slide-orga8aa6ab">
+<h3 id="orga8aa6ab">Operadores lógicos</h3>
 <p>
 Son operadores que permiten comparar dos enunciados y evaluan a un resultado lógico
 </p>
@@ -138,8 +138,8 @@ is.na(y) && x==10
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb971681">
-<h3 id="orgb971681">Ejecución condicional</h3>
+<section id="slide-org49dd4a8">
+<h3 id="org49dd4a8">Ejecución condicional</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >if (condición) {
@@ -163,8 +163,8 @@ is.na(y) && x==10
 </div>
 
 </section>
-<section id="slide-org8a1bd16">
-<h4 id="org8a1bd16">Ejemplo</h4>
+<section id="slide-org275516f">
+<h4 id="org275516f">Ejemplo</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >pretty_length <- function(x) {
@@ -186,8 +186,8 @@ pretty_length(x)
 </div>
 
 </section>
-<section id="slide-orgf4979a3">
-<h4 id="orgf4979a3">Funciones lógicas accesorias</h4>
+<section id="slide-orgeae9dc9">
+<h4 id="orgeae9dc9">Funciones lógicas accesorias</h4>
 <ul>
 <li><code>any()</code>         # devuelve <code>TRUE</code> si alguno <code>TRUE</code></li>
 <li><code>all()</code>         # devuelve <code>FALSE</code> si alguno <code>FALSE</code></li>
@@ -213,8 +213,8 @@ identical(0L, 0)
 </div>
 
 </section>
-<section id="slide-org108cfc2">
-<h3 id="org108cfc2">Loops</h3>
+<section id="slide-org7279a73">
+<h3 id="org7279a73">Loops</h3>
 <p>
 Loops son bucles y se usan para repetir código.
 </p>
@@ -228,8 +228,8 @@ Loops son bucles y se usan para repetir código.
 </code></pre>
 </div>
 </section>
-<section id="slide-org621be91">
-<h4 id="org621be91">Ejemplo</h4>
+<section id="slide-org3055964">
+<h4 id="org3055964">Ejemplo</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >df <- tibble(
@@ -248,8 +248,8 @@ output
 </code></pre>
 </div>
 </section>
-<section id="slide-org40c1db2">
-<h4 id="org40c1db2">Componentes de un for</h4>
+<section id="slide-org5f33f6c">
+<h4 id="org5f33f6c">Componentes de un for</h4>
 <ul>
 <li><span class="underline">Output</span>: siempre es buena idea crear el objeto antes de calcularlo</li>
 <li><span class="underline">Secuencia</span>: variable sobre la que funciona el bucle</li>
@@ -268,8 +268,8 @@ for (nm in names(xs))
 </ul>
 
 </section>
-<section id="slide-orgf0e7821">
-<h4 id="orgf0e7821">Con secuencia condicional</h4>
+<section id="slide-org7c86dfa">
+<h4 id="org7c86dfa">Con secuencia condicional</h4>
 <p>
 Útil en el caso en donde no hay un número fijo de 'vueltas'.
 </p>
@@ -285,15 +285,15 @@ for (nm in names(xs))
 </section>
 </section>
 <section>
-<section id="slide-org381b3e5">
-<h2 id="org381b3e5">Práctica 8</h2>
+<section id="slide-org97148c2">
+<h2 id="org97148c2">Práctica 8</h2>
 <ol>
 <li>Cuál es la diferencia entre <code>if</code> y <code>ifelse</code>? Ver manual, mostrar ejemplos.</li>
 <li>Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
 hora del día usando <code>lubridate::now()</code> y <code>lubridate::hour()</code>.</li>
 <li>Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).</li>
-<li>Qué pasa si usamos (<code>nm in names(x)</code>) y <code>x</code> no tiene nombres? Qué pasa si solo algunos tienen nombre
-o hay nombres repetidos? Hacer tests.</li>
+<li>Qué pasa si usamos (<code>nm in names(x)</code>) y <code>x</code> no tiene nombres? Qué pasa con el subsetting si solo
+algunos elementos tienen nombre, o hay nombres repetidos? Hacer tests.</li>
 <li>Crear un vector tal que sus elementos indiquen, para cada columna de un dataframe cualquiera, si
 son una columna de factor o no.</li>
 

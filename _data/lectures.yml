@@ -79,12 +79,12 @@ lectures:
     - title: "Clase 8 - versión texto"
       url: 08-lecture.html
 
-# - title: "Clase 9 - Vectorization y familia *apply() "
-#   url: 09-lecture.html
+- title: "Clase 9 - Vectorization y familia *apply() "
+  url: 09-lecture-slides.html
 
-#   subitems:
-#     - title: "Slides clase 9"
-#       url: slides/09-lecture-slides.html
+  subitems:
+    - title: "Clase 9 - versión texto"
+      url: 09-lecture.html
 
 # - title: "Clase 10 - Estadística "
 #   url: 10-lecture.html

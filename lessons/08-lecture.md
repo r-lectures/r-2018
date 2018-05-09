@@ -188,8 +188,8 @@ Loops son bucles y se usan para repetir código.
 2.  Escribir una función que diga "Buenos días", "Buenas tardes" o "Buenas noches" dependiendo de la
     hora del día usando `lubridate::now()` y `lubridate::hour()`.
 3.  Escribir un loop para calcular la media de cada columna en mtcars (puede ser un doble loop).
-4.  Qué pasa si usamos (`nm in names(x)`) y `x` no tiene nombres? Qué pasa si solo algunos tienen nombre
-    o hay nombres repetidos? Hacer tests.
+4.  Qué pasa si usamos (`nm in names(x)`) y `x` no tiene nombres? Qué pasa con el subsetting si solo
+    algunos elementos tienen nombre, o hay nombres repetidos? Hacer tests.
 5.  Crear un vector tal que sus elementos indiquen, para cada columna de un dataframe cualquiera, si
     son una columna de factor o no.
 
