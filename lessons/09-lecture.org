@@ -10,7 +10,7 @@
 #+options: toc:nil
 #+REVEAL_ROOT: ../../reveal.js/
 #+REVEAL_TITLE_SLIDE_TEMPLATE: Recursive Search
-#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t 
 #+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:t num:nil
 #+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%d</h3>"
 #+REVEAL_MARGIN: 0.1

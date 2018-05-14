@@ -146,8 +146,8 @@ Bajar los datos de [[https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.R
 ## hacemos la regresión:
 load("psub.RData")
 dtrain <- subset(psub, ORIGRANDGROUP >= 500)
-dtest <- subset(psub, ORIGRANDGROUP < 500)
-model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest  <- subset(psub, ORIGRANDGROUP < 500)
+model  <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
 dtest$predLogPINCP <- predict(model,newdata=dtest) 
 
 ## resultados:
@@ -169,8 +169,8 @@ geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black
 #+END_SRC
 *** Regresión lineal generalizada (glm)
 
-Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
-"normales". Los modelos lineales generalizados relajan estas suposiciones. 
+Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones.
 
 #+BEGIN_SRC R 
 ## expresión general

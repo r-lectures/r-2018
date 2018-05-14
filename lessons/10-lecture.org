@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2017
-#+DATE: 30/05/2017
+#+TITLE: R lectures
+#+DATE: 14/05/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -37,7 +37,6 @@
 # #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
 # #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
 
-
 #+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
 --- 
 layout: default 
@@ -56,16 +55,15 @@ title: Clase 10
 ** Vectorización
 Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 
-1. Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.
-2. Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más
-   rápidos.
+Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.
+Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más rápidos.
 
-#+BEGIN_SRC R 
-# sin vectorización
-> for (i in 1:length(x)) z[i] <- x[i] + y[i]
+#+BEGIN_SRC R
+    # sin vectorización
+    for (i in 1:length(x)) z[i] <- x[i] + y[i]
 
-# con vectorización
-> z <- x + y
+    # con vectorización
+    z <- x + y
 #+END_SRC
 
 - Ref: [[http://adv-r.had.co.nz/Profiling.html#vectorise][Vectorise from Advanced R]]
@@ -81,32 +79,33 @@ Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a 
 procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
 
 Ref: ver también el [[https://www.rdocumentation.org/packages/plyr/versions/1.8.4][paquete plyr]], [[http://stat545.com/block013_plyr-ddply.html][esta web]] y [[http://www.jstatsoft.org/v40/i01/][este paper]]
-* modo interactivo vs. source() y R CMD BATCH
+* Modo interactivo vs. source() y R CMD BATCH
 
 #+BEGIN_SRC R 
-##En un editor de texto creamos el script z.R
-pdf("xh.pdf")  # configuramos un archivo de salido
+##En un editor de texto creamos el script z.R con el siguiente código
+
+pdf("xh.pdf")  # configuramos un archivo de salida
 hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
 dev.off()  # cerramos el archivo de salida
 
-## En el terminal:
+## En la línea de comando de un terminal:
 R CMD BATCH z.R
 
-## En R:
+## Desde adentro de una sesión de R:
 source("z.R")
 #+END_SRC
 
-- Acordarse que para imprimir en pantalla desde un script, tiene que usar print(). Si quieren
-  encadenar texto con variables usar paste(). Por ej. print(paste("dos", "mas", "dos =", 4, sep=" "))
+- Acordarse que para imprimir en pantalla desde un script, tienen que usar ~print()~. Si quieren
+  encadenar texto con variables, usar ~paste()~. Por ej. ~print(paste("dos", "mas", "dos =", 4, sep=" "))~
 ** Workflow científico
-- trabajar con scripts permite 'mantener' nuestro proceso científico
-  - el trabajo pasa a ser gradual, mejorando a cada vez
-- modularizar nuestros procesos! Scripts de scripts
-  - nos da flexibilidad y claridad 
-  - permite separar 'físicamente' procesos computacionales diferentes
-  - permite reciclar código!
+- Trabajar con scripts permite 'mantener' nuestro proceso científico
+  - El trabajo pasa a ser gradual, mejorando a cada vez
+- Modularizar nuestros procesos! Scripts de scripts
+  - Nos da flexibilidad y claridad 
+  - Permite separar 'físicamente' procesos computacionales diferentes
+  - Permite reciclar código!
 
-Ejemplo: hago freaking_good_data_analysis.R, que contiene:
+Ejemplo: mi script ~freaking_good_data_analysis.R~ contiene:
 #+BEGIN_SRC R 
 source("0-input-data.R")
 source("1-clean-data.R")
@@ -120,28 +119,28 @@ source("3-graph-data.R")
 [[https://cran.r-project.org/][The Comprehensive R Archive Network]]
 
 - El proyecto R mantiene el código, [[https://cran.r-project.org/manuals.html][la documentación]], y la comunidad, entre otras cosas
-- CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
+- CRAN es una red de /servers web/ y /ftp/ mundial que guarda versiones y documentación actualizadas e
   idénticas de R. De acá se baja R y los [[https://cran.r-project.org/web/packages/available_packages_by_date.html][paquetes aceptados oficialmente]]
 - CRAN tiene [[https://cran.r-project.org/web/views/][Task Views]], páginas web que nuclean paquetes por temas
 
 * Estadística
 ** Estadística descriptiva
-Una manera de hacer estadística descriptiva es con sapply:
+Una manera de hacer estadística descriptiva es con ~sapply~:
 #+BEGIN_SRC R 
  sapply(mydata, mean, na.rm=TRUE) 
 #+END_SRC
-(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().
+(podemos usar ~mean~, ~sd~, ~var~, ~min~, ~max~, ~median~, ~range~, y ~quantile~). O ~summary()~.
 
-Tenemos también group_by() + summarise() con las mismas funciones básicas.
+Tenemos también ~group_by() + summarise()~ con las mismas funciones básicas.
 ** Distribuciones
 En general R usa la siguiente convención:
 
-- dDIST(x, ...) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+- ~dDIST(x, ...)~ es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
   valor x
-- pDIST(x, ...) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+- ~pDIST(x, ...)~ es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
   valor menor a x (mayor si usamos lower.tail=F)  
-- rDIST(n, ...) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
-- qDIST(p, ...) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+- ~rDIST(n, ...)~ es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
+- ~qDIST(p, ...)~ es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
   lower.tail=F, devuelve 1 - el percentil p.
 
 #+BEGIN_EXPORT html
@@ -161,7 +160,7 @@ ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
 #+END_SRC
 *** Otras distribuciones
 Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
-de n=5 (número de intentos) y p=0.5 (probabilidad de éxito).
+de ~n=5~ (número de intentos) y ~p=0.5~ (probabilidad de éxito).
 
 #+BEGIN_SRC R 
 x <- rbinom(100000,5,0.5)
@@ -181,14 +180,14 @@ mean(x >= 4)
 2. i)  Bajarse el Quijote de [[http://www.gutenberg.org]["Project Gutenberg"]] en formato texto.
  
    ii) Meter el libro en un vector de tipo "character", una palabra en cada elemento del
-   vector. Tip: stringr::str_split(). Cuántas palabras hay en total? Cuántas únicas?
+   vector. Tip: ~stringr::str_split()~. Cuántas palabras hay en total? Cuántas únicas?
 
-   iii) Cuántas veces aparece cada palabra? Tip: dplyr + nombrar las columnas + n() o
-   tally(). Cuál es la 1era palabra del ranking? Cuanto aparece "Quijote" y en que ranking?
+   iii) Cuántas veces aparece cada palabra? Tip: ~dplyr~ + nombrar las columnas + ~n()~ o
+   ~tally()~. Cuál es la 1era palabra del ranking? Cuanto aparece "Quijote" y en que ranking?
 
    iv) Hacer un plot del ranking vs. su frecuencia. Qué llama la atención? Tip: ambos ejes logarítmicos.
 
-   v) Qué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
-   distintas distribuciones (con dDIST()) para aproximar los datos. Tip: poner "quijote
+   v) CERRQué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
+   distintas distribuciones (con ~dDIST()~) para aproximar los datos. Tip: poner "quijote
    distribution" en Google Scholar. Qué parámetro que controla la distribución es importante y
    cuando vale (intentar calcularlo con R)?

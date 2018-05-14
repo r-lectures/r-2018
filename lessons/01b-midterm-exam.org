@@ -73,7 +73,7 @@ title: Parcial 1
 
 ** Problema único: 
 
-1. DATOS 
+1. =DATOS=
    1. Cargar los datos "txhousing" del paquete ggplot2 en la sesión (o verificar si ya se encuentran
       disponibles). Son datos de venta de inmuebles en Texas, con datos de ciudad, año, mes, número
       de inmuebles vendidos (/sales/), total vendido en dólares (/volume/), mediana del valor del
@@ -82,7 +82,7 @@ title: Parcial 1
       más información. Preguntar si no entienden alguna cosa en inglés (preguntar es gratis ;).
    2. Renombrar el dataframe a "tx" (o sea, asignar el objeto txhousing al objeto tx).
 
-1. PRIMER ANÁLISIS
+2. =PRIMER ANÁLISIS=
    1. Qué clase de estructura de datos es tx?
    2. Cuántos atributos tiene tx y como se llaman?
    3. Qué dimensiones tiene tx?
@@ -91,7 +91,7 @@ title: Parcial 1
       inmuebles vendidos en octubre de 2010 en Houston. La variable debería contener solamente la
       mediana, es decir, que "med_houston_10_2010" sea un vector "numeric" de longitud 1.
 
-2. PREGUNTAS - responder usando herramientas de dplyr y/o subsetting
+3. PREGUNTAS - responder usando herramientas de dplyr y/o subsetting
    1. Cuántas ciudades diferentes hay en el dataframe tx? 
    2. Contar cuantas observaciones hay por ciudad (o sea, una columna ciudad y otra número de
       observaciones). Contar cuantas hay por año (idem a lo anterior, año y al lado, número de
