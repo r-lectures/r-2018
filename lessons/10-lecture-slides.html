@@ -31,13 +31,13 @@
 </section>
 
 <section>
-<section id="slide-org54453bb">
-<h2 id="org54453bb">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org54453bb">
+<section id="slide-orgacf4b6a">
+<h2 id="orgacf4b6a">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgacf4b6a">
 </div>
 </section>
-<section id="slide-org4fb7ffe">
-<h3 id="org4fb7ffe">Vectorización</h3>
+<section id="slide-org5b508d9">
+<h3 id="org5b508d9">Vectorización</h3>
 <p>
 Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 </p>
@@ -62,8 +62,8 @@ z <- x + y
 
 </ul>
 </section>
-<section id="slide-orgeba1172">
-<h3 id="orgeba1172">Funcionales - Familia *apply()</h3>
+<section id="slide-org2566c2e">
+<h3 id="org2566c2e">Funcionales - Familia *apply()</h3>
 <ul>
 <li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
 <li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
@@ -84,13 +84,13 @@ Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versi
 </section>
 </section>
 <section>
-<section id="slide-org4926320">
-<h2 id="org4926320">Matemática</h2>
-<div class="outline-text-2" id="text-org4926320">
+<section id="slide-org28030f5">
+<h2 id="org28030f5">Matemática</h2>
+<div class="outline-text-2" id="text-org28030f5">
 </div>
 </section>
-<section id="slide-org4e1f50e">
-<h3 id="org4e1f50e">Funciones matemáticas básicas</h3>
+<section id="slide-org439e8b5">
+<h3 id="org439e8b5">Funciones matemáticas básicas</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >- exp(): función exponencial, base e
@@ -121,8 +121,8 @@ cumprod(x)
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb868a51">
-<h3 id="orgb868a51">Cálculo</h3>
+<section id="slide-orgc5bbcf7">
+<h3 id="orgc5bbcf7">Cálculo</h3>
 <p>
 R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
 </p>
@@ -142,13 +142,13 @@ extender la capacidad simbólica usando el sistema Yacas
 (<code>ryacas</code>). Ver CRAN.
 </p>
 </section>
-<section id="slide-orgde8d954">
-<h3 id="orgde8d954">Álgebra Lineal</h3>
-<div class="outline-text-3" id="text-orgde8d954">
+<section id="slide-orgd3fac84">
+<h3 id="orgd3fac84">Álgebra Lineal</h3>
+<div class="outline-text-3" id="text-orgd3fac84">
 </div>
 </section>
-<section id="slide-org730969a">
-<h4 id="org730969a">Multiplicación de matrices</h4>
+<section id="slide-orgcecadec">
+<h4 id="orgcecadec">Multiplicación de matrices</h4>
 <p>
 Directamente con el operador %*%
 </p>
@@ -170,8 +170,8 @@ a %*% b
 </code></pre>
 </div>
 </section>
-<section id="slide-org85407f3">
-<h4 id="org85407f3">Sistema de ecuaciones lineales (o invertir una matriz) con <code>solve()</code></h4>
+<section id="slide-org56001cf">
+<h4 id="org56001cf">Sistema de ecuaciones lineales (o invertir una matriz) con <code>solve()</code></h4>
 <div class="org-src-container">
 
 <pre><code class="R" >a <- matrix(c(1,1,-1,1), nrow=2, ncol=2)
@@ -185,8 +185,8 @@ solve(a) ## sin el segundo argumento, invierte la matriz
 </code></pre>
 </div>
 </section>
-<section id="slide-org272c7b6">
-<h4 id="org272c7b6">Autovectores y autovalores</h4>
+<section id="slide-org7f5cc26">
+<h4 id="org7f5cc26">Autovectores y autovalores</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >a
@@ -215,8 +215,8 @@ a %*% eigenvector1 / eigenvalue1
 </div>
 
 </section>
-<section id="slide-org02b5c56">
-<h4 id="org02b5c56">Otras operaciones posibles son:</h4>
+<section id="slide-org2c8c250">
+<h4 id="org2c8c250">Otras operaciones posibles son:</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >- t(): transpuesta de una matriz
@@ -231,8 +231,8 @@ a %*% eigenvector1 / eigenvalue1
 </div>
 
 </section>
-<section id="slide-org4589f10">
-<h3 id="org4589f10">Otros paquetes de interés</h3>
+<section id="slide-org66701b6">
+<h3 id="org66701b6">Otros paquetes de interés</h3>
 <ul>
 <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
 <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
@@ -251,8 +251,8 @@ a %*% eigenvector1 / eigenvalue1
 </section>
 </section>
 <section>
-<section id="slide-orgfdd3659">
-<h2 id="orgfdd3659">Práctica 10</h2>
+<section id="slide-org2303f2b">
+<h2 id="org2303f2b">Práctica 10</h2>
 <ol>
 <li>Integrar numéricamente la función <code>dlnorm(5, 1)</code> entre <code>0</code> y <code>xf</code>, con <code>xf=10^i</code> e <code>i=1:4</code>. Comparar con la
 función acumulada correspondientemente evaluada en el límite adecuado.</li>
