@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R lectures</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R lectures</h1><h3>14/05/2018</h3>
+</section>
+
+<section>
+<section id="slide-org54453bb">
+<h2 id="org54453bb">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org54453bb">
+</div>
+</section>
+<section id="slide-org4fb7ffe">
+<h3 id="org4fb7ffe">Vectorización</h3>
+<p>
+Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
+</p>
+
+<p>
+Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.
+Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más rápidos.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># sin vectorización
+for (i in 1:length(x)) z[i] <- x[i] + y[i]
+
+# con vectorización
+z <- x + y
+</code></pre>
+</div>
+
+<ul>
+<li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+
+</ul>
+</section>
+<section id="slide-orgeba1172">
+<h3 id="orgeba1172">Funcionales - Familia *apply()</h3>
+<ul>
+<li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
+<li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
+a una matriz.</li>
+<li><b>apply()</b>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
+<li><b>tapply()</b>: para aplicar funciones a vectores con factores</li>
+
+</ul>
+
+<p>
+Combinan algo similar a vectorización con funciones. Suelen ser la respuesta a "cómo hago para
+procesar (por ejemplo transformar o extraer información de) cada elemento de este objeto?"
+</p>
+
+<p>
+Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org4926320">
+<h2 id="org4926320">Matemática</h2>
+<div class="outline-text-2" id="text-org4926320">
+</div>
+</section>
+<section id="slide-org4e1f50e">
+<h3 id="org4e1f50e">Funciones matemáticas básicas</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >- exp(): función exponencial, base e
+- log(): logaritmo natural 
+- log10(): logaritmo base 10
+- sqrt(): raiz cuadrada
+- abs(): valor absoluto
+- sin(), cos(), etc.: funciones trigonométricas
+- min(),  max(): valor mínimo y máximo de un vector
+- which.min() and which.max(): índice del valor mínimo y máximo 
+- pmin() and pmax(): mínimos y máximos para varios vectores, por elemento
+- sum() and prod(): suma y producto de elementos de vectores
+- cumsum() and cumprod(): suma acumulada y producto acumulado de elementos de vectores
+- round(), floor(), and ceiling(): redondeo al entero más próximo, al menor o al mayor, respectivamente
+- factorial(): función factorial
+- %%: operador módulo y %/%: operador división por enteros
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- c(12,5,13)
+cumsum(x)
+# [1] 12 17 30
+cumprod(x)
+# [1] 12 60 780
+
+</code></pre>
+</div>
+</section>
+<section id="slide-orgb868a51">
+<h3 id="orgb868a51">Cálculo</h3>
+<p>
+R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >D(expression(exp(x^2)),"x")  # derivada analítica
+exp(x^2) * (2 * x)
+integrate(function(x) x^2,0,1) # integral numérica
+0.3333333 with absolute error < 3.7e-15
+</code></pre>
+</div>
+
+<p>
+Existen paquetes para ecuaciones diferenciales (<code>odesolve</code>), y para
+extender la capacidad simbólica usando el sistema Yacas
+(<code>ryacas</code>). Ver CRAN.
+</p>
+</section>
+<section id="slide-orgde8d954">
+<h3 id="orgde8d954">Álgebra Lineal</h3>
+<div class="outline-text-3" id="text-orgde8d954">
+</div>
+</section>
+<section id="slide-org730969a">
+<h4 id="org730969a">Multiplicación de matrices</h4>
+<p>
+Directamente con el operador %*%
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >a
+    [,1] [,2]
+[1,]   1    2 
+[2,]   3    4 
+b
+     [,1] [,2]
+[1,]    1   -1
+[2,]    0    1
+a %*% b
+     [,1] [,2]
+[1,]    1    1
+[2,]    3    1
+</code></pre>
+</div>
+</section>
+<section id="slide-org85407f3">
+<h4 id="org85407f3">Sistema de ecuaciones lineales (o invertir una matriz) con <code>solve()</code></h4>
+<div class="org-src-container">
+
+<pre><code class="R" >a <- matrix(c(1,1,-1,1), nrow=2, ncol=2)
+b <- c(2,4)
+solve(a,b) ## resuelve el sistema de ecuaciones
+[1] 3 1
+solve(a) ## sin el segundo argumento, invierte la matriz
+  [,1] [,2]
+[1,]  0.5  0.5
+[2,] -0.5  0.5
+</code></pre>
+</div>
+</section>
+<section id="slide-org272c7b6">
+<h4 id="org272c7b6">Autovectores y autovalores</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >a
+     [,1] [,2]
+[1,]    1   -1
+[2,]    1    1
+
+e <- eigen(a)
+$values
+[1] 1+1i 1-1i
+
+$vectors
+		     [,1]                 [,2]
+[1,] 0.7071068+0.0000000i 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i 0.0000000+0.7071068i
+
+eigenvector1 <- e$vectors[,1]
+eigenvalue1 <-  e$values[1]
+
+a %*% eigenvector1 / eigenvalue1
+		     [,1]
+[1,] 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i
+
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org02b5c56">
+<h4 id="org02b5c56">Otras operaciones posibles son:</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >- t(): transpuesta de una matriz
+- qr(): descomposición QR
+- chol(): descompocisión Cholesky
+- det(): Determinante
+- eigen(): Autovalores/autovectores
+- diag(): extrae la diagonal de una matriz cuadrada
+- svd(A): descomposición en valores singulares
+- ...
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org4589f10">
+<h3 id="org4589f10">Otros paquetes de interés</h3>
+<ul>
+<li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
+<li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
+<ul>
+<li>tienen también el libro "2012 - Book - Solving Differential Equations in R.pdf" en #bibliografia @slack</li>
+
+</ul></li>
+<li><a href="https://cran.r-project.org/web/views/TimeSeries.html">Series temporales</a></li>
+<li><a href="https://cran.r-project.org/web/views/Optimization.html">Optimización y programación matemática</a></li>
+<li>Aritmética de precisión múltiple con <a href="https://cran.r-project.org/web/packages/gmp/index.html">gmp</a></li>
+<li>Paquete <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl</a>, una interface a la Biblioteca Científica GNU</li>
+<li>Mil cosas más :)</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfdd3659">
+<h2 id="orgfdd3659">Práctica 10</h2>
+<ol>
+<li>Integrar numéricamente la función <code>dlnorm(5, 1)</code> entre <code>0</code> y <code>xf</code>, con <code>xf=10^i</code> e <code>i=1:4</code>. Comparar con la
+función acumulada correspondientemente evaluada en el límite adecuado.</li>
+<li>Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de <code>NxN</code>, donde <code>N=10^i</code>, con <code>i = 1:4</code>? Hacer una figura con <code>ggplot2</code> y hacer una regresión (con <code>geom_smooth</code>). Confirmar, para el caso <code>i = 1</code>, la identidad <code>A x = lambda x</code>, para el caso del autovalor principal.</li>
+<li><p>
+Resolver el siguiente SEL y comprobar que <code>A x = B</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >3x1 + 4x2 + 5x3 = 0,
+
+6x1 + 2x2 + 7x3 = 5,
+
+7x1 +  x2       = 6
+</code></pre>
+</div></li>
+<li>Calcular <i>analíticamente</i> la 3era derivada de <code>log(x) * sin(x)</code>.</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
