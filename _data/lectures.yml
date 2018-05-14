@@ -91,7 +91,7 @@ lectures:
 
   subitems:
     - title: "Clase 10 - versión texto"
-      url: slides/10-lecture.html
+      url: 10-lecture.html
 
 # - title: "Clase 11 - Regresiones"
 #   url: 11-lecture.html
