@@ -199,8 +199,8 @@ a %*% eigenvector1 / eigenvalue1
 - Mil cosas más :)
 
 * Práctica 10
-1. Integrar numéricamente la función ~dlnorm(5, 1)~ entre ~0~ y ~xf~, con ~xf=10^i~ e ~i=1:4~. Comparar con la
-   función acumulada correspondientemente evaluada en el límite adecuado.
+1. Integrar numéricamente la función ~dlnorm(5, 1)~ entre ~0~ y ~xf~, con ~xf=10^i~ e ~i=1,2,3~ y ~4~. Comparar con la
+   función acumulada correspondientemente evaluada en el límite adecuado. Usar ~...~ para pasar parámetros.
 2. Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de ~NxN~, donde ~N=10^i~, con ~i = 1:4~? Hacer una figura con ~ggplot2~ y hacer una regresión (con ~geom_smooth~). Confirmar, para el caso ~i = 1~, la identidad ~A x = lambda x~, para el caso del autovalor principal.
 3. Resolver el siguiente SEL y comprobar que ~A x = B~.
 
@@ -212,8 +212,11 @@ a %*% eigenvector1 / eigenvalue1
    7x1 +  x2       = 6
    #+END_SRC
 4. Calcular /analíticamente/ la 3era derivada de ~log(x) * sin(x)~.
-
-
-
-
-
+** Práctica 10 bis
+1. Si tengo dos vectores ~a~ y ~b~ del mismo largo, que obtengo al hacer ~sum(a * b)~? Y ~sqrt(sum(a * a)~)?
+2. En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
+   tranquis. Uno de la primer mesa les dice a los de la segunda: "si se viene uno de uds. acá,
+   entonces vamos a ser la misma cantidad en las dos mesas". "Si", le responden, "pero si se viene
+   uno de uds. para acá, vamos a ser el doble acá que en la de ustedes". Escriban unas ecuaciones para
+   resolver cuántos pájaros había en cada mesa. (/Tomado de "Linear algebra in R", Søren Højsgaard
+   15 de Febrero de 2005./)

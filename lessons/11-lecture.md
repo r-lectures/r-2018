@@ -28,15 +28,12 @@ title: Clase 11
 ## Cálculo
 
 1.  R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
-2.  Existen paquetes para ecuaciones diferenciales (`odesolve`), y para
-
-extender la capacidad simbólica usando el sistema Yacas
-(`ryacas`). Ver CRAN.
+2.  Existen paquetes para ecuaciones diferenciales (`odesolve`), y para extender la capacidad simbólica usando el sistema Yacas (`ryacas`). Ver CRAN.
 
 
 ## Álgebra Lineal
 
-1.  Multiplicación de matrices - operador %\*%
+1.  Multiplicación de matrices - operador `%*%`
 2.  Sistema de ecuaciones lineales (o invertir una matriz) con `solve()`
 3.  Autovectores y autovalores - `eigen()`
 4.  Otras operaciones posibles `t()`, `svd()`, etc.
@@ -59,11 +56,15 @@ extender la capacidad simbólica usando el sistema Yacas
 
 ## Estadística descriptiva
 
-Una manera de hacer estadística descriptiva es con `sapply`:
+Conceptos para entender la estructura de un grupo (digamos, `N > 30`) de datos. 
+
+Una manera de hacer estadística descriptiva en columnas de listas (o data.frames) es con `sapply`:
 
     sapply(mydata, mean, na.rm=TRUE) 
 
-(podemos usar `mean`, `sd`, `var`, `min`, `max`, `median`, `range`, y `quantile`). O `summary()`.
+donde podemos usar `mean`, `sd`, `var`, `min`, `max`, `median`, `range`, o `quantile`, entre otras). 
+
+O `summary()`, que es equivalente y funciona con data.frames.
 
 Tenemos también `group_by() + summarise()` con las mismas funciones básicas.
 
@@ -75,10 +76,10 @@ En general R usa la siguiente convención:
 -   `dDIST(x, ...)` es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
     valor x
 -   `pDIST(x, ...)` es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
-    valor menor a x (mayor si usamos lower.tail=F)
+    valor menor a x (mayor si usamos `lower.tail=F`)
 -   `rDIST(n, ...)` es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
--   `qDIST(p, ...)` es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
-    lower.tail=F, devuelve 1 - el percentil p.
+-   `qDIST(p, ...)` es la función cuartil que devuelve el x que corresponde al percentil `p` de DIST. Si
+    `lower.tail=F`, devuelve `1` menos `p`.
 
 <img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
 
@@ -105,8 +106,8 @@ de `n=5` (número de intentos) y `p=0.5` (probabilidad de éxito).
     mean(x)
     # [1] 2.5004
     
-    mean(x >= 4)
-    # [1] 0.18829
+    mean(x[x<=4])
+    # [1] 2.418766
 
 
 # Modelado estadístico
@@ -115,25 +116,27 @@ Modelado se refiere a proponer determinadas relaciones entre variables, típicam
 relación entre una variable dependiente o *variable respuesta* y otras variables independientes o
 *variables explicativas*. 
 
-En R la función lm() se usa para regresión lineal (*linear models*) y glm() para *generalized linear models*.
+En R la función `lm()` se usa para regresión lineal (*linear models*) y `glm()` para *generalized linear models*.
 
 
-### Regresión lineal (lm)
+### Regresión lineal - `lm()`
 
 Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
 parámetros para poder predecir.
 
-1.  Propongo una determinada relación de variables
-2.  Calculo coeficientes del modelo
-3.  Compruebo que tan bien se ajusta el modelo a nuevas observaciones
+1 - Propongo una determinada relación de variables.
+
+2 - Calculo coeficientes del modelo.
+
+3 - Compruebo que tan bien se ajusta el modelo a nuevas observaciones.
 
     y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
     ## b[i] son los coeficientes o betas
 
 
-### Ejemplo con datos de 2011 US Census PUMS
+### Ejemplo con datos de `2011 US Census PUMS`
 
-Bajar los datos de [acá](https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData).
+Pueden bajar los datos de [acá](https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData).
 
     ## hacemos la regresión:
     load("psub.RData")
@@ -159,7 +162,7 @@ Bajar los datos de [acá](https://github.com/WinVector/zmPDSwR/raw/master/PUMS/p
     geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
 
 
-### Regresión lineal generalizada (glm)
+### Regresión lineal generalizada - `glm()`
 
 Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
 "normales". Los modelos lineales generalizados relajan estas suposiciones.
@@ -186,13 +189,14 @@ Ejemplito: Regresión logística, para variables categóricas.
 -   [The elements of statistical learning](http://statweb.stanford.edu/~tibs/ElemStatLearn/) - [(ElemStatLearn book)](https://cran.r-project.org/web/packages/ElemStatLearn/index.html)
 
 
-# Práctica 11 bis
+# Práctica 11
 
-1.  Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
-    5 y variación estándar 1. Hacer su histograma con ggplot2 y compararlo con la lognormal con
-    parámetros (5,1) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
-    figura (o sea, que queden dos histogramas y una curva). Usar el argumento *alpha* para poder
-    distinguir los histogramas.
+-   1. Generar un conjunto de 300 números aleatorios sacados de una distribución `lognormal` con media 5 y variación estándar 1. Con ellos, hacer un histograma (normalizado, vean como usar el argumento ..density..) con `ggplot2` y poner puntos de la función analítica `lognormal` &#x2014;con parámetros (5,1)&#x2014; en la misma figura para comparar (a ojo). Agregar un segundo histograma, esta vez de un millón de números (que queden dos histogramas y una curva). Pueden usar el argumento *alpha* para poder distinguir los histogramas.
+
+-   2. En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
+    función del logaritmo del peso (`carat`). Sacar los coeficientes y usarlos para graficar el modelo (con
+    una línea) sobre el scatterplot (usar `geom_hex()` para este último). Luego graficar los residuos
+    en otro gráfico.
 
 
 ## Práctica 11 bis
@@ -202,28 +206,9 @@ Ejemplito: Regresión logística, para variables categóricas.
     ii) Meter el libro en un vector de tipo "character", una palabra en cada elemento del
     vector. Tip: `stringr::str_split()`. Cuántas palabras hay en total? Cuántas únicas?
     
-    iii) Cuántas veces aparece cada palabra? Tip: `dplyr` + nombrar las columnas + `n()` o
-    `tally()`. Cuál es la 1era palabra del ranking? Cuanto aparece "Quijote" y en que ranking?
+    iii) Cuántas veces aparece cada palabra (frecuencia)? Cuál es la 1er palabra del ranking? Cuánto aparece "Quijote" y en que ranking?
     
-    iv) Hacer un plot del ranking vs. su frecuencia. Qué llama la atención? Tip: ambos ejes logarítmicos.
+    iv) Hacer un plot del ranking vs. frecuencia. Poner ambos ejes logarítmicos. Qué llama la atención?
     
-    v) CERRQué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
-    distintas distribuciones (con `dDIST()`) para aproximar los datos. Tip: poner "quijote
-    distribution" en Google Scholar. Qué parámetro que controla la distribución es importante y
-    cuando vale (intentar calcularlo con R)?
-
-
-## Práctica 11 tris
-
-1.  En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
-    función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con
-    una línea) sobre el scatterplot (usar geom\_hex() para este último). Luego graficar los residuos
-    en otro gráfico.
-2.  Si tengo dos vectores a y b del mismo largo, que obtengo al hacer sum(a \* b)? Y sqrt(sum(a \* a))?
-3.  En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
-    tranquis. Uno de la primer mesa les dice a los de la segunda: "si se viene uno de uds. acá,
-    entonces vamos a ser la misma cantidad en las dos mesas". "Si", le responden, "pero si se viene
-    uno de uds. para acá, vamos a ser el doble acá que la de ustedes". Escriban unas ecuaciones para
-    resolver en R y saber cuántos pájaros había en cada mesa. (Tomado de "Linear algebra in R", Søren Højsgaard
-    15 de Febrero de 2005.)
+    v) `PhD` Qué función de distribución describiría bien lo que encontramos? Puede ser una normal? (Tip: poner "quijote distribution" en Google Scholar.) Cuánto valen los parámetros de la distribución?
 
