@@ -51,67 +51,63 @@ title: Clase 11
 # #+end_html
 
 # #+ATTR_REVEAL: :frag roll-in
-
 * Repaso de la clase anterior
-** modo interactivo vs. source() y R CMD BATCH
-
+** Funciones matemáticas básicas
 #+BEGIN_SRC R 
-##En un editor de texto creamos el script z.R
-pdf("xh.pdf")  # configuramos un archivo de salido
-hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
-dev.off()  # cerramos el archivo de salida
-
-## En el terminal:
-R CMD BATCH z.R
-
-## En R:
-source("z.R")
+- exp(): función exponencial, base e
+- log(): logaritmo natural 
+- log10(): logaritmo base 10
+- sqrt(): raiz cuadrada
+- abs(): valor absoluto
+- sin(), cos(), etc.: funciones trigonométricas
+- min(),  max(): valor mínimo y máximo de un vector
+- which.min() and which.max(): índice del valor mínimo y máximo 
+- pmin() and pmax(): mínimos y máximos para varios vectores, por elemento
+- sum() and prod(): suma y producto de elementos de vectores
+- cumsum() and cumprod(): suma acumulada y producto acumulado de elementos de vectores
+- round(), floor(), and ceiling(): redondeo al entero más próximo, al menor o al mayor, respectivamente
+- factorial(): función factorial
+- %%: operador módulo y %/%: operador división por enteros
 #+END_SRC
+** Cálculo
+1. R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
+2. Existen paquetes para ecuaciones diferenciales (~odesolve~), y para
+extender la capacidad simbólica usando el sistema Yacas
+(~ryacas~). Ver CRAN.
+** Álgebra Lineal
+1. Multiplicación de matrices - operador %*%
+2. Sistema de ecuaciones lineales (o invertir una matriz) con ~solve()~
+3. Autovectores y autovalores - ~eigen()~
+4. Otras operaciones posibles ~t()~, ~svd()~, etc.
 
-- Acordarse que para imprimir en pantalla desde un script, tienen que usar print(). 
-** Workflow científico
-- trabajar con scripts permite 'mantener' nuestro proceso científico
-  - el trabajo pasa a ser gradual, mejorando a cada vez
-- modularizar nuestros procesos! Scripts de scripts
-  - nos da flexibilidad y claridad 
-  - permite separar 'físicamente' procesos computacionales diferentes
-  - permite reciclar código!
+** Otros paquetes de interés
+- [[https://cran.r-project.org/web/views/NumericalMathematics.html][Numerical Mathematics]]
+- [[https://cran.r-project.org/web/views/DifferentialEquations.html][Ecuaciones diferenciales]]
+  - tienen también el libro "2012 - Book - Solving Differential Equations in R.pdf" en #bibliografia @slack
+- [[https://cran.r-project.org/web/views/TimeSeries.html][Series temporales]]
+- [[https://cran.r-project.org/web/views/Optimization.html][Optimización y programación matemática]]
+- Aritmética de precisión múltiple con [[https://cran.r-project.org/web/packages/gmp/index.html][gmp]]
+- Paquete [[https://cran.r-project.org/web/packages/gsl/index.html][gsl]], una interface a la Biblioteca Científica GNU
+- Mil cosas más :)
 
-Ejemplo: hago freaking_good_data_analysis.R, que contiene:
-#+BEGIN_SRC R 
-source("0-input-data.R")
-source("1-clean-data.R")
-source("2-parse-data.R")
-source("3-graph-data.R")
-#+END_SRC
- 
-** R project y CRAN
-[[https://www.r-project.org/][The R Project for Statistical Computing]]
-
-[[https://cran.r-project.org/][The Comprehensive R Archive Network]]
-
-- El proyecto R mantiene el código, [[https://cran.r-project.org/manuals.html][la documentación]], y la comunidad, entre otras cosas
-- CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
-  idénticas de R. De acá se baja R y los [[https://cran.r-project.org/web/packages/available_packages_by_date.html][paquetes aceptados oficialmente]]
-- CRAN tiene [[https://cran.r-project.org/web/views/][Task Views]], páginas web que nuclean paquetes por temas
-
+* Estadística
 ** Estadística descriptiva
-Una manera de hacer estadística descriptiva es con sapply:
+Una manera de hacer estadística descriptiva es con ~sapply~:
 #+BEGIN_SRC R 
  sapply(mydata, mean, na.rm=TRUE) 
 #+END_SRC
-(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().
+(podemos usar ~mean~, ~sd~, ~var~, ~min~, ~max~, ~median~, ~range~, y ~quantile~). O ~summary()~.
 
-Tenemos también group_by() + summarise() con las mismas funciones básicas.
+Tenemos también ~group_by() + summarise()~ con las mismas funciones básicas.
 ** Distribuciones
 En general R usa la siguiente convención:
 
-- dDIST(x, ...) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+- ~dDIST(x, ...)~ es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
   valor x
-- pDIST(x, ...) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+- ~pDIST(x, ...)~ es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
   valor menor a x (mayor si usamos lower.tail=F)  
-- rDIST(n, ...) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
-- qDIST(p, ...) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+- ~rDIST(n, ...)~ es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
+- ~qDIST(p, ...)~ es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
   lower.tail=F, devuelve 1 - el percentil p.
 
 #+BEGIN_EXPORT html
@@ -119,6 +115,28 @@ En general R usa la siguiente convención:
 #+END_EXPORT
 
 Para ver las distribuciones disponibles, ver el [[https://cran.r-project.org/web/views/Distributions.html][task view de distribuciones]]
+*** Distribución Normal
+Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
+
+#+BEGIN_SRC R 
+library(ggplot2)
+set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
+x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
+f <- dnorm(x) # normal con media 0 y sd 1 
+ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
+#+END_SRC
+*** Otras distribuciones
+Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
+de ~n=5~ (número de intentos) y ~p=0.5~ (probabilidad de éxito).
+
+#+BEGIN_SRC R 
+x <- rbinom(100000,5,0.5)
+mean(x)
+# [1] 2.5004
+
+mean(x >= 4)
+# [1] 0.18829
+#+END_SRC
 * Modelado estadístico 
 Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
 relación entre una variable dependiente o /variable respuesta/ y otras variables independientes o
@@ -194,7 +212,29 @@ residuals(fit, type="deviance") # residuos
 - [[https://cran.r-project.org/web/views/Distributions.html][CRAN view de distribuciones]]
 - [[https://www.stats.ox.ac.uk/pub/MASS4/][Modern Applied Statistics with S. Fourth Edition]] - [[https://cran.r-project.org/web/packages/MASS/index.html][(MASS book)]]
 - [[http://statweb.stanford.edu/~tibs/ElemStatLearn/][The elements of statistical learning]] - [[https://cran.r-project.org/web/packages/ElemStatLearn/index.html][(ElemStatLearn book)]]
-* Práctica 11
+* Práctica 11 bis
+1. Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
+   5 y variación estándar 1. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+   parámetros (5,1) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+   figura (o sea, que queden dos histogramas y una curva). Usar el argumento /alpha/ para poder
+   distinguir los histogramas.
+
+** Práctica 11 bis
+2. i)  Bajarse el Quijote de [[http://www.gutenberg.org]["Project Gutenberg"]] en formato texto.
+ 
+   ii) Meter el libro en un vector de tipo "character", una palabra en cada elemento del
+   vector. Tip: ~stringr::str_split()~. Cuántas palabras hay en total? Cuántas únicas?
+
+   iii) Cuántas veces aparece cada palabra? Tip: ~dplyr~ + nombrar las columnas + ~n()~ o
+   ~tally()~. Cuál es la 1era palabra del ranking? Cuanto aparece "Quijote" y en que ranking?
+
+   iv) Hacer un plot del ranking vs. su frecuencia. Qué llama la atención? Tip: ambos ejes logarítmicos.
+
+   v) CERRQué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
+   distintas distribuciones (con ~dDIST()~) para aproximar los datos. Tip: poner "quijote
+   distribution" en Google Scholar. Qué parámetro que controla la distribución es importante y
+   cuando vale (intentar calcularlo con R)?
+** Práctica 11 tris
 1. En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
    función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con
    una línea) sobre el scatterplot (usar geom_hex() para este último). Luego graficar los residuos

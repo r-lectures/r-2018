@@ -7,77 +7,106 @@ title: Clase 11
 # Repaso de la clase anterior
 
 
-## modo interactivo vs. source() y R CMD BATCH
+## Funciones matemáticas básicas
 
-    ##En un editor de texto creamos el script z.R
-    pdf("xh.pdf")  # configuramos un archivo de salido
-    hist(rnorm(100))  # generamos 100 números aleatorios de N(0,1) y hacemos un histograma
-    dev.off()  # cerramos el archivo de salida
-    
-    ## En el terminal:
-    R CMD BATCH z.R
-    
-    ## En R:
-    source("z.R")
-
--   Acordarse que para imprimir en pantalla desde un script, tienen que usar print().
-
-
-## Workflow científico
-
--   trabajar con scripts permite 'mantener' nuestro proceso científico
-    -   el trabajo pasa a ser gradual, mejorando a cada vez
--   modularizar nuestros procesos! Scripts de scripts
-    -   nos da flexibilidad y claridad
-    -   permite separar 'físicamente' procesos computacionales diferentes
-    -   permite reciclar código!
-
-Ejemplo: hago freaking\_good\_data\_analysis.R, que contiene:
-
-    source("0-input-data.R")
-    source("1-clean-data.R")
-    source("2-parse-data.R")
-    source("3-graph-data.R")
+    - exp(): función exponencial, base e
+    - log(): logaritmo natural 
+    - log10(): logaritmo base 10
+    - sqrt(): raiz cuadrada
+    - abs(): valor absoluto
+    - sin(), cos(), etc.: funciones trigonométricas
+    - min(),  max(): valor mínimo y máximo de un vector
+    - which.min() and which.max(): índice del valor mínimo y máximo 
+    - pmin() and pmax(): mínimos y máximos para varios vectores, por elemento
+    - sum() and prod(): suma y producto de elementos de vectores
+    - cumsum() and cumprod(): suma acumulada y producto acumulado de elementos de vectores
+    - round(), floor(), and ceiling(): redondeo al entero más próximo, al menor o al mayor, respectivamente
+    - factorial(): función factorial
+    - %%: operador módulo y %/%: operador división por enteros
 
 
-## R project y CRAN
+## Cálculo
 
-[The R Project for Statistical Computing](https://www.r-project.org/)
+1.  R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
+2.  Existen paquetes para ecuaciones diferenciales (`odesolve`), y para
 
-[The Comprehensive R Archive Network](https://cran.r-project.org/)
+extender la capacidad simbólica usando el sistema Yacas
+(`ryacas`). Ver CRAN.
 
--   El proyecto R mantiene el código, [la documentación](https://cran.r-project.org/manuals.html), y la comunidad, entre otras cosas
--   CRAN es una red de servers web y ftp mundial que guarda versiones y documentación actualizadas e
-    idénticas de R. De acá se baja R y los [paquetes aceptados oficialmente](https://cran.r-project.org/web/packages/available_packages_by_date.html)
--   CRAN tiene [Task Views](https://cran.r-project.org/web/views/), páginas web que nuclean paquetes por temas
+
+## Álgebra Lineal
+
+1.  Multiplicación de matrices - operador %\*%
+2.  Sistema de ecuaciones lineales (o invertir una matriz) con `solve()`
+3.  Autovectores y autovalores - `eigen()`
+4.  Otras operaciones posibles `t()`, `svd()`, etc.
+
+
+## Otros paquetes de interés
+
+-   [Numerical Mathematics](https://cran.r-project.org/web/views/NumericalMathematics.html)
+-   [Ecuaciones diferenciales](https://cran.r-project.org/web/views/DifferentialEquations.html)
+    -   tienen también el libro "2012 - Book - Solving Differential Equations in R.pdf" en #bibliografia @slack
+-   [Series temporales](https://cran.r-project.org/web/views/TimeSeries.html)
+-   [Optimización y programación matemática](https://cran.r-project.org/web/views/Optimization.html)
+-   Aritmética de precisión múltiple con [gmp](https://cran.r-project.org/web/packages/gmp/index.html)
+-   Paquete [gsl](https://cran.r-project.org/web/packages/gsl/index.html), una interface a la Biblioteca Científica GNU
+-   Mil cosas más :)
+
+
+# Estadística
 
 
 ## Estadística descriptiva
 
-Una manera de hacer estadística descriptiva es con sapply:
+Una manera de hacer estadística descriptiva es con `sapply`:
 
     sapply(mydata, mean, na.rm=TRUE) 
 
-(podemos usar mean, sd, var, min, max, median, range, y quantile). O summary().
+(podemos usar `mean`, `sd`, `var`, `min`, `max`, `median`, `range`, y `quantile`). O `summary()`.
 
-Tenemos también group\_by() + summarise() con las mismas funciones básicas.
+Tenemos también `group_by() + summarise()` con las mismas funciones básicas.
 
 
 ## Distribuciones
 
 En general R usa la siguiente convención:
 
--   dDIST(x, &#x2026;) es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+-   `dDIST(x, ...)` es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
     valor x
--   pDIST(x, &#x2026;) es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+-   `pDIST(x, ...)` es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
     valor menor a x (mayor si usamos lower.tail=F)
--   rDIST(n, &#x2026;) es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
--   qDIST(p, &#x2026;) es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
+-   `rDIST(n, ...)` es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
+-   `qDIST(p, ...)` es la función cuartil que devielve el x que corresponde al percentil p de DIST. Si
     lower.tail=F, devuelve 1 - el percentil p.
 
 <img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
 
 Para ver las distribuciones disponibles, ver el [task view de distribuciones](https://cran.r-project.org/web/views/Distributions.html)
+
+
+### Distribución Normal
+
+Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
+
+    library(ggplot2)
+    set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
+    x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
+    f <- dnorm(x) # normal con media 0 y sd 1 
+    ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
+
+
+### Otras distribuciones
+
+Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
+de `n=5` (número de intentos) y `p=0.5` (probabilidad de éxito).
+
+    x <- rbinom(100000,5,0.5)
+    mean(x)
+    # [1] 2.5004
+    
+    mean(x >= 4)
+    # [1] 0.18829
 
 
 # Modelado estadístico
@@ -109,8 +138,8 @@ Bajar los datos de [acá](https://github.com/WinVector/zmPDSwR/raw/master/PUMS/p
     ## hacemos la regresión:
     load("psub.RData")
     dtrain <- subset(psub, ORIGRANDGROUP >= 500)
-    dtest <- subset(psub, ORIGRANDGROUP < 500)
-    model <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+    dtest  <- subset(psub, ORIGRANDGROUP < 500)
+    model  <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
     dtest$predLogPINCP <- predict(model,newdata=dtest) 
     
     ## resultados:
@@ -132,8 +161,8 @@ Bajar los datos de [acá](https://github.com/WinVector/zmPDSwR/raw/master/PUMS/p
 
 ### Regresión lineal generalizada (glm)
 
-Los modelos lienales asumen que el valor predicho es continuo y que los errores van a ser
-"normales". Los modelos lineales generalizados relajan estas suposiciones. 
+Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones.
 
     ## expresión general
     glm(formula, family=familytype(link=linkfunction), data=)
@@ -157,123 +186,34 @@ Ejemplito: Regresión logística, para variables categóricas.
 -   [The elements of statistical learning](http://statweb.stanford.edu/~tibs/ElemStatLearn/) - [(ElemStatLearn book)](https://cran.r-project.org/web/packages/ElemStatLearn/index.html)
 
 
-# Matemáticas
+# Práctica 11 bis
+
+1.  Generar un conjunto de 10^3 números aleatorios sacados de una distribución lognormal con promedio
+    5 y variación estándar 1. Hacer su histograma con ggplot2 y compararlo con la lognormal con
+    parámetros (5,1) en la misma figura. Generar otras 10^6 números y agregar su histograma a la
+    figura (o sea, que queden dos histogramas y una curva). Usar el argumento *alpha* para poder
+    distinguir los histogramas.
 
 
-## Funciones matemáticas básicas
+## Práctica 11 bis
 
-    - exp(): Exponential function, base e
-    - log(): Natural logarithm
-    - log10(): Logarithm base 10
-    - sqrt(): Square root
-    - abs(): Absolute value
-    - sin(), cos(), and so on: Trig functions
-    - min() and max(): Minimum value and maximum value within a vector
-    - which.min() and which.max(): Index of the minimal element and maximal element of a vector
-    - pmin() and pmax(): Element-wise minima and maxima of several vectors
-    - sum() and prod(): Sum and product of the elements of a vector
-    - cumsum() and cumprod(): Cumulative sum and product of the elements of a vector
-    - round(), floor(), and ceiling(): Round to the closest integer, to the clos- est integer below, and to the closest integer above
-    - factorial(): Factorial function
-
-    > x <- c(12,5,13)
-    > cumsum(x)
-    [1] 12 17 30
-    > cumprod(x)
-    [1] 12 60 780
-
-
-## Cálculo
-
-R tiene capacidades simples de hacer cuentas analíticas:
-
-    D(expression(exp(x^2)),"x")  # derivative
-    exp(x^2) * (2 * x)
-    > integrate(function(x) x^2,0,1)
-    0.3333333 with absolute error < 3.7e-15
-
-
-## Algebra Lineal
-
-
-### multiplicación de matrices
-
-Directamente con el operador %\*%
-
-    >a
-        [,1] [,2]
-    [1,]   1    2 
-    [2,]   3    4 
-    >b
-         [,1] [,2]
-    [1,]    1   -1
-    [2,]    0    1
-    > a %*% b
-         [,1] [,2]
-    [1,]    1    1
-    [2,]    3    1
-
-
-### Sistema de ecuaciones lineales (o invertir una matriz)
-
-    > a <- matrix(c(1,1,-1,1),nrow=2,ncol=2)
-    > b <- c(2,4)
-    > solve(a,b)
-    [1] 3 1
-    > solve(a) ## sin el segundo argumento, invierte la matriz
-      [,1] [,2]
-    [1,]  0.5  0.5
-    [2,] -0.5  0.5
-
-
-### Autovectores y autovalores
-
-    > a
-         [,1] [,2]
-    [1,]    1   -1
-    [2,]    1    1
-    > e <- eigen(a)
-    $values
-    [1] 1+1i 1-1i
+1.  i)  Bajarse el Quijote de ["Project Gutenberg"](http://www.gutenberg.org) en formato texto.
     
-    $vectors
-    		     [,1]                 [,2]
-    [1,] 0.7071068+0.0000000i 0.7071068+0.0000000i
-    [2,] 0.0000000-0.7071068i 0.0000000+0.7071068i
-    > eigenvector1 <- e$vectors[,1]
-    > eigenvalue1 <-  e$values[1]
-    > a %*% eigenvector1 / eigenvalue1
-    		     [,1]
-    [1,] 0.7071068+0.0000000i
-    [2,] 0.0000000-0.7071068i
-    > 
+    ii) Meter el libro en un vector de tipo "character", una palabra en cada elemento del
+    vector. Tip: `stringr::str_split()`. Cuántas palabras hay en total? Cuántas únicas?
+    
+    iii) Cuántas veces aparece cada palabra? Tip: `dplyr` + nombrar las columnas + `n()` o
+    `tally()`. Cuál es la 1era palabra del ranking? Cuanto aparece "Quijote" y en que ranking?
+    
+    iv) Hacer un plot del ranking vs. su frecuencia. Qué llama la atención? Tip: ambos ejes logarítmicos.
+    
+    v) CERRQué función de distribución describiría bien lo que encontramos? Puede ser una normal? Probar
+    distintas distribuciones (con `dDIST()`) para aproximar los datos. Tip: poner "quijote
+    distribution" en Google Scholar. Qué parámetro que controla la distribución es importante y
+    cuando vale (intentar calcularlo con R)?
 
 
-### Otras operaciones posibles son:
-
-    - t(): Matrix transpose
-    - qr(): QR decomposition
-    - chol(): Cholesky decomposition
-    - det(): Determinant
-    - eigen(): Eigenvalues/eigenvectors
-    - diag(): Extracts the diagonal of a square matrix
-    - svd(A): Single value decomposition of A
-    - ...
-
-
-## Otros paquetes de interés
-
--   [Numerical Mathematics](https://cran.r-project.org/web/views/NumericalMathematics.html)
--   [Ecuaciones diferenciales](https://cran.r-project.org/web/views/DifferentialEquations.html)
-    -   tienen también el libro "2012 - Book - Solving Differential Equations in R.pdf" en #bibliografia @slack
--   [Series temporales](https://cran.r-project.org/web/views/TimeSeries.html)
--   [Optimización y programación matemática](https://cran.r-project.org/web/views/Optimization.html)
--   Aritmética de precisión múltiple con [gmp](https://cran.r-project.org/web/packages/gmp/index.html)
--   Paquete [gsl](https://cran.r-project.org/web/packages/gsl/index.html), una interface a la Biblioteca Científica GNU
--   Mil cosas más :D
-
-
-# Práctica 11
+## Práctica 11 tris
 
 1.  En los datos de diamantes, hacer una regresión lineal de la variable logaritmo del precio como
     función del logaritmo del peso (carat). Sacar los coeficientes y usarlos para graficar el modelo (con
