@@ -164,7 +164,7 @@ Directamente con el operador %\*%
 
 1.  Integrar numéricamente la función `dlnorm(5, 1)` entre `0` y `xf`, con `xf=10^i` e `i=1,2,3` y `4`. Comparar con la
     función acumulada correspondientemente evaluada en el límite adecuado. Usar `...` para pasar parámetros.
-2.  Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de `NxN`, donde `N=10^i`, con `i = 1:4`? Hacer una figura con `ggplot2` y hacer una regresión (con `geom_smooth`). Confirmar, para el caso `i = 1`, la identidad `A x = lambda x`, para el caso del autovalor principal.
+2.  Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de `NxN`, donde `N=10^i`, con `i = 1:4`? Hacer una figura con `ggplot2` y hacer una regresión del tiempo como función del tamaño (t~N) con `geom_smooth`. Confirmar, para el caso `i = 1`, la identidad `A x = lambda x`, para el caso del autovalor principal.
 3.  Resolver el siguiente SEL y comprobar que `A x = B`.
     
         3x1 + 4x2 + 5x3 = 0,

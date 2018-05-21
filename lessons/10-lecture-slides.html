@@ -31,13 +31,13 @@
 </section>
 
 <section>
-<section id="slide-org58bba1d">
-<h2 id="org58bba1d">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org58bba1d">
+<section id="slide-org1c881b3">
+<h2 id="org1c881b3">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org1c881b3">
 </div>
 </section>
-<section id="slide-orgfb31224">
-<h3 id="orgfb31224">Vectorización</h3>
+<section id="slide-orgf263c80">
+<h3 id="orgf263c80">Vectorización</h3>
 <p>
 Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
 </p>
@@ -62,8 +62,8 @@ z <- x + y
 
 </ul>
 </section>
-<section id="slide-org3c89ba2">
-<h3 id="org3c89ba2">Funcionales - Familia *apply()</h3>
+<section id="slide-org2d01f61">
+<h3 id="org2d01f61">Funcionales - Familia *apply()</h3>
 <ul>
 <li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista</li>
 <li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
@@ -84,13 +84,13 @@ Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versi
 </section>
 </section>
 <section>
-<section id="slide-orga2cdb11">
-<h2 id="orga2cdb11">Matemática</h2>
-<div class="outline-text-2" id="text-orga2cdb11">
+<section id="slide-org7024ffc">
+<h2 id="org7024ffc">Matemática</h2>
+<div class="outline-text-2" id="text-org7024ffc">
 </div>
 </section>
-<section id="slide-org9a265e6">
-<h3 id="org9a265e6">Funciones matemáticas básicas</h3>
+<section id="slide-org45725a2">
+<h3 id="org45725a2">Funciones matemáticas básicas</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >- exp(): función exponencial, base e
@@ -121,8 +121,8 @@ cumprod(x)
 </code></pre>
 </div>
 </section>
-<section id="slide-org2fa5769">
-<h3 id="org2fa5769">Cálculo</h3>
+<section id="slide-orgfa31d02">
+<h3 id="orgfa31d02">Cálculo</h3>
 <p>
 R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
 </p>
@@ -142,13 +142,13 @@ extender la capacidad simbólica usando el sistema Yacas
 (<code>ryacas</code>). Ver CRAN.
 </p>
 </section>
-<section id="slide-org5f7a433">
-<h3 id="org5f7a433">Álgebra Lineal</h3>
-<div class="outline-text-3" id="text-org5f7a433">
+<section id="slide-org3f2dd1c">
+<h3 id="org3f2dd1c">Álgebra Lineal</h3>
+<div class="outline-text-3" id="text-org3f2dd1c">
 </div>
 </section>
-<section id="slide-orgddd3a75">
-<h4 id="orgddd3a75">Multiplicación de matrices</h4>
+<section id="slide-orgf52b8f3">
+<h4 id="orgf52b8f3">Multiplicación de matrices</h4>
 <p>
 Directamente con el operador %*%
 </p>
@@ -170,8 +170,8 @@ a %*% b
 </code></pre>
 </div>
 </section>
-<section id="slide-org88d0a8c">
-<h4 id="org88d0a8c">Sistema de ecuaciones lineales (o invertir una matriz) con <code>solve()</code></h4>
+<section id="slide-orgb379ed1">
+<h4 id="orgb379ed1">Sistema de ecuaciones lineales (o invertir una matriz) con <code>solve()</code></h4>
 <div class="org-src-container">
 
 <pre><code class="R" >a <- matrix(c(1,1,-1,1), nrow=2, ncol=2)
@@ -185,8 +185,8 @@ solve(a) ## sin el segundo argumento, invierte la matriz
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf083c46">
-<h4 id="orgf083c46">Autovectores y autovalores</h4>
+<section id="slide-orgd4abdfd">
+<h4 id="orgd4abdfd">Autovectores y autovalores</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >a
@@ -215,8 +215,8 @@ a %*% eigenvector1 / eigenvalue1
 </div>
 
 </section>
-<section id="slide-orgca10cbb">
-<h4 id="orgca10cbb">Otras operaciones posibles son:</h4>
+<section id="slide-org1abe9fb">
+<h4 id="org1abe9fb">Otras operaciones posibles son:</h4>
 <div class="org-src-container">
 
 <pre><code class="R" >- t(): transpuesta de una matriz
@@ -231,8 +231,8 @@ a %*% eigenvector1 / eigenvalue1
 </div>
 
 </section>
-<section id="slide-orge25ea30">
-<h3 id="orge25ea30">Otros paquetes de interés</h3>
+<section id="slide-org9f559b8">
+<h3 id="org9f559b8">Otros paquetes de interés</h3>
 <ul>
 <li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
 <li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
@@ -251,12 +251,12 @@ a %*% eigenvector1 / eigenvalue1
 </section>
 </section>
 <section>
-<section id="slide-org558d6de">
-<h2 id="org558d6de">Práctica 10</h2>
+<section id="slide-orga6e6983">
+<h2 id="orga6e6983">Práctica 10</h2>
 <ol>
 <li>Integrar numéricamente la función <code>dlnorm(5, 1)</code> entre <code>0</code> y <code>xf</code>, con <code>xf=10^i</code> e <code>i=1,2,3</code> y <code>4</code>. Comparar con la
 función acumulada correspondientemente evaluada en el límite adecuado. Usar <code>...</code> para pasar parámetros.</li>
-<li>Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de <code>NxN</code>, donde <code>N=10^i</code>, con <code>i = 1:4</code>? Hacer una figura con <code>ggplot2</code> y hacer una regresión (con <code>geom_smooth</code>). Confirmar, para el caso <code>i = 1</code>, la identidad <code>A x = lambda x</code>, para el caso del autovalor principal.</li>
+<li>Cuántos segundos demora R en encontrar los autovalores y autovectores de una matriz aleatoria de <code>NxN</code>, donde <code>N=10^i</code>, con <code>i = 1:4</code>? Hacer una figura con <code>ggplot2</code> y hacer una regresión del tiempo como función del tamaño (t~N) con <code>geom_smooth</code>. Confirmar, para el caso <code>i = 1</code>, la identidad <code>A x = lambda x</code>, para el caso del autovalor principal.</li>
 <li><p>
 Resolver el siguiente SEL y comprobar que <code>A x = B</code>.
 </p>
@@ -274,8 +274,8 @@ Resolver el siguiente SEL y comprobar que <code>A x = B</code>.
 
 </ol>
 </section>
-<section id="slide-org647427d">
-<h3 id="org647427d">Práctica 10 bis</h3>
+<section id="slide-org0cd2d24">
+<h3 id="org0cd2d24">Práctica 10 bis</h3>
 <ol>
 <li>Si tengo dos vectores <code>a</code> y <code>b</code> del mismo largo, que obtengo al hacer <code>sum(a * b)</code>? Y <code>sqrt(sum(a * a)</code>)?</li>
 <li>En un dia de sol, hay dos mesas en un jardín inglés. En cada mesa hay algunos pájaros,
