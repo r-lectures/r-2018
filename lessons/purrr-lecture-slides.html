@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R lectures</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2017">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R lectures</h1><h3>21/05/2017</h3>
+</section>
+<section>
+<section id="slide-org73257d4">
+<h2 id="org73257d4">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org73257d4">
+</div>
+</section>
+<section id="slide-org303597e">
+<h3 id="org303597e">Estadística descriptiva</h3>
+<p>
+Conceptos para entender la estructura de un grupo (digamos, <code>N &gt; 30</code>) de datos. 
+</p>
+
+<p>
+Una manera de hacer estadística descriptiva en columnas de listas (o data.frames) es con <code>sapply</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >sapply(mydata, mean, na.rm=TRUE) 
+</code></pre>
+</div>
+
+<p>
+donde podemos usar <code>mean</code>, <code>sd</code>, <code>var</code>, <code>min</code>, <code>max</code>, <code>median</code>, <code>range</code>, o <code>quantile</code>, entre otras). 
+</p>
+
+<p>
+O <code>summary()</code>, que es equivalente y funciona con data.frames.
+</p>
+
+<p>
+Tenemos también <code>group_by() + summarise()</code> con las mismas funciones básicas.
+</p>
+</section>
+<section id="slide-orgc89da81">
+<h3 id="orgc89da81">Distribuciones</h3>
+<p>
+En general R usa la siguiente convención:
+</p>
+
+<ul>
+<li><code>dDIST(x, ...)</code> es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+valor x</li>
+<li><code>pDIST(x, ...)</code> es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+valor menor a x (mayor si usamos <code>lower.tail=F</code>)</li>
+<li><code>rDIST(n, ...)</code> es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
+<li><code>qDIST(p, ...)</code> es la función cuartil que devuelve el x que corresponde al percentil <code>p</code> de DIST. Si
+<code>lower.tail=F</code>, devuelve <code>1</code> menos <code>p</code>.</li>
+
+</ul>
+
+<img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
+
+<p>
+Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
+</p>
+</section>
+<section id="slide-org2afaf94">
+<h3 id="org2afaf94">Modelado estadístico</h3>
+<p>
+Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o <i>variable respuesta</i> y otras variables independientes o
+<i>variables explicativas</i>. 
+</p>
+
+<p>
+En R la función <code>lm()</code> se usa para regresión lineal (<i>linear models</i>) y <code>glm()</code> para <i>generalized linear models</i>.
+</p>
+</section>
+<section id="slide-org3608396">
+<h4 id="org3608396">Regresión lineal - <code>lm()</code></h4>
+<p>
+Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.
+</p>
+
+<p>
+1 - Propongo una determinada relación de variables.
+</p>
+
+
+<p>
+2 - Calculo coeficientes del modelo.
+</p>
+
+
+<p>
+3 - Compruebo que tan bien se ajusta el modelo a nuevas observaciones.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
+## b[i] son los coeficientes o betas
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgbd448b6">
+<h4 id="orgbd448b6">Regresión lineal generalizada - <code>glm()</code></h4>
+<p>
+Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
+</code></pre>
+</div>
+
+<p>
+Ejemplito: Regresión logística, para variables categóricas.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># F es un factor binario
+# x1, x2 y x3 son predictores continuos 
+fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
+
+</code></pre>
+</div>
+</section>
+<section id="slide-orgbc68324">
+<h3 id="orgbc68324">Estadística avanzada - material infinito</h3>
+<ul>
+<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
+<li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
+<li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
+<li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9aecf8e">
+<h2 id="org9aecf8e">Manejando listas con <code>purrr</code></h2>
+</section>
+</section>
+<section>
+<section id="slide-org79b744a">
+<h2 id="org79b744a">Funciones <code>*map*()</code> de <code>purrr</code></h2>
+<img style="WIDTH:800px; HEIGHT:600px; border:0" src="./figs/purrr-apply.png">
+</section>
+<section id="slide-orgff3817e">
+<h3 id="orgff3817e"><code>map(.x, .f, ...)</code></h3>
+<p>
+Como <code>lapply</code>, aplica la función <code>f</code> a los elementos de la lista <code>x</code>.
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >x1 <- list(
+  c(0.27, 0.37, 0.57, 0.91, 0.20),
+  c(0.90, 0.94, 0.66, 0.63, 0.06), 
+  c(0.21, 0.18, 0.69, 0.38, 0.77)
+)
+map(x1, max)
+[[1]]
+[1] 0.91
+
+[[2]]
+[1] 0.94
+
+[[3]]
+[1] 0.77
+</code></pre>
+</div>
+</section>
+<section id="slide-org8649144">
+<h3 id="org8649144">Atajos</h3>
+<p>
+Puedo pasar fórmulas, nombres o posiciones a <code>map()</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## Puedo pasar funciones:
+models <- mtcars %>% 
+  split(.$cyl) %>% 
+  map(function(df) lm(mpg ~ wt, data = df))
+
+## O directamente una *fórmula de un solo lado*:
+models <- mtcars %>% 
+  split(.$cyl) %>% 
+  map(~lm(mpg ~ wt, data = .))
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## Puedo pasar argumentos con subsetting:
+models %>% 
+  map(summary) %>% 
+  map_dbl(~.$r.squared)
+
+## O pasar directamente el nombre:
+models %>% 
+  map(summary) %>% 
+  map_dbl("r.squared")
+</code></pre>
+</div>
+<div class="org-src-container">
+
+<pre><code class="R" >## Finalmente, puedo hacer pasar posiciones:
+x <- list(list(1, 2, 3), list(4, 5, 6), list(7, 8, 9))
+x %>% map_dbl(2)
+#[1] 2 5 8
+</code></pre>
+</div>
+</section>
+<section id="slide-org8d5e1d8">
+<h3 id="org8d5e1d8">Funciones <code>*map*()</code> de <code>purrr</code></h3>
+<p>
+Con <code>purrr</code>, uno siempre elige explícitamente el tipo de salida.
+</p>
+<img style="WIDTH:800px; HEIGHT:450px; border:0" src="./figs/purrr-apply-output.png">
+</section>
+<section id="slide-orge090934">
+<h4 id="orge090934">Ejemplos de salidas de <code>map()</code></h4>
+<div class="org-src-container">
+
+<pre><code class="R" >map_dbl(x1, max)
+[1] 0.91 0.94 0.77
+map_chr(x1, max)
+[1] "0.910000" "0.940000" "0.770000"
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org3a05959">
+<h3 id="org3a05959"><code>map2(.x, .y, .f, ...)</code></h3>
+<p>
+Si tengo dos listas como input, uso <code>map2</code>.
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >mu <- list(5, 10, -3)
+sigma <- list(1, 5, 10)
+map2(mu, sigma, rnorm, n = 5) %>% str()
+#> List of 3
+#>  $ : num [1:5] 4.78 5.59 4.93 4.3 4.47
+#>  $ : num [1:5] 10.85 10.57 6.02 8.82 15.93
+#>  $ : num [1:5] -1.12 7.39 -7.5 -10.09 -2.7
+</code></pre>
+</div>
+<img style="WIDTH:450px; HEIGHT:200px; border:0" src="./figs/lists-map2.png">
+</section>
+<section id="slide-org21c4750">
+<h3 id="org21c4750"><code>pmap(.l, .f, ...)</code></h3>
+<p>
+Para más argumentos que dos, tenemos <code>pmap()</code>.
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >n <- list(1, 3, 5)
+mu <- list(5, 10, -3)
+sigma <- list(1, 5, 10)
+
+args1 <- list(n, mu, sigma)
+args1 %>%
+  pmap(rnorm) %>% 
+  str()
+#> List of 3
+#>  $ : num 4.55
+#>  $ : num [1:3] 13.4 18.8 13.2
+#>  $ : num [1:5] 0.685 10.801 -11.671 21.363 -2.562
+
+</code></pre>
+</div>
+
+<img style="WIDTH:450px; HEIGHT:200px; border:0" src="./figs/lists-pmap-named.png">
+</section>
+<section id="slide-orgfaacb22">
+<h3 id="orgfaacb22">Varias funciones: <code>invoke_map(.f, .x, ...)</code></h3>
+<div class="org-src-container">
+
+<pre><code class="R" >f <- c("runif", "rnorm", "rpois")
+param <- list(
+  list(min = -1, max = 1), 
+  list(sd = 5), 
+  list(lambda = 10)
+)
+invoke_map(f, param, n = 5) %>% str()
+#> List of 3
+#>  $ : num [1:5] 0.762 0.36 -0.714 0.531 0.254
+#>  $ : num [1:5] 3.07 -3.09 1.1 5.64 9.07
+#>  $ : int [1:5] 9 14 8 9 7
+</code></pre>
+</div>
+<img style="WIDTH:450px; HEIGHT:200px; border:0" src="./figs/lists-invoke.png">
+</section>
+</section>
+<section>
+<section id="slide-org3421be0">
+<h2 id="org3421be0"><code>walk()</code>, <code>walk2()</code> y <code>pwalk()</code></h2>
+<p>
+Uso estas funciones cuando no me importa el valor de retorno, si no un efecto secundario como una información en pantalla o un archivo que se guarda. Estas funciones devuelven (invisiblemente) el mismo objeto que reciben, por lo que es posible usarlas en medio de un <i>pipe</i>.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >library(ggplot2)
+plots <- mtcars %>% 
+  split(.$cyl) %>% 
+  map(~ggplot(., aes(mpg, wt)) + geom_point())
+
+## usamos str_c para agregar extensión
+paths <- stringr::str_c(names(plots), ".pdf")
+
+## ejecuto ggsave(filename, plot) simultáneamente
+pwalk(list(paths, plots), ggsave, path = tempdir())
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge61229a">
+<h2 id="orge61229a">Filtros</h2>
+<p>
+Tenemos un número de funciones para filtrar listas, de acuerdo a <i>predicados</i> <code>.p</code>.
+</p>
+<img style="WIDTH:400px; HEIGHT:450px; border:0" src="./figs/purrr-filter.png">
+</section>
+</section>
+<section>
+<section id="slide-org04d7c21">
+<h2 id="org04d7c21">Resúmenes</h2>
+<p>
+Del mismo modo, tenemos algunas funciones para seleccionar subconjuntos de elementosm de acuerdo a criterios.
+</p>
+<img style="WIDTH:400px; HEIGHT:450px; border:0" src="./figs/purrr-summarise.png">
+</section>
+</section>
+<section>
+<section id="slide-orgcf5dd01">
+<h2 id="orgcf5dd01">Trasformaciones</h2>
+<p>
+Finalmente, podemos modificar subconjuntos de elementos de acuerdo a criterios (posición, etc.).
+</p>
+<img style="WIDTH:500px; HEIGHT:500px; border:0" src="./figs/purrr-transform.png">
+</section>
+</section>
+<section>
+<section id="slide-orgb15dc97">
+<h2 id="orgb15dc97">Datos anidados: <code>nest()</code></h2>
+<p>
+A veces es útil tener listas rectangulares donde el contenido de las celdas son a su vez listas. 
+</p>
+<img style="WIDTH:500px; HEIGHT:500px; border:0" src="./figs/purrr-nest.png">
+</section>
+</section>
+<section>
+<section id="slide-org82913cb">
+<h2 id="org82913cb">Datos anidados: <code>nest()</code></h2>
+<p>
+Ejemplo de <i>workflow</i> en el que usamos listas anidadas y manipulamos con <code>purrr</code>, conservando relaciones.
+</p>
+<img style="WIDTH:1600px; HEIGHT:450px; border:0" src="./figs/purrr-nest2.png">
+</section>
+</section>
+<section>
+<section id="slide-orgbc2b6d8">
+<h2 id="orgbc2b6d8">Práctica <code>purrr</code></h2>
+<ol>
+<li>Usar las funciones <code>map()</code> para:
+<ul>
+<li>Calcular la media de cada columna de <code>mtcars</code>.</li>
+<li>Determinar el tipo de cada columna de <code>nycflights13::flights</code>.</li>
+<li>Calcular la cantidad de valores únicos de cada columna de <code>iris</code>.</li>
+<li>Generar 10 números aleatorios para  mu=−10, 0, 10, y 100.</li>
+
+</ul></li>
+<li>Con los datos de <code>airqualilty</code>, para cada mes, hacer una regresión
+lineal del ozono como variable respuesta y temperatura como
+variable explicativa. Del resultado, extraer un vector de <i>doubles</i>
+que contenga el elemento 'adj.r.squared' del modelo
+resultante. Preferentemente, escribir todo el procesado en una
+línea utilizando <i>pipes</i> y <code>purrr</code>.</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
