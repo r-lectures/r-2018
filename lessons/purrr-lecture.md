@@ -4,6 +4,92 @@ title: Clase 12
 --- 
 
 
+# Repaso de la clase anterior
+
+
+## Estadística descriptiva
+
+Conceptos para entender la estructura de un grupo (digamos, `N > 30`) de datos. 
+
+Una manera de hacer estadística descriptiva en columnas de listas (o data.frames) es con `sapply`:
+
+    sapply(mydata, mean, na.rm=TRUE) 
+
+donde podemos usar `mean`, `sd`, `var`, `min`, `max`, `median`, `range`, o `quantile`, entre otras). 
+
+O `summary()`, que es equivalente y funciona con data.frames.
+
+Tenemos también `group_by() + summarise()` con las mismas funciones básicas.
+
+
+## Distribuciones
+
+En general R usa la siguiente convención:
+
+-   `dDIST(x, ...)` es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+    valor x
+-   `pDIST(x, ...)` es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+    valor menor a x (mayor si usamos `lower.tail=F`)
+-   `rDIST(n, ...)` es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.
+-   `qDIST(p, ...)` es la función cuartil que devuelve el x que corresponde al percentil `p` de DIST. Si
+    `lower.tail=F`, devuelve `1` menos `p`.
+
+<img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
+
+Para ver las distribuciones disponibles, ver el [task view de distribuciones](https://cran.r-project.org/web/views/Distributions.html)
+
+
+## Modelado estadístico
+
+Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o *variable respuesta* y otras variables independientes o
+*variables explicativas*. 
+
+En R la función `lm()` se usa para regresión lineal (*linear models*) y `glm()` para *generalized linear models*.
+
+
+### Regresión lineal - `lm()`
+
+Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.
+
+1 - Propongo una determinada relación de variables.
+
+2 - Calculo coeficientes del modelo.
+
+3 - Compruebo que tan bien se ajusta el modelo a nuevas observaciones.
+
+    y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
+    ## b[i] son los coeficientes o betas
+
+
+### Regresión lineal generalizada - `glm()`
+
+Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones.
+
+    ## expresión general
+    glm(formula, family=familytype(link=linkfunction), data=)
+
+Ejemplito: Regresión logística, para variables categóricas.
+
+    # F es un factor binario
+    # x1, x2 y x3 son predictores continuos 
+    fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+    summary(fit) # resultados
+    exp(coef(fit)) # coeficientes
+    predict(fit, type="response") # predicciones
+    residuals(fit, type="deviance") # residuos 
+
+
+## Estadística avanzada - material infinito
+
+-   [Paquete stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html)
+-   [CRAN view de distribuciones](https://cran.r-project.org/web/views/Distributions.html)
+-   [Modern Applied Statistics with S. Fourth Edition](https://www.stats.ox.ac.uk/pub/MASS4/) - [(MASS book)](https://cran.r-project.org/web/packages/MASS/index.html)
+-   [The elements of statistical learning](http://statweb.stanford.edu/~tibs/ElemStatLearn/) - [(ElemStatLearn book)](https://cran.r-project.org/web/packages/ElemStatLearn/index.html)
+
+
 # Manejando listas con `purrr`
 
 
@@ -112,7 +198,7 @@ Para más argumentos que dos, tenemos `pmap()`.
 <img style="WIDTH:450px; HEIGHT:200px; border:0" src="./figs/lists-pmap-named.png">
 
 
-## Varias funciones? Entonces `invoke_map(.f, .x, ...)`
+## Varias funciones: `invoke_map(.f, .x, ...)`
 
     f <- c("runif", "rnorm", "rpois")
     param <- list(
@@ -168,14 +254,14 @@ Finalmente, podemos modificar subconjuntos de elementos de acuerdo a criterios (
 
 # Datos anidados: `nest()`
 
-A veces es útil tener listas rectangulares donde el contenido de las celdas son a su vez listas. Es una manera de jerarquizar los datos conservando sus relaciones.
+A veces es útil tener listas rectangulares donde el contenido de las celdas son a su vez listas. 
 
 <img style="WIDTH:500px; HEIGHT:500px; border:0" src="./figs/purrr-nest.png">
 
 
 # Datos anidados: `nest()`
 
-Ejemplo de *workflow* en el que usamos listas anidadas y manipulamos con `purrr`.
+Ejemplo de *workflow* en el que usamos listas anidadas y manipulamos con `purrr`, conservando relaciones.
 
 <img style="WIDTH:1600px; HEIGHT:450px; border:0" src="./figs/purrr-nest2.png">
 
