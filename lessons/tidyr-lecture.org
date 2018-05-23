@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
 #+TITLE: R lectures
-#+DATE: 23/05/2017
+#+DATE: 23/05/2018
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
