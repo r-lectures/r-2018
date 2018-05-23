@@ -27,27 +27,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1>R lectures</h1><h3>06/06/2017</h3>
+<section id="sec-title-slide"><h1>R lectures</h1><h3>23/05/2018</h3>
 </section>
 <section>
-<section id="slide-org23df66f">
-<h2 id="org23df66f">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org23df66f">
+<section id="slide-org4e623fc">
+<h2 id="org4e623fc">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org4e623fc">
 </div>
 </section>
-<section id="slide-orgc33d014">
-<h3 id="orgc33d014">Funciones <code>*map*()</code> de <code>purrr</code></h3>
+<section id="slide-orga9c6702">
+<h3 id="orga9c6702">Funciones <code>*map*()</code> de <code>purrr</code></h3>
 <img style="WIDTH:800px; HEIGHT:600px; border:0" src="./figs/purrr-apply.png">
 </section>
-<section id="slide-orgb8f10f9">
-<h4 id="orgb8f10f9">Funciones <code>*map*()</code> de <code>purrr</code></h4>
+<section id="slide-org45a8f01">
+<h4 id="org45a8f01">Funciones <code>*map*()</code> de <code>purrr</code></h4>
 <p>
 Con <code>purrr</code>, uno siempre elige explícitamente el tipo de salida.
 </p>
 <img style="WIDTH:800px; HEIGHT:450px; border:0" src="./figs/purrr-apply-output.png">
 </section>
-<section id="slide-orge265c63">
-<h3 id="orge265c63">Datos anidados: <code>nest()</code></h3>
+<section id="slide-orgca33a3f">
+<h3 id="orgca33a3f">Datos anidados: <code>nest()</code></h3>
 <p>
 Ejemplo de <i>workflow</i> en el que usamos listas anidadas y manipulamos con <code>purrr</code>, conservando relaciones.
 </p>
@@ -55,13 +55,13 @@ Ejemplo de <i>workflow</i> en el que usamos listas anidadas y manipulamos con <c
 </section>
 </section>
 <section>
-<section id="slide-org481cd7f">
-<h2 id="org481cd7f"><i>Tidyverse</i> viene de <i>Tidy data</i></h2>
-<div class="outline-text-2" id="text-org481cd7f">
+<section id="slide-org56244fb">
+<h2 id="org56244fb"><i>Tidyverse</i> viene de <i>Tidy data</i></h2>
+<div class="outline-text-2" id="text-org56244fb">
 </div>
 </section>
-<section id="slide-org7ff7c53">
-<h3 id="org7ff7c53">Qué significa tener datos prolijos?</h3>
+<section id="slide-orgc4c02b3">
+<h3 id="orgc4c02b3">Qué significa tener datos prolijos?</h3>
 <p>
 Para tener datos prolijos se deben cumplir los siguientes tres requisitos:
 </p>
@@ -79,11 +79,11 @@ Para tener datos prolijos se deben cumplir los siguientes tres requisitos:
 Más sobre el abordaje tipo <i>tidy data</i> en <a href="http://www.jstatsoft.org/v59/i10/paper">H. Wickham "Tidy data", J Stat Softw (2014)</a> , la <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">vignette</a> del paquete y por que no sus excepciones en el artículo <a href="https://simplystatistics.org/2016/02/17/non-tidy-data/">Non-tidy data</a>.
 </p>
 </section>
-<section id="slide-orgfd0f79c">
-<h3 id="orgfd0f79c">Paquete <code>tidyr</code></h3>
+<section id="slide-orgc1836d1">
+<h3 id="orgc1836d1">Paquete <code>tidyr</code></h3>
 </section>
-<section id="slide-org82c6c17">
-<h3 id="org82c6c17"><code>gather()</code></h3>
+<section id="slide-org7a71865">
+<h3 id="org7a71865"><code>gather()</code></h3>
 <p>
 Usamos <code>gather(data, key, value)</code> cuando tenemos una variable distribuida en varias
 columnas.
@@ -115,13 +115,13 @@ table4a %>% gather(`1999`, `2000`, key = "year", value = "cases")
 </code></pre>
 </div>
 </section>
-<section id="slide-orgca107a7">
-<h3 id="orgca107a7"><code>gather()</code></h3>
+<section id="slide-org4f346b4">
+<h3 id="org4f346b4"><code>gather()</code></h3>
 <img style="WIDTH:2600px; HEIGHT:400px; border:0" src="./figs/tidy-9.png">
 
 </section>
-<section id="slide-org9aa56d1">
-<h3 id="org9aa56d1"><code>spread()</code></h3>
+<section id="slide-org0ea9618">
+<h3 id="org0ea9618"><code>spread()</code></h3>
 <p>
 Usamos <code>spread(data, key, value)</code> cuando tenemos una observación distribuida en varias filas. 
 </p>
@@ -155,13 +155,13 @@ table2 %>% spread(key = type, value = count)
 </div>
 
 </section>
-<section id="slide-orge2ef2a3">
-<h3 id="orge2ef2a3"><code>spread()</code></h3>
+<section id="slide-orgfe26f27">
+<h3 id="orgfe26f27"><code>spread()</code></h3>
 <img style="WIDTH:1200px; HEIGHT:500px; border:0" src="./figs/tidy-8.png">
 
 </section>
-<section id="slide-org3e43e69">
-<h3 id="org3e43e69"><code>separate()</code></h3>
+<section id="slide-org23eeea7">
+<h3 id="org23eeea7"><code>separate()</code></h3>
 <p>
 Usamos <code>separate(data, col, into, sep)</code> cuando queremos dividir una variable en varias.
 </p>
@@ -189,13 +189,13 @@ table3 %>% separate(rate, into = c("cases", "population"), sep = "/", convert = 
 </code></pre>
 </div>
 </section>
-<section id="slide-org1d59ffc">
-<h3 id="org1d59ffc"><code>separate()</code></h3>
+<section id="slide-org42d4d99">
+<h3 id="org42d4d99"><code>separate()</code></h3>
 <img style="WIDTH:700px; HEIGHT:500px; border:0" src="./figs/tidy-17.png">
 
 </section>
-<section id="slide-org0d6fedf">
-<h3 id="org0d6fedf"><code>unite()</code></h3>
+<section id="slide-org3a81e2d">
+<h3 id="org3a81e2d"><code>unite()</code></h3>
 <p>
 Usamos <code>unite(data, col, sep)</code> para juntar dos columnas.
 </p>
@@ -224,13 +224,13 @@ table5 %>% unite(new, century, year, sep = "")
 </div>
 
 </section>
-<section id="slide-org54a0a22">
-<h3 id="org54a0a22"><code>unite()</code></h3>
+<section id="slide-org7725713">
+<h3 id="org7725713"><code>unite()</code></h3>
 <img style="WIDTH:700px; HEIGHT:500px; border:0" src="./figs/tidy-18.png">
 
 </section>
-<section id="slide-org15de9b1">
-<h3 id="org15de9b1">Aún más prolijidad: paquete <code>broom</code></h3>
+<section id="slide-orgf3c7397">
+<h3 id="orgf3c7397">Aún más prolijidad: paquete <code>broom</code></h3>
 <p>
 Pretnede extender la metodología 'prolija' a funciones clave como <code>lm</code>, <code>glm</code>, <code>anova</code> y varias otras, transformando sus salidas en data frames consistentes con el resto del <i>tidyverse</i>.
 </p>
@@ -243,8 +243,8 @@ Pretnede extender la metodología 'prolija' a funciones clave como <code>lm</cod
 
 </ul>
 </section>
-<section id="slide-org4f50b86">
-<h4 id="org4f50b86"><code>tidy()</code></h4>
+<section id="slide-orga663ffb">
+<h4 id="orga663ffb"><code>tidy()</code></h4>
 <p>
 Construye un data frame que resume los resultados de un modelo estadístico, por ejemplo, coeficientes y <i>p-values</i> para cada regresión, etc.
 </p>
@@ -271,8 +271,8 @@ tidy(lmfit)
 </div>
 
 </section>
-<section id="slide-org3e6fbfb">
-<h4 id="org3e6fbfb"><code>augment()</code></h4>
+<section id="slide-orgfba9ba9">
+<h4 id="orgfba9ba9"><code>augment()</code></h4>
 <p>
 Agrega columnas a los datos originales modelados (descarta variables fuera del modelo). Esto incluye predicciones, residuos o asignaciones de clusters.
 </p>
@@ -299,8 +299,8 @@ Agrega columnas a los datos originales modelados (descarta variables fuera del m
 </div>
 
 </section>
-<section id="slide-org878356c">
-<h4 id="org878356c"><code>glance()</code></h4>
+<section id="slide-org9894487">
+<h4 id="org9894487"><code>glance()</code></h4>
 <p>
 Construye un resumen conciso del modelo, de una línea (típicamente con R2, R2 adjustado, error standard, F1, etc.)
 </p>
@@ -318,13 +318,13 @@ Construye un resumen conciso del modelo, de una línea (típicamente con R2, R2 
 </section>
 </section>
 <section>
-<section id="slide-orgec50451">
-<h2 id="orgec50451">Workflow científico</h2>
+<section id="slide-org12dcd97">
+<h2 id="org12dcd97">Workflow científico</h2>
 <img style="WIDTH:700px; HEIGHT:300px; border:0" src="./figs/data-science.png">
 
 </section>
-<section id="slide-org31301c7">
-<h3 id="org31301c7">Modo interactivo, <code>source()</code> y <code>R CMD BATCH</code></h3>
+<section id="slide-orgc3f2a59">
+<h3 id="orgc3f2a59">Modo interactivo, <code>source()</code> y <code>R CMD BATCH</code></h3>
 <div class="org-src-container">
 
 <pre><code class="R" >## En un editor de texto creamos el script z.R
@@ -350,8 +350,8 @@ Acordarse que para imprimir en pantalla desde un script, tienen que usar print()
 </p>
 
 </section>
-<section id="slide-org557317b">
-<h3 id="org557317b"><i>Workflow</i> científico</h3>
+<section id="slide-org228c39c">
+<h3 id="org228c39c"><i>Workflow</i> científico</h3>
 <ul>
 <li>Trabajar con <i>scripts</i> permite mantener y sistematizar nuestro proceso científico
 <ul>
@@ -381,8 +381,8 @@ source("3-graph-data.R")
 </div>
 
 </section>
-<section id="slide-orgfefc4be">
-<h3 id="orgfefc4be">R project y CRAN en ciencia</h3>
+<section id="slide-orgffa530f">
+<h3 id="orgffa530f">R project y CRAN en ciencia</h3>
 <p>
 <a href="https://www.r-project.org/">The R Project for Statistical Computing</a>
 </p>
@@ -409,8 +409,8 @@ idénticas de R. De acá se baja R y los <a href="https://cran.r-project.org/web
 </section>
 </section>
 <section>
-<section id="slide-org71cc951">
-<h2 id="org71cc951">Práctica tidyr</h2>
+<section id="slide-org8f40be5">
+<h2 id="org8f40be5">Práctica tidyr</h2>
 <p>
 Trabajamos con los datos <code>who</code> del paquete <code>tidyr</code>. Son datos de tuberculosis (TB) de la organización mundial de la salud. Pueden leer el <i>help</i> de los datos para tener más información. El ejercicio es llevar estos datos a formato 'prolijo' o <i>tidy</i>. Para ello deben deshacerse de datos redundantes, y utlizar las funciones de <code>tidyr</code> hasta quedarse con columnas correspondientes a país, año, tipo (de TB), sexo, edad y casos. Tendrán que usar lo aprendido respecto de <code>NA</code>'s y respecto de manipulación de <i>strings</i> (paquete <code>readr</code>). 
 </p>
