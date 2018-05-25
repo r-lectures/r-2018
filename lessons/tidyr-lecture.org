@@ -219,7 +219,7 @@ stocks %>% complete(year, qtr)
 #+END_SRC
 
 ** Aún más prolijidad: paquete ~broom~
-Pretnede extender la metodología 'prolija' a funciones clave como ~lm~, ~glm~, ~anova~ y varias otras, transformando sus salidas en data frames consistentes con el resto del /tidyverse/.
+Pretende extender la metodología 'prolija' a funciones clave como ~lm~, ~glm~, ~anova~ y varias otras, transformando sus salidas en data frames consistentes con el resto del /tidyverse/.
 
 - Siempre saca data frames
 - Nunca pone nombres en las filas (los guarda en variables que empiezan con punto)
@@ -333,6 +333,7 @@ source("3-graph-data.R")
   - [[https://asaip.psu.edu/forums/software-forum/459833927][Paquetes para astronomía en ASAIP]]
   - [[https://cran.r-project.org/web/views/Genetics.html][CRAN Task View: Statistical Genetics]]
   - y muchos otros!
+- Otro repositorio, importante para versiones aún en desarrollo: [[https://r-forge.r-project.org/][R forge]]
 * Práctica tidyr
 Trabajamos con los datos ~who~ del paquete ~tidyr~. Son datos de tuberculosis (TB) de la organización mundial de la salud. Pueden leer el /help/ de los datos para tener más información. El ejercicio es llevar estos datos a formato 'prolijo' o /tidy/. Para ello deben deshacerse de datos redundantes, y utlizar las funciones de ~tidyr~ hasta quedarse con columnas correspondientes a país, año, tipo (de TB), sexo, edad y casos. Tendrán que usar lo aprendido respecto de ~NA~'s y respecto de manipulación de /strings/ (paquete ~readr~). 
 

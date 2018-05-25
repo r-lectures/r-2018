@@ -168,7 +168,7 @@ Usamos `unite(data, col, sep)` para juntar dos columnas.
 
 ## Aún más prolijidad: paquete `broom`
 
-Pretnede extender la metodología 'prolija' a funciones clave como `lm`, `glm`, `anova` y varias otras, transformando sus salidas en data frames consistentes con el resto del *tidyverse*.
+Pretende extender la metodología 'prolija' a funciones clave como `lm`, `glm`, `anova` y varias otras, transformando sus salidas en data frames consistentes con el resto del *tidyverse*.
 
 -   Siempre saca data frames
 -   Nunca pone nombres en las filas (los guarda en variables que empiezan con punto)
@@ -285,6 +285,7 @@ Ejemplo: hago un *script*, my\_great\_data\_analysis.R, que contiene:
     -   [Paquetes para astronomía en ASAIP](https://asaip.psu.edu/forums/software-forum/459833927)
     -   [CRAN Task View: Statistical Genetics](https://cran.r-project.org/web/views/Genetics.html)
     -   y muchos otros!
+-   Otro repositorio, importante para versiones aún en desarrollo: [R forge](https://r-forge.r-project.org/)
 
 
 # Práctica tidyr
