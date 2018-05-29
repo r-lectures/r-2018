@@ -1,4 +1,4 @@
-# 1er parcial - recuperatorio
+# Recuperatorio del 1er parcial
 
 
 ## Instrucciones

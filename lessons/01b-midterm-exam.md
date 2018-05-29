@@ -1,10 +1,10 @@
 --- 
 layout: default 
-title: Parcial 1 - recuperatorio
+title: Parcial 1 - Recuperatorio
 --- 
 
 
-# 1er parcial
+# Recuperatorio del 1er parcial
 
 
 ## Instrucciones

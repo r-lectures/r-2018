@@ -41,7 +41,7 @@
 #+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
 --- 
 layout: default 
-title: Parcial 1 - recuperatorio
+title: Parcial 1 - Recuperatorio
 --- 
 #+end_src 
 #+results:
@@ -52,7 +52,7 @@ title: Parcial 1 - recuperatorio
 
 # #+ATTR_REVEAL: :frag roll-in
 
-* 1er parcial
+* Recuperatorio del 1er parcial
 ** Instrucciones
 - Tienen tres horas para completar el parcial.
 - Tienen todo el material de clase y online disponible para consulta.
