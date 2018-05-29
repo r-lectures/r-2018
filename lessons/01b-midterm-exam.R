@@ -28,8 +28,7 @@
 ##         disponibles). Son datos de venta de inmuebles en Texas, con datos de ciudad, año, mes, número
 ##         de inmuebles vendidos (*sales*), total vendido en dólares (*volume*), mediana del valor del
 ##         inmueble, número de inmuebles disponibles (*listings*) y meses que se demoraría en vender todo
-##         lo disponible al ritmo de venta actual (*inventory*). Consejo: miren la ayuda de los datos para
-##         más información. Preguntar si no entienden alguna cosa en inglés (preguntar es gratpis ;).
+##         lo disponible al ritmo de venta actual (*inventory*). 
 
 ##     2.  Renombrar el dataframe a "tx" (o sea, asignar el objeto txhousing al objeto tx).
 
