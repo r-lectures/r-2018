@@ -100,8 +100,8 @@ lectures:
     - title: "Clase 11 - versión texto"
       url: 11-lecture.html
 
-# - title: "Recuperatorio del primer parcial"
-#   url: 01b-midterm-exam.html
+- title: "Recuperatorio del primer parcial"
+  url: 01b-midterm-exam.html
 
 - title: "Clase 12 - purrr"
   url: purrr-lecture-slides.html
