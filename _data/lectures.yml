@@ -100,9 +100,6 @@ lectures:
     - title: "Clase 11 - versión texto"
       url: 11-lecture.html
 
-- title: "Recuperatorio del primer parcial"
-  url: 01b-midterm-exam.html
-
 - title: "Clase 12 - purrr"
   url: purrr-lecture-slides.html
 
@@ -116,6 +113,12 @@ lectures:
   subitems:
     - title: "Clase 13 - versión texto"
       url: tidyr-lecture.html
+
+- title: "Recuperatorio del primer parcial"
+  url: 01b-midterm-exam.html
+  subitems:
+    - title: "Script para empezar"
+      url: 01b-midterm-exam.R
 
 # - title: "Repaso 2do parcial"
 #   url: 02-midterm-practice.html
