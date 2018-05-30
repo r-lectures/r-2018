@@ -80,5 +80,4 @@ Les he preparado varios puntos para que practiquen los distintos temas que hemos
         )
     
     Con una línea de código, implementar regresion lineal en `mtcars` con todas las fórmulas a la vez. Hacer lo mismo usando `purrr`.
-5.  
 
