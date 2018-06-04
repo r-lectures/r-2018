@@ -141,4 +141,4 @@ lectures:
   url: 02-midterm-exam.html
   subitems:
     - title: "Script para empezar"
-      url: 03-midterm-exam.R
+      url: 02-midterm-exam.R
