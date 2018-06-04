@@ -137,5 +137,8 @@ lectures:
 #     - title: "Slides clase 15"
 #       url: slides/15-lecture-slides.html
 
-# - title: "Segundo parcial"
-#   url: 02-midterm-exam.html
+- title: "Segundo parcial"
+  url: 02-midterm-exam.html
+  subitems:
+    - title: "Script para empezar"
+      url: 03-midterm-exam.R
