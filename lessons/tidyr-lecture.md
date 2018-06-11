@@ -1,7 +1,3 @@
---- 
-layout: default 
-title: Clase tidyr
---- 
 
 
 # Repaso de la clase anterior
@@ -173,7 +169,7 @@ Pretende extender la metodología 'prolija' a funciones clave como `lm`, `glm`, 
 -   Siempre saca data frames
 -   Nunca pone nombres en las filas (los guarda en variables que empiezan con punto)
 -   Consistencia al nombrar variables para combinar modelos sin trabajo extra. Para mayor información que variables se guardan, consultar el final de [este link](https://cran.r-project.org/web/packages/broom/vignettes/broom.html).
--   Tres funciones principales: `tidy()`, `augment()` y `gather()`.
+-   Tres funciones principales: `tidy()`, `augment()`  `glance()`.
 
 
 ### `tidy()`
