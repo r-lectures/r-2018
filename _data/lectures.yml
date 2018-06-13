@@ -142,3 +142,9 @@ lectures:
   subitems:
     - title: "Script para empezar"
       url: 02-midterm-exam.R
+
+- title: "Recuperatorio Segundo parcial"
+  url: 02b-midterm-exam.html
+  subitems:
+    - title: "Script para empezar"
+      url: 02b-midterm-exam.R
