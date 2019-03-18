@@ -1,8 +1,3 @@
----
-layout: default
-title: Sobre el curso
-weight: 10
----
 
 
 # Carreras:
@@ -15,8 +10,8 @@ weight: 10
 
 # Programas:
 
--   [Programa para graduación]({{ site.url }}/assets/Programa - Análisis de Datos Científicos en R - Posgrado.pdf)
--   [Programa para posgraduación]({{ site.url }}/assets/Programa - Análisis de Datos Científicos en R.pdf)
+-   [Programa para graduación]({{ site.url }}/assets/Programa - Análisis de Datos Científicos en R.pdf)
+-   [Programa para posgraduación]({{ site.url }}/assets/Programa - Análisis de Datos Científicos en R - Posgrado.pdf)
 
 
 # Objetivos
