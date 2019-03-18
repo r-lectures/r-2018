@@ -285,5 +285,5 @@ qplot(displ, hwy, colour = class, data = mpg)
 #+END_SRC
 ** Práctica
 
-Descargar [[file:assets/R2019%20-%20Gu%C3%ADa%201.pdf][práctica 1]].
+Descargar [[file:assets/R2019-practice-1.pdf][práctica 1]].
 

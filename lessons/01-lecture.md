@@ -295,5 +295,5 @@ r-lectures.github.io
 
 ## Práctica
 
-Descargar [práctica 1](assets/R2019 - Guía 1.pdf).
+Descargar [práctica 1](assets/R2019-practice-1.pdf).
 
