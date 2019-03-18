@@ -295,5 +295,5 @@ r-lectures.github.io
 
 ## Práctica
 
-Descargar [práctica 1](assets/R2019-practice-1.pdf).
+Descargar [práctica 1](file:///Users/moyano/Projects/BUREAU - TEACHING/2019 - FALL - Análisis de datos científicos en R/WEBSITE - Análisis de datos científicos con R/r-lectures/assets/R2019-practice-1.pdf).
 
