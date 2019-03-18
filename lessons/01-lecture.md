@@ -111,10 +111,9 @@ r-lectures.github.io
 
 ### Horarios
 
--   Lunes y Miércoles de 15 a 18
--   ~ 1 hora de teoría
+-   Lunes de 15 a 18, miércoles de 16 a 19
+-   ~ 1+ hora de teoría
 -   resto de práctica/consulta
--   presentaciones de alumnos de "paquetes"
 
 
 ### Guías de ejercicios
@@ -127,23 +126,22 @@ r-lectures.github.io
 
 ### Parciales
 
--   Dos parciales, en la 5ta y 10ma semana aprox.
+-   Dos parciales, en la mitad y al final, aprox.
 -   Tendrán toda la información disponible durante el parcial
 -   Estarán fuertemente basados en las guías prácticas
 
 
 ### Proyecto final
 
--   Informe escrito y presentación oral
+-   Informe escrito
 -   Cada uno buscará tema y datos propios, acordando conmigo
 
 
 ### Calendario
 
--   Parcial 1: ~ 18 de Abril
--   Parcial 2: ~ 23 de Mayo
--   Proyecto final, a partir del ~ 10 de Junio
--   Días sin clases: 2, 11, 30 de Abril; 20 de Junio
+-   Parcial 1: ~ 8 de Abril
+-   Parcial 2: ~ 29 de Abril
+-   Proyecto final
 
 
 ### Herramientas
@@ -154,10 +152,10 @@ r-lectures.github.io
     Vamos a usar Github para intercambiar código
     
     </div>
--   Slack
+-   Google Classroom
     
     <div class="NOTES">
-    Vamos a usar Slack para intercambiar información
+    Para intercambiar información
     
     </div>
 -   R en una terminal

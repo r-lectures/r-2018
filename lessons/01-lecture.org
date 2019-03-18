@@ -129,10 +129,9 @@ r-lectures.github.io
 # #+END_NOTES
 * Organización de la materia
 *** Horarios
-- Lunes y Miércoles de 15 a 18
-- ~ 1 hora de teoría
+- Lunes de 15 a 18, miércoles de 16 a 19
+- ~ 1+ hora de teoría
 - resto de práctica/consulta
-- presentaciones de alumnos de "paquetes"
 
 # - schedule
 #   - 09AM 1h consulting
@@ -153,29 +152,28 @@ r-lectures.github.io
     # - [[http://rmarkdown.rstudio.com/authoring_basics.html][markdown authoring basics]]
     # - [[https://youtu.be/hAyze9cEdZA][video markdown]]
 *** Parciales
-- Dos parciales, en la 5ta y 10ma semana aprox.
+- Dos parciales, en la mitad y al final, aprox.
 - Tendrán toda la información disponible durante el parcial
 - Estarán fuertemente basados en las guías prácticas
 *** Proyecto final
-- Informe escrito y presentación oral
+- Informe escrito
 - Cada uno buscará tema y datos propios, acordando conmigo
 # - RUBRIC
 #   - use of tools learned
 #   - presentation
 #   - legibility
 *** Calendario
-- Parcial 1: ~ 18 de Abril
-- Parcial 2: ~ 23 de Mayo
-- Proyecto final, a partir del ~ 10 de Junio
-- Días sin clases: 2, 11, 30 de Abril; 20 de Junio
+- Parcial 1: ~ 8 de Abril
+- Parcial 2: ~ 29 de Abril
+- Proyecto final
 *** Herramientas
 - Github
   #+BEGIN_NOTES
   Vamos a usar Github para intercambiar código
   #+END_NOTES
-- Slack
+- Google Classroom
   #+BEGIN_NOTES
-  Vamos a usar Slack para intercambiar información
+  Para intercambiar información
   #+END_NOTES
 - R en una terminal
   #+BEGIN_NOTES

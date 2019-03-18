@@ -1,7 +1,3 @@
---- 
-layout: default 
-title: index 
---- 
 
 
 # Análisis de Datos Científicos en R
@@ -22,26 +18,26 @@ flexible lenguaje de programación.
 
 ## Horarios y Fechas
 
--   Lunes de 15:00 a 18:00 y Miércoles de 14:00 a 17:00
--   Fecha de inicio: 19 de Marzo de 2018
--   Duración: 80 hs para carreras de grado, 120 hs para carreras de posgrado
--   La materia de dicta en la sala de informática
--   Se recomienda traer laptop si se tiene esa posibilidad
+-   Lunes de 15:00 a 18:00 y Miércoles de 16:00 a 19:00.
+-   Fecha de inicio: 18 de Marzo de 2019.
+-   Duración: 36 hs presenciales - 80 hs para carreras de grado, 120 hs para carreras de posgrado.
+-   La materia de dicta en la sala de informática.
+-   Se recomienda traer laptop, si se tiene esa posibilidad.
 
 
 ## Herramientas
 
--   [RStudio](https://www.rstudio.com/) - aunque opcional, se lo recomienda para trabajar con R
+-   [RStudio](https://www.rstudio.com/) - aunque opcional, se lo recomienda para trabajar con R.
     -   Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
         que quieran (por ejemplo, [emacs](https://www.gnu.org/software/emacs/) o, si no hay otra, [vim](http://www.vim.org/) ;)
--   [Slack](https://slack.com/) - para coordinarnos entre los miembros del curso
--   [Github](https://github.com/) - recomendable para compartir código
+-   [Slack](https://slack.com/) - para coordinarnos entre los miembros del curso.
+-   [Github](https://github.com/) - recomendable para compartir código.
 
 
 ### Prof. Luis G. Moyano
 
--   Inv. Adjunto CONICET y Prof. Adjunto FCEN, UNCU
--   Física Estadística y Sistemas Complejos
--   Me encuentran principalmente a la mañana en la oficina 904 (al final del edificio, por la escalera norte)
+-   Inv. Adjunto CONICET y Prof. Adjunto FCEN, UNCU.
+-   Física Estadística y Sistemas Complejos.
+-   Mi oficina es la 904 (al final del edificio, por la escalera norte).
 -   <span class="underline">lgmoyano@gmail.com</span> / twitter: [@luisgmoyano](https://twitter.com/luisgmoyano)
 
