@@ -206,11 +206,11 @@ r-lectures.github.io
    #+END_SRC
 2. /Vignettes/ (manuales de paquetes)
 3. Google - StackOverflow - R-bloogers
-4. Slack (local), Stackoverflow (global)
+4. Google Classroom (local), Stackoverflow (global)
    #+BEGIN_NOTES
-   Pregunten por Slack a sus compañeros, usen los canales con criterio, usen y abusen de los /threads/
+   Pregunten por Classroom a sus compañeros, usen los canales con criterio, usen y abusen de los /threads/
    #+END_NOTES
-5. Profe Luis (último recurso! ;)
+5. Profes Carolina y Luis (último recurso! ;)
 * Comandos básicos I
 
 - Ayuda: ~?~ y ~??~

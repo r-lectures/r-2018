@@ -2,7 +2,7 @@ lecture_title: Clases
 lectures:
   
 - title: "Clase 1 - Intro"
-  url: "01-lecture-slides.html"
+  url: "01-lecture.html"
 
   subitems:
     - title: "Clase 1 - Intro - versión texto"

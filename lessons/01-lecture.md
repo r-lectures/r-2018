@@ -192,13 +192,13 @@ r-lectures.github.io
         > ??plot <- "apropos"
 2.  *Vignettes* (manuales de paquetes)
 3.  Google - StackOverflow - R-bloogers
-4.  Slack (local), Stackoverflow (global)
+4.  Google Classroom (local), Stackoverflow (global)
     
     <div class="NOTES">
-    Pregunten por Slack a sus compañeros, usen los canales con criterio, usen y abusen de los *threads*
+    Pregunten por Classroom a sus compañeros, usen los canales con criterio, usen y abusen de los *threads*
     
     </div>
-5.  Profe Luis (último recurso! ;)
+5.  Profes Carolina y Luis (último recurso! ;)
 
 
 # Comandos básicos I
