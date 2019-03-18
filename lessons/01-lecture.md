@@ -295,9 +295,5 @@ r-lectures.github.io
 
 ## Práctica
 
-1.  Elegir un conjunto de datos *built-in* con datos continuos y categóricos
-2.  Explorar sus principales características (media, máximo, mínimo, etc)
-3.  Graficar las relaciones más importantes
-4.  Encontrar la manera de hacer *scatterplots* e histogramas
-5.  Agregar información (título, ejes, descripción de los datos)
+Descargar [práctica 1](file:///Users/moyano/Projects/BUREAU - TEACHING/2019 - FALL - Análisis de datos científicos en R/WEBSITE - Análisis de datos científicos con R/r-lectures/assets/R2019 - Guía 1.pdf).
 

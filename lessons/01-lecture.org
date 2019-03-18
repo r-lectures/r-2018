@@ -284,8 +284,6 @@ qplot(displ, hwy, data = mpg)
 qplot(displ, hwy, colour = class, data = mpg)
 #+END_SRC
 ** Práctica
-1. Elegir un conjunto de datos /built-in/ con datos continuos y categóricos
-2. Explorar sus principales características (media, máximo, mínimo, etc)
-3. Graficar las relaciones más importantes
-4. Encontrar la manera de hacer /scatterplots/ e histogramas
-5. Agregar información (título, ejes, descripción de los datos) 
+
+Descargar [[file:~/Projects/BUREAU%20-%20TEACHING/2019%20-%20FALL%20-%20An%C3%A1lisis%20de%20datos%20cient%C3%ADficos%20en%20R/WEBSITE%20-%20An%C3%A1lisis%20de%20datos%20cient%C3%ADficos%20con%20R/r-lectures/assets/R2019%20-%20Gu%C3%ADa%201.pdf][práctica 1]].
+
