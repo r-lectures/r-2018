@@ -167,19 +167,22 @@ r-lectures.github.io
 - Parcial 2: ~ 29 de Abril
 - Proyecto final
 *** Herramientas
-- Github
+- Web del curso
   #+BEGIN_NOTES
-  Vamos a usar Github para intercambiar código
+  Las clases estarán en la web.
   #+END_NOTES
 - Google Classroom
   #+BEGIN_NOTES
-  Para intercambiar información
+  Para intercambiar información y consultas.
   #+END_NOTES
 - R en una terminal
   #+BEGIN_NOTES
-  Agregandole cualquier editor de texto, o sea, Emacs ;)
+  Más cualquier editor de texto, o sea, Emacs ;)
   #+END_NOTES
 - R con RStudio
+* Instalación
+- Instalar [[http://mirror.fcaglp.unlp.edu.ar/CRAN/][R]]
+- Instalar [[https://www.rstudio.com/products/rstudio/download/][RStudio]]
 * R en el terminal
 - Abran un terminal
 - Pongan "R"

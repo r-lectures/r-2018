@@ -146,25 +146,31 @@ r-lectures.github.io
 
 ### Herramientas
 
--   Github
+-   Web del curso
     
     <div class="NOTES">
-    Vamos a usar Github para intercambiar código
+    Las clases estarán en la web.
     
     </div>
 -   Google Classroom
     
     <div class="NOTES">
-    Para intercambiar información
+    Para intercambiar información y consultas.
     
     </div>
 -   R en una terminal
     
     <div class="NOTES">
-    Agregandole cualquier editor de texto, o sea, Emacs ;)
+    Más cualquier editor de texto, o sea, Emacs ;)
     
     </div>
 -   R con RStudio
+
+
+# Instalación
+
+-   Instalar [R](http://mirror.fcaglp.unlp.edu.ar/CRAN/)
+-   Instalar [RStudio](https://www.rstudio.com/products/rstudio/download/)
 
 
 # R en el terminal

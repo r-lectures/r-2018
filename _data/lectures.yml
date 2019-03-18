@@ -1,11 +1,11 @@
 lecture_title: Clases
 lectures:
   
-- title: "Clase 1 - Intro"
+- title: "Clase 1 - Intro" 
   url: "01-lecture-slides.html"
 
   subitems:
-    - title: "Clase 1 - Intro - versión texto"
+    - title: "versión texto"
       url: "01-lecture.html"
 
 # - title: "Clase 2 - ggplot2"
