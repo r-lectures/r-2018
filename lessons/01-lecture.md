@@ -1,7 +1,3 @@
---- 
-layout: default 
-title: Clase 1 - Intro 
---- 
 
 
 # Presentaciones
@@ -11,6 +7,8 @@ Profe Luis G. Moyano
 lgmoyano@gmail.com
 
 @luisgmoyano
+
+Profe Carolina Gandini
 
 
 # 

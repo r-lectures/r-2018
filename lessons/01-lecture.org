@@ -1,5 +1,5 @@
-#+TITLE: R 2018
-#+DATE: 19/03/2018
+#+TITLE: R 2019
+#+DATE: 18/03/2019
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 #+OPTIONS: author:nil date:t email:nil
@@ -43,7 +43,7 @@ title: Clase 1 - Intro
 
 # #+ATTR_REVEAL: :frag roll-in
 
-# Clase [2018-03-19 Tue]
+# Clase [2019-03-18 Mon]
 * Presentaciones
 Profe Luis G. Moyano
 
@@ -51,6 +51,7 @@ lgmoyano@gmail.com
 
 @luisgmoyano
 
+Profe Carolina Gandini
 * 
 
 r-lectures.github.io
