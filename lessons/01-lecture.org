@@ -144,7 +144,7 @@ r-lectures.github.io
 #   - 3-4 per class?
 *** Guías de ejercicios
 - Parte principal del curso
-- Aproximadamente uno por semana
+- Aproximadamente uno por clase
 - Haremos hincapié en desarrollar "reproducible research"
   - informe + código + datos
     # - [[http://r4ds.had.co.nz/r-markdown-workflow.html][30 R Markdown workflow]]

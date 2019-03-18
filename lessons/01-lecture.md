@@ -119,7 +119,7 @@ r-lectures.github.io
 ### Guías de ejercicios
 
 -   Parte principal del curso
--   Aproximadamente uno por semana
+-   Aproximadamente uno por clase
 -   Haremos hincapié en desarrollar "reproducible research"
     -   informe + código + datos
 
