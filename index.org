@@ -1,4 +1,4 @@
-#+title: Análisis de datos científicos en R - 2018
+#+title: Análisis de datos científicos en R - 2019
 #+STARTUP: showall expand
 #+options: toc:nil
 
@@ -25,11 +25,11 @@ elementos de ambas áreas como soporte para explorar en detalle las distintas ut
 flexible lenguaje de programación.
 
 ** Horarios y Fechas
-- Lunes de 15:00 a 18:00 y Miércoles de 14:00 a 17:00
-- Fecha de inicio: 19 de Marzo de 2018
-- Duración: 80 hs para carreras de grado, 120 hs para carreras de posgrado
+- Lunes de 15:00 a 18:00 y Miércoles de 16:00 a 19:00
+- Fecha de inicio: 18 de Marzo de 2018
+- Duración: 36 hs presenciales - 80 hs para carreras de grado, 120 hs para carreras de posgrado
 - La materia de dicta en la sala de informática
-- Se recomienda traer laptop si se tiene esa posibilidad
+- Se recomienda traer laptop, si se tiene esa posibilidad
 
 ** Herramientas
 - [[https://www.rstudio.com/][RStudio]] - aunque opcional, se lo recomienda para trabajar con R
