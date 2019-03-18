@@ -26,7 +26,7 @@ flexible lenguaje de programación.
 
 ** Horarios y Fechas
 - Lunes de 15:00 a 18:00 y Miércoles de 16:00 a 19:00.
-- Fecha de inicio: 18 de Marzo de 2018.
+- Fecha de inicio: 18 de Marzo de 2019.
 - Duración: 36 hs presenciales - 80 hs para carreras de grado, 120 hs para carreras de posgrado.
 - La materia de dicta en la sala de informática.
 - Se recomienda traer laptop, si se tiene esa posibilidad.
