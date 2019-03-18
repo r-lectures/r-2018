@@ -8,143 +8,143 @@ lectures:
     - title: "Clase 1 - Intro - versión texto"
       url: "01-lecture.html"
 
-- title: "Clase 2 - ggplot2"
-  url: "02-lecture-slides.html"
+# - title: "Clase 2 - ggplot2"
+#   url: "02-lecture-slides.html"
 
-  subitems:
-    - title: "Clase 2 - ggplot2 - versión texto"
-      url: "02-lecture.html"
+#   subitems:
+#     - title: "Clase 2 - ggplot2 - versión texto"
+#       url: "02-lecture.html"
 
-- title: "Clase 3 - dplyr"
-  url: "03-lecture-slides.html"
+# - title: "Clase 3 - dplyr"
+#   url: "03-lecture-slides.html"
 
-  subitems:
-    - title: "Clase 3 - versión texto"
-      url: "03-lecture.html"
+#   subitems:
+#     - title: "Clase 3 - versión texto"
+#       url: "03-lecture.html"
 
-- title: "Clase 4 - más dplyr + magrittr"
-  url: "04-lecture-slides.html"
+# - title: "Clase 4 - más dplyr + magrittr"
+#   url: "04-lecture-slides.html"
 
-  subitems:
-    - title: "Clase 4 - versión texto"
-      url: "04-lecture.html"
+#   subitems:
+#     - title: "Clase 4 - versión texto"
+#       url: "04-lecture.html"
 
-- title: "Clase 5 - Funciones + RStudio"
-  url: "05-lecture-slides.html"
+# - title: "Clase 5 - Funciones + RStudio"
+#   url: "05-lecture-slides.html"
 
-  subitems:
-    - title: "Clase 5 - versión texto"
-      url: "05-lecture.html"
+#   subitems:
+#     - title: "Clase 5 - versión texto"
+#       url: "05-lecture.html"
 
-- title: "Clase 6 - Tipos de datos"
-  url: "06-lecture-slides.html"
+# - title: "Clase 6 - Tipos de datos"
+#   url: "06-lecture-slides.html"
 
-  subitems:
-    - title: "Clase 6 - versión texto"
-      url: "06-lecture.html"
+#   subitems:
+#     - title: "Clase 6 - versión texto"
+#       url: "06-lecture.html"
 
-- title: "Repaso para 1er parcial"
-  url: "01-midterm-practice.html"
+# - title: "Repaso para 1er parcial"
+#   url: "01-midterm-practice.html"
 
-- title: "Clase repaso - ggplot2"
-  url: "lecture_ggplot-review-slides.html"
+# - title: "Clase repaso - ggplot2"
+#   url: "lecture_ggplot-review-slides.html"
 
-  subitems:
-    - title: "Clase repaso - versión texto"
-      url: "lecture_ggplot-review.html"
+#   subitems:
+#     - title: "Clase repaso - versión texto"
+#       url: "lecture_ggplot-review.html"
 
-#     - title: "R - Analisis de datos con Caret - Emmanuel"
-#       url: ../assets/R - Analisis de datos con Caret.pdf
+# #     - title: "R - Analisis de datos con Caret - Emmanuel"
+# #       url: ../assets/R - Analisis de datos con Caret.pdf
 
       
-- title: "Clase 7 - Vectores extendidos + Subsetting"
-  url: "07-lecture-slides.html"
-
-  subitems:
-    - title: "Clase 7 - versión texto"
-      url: "07-lecture.html"
-#     - title: "Anova en R - Brenda"
-#       url: ../assets/Anova-en-R-2.pdf
-
-- title: "Primer parcial"
-  url: 01-mid-term-exam.html
-  subitems:
-    - title: "Script para empezar"
-      url: 01-midterm-exam.R
-
-- title: "Clase 8 - if + for"
-  url: 08-lecture-slides.html
-
-  subitems:
-    - title: "Clase 8 - versión texto"
-      url: 08-lecture.html
-
-- title: "Clase 9 - Vectorization y familia *apply() "
-  url: 09-lecture-slides.html
-
-  subitems:
-    - title: "Clase 9 - versión texto"
-      url: 09-lecture.html
-
-- title: "Clase 10 - Matemática"
-  url: 10-lecture-slides.html
-
-  subitems:
-    - title: "Clase 10 - versión texto"
-      url: 10-lecture.html
-
-- title: "Clase 11 - Estadística"
-  url: 11-lecture-slides.html
-
-  subitems:
-    - title: "Clase 11 - versión texto"
-      url: 11-lecture.html
-
-- title: "Clase 12 - purrr"
-  url: purrr-lecture-slides.html
-
-  subitems:
-    - title: "Clase 12 - versión texto"
-      url: purrr-lecture.html
-
-- title: "Clase 13 - tidyr y worflow científico"
-  url: tidyr-lecture-slides.html
-
-  subitems:
-    - title: "Clase 13 - versión texto"
-      url: tidyr-lecture.html
-
-- title: "Recuperatorio del primer parcial"
-  url: 01b-midterm-exam.html
-  subitems:
-    - title: "Script para empezar"
-      url: 01b-midterm-exam.R
-
-- title: "Repaso para 2do parcial"
-  url: 02-midterm-practice.html
-
-# - title: "Clase 14 - Física"
-#   url: 14-lecture.html
+# - title: "Clase 7 - Vectores extendidos + Subsetting"
+#   url: "07-lecture-slides.html"
 
 #   subitems:
-#     - title: "Slides clase 14"
-#       url: slides/14-lecture-slides.html
+#     - title: "Clase 7 - versión texto"
+#       url: "07-lecture.html"
+# #     - title: "Anova en R - Brenda"
+# #       url: ../assets/Anova-en-R-2.pdf
 
-# - title: "Clase 15 - Química"
-#   url: 15-lecture.html
+# - title: "Primer parcial"
+#   url: 01-mid-term-exam.html
+#   subitems:
+#     - title: "Script para empezar"
+#       url: 01-midterm-exam.R
+
+# - title: "Clase 8 - if + for"
+#   url: 08-lecture-slides.html
 
 #   subitems:
-#     - title: "Slides clase 15"
-#       url: slides/15-lecture-slides.html
+#     - title: "Clase 8 - versión texto"
+#       url: 08-lecture.html
 
-- title: "Segundo parcial"
-  url: 02-midterm-exam.html
-  subitems:
-    - title: "Script para empezar"
-      url: 02-midterm-exam.R
+# - title: "Clase 9 - Vectorization y familia *apply() "
+#   url: 09-lecture-slides.html
 
-- title: "Recuperatorio Segundo parcial"
-  url: 02b-midterm-exam.html
-  subitems:
-    - title: "Script para empezar"
-      url: 02b-midterm-exam.R
+#   subitems:
+#     - title: "Clase 9 - versión texto"
+#       url: 09-lecture.html
+
+# - title: "Clase 10 - Matemática"
+#   url: 10-lecture-slides.html
+
+#   subitems:
+#     - title: "Clase 10 - versión texto"
+#       url: 10-lecture.html
+
+# - title: "Clase 11 - Estadística"
+#   url: 11-lecture-slides.html
+
+#   subitems:
+#     - title: "Clase 11 - versión texto"
+#       url: 11-lecture.html
+
+# - title: "Clase 12 - purrr"
+#   url: purrr-lecture-slides.html
+
+#   subitems:
+#     - title: "Clase 12 - versión texto"
+#       url: purrr-lecture.html
+
+# - title: "Clase 13 - tidyr y worflow científico"
+#   url: tidyr-lecture-slides.html
+
+#   subitems:
+#     - title: "Clase 13 - versión texto"
+#       url: tidyr-lecture.html
+
+# - title: "Recuperatorio del primer parcial"
+#   url: 01b-midterm-exam.html
+#   subitems:
+#     - title: "Script para empezar"
+#       url: 01b-midterm-exam.R
+
+# - title: "Repaso para 2do parcial"
+#   url: 02-midterm-practice.html
+
+# # - title: "Clase 14 - Física"
+# #   url: 14-lecture.html
+
+# #   subitems:
+# #     - title: "Slides clase 14"
+# #       url: slides/14-lecture-slides.html
+
+# # - title: "Clase 15 - Química"
+# #   url: 15-lecture.html
+
+# #   subitems:
+# #     - title: "Slides clase 15"
+# #       url: slides/15-lecture-slides.html
+
+# - title: "Segundo parcial"
+#   url: 02-midterm-exam.html
+#   subitems:
+#     - title: "Script para empezar"
+#       url: 02-midterm-exam.R
+
+# - title: "Recuperatorio Segundo parcial"
+#   url: 02b-midterm-exam.html
+#   subitems:
+#     - title: "Script para empezar"
+#       url: 02b-midterm-exam.R
