@@ -13,6 +13,7 @@ feed.xml
 *.Rsession
 *.lock
 /_data/.Rhistory
+_site/
 _site/**/*.html
 _site/*.html
 
