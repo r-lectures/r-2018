@@ -11,17 +11,24 @@ weight: 10
 #+end_src
 #+results:
 
-** Carreras:
+** Carreras
 - PGU en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y Química.
 - Licenciatura en Ciencias Básicas con orientación en Biología, Física, Matemática, Geología y
   Química.
 - La materia también es válida como curso de posgrado.
 
-** Programas:
+** Cursado no presencial
+- Se podrá cursar de manera /no presencial/, lo que implica la posibilidad de no asistir a clases teóricas, pero aún así acceder a los créditos de la materia.
+- Será obligatorio para regularizar:
+  - Inscribirse en SIU Guaraní.
+  - Rendir los exámenes parciales.
+  - Entregar el informe escrito final.
+- En esta modalidad, se dispondrá de acceso online a las clases dictadas, y a consulta online con los profesores y el resto de los alumnos de la materia. Adicionalmente, se podrá acceder a bibliografía adicional y se tendrá la posibilidad de consulta /in situ/ en días previamente acordados con la cátedra.
+
+** Programas
 
 - [Programa para graduación]({{ site.url }}/assets/Programa - Análisis de Datos Científicos en R.pdf)
 - [Programa para posgraduación]({{ site.url }}/assets/Programa - Análisis de Datos Científicos en R - Posgrado.pdf)
-
 
 ** Objetivos
 1) Dominar los conceptos básicos del lenguaje de programación R.
