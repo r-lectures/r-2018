@@ -32,13 +32,13 @@
 
 
 <section>
-<section id="slide-org8f17a7f">
-<h2 id="org8f17a7f">Repaso ggplot2</h2>
-<div class="outline-text-2" id="text-org8f17a7f">
+<section id="slide-orgcbe1792">
+<h2 id="orgcbe1792">Repaso ggplot2</h2>
+<div class="outline-text-2" id="text-orgcbe1792">
 </div>
 </section>
-<section id="slide-orgd788d9c">
-<h3 id="orgd788d9c">ggplot2: figuras combianando capas</h3>
+<section id="slide-org0298df9">
+<h3 id="org0298df9">ggplot2: figuras combinando capas</h3>
 <p>
 ggplot2 asocia distintas funciones a <i>capas</i> que representan distintas partes de un gráfico. En su
 forma más sencilla tenemos dos funciones:
@@ -62,8 +62,8 @@ variables y la geometría.
 </p>
 
 </section>
-<section id="slide-org32bf543">
-<h3 id="org32bf543">Ejemplito</h3>
+<section id="slide-org4f2aa5b">
+<h3 id="org4f2aa5b">Ejemplito</h3>
 <p>
 May the source be with you
 </p>
@@ -86,8 +86,8 @@ geom_point(aes(height, mass))
 </code></pre>
 </div>
 </section>
-<section id="slide-org6a88dac">
-<h3 id="org6a88dac">Mappings</h3>
+<section id="slide-orgcf4b189">
+<h3 id="orgcf4b189">Mappings</h3>
 <p>
 El llamado <i>mapping</i> es uno de los argumentos de las funciones de geometría y el objeto que hay que
 pasarle se genera con <code>aes()</code>. El mapping conecta elementos de los datos con información visual en
@@ -120,8 +120,8 @@ ggplot(starwars) + geom_point(aes(height, mass, color=gender, shape=eye_color))
 </div>
 
 </section>
-<section id="slide-orgff0fee8">
-<h3 id="orgff0fee8">Jerarquías</h3>
+<section id="slide-org078c84e">
+<h3 id="org078c84e">Jerarquías</h3>
 <p>
 Las funciones de geometría pueden llevar su propio mapping, o pueden heredar un mapping de la
 función <code>ggplot</code>.
@@ -136,7 +136,7 @@ ggplot(starwars) + geom_point(aes(height, mass))
 </div>
 
 <p>
-Esto nos dá flexibilidad, porque podemos usar distintas variables en distintas capas:
+Esto nos da flexibilidad, porque podemos usar distintas variables en distintas capas:
 </p>
 <div class="org-src-container">
 
@@ -159,8 +159,8 @@ geom_point(data = morley, aes(Run, Speed), color = "blue")
 
 
 </section>
-<section id="slide-org1367d57">
-<h3 id="org1367d57">Texto</h3>
+<section id="slide-org5dfedd8">
+<h3 id="org5dfedd8">Texto</h3>
 <p>
 Podemos poner texto de diversas maneras, por ejemplo:
 </p>
@@ -177,8 +177,8 @@ ggplot(starwars) +
 </code></pre>
 </div>
 </section>
-<section id="slide-org6256837">
-<h3 id="org6256837">Ejes</h3>
+<section id="slide-orgf629583">
+<h3 id="orgf629583">Ejes</h3>
 <p>
 Podemos manipular los ejes de diversas maneras, por ejemplo:
 </p>
@@ -198,8 +198,8 @@ ggplot(starwars) +
 </div>
 
 </section>
-<section id="slide-org45f6884">
-<h3 id="org45f6884">Podemos usar expresiones lógicas</h3>
+<section id="slide-orgd5b00ec">
+<h3 id="orgd5b00ec">Podemos usar expresiones lógicas</h3>
 <p>
 Podemos mapear experesiones hechas con operadores lógicos a elementos estéticos. Los operadores
 lógicos generan una variable auxiliar categórica. 
@@ -218,8 +218,8 @@ ggplot(starwars) +
 </code></pre>
 </div>
 </section>
-<section id="slide-org80fc1fa">
-<h3 id="org80fc1fa">Facets</h3>
+<section id="slide-orgd7f0a3e">
+<h3 id="orgd7f0a3e">Facets</h3>
 <p>
 Otra manera es dividir un gráfico en más de un gráfico de acuerdo a una variable. Debemos usar una
 <code>formula</code>, pero que por ahora podemos pensar como un tilde antes de una variable.
@@ -236,8 +236,8 @@ ggplot(starwars) +
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf3f5639">
-<h3 id="orgf3f5639">Otros tipos de gráficos</h3>
+<section id="slide-orgc98fb88">
+<h3 id="orgc98fb88">Otros tipos de gráficos</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># histogramas
