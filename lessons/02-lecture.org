@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2018
-#+DATE: 21/03/2018
+#+TITLE: R 2019
+#+DATE: 20/03/2019
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -21,7 +21,7 @@
 #+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
 #+REVEAL_PLUGINS: (highlight)
 #+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
-#+REVEAL_HLEVEL: 1
+#+REVEAL_HLEVEL: 4
 
 # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
 # (setq org-reveal-title-slide 'auto)
@@ -47,110 +47,88 @@ title: Clase 2
 
 # #+ATTR_REVEAL: :frag roll-in
 
-# Clase [2018-03-21 Wed]
-* r-lectures.slack.com/
 
-#+BEGIN_EXPORT html
-<img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/slack.png">
-#+END_EXPORT
-** Slack 
-- canales (/channels/) (#general, #random, creen los que hagan falta)
-- hilos (/threads/), en los casos en que quieran comentar sin entorpecer la discusión principal
-- mensajes directos - son privados
-- se puede compartir archivos y código (usar el signo "+" abajo a la izq.)
-#+ATTR_REVEAL: frag: highlight-blue
-- => pregúntenle a slackbot: how do I use Slack?
-* COMMENT github.com/r-2017/
-
-#+BEGIN_EXPORT html
-  <img style="WIDTH:800px; HEIGHT:550px; border:0" src="./figs/git.png">
-#+END_EXPORT
-** github
-- repositório de código
-- sistema de versiones 
-  - "fotos" de nuestro código en distintos tiempos
-  - versiones distintas pueden convivir en paralelo
-- muy fácil de compartir
 * Repaso de la clase pasada
 ** Conceptos principales
-- *Paquetes* contienen *funciones*
+- Abrimos una sesión de R en una consola
+- R usa comandos para ejecutar acciones
+- Los comandos se distinguen por sus () finales
+- Se escriben en la línea de comandos (que empieza con el /prompt/) y se ejecutan con /Enter/
+** Conceptos principales
+*Paquetes* contienen *funciones* (aka, comandos)
 #+BEGIN_SRC R 
+  install.packages("ggplot2") # instalo el paquete de Internet, si no lo tengo aún
   library(ggplot2) # cargo el paquete ggplot2 en mi sesión
-  install.packages("ggplot2") # instalo el paquete de internet si no lo tengo
 #+END_SRC
-- *Funciones* actuan sobre *datos y variables*
+*Funciones* actuan sobre *datos y variables*
 #+BEGIN_SRC R 
-  str(mis_datos) # str() me dice la estructura de mis_datos
-  summary(mis_datos) # summary() me los resume
-  head(mis_datos) # head() me muestra algunas primeras líneas
-  plot(mis_datos$columna1, mis_datos$columna2) # plot() los grafica
+  str(iris) # str() me describe la estructura de mis_datos
+  summary(iris) # summary() los resume estadísticamente
+  head(iris) # head() me muestra algunas primeras líneas
+  plot(iris$Sepal.Length, iris$Sepal.Width) # plot() los grafica
 #+END_SRC
-** Hicieron la práctica??
-1. Elegir un conjunto de datos /built-in/ con datos continuos y categóricos
-2. Explorar sus principales características (media, máxmimo, mínimo, etc)
-3. Graficar las relaciones más importantes
-4. Encontrar la manera de hacer /scatterplots/ e histogramas
-#+ATTR_REVEAL: frag: highlight-blue
-5. Agregar información (título, ejes, descripción de los datos) 
-** Visualización
+** Visualización I
 ~base::plot()~
 #+BEGIN_SRC R 
-
-# Define the cars vector with 5 values
+# Defino un vector de 5 valores
 cars <- c(1, 3, 6, 4, 9)
 
-# Graph the cars vector with all defaults
+# Grafico los 5 valores en función de su posición en el vector
 plot(cars)
 
-# Graph cars using blue points overlayed by a line 
+# Idem, pero agrego una línea y lo coloreo de azul
 plot(cars, type="o", col="blue")
 
-# Create a title with a red, bold/italic font
+# Agrego un título en rojo con cierto tamaño de letra
 title(main="Autos", col.main="red", font.main=4)
 #+END_SRC
-** Visualización
+
+** Visualización II
 ~base::plot()~
 #+BEGIN_SRC R 
-# Get a random log-normal distribution (=> ?rlnorm)
+# Genero 1000 valores aleatorios de una distribución lognormal (?rlnorm)
 r <- rlnorm(1000)
 
-# Get the distribution without plotting it using tighter breaks => ?seq ?hist
+# Guardo en h un histograma sin dibujarlo, y con bins menores (?seq y ?hist)
 h <- hist(r, plot=F, breaks=c(seq(0,max(r)+1, .1)))
 
-# Plot the distribution using log scale on both axes, and use
-# blue points
+# Dibujo el histograma con ejes logarítmicos y con puntos azules
 plot(h$counts, log="xy", pch=20, col="blue",
 	main="Log-normal distribution",
 	xlab="Value", ylab="Frequency")
 #+END_SRC
-** COMMENT Visualización
+* Sobre las prácticas
+
+* ~ggplot2~
+** ~qplot~
 ~ggplot2::qplot()~ 
-- similar a plot()
-- para hacer figuras básicas está ok
-- para gráficas más elaboradas vamos a usar ggplot2()
 
 #+BEGIN_SRC R 
-## scatterplot de displ vs. hwy del data.frame mpg
+## "scatterplot" de displ vs. hwy del data.frame mpg
+install.packages("ggplot2") 
+library(ggplot2)
 qplot(displ, hwy, data = mpg)
 
 ## idem pero usando una escala de colores para "class"
 qplot(displ, hwy, colour = class, data = mpg)
 #+END_SRC
-* ~ggplot2~
-** 
 
+1. similar a plot()
+2. para hacer figuras básicas está ok
+3. para gráficas más elaboradas vamos a usar ggplot2()
+
+** 
 ~ggplot2~
+#+BEGIN_SRC R 
+  p <- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
+  p <- ggplot(mtcars) + aes(mpg, wt) # le agrego el mapeo de variables que quiero
+  p <- ggplot(mtcars) + aes(mpg, wt) + geom_point() # le agrego como quiero que represente ese mapeo
+  p                     # imprimo la figura
+#+END_SRC
 - /grammar of graphics/ [[http://vita.had.co.nz/papers/layered-grammar.pdf][(Wilkinson, 2005)]]
-  - se trata de construir capas de código, cada una agregando un concepto a la figura final
-  - cada capa controla un aspecto independiente de la figura
-  - la figura /es/ el código (se puede guardar, extender, reproducir, etc.)
-    
-  #+BEGIN_SRC R 
-    p <- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
-    p <- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
-    p <- p + geom_point() # le agrego como quiero que represente ese mapeo
-    p                     # imprimo la figura
-  #+END_SRC
+- se trata de construir capas de código, cada una agregando un concepto a la figura final
+- cada capa controla un aspecto independiente de la figura
+- la figura /es/ el código (se puede guardar, extender, reproducir, etc.)
 
 ** En general:
 
@@ -159,24 +137,22 @@ qplot(displ, hwy, colour = class, data = mpg)
         {GEOM_FUNCTION}(mapping = aes( {MAPPINGS} ))
   #+END_SRC
 
-Cuidado! ~ggplot2~ trabaja _solo_ con ~data.frames~, al igual que el resto del tidyverse (dplyr, tidyr, etc.)
+¡Cuidado! ~ggplot2~ trabaja _solo_ con ~data.frames~, al igual que el resto del tidyverse (dplyr, tidyr, etc.).
 
-Más en ggplot2-cheatsheet-2.1.pdf (ver Slack, en el canal de bibliografía)
-** Y qué vendría siendo un data.frame?
-- un data.frame es el objeto más común para analizar datos en R
+Más en ggplot2-cheatsheet-2.1.pdf (ver Google Classroom/Classwork/Class Drive Folder/R cheatseets).
+** ¿Y qué vendría siendo un data.frame?
+- un data.frame es una de las estructuras más comunes para manejar datos en R
 - es una lista de vectores de igual dimensión
   #+BEGIN_SRC R 
     df <- data.frame() # creo un data.frame llamado df
-    is.data.frame(df)  # es un data.frame?
+    is.data.frame(df)  # ¿es un data.frame?
     [1] TRUE
-    is.list(df)        # es una lista?
+    is.list(df)        # ¿es una lista?
     [1] TRUE
   #+END_SRC
-- tiene entonces propiedades de matrices y de listas
-- busquen un data.frame con data() y prueben las funciones ~length()~ y ~nrow()~
+- tiene propiedades de data.frames y de listas
+- ¡A practicar! Busquen un data.frame con data() y prueben las funciones ~length()~ y ~nrow()~
 ** Aesthetics y Geoms
-- aesthetics, aes(), controla mapeos entre variables y elementos visuales
-- ejemplo: variable A <-> coordenada x, o variable C <-> forma del punto
 #+BEGIN_SRC R 
 data(economics)
 ?economics
@@ -185,17 +161,20 @@ ggplot(economics, aes(x = pce)) + geom_histogram()
 ggplot(economics, aes(x = date, y = unemploy)) + geom_line()
 ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # colour, size, shape, etc.
 #+END_SRC
+- aesthetics, ~aes()~, controla mapeos entre variables y elementos visuales
+- ejemplo: variable A <-> coordenada x, o variable C <-> forma del punto
+- existen muchos [[https://ggplot2.tidyverse.org/reference/#section-layer-geoms][tipos de ~geoms~]]
 
 ** /Facets/ y /scales/
-- /Facets/ se usan para dividir la figura en varias, filtrando con alguna variable categórica
-- /scales/ permiten modificar el tipo de ejes de la figura
-
 #+BEGIN_SRC R 
+library(ggplot2)
 ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) + 
-geom_line() + 
-facet_wrap(~ state) + 
-scale_x_log10()
+        geom_line() + 
+        facet_wrap(~ state) + 
+        scale_x_log10()
 #+END_SRC
+- /Facets/ se usan para dividir la figura en varias, filtrando mediante alguna variable categórica
+- /scales/ permiten modificar el tipo de ejes de la figura
 
 ** Glosario ~ggplot2~
 
@@ -208,10 +187,10 @@ scale_x_log10()
 
 * Práctica
 - Seleccionen de ~data()~ un data.frame con alguna variable categórica
-- Qué pasa si hacen solo ~ggplot(mi_data)~?
-- Qué pasa si intentan mapear color, tamaño o forma a una variable continua?
-- Para que sirve ~jitter~? Para que sirve ~stroke~?
-- Podemos usar formas condicionales (>, <, etc) en aes()?
-- Cómo difieren ~facet_grid~ y ~facet_wrap~?
-- Usar ~box-plot~ y ~geom_smooth()~. Cuándo conviene usarlas?
+- ¿Qué pasa si hacen solo ~ggplot(mi_data)~?
+- ¿Qué pasa si intentan mapear color, tamaño o forma a una variable continua?
+- ¿Podemos usar formas condicionales (>, <, etc) dentro de aes()?
+- ¿Cómo difieren ~facet_grid~ y ~facet_wrap~?
+- Mirar ~box-plot~ y ~geom_smooth()~. ¿Cuándo conviene usarlas?
+- *POSGRADO*: ¿Para que sirve ~jitter~? ¿Para que sirve ~stroke~?
 

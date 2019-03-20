@@ -9,12 +9,13 @@ lectures:
     - title: "versión pdf"
       url: "01-lecture.pdf"
 
-# - title: "Clase 2 - ggplot2"
-#   url: "02-lecture-slides.html"
-
-#   subitems:
-#     - title: "Clase 2 - ggplot2 - versión texto"
-#       url: "02-lecture.html"
+- title: "Clase 2 - ggplot2"
+  url: "02-lecture-slides.html"
+  subitems:
+    - title: "versión texto"
+      url: "02-lecture.html"
+    - title: "versión pdf"
+      url: "02-lecture.pdf"
 
 # - title: "Clase 3 - dplyr"
 #   url: "03-lecture-slides.html"
