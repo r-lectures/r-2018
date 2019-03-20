@@ -17,7 +17,7 @@
 #+REVEAL_THEME: beige
 #+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
 #+REVEAL_PLUGINS: (highlight)
-
+#+REVEAL_HLEVEL: 4
 
 # #+OPTIONS: reveal_width:1200 reveal_height:800
 # #+OPTIONS: toc:1
