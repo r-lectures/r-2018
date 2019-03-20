@@ -15,4 +15,5 @@ feed.xml
 /_site/*
 *.lock
 /_data/.Rhistory
-_site/*
+_site/
+
