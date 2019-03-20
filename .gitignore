@@ -11,9 +11,7 @@ feed.xml
 /.RData
 */.DS_Store
 *.Rsession
-/_site/
-/_site/*
 *.lock
 /_data/.Rhistory
-_site/
+_site/**/*.html
 
