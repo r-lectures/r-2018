@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-05-29 Tue 10:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>R lectures</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">R lectures</h1>
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #245361;">---</span> 
+<span style="color: #599cab;">layout</span>: default 
+<span style="color: #599cab;">title</span>: Pr&#225;ctica para segundo parcial
+<span style="color: #245361;">---</span> 
+</pre>
+</div>
+
+<div id="outline-container-orgb8942ac" class="outline-2">
+<h2 id="orgb8942ac">Práctica para segundo parcial</h2>
+<div class="outline-text-2" id="text-orgb8942ac">
+</div>
+<div id="outline-container-orgef9883d" class="outline-3">
+<h3 id="orgef9883d">Flujo de programas</h3>
+<div class="outline-text-3" id="text-orgef9883d">
+</div>
+<div id="outline-container-org80a8900" class="outline-4">
+<h4 id="org80a8900">Operadores lógicos</h4>
+<div class="outline-text-4" id="text-org80a8900">
+<ol class="org-ol">
+<li>Qué pasa si tengo <code>x &lt;- c(10, NA, NA, 10)</code> y ejecuto <code>x==NA</code>? Cómo tengo que hacer para tener un
+vector de lógicos que me identifique correctamente <code>NA</code>'s den un vector?</li>
+<li>Construir un vector de 10 números. Construir una expresión lógica que evalue si los elementos del
+vector son mayores que 1 y menores que 10. Usar <code>&amp;</code> y usar <code>&amp;&amp;</code>. Cuál es la diferencia? Cuál está
+vectorizado? Qué pasa si usamos uno u otro dentro de un <code>if()</code>?</li>
+<li>Armar un vector de 9997 elementos distintos de <code>NA</code> y tres elementos <code>NA</code>, pero en posiciones al
+azar (Tip: <code>floor()</code> + <code>runif()</code> + constante multiplicativa adecuada + <code>as.integer()</code> para forzar a entero). Construir una expresión lógica para saber en que posiciones están esos tres elememtos.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org71c5f09" class="outline-4">
+<h4 id="org71c5f09">Ejecución condicional</h4>
+<div class="outline-text-4" id="text-org71c5f09">
+<ol class="org-ol">
+<li>Escribir una función que toma un número como argumento. Si el número es divisible por 3,
+devuelve la cadena (el <i>string</i>) "por tres". Si es divisible por cinco, devuelve "por cinco". Si es divisible
+por ambos, devuelve "por tres y por cinco". Si no, devuelve el número. Intenten tener el código
+funcionando antes de meterlo dentro de la función.</li>
+<li>La función <code>library(x)</code> carga el paquete <code>x</code> en la sesión. Si el paquete <code>x</code> no está, se puede instalar
+con la función <code>install.packages()</code>. La función <code>installed.packages()</code> (notar el 'ed' final) devuelve una matriz con los
+paquetes ya instalados. Construir una función (llamada por ejemplo <code>library2</code>) para cargar un paquete en la sesión, tal que si el paquete no está,
+se instale y se cargue.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org241c1ca" class="outline-4">
+<h4 id="org241c1ca">Loops</h4>
+<div class="outline-text-4" id="text-org241c1ca">
+<ol class="org-ol">
+<li>Construir una matriz tal que sus elementos sean la suma del número de fila y del número de columna.</li>
+<li>Hacer una matriz de <code>1000 x 1000</code> de <code>1</code>'s. Transformar el triángulo inferior en <code>0</code>'s.</li>
+<li>Un array es la estructura de datos que permite tener vectores de varias dimensiones (matrices y, en general,tensores). Construir un array de números artificiales entre -4 y 37 (modificar el truco de la pregunta 3 de operadores lógicos) de dimensión <code>24 x 24 x 12 x 6</code>. Este array podría simular datos de temperatura de una región parcelada en 24 x 24 durante los 12 meses de 6 años (como pasa en <code>data(nasa)</code>, subelemento <code>$temperature</code>).</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org45af19d" class="outline-3">
+<h3 id="org45af19d">Vectorización</h3>
+<div class="outline-text-3" id="text-org45af19d">
+<ol class="org-ol">
+<li>Escribir una función para calcular el coseno del ángulo que forman dos vectores <code>x</code> e <code>y</code> cualquiera.</li>
+<li>Generar datos artificiales para comparar tiempos de ejecución de <code>mean()</code> con <code>rowMeans()</code>, <code>length()</code> con <code>ncol()</code>, y <code>sum()</code> con
+<code>rowSums()</code>. Tip: usar <code>system.time()</code>.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org68b8d8b" class="outline-3">
+<h3 id="org68b8d8b">Familia <code>*apply</code> y <code>purrr</code></h3>
+<div class="outline-text-3" id="text-org68b8d8b">
+<ol class="org-ol">
+<li>La función <code>apply</code>: aplica su función a matrices de dimensión <code>n x 1</code> (donde <code>n</code> es el número de filas) o a
+vectores de tamaño <code>n</code>?</li>
+<li>Construir una matriz de 1000 filas por 3 columnas de números aleatorios tomados de una normal con
+media 0 y desviación estándar 1. Cuántos números negativos hay en cada columna?</li>
+<li>Construir una matriz como la anterior, pero cuadrada de lado <code>n = 10^4</code>. Calcular el tiempo que se
+demora en hacer la suma y promedio de las columnas por un lado, y de las filas por otro (usar
+<code>system.time()</code>). Comparar con el tiempo que demora usando <code>rowSums()</code> y <code>colSums()</code>. Cuál es la tasa
+de los dos tiempos?</li>
+<li><p>
+Dada la siguiente lista de fórmulas:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">formulas <span style="color: #33859e; font-weight: bold;">&lt;-</span> list(
+mpg ~ disp,
+mpg ~ I(1 / disp),
+mpg ~ disp + wt,
+mpg ~ I(1 / disp) + wt
+)
+</pre>
+</div>
+
+<p>
+Con una línea de código, implementar regresion lineal en <code>mtcars</code> con todas las fórmulas a la vez. Hacer lo mismo usando <code>purrr</code>.
+</p></li>
+<li></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org6524f4a" class="outline-3">
+<h3 id="org6524f4a">Estadística y Matemática</h3>
+<div class="outline-text-3" id="text-org6524f4a">
+<ol class="org-ol">
+<li>Construir un vector que contenga los resultados del proceso de tirar 100 veces un dado (no
+cargado).</li>
+<li>Construir un conjunto artificial de <code>N = 43.42</code> millones de alturas de personas ("población") de
+<i>mean</i> = 174.46 cm y <i>sd</i> = 7.5. Obtener una "muestra" aleatoria de <code>M = 1000</code>. Comparar el
+promedio de la "muestra " <i>mean_M</i> con el promedio de la "población" <i>mean_N</i> (y con el valor teórico
+<i>mean</i> determinado por ustedes en un principio). Calcular el error estándar del promedio de la
+muestra (<i>sem/=/sd_M//sqrt(M)). Confirmar que /mean_M</i> - <i>sem</i> &lt; <i>mean_N</i> &lt; <i>mean_M</i> + <i>sem</i>.</li>
+<li>Usar <code>integrate()</code> para dibujar la <a href="https://en.wikipedia.org/wiki/Error_function">función error</a> entre -3 y 3. Tip: usar <code>seq(, by=)</code> y <code>sapply()</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 30/05/2018</p>
+<p class="date">Created: 2018-05-29 Tue 10:50</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Práctica para parcial},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Práctica para parcial}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{dataset-nycflights13}{%
+\section{Dataset nycflights13}\label{dataset-nycflights13}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Instalar el paquete ``nycflights13'' y cargarlo en la sesión.
+\item
+  El paquete contiene un objeto de datos llamados ``flights''. Ver el
+  help de flights para ver de que se tratan.
+\item
+  Calcular cuantos vuelos salen de NYC por dia. Hacerlo de dos maneras:
+  una con summarise() + n() y otra con tally(). Pensar de antemano las
+  dimensiones del dataframe que van a generar y chequear las dimensiones
+  después de generarlo.
+\item
+  Agregarle a este último dataframe una columna con el día de la semana.
+\item
+  Hacer un boxplot, para cada día de la semana, de los vuelos por dia.
+  Tip: le paso estas dos variables al aes() de la capa boxplot. Cuál es
+  el día menos similar al resto?
+\item
+  Qué dia de la semana tiene mayor demora en las salidas de los vuelos?
+\item
+  Para qué destino hay mayor demora en los vuelos de salida?
+\end{enumerate}
+
+\end{document}
