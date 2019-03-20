@@ -33,13 +33,17 @@ flexible lenguaje de programación.
 
 ** Herramientas
 - [[https://www.rstudio.com/][RStudio]] - aunque opcional, se lo recomienda para trabajar con R.
-  - Alternativamente, pueden usar R en una terminal (por ejemplo, bash u otra) más el editor de texto
+  - Alternativamente, pueden usar [[http://mirror.fcaglp.unlp.edu.ar/CRAN/][R]] en una terminal (por ejemplo, bash u otra) más el editor de texto
     que quieran (por ejemplo, [[https://www.gnu.org/software/emacs/][emacs]] o, si no hay otra, [[http://www.vim.org/][vim]] ;)
-- [[https://slack.com/][Slack]] - para coordinarnos entre los miembros del curso.
-- [[https://github.com/][Github]] - recomendable para compartir código.
+- [[https://classroom.google.com][Google Classroom]] - donde se podrán hacer consultas online e intercambiar conocimiento
+- [[https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/][Jupyter Notebook]]
 
 *** Prof. Luis G. Moyano 
-- Inv. Adjunto CONICET y Prof. Adjunto FCEN, UNCU.
-- Física Estadística y Sistemas Complejos.
+- Inv. Adjunto CONICET
+- Prof. Adjunto FCEN, UNCUyo
 - Mi oficina es la 904 (al final del edificio, por la escalera norte).
 - _lgmoyano@gmail.com_ / twitter: [[https://twitter.com/luisgmoyano][@luisgmoyano]]
+*** Prof. Carolina Gandini
+- Instituto de Biología Agrícola de Mendoza (IBAM-CONICET)
+- CONICET
+- _gandini.carolin@gmail.com_
