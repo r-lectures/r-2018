@@ -32,15 +32,15 @@
 
 
 <section>
-<section id="slide-org98eef9a">
-<h2 id="org98eef9a">Repaso de la clase pasada</h2>
-<div class="outline-text-2" id="text-org98eef9a">
+<section id="slide-org63fcbfa">
+<h2 id="org63fcbfa">Repaso de la clase pasada</h2>
+<div class="outline-text-2" id="text-org63fcbfa">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga24b833">
-<h3 id="orga24b833">Conceptos principales</h3>
+<section id="slide-orge447c83">
+<h3 id="orge447c83">Conceptos principales</h3>
 <ul>
 <li>Abrimos una sesión de R en una consola</li>
 <li>R usa comandos para ejecutar acciones</li>
@@ -51,8 +51,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org4395d8f">
-<h3 id="org4395d8f">Conceptos principales</h3>
+<section id="slide-org79748ab">
+<h3 id="org79748ab">Conceptos principales</h3>
 <p>
 <b>Paquetes</b> contienen <b>funciones</b> (aka, comandos)
 </p>
@@ -76,8 +76,8 @@ plot(iris$Sepal.Length, iris$Sepal.Width) # plot() los grafica
 </section>
 </section>
 <section>
-<section id="slide-org2f15992">
-<h3 id="org2f15992">Visualización I</h3>
+<section id="slide-org95c6ce4">
+<h3 id="org95c6ce4">Visualización I</h3>
 <p>
 <code>base::plot()</code>
 </p>
@@ -100,8 +100,8 @@ title(main="Autos", col.main="red", font.main=4)
 </section>
 </section>
 <section>
-<section id="slide-orgf5073e8">
-<h3 id="orgf5073e8">Visualización II</h3>
+<section id="slide-org49e511d">
+<h3 id="org49e511d">Visualización II</h3>
 <p>
 <code>base::plot()</code>
 </p>
@@ -122,21 +122,21 @@ plot(h$counts, log="xy", pch=20, col="blue",
 </section>
 </section>
 <section>
-<section id="slide-orgb6bfe78">
-<h2 id="orgb6bfe78">Sobre las prácticas</h2>
+<section id="slide-org3da2e96">
+<h2 id="org3da2e96">Sobre las prácticas</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc27a255">
-<h2 id="orgc27a255"><code>ggplot2</code></h2>
-<div class="outline-text-2" id="text-orgc27a255">
+<section id="slide-org5ad9180">
+<h2 id="org5ad9180"><code>ggplot2</code></h2>
+<div class="outline-text-2" id="text-org5ad9180">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgec047d8">
-<h3 id="orgec047d8"><code>qplot</code></h3>
+<section id="slide-org8dcc643">
+<h3 id="org8dcc643"><code>qplot</code></h3>
 <p>
 <code>ggplot2::qplot()</code> 
 </p>
@@ -163,8 +163,8 @@ qplot(displ, hwy, colour = class, data = mpg)
 </section>
 </section>
 <section>
-<section id="slide-orgc5988ef">
-<h3 id="orgc5988ef"></h3>
+<section id="slide-orgae55572">
+<h3 id="orgae55572"></h3>
 <p>
 <code>ggplot2</code>
 </p>
@@ -187,8 +187,8 @@ p                     # imprimo la figura
 </section>
 </section>
 <section>
-<section id="slide-orgdebbeff">
-<h3 id="orgdebbeff">En general:</h3>
+<section id="slide-org034adf2">
+<h3 id="org034adf2">En general:</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >ggplot(data = {DATA}) + 
@@ -206,8 +206,8 @@ Más en ggplot2-cheatsheet-2.1.pdf (ver Google Classroom/Classwork/Class Drive F
 </section>
 </section>
 <section>
-<section id="slide-orgd96fcef">
-<h3 id="orgd96fcef">¿Y qué vendría siendo un data.frame?</h3>
+<section id="slide-org01a5148">
+<h3 id="org01a5148">¿Y qué vendría siendo un data.frame?</h3>
 <ul>
 <li>un data.frame es una de las estructuras más comunes para manejar datos en R</li>
 <li><p>
@@ -229,8 +229,8 @@ is.list(df)        # ¿es una lista?
 </section>
 </section>
 <section>
-<section id="slide-org01becd9">
-<h3 id="org01becd9">Aesthetics y Geoms</h3>
+<section id="slide-orgb992799">
+<h3 id="orgb992799">Aesthetics y Geoms</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >data(economics)
@@ -251,8 +251,8 @@ ggplot(economics, aes(x = date, y = unemploy, colour = pce)) + geom_line() # col
 </section>
 </section>
 <section>
-<section id="slide-orgb3de096">
-<h3 id="orgb3de096"><i>Facets</i> y <i>scales</i></h3>
+<section id="slide-org4c6fe39">
+<h3 id="org4c6fe39"><i>Facets</i> y <i>scales</i></h3>
 <div class="org-src-container">
 
 <pre><code class="R" >library(ggplot2)
@@ -271,8 +271,8 @@ ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) +
 </section>
 </section>
 <section>
-<section id="slide-org0709965">
-<h3 id="org0709965">Glosario <code>ggplot2</code></h3>
+<section id="slide-org5f33b04">
+<h3 id="org5f33b04">Glosario <code>ggplot2</code></h3>
 <ul>
 <li><b><code>data</code></b>: el <i>dataframe</i> que contiene los datos a graficar</li>
 <li><b><code>geoms</code></b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
@@ -286,18 +286,11 @@ por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</l
 </section>
 </section>
 <section>
-<section id="slide-orgd765d2e">
-<h2 id="orgd765d2e">Práctica</h2>
-<ul>
-<li>Seleccionen de <code>data()</code> un data.frame con alguna variable categórica</li>
-<li>¿Qué pasa si hacen solo <code>ggplot(mi_data)</code>?</li>
-<li>¿Qué pasa si intentan mapear color, tamaño o forma a una variable continua?</li>
-<li>¿Podemos usar formas condicionales (&gt;, &lt;, etc) dentro de aes()?</li>
-<li>¿Cómo difieren <code>facet_grid</code> y <code>facet_wrap</code>?</li>
-<li>Mirar <code>box-plot</code> y <code>geom_smooth()</code>. ¿Cuándo conviene usarlas?</li>
-<li><b>POSGRADO</b>: ¿Para que sirve <code>jitter</code>? ¿Para que sirve <code>stroke</code>?</li>
-
-</ul>
+<section id="slide-org11b5f88">
+<h2 id="org11b5f88">Práctica</h2>
+<p>
+Descargar <a href="https://r-lectures.github.io/assets/R2019-practice-2.pdf">práctica 2</a>.
+</p>
 </section>
 </section>
 </div>

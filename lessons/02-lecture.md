@@ -159,11 +159,5 @@ Más en ggplot2-cheatsheet-2.1.pdf (ver Google Classroom/Classwork/Class Drive F
 
 # Práctica
 
--   Seleccionen de `data()` un data.frame con alguna variable categórica
--   ¿Qué pasa si hacen solo `ggplot(mi_data)`?
--   ¿Qué pasa si intentan mapear color, tamaño o forma a una variable continua?
--   ¿Podemos usar formas condicionales (>, <, etc) dentro de aes()?
--   ¿Cómo difieren `facet_grid` y `facet_wrap`?
--   Mirar `box-plot` y `geom_smooth()`. ¿Cuándo conviene usarlas?
--   **POSGRADO**: ¿Para que sirve `jitter`? ¿Para que sirve `stroke`?
+Descargar [práctica 2](https://r-lectures.github.io/assets/R2019-practice-2.pdf).
 
