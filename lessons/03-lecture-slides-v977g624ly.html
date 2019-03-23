@@ -30,15 +30,37 @@
 <section id="sec-title-slide"><h1>R 2019</h1><h3>25/03/2019</h3>
 </section>
 <section>
-<section id="slide-org7ee172b">
-<h2 id="org7ee172b">Repaso de la clase pasada</h2>
-<div class="outline-text-2" id="text-org7ee172b">
+<section id="slide-orgac54fab">
+<h2 id="orgac54fab">1er Parcial</h2>
+<ul>
+<li>8 de abril</li>
+<li>es sin nota</li>
+<li>es obligatorio</li>
+<li>los que puedan, traigan sus laptops (con carga)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgf691e6b">
+<h2 id="orgf691e6b"><a href="https://www.meetup.com/es/rladies-mendoza/events/">Taller R-Ladies en Mendoza: ciencia de datos con R tidyverse</a></h2>
+<p>
+<a href="https://rladies.org/">R-Ladies</a> es una organización mundial para promover la diversidad de género en la comunidad R.
+</p>
+<img style="position:absolute; TOP:260px; LEFT:200px; WIDTH:550px; HEIGHT:680px; border:0" src="./figs/rladies.png">
+
+</section>
+</section>
+<section>
+<section id="slide-orgf0c1934">
+<h2 id="orgf0c1934">Repaso de la clase pasada</h2>
+<div class="outline-text-2" id="text-orgf0c1934">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb4ca621">
-<h3 id="orgb4ca621"></h3>
+<section id="slide-org93bf965">
+<h3 id="org93bf965"></h3>
 <p>
 <code>ggplot2</code>
 </p>
@@ -66,8 +88,8 @@ p                     # imprimo la figura
 </section>
 </section>
 <section>
-<section id="slide-org230f964">
-<h3 id="org230f964"></h3>
+<section id="slide-org83fa01e">
+<h3 id="org83fa01e"></h3>
  <ul class="smallfont">
 <li><b>data</b>: el dataframe que contiene los datos a graficar</li>
 <li><b>geoms</b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
@@ -81,8 +103,8 @@ p                     # imprimo la figura
 </section>
 </section>
 <section>
-<section id="slide-org6df9f63">
-<h2 id="org6df9f63">Manipulación de datos</h2>
+<section id="slide-orge4e5a2e">
+<h2 id="orge4e5a2e">Manipulación de datos: paquete <code>dplyr</code></h2>
 <p>
 Al igual que <code>ggplot2</code>, <code>dplyr</code> solo acepta <i>data.frames</i>.
 </p>
@@ -100,8 +122,8 @@ Al igual que <code>ggplot2</code>, <code>dplyr</code> solo acepta <i>data.frames
 </section>
 </section>
 <section>
-<section id="slide-orgeafb489">
-<h3 id="orgeafb489">principales funciones de <code>dplyr</code></h3>
+<section id="slide-orga44e9ef">
+<h3 id="orga44e9ef">principales funciones de <code>dplyr</code></h3>
 <ul>
 <li><code>select()</code>: selecciona columnas</li>
 <li><code>arrange()</code>: reordena filas</li>
@@ -114,8 +136,8 @@ Al igual que <code>ggplot2</code>, <code>dplyr</code> solo acepta <i>data.frames
 </section>
 </section>
 <section>
-<section id="slide-org831982b">
-<h3 id="org831982b"></h3>
+<section id="slide-orgb1f25e9">
+<h3 id="orgb1f25e9"></h3>
 <p>
 <code>select()</code>
 </p>
@@ -146,8 +168,8 @@ nombre_inventado_por_uds <- select(b, -wday, -date)
 </section>
 </section>
 <section>
-<section id="slide-orgb769fcb">
-<h3 id="orgb769fcb"></h3>
+<section id="slide-orgacdf353">
+<h3 id="orgacdf353"></h3>
 <p>
 <code>arrange()</code>
 </p>
@@ -174,8 +196,8 @@ arrange(b, state, desc(births))
 </section>
 </section>
 <section>
-<section id="slide-orgd746eba">
-<h3 id="orgd746eba"></h3>
+<section id="slide-org7036c01">
+<h3 id="org7036c01"></h3>
 <p>
 <code>mutate()</code>
 </p>
@@ -195,8 +217,8 @@ Con <code>mutate</code> podemos armarnos una nueva columna a partir de otra(s)
 </section>
 </section>
 <section>
-<section id="slide-orgcb67bca">
-<h3 id="orgcb67bca"></h3>
+<section id="slide-orgd9e73bf">
+<h3 id="orgd9e73bf"></h3>
 <p>
 <code>filter()</code>
 </p>
@@ -223,8 +245,8 @@ filter(b, state == "WA" & year == 1974 & births > 180)
 </section>
 </section>
 <section>
-<section id="slide-orgc1d4933">
-<h3 id="orgc1d4933"></h3>
+<section id="slide-org8224205">
+<h3 id="org8224205"></h3>
 <p>
 <code>summarise()</code> y <code>group_by</code>
 </p>
@@ -251,8 +273,8 @@ summarise(por_estado, births_por_estado = mean(births))
 </section>
 </section>
 <section>
-<section id="slide-orgffbe02e" data-background="#123456">
-<h3 id="orgffbe02e">práctica 3</h3>
+<section id="slide-org9e4c9b6" data-background="#123456">
+<h3 id="org9e4c9b6">práctica 3</h3>
 <p>
 Descargar <a href="https://r-lectures.github.io/assets/R2019-practice-3-v977g624ly.pdf">práctica 3</a>.
 </p>

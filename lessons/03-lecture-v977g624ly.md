@@ -1,5 +1,20 @@
 
 
+# 1er Parcial
+
+-   8 de abril
+-   es sin nota
+-   es obligatorio
+-   los que puedan, traigan sus laptops (con carga)
+
+
+# [Taller R-Ladies en Mendoza: ciencia de datos con R tidyverse](https://www.meetup.com/es/rladies-mendoza/events/)
+
+[R-Ladies](https://rladies.org/) es una organización mundial para promover la diversidad de género en la comunidad R.
+
+<img style="position:absolute; TOP:260px; LEFT:200px; WIDTH:550px; HEIGHT:680px; border:0" src="./figs/rladies.png">
+
+
 # Repaso de la clase pasada
 
 
@@ -31,7 +46,7 @@
  </ul>
 
 
-# Manipulación de datos
+# Manipulación de datos: paquete `dplyr`
 
 Al igual que `ggplot2`, `dplyr` solo acepta *data.frames*.
 

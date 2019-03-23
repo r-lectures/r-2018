@@ -50,6 +50,18 @@ title: Clase 2
 # #+end_html
 
 # #+ATTR_REVEAL: :frag roll-in
+* 1er Parcial
+
+- 8 de abril
+- es sin nota
+- es obligatorio
+- los que puedan, traigan sus laptops (con carga)
+* [[https://www.meetup.com/es/rladies-mendoza/events/][Taller R-Ladies en Mendoza: ciencia de datos con R tidyverse]]
+[[https://rladies.org/][R-Ladies]] es una organización mundial para promover la diversidad de género en la comunidad R.
+#+BEGIN_EXPORT html
+<img style="position:absolute; TOP:260px; LEFT:200px; WIDTH:550px; HEIGHT:680px; border:0" src="./figs/rladies.png">
+#+END_EXPORT
+
 * Repaso de la clase pasada
 
 ** 
@@ -106,7 +118,7 @@ _solo_ ~data.frames~
 - Cómo difieren ~facet_grid~ y ~facet_wrap~?
 - Usar ~box-plot~ y ~geom_smooth()~. Cuándo conviene usarlas?
 
-* Manipulación de datos
+* Manipulación de datos: paquete ~dplyr~
 
 Al igual que ~ggplot2~, ~dplyr~ solo acepta /data.frames/.
 
