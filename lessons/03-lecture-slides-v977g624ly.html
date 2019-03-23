@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2019</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2019">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2019</h1><h3>25/03/2019</h3>
+</section>
+<section>
+<section id="slide-org7ee172b">
+<h2 id="org7ee172b">Repaso de la clase pasada</h2>
+<div class="outline-text-2" id="text-org7ee172b">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb4ca621">
+<h3 id="orgb4ca621"></h3>
+<p>
+<code>ggplot2</code>
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >p <- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
+p <- ggplot(mtcars) + aes(mpg, wt) # le agrego el mapeo de variables que quiero
+p <- ggplot(mtcars) + aes(mpg, wt) + geom_point() # le agrego como quiero que represente ese mapeo
+p                     # imprimo la figura
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >ggplot(data = mi-data-frame) + 
+      geom_point/line/etc(mapping = aes(col1, col2, colour="blue", etc.))
+</code></pre>
+</div>
+
+<p>
+<span class="underline">solo</span> <code>data.frames</code>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org230f964">
+<h3 id="org230f964"></h3>
+ <ul class="smallfont">
+<li><b>data</b>: el dataframe que contiene los datos a graficar</li>
+<li><b>geoms</b>: el tipo de objeto geométrico que representa los datos: puntos, líneas, polígonos, etc.</li>
+<li><b>aesthetics</b>: describe las características visuales que representan los datos,  por ejemplo, posición, tamaño, color, forma, etc </li>
+<li><b>scale</b>: para cada aesthetic, describe como se mapea la característica visual a valores
+ por ejemplo, escala logarítmica, escala de color, de tamaño, de forma, etc.</li>
+<li><b>stats</b>: describe transformaciones estadísticas que resumen los datos, e.g. una regresión  </li>
+<li><b>facets</b>: permite separar en gráficos distintos de acuerdo a variables categóricas</li>
+ </ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6df9f63">
+<h2 id="org6df9f63">Manipulación de datos</h2>
+<p>
+Al igual que <code>ggplot2</code>, <code>dplyr</code> solo acepta <i>data.frames</i>.
+</p>
+
+
+<p>
+&gt; <code>install.packages("dplyr")</code>
+</p>
+
+<p>
+&gt; <code>library(dplyr)</code>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgeafb489">
+<h3 id="orgeafb489">principales funciones de <code>dplyr</code></h3>
+<ul>
+<li><code>select()</code>: selecciona columnas</li>
+<li><code>arrange()</code>: reordena filas</li>
+<li><code>filter()</code>: filtra observaciones, condicionalmente</li>
+<li><code>mutate()</code>: crea variables a partir de otras</li>
+<li><code>summarise()</code>: reduce varios valores a uno solo
+(generalmente agrupamos primero con <code>group_by</code>)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org831982b">
+<h3 id="org831982b"></h3>
+<p>
+<code>select()</code>
+</p>
+
+<p>
+Con <code>select</code> podemos elegir las columnas
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >install.packages("mosaicData") # instalo el paquete que tiene los datos
+library(mosaicData) # cargo el paquete en la sesión, que me da acceso a los datos
+b <- as.data.frame(Birthdays) # cambio el nombre y lo convierto a data.frame
+str(b)  # que pinta tiene el data.frame?
+
+# quiero un df con dos de las columnas
+select(b, state, births) 
+
+# o tres
+select(b, state, births, year) 
+
+# podemos además sacar columnas
+select(b, -wday, -date) 
+
+# si quisieran guardar el resultado para usarlo después
+nombre_inventado_por_uds <- select(b, -wday, -date) 
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb769fcb">
+<h3 id="orgb769fcb"></h3>
+<p>
+<code>arrange()</code>
+</p>
+
+<p>
+Con <code>arrange</code> podemos ordenar según valores de columnas
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >b # el df está ordenado por año
+
+# ahora, además, ordeno por estados
+arrange(b, state) 
+
+# ahora, por estados y por nacimientos
+arrange(b, state, births)
+
+# idem pero nacimientos, pero de mayor a menor
+arrange(b, state, desc(births))
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd746eba">
+<h3 id="orgd746eba"></h3>
+<p>
+<code>mutate()</code>
+</p>
+
+<p>
+Con <code>mutate</code> podemos armarnos una nueva columna a partir de otra(s)
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >mutate(b, normalized = births/mean(births)) # normalizando
+
+
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcb67bca">
+<h3 id="orgcb67bca"></h3>
+<p>
+<code>filter()</code>
+</p>
+
+<p>
+Con <code>filter</code> podemos filtrar observaciones mediante condiciones lógicas
+(&gt;, &gt;=, &lt;, &lt;=, !=, ==, más los operadores &amp; y |)
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >
+# devuelve solo estado de Washington
+filter(b, state == "WA") 
+
+# Washington en 1974
+filter(b, state == "WA"  & year == 1974) 
+
+# idem, pero más de 180 nacimientos 
+filter(b, state == "WA" & year == 1974 & births > 180) 
+
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc1d4933">
+<h3 id="orgc1d4933"></h3>
+<p>
+<code>summarise()</code> y <code>group_by</code>
+</p>
+
+<p>
+Con <code>summarise</code> podemos resumir variables, usualmente agrupando. 
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># gran-promedio-gran
+summarise(b, promedio = mean(births) ) 
+
+# pero es muy eficiente para manipular datos agrupados
+# por ejemplo, agrupo por mes
+por_mes <- group_by(b, month)
+summarise(por_mes, births_por_mes = mean(births))
+
+# ahora agrupo por estado
+por_estado <- group_by(b, state)
+summarise(por_estado, births_por_estado = mean(births))
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgffbe02e" data-background="#123456">
+<h3 id="orgffbe02e">práctica 3</h3>
+<p>
+Descargar <a href="https://r-lectures.github.io/assets/R2019-practice-3-v977g624ly.pdf">práctica 3</a>.
+</p>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

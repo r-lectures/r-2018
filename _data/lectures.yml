@@ -2,27 +2,30 @@ lecture_title: Clases
 lectures:
   
 - title: "Clase 1 - Intro" 
-  url: "01-lecture-slides.html"
+  url: "01-lecture-slides-u3g60qccbd.html"
   subitems:
     - title: "versión texto"
-      url: "01-lecture.html"
+      url: "01-lecture-u3g60qccbd.html"
     - title: "versión pdf"
-      url: "01-lecture.pdf"
+      url: "01-lecture-u3g60qccbd.pdf"
 
 - title: "Clase 2 - ggplot2"
-  url: "02-lecture-slides.html"
+  url: "02-lecture-slides-5ffym2zytm.html"
   subitems:
     - title: "versión texto"
-      url: "02-lecture.html"
+      url: "02-lecture-5ffym2zytm.html"
     - title: "versión pdf"
-      url: "02-lecture.pdf"
+      url: "02-lecture-5ffym2zytm.pdf"
 
 # - title: "Clase 3 - dplyr"
-#   url: "03-lecture-slides.html"
+#   url: "03-lecture-slides-v977g624ly.html"
 
 #   subitems:
-#     - title: "Clase 3 - versión texto"
-#       url: "03-lecture.html"
+#     - title: "versión texto"
+#       url: "03-lecture-v977g624l.html"
+    # - title: "versión pdf"
+    #   url: "03-lecture-v977g624l.pdf"
+
 
 # - title: "Clase 4 - más dplyr + magrittr"
 #   url: "04-lecture-slides.html"

@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2018
-#+DATE: 26/03/2017
+#+TITLE: R 2019
+#+DATE: 25/03/2019
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -18,11 +18,11 @@
 #+REVEAL_TRANS: slide
 #+REVEAL_SPEED: fast
 #+REVEAL_THEME: my_moon
-#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2019">
 #+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
 #+REVEAL_PLUGINS: (highlight)
 #+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
-#+REVEAL_HLEVEL: 1
+#+REVEAL_HLEVEL: 10
 
 # # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
 # # (setq org-reveal-title-slide 'auto)
@@ -33,8 +33,8 @@
 # #+REVEAL_PLUGINS: (markdown notes)
 # #+REVEAL_EXTRA_CSS: ./local
 # ## black, blood, league, moon, night, serif, simple, sky, solarized, source, template, white
-# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2017">
-# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2017">
+# #+REVEAL_HEADER: <meta name="description" content="Programación en R 2019">
+# #+REVEAL_FOOTER: <meta name="description" content="Programación en R 2019">
 
 
 #+begin_src yaml :exports (when (eq org-export-current-backend 'md) "results") :exports (when (eq org-export-current-backend 'reveal) "none") :results value html 
@@ -56,10 +56,10 @@ title: Clase 2
 ~ggplot2~
 
   #+BEGIN_SRC R 
-    p <- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
-    p <- p + aes(mpg, wt) # le agrego el mapeo de variables que quiero
-    p <- p + geom_point() # le agrego como quiero que represente ese mapeo
-    p                     # imprimo la figura
+  p <- ggplot(mtcars)   # creo un objeto ggplot con los datos mtcars
+  p <- ggplot(mtcars) + aes(mpg, wt) # le agrego el mapeo de variables que quiero
+  p <- ggplot(mtcars) + aes(mpg, wt) + geom_point() # le agrego como quiero que represente ese mapeo
+  p                     # imprimo la figura
   #+END_SRC
 
   #+BEGIN_SRC R 
@@ -82,7 +82,7 @@ _solo_ ~data.frames~
  </ul>
 #+END_EXPORT
 
-** Práctica 1
+** COMMENT Práctica 1
 :PROPERTIES:
 :reveal_background: #123456
 :END:
@@ -93,7 +93,7 @@ _solo_ ~data.frames~
 4. Encontrar la manera de hacer /scatterplots/ e histogramas
 5. Agregar información (título, ejes, descripción de los datos) 
 
-** Práctica 2
+** COMMENT Práctica 2
 :PROPERTIES:
 :reveal_background: #123456
 :END:
@@ -107,32 +107,43 @@ _solo_ ~data.frames~
 - Usar ~box-plot~ y ~geom_smooth()~. Cuándo conviene usarlas?
 
 * Manipulación de datos
-~library(dplyr)~
 
-(igual que ~ggplot2~, ~dplyr~ solo acepta data.frames)
-** principales funciones
-    - ~select()~: seleccionar columnas
-    - ~arrange()~:reordenar filas
-    - ~filter()~: filtrar observaciones por sus valores
-    - ~mutate()~: crear variables a partir de otras
-    - ~summarise()~: reducir varios valores a uno solo
-         (muchas veces agrupamos primero con ~group_by~)
+Al igual que ~ggplot2~, ~dplyr~ solo acepta /data.frames/.
+
+
+> ~install.packages("dplyr")~
+
+> ~library(dplyr)~
+
+
+** principales funciones de ~dplyr~
+    - ~select()~: selecciona columnas
+    - ~arrange()~: reordena filas
+    - ~filter()~: filtra observaciones, condicionalmente
+    - ~mutate()~: crea variables a partir de otras
+    - ~summarise()~: reduce varios valores a uno solo
+         (generalmente agrupamos primero con ~group_by~)
 ** 
 ~select()~
 
 Con ~select~ podemos elegir las columnas
 #+BEGIN_SRC R 
-library(mosaicData) # cargo el paquete que ya viene instalado
-b <- tbl_df(Birthdays) # cambio el nombre del data.frame (por fiaca)
+install.packages("mosaicData") # instalo el paquete que tiene los datos
+library(mosaicData) # cargo el paquete en la sesión, que me da acceso a los datos
+b <- as.data.frame(Birthdays) # cambio el nombre y lo convierto a data.frame
 str(b)  # que pinta tiene el data.frame?
 
-select(b, state, births) # quiero dos columnas
+# quiero un df con dos de las columnas
+select(b, state, births) 
 
+# o tres
+select(b, state, births, year) 
 
-select(b, state, births, year) # o tres
+# podemos además sacar columnas
+select(b, -wday, -date) 
 
-
-select(b, -wday, -date) # podemos sacar columnas
+# si quisieran guardar el resultado para usarlo después
+nombre_inventado_por_uds <- select(b, -wday, -date) 
 #+END_SRC
 ** 
 ~arrange()~
@@ -140,45 +151,18 @@ select(b, -wday, -date) # podemos sacar columnas
 Con ~arrange~ podemos ordenar según valores de columnas
 
 #+BEGIN_SRC R 
-b # ordenados por año
+b # el df está ordenado por año
 
-arrange(b, state) # ahora ordeno por estados
- 
-arrange(b, state, births) # ahora por estados y por nacimientos
+# ahora, además, ordeno por estados
+arrange(b, state) 
 
-arrange(b, state, desc(births)) # idem pero nacimientos de mayor a menor
+# ahora, por estados y por nacimientos
+arrange(b, state, births)
+
+# idem pero nacimientos, pero de mayor a menor
+arrange(b, state, desc(births))
 #+END_SRC
 
-** 
-~filter()~
-
-Con ~filter~ podemos filtrar observaciones mediante condiciones lógicas
-(>, >=, <, <=, !=, ==, más los operadores & y |)
-
-#+BEGIN_SRC R 
-
-filter(b, state == "WA") # solo estado de Washington
-
-filter(b, state == "WA"  & year == 1974) # Washington en 1974
-
-filter(b, state == "WA" & year == 1974 & births > 180) # idem 
-                                # pero más de 180 nacimientos 
-#+END_SRC
-** 
-~summarise()~ y ~group_by~
-
-Con ~summarise~ podemos resumir variables 
-
-#+BEGIN_SRC R 
-summarise(b, promedio = mean(births) ) # gran-promedio-gran
-
-# pero es mucho mejor si sacamos resúmenes de datos agrupados
-por_mes <- group_by(b, month)
-summarise(por_mes, births_por_mes = mean(births))
-
-por_estado <- group_by(b, state)
-summarise(por_estado, births_por_estado = mean(births))
-#+END_SRC
 ** 
 ~mutate()~
 
@@ -189,6 +173,46 @@ Con ~mutate~ podemos armarnos una nueva columna a partir de otra(s)
 mutate(b, normalized = births/mean(births)) # normalizando
 
 
+#+END_SRC
+
+** 
+~filter()~
+
+Con ~filter~ podemos filtrar observaciones mediante condiciones lógicas
+(>, >=, <, <=, !=, ==, más los operadores & y |)
+
+#+BEGIN_SRC R 
+
+# devuelve solo estado de Washington
+filter(b, state == "WA") 
+
+# Washington en 1974
+filter(b, state == "WA"  & year == 1974) 
+
+# idem, pero más de 180 nacimientos 
+filter(b, state == "WA" & year == 1974 & births > 180) 
+       
+#+END_SRC
+** 
+~summarise()~ y ~group_by~
+
+Con ~summarise~ podemos resumir variables, usualmente agrupando. 
+
+#+BEGIN_SRC R 
+# gran-promedio-gran
+summarise(b, promedio = mean(births) ) 
+
+# pero es muy eficiente para manipular datos agrupados
+# por ejemplo, agrupo por mes
+por_mes <- group_by(b, month)
+summarise(por_mes, births_por_mes = mean(births))
+
+# ahora agrupo por estado
+por_estado <- group_by(b, state)
+summarise(por_estado, births_por_estado = mean(births))
+#+END_SRC
+** COMMENT
+#+BEGIN_SRC R 
 # me armo un df agrupado como yo quiero
 por_anyo <- group_by(b, year) 
 # le calculo el promedio a través de los años
@@ -200,21 +224,10 @@ promedio_tot <- mean(promedio_por_anyo$promedio)
 mutate(promedio_por_anyo, 
        births_normalizado = promedio/promedio_tot)
 #+END_SRC
-
 ** práctica 3
 :PROPERTIES:
 :reveal_background: #123456
 :END:
 
-#+BEGIN_EXPORT html
- <ol class="smallfont">
-   <li>Cuál es el estado que más nacimientos tiene en total? El que menos?</li>
-   <li>Esto es así año a año? Graficar. Cuál está en 1er lugar durante más tiempo?</li>
-   <li>Cuántos estados están por arriba de la media de nacimientos? Cuáles son?</li>
-   <li>En promedio, qué més del año tiene más nacimientos?</li>
-   <li>Hay algún día del més o de la semana que esté muy por encima de la media?</li>
-   <li>Hay algún día (de cualquier año) sin nacimientos?</li>
-   <li>Y considerando los estados individualmente?</li>
-   <li>Explorar lag() y ver en que año hubo la mayor diferencia de nacimientos. Graficar.</li>
- </ol>
-#+END_EXPORT
+Descargar [[https://r-lectures.github.io/assets/R2019-practice-3-v977g624ly.pdf][práctica 3]].
+

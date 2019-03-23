@@ -17,7 +17,7 @@
 #+REVEAL_MAX_SCALE: 2.5
 #+REVEAL_TRANS: slide
 #+REVEAL_THEME: simple
-#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2019">
 #+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
 #+REVEAL_PLUGINS: (highlight)
 #+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
@@ -186,5 +186,5 @@ ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) +
 - *~stats~*: describe transformaciones estadísticas que resumen los datos, e.g. una regresión  
 
 * Práctica
-Descargar [[https://r-lectures.github.io/assets/R2019-practice-2.pdf][práctica 2]].
+Descargar [[https://r-lectures.github.io/assets/R2019-practice-2-5ffym2zytm.pdf][práctica 2]].
 
