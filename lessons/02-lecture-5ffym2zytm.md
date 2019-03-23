@@ -143,7 +143,7 @@ Más en ggplot2-cheatsheet-2.1.pdf (ver Google Classroom/Classwork/Class Drive F
     	facet_wrap(~ state) + 
     	scale_x_log10()
 
--   *Facets* se usan para dividir la figura en varias, filtrando mediante alguna variable categórica
+-   *facets* se usan para dividir la figura en varias, filtrando mediante alguna variable categórica
 -   *scales* permiten modificar el tipo de ejes de la figura
 
 
@@ -159,5 +159,5 @@ Más en ggplot2-cheatsheet-2.1.pdf (ver Google Classroom/Classwork/Class Drive F
 
 # Práctica
 
-Descargar [práctica 2](https://r-lectures.github.io/assets/R2019-practice-2.pdf).
+Descargar [práctica 2](https://r-lectures.github.io/assets/R2019-practice-2-5ffym2zytm.pdf).
 

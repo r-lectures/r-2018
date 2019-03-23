@@ -173,7 +173,7 @@ ggplot(midwest, aes(x = popwhite, y = percadultpoverty, colour = inmetro)) +
         facet_wrap(~ state) + 
         scale_x_log10()
 #+END_SRC
-- /Facets/ se usan para dividir la figura en varias, filtrando mediante alguna variable categórica
+- /facets/ se usan para dividir la figura en varias, filtrando mediante alguna variable categórica
 - /scales/ permiten modificar el tipo de ejes de la figura
 
 ** Glosario ~ggplot2~
