@@ -17,14 +17,14 @@ lectures:
     - title: "versión pdf"
       url: "02-lecture-5ffym2zytm.pdf"
 
-# - title: "Clase 3 - dplyr"
-#   url: "03-lecture-slides-v977g624ly.html"
+- title: "Clase 3 - dplyr"
+  url: "03-lecture-slides-v977g624ly.html"
 
-#   subitems:
-#     - title: "versión texto"
-#       url: "03-lecture-v977g624l.html"
-    # - title: "versión pdf"
-    #   url: "03-lecture-v977g624l.pdf"
+  subitems:
+    - title: "versión texto"
+      url: "03-lecture-v977g624l.html"
+    - title: "versión pdf"
+      url: "03-lecture-v977g624l.pdf"
 
 
 # - title: "Clase 4 - más dplyr + magrittr"
