@@ -27,12 +27,14 @@ lectures:
       url: "03-lecture-v977g624ly.pdf"
 
 
-# - title: "Clase 4 - más dplyr + magrittr"
-#   url: "04-lecture-slides.html"
+- title: "Clase 4 - magrittr, más dplyr y readr"
+  url: "04-lecture-slides-fhpjfraw2t.html"
 
-#   subitems:
-#     - title: "Clase 4 - versión texto"
-#       url: "04-lecture.html"
+  subitems:
+    - title: "versión texto"
+      url: "04-lecture-fhpjfraw2t.html"
+    - title: "versión pdf"
+      url: "04-lecture-fhpjfraw2t.pdf"
 
 # - title: "Clase 5 - Funciones + RStudio"
 #   url: "05-lecture-slides.html"
