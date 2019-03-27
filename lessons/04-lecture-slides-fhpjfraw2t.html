@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2019</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2019">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2019</h1><h3>27/03/2019</h3>
+</section>
+
+<section>
+<section id="slide-org5fbce32">
+<h2 id="org5fbce32">1er parcial</h2>
+<p>
+<code>8 de Abril</code>
+</p>
+</section>
+<section id="slide-org098e7b9">
+<h3 id="org098e7b9">El parcial</h3>
+<ul>
+<li>habrá dos problemas, con varios puntos cada uno</li>
+<li>durará dos horas</li>
+<li>estará disponible cualquier material online y offline</li>
+<li>no podrán consultarse entre sí</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgb88d281">
+<h2 id="orgb88d281">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgb88d281">
+</div>
+</section>
+<section id="slide-org4dd8fbe">
+<h3 id="org4dd8fbe">principales funciones dplyr</h3>
+<ul>
+<li><code>select()</code>: seleccionar columnas</li>
+<li><code>arrange()</code>:reordenar filas</li>
+<li><code>filter()</code>: filtrar observaciones por sus valores</li>
+<li><code>mutate()</code>: crear variables a partir de otras</li>
+<li><code>summarise()</code>: reducir varios valores a uno solo
+(muchas veces agrupamos primero con <code>group_by</code>)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org654d581">
+<h2 id="org654d581">%&gt;%</h2>
+<div class="outline-text-2" id="text-org654d581">
+</div>
+</section>
+<section id="slide-orgb84f8b5">
+<h3 id="orgb84f8b5"><i>Piping</i>  con  <i>Magrittr</i></h3>
+<div class="org-src-container">
+
+<pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x %>% f(., arg2, arg3) # por default pasa al 1er argumento
+x %>% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
+x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org6ce1b3c">
+<h3 id="org6ce1b3c">Ejemplos</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
+
+
+mean_by_state %>% # mi data.frame
+mutate(frac = mean/overall_mean) %>% # creo la columna frac
+filter(frac >= 1) %>% # filtro la columna frac
+arrange(desc(frac)) # ordeno de mayor a menor
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org55b96e3">
+<h2 id="org55b96e3">más dplyr</h2>
+<div class="outline-text-2" id="text-org55b96e3">
+</div>
+</section>
+<section id="slide-orgc7c5cb0">
+<h3 id="orgc7c5cb0">combinando data.frames (sin llaves)</h3>
+<img src="./figs/binds.png">
+
+</section>
+<section id="slide-org3be276b">
+<h3 id="org3be276b">combinando data.frames (con llaves)</h3>
+<img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
+
+<img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
+
+<ul>
+<li>miren con cuidado el cheat-sheet de dplyr</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbc83cff">
+<h2 id="orgbc83cff">lectura/escritura</h2>
+<p>
+"read_csv()" lee un archivo delimitado por comas.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >read_csv(readr_example("mtcars.csv"))
+read_csv(readr_example("mtcars.csv.zip"))
+read_csv(readr_example("mtcars.csv.bz2"))
+read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
+</code></pre>
+</div>
+
+<p>
+Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros. 
+</p>
+
+<p>
+Existe una "write_csv" equivalente.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org499b939" data-background="#123456">
+<h2 id="org499b939">práctica 4</h2>
+<p>
+Descargar <a href="https://r-lectures.github.io/assets/R2019-practice-4-fhpjfraw2t.pdf">práctica 4</a>.
+</p>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
