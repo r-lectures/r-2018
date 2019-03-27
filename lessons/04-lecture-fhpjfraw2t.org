@@ -23,7 +23,7 @@
 #+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
 #+REVEAL_PLUGINS: (highlight)
 #+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
-#+REVEAL_HLEVEL: 1
+#+REVEAL_HLEVEL: 10
 
 # # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
 # # (setq org-reveal-title-slide 'auto)

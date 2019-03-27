@@ -31,14 +31,16 @@
 </section>
 
 <section>
-<section id="slide-org5fbce32">
-<h2 id="org5fbce32">1er parcial</h2>
+<section id="slide-org57e1b4f">
+<h2 id="org57e1b4f">1er parcial</h2>
 <p>
 <code>8 de Abril</code>
 </p>
 </section>
-<section id="slide-org098e7b9">
-<h3 id="org098e7b9">El parcial</h3>
+</section>
+<section>
+<section id="slide-orgadeeca3">
+<h3 id="orgadeeca3">El parcial</h3>
 <ul>
 <li>habrá dos problemas, con varios puntos cada uno</li>
 <li>durará dos horas</li>
@@ -49,13 +51,15 @@
 </section>
 </section>
 <section>
-<section id="slide-orgb88d281">
-<h2 id="orgb88d281">repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-orgb88d281">
+<section id="slide-org3cbd1a3">
+<h2 id="org3cbd1a3">repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org3cbd1a3">
 </div>
 </section>
-<section id="slide-org4dd8fbe">
-<h3 id="org4dd8fbe">principales funciones dplyr</h3>
+</section>
+<section>
+<section id="slide-orgc5c52f4">
+<h3 id="orgc5c52f4">principales funciones dplyr</h3>
 <ul>
 <li><code>select()</code>: seleccionar columnas</li>
 <li><code>arrange()</code>:reordenar filas</li>
@@ -68,13 +72,15 @@
 </section>
 </section>
 <section>
-<section id="slide-org654d581">
-<h2 id="org654d581">%&gt;%</h2>
-<div class="outline-text-2" id="text-org654d581">
+<section id="slide-org0fc6df7">
+<h2 id="org0fc6df7">%&gt;%</h2>
+<div class="outline-text-2" id="text-org0fc6df7">
 </div>
 </section>
-<section id="slide-orgb84f8b5">
-<h3 id="orgb84f8b5"><i>Piping</i>  con  <i>Magrittr</i></h3>
+</section>
+<section>
+<section id="slide-org8f90121">
+<h3 id="org8f90121"><i>Piping</i>  con  <i>Magrittr</i></h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
@@ -90,8 +96,10 @@ x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
 </div>
 
 </section>
-<section id="slide-org6ce1b3c">
-<h3 id="org6ce1b3c">Ejemplos</h3>
+</section>
+<section>
+<section id="slide-org91321fd">
+<h3 id="org91321fd">Ejemplos</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >arrange(filter(mutate(mean_by_state, frac = mean/overall_mean), frac >= 1), desc(frac))
@@ -106,18 +114,22 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org55b96e3">
-<h2 id="org55b96e3">más dplyr</h2>
-<div class="outline-text-2" id="text-org55b96e3">
+<section id="slide-org1491291">
+<h2 id="org1491291">más dplyr</h2>
+<div class="outline-text-2" id="text-org1491291">
 </div>
 </section>
-<section id="slide-orgc7c5cb0">
-<h3 id="orgc7c5cb0">combinando data.frames (sin llaves)</h3>
+</section>
+<section>
+<section id="slide-org524e23b">
+<h3 id="org524e23b">combinando data.frames (sin llaves)</h3>
 <img src="./figs/binds.png">
 
 </section>
-<section id="slide-org3be276b">
-<h3 id="org3be276b">combinando data.frames (con llaves)</h3>
+</section>
+<section>
+<section id="slide-org64aaa5f">
+<h3 id="org64aaa5f">combinando data.frames (con llaves)</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
 
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
@@ -130,8 +142,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-orgbc83cff">
-<h2 id="orgbc83cff">lectura/escritura</h2>
+<section id="slide-org50d2189">
+<h2 id="org50d2189">lectura/escritura</h2>
 <p>
 "read_csv()" lee un archivo delimitado por comas.
 </p>
@@ -156,8 +168,8 @@ Existe una "write_csv" equivalente.
 </section>
 </section>
 <section>
-<section id="slide-org499b939" data-background="#123456">
-<h2 id="org499b939">práctica 4</h2>
+<section id="slide-org1017c12" data-background="#123456">
+<h2 id="org1017c12">práctica 4</h2>
 <p>
 Descargar <a href="https://r-lectures.github.io/assets/R2019-practice-4-fhpjfraw2t.pdf">práctica 4</a>.
 </p>
