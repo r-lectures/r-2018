@@ -1,6 +1,6 @@
 #    -*- mode: org -*-
-#+TITLE: R 2018
-#+DATE: 15/04/2018
+#+TITLE: R 2019
+#+DATE: 01/04/2019
 #+AUTHOR: Luis G. Moyano
 #+EMAIL: lgmoyano@gmail.com
 
@@ -19,11 +19,11 @@
 #+REVEAL_TRANS: slide
 #+REVEAL_SPEED: fast
 #+REVEAL_THEME: my_moon
-#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2017">
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Programación en R 2019">
 #+REVEAL_POSTAMBLE: <p> @luisgmoyano </p>
 #+REVEAL_PLUGINS: (highlight)
 #+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
-#+REVEAL_HLEVEL: 1
+#+REVEAL_HLEVEL: 10
 
 # # (setq org-reveal-title-slide "<h1>%t</h1><br/><h2>%a</h2><h3>%e / <a href=\"http://twitter.com/ben_deane\">@ben_deane</a></h3><h2>%d</h2>")
 # # (setq org-reveal-title-slide 'auto)
@@ -52,29 +52,8 @@ title: Clase 6
 
 # #+ATTR_REVEAL: :frag roll-in
 
-* COMMENT Emma habla de Caret
-* Repaso de la clase anterior
-** RStudio
-- Working directory / Workspace
-  #+Begin_src R 
-  getwd() # para saber donde estoy
-  setwd("path/to/dir") # para decirle donde quiero estar
-  #+END_SRC
-- Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc
-- Cómo grabo lo que hago?
-#+BEGIN_EXPORT html
- <ol class="smallfont">
-   <li>abrir un proyecto nuevo y grabar después</li>
-   <li>grabar en algún directorio y después decirle que haga un proyecto ahí</li>
-   <li>sin proyectos, gestionar todo uno mismo (no muy recomendado)</li>
- </ol>
-#+END_EXPORT
-#+BEGIN_NOTES
-- https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
-- Usen atajos de teclado! Ver machete de RStudio (cheatsheet) en Slack
-#+END_NOTES
-
-** Funciones
+* COMMENT Repaso de la clase anterior
+** COMMENT Funciones
 #+BEGIN_NOTES
 Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
 sobre objetos distintos cada vez. Por ejemplo, la función `read_csv` o `plot` contiene código que no
@@ -109,7 +88,7 @@ x_200_T   <- alta_funcion(200, TRUE)
 mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 #+END_SRC
 
-* Repaso de la práctica 5
+** COMMENT Repaso de la práctica 5
 :PROPERTIES:
 :reveal_background: #123456
 :END:
@@ -177,14 +156,90 @@ Trabajamos sobre datos de ruido de Buenos Aires Data.
    #   ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '02') 
    #   ## semi_ruido_bsas %>% group_by(date) %>% separate(date, into = c("d", "m", "y"), sep = "/") %>% filter(y == '2013', m == '08') 
    # #+END_SRC
+* Repaso de la clase anterior
+** lectura/escritura
+
+"read_csv()" lee un archivo delimitado por comas.
+
+#+BEGIN_SRC R
+read_csv("/mi/path/al/directorio/mtcars.csv")
+read_csv("https://github.com/tidyverse/readr/raw/master/inst/extdata/mtcars.csv")
+#+END_SRC
+
+Se pueden controlar cosas como col_types, col_names, delim, skip, n_max, y otros. 
+
+Existe una "write_csv" equivalente.
+
+** /Piping/  con  /Magrittr/ y operador %>%
+
+#+BEGIN_SRC R 
+x %>% f en vez de f(x) # el valor de x se direcciona a f()
+#+END_SRC
+
+#+BEGIN_SRC R 
+x %>% f(., arg2, arg3) # por default pasa al 1er argumento
+x %>% f(arg2, arg3)    # por lo tanto, puede obviarse el punto
+x %>% f(arg1, ., arg3) # puede usarse el punto para direccionar a otro lado
+
+mean_by_state %>% # mi data.frame
+mutate(frac = mean/overall_mean) %>% # creo la columna frac
+filter(frac >= 1) %>% # filtro la columna frac
+arrange(desc(frac)) # ordeno de mayor a menor
+#+END_SRC
+
+** combinando data.frames (sin llaves)
+
+#+BEGIN_EXPORT html
+<img src="./figs/binds.png">
+#+END_EXPORT
+
+** combinando data.frames (con llaves)
+
+#+BEGIN_EXPORT html
+<img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
+#+END_EXPORT
+
+#+BEGIN_EXPORT html
+<img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
+#+END_EXPORT
+
+- recuerden que lo tienen el /cheatsheet/ de ~dplyr~
+* RStudio
+- Working directory / Workspace
+  #+Begin_src R 
+  getwd() # para saber a qué directorio apunta mi sesión
+  setwd("path/to/dir") # para definir a qué directorio quiero apuntar
+  #+END_SRC
+- Proyectos: Conjunto de archivos que van juntos: miproyecto.Rproj, .RData, .Rsession, etc.
+- ¿Cómo grabo lo que hago?
+#+BEGIN_EXPORT html
+ <ol class="smallfont">
+   <li>Abrir un proyecto nuevo y grabar después</li>
+   <li>Grabar en algún directorio y después decirle que haga un proyecto ahí</li>
+   <li>Sin proyectos, gestionar todo uno mismo (no muy recomendado)</li>
+ </ol>
+#+END_EXPORT
+#+BEGIN_NOTES
+- https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
+- ¡Usen atajos de teclado! Ver /cheatsheet/ de ~RStudio~.
+#+END_NOTES
+
 * 'Types': tipos de datos 
-- 'logical':    TRUE o FALSE
+- 'logical':    TRUE o FALSE (o NA)
 - 'integer':    enteros: ..., -1, 0, 1, ...
 - 'double':    irracionales: 3.1415926
 - 'character':    alfanuméricos: "pi"
-- 'complex':    1+i10
-- 'raw':     48 65 6c 6c 6f
-** logical
+- 'complex':   complejos: 1+i10
+- 'raw':       charToRaw("buenas")  62 75 65 6e 61 73
+
+** ~Class()~, ~mode()~ y ~typeof()~
+Para preguntar qué tipo es.
+
+~mode~ y ~typeof~ devuelven los tipos más básicos.
+
+~class~ suele devolver (si existe la clase) la estructura del dato.
+
+** Logical
 
 #+BEGIN_SRC R 
 v <- TRUE 
@@ -192,12 +247,15 @@ print(class(v))
 #> [1] "logical"
 is.logical(v) 
 #> [1] TRUE
-1:10 %% 3 == 0 #: para generar una secuencia, %% es el operador módulo (hagan ?: y ?%%)
-#>  [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
 c(TRUE, TRUE, FALSE, NA)
 #> [1]  TRUE  TRUE FALSE    NA
+20/5 == 4
+#> [1] TRUE
+1:10 %% 3 == 0 #: para generar una secuencia, %% es el operador módulo (hagan ?: y ?%%)
+#>  [1] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
 #+END_SRC
-** integer
+
+** Integer
 #+BEGIN_SRC R 
 v <- 2L
 print(class(v))
@@ -213,7 +271,7 @@ typeof(1L)
 #+END_SRC
 
 Valor especial: NA
-** double
+** Double
 #+BEGIN_SRC R 
 v <- 23.5
 print(class(v))
@@ -259,19 +317,19 @@ is.raw()
 
 * Objetos R: vectores
 Existen dos clases de vectores:
-1. _Vectores 'atómicos'_ (/atomic vectors/), todos los elementos del mismo tipo
+ 1. _Vectores 'atómicos'_ (/atomic vectors/), todos los elementos del mismo tipo
    - puede haber de los 6 tipos: 'logical', 'integer', 'double', 'character', 'complex' y 'raw'
    - Integer y double son tratados como 'numeric'
    - No hay escalares en R, si no vectores de longitud 1
 
 2. _Listas_
    - Pueden a su vez contener listas (vectores recursivos)
-   - data.frames son caso especial cuando los vectores que la componen son de igual longitud
+   - /data.frames/ son caso especial cuando los vectores que la componen son de igual longitud
 
-Las propiedades más importantes de los vectores son que /tipo/ de vector es -typeof()-, que
-/longitud/ tiene -length()- y cuales /atributos/ tiene asociados. Los atributos son metadata
-arbitraria que se puede asociar a cualquier objeto R. Se determinan y consultan con /attr()/ para
-alguno en particular y con /attributes()/ se consultan todos los que el objeto tenga.
+Las propiedades más importantes de los vectores son que _tipo_ de vector es -/typeof()/-, que
+_longitud_ tiene -/length()/- y cuales _atributos_ tiene asociados. Los atributos son metadatos
+arbitrarios que se pueden asociar a cualquier objeto R. Se determinan y consultan con /attr()/ y /attributes()/.
+
 
 #+BEGIN_NOTES
 La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogéneos,
@@ -285,6 +343,7 @@ Otro punto importante es que la función is.vector() no dice realmente si es un 
 que devuelve TRUE si el objeto es un vector sin atributos (aparte de su nombre). Para saber si es un
 vector atómico o una lista, usar is.atomic(x) e is.list(x).
 #+END_NOTES
+
 ** Vectores R
 #+BEGIN_EXPORT html
 <img style="WIDTH:700px; HEIGHT:600px; border:0"  src="./figs/data-structures-overview.png">
@@ -349,14 +408,11 @@ is.list(mtcars)
 unlist(mtcars) # podemos 'aplanar' una lista!
 #+END_SRC
 
-** Próxima: Vectores "aumentados" y /subsetting/
+** COMMENT Próxima: Vectores "aumentados" y /subsetting/
    - _Factores_, construidos sobre vectores 'integer'
    - _Data frames_ (y tibbles) sobre 'lists'
    - _Dates_ y _date-times_, sobre vectores 'numeric'
 
-* Práctica 6
+* Práctica 5
 
-- Cuáles son las 3 propiedades de un vector, aparte de su contenido?
-- Cuáles son los 4 tipos más comunes de vectores atómicos? Cuál los dos menos comunes?
-- Qué son atributos? Cómo se obtienen y como se asignan?
-- De que manera es una lista diferente de un vector atómico? Porque una matriz es diferente de un data frame?
+Descargar [[../assets/R2019-practice-5-1m9vsub858.pdf][práctica 5]].
