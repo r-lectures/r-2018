@@ -36,12 +36,14 @@ lectures:
     - title: "versión pdf"
       url: "04-lecture-fhpjfraw2t.pdf"
 
-# - title: "Clase 5 - Funciones + RStudio"
-#   url: "05-lecture-slides.html"
+- title: "Clase 5 - RStudio + Tipos de datos"
+  url: "05-lecture-slides-1m9vsub858.html"
 
-#   subitems:
-#     - title: "Clase 5 - versión texto"
-#       url: "05-lecture.html"
+    subitems:
+    - title: "versión texto"
+      url: "05-lecture-1m9vsub858.html"
+    - title: "versión pdf"
+      url: "05-lecture-1m9vsub858.pdf"
 
 # - title: "Clase 6 - Tipos de datos"
 #   url: "06-lecture-slides.html"

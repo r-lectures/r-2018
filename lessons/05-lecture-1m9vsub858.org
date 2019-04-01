@@ -372,9 +372,9 @@ attr(y, "mi_atributo") <- "Esto es un vector"
 #+END_SRC
 
 Los tres atributos más importantes se obtienen con /names()/, /class()/ y /dim()/. Este último
-atributo permite expandir los vectores atómicos a /arrays/ multidimensionales (tensores), cuyo caso
+atributo permite expandir los vectores atómicos a /arrays/ multidimensionales (del estilo de los tensores), cuyo caso
 especial 2d son las matrices. /dim()/ generaliza también el papel de /length()/ al caso de arrays,
-mientras que /nrow()/ y /ncol()/ lo hacen para el caso especial de matrices ()
+mientras que /nrow()/ y /ncol()/ lo hacen para el caso especial de matrices ().
 
 ** Listas
 
