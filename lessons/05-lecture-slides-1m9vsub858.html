@@ -31,15 +31,15 @@
 </section>
 
 <section>
-<section id="slide-org11e2577">
-<h2 id="org11e2577">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org11e2577">
+<section id="slide-orgd9f523f">
+<h2 id="orgd9f523f">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-orgd9f523f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org41dedc8">
-<h3 id="org41dedc8">lectura/escritura</h3>
+<section id="slide-orgcbd6f2f">
+<h3 id="orgcbd6f2f">lectura/escritura</h3>
 <p>
 "read_csv()" lee un archivo delimitado por comas.
 </p>
@@ -62,8 +62,8 @@ Existe una "write_csv" equivalente.
 </section>
 </section>
 <section>
-<section id="slide-org024519e">
-<h3 id="org024519e"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
+<section id="slide-org7b04912">
+<h3 id="org7b04912"><i>Piping</i>  con  <i>Magrittr</i> y operador %&gt;%</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x %>% f en vez de f(x) # el valor de x se direcciona a f()
@@ -86,15 +86,15 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-org0b31cae">
-<h3 id="org0b31cae">combinando data.frames (sin llaves)</h3>
+<section id="slide-org3578c4a">
+<h3 id="org3578c4a">combinando data.frames (sin llaves)</h3>
 <img src="./figs/binds.png">
 
 </section>
 </section>
 <section>
-<section id="slide-org4d2ac7c">
-<h3 id="org4d2ac7c">combinando data.frames (con llaves)</h3>
+<section id="slide-orgb2f6e2d">
+<h3 id="orgb2f6e2d">combinando data.frames (con llaves)</h3>
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/joins.png">
 
 <img style="position:absolute; TOP:100px; LEFT:750px; WIDTH:400px; HEIGHT:150px; border:0" src="./figs/sets.png">
@@ -106,8 +106,8 @@ arrange(desc(frac)) # ordeno de mayor a menor
 </section>
 </section>
 <section>
-<section id="slide-orga035eaf">
-<h2 id="orga035eaf">RStudio</h2>
+<section id="slide-org86c8e35">
+<h2 id="org86c8e35">RStudio</h2>
 <ul>
 <li><p>
 Working directory / Workspace
@@ -139,8 +139,8 @@ setwd("path/to/dir") # para definir a qué directorio quiero apuntar
 </section>
 </section>
 <section>
-<section id="slide-orgc7d4ae9">
-<h2 id="orgc7d4ae9">'Types': tipos de datos</h2>
+<section id="slide-orga9a9a9c">
+<h2 id="orga9a9a9c">'Types': tipos de datos</h2>
 <ul>
 <li>'logical':    TRUE o FALSE (o NA)</li>
 <li>'integer':    enteros: &#x2026;, -1, 0, 1, &#x2026;</li>
@@ -154,8 +154,8 @@ setwd("path/to/dir") # para definir a qué directorio quiero apuntar
 </section>
 </section>
 <section>
-<section id="slide-org90d3abf">
-<h3 id="org90d3abf"><code>Class()</code>, <code>mode()</code> y <code>typeof()</code></h3>
+<section id="slide-orga6045c2">
+<h3 id="orga6045c2"><code>Class()</code>, <code>mode()</code> y <code>typeof()</code></h3>
 <p>
 Para preguntar qué tipo es.
 </p>
@@ -171,8 +171,8 @@ Para preguntar qué tipo es.
 </section>
 </section>
 <section>
-<section id="slide-org8cd98ae">
-<h3 id="org8cd98ae">Logical</h3>
+<section id="slide-org1d0ea45">
+<h3 id="org1d0ea45">Logical</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- TRUE 
@@ -192,8 +192,8 @@ c(TRUE, TRUE, FALSE, NA)
 </section>
 </section>
 <section>
-<section id="slide-org797f3af">
-<h3 id="org797f3af">Integer</h3>
+<section id="slide-org9b22312">
+<h3 id="org9b22312">Integer</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- 2L
@@ -216,8 +216,8 @@ Valor especial: NA
 </section>
 </section>
 <section>
-<section id="slide-org9b3b1b4">
-<h3 id="org9b3b1b4">Double</h3>
+<section id="slide-org051f7ef">
+<h3 id="org051f7ef">Double</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- 23.5
@@ -249,8 +249,8 @@ Usar: is.finite(), is.infinite(), is.na(), is.nan()
 </section>
 </section>
 <section>
-<section id="slide-org7ab82e8">
-<h3 id="org7ab82e8">character</h3>
+<section id="slide-org052474e">
+<h3 id="org052474e">character</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >v <- "TRUE" # v <- "Maldad pura"
@@ -263,8 +263,8 @@ x <- "Las cadenas de caracteres pueden tener una longitud arbitrariamente larga 
 </section>
 </section>
 <section>
-<section id="slide-orgc36f768">
-<h3 id="orgc36f768">complex y raw</h3>
+<section id="slide-org8095def">
+<h3 id="org8095def">complex y raw</h3>
 <p>
 Para números complejos, complex
 </p>
@@ -290,8 +290,8 @@ is.raw()
 </section>
 </section>
 <section>
-<section id="slide-org137dc9f">
-<h2 id="org137dc9f">Objetos R: vectores</h2>
+<section id="slide-org4bba17d">
+<h2 id="org4bba17d">Objetos R: vectores</h2>
 <p>
 Existen dos clases de vectores:
 </p>
@@ -345,15 +345,15 @@ vector atómico o una lista, usar is.atomic(x) e is.list(x).
 </section>
 </section>
 <section>
-<section id="slide-org073ccc4">
-<h3 id="org073ccc4">Vectores R</h3>
+<section id="slide-org8d9a434">
+<h3 id="org8d9a434">Vectores R</h3>
 <img style="WIDTH:700px; HEIGHT:600px; border:0"  src="./figs/data-structures-overview.png">
 
 </section>
 </section>
 <section>
-<section id="slide-org2e98ad6">
-<h4 id="org2e98ad6">Propiedades de vectores</h4>
+<section id="slide-orgc1c8ef2">
+<h4 id="orgc1c8ef2">Propiedades de vectores</h4>
 <p>
 <span class="underline">Tipo</span>, que se determina con <i>typeof()</i>
 </p>
@@ -397,8 +397,8 @@ mientras que <i>nrow()</i> y <i>ncol()</i> lo hacen para el caso especial de mat
 </section>
 </section>
 <section>
-<section id="slide-org8c9f13d">
-<h3 id="org8c9f13d">Listas</h3>
+<section id="slide-org9063cb0">
+<h3 id="org9063cb0">Listas</h3>
 <p>
 Sus elementos pueden tener cualquier tipo, longitud (dimensión!) o atributos, incluyendo otras
 listas o funciones ¯\_(ツ)_/¯
@@ -436,8 +436,8 @@ unlist(mtcars) # podemos 'aplanar' una lista!
 </section>
 </section>
 <section>
-<section id="slide-orge06c367">
-<h2 id="orge06c367">Práctica 5</h2>
+<section id="slide-org7e40ded">
+<h2 id="org7e40ded">Práctica 5</h2>
 <p>
 Descargar <a href="../assets/R2019-practice-5-1m9vsub858.pdf">práctica 5</a>.
 </p>
