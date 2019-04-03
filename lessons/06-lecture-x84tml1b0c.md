@@ -1,7 +1,3 @@
---- 
-layout: default 
-title: Clase 7
---- 
 
 
 # Repaso de la clase anterior
@@ -9,12 +5,12 @@ title: Clase 7
 
 ## 'Types': tipos de datos
 
--   'logical':    TRUE o FALSE
--   'integer':    enteros: &#x2026;, -1, 0, 1, &#x2026;
--   'double':    irracionales: 3.1415926
--   'character':    alfanuméricos: "pi"
--   'complex':    1+i10
--   'raw':     48 65 6c 6c 6f
+-   **'logical'**:    TRUE o FALSE
+-   **'integer'**:    enteros: &#x2026;, -1, 0, 1, &#x2026;
+-   **'double'**:    irracionales: 3.1415926
+-   **'character'**:    alfanuméricos: "pi"
+-   *'complex':    1+i10*
+-   *'raw':     48 65 6c 6c 6f*
 
 
 ## Objetos R: vectores
@@ -26,11 +22,11 @@ Existen dos clases de vectores:
     -   Integer y double son tratados como 'numeric'
     -   No hay escalares en R, si no vectores de longitud 1
 
-2.  <span class="underline">Listas</span>
-    -   Pueden a su vez contener listas (vectores recursivos)
-    -   data.frames son caso especial cuando los vectores que la componen son de igual longitud
+2.  <span class="underline">Vectores recursivos - *Listas*</span> :
+    -   Pueden a su vez contener listas  (por eso lo de recursivos)
+    -   *data frames* son caso especial, cuando los vectores que la componen son de igual longitud
 
-La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogeneos,
+La principal diferencia entre los vectores atómicos y las listas es que los primeros son homogéneos,
 o sea todos sus elementos son del mismo tipo, mientras que en las listas no es necesario. 
 
 
@@ -38,9 +34,9 @@ o sea todos sus elementos son del mismo tipo, mientras que en las listas no es n
 
 Las propiedades más importantes de los vectores son:
 
-1.  que *tipo* de vector es -typeof()-
-2.  que *longitud* tiene -length()-
-3.  cuales *atributos* tiene asociados.
+1.  Que *tipo* de vector es. `typeof()`
+2.  Que *longitud* tiene. `length()`
+3.  Cuales *atributos* tiene asociados. `attributes()`
 
 Los atributos son metadata arbitraria que se puede asociar a cualquier objeto R. Se determinan y
 consultan con *attr()* para alguno en particular y con *attributes()* se consultan todos los que el
@@ -88,7 +84,7 @@ listas o funciones ¯\\\_(ツ)\_/¯
 
 # Vectores "aumentados"
 
--   <span class="underline">Data frames</span> (y tibbles) sobre 'lists'
+-   <span class="underline">Data frames</span> (y <span class="underline">tibbles</span>) sobre 'lists'
 -   <span class="underline">Factores</span>, construidos sobre vectores 'integer'
 -   <span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores 'numeric'
 
@@ -96,18 +92,20 @@ listas o funciones ¯\\\_(ツ)\_/¯
 ## Data frames
 
 Un data frame es una lista de vectores de igual longitud. Su estructura es 2d, con lo cual tiene
-cosas en común con listas y con matrices. Se le pueden aplicar names(), colnames() y rownames(). La
-longitud del data frame (length()) es la longitud de la lista, por lo tanto igual a ncol().
+cosas en común con listas y con matrices. Se le pueden aplicar `names()`, `colnames()` y `rownames()`. 
+
+Con `length()` obtenemos la longitud del data frame, y como es la cantidad de elementos de la lista, es igual a `ncol()`.
 
     df <- data.frame(x = 1:3, y = c("a", "b", "c"))
     str(df)
+    identical(length(df), ncol(df))
 
 
 ## Factores
 
-Los factores son vectores no-atómicos 'aumentados' usados para representar variables
-categóricas. Estos datos pueden tomar sus valores de un conjunto fijo de elementos. Internamente son
-representados por enteros, y tienen un atributo 'levels'.
+Los factores son vectores **no-atómicos** 'aumentados', usados para representar variables
+categóricas (nominales). Estos datos pueden tomar sus valores de un conjunto fijo de elementos. Internamente son
+representados por enteros, y R les asigna un atributo 'levels'.
 
     x <- factor(c("ab", "cd", "ab"), levels = c("ab", "cd", "ef"))
     typeof(x)
@@ -115,25 +113,27 @@ representados por enteros, y tienen un atributo 'levels'.
     attributes(x)
     #> $levels
     #> [1] "ab" "cd" "ef"
-    #> 
+    #> str(x)
+    #> Factor w/ 3 levels "ab","cd","ef": 1 2 1
     #> $class
     #> [1] "factor"
 
 
 ## Dates y date-times
 
-Lo dejamos para que algún voluntario lo cuente!
+Lo veremos más adelante.
 
 
 # *Subsetting*
 
-'[' es el operador para hacer *subsetting*, se usa poniendo algo el tipo x[a]. Hay distintas
-maneras de usarlo.
+*Subsetting* se refiere a un conjunto de métodos para acceder a partes de objetos en R.
+
+`[` es uno de los operadores más frecuentes para hacer *subsetting*. Si `x` es un vector atómico, `x[a]` es el elemento `a` del vector `x`. Hay distintas maneras de usar `[`.
 
 
 ## Usando vectores de enteros positivos o negativos
 
-Un vector numerico con enteros, todos positivos, todos negativos, o cero.
+Un vector numérico con enteros, todos positivos, todos negativos, o cero.
 
     x <- c("one", "two", "three", "four", "five")
     x[c(3, 2, 5)]
@@ -150,10 +150,10 @@ Un vector numerico con enteros, todos positivos, todos negativos, o cero.
     ## numeric(0)
 
 
-## Usando vectores de lógicos
+## Usando vectores de elementos lógicos
 
-*Subsetting* con un vector lógico devuelve los valores de correspondientes a TRUE. Como *filter*, se
-usa frecuentemente en conjunto con expresiones lógicas.
+*Subsetting* con un vector lógico devuelve solo los valores de correspondientes a TRUE. Como *filter*, se
+usa frecuentemente en conjunto con *expresiones lógicas*.
 
     x <- c(10, 3, NA, 5, 8, 1, NA)
     
@@ -166,9 +166,9 @@ usa frecuentemente en conjunto con expresiones lógicas.
     #> [1] 10 NA  8 NA
 
 
-## Usando vectores de caracteres para devolver elementos con los respectivos nombres
+## Usando vectores de caracteres para devolver elementos con nombres
 
-Si tenemos un vector con nombres, podemos hacer algo del tipo:
+Si tenemos un vector con sus elementos, o un data frame con sus columnas, con nombres, podemos acceder a los elementos así:
 
     x <- c(abc = 1, def = 2, xyz = 5)
     x[c("xyz", "def")]
@@ -183,29 +183,28 @@ Si tenemos un vector con nombres, podemos hacer algo del tipo:
     ## ...
 
 
-## No usando nada
+## No usando nada!
 
-La manera más simples de hacer *subsetting* es no usando nada, x[], que devuelve el objeto
-original. Si es 2d, podemos dejar nada en una de las dimensiones, por ej. x[1, ] para obtener la
-primera fila (con todas sus columnas), o x[, -1] que selecciona todas las filas columnas menos la
-primera.
+La manera más simple de hacer *subsetting* es no usando nada, `x[]`, que devuelve el objeto
+original. Si es 2d, podemos dejar vacía una de las dimensiones, por ej. `x[1, ]` para obtener una fila (con todas sus columnas), o x[, -1] que selecciona todas las filas columnas menos la indicada.
 
-Para el caso de data frames y matrices, al hacer subsetting es posible usar drop = FALSE para
-preservar las dimensiones del objeto original. 
+Para el caso de data frames y matrices, al hacer subsetting es posible usar `drop = FALSE` para
+preservar las dimensiones del objeto original.
 
 
-## Otros operadores de subsetting: '[[' y '$'
+## Otros operadores de subsetting: `[[` y `$`
 
-Para listas, necesitamos [[ para acceder al contenido de los elementos de la lista, porque aplicando
-[ a una lista siempre devuelve otra lista (más exactamente, una sub-lista). En cambio, [[ saca un
-nivel de la jerarquía de la lista y dependiendo de su estructura, puede devolver cualquier elemento
-de las lista.
+Para listas, necesitamos `[[` para acceder al contenido de los elementos de la lista, <span class="underline">porque aplicando</span>
+`[` <span class="underline">a una lista siempre devuelve otra lista</span> (más exactamente, una sub-lista). 
 
-El operador $ es una abreviación para obtener elementos nombrados de una lista. Se usa parecido a [[
-solo que no hace falta usar comillas.
+En cambio, `[[` saca un nivel de la jerarquía de la lista y puede devolver cualquier tipo de objeto, dependiendo del elemento
+siendo accedido.
+
+El operador `$` es una abreviación para obtener elementos *nombrados* de una lista. Se usa parecido a `[[`
+solo que no hace falta usar las comillas.
 
 Como los data frames son listas de columnas de igual longitud, podemos acceder a sus columnas usando
-mtcars[[1] ], mtcars[["cy"] ] o mtcars$cy. Estos dos últimos son equivalentes.
+`mtcars[[1] ]`, `mtcars[["cy"] ]` o `mtcars$cy`. Estos dos últimos son equivalentes.
 
 <div class="NOTES">
 Más sobre subsetting en los siguientes links:
@@ -215,29 +214,19 @@ Más sobre subsetting en los siguientes links:
 </div>
 
 
-## diferencia entre [ y [[ para listas
+## Diferencia entre [ y [[ para listas
 
 <img style="WIDTH:500px; HEIGHT:420px; border:0" src="./figs/lists-subsetting.png">
 
 
-# Práctica 7
+## Indexado de listas: '[[' vs. '['
 
-1.  Cuál es el resultado de hacer subsetting en un vector usando: i) enteros positivos ii) enteros
-    negativos iii) vectores lógicos y iv) vectores de caracteres?
+<img style="border:0" src="./figs/pepper.png">
 
-2.  Cuál es la diferencia entre [, [[, y $ cuando aplicados a una lista?
-
-3.  Cuando hay que usar drop = FALSE?
-
-4.  Si x es una matriz, qué hace x[] <- 0? Cuál es la diferencia de hacer x <- 0?
+crédito - Hadley Wickham: <http://t.co/YQ6axb2w7t>
 
 
-## Práctica 7 bis
+# Práctica 6
 
-Cargar ggplot2, y sobre el data frame 'diamonds' seleccionar diamantes que:
-
-1.  tienen x e y iguales
-2.  tienen depth entre 55 y 70
-3.  tienen carat menor que la media de carat
-4.  cuestan más que $10000 por carat. De que calidad son? Pista: usar table()
+Descargar [práctica 6](./../assets/R2019-practice-6-x84tml1b0c.pdf).
 

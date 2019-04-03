@@ -45,12 +45,14 @@ lectures:
     - title: "versión pdf"
       url: "05-lecture-1m9vsub858.pdf"
 
-# - title: "Clase 6 - Tipos de datos"
-#   url: "06-lecture-slides.html"
+- title: "Clase 6 - Vectores extendidos y /subsetting/"
+  url: "06-lecture-slides-x84tml1b0c.html"
 
-#   subitems:
-#     - title: "Clase 6 - versión texto"
-#       url: "06-lecture.html"
+  subitems:
+    - title: "versión texto"
+      url: "06-lecture-x84tml1b0c.html"
+    - title: "versión pdf"
+      url: "06-lecture-x84tml1b0c.pdf"
 
 # - title: "Repaso para 1er parcial"
 #   url: "01-midterm-practice.html"
