@@ -68,15 +68,6 @@ lectures:
 # #       url: ../assets/R - Analisis de datos con Caret.pdf
 
       
-# - title: "Clase 7 - Vectores extendidos + Subsetting"
-#   url: "07-lecture-slides.html"
-
-#   subitems:
-#     - title: "Clase 7 - versión texto"
-#       url: "07-lecture.html"
-# #     - title: "Anova en R - Brenda"
-# #       url: ../assets/Anova-en-R-2.pdf
-
 - title: "Primer parcial"
   url: 01-midterm-exam-95wc6xa48k.html
 
@@ -85,6 +76,15 @@ lectures:
       url: ../assets/R2019-midterm1-95wc6xa48k.pdf
     - title: "Versión Rmd (notebook)"
       url: ../assets/01-midterm-exam-95wc6xa48k.Rmd
+
+- title: "Clase 7 - Funciones y control de flujo"
+  url: "07-lecture-slides-829aulo7g7.html"
+
+  subitems:
+    - title: "versión texto"
+      url: "07-lecture-829aulo7g7.html"
+    - title: "versión pdf"
+      url: "07-lecture-829aulo7g7.pdf"
 
 # - title: "Clase 8 - if + for"
 #   url: 08-lecture-slides.html
