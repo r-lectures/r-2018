@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R lectures</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_beige.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2019">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R lectures</h1><h3>10/04/2019</h3>
+</section>
+
+<section>
+<section id="slide-org0772837">
+<h2 id="org0772837">Informe final - deadline 24/05</h2>
+<ul>
+<li>Tema a elección de ustedes
+<ul>
+<li>Preferentemente relacionado a algún trabajo</li>
+
+</ul></li>
+<li>Tipo borrador de un paper
+<ul>
+<li>Con todos los elementos de un paper</li>
+<li>Sin la terminación de un paper</li>
+
+</ul></li>
+<li>Entre 6 y 12 páginas, aprox.</li>
+<li>Pondremos distintos ejemplos en Classroom</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org4d05b81">
+<h2 id="org4d05b81">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org4d05b81">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc4e17ad">
+<h3 id="orgc4e17ad">Vectores "aumentados"</h3>
+<ul>
+<li><span class="underline">Data frames</span> (y tibbles) sobre 'lists'</li>
+<li><span class="underline">Factores</span>, construidos sobre vectores 'integer'</li>
+<li><span class="underline">Dates</span> y <span class="underline">date-times</span>, sobre vectores 'numeric'</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgf12adde">
+<h3 id="orgf12adde"><i>Subsetting</i></h3>
+<p>
+'[' es el operador para hacer <i>subsetting</i>, se usa poniendo algo del tipo x[a]. Hay distintas
+maneras de usarlo:
+</p>
+<ol>
+<li>Usando vectores de enteros positivos o negativos</li>
+<li>Usando vectores de lógicos</li>
+<li>Usando vectores de caracteres para devolver elementos con los respectivos nombres</li>
+<li>No usando nada</li>
+
+</ol>
+
+<p>
+Otros operadores de subsetting: '[[' y '$'
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org70dbc26">
+<h3 id="org70dbc26">Indexado de listas: '[[' vs. '['</h3>
+<img style="border:0" src="./figs/pepper.png">
+<p>
+crédito - Hadley Wickham: <a href="http://t.co/YQ6axb2w7t">http://t.co/YQ6axb2w7t</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org3d44ed3">
+<h2 id="org3d44ed3">Control de Flujo</h2>
+<div class="outline-text-2" id="text-org3d44ed3">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org38f4084">
+<h3 id="org38f4084">Operadores lógicos</h3>
+<p>
+Son operadores que permiten comparar dos enunciados y evaluan a un resultado lógico
+</p>
+
+<ul>
+<li><code>&gt;</code> , <code>&gt;=</code></li>
+<li><code>&lt;</code> , <code>&lt;=</code></li>
+<li><code>!=</code> , <code>==</code></li>
+
+</ul>
+
+<p>
+Más los operadores &amp;&amp; (AND) y || (OR) para elaborar enunciados más complejos
+</p>
+
+
+<div class="org-src-container">
+
+<pre><code class="R" >10 == 10
+[1] TRUE
+
+x <- 10
+x == 10
+[1] TRUE
+
+y <- NA
+is.na(y)
+[1] TRUE
+
+## podemos combinar expresiones condicionales con || y && 
+is.na(y) && x==10
+[1] TRUE
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgdc1fd13">
+<h3 id="orgdc1fd13">Ejecución condicional</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >if (condición) {
+  # código que se ejecuta cuando la condición evalua a TRUE
+} else {
+  # código que se ejecuta cuando la condición evalua a FALSE
+}
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2e445fe">
+<h4 id="org2e445fe">Ejemplo</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >y <- NULL
+l <- length(y)
+if(is.null(x)) print("el vector tiene cero elementos") else print(paste("el vector tiene longitud", l, sep = " "))
+
+[1] "el vector tiene cero elementos"
+
+x <- rep("relleno", 5)
+l <- length(x)
+if(is.null(x)) print("el vector tiene cero elementos") else print(paste("el vector tiene longitud", l, sep = " "))
+
+[1] "el vector tiene longitud 5"
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5f042ff">
+<h4 id="org5f042ff">Funciones lógicas accesorias</h4>
+<ul>
+<li><code>any()</code>         # devuelve <code>TRUE</code> si alguno <code>TRUE</code></li>
+<li><code>all()</code>         # devuelve <code>FALSE</code> si alguno <code>FALSE</code></li>
+<li><code>is.na()</code>, <code>is.null()</code> y el resto de la familia <code>is./algo/()</code></li>
+<li><code>%in%</code>          # está <code>x</code> en este vector?`</li>
+<li><code>which()</code>       # devuelve posiciones de elementos <code>TRUE</code></li>
+<li><code>identical()</code>   # por ej., numeric vs. integer</li>
+<li>muchas otras</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre><code class="R" >"relleno" %in% x 
+[1] TRUE
+
+which( 5 > c(3, 4, 5, 6))
+[1] 1 2
+
+identical(0L, 0)
+[1] FALSE
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3f47167">
+<h3 id="org3f47167">Loops</h3>
+<p>
+Loops son bucles y se usan para repetir código.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >for (variable dentro de /secuencia/){
+# - código que se repite tantas veces como el largo de la secuencia
+# - la variable va cambiando en cada pasada
+}
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc4c5332">
+<h4 id="orgc4c5332">Ejemplo</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >df <- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+
+output <- vector("double", ncol(df))  
+for (i in seq_along(df)) {            # seq_along(df) es parecida a 1:length(df)
+  output[[i]] <- median(df[[i]])      
+}
+output
+# [1] -0.2458 -0.2873 -0.0567  0.1443
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd4c8048">
+<h4 id="orgd4c8048">Componentes de un for</h4>
+<ul>
+<li><span class="underline">Output</span>: siempre es buena idea crear el objeto antes de calcularlo</li>
+<li><span class="underline">Secuencia</span>: variable sobre la que funciona el bucle</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="R" >for (x in xs)
+for(i in seq_along(df))
+for (nm in names(xs))
+</code></pre>
+</div>
+<ul>
+<li><span class="underline">Cuerpo</span>: código que se ejecuta las veces que la secuencia indique</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org44da95a">
+<h4 id="org44da95a">Con secuencia condicional</h4>
+<p>
+Útil en el caso en donde no hay un número fijo de 'vueltas'.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >while (condición) {
+  # cuerpo
+}
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org97e3c89">
+<h2 id="org97e3c89">Funciones</h2>
+<aside class="notes">
+<p>
+Una función tiene como propósito encapsular y automatizar tareas que se repetirón, posiblemente 
+sobre objetos distintos cada vez. Por ejemplo, la función `read_csv` o `plot` contiene código que no
+querríamos escribir cada vez que queremos cargar datos de un archivo csv o hacer un gráfico. A su
+vez, con ellas podemos cargar datos de cualquier archivo csv o hacer cualquier gráfico.
+</p>
+
+<p>
+Más información en <a href="http://r4ds.had.co.nz/functions.html">http://r4ds.had.co.nz/functions.html</a>.
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org5b729c7">
+<h3 id="org5b729c7">anatomía de f()</h3>
+<div class="org-src-container">
+
+<pre><code class="R" ># mi función se llama alta_funcion, con dos argumentos
+alta_funcion <- function(arg1 = 10, arg2 = TRUE, ...){
+
+  # acá empieza mi código
+  library(paquete_externo)
+  x <- funcion_externa(arg_ext = arg1) 
+  ...
+  alto código
+  código y más código
+  ...
+  alto_resultado <- mansa_funcion(arg2) # genero alto_resultado
+
+  return(alto_resultado) # devuelvo alto_resultado
+}
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># llamo a mi función de distintas maneras
+x_default <- alta_funcion() # uso arg1 = 10 y arg2 = TRUE
+x_100_F   <- alta_funcion(100, FALSE)
+x_200_T   <- alta_funcion(200, TRUE)
+mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1c64a7c">
+<h3 id="org1c64a7c">ejemplo</h3>
+<div class="org-src-container">
+
+<pre><code class="R" ># función que normaliza de dos maneras distintas un vector de valores 
+normaliza_vector <- function(vector = c(10, 9, 8, 7, 6), square_root = FALSE){
+
+    if(square_root == TRUE) N <- sum(vector^2)^(1/2)
+    else                    N <- sum(vector)/length(vector) # ojo, da error si vector está vacio
+
+    if(N != 0) return(vector/N)
+    else print("error: Norma igual a cero!")
+}
+
+# distintas maneras de llamar la función
+normaliza_vector() # con los argumentos por default
+# [1] 1.250 1.125 1.000 0.875 0.750
+x <- c(10, 9, 8, 7 , 6) # c() es una función que toma N argumentos y devuelve un vector
+normaliza_vector(x) # haciendo explícito el vector
+# [1] 1.250 1.125 1.000 0.875 0.750
+y <- c(1, 2, 3)
+normaliza_vector(y) # un vector diferente
+# [1] 0.5 1.0 1.5
+normaliza_vector(y, TRUE) # usando la norma euclidiana
+# [1] 0.2672612 0.5345225 0.8017837
+
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+La idea de las funciones es que vamos escribiendo código y que, cuando funciona, lo metemos dentro
+de la función. Luego se puede ir extendiendo a medida que se va necesitando (por ejemplo, agregando
+argumentos, etc). 
+</p>
+
+<p>
+Es más fácil escribir una función a partir de código que ya sabemos que funciona que sentarse a
+escribir una función de cero.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcb0b4f6">
+<h2 id="orgcb0b4f6">Práctica 7</h2>
+<p>
+Descargar <a href="../assets/R2019-practice-7-829aulo7g7.pdf">práctica 7</a>.
+</p>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
