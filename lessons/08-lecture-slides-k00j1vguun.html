@@ -9,7 +9,7 @@
 </style>
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
 
-<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_beige.css" id="theme"/>
 
 <link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -31,15 +31,15 @@
 </section>
 
 <section>
-<section id="slide-org4b07148">
-<h2 id="org4b07148">Repaso de la clase anterior</h2>
-<div class="outline-text-2" id="text-org4b07148">
+<section id="slide-org43fbbf7">
+<h2 id="org43fbbf7">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org43fbbf7">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgcba9da5">
-<h3 id="orgcba9da5">Operadores lógicos</h3>
+<section id="slide-org3a94c63">
+<h3 id="org3a94c63">Operadores lógicos</h3>
 <p>
 Son operadores que permiten comparar dos enunciados y evaluan a resultado lógico. 
 </p>
@@ -62,8 +62,8 @@ Combinando operadores construimos expresiones condicionales, que R evalúa a <co
 </section>
 </section>
 <section>
-<section id="slide-org4d3dc0e">
-<h3 id="org4d3dc0e">Ejecución condicional</h3>
+<section id="slide-orgead9d44">
+<h3 id="orgead9d44">Ejecución condicional</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >if (condición) {
@@ -93,8 +93,8 @@ Nota: Si el cuerpo del <code>if()</code> tiene una sola línea, podemos obviar l
 </section>
 </section>
 <section>
-<section id="slide-org37375d1">
-<h3 id="org37375d1">Funciones lógicas accesorias</h3>
+<section id="slide-orgca78bfe">
+<h3 id="orgca78bfe">Funciones lógicas accesorias</h3>
 <ul>
 <li><code>any()</code>         # devuelve <code>TRUE</code> si alguno <code>TRUE</code></li>
 <li><code>all()</code>         # devuelve <code>FALSE</code> si alguno <code>FALSE</code></li>
@@ -109,8 +109,8 @@ Nota: Si el cuerpo del <code>if()</code> tiene una sola línea, podemos obviar l
 </section>
 </section>
 <section>
-<section id="slide-org77e905f">
-<h3 id="org77e905f">Componentes de un <code>for</code></h3>
+<section id="slide-orgd9182a5">
+<h3 id="orgd9182a5">Componentes de un <code>for</code></h3>
 <p>
 Loops son bucles y se usan para repetir código.
 </p>
@@ -140,8 +140,8 @@ Nota: Si el cuerpo de <code>for()</code> o del <code>while()</code> tienen una s
 </section>
 </section>
 <section>
-<section id="slide-orgc292e64">
-<h3 id="orgc292e64">Anatomía de f()</h3>
+<section id="slide-orge9e401e">
+<h3 id="orge9e401e">Anatomía de f()</h3>
 <div class="org-src-container">
 
 <pre><code class="R" ># mi función se llama alta_funcion, con dos argumentos
@@ -173,8 +173,8 @@ mi_var    <- alta_funcion(arg2 = FALSE, arg_ext = 10.2) # uso arg1 = 10
 </section>
 </section>
 <section>
-<section id="slide-org31c336b">
-<h2 id="org31c336b">Subsetting, con la función <code>subset()</code></h2>
+<section id="slide-orgaffb449">
+<h2 id="orgaffb449">Subsetting, con la función <code>subset()</code></h2>
 <p>
 <code>?subset()</code>
 <i>Return subsets of vectors, matrices or data frames which meet conditions.</i>
@@ -191,8 +191,8 @@ subset(airquality, select = Ozone:Wind)
 </section>
 </section>
 <section>
-<section id="slide-orgc34c9f4">
-<h2 id="orgc34c9f4">Vectorización</h2>
+<section id="slide-org44ee7e0">
+<h2 id="org44ee7e0">Vectorización</h2>
 <p>
 Se trata de operaciones que aplican a un vector, elemento por elemento. 
 </p>
@@ -221,8 +221,8 @@ z <- x + y
 </section>
 </section>
 <section>
-<section id="slide-org3ac5e95">
-<h3 id="org3ac5e95">Operadores y funciones vectorizados</h3>
+<section id="slide-org21600fb">
+<h3 id="org21600fb">Operadores y funciones vectorizados</h3>
 <ol>
 <li><code>==</code>, <code>&amp;</code>, y <code>|</code></li>
 <li>Corchetito de subsetting: Ej.: <code>x[is.na(x)] &lt;- 0</code> donde <code>x</code> es vector, matriz o dataframe.</li>
@@ -244,8 +244,8 @@ c(T,T,F,F) | c(T,F,T,F)
 </section>
 </section>
 <section>
-<section id="slide-org97eda2c">
-<h3 id="org97eda2c">Operadores lógicos simples o dobles</h3>
+<section id="slide-orga670980">
+<h3 id="orga670980">Operadores lógicos simples o dobles</h3>
 <ul>
 <li>Los operadores simples  <code>&amp;</code> (AND) y <code>|</code> (OR) <span class="underline">son vectorizados</span></li>
 <li>Los operadores dobles <code>&amp;&amp;</code> (AND) y <code>||</code> (OR) evalúan de izquierda a derecha <span class="underline">solo el primer
@@ -273,8 +273,8 @@ c(NA, T) & c(F, T)
 </section>
 </section>
 <section>
-<section id="slide-org38d3cf3">
-<h3 id="org38d3cf3">Eficiencia</h3>
+<section id="slide-org6bb8702">
+<h3 id="org6bb8702">Eficiencia</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >x <- runif(1000000)
@@ -293,8 +293,8 @@ system.time(for (i in 1:length(x)) z[i] <- x[i] + y[i])
 </section>
 </section>
 <section>
-<section id="slide-org3706c09">
-<h2 id="org3706c09">Funcionales - Familia *apply()</h2>
+<section id="slide-org58547db">
+<h2 id="org58547db">Funcionales - Familia *apply()</h2>
 <p>
 <code>lapply()</code>, <code>sapply()</code>, <code>apply()</code> y <code>tapply()</code> (hay más&#x2026;)
 </p>
@@ -314,8 +314,8 @@ Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versi
 </section>
 </section>
 <section>
-<section id="slide-org4e33ec5">
-<h3 id="org4e33ec5"><code>lapply()</code></h3>
+<section id="slide-org4a0902d">
+<h3 id="org4a0902d"><code>lapply()</code></h3>
 <p>
 LLama a una función especificada en cada componente de una lista y devuelve otra lista.
 </p>
@@ -335,8 +335,8 @@ LLama a una función especificada en cada componente de una lista y devuelve otr
 </section>
 </section>
 <section>
-<section id="slide-orgac25dbf">
-<h3 id="orgac25dbf"><code>sapply()</code></h3>
+<section id="slide-orgfcf860e">
+<h3 id="orgfcf860e"><code>sapply()</code></h3>
 <p>
 En <span class="underline">algunos</span> casos, la lista que devuelve <code>lapply()</code> puede ser simplificada a un vector o a una
 matriz. Esto es justo lo que hace <code>sapply()</code>.
@@ -352,8 +352,8 @@ matriz. Esto es justo lo que hace <code>sapply()</code>.
 </section>
 </section>
 <section>
-<section id="slide-org00849f3">
-<h3 id="org00849f3"><code>lapply()</code> y <code>sapply()</code> en data frames</h3>
+<section id="slide-org8725169">
+<h3 id="org8725169"><code>lapply()</code> y <code>sapply()</code> en data frames</h3>
 <p>
 Tanto <code>lapply</code> como <code>sapply</code> están pensados para listas, por lo tanto funcionan bien en <i>data.frames</i>.
 </p>
@@ -387,8 +387,8 @@ sapply(economics, mean)
 </section>
 </section>
 <section>
-<section id="slide-org8de75c5">
-<h3 id="org8de75c5"><code>apply()</code></h3>
+<section id="slide-org2c4c946">
+<h3 id="org2c4c946"><code>apply()</code></h3>
 <p>
 <code>apply()</code> es para matrices (o sea, objetos tipo <i>matrix</i>). Tienen la particularidad que podemos elegir, con un argumento, aplicar una función a filas o a
 columnas.
@@ -420,8 +420,8 @@ apply(z,2,mean)
 </section>
 </section>
 <section>
-<section id="slide-orgab9e5f4">
-<h3 id="orgab9e5f4"><code>apply()</code> - un ejemplo con función propia</h3>
+<section id="slide-orge9a93f0">
+<h3 id="orge9a93f0"><code>apply()</code> - un ejemplo con función propia</h3>
 <div class="org-src-container">
 
 <pre><code class="R" >z
@@ -440,8 +440,8 @@ y
 </section>
 </section>
 <section>
-<section id="slide-org3f996bc">
-<h3 id="org3f996bc"><code>tapply()</code></h3>
+<section id="slide-org53bcdc6">
+<h3 id="org53bcdc6"><code>tapply()</code></h3>
 <p>
 para aplicar funciones a vectores con factores. Similar a <code>group_by</code> + <code>summarise</code>, pero solo con <i>factores</i>.
 </p>
@@ -480,8 +480,8 @@ M NA    73166.67
 </section>
 </section>
 <section>
-<section id="slide-org1476409">
-<h2 id="org1476409">Práctica 8</h2>
+<section id="slide-org35365ef">
+<h2 id="org35365ef">Práctica 8</h2>
 <p>
 Descargar <a href="../assets/R2019-practice-8-k00j1vguun.pdf">práctica 8</a>.
 </p>
