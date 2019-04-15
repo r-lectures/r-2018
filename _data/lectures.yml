@@ -78,7 +78,11 @@ lectures:
       url: ../assets/01-midterm-exam-95wc6xa48k.Rmd
 
     - title: "Resolución - Versión pdf"
+<<<<<<< HEAD
       url: ../assets/01-midterm-exam-95wc6xa48k_resolution.pdf
+=======
+      url: ../assets/R2019-midterm1-95wc6xa48k_resolution.pdf
+>>>>>>> 621c456746654de10978cd6e181f05967e247a13
     - title: "Resolución - Versión Rmd (notebook)"
       url: ../assets/01-midterm-exam-95wc6xa48k_resolution.Rmd
 
