@@ -16,97 +16,138 @@ output:
 •	No se estresen!
 
 
+```{r}
+library("tidyverse")
+```
+
 1.	DATOS
 1.1	Cargar los datos “txhousing” del paquete ggplot2 en la sesión (o verificar si ya se encuentran disponibles). Son datos de venta de inmuebles en Texas, con datos de ciudad, año, mes, número total de inmuebles vendidos (sales), volumen total vendido en dólares (volume), mediana del valor del inmueble, número de inmuebles disponibles (listings) y meses que se demoraría en vender todo lo disponible al ritmo de venta actual (inventory).
 
 ```{r}
-
+data("txhousing")
 ```
 
 1.2. Renombrar el dataframe a “tx” (o sea, asignar el objeto txhousing al objeto tx).
 
 ```{r}
-
+tx <- txhousing
 ```
 
 2.1. ¿Qué clase de estructura de datos es tx?
 
 ```{r}
-
+class(tx)
 ```
+Es un data.frame (y también un tbl y un tbl_df). También se ve con str().
+
 
 2.2. ¿Qué dimensiones tiene tx y con que comando lo veo?
 
 ```{r}
-
+dim(tx)
 ```
+Filas y columnas. También se puede ver directamente de str() o glimpse().
 
 2.3. ¿Cómo son los tipos de datos de cada elemento de tx? Poner la instrucción usada para ver esto.
 
 ```{r}
-
+class(tx$city)
 ```
+Se puede hacer class() para todas las columnas, o sacarlo después de los dos puntos de str(). Está escrito al lado del nombre de la columna en glimpse(), también.
 
 2.4.	*POSGRADO* Usando subsetting o dplyr, guardar en una variable llamada “med_houston_10_2010” la mediana del valor de inmuebles vendidos en octubre de 2010 en Houston. La variable debería contener solamente la mediana, es decir, que “med_houston_10_2010” no debería ser un dataframe.
 
 ```{r}
-med_houston_10_2010 = tx %>% filter(year=="2010" & month=="10") %>% 
-  summarise(mean=mean(median)) %>% as.numeric()
+med_houston_10_2010 <- tx %>% 
+  group_by(month, year) %>% 
+  summarise(median_sales = median(sales, na.rm = TRUE)) %>% 
+  filter(month == 10 & year == 2010) %>% 
+  ungroup() %>% 
+  select(median_sales) %>% 
+  as.numeric()
+
+med_houston_10_2010
 ```
 
 3. PRIMER ANÁLISIS - responder usando herramientas de dplyr y/o subsetting.
 3.1. ¿Cuántas ciudades diferentes hay en el dataframe tx?
 
 ```{r}
-
+tx %>% group_by(city) %>% tally() %>% select(city) %>% nrow()
 ```
+Hay 46 ciudades. 
+
 _Análisis cuantitativo_:
 3.2.1.	Contar cuántas observaciones (filas) hay por ciudad (o sea, debe haber una columna con las ciudades y otra con el número de observaciones de cada ciudad). 
 
 ```{r}
-
+tx %>% group_by(city) %>% tally()
 ```
+Hay 187 observaciones para cada ciudad. 
 
 3.2.2.	Contar cuántas observaciones hay por ciudad y año (ahora tendremos ciudad, año, y número de observaciones).
 
 ```{r}
+tx %>% group_by(city, year) %>% tally()
 
 ```
+Hay 12 observaciones para cada ciudad y año, correspondientes a los meses de cada año. 
+
 _Análisis de precio_:
 Tomando en cuenta todos los años (es decir todo el dataframe):
 3.3.1. ¿Cuál ciudad tiene los inmuebles más caros en promedio?
 
 ```{r}
-
+tx %>% 
+  group_by(city) %>% 
+  summarise(mean_price_per_house = mean(volume/sales, na.rm=T)) %>% 
+  arrange(desc(mean_price_per_house)) %>% 
+  head(1)
 ```
 
 3.3.2.	¿Cuál ciudad tiene los más baratos en promedio?
 
 ```{r}
-
+tx %>% 
+  group_by(city) %>% 
+  summarise(mean_price_per_house = mean(volume/sales, na.rm=T)) %>% 
+  arrange(desc(mean_price_per_house)) %>% 
+  tail(1)
 ```
 _Análisis temporal_: 
 Construir una nuevo dataframe llamado “tx_by_yr”, con el volumen total de ventas y el número total de inmuebles vendidos, por año (es decir, habrá tres columnas: año, total volumen de ventas y total número de inmuebles vendidos). 
+```{r}
+tx_tot_y <- tx %>% group_by(year) %>% 
+  summarise(tot_vol=sum(volume, na.rm=T), tot_sales=sum(sales, na.rm=T)) 
+```
 
 3.4.1.	¿En cuál año se recaudó más en total? 
 ```{r}
-
+tx_tot_y %>% arrange(desc(tot_vol)) %>% head(n=1)
 ```
 3.4.2.	¿En cuál se vendieron menos inmuebles?
 ```{r}
-
+tx_tot_y %>% arrange(tot_sales) %>% head(n=1)
 ```
 
 3.5.*POSGRADO* ¿En que mes y año se vendieron más cantidad de inmuebles (en número, o sea, sales) en la ciudad de “Amarillo”?
 
 ```{r}
-
+tx %>% 
+  filter(city == "Amarillo") %>% 
+  group_by(year, month) %>% 
+  summarise(tot_sales=sum(sales, na.rm=T)) %>%
+  arrange(desc(tot_sales)) %>%
+  head(1)
 ```
 
 3.6. *POSGRADO* Agregar al dataframe original una columna adicional llamada frac, que tenga el número total de inmuebles vendidos (sales) dividido por el de disponibles (listings). Hacer un promedio de frac para cada año.
 
 ```{r}
-
+tx %>% 
+  mutate(frac=sales/listings) %>% 
+  group_by(year) %>% 
+  summarise(frac_prom = mean(frac, na.rm = T))
 ```
 
 4. GRAFICAR
@@ -115,29 +156,41 @@ Este punto utiliza el dataframe creado en el punto 3.4. Si no salió por alguna 
 
 4.1. Graficar, con puntos, el volumen total de ventas dividido el número total de inmuebles vendidos, en función del año.
 
-```{r}
+Los que resolvieron los siguientes ejercicios agrupando por año y tomando promedios o sumas, no está mal. No es estrictamente lo que se pide, pero la diferencia es menor.
 
+```{r}
+tx_y <- tx %>% mutate( mean_price_housing = volume/sales) %>% filter(!is.na(mean_price_housing))
+ggplot(tx_y) + geom_point(aes(year, mean_price_housing))
 ```
 
 4.2. Mapear el tamaño de los puntos al número total de inmuebles vendidos ese año (puntos más grandes significarán mayor número de inmuebles).
 
 ```{r}
-
+ggplot(tx_y) + geom_point(aes(year, mean_price_housing, size = sales))
 ```
 4.3.	Mapear el color de los puntos al volumen total recaudado.
 ```{r}
-
+ggplot(tx_y) + geom_point(aes(year, mean_price_housing, size = sales, color = volume))
 ```
 
 4.4. Ponerle texto explicativo a los ejes x e y, y título al gráfico.
 ```{r}
-
+ggplot(tx_y) + 
+  geom_point(aes(year, mean_price_housing, size = sales, color = volume)) +
+  labs(x = "Año") +
+  labs(y = "valor promedio de inmueble") + 
+  labs(title = "Evolución del valor promedio de inmueble")
 ```
 
 4.5.*POSGRADO* Agregar una regresión de tipo "loess" usando una capa geom_smooth().
 
 ```{r}
-
+ggplot(tx_y) + 
+  geom_point(aes(year, mean_price_housing, size = sales, color = volume)) +
+  labs(x = "Año") +
+  labs(y = "valor promedio de inmueble") + 
+  labs(title = "Evolución del valor promedio de inmueble") + 
+  geom_smooth( aes(x = year, y = mean_price_housing), method = "loess")
 ```
 
 
