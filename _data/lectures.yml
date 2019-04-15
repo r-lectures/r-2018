@@ -86,6 +86,15 @@ lectures:
     - title: "versión pdf"
       url: "07-lecture-829aulo7g7.pdf"
 
+- title: "Clase 8 - Vectorización y y familia *apply()"
+  url: "08-lecture-slides-k00j1vguun.html"
+
+  subitems:
+    - title: "versión texto"
+      url: "08-lecture-k00j1vguun.html"
+    - title: "versión pdf"
+      url: "08-lecture-k00j1vguun.pdf"
+
 # - title: "Clase 8 - if + for"
 #   url: 08-lecture-slides.html
 
