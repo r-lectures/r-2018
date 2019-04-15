@@ -5,7 +5,7 @@ output:
   html_notebook: default
 ---
 
-Instrucciones
+*Instrucciones*
 - Tienen dos horas+ para completar el parcial.
 - Tienen todo el material de clase y online disponible para consulta.
 - NO tienen a sus compañeros disponibles.

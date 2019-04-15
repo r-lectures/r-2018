@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R 2019</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_moon.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2019">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R 2019</h1><h3>10/04/2019</h3>
+</section>
+
+<section>
+<section id="slide-org6eac2c6">
+<h2 id="org6eac2c6">1er parcial - 2da fecha</h2>
+<div class="outline-text-2" id="text-org6eac2c6">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org47d03ee">
+<h3 id="org47d03ee">Instrucciones</h3>
+<ul>
+<li>Tienen dos horas+ para completar el parcial.</li>
+<li>Tienen todo el material de clase y online disponible para consulta.</li>
+<li><code>NO</code> tienen a sus compañeros disponibles.</li>
+<li>Tienen que resolver los ejercicios escribiendo las respuestas (tanto texto como código) en un archivo de texto (puede ser una notebook en markdown, evitar usar Word, si esto los complica, avísenme por favor).</li>
+<li>Importantísimo: enumerar de la misma manera las respuestas (aunque estén vacías) para que coincidan correctamente. Notar que cada pregunta y subpregunta están numeradas.</li>
+<li>Algunas preguntas son solo para los alumnos que cursan la materia como POSGRADO. Para el resto de los alumnos son opcionales, pero suman ;)</li>
+<li>Al final del parcial me mandan el archivo de texto o notebook por mail o por mensaje privado en Google Classroom (o en un pendrive si no tienen Internet).</li>
+<li>Si no saben o no les sale algo, intenten explicar todo lo que sí saben al respecto, aunque sea parcial o incompleto, porque puede sumarles puntos. Si una línea de código les da algún error, expliquen la lógica de lo que quisieron hacer, ya que si la lógica es correcta, eso también suma. Si identifican la causa del error, aunque no lo sepan corregir, nuevamente eso suma. En general, mejor poner de más que de menos.</li>
+<li>No se estresen!</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6d69f7c">
+<h3 id="org6d69f7c">Problema</h3>
+<ol>
+<li><code>DATOS</code>
+<ol>
+<li>Cargar los datos "economics" del paquete <code>ggplot2</code> en la sesión (o verificar si ya se encuentran disponibles).
+Consejo: Lean la ayuda del dataset, como para tener una idea sobre de qué son los datos.</li>
+<li>Renombrar el dataframe a "<code>e</code>" &#x2014;sin comillas&#x2014; (o sea, asignar el objeto <code>economics</code> a la variable <code>e</code>).</li>
+
+</ol></li>
+
+<li><code>PRIMER ANÁLISIS</code>
+<ol>
+<li>¿Qué estructura tienen los datos? Poner la instrucción usada y escribir qué estructura es.</li>
+<li>¿Cuántas filas y columnas tenemos? Poner la instrucción usada y qué valores corresponden a cada uno.</li>
+<li>¿Cómo son los tipos de datos de cada columna? Poner la instrucción usada para ver esto e indicar los tipos de todas las columnas.</li>
+<li><b>POSGRADO</b> ¿Cuál de las variables tiene la mayor razón entre media y mediana? (No considerar la variable <code>date</code>).</li>
+
+</ol></li>
+
+<li><code>PREGUNTAS</code>
+<ol>
+<li>¿De cuándo a cuándo van los datos temporales? (o sea, obtenter fecha mínima y fecha máxima).</li>
+<li>Aproximadamente, ¿cuantos "picos" se ven en el desempleo? Tip: hacerlo gráficamente.
+<ol>
+<li>¿Se encuentran "picos" de ese estilo en alguna de las otras variables (<code>pce</code>, <code>pop</code>, <code>psavert</code>, <code>uempmed</code>)?</li>
+<li>¿En alguna variable coinciden (más o menos) los "picos"? Decir cuál o cuales.</li>
+
+</ol></li>
+<li>Usar el comando <code>separate</code> del paquete <code>tidyr</code> para separar la columna 'date' en tres columnas "year", "month" y "day". (Avisar si este punto no les sale.)</li>
+<li>Hacer una tabla con el desempleo promedio por año (o sea, una columna "año" y otra de "desempleo promedio" de ese año).
+<ol>
+<li>¿En qué años se registran el mayor y menor valor de desempleo?</li>
+
+</ol></li>
+<li>Usar los datos <code>presidential</code> &#x2014;ver <code>data()</code>&#x2014; para ver a que administración corresponden esos dos extremos de desempleo encontrados.</li>
+<li><b>POSGRADO</b>: Hacer una columna extra con desempleo per cápita (ver en la ayuda de <code>economics</code> a dónde está la variable población).
+<ol>
+<li>¿Cambian los años de mayor y menos desempleo para esta nueva variable?</li>
+
+</ol></li>
+
+</ol></li>
+
+<li><code>GRAFICAR</code> (con <code>ggplot2</code>)
+<ol>
+<li>Hacer un gráfico con puntos de la variable de desempleo (<code>unemploy</code>) en función del tiempo (<code>date</code>).</li>
+<li>Colorear los puntos del gráfico que tengan la variable <code>psavert</code> menor que el promedio total de <code>psavert</code> a lo largo de los años (es decir, el promedio de todos los elementos de la
+columna).</li>
+<li>Ponerle texto explicativo a los ejes x e y.</li>
+<li><b>POSGRADO</b>: Mejorar la referencia (<i>legend</i>) con un título de la misma y etiquetas que describan el significado de los dos colores.</li>
+
+</ol></li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

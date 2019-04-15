@@ -82,6 +82,12 @@ lectures:
     # - title: "Resolución - Versión Rmd (notebook)"
     #   url: ../assets/01-midterm-exam-95wc6xa48k_resolution.Rmd
 
+- title: "Primer parcial"
+  url: 01-mid-term-exam-dwybhk29g7.html
+
+  subitems:
+    - title: "Versión Rmd (notebook)"
+      url: ../assets/01-midterm-exam-dwybhk29g7.Rmd
       
 - title: "Clase 7 - Funciones y control de flujo"
   url: "07-lecture-slides-829aulo7g7.html"
