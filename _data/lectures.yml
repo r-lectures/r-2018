@@ -77,10 +77,10 @@ lectures:
     - title: "Versión Rmd (notebook)"
       url: ../assets/01-midterm-exam-95wc6xa48k.Rmd
 
-    - title: "Resolución - Versión pdf"
-      url: ../assets/01-midterm-exam-95wc6xa48k_resolution.pdf
-    - title: "Resolución - Versión Rmd (notebook)"
-      url: ../assets/01-midterm-exam-95wc6xa48k_resolution.Rmd
+    # - title: "Resolución - Versión pdf"
+    #   url: ../assets/01-midterm-exam-95wc6xa48k_resolution.pdf
+    # - title: "Resolución - Versión Rmd (notebook)"
+    #   url: ../assets/01-midterm-exam-95wc6xa48k_resolution.Rmd
 
       
 - title: "Clase 7 - Funciones y control de flujo"
