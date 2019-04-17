@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R lectures</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2019">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R lectures</h1><h3>17/04/2019</h3>
+</section>
+
+<section>
+<section id="slide-org89a825e">
+<h2 id="org89a825e">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org89a825e">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org168b68b">
+<h3 id="org168b68b">Vectorización</h3>
+<p>
+Se trata de operaciones que aplican a un vector, pero elemento por elemento. 
+</p>
+
+<p>
+Los pasos se simplifican al no pensar en los elementos del vector, si no en el vector en sí.
+Los bucles en una función vectorizada están hechos en C y no en R, y por lo tanto son mucho más rápidos.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># sin vectorización
+for (i in 1:length(x)) z[i] <- x[i] + y[i]
+
+# con vectorización
+z <- x + y
+</code></pre>
+</div>
+
+<ul>
+<li>Ref: <a href="http://adv-r.had.co.nz/Profiling.html#vectorise">Vectorise from Advanced R</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd3f4bc3">
+<h3 id="orgd3f4bc3">Funcionales - Familia *apply()</h3>
+<ul>
+<li><b>lapply()</b>: LLama a una función especificada en cada componente de una lista y devuelve otra lista.</li>
+<li><b>sapply()</b>: En <span class="underline">algunos</span> casos, la lista que devuelve lapply() puede ser simplificada a un vector o
+a una matriz.</li>
+<li><b>apply()</b>: es para matrices. Tienen la particularidad que podemos elegir aplicar una función a filas o a columnas.</li>
+<li><b>tapply()</b>: para aplicar funciones a vectores con factores (o enteros que R interpreta como factores).</li>
+
+</ul>
+
+<p>
+Combinan algo similar a vectorización con funciones. Suelen ser la
+respuesta a "cómo hago para procesar (por ejemplo transformar o
+extraer información de) cada elemento de este objeto?"
+</p>
+
+<p>
+Ref: ver también el <a href="https://www.rdocumentation.org/packages/plyr/versions/1.8.4">paquete plyr</a>, <a href="http://stat545.com/block013_plyr-ddply.html">esta web</a> y <a href="http://www.jstatsoft.org/v40/i01/">este paper</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org05d5051">
+<h2 id="org05d5051">Matemática</h2>
+<div class="outline-text-2" id="text-org05d5051">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgaae59a2">
+<h3 id="orgaae59a2">Funciones matemáticas básicas</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >- exp(): función exponencial, base e
+- log(): logaritmo natural 
+- log10(): logaritmo base 10
+- sqrt(): raiz cuadrada
+- abs(): valor absoluto
+- sin(), cos(), etc.: funciones trigonométricas
+- min(),  max(): valor mínimo y máximo de un vector
+- which.min() and which.max(): índice del valor mínimo y máximo 
+- pmin() and pmax(): mínimos y máximos para varios vectores, por elemento
+- sum() and prod(): suma y producto de elementos de vectores
+- cumsum() and cumprod(): suma acumulada y producto acumulado de elementos de vectores
+- round(), floor(), and ceiling(): redondeo al entero más próximo, al menor o al mayor, respectivamente
+- factorial(): función factorial
+- %%: operador módulo y %/%: operador división por enteros
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- c(12,5,13)
+cumsum(x)
+# [1] 12 17 30
+cumprod(x)
+# [1] 12 60 780
+
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd2b6b13">
+<h3 id="orgd2b6b13">Cálculo</h3>
+<p>
+R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># derivada analítica
+D(expression(exp(x^2)),"x") 
+exp(x^2) * (2 * x)
+
+# integral numérica
+integrate(function(x) x^2,0,1)
+0.3333333 with absolute error < 3.7e-15
+</code></pre>
+</div>
+
+<p>
+Existen paquetes para ecuaciones diferenciales (<code>odesolve</code>), y para
+extender la capacidad de procesado simbólico usando el sistema Yacas
+(<code>ryacas</code>). Ver CRAN.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org01bd4d5">
+<h3 id="org01bd4d5">Álgebra Lineal</h3>
+<div class="outline-text-3" id="text-org01bd4d5">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org667f2b6">
+<h4 id="org667f2b6">Multiplicación de matrices</h4>
+<p>
+Multiplicamos directamente con el operador %*%
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >a
+    [,1] [,2]
+[1,]   1    2 
+[2,]   3    4 
+b
+     [,1] [,2]
+[1,]    1   -1
+[2,]    0    1
+a %*% b
+     [,1] [,2]
+[1,]    1    1
+[2,]    3    1
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org93aff7d">
+<h4 id="org93aff7d"><code>solve()</code> para sistemas de ecuaciones lineales e invertir una matriz</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >a <- matrix(c(1,1,-1,1), nrow=2, ncol=2)
+b <- c(2,4)
+
+solve(a,b) ## resuelve el sistema de ecuaciones
+[1] 3 1
+
+solve(a) ## sin el segundo argumento, invierte la matriz
+  [,1] [,2]
+[1,]  0.5  0.5
+[2,] -0.5  0.5
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd447ccf">
+<h4 id="orgd447ccf">Autovectores y autovalores</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >a
+     [,1] [,2]
+[1,]    1   -1
+[2,]    1    1
+
+e <- eigen(a)
+$values
+[1] 1+1i 1-1i
+
+$vectors
+		     [,1]                 [,2]
+[1,] 0.7071068+0.0000000i 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i 0.0000000+0.7071068i
+
+eigenvector1 <- e$vectors[,1]
+eigenvalue1 <-  e$values[1]
+
+a %*% eigenvector1 / eigenvalue1
+		     [,1]
+[1,] 0.7071068+0.0000000i
+[2,] 0.0000000-0.7071068i
+
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1bceb16">
+<h4 id="org1bceb16">Otras operaciones posibles son:</h4>
+<div class="org-src-container">
+
+<pre><code class="R" >- t(): transpuesta de una matriz
+- qr(): descomposición QR
+- chol(): descompocisión Cholesky
+- det(): Determinante
+- eigen(): Autovalores/autovectores
+- diag(): extrae la diagonal de una matriz cuadrada
+- svd(A): descomposición en valores singulares
+- ...
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6783e6e">
+<h2 id="org6783e6e">Estadística</h2>
+<div class="outline-text-2" id="text-org6783e6e">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgfc41bd1">
+<h3 id="orgfc41bd1">Estadística descriptiva</h3>
+<p>
+Conceptos para entender la estructura de un grupo (digamos, <code>N &gt; 30</code>) de datos. 
+</p>
+
+<p>
+Una manera de hacer estadística descriptiva en columnas de listas (o data.frames) es con <code>sapply</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >sapply(mydata, mean, na.rm=TRUE) 
+</code></pre>
+</div>
+
+<p>
+donde podemos usar <code>mean</code>, <code>sd</code>, <code>var</code>, <code>min</code>, <code>max</code>, <code>median</code>, <code>range</code>, o <code>quantile</code>, entre otras). 
+</p>
+
+<p>
+O <code>summary()</code>, que es equivalente y funciona con data.frames.
+</p>
+
+<p>
+Tenemos también <code>group_by() + summarise()</code> con las mismas funciones básicas.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge7521b3">
+<h3 id="orge7521b3">Distribuciones</h3>
+<p>
+En general R usa la siguiente convención:
+</p>
+
+<ul>
+<li><code>dDIST(x, ...)</code> es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+valor x</li>
+<li><code>pDIST(x, ...)</code> es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+valor menor a x (mayor si usamos <code>lower.tail=F</code>)</li>
+<li><code>rDIST(n, ...)</code> es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
+<li><code>qDIST(p, ...)</code> es la función cuartil que devuelve el x que corresponde al percentil <code>p</code> de DIST. Si
+<code>lower.tail=F</code>, devuelve <code>1</code> menos <code>p</code>.</li>
+
+</ul>
+
+<img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
+
+<p>
+Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org7a7f727">
+<h4 id="org7a7f727">Distribución Normal</h4>
+<p>
+Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >library(ggplot2)
+set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
+x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
+f <- dnorm(x) # normal con media 0 y sd 1 
+ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org3859bfa">
+<h4 id="org3859bfa">Otras distribuciones</h4>
+<p>
+Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
+de <code>n=5</code> (número de intentos) y <code>p=0.5</code> (probabilidad de éxito).
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- rbinom(100000,5,0.5)
+mean(x)
+# [1] 2.5004
+
+mean(x[x<=4])
+# [1] 2.418766
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4af4555">
+<h3 id="org4af4555">Modelado estadístico</h3>
+<p>
+Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o <i>variable respuesta</i> y otras variables independientes o
+<i>variables explicativas</i>. 
+</p>
+
+<p>
+En R la función <code>lm()</code> se usa para regresión lineal (<i>linear models</i>) y <code>glm()</code> para <i>generalized linear models</i>.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgf015a8b">
+<h4 id="orgf015a8b">Regresión lineal - <code>lm()</code></h4>
+<p>
+Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.
+</p>
+
+<p>
+1 - Propongo una determinada relación de variables.
+</p>
+
+
+<p>
+2 - Calculo coeficientes del modelo.
+</p>
+
+
+<p>
+3 - Compruebo que tan bien se ajusta el modelo a nuevas observaciones.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
+## b[i] son los coeficientes o betas
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9cb8944">
+<h4 id="org9cb8944">Ejemplo con datos de <code>2011 US Census PUMS</code></h4>
+<p>
+Pueden bajar los datos de <a href="https://github.com/WinVector/zmPDSwR/raw/master/PUMS/psub.RData">acá</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## hacemos la regresión:
+load("psub.RData")
+dtrain <- subset(psub, ORIGRANDGROUP >= 500)
+dtest  <- subset(psub, ORIGRANDGROUP < 500)
+model  <- lm(log(PINCP,base=10) ~ AGEP + SEX + COW + SCHL, data=dtrain) 
+dtest$predLogPINCP <- predict(model,newdata=dtest) 
+
+## resultados:
+summary(model)
+
+## graficamos:
+library(ggplot2)
+ggplot(data=dtest,aes(x=predLogPINCP,y=log(PINCP,base=10))) + geom_point(alpha=0.2,color="black") + 
+geom_smooth(aes(x=predLogPINCP, y=log(PINCP,base=10)),color="black") +
+geom_line(aes(x=log(PINCP,base=10), y=log(PINCP,base=10)),color="blue",linetype=2) +
+scale_x_continuous(limits=c(4,5)) +
+scale_y_continuous(limits=c(3.5,5.5))
+
+## residuos:
+ggplot(data=dtest,aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10))) +
+geom_point(alpha=0.2,color="black") +
+geom_smooth(aes(x=predLogPINCP, y=predLogPINCP-log(PINCP,base=10)), color="black")
+
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd5897a1">
+<h4 id="orgd5897a1">Regresión lineal generalizada - <code>glm()</code></h4>
+<p>
+Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
+</code></pre>
+</div>
+
+<p>
+Ejemplito: Regresión logística, para variables categóricas.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># F es un factor binario
+# x1, x2 y x3 son predictores continuos 
+fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
+
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org269b28e">
+<h3 id="org269b28e">Estadística avanzada - material infinito</h3>
+<ul>
+<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">Paquete stats</a></li>
+<li><a href="https://cran.r-project.org/web/views/Distributions.html">CRAN view de distribuciones</a></li>
+<li><a href="https://www.stats.ox.ac.uk/pub/MASS4/">Modern Applied Statistics with S. Fourth Edition</a> - <a href="https://cran.r-project.org/web/packages/MASS/index.html">(MASS book)</a></li>
+<li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The elements of statistical learning</a> - <a href="https://cran.r-project.org/web/packages/ElemStatLearn/index.html">(ElemStatLearn book)</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org9e8ee0e">
+<h3 id="org9e8ee0e">Otros paquetes de interés</h3>
+<ul>
+<li><a href="https://cran.r-project.org/web/views/NumericalMathematics.html">Numerical Mathematics</a></li>
+<li><a href="https://cran.r-project.org/web/views/DifferentialEquations.html">Ecuaciones diferenciales</a>
+<ul>
+<li>tienen también el libro "2012 - Book - Solving Differential Equations in R.pdf" en Google Classroom</li>
+
+</ul></li>
+<li><a href="https://cran.r-project.org/web/views/TimeSeries.html">Series temporales</a></li>
+<li><a href="https://cran.r-project.org/web/views/Optimization.html">Optimización y programación matemática</a></li>
+<li>Aritmética de precisión múltiple con <a href="https://cran.r-project.org/web/packages/gmp/index.html">gmp</a></li>
+<li>Paquete <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl</a>, una interface a la Biblioteca Científica GNU</li>
+<li>Mil cosas más :)</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9c2ec0e">
+<h2 id="org9c2ec0e">Práctica 9</h2>
+<p>
+Descargar <a href="../assets/R2019-practice-9-mf2oyovvuc.pdf">práctica 9</a>.
+</p>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

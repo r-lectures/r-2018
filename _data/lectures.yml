@@ -121,8 +121,15 @@ lectures:
 #     - title: "Clase 9 - versión texto"
 #       url: 09-lecture.html
 
-# - title: "Clase 10 - Matemática"
-#   url: 10-lecture-slides.html
+- title: "Clase 9 - Matemática y Estadística"
+  url: "09-lecture-slides-mf2oyovvuc.html"
+
+  subitems:
+    - title: "versión texto"
+      url: "09-lecture-slides-mf2oyovvuc.html"
+    - title: "versión pdf"
+      url: "09-lecture-slides-mf2oyovvuc.pdf"
+
 
 #   subitems:
 #     - title: "Clase 10 - versión texto"
