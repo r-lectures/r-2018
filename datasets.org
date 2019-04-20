@@ -30,6 +30,7 @@ Se irán agregando items, sugerencias bienvenidas.
        summary(ToothGrowth)
        plot(ToothGrowth)
      #+END_SRC
+- [[https://github.com/awesomedata/awesome-public-datasets][Awesome Public Datasets]]
 - [[https://mran.microsoft.com/packages/][Explore Packages Currently on CRAN (search for "dataset")]]
 - [[http://ckan.ciudaddemendoza.gov.ar/][open data mendoza]]
 - [[https://data.buenosaires.gob.ar/][buenos aires data]] - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.
