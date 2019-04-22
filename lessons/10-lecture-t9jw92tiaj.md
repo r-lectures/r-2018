@@ -3,10 +3,7 @@
 # Repaso de la clase anterior
 
 
-## Matemática
-
-
-### Funciones matemáticas básicas
+## Funciones matemáticas básicas
 
     - exp(): función exponencial, base e
     - log(): logaritmo natural 
@@ -30,7 +27,7 @@
     # [1] 12 60 780
 
 
-### Cálculo
+## Cálculo
 
 R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
 
@@ -46,7 +43,7 @@ extender la capacidad simbólica usando el sistema Yacas
 (`ryacas`). Ver CRAN.
 
 
-### Álgebra Lineal
+## Álgebra Lineal
 
      # Multiplicación de matrices: Directamente con el operador %*%: 
     - a %*% b
@@ -66,10 +63,7 @@ extender la capacidad simbólica usando el sistema Yacas
     - ...
 
 
-## Estadística
-
-
-### Estadística descriptiva
+## Estadística descriptiva
 
 Conceptos para entender la estructura de un grupo (digamos, `N > 30`) de datos. 
 
@@ -84,7 +78,7 @@ O `summary()`, que es equivalente y funciona con data.frames.
 Tenemos también `group_by() + summarise()` con las mismas funciones básicas.
 
 
-### Distribuciones
+## Distribuciones
 
 En general R usa la siguiente convención:
 
@@ -100,30 +94,8 @@ En general R usa la siguiente convención:
 
 Para ver las distribuciones disponibles, ver el [task view de distribuciones](https://cran.r-project.org/web/views/Distributions.html)
 
--   Distribución Normal
 
-    Construyo una figura de la función normal usando un vector entre -5 y 5 con 100 puntos.
-    
-        library(ggplot2)
-        set.seed(8888) ## elijo la semilla para poder "controlar" la aleatoridad
-        x <- seq(from=-5, to=5, length.out=100) # el intervalo [-5 5]
-        f <- dnorm(x) # normal con media 0 y sd 1 
-        ggplot(data.frame(col1=x, col2=f), aes(x=col1, y=col2)) + geom_line()
-
--   Otras distribuciones
-
-    Construyo un vector de 10^5 puntos que contenga valores estocásticos extraidos de una dist. Binomial
-    de `n=5` (número de intentos) y `p=0.5` (probabilidad de éxito).
-    
-        x <- rbinom(100000,5,0.5)
-        mean(x)
-        # [1] 2.5004
-        
-        mean(x[x<=4])
-        # [1] 2.418766
-
-
-### Modelado estadístico
+## Modelado estadístico
 
 Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
 relación entre una variable dependiente o *variable respuesta* y otras variables independientes o
@@ -131,34 +103,36 @@ relación entre una variable dependiente o *variable respuesta* y otras variable
 
 En R la función `lm()` se usa para regresión lineal (*linear models*) y `glm()` para *generalized linear models*.
 
--   Regresión lineal - `lm()`
 
-    Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
-    parámetros para poder predecir.
-    1 - Propongo una determinada relación de variables (a través de una 'formula' tipo `y \` x~).
-    2 - Calculo coeficientes del modelo (los consulto con `coef()` ).
-    3 - Compruebo que tan bien se ajusta el modelo a nuevas observaciones (con `predict()`).
-    
-        y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
-        ## b[i] son los coeficientes o betas
+## Regresión lineal - `lm()`
 
--   Regresión lineal generalizada - `glm()`
+Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.
+1 - Propongo una determinada relación de variables (a través de una 'formula' tipo `y \` x~).
+2 - Calculo coeficientes del modelo (los consulto con `coef()` ).
+3 - Compruebo que tan bien se ajusta el modelo a nuevas observaciones (con `predict()`).
 
-    Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
-    "normales". Los modelos lineales generalizados relajan estas suposiciones.
-    
-        ## expresión general
-        glm(formula, family=familytype(link=linkfunction), data=)
-    
-    Ejemplito: Regresión logística, para variables categóricas.
-    
-        # F es un factor binario
-        # x1, x2 y x3 son predictores continuos 
-        fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
-        summary(fit) # resultados
-        exp(coef(fit)) # coeficientes
-        predict(fit, type="response") # predicciones
-        residuals(fit, type="deviance") # residuos 
+    y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
+    ## b[i] son los coeficientes o betas
+
+
+## Regresión lineal generalizada - `glm()`
+
+Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones.
+
+    ## expresión general
+    glm(formula, family=familytype(link=linkfunction), data=)
+
+Ejemplito: Regresión logística, para variables categóricas.
+
+    # F es un factor binario
+    # x1, x2 y x3 son predictores continuos 
+    fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+    summary(fit) # resultados
+    exp(coef(fit)) # coeficientes
+    predict(fit, type="response") # predicciones
+    residuals(fit, type="deviance") # residuos 
 
 
 # Jupyter Notebooks
@@ -184,6 +158,7 @@ RODBC. Existen otras alternativas, por ejemplo, JODBC, RMySQL, ROracle, RPostgre
 -   Ejemplo con RODBC. Asegurarse de instalar el paquete y los drivers OBDC correspondientes.
 
     library(RODBC)
+    ?RODBC
     ## abro una conexión a la base de datos OBDC
     myconn <-odbcConnect("mydsn", uid="Rob", pwd="aardvark")
     ## bajo datos
@@ -196,7 +171,7 @@ RODBC. Existen otras alternativas, por ejemplo, JODBC, RMySQL, ROracle, RPostgre
 
 # Strings
 
-El paquete `stringr` del `tidyverse` se usa para manipulación de *strings* o caracteres. 
+El paquete [`stringr`](https://stringr.tidyverse.org/reference/index.html) del `tidyverse` se usa para manipulación de *strings* o caracteres. 
 
     library(stringr)
     s1 <- "Esto es un string"
@@ -209,6 +184,8 @@ El paquete `stringr` del `tidyverse` se usa para manipulación de *strings* o ca
 
 
 ## Funciones básicas de `stringr`
+
+Casi todas las funciones de `stringr` empiezan con "str\_". Pueden verlas con `apropos("str_")`.
 
     str_length(c("a", "Curso de R 2019", NA))
     [1]  1 15 NA
@@ -231,14 +208,94 @@ El paquete `stringr` del `tidyverse` se usa para manipulación de *strings* o ca
     str_sub(x, 1, 3)
     [1] "Roj" "Azu" "Ama"
 
+El paquete contiene los vectores `words` y `sentences` que pueden usar para practicar.
 
-## Subsetting strings
+
+## Expresiones regulares y `stringr`
+
+Expresiones regulares (*regexp*) son un lenguaje para detectar patrones en strings. La idea es poder codificar un *patrón* e inspeccionar un string para ver si lo contiene o no. Ejemplos: una parte de un string, que el string comience o termine con determinado caracter, etc. Las *regexps* son **muy** maleables y `stringr` las acepta en muchas de sus funciones.
+
+    x <- c("rojo", "azul", "amarillo")
+    str_view(x, "am") ## abre una ventana y muestra donde hay occurrencia de "am"
+    str_view(x, ".o.") ## idem pero usando el punto, que significa 'cualquier caracter'
+    str_view(x, "^a") ## palabras que empiezan con a
+    str_view(x, "o$") ## palabras que terminan con o
+    str_detect(x, ".z.")
+    sum(str_detect(x, "a$"))
+    str_replace(x, "[aeiou]", "-")
+    sentences %>% head(5) %>% str_split(" ")
+
+Más en [R for Data Science - sección 14.3](https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions)
 
 
-# Dates
+# Dates con `lubridate`
 
-`library(lubridate)`
+Las fechas se almacenan como "date" o como "date-time" (fecha más hora). En `tibbles` se muestran como `<date>` o `<dttm>`. 
+
+    today()
+    now()
+    ## podemos crear estructuras tipo dates con strings
+    ymd("2019-04-22")
+    mdy("April 22st, 2019")
+    dmy("22-Apr-2019")
+    ## o con números
+    ymd(20190422)
+    
+    ## podemos crear date-times
+    ymd_hms("2019-04-22 16:01:23")
+    mdy_hm("04/22/2019 16:01")
+    ## manejamos husos horarios con el argumento 'tz'
+    ymd(20190422, tz = "UTC")
+    
+    library(nycflights13)
+    ## podemos crear date-times a partir de sus partes
+    flights %>% 
+      select(year, month, day, hour, minute) %>% 
+      mutate(departure = make_datetime(year, month, day, hour, minute))
+    ## tenemos la familia as_
+    as_datetime(today())
+    as_date(now())
+    as_datetime(60 * 60 * 10)
+    as_date(365 * 10 + 2)
+    
+    ## Para obtener las partes tenemos:
+    datetime <- ymd_hms("2019-04-22 16:01:48")
+    year(datetime)
+    month(datetime)
+    mday(datetime)
+    yday(datetime)
+    wday(datetime)
+
+
+# Intervalos de tiempo
+
+Hay tres importantes: duraciones (un número exacto de segundos), períodos (diferencias de tiempos en semanas o meses) e intervalos (representados por su inicio y fin).
+
+    cuanto <- today() - ymd(20190101) ## como período
+    as.duration(cuanto) ## como duración
+    
+    ## constructores de duración
+    dseconds(15)
+    dhours(c(12, 24)) ## vetorizado
+    dyears(1) + dweeks(12) + dhours(15) ## como duración
+    tom <- today() + ddays(1)
+    
+    ## constructores de período
+    seconds(15)
+    hours(c(12, 24))
+    days(50) + hours(25) + minutes(2)
+    ymd("2019-04-22") + years(1)
+    
+    ## intervalos
+    years(1) / days(1)
+    (today() %--% next_year) / ddays(1)
+    
+    ## Huso horario
+    Sys.timezone()
+    ymd_hms("2015-06-01 12:00:00", tz = "America/Buenos_Aires")
 
 
 # Práctica 10
+
+Descargar [práctica 10](../assets/R2019-practice-10-t9jw92tiaj.pdf).
 

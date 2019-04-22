@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>R lectures</title>
+<meta name="author" content="(Luis G. Moyano)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../reveal.js/css/theme/my_beige.css" id="theme"/>
+
+<link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Programación en R 2019">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>R lectures</h1><h3>22/04/2019</h3>
+</section>
+
+<section>
+<section id="slide-org9ac9907">
+<h2 id="org9ac9907">Repaso de la clase anterior</h2>
+<div class="outline-text-2" id="text-org9ac9907">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc20d06c">
+<h3 id="orgc20d06c">Funciones matemáticas básicas</h3>
+<div class="org-src-container">
+
+<pre><code class="R" >- exp(): función exponencial, base e
+- log(): logaritmo natural 
+- log10(): logaritmo base 10
+- sqrt(): raiz cuadrada
+- abs(): valor absoluto
+- sin(), cos(), etc.: funciones trigonométricas
+- min(),  max(): valor mínimo y máximo de un vector
+- which.min() and which.max(): índice del valor mínimo y máximo 
+- pmin() and pmax(): mínimos y máximos para varios vectores, por elemento
+- sum() and prod(): suma y producto de elementos de vectores
+- cumsum() and cumprod(): suma acumulada y producto acumulado de elementos de vectores
+- round(), floor(), and ceiling(): redondeo al entero más próximo, al menor o al mayor, respectivamente
+- factorial(): función factorial
+- %%: operador módulo y %/%: operador división por enteros
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- c(12,5,13)
+cumsum(x)
+# [1] 12 17 30
+cumprod(x)
+# [1] 12 60 780
+
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org395968a">
+<h3 id="org395968a">Cálculo</h3>
+<p>
+R tiene capacidades tanto para hacer cálculos numéricos como analíticos:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># derivada analítica
+D(expression(exp(x^2)),"x")  
+exp(x^2) * (2 * x)
+# integral numérica
+integrate(function(x) x^2,0,1) 
+0.3333333 with absolute error < 3.7e-15
+</code></pre>
+</div>
+
+<p>
+Existen paquetes para ecuaciones diferenciales (<code>odesolve</code>), y para
+extender la capacidad simbólica usando el sistema Yacas
+(<code>ryacas</code>). Ver CRAN.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf726c73">
+<h3 id="orgf726c73">Álgebra Lineal</h3>
+<div class="org-src-container">
+
+<pre><code class="R" > # Multiplicación de matrices: Directamente con el operador %*%: 
+- a %*% b
+ # Sistema de ecuaciones lineales (o invertir una matriz) con ~solve()~
+- solve(a,b) ## resuelve el sistema de ecuaciones
+- solve(a) ## sin el segundo argumento, invierte la matriz
+# Autovectores y autovalores
+- eigen(a)
+# Otras operaciones posibles:
+- t(): # transpuesta de una matriz
+- qr(): # descomposición QR
+- chol(): # descompocisión Cholesky
+- det(): # Determinante
+- eigen(): # Autovalores/autovectores
+- diag(): # extrae la diagonal de una matriz cuadrada
+- svd(A): # descomposición en valores singulares
+- ...
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org77796d3">
+<h3 id="org77796d3">Estadística descriptiva</h3>
+<p>
+Conceptos para entender la estructura de un grupo (digamos, <code>N &gt; 30</code>) de datos. 
+</p>
+
+<p>
+Una manera de hacer estadística descriptiva en columnas de listas (o data.frames) es con <code>sapply</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >sapply(mydata, mean, na.rm=TRUE) 
+</code></pre>
+</div>
+
+<p>
+donde podemos usar <code>mean</code>, <code>sd</code>, <code>var</code>, <code>min</code>, <code>max</code>, <code>median</code>, <code>range</code>, o <code>quantile</code>, entre otras). 
+</p>
+
+<p>
+O <code>summary()</code>, que es equivalente y funciona con data.frames.
+</p>
+
+<p>
+Tenemos también <code>group_by() + summarise()</code> con las mismas funciones básicas.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbbcac25">
+<h3 id="orgbbcac25">Distribuciones</h3>
+<p>
+En general R usa la siguiente convención:
+</p>
+
+<ul>
+<li><code>dDIST(x, ...)</code> es la función distribución de probabilidad (PDF). Devuelve la prob. de observar un
+valor x</li>
+<li><code>pDIST(x, ...)</code> es la función cumulativa de probabilidad (CDF). Devuelve la prob. de obervar un
+valor menor a x (mayor si usamos <code>lower.tail=F</code>)</li>
+<li><code>rDIST(n, ...)</code> es un generador de números aleatorios que devuelve n valores sacados de una distr. DIST.</li>
+<li><code>qDIST(p, ...)</code> es la función cuartil que devuelve el x que corresponde al percentil <code>p</code> de DIST. Si
+<code>lower.tail=F</code>, devuelve <code>1</code> menos <code>p</code>.</li>
+
+</ul>
+
+<img style="WIDTH:1200px; HEIGHT:200px; border:0" src="./figs/dists.png">
+
+<p>
+Para ver las distribuciones disponibles, ver el <a href="https://cran.r-project.org/web/views/Distributions.html">task view de distribuciones</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org127b313">
+<h3 id="org127b313">Modelado estadístico</h3>
+<p>
+Modelado se refiere a proponer determinadas relaciones entre variables, típicamente cuál es la
+relación entre una variable dependiente o <i>variable respuesta</i> y otras variables independientes o
+<i>variables explicativas</i>. 
+</p>
+
+<p>
+En R la función <code>lm()</code> se usa para regresión lineal (<i>linear models</i>) y <code>glm()</code> para <i>generalized linear models</i>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb4353b2">
+<h3 id="orgb4353b2">Regresión lineal - <code>lm()</code></h3>
+<p>
+Construimos un "modelo" (una relación) entre variables dependientes e independientes optimizando
+parámetros para poder predecir.
+1 - Propongo una determinada relación de variables (a través de una 'formula' tipo <code>y \</code> x~).
+2 - Calculo coeficientes del modelo (los consulto con <code>coef()</code> ).
+3 - Compruebo que tan bien se ajusta el modelo a nuevas observaciones (con <code>predict()</code>).
+</p>
+<div class="org-src-container">
+
+<pre><code class="R" >y[i] ~ f(x[i,]) = b[1] x[i,1] + ... b[n] x[i,n]
+## b[i] son los coeficientes o betas
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org84d22b5">
+<h3 id="org84d22b5">Regresión lineal generalizada - <code>glm()</code></h3>
+<p>
+Los modelos lineales asumen que el valor predicho es continuo y que los errores van a ser
+"normales". Los modelos lineales generalizados relajan estas suposiciones.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >## expresión general
+glm(formula, family=familytype(link=linkfunction), data=)
+</code></pre>
+</div>
+
+<p>
+Ejemplito: Regresión logística, para variables categóricas.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" ># F es un factor binario
+# x1, x2 y x3 son predictores continuos 
+fit <- glm(F~x1+x2+x3,data=mydata,family=binomial())
+summary(fit) # resultados
+exp(coef(fit)) # coeficientes
+predict(fit, type="response") # predicciones
+residuals(fit, type="deviance") # residuos 
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2a6ec52">
+<h2 id="org2a6ec52">Jupyter Notebooks</h2>
+<img style="position:absolute; TOP:-150px; LEFT:-100px; WIDTH:200px; HEIGHT:200px; border:0" src="./figs/jupyter_logo.png">
+
+<ul>
+<li>Un <i>Jupyter Notebook</i> (antes llamadas <i>IPython Notebooks</i>) es un ambiente computacional basado en la web (a través de servers), interactivo, para crear documentos tipo <i>notebook</i>.</li>
+<li>Basados en el estilo 'Mathematica', primero aparecieron para Python, ahora hay para muchos lenguajes, entre ellos R.</li>
+<li>Se puede hacer gran parte de lo que hacemos en Rstudio, pero en un navegador.</li>
+<li>Algunos links útiles:
+<ul>
+<li><a href="https://jupyter.org/try">Try Jupyter</a></li>
+<li><a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html">What is the Jupyter Notebook?</a></li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org44fd17d">
+<h2 id="org44fd17d">R y bases de datos</h2>
+<p>
+R puede acceder a distintos tipos de bases de datos (DBMSs - Database Management Systems): Microsoft
+SQL Server, Microsoft Access, MySQL, Oracle, PostgreSQL, DB2 de IBM, Sybase, Teradata, and SQLite.
+</p>
+
+<p>
+Se puede 'hablar' con estas bases de datos con interfaces (protocolos) como ODBC con el paquete
+RODBC. Existen otras alternativas, por ejemplo, JODBC, RMySQL, ROracle, RPostgreSQL y RSQLite.
+</p>
+
+<ul>
+<li>Ejemplo con RODBC. Asegurarse de instalar el paquete y los drivers OBDC correspondientes.</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre><code class="R" >library(RODBC)
+?RODBC
+## abro una conexión a la base de datos OBDC
+myconn <-odbcConnect("mydsn", uid="Rob", pwd="aardvark")
+## bajo datos
+crimedat <- sqlFetch(myconn, Crime)
+## hago una 'query': selecciono todo de la tabla Punishment
+pundat <- sqlQuery(myconn, "select * from Punishment")
+## cierro conexión
+close(myconn)
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org23d6b81">
+<h2 id="org23d6b81">Strings</h2>
+<p>
+El paquete <a href="https://stringr.tidyverse.org/reference/index.html"><code>stringr</code></a> del <code>tidyverse</code> se usa para manipulación de <i>strings</i> o caracteres. 
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >library(stringr)
+s1 <- "Esto es un string"
+s2 <- 'podemos usar "comillas" dentro de un string, con comillas simples'
+s3 <- 'podemos usar una comilla simple \" anteponiendo una barra, se dice "escapar" la comilla'
+s3 # así mostramos el string
+writeLines(s3) # así lo podemos imprimir sin que salgan las barras
+writeLines("\tUn tab y un enter\n") # existen algunos otros comandos especiales
+c("uno", "dos", "tres") # esto es un vector de caracteres o strings
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbf57775">
+<h3 id="orgbf57775">Funciones básicas de <code>stringr</code></h3>
+<p>
+Casi todas las funciones de <code>stringr</code> empiezan con "str_". Pueden verlas con <code>apropos("str_")</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >str_length(c("a", "Curso de R 2019", NA))
+[1]  1 15 NA
+str_c("x", "y")
+[1] "xy"
+## podemos elegir el /string/ separador
+str_c("x", "y", sep = "---")
+[1] "x---y"
+## si no queremos NA's
+str_replace_na( c("abc", NA)) 
+[1] "abc" "NA" 
+## str_c() es vectorizada    
+str_c("^", c("a", "b", "c"), "$")  
+[1] "^a$" "^b$" "^c$"
+## si queremos juntar todos los elementos en uno solo
+str_c(c("a", "b", "c"), collapse=" ") 
+[1] "a b c"
+## subsetting
+x <- c("Rojo", "Azul", "Amarillo")
+str_sub(x, 1, 3)
+[1] "Roj" "Azu" "Ama"
+</code></pre>
+</div>
+
+<p>
+El paquete contiene los vectores <code>words</code> y <code>sentences</code> que pueden usar para practicar.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org59be493">
+<h3 id="org59be493">Expresiones regulares y <code>stringr</code></h3>
+<p>
+Expresiones regulares (<i>regexp</i>) son un lenguaje para detectar patrones en strings. La idea es poder codificar un <i>patrón</i> e inspeccionar un string para ver si lo contiene o no. Ejemplos: una parte de un string, que el string comience o termine con determinado caracter, etc. Las <i>regexps</i> son <b>muy</b> maleables y <code>stringr</code> las acepta en muchas de sus funciones.
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >x <- c("rojo", "azul", "amarillo")
+str_view(x, "am") ## abre una ventana y muestra donde hay occurrencia de "am"
+str_view(x, ".o.") ## idem pero usando el punto, que significa 'cualquier caracter'
+str_view(x, "^a") ## palabras que empiezan con a
+str_view(x, "o$") ## palabras que terminan con o
+str_detect(x, ".z.")
+sum(str_detect(x, "a$"))
+str_replace(x, "[aeiou]", "-")
+sentences %>% head(5) %>% str_split(" ")
+</code></pre>
+</div>
+
+<p>
+Más en <a href="https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions">R for Data Science - sección 14.3</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org0fe992c">
+<h2 id="org0fe992c">Dates con <code>lubridate</code></h2>
+<p>
+Las fechas se almacenan como "date" o como "date-time" (fecha más hora). En <code>tibbles</code> se muestran como <code>&lt;date&gt;</code> o <code>&lt;dttm&gt;</code>. 
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >today()
+now()
+## podemos crear estructuras tipo dates con strings
+ymd("2019-04-22")
+mdy("April 22st, 2019")
+dmy("22-Apr-2019")
+## o con números
+ymd(20190422)
+
+## podemos crear date-times
+ymd_hms("2019-04-22 16:01:23")
+mdy_hm("04/22/2019 16:01")
+## manejamos husos horarios con el argumento 'tz'
+ymd(20190422, tz = "UTC")
+
+library(nycflights13)
+## podemos crear date-times a partir de sus partes
+flights %>% 
+  select(year, month, day, hour, minute) %>% 
+  mutate(departure = make_datetime(year, month, day, hour, minute))
+## tenemos la familia as_
+as_datetime(today())
+as_date(now())
+as_datetime(60 * 60 * 10)
+as_date(365 * 10 + 2)
+
+## Para obtener las partes tenemos:
+datetime <- ymd_hms("2019-04-22 16:01:48")
+year(datetime)
+month(datetime)
+mday(datetime)
+yday(datetime)
+wday(datetime)
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2e9c76c">
+<h2 id="org2e9c76c">Intervalos de tiempo</h2>
+<p>
+Hay tres importantes: duraciones (un número exacto de segundos), períodos (diferencias de tiempos en semanas o meses) e intervalos (representados por su inicio y fin).
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="R" >cuanto <- today() - ymd(20190101) ## como período
+as.duration(cuanto) ## como duración
+
+## constructores de duración
+dseconds(15)
+dhours(c(12, 24)) ## vetorizado
+dyears(1) + dweeks(12) + dhours(15) ## como duración
+tom <- today() + ddays(1)
+
+## constructores de período
+seconds(15)
+hours(c(12, 24))
+days(50) + hours(25) + minutes(2)
+ymd("2019-04-22") + years(1)
+
+## intervalos
+years(1) / days(1)
+(today() %--% next_year) / ddays(1)
+
+## Huso horario
+Sys.timezone()
+ymd_hms("2015-06-01 12:00:00", tz = "America/Buenos_Aires")
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb70e5aa">
+<h2 id="orgb70e5aa">Práctica 10</h2>
+<p>
+Descargar <a href="../assets/R2019-practice-10-t9jw92tiaj.pdf">práctica 10</a>.
+</p>
+</section>
+</section>
+</div>
+</div>
+<p> @luisgmoyano </p>
+<script src="../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

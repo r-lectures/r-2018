@@ -130,6 +130,15 @@ lectures:
     - title: "versión pdf"
       url: "09-lecture-mf2oyovvuc.pdf"
 
+- title: "Clase 10 - Dates, strings y algunas cosas más"
+  url: "10-lecture-slides-t9jw92tiaj.html"
+
+  subitems:
+    - title: "versión texto"
+      url: "10-lecture-t9jw92tiaj.html"
+    - title: "versión pdf"
+      url: "10-lecture-t9jw92tiaj.pdf"
+
 
 #   subitems:
 #     - title: "Clase 10 - versión texto"
