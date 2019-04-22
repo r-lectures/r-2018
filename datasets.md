@@ -1,8 +1,3 @@
----
- layout: default
- title: Datos
- weight: 7
----
 
 
 # Datasets
@@ -25,6 +20,7 @@ Se irán agregando items, sugerencias bienvenidas.
             ToothGrowth
             summary(ToothGrowth)
             plot(ToothGrowth)
+-   [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets) <- **NEW**
 -   [Explore Packages Currently on CRAN (search for "dataset")](https://mran.microsoft.com/packages/)
 -   [open data mendoza](http://ckan.ciudaddemendoza.gov.ar/)
 -   [buenos aires data](https://data.buenosaires.gob.ar/) - Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.
