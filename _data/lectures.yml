@@ -139,6 +139,11 @@ lectures:
     - title: "versión pdf"
       url: "10-lecture-t9jw92tiaj.pdf"
 
+- title: "Clase extra - Regresiones"
+  url: "lecture_regressions-slides.html"
+  subitems:
+    - title: "versión texto"
+      url: "lecture_regressions.html"
 
 #   subitems:
 #     - title: "Clase 10 - versión texto"
