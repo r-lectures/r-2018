@@ -1,0 +1,66 @@
+# Regresión lineal
+
+# Definimos una semilla, por reproducibilidad
+
+set.seed(42)
+
+# generamos valores para 'x'
+x<-seq(1, 100)
+
+# generamos 'y' siguiendo una recta, pero con ruido:
+# m*x + b
+m <- 3
+b <- 100
+y <- m*x + b
+
+plot(x, y)
+
+# agregamos 10% de ruido en cada coordenada
+# para simular una medición
+y <- y + runif(n=100, min=0, max=30)
+x <- x + runif(n=100, min=0, max=10)
+
+plot(x, y)
+
+# hacemos la regresión lineal
+modelo.lineal <- lm(y ~ x)
+
+# obtengo el error, entre otras cosas
+summary(modelo.lineal)
+
+# dibujo
+abline(modelo.lineal, col = 'red')
+
+
+# Regresión no lineal
+# Definimos una semilla, por reproducibilidad
+
+set.seed(42)
+
+# generamos valores para 'x'
+x<-seq(1, 100)
+
+# generamos 'y' siguiendo una exponencial, pero con ruido:
+# a*exp(b*x) + c
+a <- 10
+b <- 0.03
+c <- 100
+y <- a*exp(b*x) + c
+
+plot(x, y)
+
+# agregamos 10% de ruido en cada coordenada
+# para simular una medición
+y <- y + runif(n=100, min=0, max=30)
+x <- x + runif(n=100, min=0, max=10)
+
+plot(x, y)
+
+# hacemos la regresión lineal
+modelo.nolineal <- nls(y ~ a*exp(b*x) + c, start = list(a=13, b=0.1, c=20))
+
+# obtengo el error, entre otras cosas
+summary(modelo.nolineal)
+
+# dibujo
+lines(x,predict(modelo.nolineal),col="blue")
