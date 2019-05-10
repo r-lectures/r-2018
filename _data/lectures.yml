@@ -144,6 +144,8 @@ lectures:
   subitems:
     - title: "versión texto"
       url: "lecture_regressions.html"
+    - title: "script .Rmd"
+      url: "lecture_regressions.Rmd"
 
 #   subitems:
 #     - title: "Clase 10 - versión texto"
